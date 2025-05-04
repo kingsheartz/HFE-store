@@ -259,7 +259,7 @@ from product where (added_date) in (
         ) LIMIT 2"
                   );
                   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
+                  ?>
                     <li class="list-group-item" style="display: flex;">
                       <div style="width:70px">
                         <img class="smimg"
@@ -271,8 +271,8 @@ from product where (added_date) in (
                             class="fas fa-rupee-sign"></i> <?= $row['price'] ?></button>
                       </div>
                     </li> <?php
-                  }
-                  ?>
+                        }
+                          ?>
                 </ul>
               </div>
             </div>
@@ -282,7 +282,7 @@ from product where (added_date) in (
         <script type="text/javascript">
           var clients;
           var xmlhttp = new XMLHttpRequest();
-          xmlhttp.onreadystatechange = function () {
+          xmlhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
               clients = JSON.parse(this.responseText);
             }
@@ -290,7 +290,9 @@ from product where (added_date) in (
           xmlhttp.open("GET", "piechart.php", true);
           xmlhttp.send();
           // Load google charts
-          google.charts.load('current', { 'packages': ['corechart'] });
+          google.charts.load('current', {
+            'packages': ['corechart']
+          });
           google.charts.setOnLoadCallback(drawChart);
           setInterval(drawChart, 1000);
           // Draw the chart and set the chart values
@@ -314,11 +316,37 @@ from product where (added_date) in (
               position: 'center',
               'width': 450,
               'height': 450,
-              pieHole: 0.6, pieSliceText: 'label', pieSliceTextStyle: { color: 'white' }, legend: { textStyle: { color: 'white' } }, titleTextStyle: { color: 'white' }, tooltip: { textStyle: { color: 'white' } }, slices: {
-                0: { offset: 0.1 },
-                1: { offset: 0.1 },
-                2: { offset: 0.1 },
-                3: { offset: 0.1 }
+              pieHole: 0.6,
+              pieSliceText: 'label',
+              pieSliceTextStyle: {
+                color: 'white'
+              },
+              legend: {
+                textStyle: {
+                  color: 'white'
+                }
+              },
+              titleTextStyle: {
+                color: 'white'
+              },
+              tooltip: {
+                textStyle: {
+                  color: 'white'
+                }
+              },
+              slices: {
+                0: {
+                  offset: 0.1
+                },
+                1: {
+                  offset: 0.1
+                },
+                2: {
+                  offset: 0.1
+                },
+                3: {
+                  offset: 0.1
+                }
               }
             };
             // Display the chart inside the <div> element with id="piechart"

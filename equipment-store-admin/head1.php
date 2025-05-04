@@ -246,10 +246,10 @@
   // $(document).ready(function () {
   //     $('#top-nav').css('left', $('#sidebar').width() + 20 + 'px');
   // });
-  $(document).ready(function () {
+  $(document).ready(function() {
     var path = window.location.href; // Returns full URL
     var page = path.split("/").pop(); // Returns only the file name
-    $('#sidebar ul li a').each(function () {
+    $('#sidebar ul li a').each(function() {
       if (this.href === path) {
         $(this).addClass('active');
       }
@@ -313,26 +313,26 @@
     </div>
   </nav>
   <script>
-
-    $('#sidebar li').on('click', 'a', function (e) {
+    $('#sidebar li').on('click', 'a', function(e) {
       if ($(this).parent().children('ul').length) {
         e.preventDefault();
         $('#featic').attr('class', 'fas fa-angle-down');
         $(this).addClass('active');
         $(this).parent().children('ul').slideDown();
-        setTimeout(function () {
+        setTimeout(function() {
           //$.fn.matchHeight._update();
           //  $.fn.matchHeight._maintainScroll = true;
         }, 1000);
       }
     });
-    $('#sidebar li').on('click', 'a.active', function (e) {
+    $('#sidebar li').on('click', 'a.active', function(e) {
       e.preventDefault();
       $(this).removeClass('active');
       $('#featic').attr('class', 'fas fa-angle-right');
       $(this).parent().children('ul').slideUp();
-      setTimeout(function () {
+      setTimeout(function() {
         // $.fn.matchHeight._update();
         // $.fn.matchHeight._maintainScroll = true;
       }, 1000);
-    });</script>
+    });
+  </script>

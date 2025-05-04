@@ -163,9 +163,9 @@ require "head.php";
       <button style="float:right" class="prbt" onclick="$('#printarea').print();">Print All</button>
     </div>
     <div id="printarea"><?php
-    require "pdo.php";
-    $id = $_SESSION['id'];
-    $query = "select *  FROM new_orders
+                        require "pdo.php";
+                        $id = $_SESSION['id'];
+                        $query = "select *  FROM new_orders
     JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
     JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
     JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
@@ -176,22 +176,22 @@ require "head.php";
     JOIN category ON category.category_id=product.category_id
     JOIN store on store.store_id=product_details.store_id
     WHERE new_ordered_products.delivery_status='pending' AND product_details.store_id=$id";
-    $statement = $pdo->prepare($query);
-    $statement->execute();
-    $product = $statement->rowCount();
-    if ($product == 0) {
-      echo '<center><img src="images/sad.png" height="400px" width="400px"><h3>No Orders Yet.....</h3></center><br><br>';
-    } else {
-      $uid = 0;
-      $lk = 0;
-      while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-        if ($row['customer_delivery_details_id'] != $uid) {
-          $lk++;
-          $uid = $row['customer_delivery_details_id'];
-          if ($lk != 1) {
-            echo '</table></div> </div>';
-          }
-          ?>
+                        $statement = $pdo->prepare($query);
+                        $statement->execute();
+                        $product = $statement->rowCount();
+                        if ($product == 0) {
+                          echo '<center><img src="images/sad.png" height="400px" width="400px"><h3>No Orders Yet.....</h3></center><br><br>';
+                        } else {
+                          $uid = 0;
+                          $lk = 0;
+                          while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+                            if ($row['customer_delivery_details_id'] != $uid) {
+                              $lk++;
+                              $uid = $row['customer_delivery_details_id'];
+                              if ($lk != 1) {
+                                echo '</table></div> </div>';
+                              }
+                        ?>
             <div class="order" id="order<?= $row['new_ordered_products_id'] ?>">
               <button class="prbt" onclick="$('#order<?= $row['new_ordered_products_id'] ?>').print();">Print to Pdf</button>
               <br><br>
@@ -232,92 +232,92 @@ require "head.php";
     margin-bottom: 30px;
     border: 0px;">
                 <table>
-                  <?php
-        } ?>
+                <?php
+                            } ?>
                 <tr class="orow">
                   <td> <?= $row['new_ordered_products_id'] ?></td>
                   <td align="center">
                     <img style="height:auto;max-width: 100%;width:auto;max-height: 150px;display: block;margin: auto "
                       class="img-responsive"
                       src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              </div>
+              <?= $row['product_name'] ?></td>
+              <td>
+                <table cellpadding="10">
+                  <?php
+                            if ($row['size'] != 0) {
+                              $query1 = "SELECT * FROM size where size_id=" . $row['size'];
+                              $st1 = $pdo->query($query1);
+                              $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                  ?>
+                    <tr>
+                      <th>Size</th>
+                      <td> <?= $row1['size_name'] ?></td>
+                    </tr>
+                  <?php
+                            }
+                            if ($row['weight'] != 0) {
+                  ?>
+                    <tr>
+                      <th>Weight</th>
+                      <td><?= $row['weight'] ?></td>
+                    </tr>
+                  <?php
+                            }
+                            if ($row['brand'] != 0) {
+                              $query1 = "SELECT * FROM brand where brand_id=" . $row['brand'];
+                              $st1 = $pdo->query($query1);
+                              $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                  ?>
+                    <tr>
+                      <th>Brand</th>
+                      <td><?= $row1['brand_name'] ?></td>
+                    </tr>
+                  <?php
+                            }
+                  ?>
+                </table>
+              </td>
+              <td>
+                <table>
+                  <tr>
+                    <th> Order Type</th>
+                    <td><?= $row['order_type'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Order Date</th>
+                    <td><?= $row['order_date'] ?></td>
+                  </tr>
+                  <tr>
+                    <th> product Quantity</th>
+                    <td><?= $row['quantity'] ?></td>
+                  </tr>
+                  <tr>
+                    <th>Total</th>
+                    <td><?= $row['total_amt'] ?></td>
+                  </tr>
+                </table>
+              </td>
+              </tr>
+              <script type="text/javascript">
+                function ordchn() {
+                  $('orderbutton>i').attr('class', 'fas fa-check-double');
+                }
+              </script>
+              <form method="post">
+                <input type="hidden" name="neworder" value="<?= $row['customer_delivery_details_id'] ?>">
+                <button name="deliver" class="orderbutton" onclick="ordchn()">Mark As Shipped</button>
+              </form>
+          <?php
+                          }
+                        }
+          ?>
             </div>
-            <?= $row['product_name'] ?></td>
-            <td>
-              <table cellpadding="10">
-                <?php
-                if ($row['size'] != 0) {
-                  $query1 = "SELECT * FROM size where size_id=" . $row['size'];
-                  $st1 = $pdo->query($query1);
-                  $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                  ?>
-                  <tr>
-                    <th>Size</th>
-                    <td> <?= $row1['size_name'] ?></td>
-                  </tr>
-                  <?php
-                }
-                if ($row['weight'] != 0) {
-                  ?>
-                  <tr>
-                    <th>Weight</th>
-                    <td><?= $row['weight'] ?></td>
-                  </tr>
-                  <?php
-                }
-                if ($row['brand'] != 0) {
-                  $query1 = "SELECT * FROM brand where brand_id=" . $row['brand'];
-                  $st1 = $pdo->query($query1);
-                  $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                  ?>
-                  <tr>
-                    <th>Brand</th>
-                    <td><?= $row1['brand_name'] ?></td>
-                  </tr>
-                  <?php
-                }
-                ?>
-              </table>
-            </td>
-            <td>
-              <table>
-                <tr>
-                  <th> Order Type</th>
-                  <td><?= $row['order_type'] ?></td>
-                </tr>
-                <tr>
-                  <th>Order Date</th>
-                  <td><?= $row['order_date'] ?></td>
-                </tr>
-                <tr>
-                  <th> product Quantity</th>
-                  <td><?= $row['quantity'] ?></td>
-                </tr>
-                <tr>
-                  <th>Total</th>
-                  <td><?= $row['total_amt'] ?></td>
-                </tr>
-              </table>
-            </td>
-            </tr>
+            <?php
+            require "foot.php";
+            ?>
             <script type="text/javascript">
-              function ordchn() {
-                $('orderbutton>i').attr('class', 'fas fa-check-double');
+              if (window.history.replaceState) {
+                window.history.replaceState(null, null, window.location.href);
               }
             </script>
-            <form method="post">
-              <input type="hidden" name="neworder" value="<?= $row['customer_delivery_details_id'] ?>">
-              <button name="deliver" class="orderbutton" onclick="ordchn()">Mark As Shipped</button>
-            </form>
-            <?php
-      }
-    }
-    ?>
-      </div>
-      <?php
-      require "foot.php";
-      ?>
-      <script type="text/javascript">
-        if (window.history.replaceState) {
-          window.history.replaceState(null, null, window.location.href);
-        }
-      </script>

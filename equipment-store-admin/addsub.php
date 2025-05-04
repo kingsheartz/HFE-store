@@ -638,12 +638,11 @@ order_preference) VALUES (:product_description_id,
     ?>
     <script type="text/javascript">
       function newup(x, y) {
-        $('#' + x).on("submit", function (e) {
+        $('#' + x).on("submit", function(e) {
           var dataString = new FormData(this);
           if (y == 1) {
             dataString.append('update_data', '1');
-          }
-          else if (y == 0) {
+          } else if (y == 0) {
             dataString.append('remove_data', '1');
           }
           $.ajax({
@@ -653,11 +652,11 @@ order_preference) VALUES (:product_description_id,
             contentType: false,
             cache: false,
             processData: false,
-            success: function () {
+            success: function() {
               $("#" + x).html("<div id='message'></div>");
               $("#message")
                 .hide()
-                .fadeIn(1500, function () {
+                .fadeIn(1500, function() {
                   $("#message").append(
                     "<div class='alert alert-success'>Product Updated For Your Store\
                         <button onclick='location.reload()' style='width: 200px;background: green;float: right;\
@@ -684,6 +683,7 @@ order_preference) VALUES (:product_description_id,
         $('#' + x).scrollLeft(y + 50);
         $('#' + x + '>.right-arrow').show();
       }
+
       function moveright(x) {
         var y = $('#' + x).scrollLeft();
         $('#' + x + '>.left-arrow').show();
@@ -692,17 +692,16 @@ order_preference) VALUES (:product_description_id,
         }
         $('#' + x).scrollLeft(y - 50);
       }
+
       function movefr(x) {
         var y = $('#' + x).scrollLeft();
         var width = $('#' + x).outerWidth()
         var scrollWidth = $('#' + x)[0].scrollWidth;
         if (scrollWidth - width === y) {
           $('#' + x + '>.left-arrow').hide();
-        }
-        else if (y === 0) {
+        } else if (y === 0) {
           $('#' + x + '>.right-arrow').hide();
-        }
-        else {
+        } else {
           $('#' + x + '>.left-arrow').show();
           $('#' + x + '>.right-arrow').show();
         }
@@ -717,7 +716,7 @@ order_preference) VALUES (:product_description_id,
       $description = $_POST['description'];
       $price = $_POST['price'];
       $it = $_POST['item_id'];
-      ?>
+    ?>
       <div class="pr1" style="margin-top:120px">
         <div class="proupda ">
           <div class="newupdation">
@@ -732,7 +731,7 @@ order_preference) VALUES (:product_description_id,
               $st = $pdo->query($query);
               $tr = $st->rowCount();
               if ($tr == 0) {
-                ?>
+              ?>
                 <div class="alert alert-danger">Product is already added <button style="background: red;
     border: none;
     color: white;
@@ -745,7 +744,7 @@ order_preference) VALUES (:product_description_id,
                 <?php
               } else {
                 while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-                  ?>
+                ?>
                   <div class="col-sm-12">
                     <div class="imgdis">
                       <form id="<?= $row['product_description_id'] ?>" name="<?= $row['product_description_id'] ?>">
@@ -779,7 +778,7 @@ order_preference) VALUES (:product_description_id,
                             <?php
                             $t = $row['img_count'];
                             for ($i = 1; $i <= $t; $i++) {
-                              ?>
+                            ?>
                               <div class="product">
                                 <img style=" display: inline-block;
   text-align: center;
@@ -790,7 +789,7 @@ order_preference) VALUES (:product_description_id,
    " onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
                                   src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg">
                               </div>
-                              <?php
+                            <?php
                             }
                             ?>
                           </div>
@@ -809,31 +808,31 @@ order_preference) VALUES (:product_description_id,
                                 $query1 = "SELECT * FROM size where size_id=" . $row['size'];
                                 $st1 = $pdo->query($query1);
                                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                ?>
+                              ?>
                                 <tr>
                                   <th>Size</th>
                                   <td> <?= $row1['size_name'] ?></td>
                                 </tr>
-                                <?php
+                              <?php
                               }
                               if ($row['weight'] != 0) {
-                                ?>
+                              ?>
                                 <tr>
                                   <th>Weight</th>
                                   <td><?= $row['weight'] ?></td>
                                 </tr>
-                                <?php
+                              <?php
                               }
                               if ($row['brand'] != 0) {
                                 $query1 = "SELECT * FROM brand where brand_id=" . $row['brand'];
                                 $st1 = $pdo->query($query1);
                                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                ?>
+                              ?>
                                 <tr>
                                   <th>Brand</th>
                                   <td><?= $row1['brand_name'] ?></td>
                                 </tr>
-                                <?php
+                              <?php
                               }
                               ?>
                             </table>
@@ -880,7 +879,7 @@ width: 200px;
                       </form>
                     </div>
                   </div>
-                  <?php
+              <?php
                 }
               }
               ?>
@@ -888,7 +887,7 @@ width: 200px;
           </div>
         </div>
       </div>
-      <?php
+    <?php
     }
     ?>
     <?php

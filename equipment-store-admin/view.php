@@ -343,13 +343,15 @@ require "head.php";
           Products</h4>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script>
-          $(document).ready(function () {
-            $('#search-box input[type="text"]').on("keyup input", function () {
+          $(document).ready(function() {
+            $('#search-box input[type="text"]').on("keyup input", function() {
               /* Get input value on change */
               var inputVal = $(this).val();
               var resultDropdown = $("#result");
               if (inputVal.length) {
-                $.get("search.php", { term: inputVal }).done(function (data) {
+                $.get("search.php", {
+                  term: inputVal
+                }).done(function(data) {
                   // Display the returned data in browser
                   resultDropdown.html(data);
                 });
@@ -379,6 +381,7 @@ require "head.php";
           $('#' + x).scrollLeft(y + 100);
           $('#' + x + '>.right-arrow').show();
         }
+
         function moveright(x) {
           var y = $('#' + x).scrollLeft();
           $('#' + x + '>.left-arrow').show();
@@ -387,17 +390,16 @@ require "head.php";
           }
           $('#' + x).scrollLeft(y - 100);
         }
+
         function movefr(x) {
           var y = $('#' + x).scrollLeft();
           var width = $('#' + x).outerWidth()
           var scrollWidth = $('#' + x)[0].scrollWidth;
           if (scrollWidth - width === y) {
             $('#' + x + '>.left-arrow').hide();
-          }
-          else if (y === 0) {
+          } else if (y === 0) {
             $('#' + x + '>.right-arrow').hide();
-          }
-          else {
+          } else {
             $('#' + x + '>.left-arrow').show();
             $('#' + x + '>.right-arrow').show();
           }
@@ -423,7 +425,7 @@ product_description.product_description_id IN (SELECT product_description_id FRO
               class="fas fa-chevron-left"></i></button>
           <?php
           while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-            ?>
+          ?>
             <div class="products">
               <div style="display: flex;
    justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
@@ -447,14 +449,14 @@ product_description.product_description_id IN (SELECT product_description_id FRO
               <div class="deupd"><?= $row['product_name'] ?><br>
               </div>
             </div>
-            <?php
+          <?php
           }
           echo '</div></div>';
           $query11 = "SELECT * from  category";
           $st11 = $pdo->query($query11);
           while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
             $ct = $row11['category_id'];
-            ?>
+          ?>
             <?php
             $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ct and
 product_description.product_description_id IN (SELECT product_description_id FROM product_details where store_id=$id ) GROUP BY product_description.product_id";
@@ -463,7 +465,7 @@ product_description.product_description_id IN (SELECT product_description_id FRO
             if ($product == 0) {
               continue;
             } else {
-              ?>
+            ?>
               <div class="difcat ">
                 <span class="difhed"><?= $row11['category_name'] ?>
                   <button onclick="location.href='viewproducts.php?category_id=<?= $ct ?>'">View All</button></span>
@@ -474,7 +476,7 @@ product_description.product_description_id IN (SELECT product_description_id FRO
                       class="fas fa-chevron-left"></i></button>
                   <?php
                   while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
+                  ?>
                     <div class="products">
                       <div style="display: flex;
   justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
@@ -498,12 +500,12 @@ product_description.product_description_id IN (SELECT product_description_id FRO
                       <div class="deupd"><?= $row['product_name'] ?><br>
                       </div>
                     </div>
-                    <?php
+              <?php
                   }
                   echo '</div></div>';
-            }
-          }
-          ?>
+                }
+              }
+              ?>
               <script type="text/javascript">
                 function showupda(x) {
                   document.forms[x].submit();
@@ -511,6 +513,7 @@ product_description.product_description_id IN (SELECT product_description_id FRO
                 if (window.history.replaceState) {
                   window.history.replaceState(null, null, window.location.href);
                 }
+
                 function conca() {
                   console.log('helo');
                   if ($('#w1').val() != 0) {
@@ -519,7 +522,7 @@ product_description.product_description_id IN (SELECT product_description_id FRO
                   }
                 }
               </script>
-            </div>
-            <?php
-            require "foot.php";
-            ?>
+                </div>
+                <?php
+                require "foot.php";
+                ?>

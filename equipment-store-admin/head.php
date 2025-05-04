@@ -23,7 +23,7 @@
   <!--JS GRID 1 KRG--><!--
 <link type="text/css" rel="stylesheet" href="js/jsgrid.min.css" />
 <link type="text/css" rel="stylesheet" href="js/jsgrid-theme.min.css" />
-<script type="text/javascript" src="js/jsgrid.min.js"></script>-->
+<script type="text/javascript" srcF="js/jsgrid.min.js"></script>-->
   <!--JS GRID 1 KRG-->
   <!--JS GRID 1 GDAS-->
   <!--JS GRID 1 GDAS-->
