@@ -71,17 +71,17 @@
 				<ul class="info">
 					<?php
 					if (isset($_SESSION['name'])) {
-						?>
+					?>
 						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="cart.php">My Cart</a></li>
 						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="wishlist.php">Wishlist</a></li>
-						<?php
+					<?php
 					}
 					if (!isset($_SESSION['name'])) {
-						?>
+					?>
 						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.php">Login</a></li>
 						<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.php">Create Account</a>
 						</li>
-						<?php
+					<?php
 					}
 					?>
 					<li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.php">FAQ</a></li>
@@ -156,7 +156,7 @@
 			<div class="modal-body">
 				<center>
 					<div
-						style="background-color: rgba(255,255,255);padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid #018a2a;height:100px;width">
+						style="background-color: rgba(255,255,255);padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid #018a2a;height:100px;">
 						<img src="../../images/logo/logofullfill.png" style="max-width: 80px;height:70px;">
 					</div>
 				</center>
@@ -272,14 +272,14 @@
 				dangerMode: true,
 				timer: 6000,
 			});
-		}
-		else {
+		} else {
 			copyText.select();
 			copyText.setSelectionRange(0, 999999)
 			document.execCommand("copy");
 			toastr.success('Link copied :- ' + copyText.value);
 		}
 	}
+
 	function downloadapk() {
 		var link = $('#input_apk_link').val();
 		if (link == "" || link == null) {
@@ -291,19 +291,17 @@
 				dangerMode: true,
 				timer: 6000,
 			});
-		}
-		else {
+		} else {
 			window.open('' + link + '', '_blank');
 		}
 	}
+
 	function copyapklink(n) {
 		if (n == 1) {
 			var link = "http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_high.apk";
-		}
-		else if (n == 2) {
+		} else if (n == 2) {
 			var link = "http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_low.apk";
-		}
-		else {
+		} else {
 			var link = "http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_low.apk";
 		}
 		$('#input_apk_link').val(link);
@@ -322,7 +320,7 @@
 	style="width: 100%; height:100% ;background-color: rgba(0,0,0,.80) !important;">
 	<div class="modal-dialog" style="width: 70%;height: 70%;">
 		<!-- Modal content-->
-		<div class="modal-content" style="width: 70%,height:70%;background-color:white;">
+		<div class="modal-content" style="width: 70%;height:70%;background-color:white;">
 			<div class="modal-header" style="padding: 0px;min-height: 0px;border:0px;">
 				<button type="button"
 					style="font-size: 2.2em;margin-right: -20px;margin-top: -20px;opacity: unset;outline: none;color: white"
@@ -495,7 +493,7 @@
 		<div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
 			<div class="modal-overlay" id="modal-overlay">
 				<div class="modal-header shadow_b"
-					style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;)) !important;color: white">
+					style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;color: white">
 					<button type="button" class="close" data-dismiss="modal"
 						style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
 					<h3 id="store_title" class="modal-title">Available Stores</h3>
@@ -590,7 +588,7 @@ color: white;border-radius:7px;outline: none;" onclick="wishlist_check_store_sel
 if (isset($_SESSION['id'])) {
 	$result = $pdo->query("select * from wishlist where user_id=" . $_SESSION['id']);
 	$status = 0;
-	?>
+?>
 	<div id="wishlist_avail" tabindex="-1" role="dialog" aria-labelledby="store_title"
 		class="modal fade modal-xl hidescroll" style="height: 90%;">
 		<div class="modal-dialog modal-xl" style="height: 90%;">
@@ -610,7 +608,7 @@ if (isset($_SESSION['id'])) {
 							<?php
 							$rows = $result->rowCount();
 							if (!is_null($rows) && $rows > 0) {
-								?>
+							?>
 								<tr style="background-color: #22374e;color: white">
 									<th style="border: none;" class="view_avail_stores">Select</th>
 									<th style="border: none;" class="view_avail_stores">List Name </th>
@@ -624,7 +622,7 @@ if (isset($_SESSION['id'])) {
 									$stmt_wish1 = $pdo->prepare($sql_wish1);
 									$stmt_wish1->execute(array(':wish_id' => $row['wishlist_id']));
 									$row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
-									?>
+								?>
 									<tr>
 										<td style="padding: 0px;margin: 0px;">
 											<button id="list_btn<?= $row['wishlist_id'] ?>"
@@ -634,7 +632,8 @@ if (isset($_SESSION['id'])) {
 										</td>
 										<td style="background-color: white" class="view_avail_stores"><?= $row['list_name'] ?></td>
 										<td style="background-color: white" class="view_avail_stores"><?= $row['privacy'] ?></td>
-										<!--<td id="Q<?= $store_id ?>"><?//=$row['quantity'] ?></td>-->
+										<!--<td id="Q<?= $store_id ?>"><? //=$row['quantity']
+																										?></td>-->
 										<td style="background-color: white" id="wish_cnt_<?= $row['wishlist_id'] ?>"
 											class="view_avail_stores"><?= $row_wish1['item_count'] ?></td>
 										<?php
@@ -643,7 +642,7 @@ if (isset($_SESSION['id'])) {
 										?>
 										<td style="background-color: white" class="view_avail_stores"><?= $day ?></td>
 									</tr>
-									<?php
+								<?php
 								}
 								$status = 1;
 							}
@@ -655,7 +654,7 @@ if (isset($_SESSION['id'])) {
 									<h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No result found</h3>
 								</div>
 								<br>
-								<?php
+							<?php
 							}
 							?>
 						</table>
@@ -673,7 +672,7 @@ if (isset($_SESSION['id'])) {
 			</div>
 		</div>
 	</div>
-	<?php
+<?php
 }
 ?>
 <!-------------------------------------JAVA SCRIPT FUNCTIONS BEGIN------------------------------------------------------------->
@@ -685,6 +684,7 @@ if (isset($_SESSION['id'])) {
 <!----------------------------------------------------------------------------------------------------------------------------->
 <script>
 	lens_cnt = 0;
+
 	function imageZoom(imgID, resultID) {
 		var img, lens, result, cx, cy;
 		img = document.getElementById(imgID);
@@ -709,6 +709,7 @@ if (isset($_SESSION['id'])) {
 			lens.addEventListener("touchmove", moveLens);
 			img.addEventListener("touchmove", moveLens);
 		}
+
 		function moveLens(e) {
 			var pos, x, y;
 			/*prevent any other actions that may occur when moving over the image:*/
@@ -719,18 +720,28 @@ if (isset($_SESSION['id'])) {
 			x = pos.x - (lens.offsetWidth / 2);
 			y = pos.y - (lens.offsetHeight / 2);
 			/*prevent the lens from being positioned outside the image:*/
-			if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
-			if (x < 0) { x = 0; }
-			if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
-			if (y < 0) { y = 0; }
+			if (x > img.width - lens.offsetWidth) {
+				x = img.width - lens.offsetWidth;
+			}
+			if (x < 0) {
+				x = 0;
+			}
+			if (y > img.height - lens.offsetHeight) {
+				y = img.height - lens.offsetHeight;
+			}
+			if (y < 0) {
+				y = 0;
+			}
 			/*set the position of the lens:*/
 			lens.style.left = x + "px";
 			lens.style.top = y + "px";
 			/*display what the lens "sees":*/
 			result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
 		}
+
 		function getCursorPos(e) {
-			var a, x = 0, y = 0;
+			var a, x = 0,
+				y = 0;
 			e = e || window.event;
 			/*get the x and y positions of the image:*/
 			a = img.getBoundingClientRect();
@@ -740,7 +751,10 @@ if (isset($_SESSION['id'])) {
 			/*consider any page scrolling:*/
 			x = x - window.pageXOffset;
 			y = y - window.pageYOffset;
-			return { x: x, y: y };
+			return {
+				x: x,
+				y: y
+			};
 		}
 	}
 	// Initiate zoom effect:
@@ -756,19 +770,18 @@ if (isset($_SESSION['id'])) {
 	var capson_warning = document.getElementsByClassName("capson_warning");
 	var password_field = document.getElementsByClassName('password_fields');
 	for (var i = 0; i < password_field.length; i++) {
-		password_field[i].addEventListener("keyup", function (event) {
+		password_field[i].addEventListener("keyup", function(event) {
 			for (var j = 0; j < capson_warning.length; j++) {
 				if (event.getModifierState("CapsLock")) {
 					capson_warning[j].style.display = "block";
-				}
-				else {
+				} else {
 					capson_warning[j].style.display = "none"
 				}
 			}
 		});
 	}
 	//////////////////////////////////////////////////////////////
-	$('.tab-pane').on('click', function () {
+	$('.tab-pane').on('click', function() {
 		$('.tab-pane').css('border', '0px none');
 		$('.tab-pane').css('border-bottom', '1px solid transparent');
 		var elementtodisplay = $(this).find('.active');
@@ -794,6 +807,7 @@ if (isset($_SESSION['id'])) {
 		$('#side_nav_bar_lock').css("display", "flex");
 		$('#side_nav_bar_lock').css("z-index", "9999999");
 	}
+
 	function closeNav() {
 		if (typeof NavScrollTop != 'undefined') {
 			NavScrollNow = getCookieset(NavScrollTop);
@@ -807,11 +821,11 @@ if (isset($_SESSION['id'])) {
 		$('#side_nav_bar_lock').css("z-index", "-9999999");
 		//document.getElementById("main_all").style.marginLeft= "0";
 	}
-	$('#side_nav_bar_lock').click(function () {
+	$('#side_nav_bar_lock').click(function() {
 		closeNav();
 	});
 	////////////////////////////////BREAK SIDE NAV EVENT/////////////////////////////////////////////////////////////////////////////////////////
-	$('#list_enda').click(function () {
+	$('#list_enda').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -825,7 +839,7 @@ if (isset($_SESSION['id'])) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_enda").css("display", "block");
 	});
-	$('#list_endb').click(function () {
+	$('#list_endb').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
 		$("#side_cat_list_endd").css("display", "none");
@@ -838,7 +852,7 @@ if (isset($_SESSION['id'])) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endb").css("display", "block");
 	});
-	$('#list_endc').click(function () {
+	$('#list_endc').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endd").css("display", "none");
@@ -851,7 +865,7 @@ if (isset($_SESSION['id'])) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endc").css("display", "block");
 	});
-	$('#list_endd').click(function () {
+	$('#list_endd').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -864,7 +878,7 @@ if (isset($_SESSION['id'])) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endd").css("display", "block");
 	});
-	$('#list_ende').click(function () {
+	$('#list_ende').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -877,7 +891,7 @@ if (isset($_SESSION['id'])) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_ende").css("display", "block");
 	});
-	$('#list_endf').click(function () {
+	$('#list_endf').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -890,7 +904,7 @@ if (isset($_SESSION['id'])) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endf").css("display", "block");
 	});
-	$('#list_endg').click(function () {
+	$('#list_endg').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -903,7 +917,7 @@ if (isset($_SESSION['id'])) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endg").css("display", "block");
 	});
-	$('#list_endh').click(function () {
+	$('#list_endh').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -916,7 +930,7 @@ if (isset($_SESSION['id'])) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endh").css("display", "block");
 	});
-	$('#list_endi').click(function () {
+	$('#list_endi').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -929,7 +943,7 @@ if (isset($_SESSION['id'])) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endi").css("display", "block");
 	});
-	$('#list_endj').click(function () {
+	$('#list_endj').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -946,7 +960,7 @@ if (isset($_SESSION['id'])) {
 	var dropdown = document.getElementsByClassName("dropdown-btn");
 	var i;
 	for (i = 0; i < dropdown.length; i++) {
-		dropdown[i].addEventListener("click", function () {
+		dropdown[i].addEventListener("click", function() {
 			this.classList.toggle("active");
 			var dropdownContent = this.nextElementSibling;
 			if (dropdownContent.style.display === "block") {
@@ -965,9 +979,8 @@ if (isset($_SESSION['id'])) {
 				$("#side_cat_list_end_default").css("display", "block");
 				$("#side_nav_content_end_line").css("display", "block");
 				/*CLICK EVENT OVERRIDING USING DISPLAY BLOCK or NONE */
-			}
-			else {
-				$(".dropdown-container").hide();//HIDE ALL OPENED DROPDOWN WHEN OPEN DROPDOWN
+			} else {
+				$(".dropdown-container").hide(); //HIDE ALL OPENED DROPDOWN WHEN OPEN DROPDOWN
 				dropdownContent.style.display = "block";
 			}
 		});
@@ -976,11 +989,11 @@ if (isset($_SESSION['id'])) {
 <!-------TESTING SIDE-NAV---------->
 <!-------TESTING NAV---------->
 <script type="text/javascript">
-	$(function () {
+	$(function() {
 		var navMain = $(".navbar-collapse"); // avoid dependency on #id
 		// "a:not([data-toggle])" - to avoid issues caused
 		// when you have dropdown inside navbar
-		navMain.on("click", "a:not([data-toggle])", null, function () {
+		navMain.on("click", "a:not([data-toggle])", null, function() {
 			navMain.collapse('hide');
 		});
 	});
@@ -998,8 +1011,8 @@ if (isset($_SESSION['id'])) {
 <!--///////////////////////////////////////////////////////////////-->
 <script src="https://cdn.jsdelivr.net/gh/vast-engineering/jquery-popup-overlay@2/jquery.popupoverlay.min.js"></script>
 <script type="text/javascript">
-	jQuery.fn.putCursorAtEnd = function () {
-		return this.each(function () {
+	jQuery.fn.putCursorAtEnd = function() {
+		return this.each(function() {
 			// Cache references
 			var $el = $(this),
 				el = this;
@@ -1012,7 +1025,7 @@ if (isset($_SESSION['id'])) {
 				// Double the length because Opera is inconsistent about whether a carriage return is one character or two.
 				var len = $el.val().length * 2;
 				// Timeout seems to be required for Blink
-				setTimeout(function () {
+				setTimeout(function() {
 					el.setSelectionRange(len, len);
 				}, 1);
 			} else {
@@ -1025,8 +1038,8 @@ if (isset($_SESSION['id'])) {
 			this.scrollTop = 999999;
 		});
 	};
-	$(document).ready(function (e) {
-		$('.search-panel .dropdown-menu').find('a').click(function (e) {
+	$(document).ready(function(e) {
+		$('.search-panel .dropdown-menu').find('a').click(function(e) {
 			e.preventDefault();
 			var param = $(this).attr("href").replace("#", "");
 			var concept = $(this).text();
@@ -1035,28 +1048,26 @@ if (isset($_SESSION['id'])) {
 			$("#category").hide();
 		});
 	});
+
 	function catlistview() {
 		$('#display').hide();
-		document.onclick = function (div) {
+		document.onclick = function(div) {
 			if (div.target.id !== 'search-panel' && div.target.id !== 'search_concept' && div.target.id !== 'srch_pan') {
 				$("#category").hide();
-			}
-			else if (div.target.id == 'search-panel' || div.target.id == 'search_concept' || div.target.id == 'srch_pan') {
+			} else if (div.target.id == 'search-panel' || div.target.id == 'search_concept' || div.target.id == 'srch_pan') {
 				if ($('#category').css('display') != 'none') {
 					$("#category").hide();
-				}
-				else {
+				} else {
 					$("#category").show();
 				}
-			}
-			else {
+			} else {
 				$("#category").show();
 			}
 		}
 	}
 	/*SMALL DIV*/
-	$(document).ready(function (f) {
-		$('.search-panel .dropdown-menu').find('a').click(function (f) {
+	$(document).ready(function(f) {
+		$('.search-panel .dropdown-menu').find('a').click(function(f) {
 			f.preventDefault();
 			var param = $(this).attr("href").replace("#", "");
 			console.log(param)
@@ -1066,26 +1077,24 @@ if (isset($_SESSION['id'])) {
 			$("#category2").hide();
 		});
 	});
+
 	function catlistview2() {
 		$('#display2').hide();
-		document.onclick = function (div) {
+		document.onclick = function(div) {
 			if (div.target.id !== 'search-panel2' && div.target.id !== 'search_concept2' && div.target.id !== 'srch_pan2') {
 				$("#category2").hide();
-			}
-			else if (div.target.id == 'search-panel2' || div.target.id == 'search_concept2' || div.target.id == 'srch_pan2') {
+			} else if (div.target.id == 'search-panel2' || div.target.id == 'search_concept2' || div.target.id == 'srch_pan2') {
 				if ($('#category2').css('display') != 'none') {
 					$("#category2").hide();
-				}
-				else {
+				} else {
 					$("#category2").show();
 				}
-			}
-			else {
+			} else {
 				$("#category2").show();
 			}
 		}
 	}
-	document.onclick = function (div) {
+	document.onclick = function(div) {
 		if (div.target.id !== 'search' && div.target.id !== 'search2') {
 			$("#display").hide();
 			$("#display2").hide();
@@ -1097,12 +1106,14 @@ if (isset($_SESSION['id'])) {
 		location.href = "registered.php";
 		return;
 	}
+
 	function ValidateSigninEmail(mail) {
 		if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mail)) {
 			return true;
 		}
 		return false;
 	}
+
 	function signin() {
 		var password = document.getElementById("pwd").value;
 		var email = document.getElementById("mobile").value;
@@ -1143,117 +1154,112 @@ if (isset($_SESSION['id'])) {
 			document.getElementById("pwd").value = "";
 			document.getElementById("pwd").focus();
 			return;
-		}
-		else {
+		} else {
 			$('.load_btn').show();
 			$('.real_btn').hide();
 			$.ajax({
 				url: "functions.php", //passing page info
-				data: { "login": 1, "email": email, "password": password },  //form data
-				type: "post",	//post data
-				dataType: "json", 	//datatype=json format
-				timeout: 18000,	//waiting time 3 sec
-				success: function (data) {	//if logging in is success
+				data: {
+					"login": 1,
+					"email": email,
+					"password": password
+				}, //form data
+				type: "post", //post data
+				dataType: "json", //datatype=json format
+				timeout: 18000, //waiting time 3 sec
+				success: function(data) { //if logging in is success
 					if (data.admin == 'true' && data.user == 'true') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						Swal.fire({
-							title: "<span style='font-family-arial'>Log in as</span>",
-							text: "User (or) Store owner",
-							icon: "success",
-							showCancelButton: true,
-							showConfirmButton: true,
-							confirmButtonColor: 'red',
-							confirmButtonText: '<i class="fas fa-store"></i> Admin',
-							cancelButtonColor: 'green',
-							allowOutsideClick: false,
-							cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
-						})
+								title: "<span style='font-family-arial'>Log in as</span>",
+								text: "User (or) Store owner",
+								icon: "success",
+								showCancelButton: true,
+								showConfirmButton: true,
+								confirmButtonColor: 'red',
+								confirmButtonText: '<i class="fas fa-store"></i> Admin',
+								cancelButtonColor: 'green',
+								allowOutsideClick: false,
+								cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
+							})
 							.then((willSubmit) => {
 								if (willSubmit.dismiss) {
 									location.href = "onestore.php";
-								}
-								else if (willSubmit.isConfirmed) {
+								} else if (willSubmit.isConfirmed) {
 									location.href = "equipment-store-admin/index.php?id=" + data.id + "";
 								}
 							});
 						return;
-					}
-					else if (data.admin == 'true') {
+					} else if (data.admin == 'true') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Success!!!",
-							text: "Admin privileges granted",
-							icon: "success",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Success!!!",
+								text: "Admin privileges granted",
+								icon: "success",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').hide();
 									location.href = "equipment-store-admin/index.php?id=" + data.id + "";
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'success') {
+					} else if (data.status == 'success') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Success!!!",
-							text: "Log in Success",
-							icon: "success",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Success!!!",
+								text: "Log in Success",
+								icon: "success",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
-									$(function () {
+									$(function() {
 										document.getElementById("pwd").value = "";
 										location.reload();
 										$('#emppass').hide();
 										$('#myModal').modal('toggle');
 									});
 									return;
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'admin') {
+					} else if (data.status == 'admin') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Success!!!",
-							text: "Admin privileges granted",
-							icon: "success",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Success!!!",
+								text: "Admin privileges granted",
+								icon: "success",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').hide();
 									location.href = "equipment-store-admin/index.php?id=" + data.id + "";
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'error') {
+					} else if (data.status == 'error') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Oops!!!",
-							text: "Error logging in",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Oops!!!",
+								text: "Error logging in",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').html("Incorrect Password");
@@ -1261,17 +1267,16 @@ if (isset($_SESSION['id'])) {
 									//location.reload();
 								}
 							});
-					}
-					else if (data.status == 'errornotfound') {
+					} else if (data.status == 'errornotfound') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Oops!!!",
-							text: "You are not registered yet",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Oops!!!",
+								text: "You are not registered yet",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').html("You are not registered with us. Please sign up.");
@@ -1279,17 +1284,16 @@ if (isset($_SESSION['id'])) {
 									//location.reload();
 								}
 							});
-					}
-					else if (data.status == 'error1') {
+					} else if (data.status == 'error1') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Check your mailbox!!!",
-							text: "Pending email verification",
-							icon: "warning",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Check your mailbox!!!",
+								text: "Pending email verification",
+								icon: "warning",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').html("Verify your email");
@@ -1299,7 +1303,7 @@ if (isset($_SESSION['id'])) {
 							});
 					}
 				},
-				error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 					if (textstatus === "timeout") {
 						$('.real_btn').show();
 						$('.load_btn').hide();
@@ -1312,16 +1316,18 @@ if (isset($_SESSION['id'])) {
 							timer: 6000,
 						});
 						return;
+					} else {
+						return;
 					}
-					else { return; }
 				}
 			}); //closing ajax
 		}
 	}
 	//<?php
-	//    $fourRandomDigit = mt_rand(1000,9999);
-//    echo $fourRandomDigit;
-// ?>
+		//    $fourRandomDigit = mt_rand(1000,9999);
+		//    echo $fourRandomDigit;
+		//
+		?>
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 </script>
@@ -1357,8 +1363,7 @@ if (isset($_SESSION['id'])) {
 			});
 			document.getElementById("pincode").focus();
 			return;
-		}
-		else if (postcode.length != 6) {
+		} else if (postcode.length != 6) {
 			swal({
 				title: "Oops!!!",
 				text: "Please enter valid pincode !!! ",
@@ -1370,11 +1375,10 @@ if (isset($_SESSION['id'])) {
 			document.getElementById("pincode").value = "";
 			document.getElementById("pincode").focus();
 			return;
-		}
-		else {
+		} else {
 			pin = "https://api.postalpincode.in/pincode/" + postcode + "";
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function () {
+			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					locate = JSON.parse(this.responseText);
 					console.log(locate);
@@ -1401,49 +1405,49 @@ if (isset($_SESSION['id'])) {
 		//	'<%Session["location"]="'+po+'";%>';//SET JS VALUE TO PHP SESSION VARIABLE
 		$.ajax({
 			url: "functions.php", //passing page info
-			data: { "location_access": 1, "location": po },  //form data
-			type: "post",	//post data
-			dataType: "json", 	//datatype=json format
-			timeout: 30000,	//waiting time 3 sec
-			success: function (data) {	//if registration is success
+			data: {
+				"location_access": 1,
+				"location": po
+			}, //form data
+			type: "post", //post data
+			dataType: "json", //datatype=json format
+			timeout: 30000, //waiting time 3 sec
+			success: function(data) { //if registration is success
 				if (data.status == 'success') {
 					//CODE TO REMOVE
 					swal({
-						title: "Success!!!",
-						text: "Located Successfully",
-						icon: "success",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Success!!!",
+							text: "Located Successfully",
+							icon: "success",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								location.href = "onestore.php";
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 					//CODE TO REMOVE
-				}
-				else if (data.status == 'error') {
+				} else if (data.status == 'error') {
 					swal({
-						title: "Oops!!!",
-						text: "Couldn't locate your place",
-						icon: "error",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Oops!!!",
+							text: "Couldn't locate your place",
+							icon: "error",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								return;
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 				}
 			},
-			error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+			error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 				if (textstatus === "timeout") {
 					swal({
 						title: "Oops!!!",
@@ -1454,8 +1458,9 @@ if (isset($_SESSION['id'])) {
 						timer: 6000,
 					});
 					return;
+				} else {
+					return;
 				}
-				else { return; }
 			}
 		}); //closing ajax
 		document.getElementById("location").innerHTML = "You";
@@ -1493,8 +1498,7 @@ if (isset($_SESSION['id'])) {
 			});
 			document.getElementById("regpin").focus();
 			return;
-		}
-		else if (regpin.length != 6) {
+		} else if (regpin.length != 6) {
 			swal({
 				title: "Oops!!!",
 				text: "Please enter valid pincode !!! ",
@@ -1506,11 +1510,10 @@ if (isset($_SESSION['id'])) {
 			document.getElementById("regpin").value = "";
 			document.getElementById("regpin").focus();
 			return;
-		}
-		else {
+		} else {
 			pin = "https://api.postalpincode.in/pincode/" + regpin + "";
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function () {
+			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					locate = JSON.parse(this.responseText);
 					console.log(locate);
@@ -1527,8 +1530,7 @@ if (isset($_SESSION['id'])) {
 						document.getElementById("regpin").value = "";
 						document.getElementById("regpin").focus();
 						return;
-					}
-					else {
+					} else {
 						/*Getting the id of select*/
 						var po = document.getElementById("po_list1");
 						for (i = 0; i < locate[0].PostOffice.length; i++) {
@@ -1552,49 +1554,49 @@ if (isset($_SESSION['id'])) {
 		//	'<%Session["location"]="'+po+'";%>';//SET JS VALUE TO PHP SESSION VARIABLE
 		$.ajax({
 			url: "functions.php", //passing page info
-			data: { "location_access": 1, "location": po },  //form data
-			type: "post",	//post data
-			dataType: "json", 	//datatype=json format
-			timeout: 30000,	//waiting time 3 sec
-			success: function (data) {	//if registration is success
+			data: {
+				"location_access": 1,
+				"location": po
+			}, //form data
+			type: "post", //post data
+			dataType: "json", //datatype=json format
+			timeout: 30000, //waiting time 3 sec
+			success: function(data) { //if registration is success
 				if (data.status == 'success') {
 					//CODE TO REMOVE
 					swal({
-						title: "Success!!!",
-						text: "Located Successfully",
-						icon: "success",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Success!!!",
+							text: "Located Successfully",
+							icon: "success",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								return;
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 					//CODE TO REMOVE
-				}
-				else if (data.status == 'error') {
+				} else if (data.status == 'error') {
 					swal({
-						title: "Oops!!!",
-						text: "Couldn't locate your place",
-						icon: "error",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Oops!!!",
+							text: "Couldn't locate your place",
+							icon: "error",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								return;
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 				}
 			},
-			error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+			error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 				if (textstatus === "timeout") {
 					swal({
 						title: "Oops!!!",
@@ -1605,8 +1607,9 @@ if (isset($_SESSION['id'])) {
 						timer: 6000,
 					});
 					return;
+				} else {
+					return;
 				}
-				else { return; }
 			}
 		}); //closing ajax
 		////////////////////////////////////////////////////////////////////////////////////////
@@ -1639,10 +1642,10 @@ if (isset($_SESSION['id'])) {
 <!-------------------------------------------------------------------- >
 	<!-- Bootstrap JS form CDN -->
 <script type="text/javascript">
-	$('#myModal').on('show.bs.modal', function (event) {
+	$('#myModal').on('show.bs.modal', function(event) {
 		$('#myModal').modal('handleUpdate');
 	});
-	$('#myModal2').on('show.bs.modal', function (event) {
+	$('#myModal2').on('show.bs.modal', function(event) {
 		$('myModal2').modal('handleUpdate');
 	});
 	/*
@@ -1676,29 +1679,40 @@ if (isset($_SESSION['id'])) {
 <script src="../../js/minicart.min.js"></script>
 <!--// Mini Cart //-->
 <script>
-	<!--// Mini Cart //-->
+	<!--// Mini Cart //
+	-->
 	paypal.minicart.render({
-		action: '#'
+	action:
+	'#'
 	});
-	if (~window.location.search.indexOf('reset=true')) {
-		paypal.minicart.reset();
+	if
+	(~window.location.search.indexOf('reset=true'))
+	{
+	paypal.minicart.reset();
 	}
 </script>
 <!--// Mini Cart //-->
 <!-- main slider-banner -->
 <script type="text/javascript">
 	//TO REMOVE PADDING AFTER CLOSING MODAL
-	$(".close").on("hidden", function () {
+	$(".close").on("hidden", function() {
 		$('#strt').css('padding', '0px');
 	});
-	window.addEventListener("click", function (e) {
+	window.addEventListener("click", function(e) {
 		e.stopPropagation();
 		$('body').css('padding-right', '-10px');
 	});
 	//TO REMOVE PADDING AFTER CLOSING MODAL
-	jQuery(document).ready(function () {
-		jQuery('#demo1').skdslider({ 'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading' });
-		jQuery('#responsive').change(function () {
+	jQuery(document).ready(function() {
+		jQuery('#demo1').skdslider({
+			'delay': 5000,
+			'animationSpeed': 2000,
+			'showNextPrev': true,
+			'showPlayButton': true,
+			'autoSlide': true,
+			'animationType': 'fading'
+		});
+		jQuery('#responsive').change(function() {
 			$('#responsive_wrapper').width(jQuery(this).val());
 		});
 	});
@@ -1710,11 +1724,12 @@ if (isset($_SESSION['id'])) {
 		pagecontainer: '#page',
 		escape: false
 	});
+
 	function cartview() {
 		location.href = "cart.php"
 	}
 	//AUTO LOG IN
-	$(document).ready(function () {
+	$(document).ready(function() {
 		setTimeout(() => {
 			const loader1 = document.querySelector(".loader1");
 			const loader2 = document.querySelector(".loader2");
@@ -1723,6 +1738,7 @@ if (isset($_SESSION['id'])) {
 			loader1.className += " hidden";
 			loader2.className += " hidden";
 		}, 3000);
+
 		function getCookie(name) {
 			// Split cookie string and get all individual name=value pairs in an array
 			var cookieArr = document.cookie.split(";");
@@ -1741,29 +1757,31 @@ if (isset($_SESSION['id'])) {
 		}
 		<?php
 		if (!isset($_SESSION['id'])) {
-			?>
+		?>
 			var email = getCookie("OneStore_email");
 			var pass = getCookie("OneStore_password");
 			if (email != " " && pass != " ") {
 				//$("#strt").hide();
 				$.ajax({
 					url: "functions.php", //passing page info
-					data: { "login": 1, "email": email, "password": pass },  //form data
-					type: "post",	//post data
-					dataType: "json", 	//datatype=json format
-					timeout: 18000,	//waiting time 3 sec
-					success: function (data) {	//if logging in is success
+					data: {
+						"login": 1,
+						"email": email,
+						"password": pass
+					}, //form data
+					type: "post", //post data
+					dataType: "json", //datatype=json format
+					timeout: 18000, //waiting time 3 sec
+					success: function(data) { //if logging in is success
 						if (data.status == 'success') {
 							//location.href="onestore.php";
-						}
-						else if (data.status == 'admin') {
+						} else if (data.status == 'admin') {
 							location.href = "equipment-store-admin/index.php?id=" + data.id + "";
-						}
-						else if (data.status == 'error') {
+						} else if (data.status == 'error') {
 							return;
 						}
 					},
-					error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+					error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 						if (textstatus === "timeout") {
 							swal({
 								title: "Oops!!!",
@@ -1775,23 +1793,27 @@ if (isset($_SESSION['id'])) {
 							});
 							location.href = "onestore.php";
 							return;
+						} else {
+							return;
 						}
-						else { return; }
 					}
 				}); //closing ajax
 			}
-			<?php
+		<?php
 		}
 		if (isset($_SESSION['id']) && !isset($_SESSION['cart_count'])) {
-			?>
+		?>
 			//CART COUNT
 			$.ajax({
 				url: "functions.php", //passing page info
-				data: { "cartcnt": 1, "user": "<?= $_SESSION['id'] ?>" },  //form data
-				type: "post",	//post data
-				dataType: "json", 	//datatype=json format
-				timeout: 18000,	//waiting time 3 sec
-				success: function (data) {	//if logging in is success
+				data: {
+					"cartcnt": 1,
+					"user": "<?= $_SESSION['id'] ?>"
+				}, //form data
+				type: "post", //post data
+				dataType: "json", //datatype=json format
+				timeout: 18000, //waiting time 3 sec
+				success: function(data) { //if logging in is success
 					if (data.status == "success") {
 						document.getElementById("sm-cartcnt").innerHTML = "";
 						document.getElementById("lg-cartcnt").innerHTML = "";
@@ -1800,14 +1822,15 @@ if (isset($_SESSION['id'])) {
 						return;
 					}
 				},
-				error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 					if (textstatus === "timeout") {
 						return;
+					} else {
+						return;
 					}
-					else { return; }
 				}
 			}); //closing ajax
-			<?php
+		<?php
 		}
 		?>
 	});
@@ -1820,6 +1843,7 @@ if (isset($_SESSION['id'])) {
 		}
 		return false;
 	}
+
 	function nlcheckmail() {
 		var nle = document.getElementById("nlmail").value;
 		if (nle == null || nle == "") {
@@ -1833,8 +1857,7 @@ if (isset($_SESSION['id'])) {
 			});
 			document.getElementById("nlmail").focus();
 			return;
-		}
-		else if (NLValidateEmail(nle) == false) {
+		} else if (NLValidateEmail(nle) == false) {
 			swal({
 				title: "Oops!!!",
 				text: "Invalid email address!!! ",
@@ -1845,15 +1868,17 @@ if (isset($_SESSION['id'])) {
 			});
 			document.getElementById("nlmail").focus();
 			return false;
-		}
-		else {
+		} else {
 			$.ajax({
 				url: "functions.php",
-				data: { "nlmailcheck": 1, "email": nle },
+				data: {
+					"nlmailcheck": 1,
+					"email": nle
+				},
 				dataType: "json",
 				type: "post",
 				timeout: 30000,
-				success: function (data) {
+				success: function(data) {
 					if (data.status == 'success') {
 						swal({
 							title: "Added!!!",
@@ -1863,47 +1888,43 @@ if (isset($_SESSION['id'])) {
 							dangerMode: true,
 							timer: 6000,
 						});
-					}
-					else if (data.status == 'error') {
+					} else if (data.status == 'error') {
 						swal({
-							title: "Oops!!!",
-							text: "Try agan later",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-							timer: 6000,
-						})
+								title: "Oops!!!",
+								text: "Try agan later",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+								timer: 6000,
+							})
 							.then((willSubmit1) => {
 								if (willSubmit1) {
 									location.href = "login.php"
 									return;
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'error2') {
+					} else if (data.status == 'error2') {
 						swal({
-							title: "Not found!!!",
-							text: "Please log in",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-							timer: 6000,
-						})
+								title: "Not found!!!",
+								text: "Please log in",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+								timer: 6000,
+							})
 							.then((willSubmit1) => {
 								if (willSubmit1) {
 									//location.href="login.php"
 									return;
-								}
-								else {
+								} else {
 									return;
 								}
 							});
 					}
 				},
-				error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 					if (textstatus === "timeout") {
 						swal({
 							title: "Oops!!!",
@@ -1914,8 +1935,9 @@ if (isset($_SESSION['id'])) {
 							timer: 6000,
 						});
 						return;
+					} else {
+						return;
 					}
-					else { return; }
 				}
 			}); //closing ajax
 		}
@@ -1923,7 +1945,7 @@ if (isset($_SESSION['id'])) {
 	//Newsletter activation
 	function hostReachable() {
 		// Handle IE and more capable browsers
-		var xhr = new (window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
+		var xhr = new(window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
 		// Open new request as a HEAD to the root hostname with a random param to bust the cache
 		xhr.open("HEAD", "//" + window.location.hostname + "/?rand=" + Math.floor((1 + Math.random()) * 0x10000), false);
 		// Issue request and handle response
@@ -1997,5 +2019,7 @@ if (isset($_SESSION['id'])) {
 <script src="../../extras/OS/dist/js/adminlte.min.js"></script>
 <script>
 	var scrollNow = getCookieset(scrollTop);
-	$("html,body").animate({ scrollTop: scrollNow }, 1000);
+	$("html,body").animate({
+		scrollTop: scrollNow
+	}, 1000);
 </script>

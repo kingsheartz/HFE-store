@@ -307,7 +307,7 @@ require "../Main/header.php";
                 ));
                 $rowc = $stmtc->fetch(PDO::FETCH_ASSOC);
                 if ($rowc) {
-                    ?>
+                ?>
                     <div class="col-md-12" style="margin:0px;padding: 0px;margin: 0px;">
                         <div class="product-content-right nopadding-margin"
                             style="margin:0px;padding: 0px;margin-right: 10px;background-color: white;border-radius: 10px;width: 100%;">
@@ -362,7 +362,7 @@ require "../Main/header.php";
                                                     $save = ($t_mrp * $row1['quantity']) - $total;
                                                     $off = round(($save * 100) / $total);
                                                     $subcat = $row2['sub_category_name'];
-                                                    ?>
+                                            ?>
                                                     <table style="width: 100%;margin-top: 0px;margin-right: -10px;"
                                                         class="tbl_s<?= $store_id . "i" . $item_description_id ?>">
                                                         <table style="font-weight: bold;width: 100%;"
@@ -524,7 +524,7 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                                                                                                             $rowfeature_name = $stmtfeature_name->fetch(PDO::FETCH_ASSOC);
                                                                                                         }
                                                                                                         if ($features[$f] == "color") {
-                                                                                                            ?>
+                                                                                                ?>
                                                                                                             <li class="sc-product-variation">
                                                                                                                 <span class="a-list-item">
                                                                                                                     <span
@@ -534,31 +534,31 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                                                                                                                         style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
                                                                                                                 </span>
                                                                                                             </li>
-                                                                                                            <?php
+                                                                                                        <?php
                                                                                                         } else if ($features[$f] == "weight") {
-                                                                                                            ?>
-                                                                                                                <li class="sc-product-variation">
-                                                                                                                    <span class="a-list-item">
-                                                                                                                        <span
-                                                                                                                            class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
-                                                                                                                            </b></span>
-                                                                                                                        <span class="a-size-small"
-                                                                                                                            style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
-                                                                                                                    </span>
-                                                                                                                </li>
-                                                                                                            <?php
+                                                                                                        ?>
+                                                                                                            <li class="sc-product-variation">
+                                                                                                                <span class="a-list-item">
+                                                                                                                    <span
+                                                                                                                        class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
+                                                                                                                        </b></span>
+                                                                                                                    <span class="a-size-small"
+                                                                                                                        style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
+                                                                                                                </span>
+                                                                                                            </li>
+                                                                                                        <?php
                                                                                                         } else {
-                                                                                                            ?>
-                                                                                                                <li class="sc-product-variation">
-                                                                                                                    <span class="a-list-item">
-                                                                                                                        <span
-                                                                                                                            class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
-                                                                                                                            </b></span>
-                                                                                                                        <span
-                                                                                                                            class="a-size-small"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
-                                                                                                                    </span>
-                                                                                                                </li>
-                                                                                                            <?php
+                                                                                                        ?>
+                                                                                                            <li class="sc-product-variation">
+                                                                                                                <span class="a-list-item">
+                                                                                                                    <span
+                                                                                                                        class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
+                                                                                                                        </b></span>
+                                                                                                                    <span
+                                                                                                                        class="a-size-small"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
+                                                                                                                </span>
+                                                                                                            </li>
+                                                                                                <?php
                                                                                                         }
                                                                                                     }
                                                                                                     $f++;
@@ -619,152 +619,152 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                                                                                     <div class="div-wrapper"
                                                                                         style="text-align: left;padding: 0px;margin:0px;height: 40px;grid-gap: 0px;">
                                                                                         <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
-                                                                            <div class="btn_sub_q"
-                                                                                style="padding: 0px;margin: 0px;margin-left: 2px;">
-                                                                                <button
-                                                                                    style="background-color: #02171e;-webkit-box-shadow: inset 0px 0px 15px 3px #02171e;box-shadow: inset 0px 0px 15px 3px #02171e;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #02171e;color: white;font-size: 18px;border-radius: 5px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;"
-                                                                                    type="button"
-                                                                                    id="sub_s<?= $store_id . "i" . $item_description_id ?>"
-                                                                                    onclick="sub_item_all('<?= $store_id ?>','<?= $item_description_id ?>','<?= $t_mrp ?>')">-</button>
-                                                                            </div>
-                                                                            <div style="padding: 0px;margin: 0px;">
-                                                                                <button
-                                                                                    id="btn_s<?= $store_id . "i" . $item_description_id ?>"
-                                                                                    type="button"
-                                                                                    style="width: 100%;min-width: 50px;height: 40px;font-weight: bold;font-size: 14px;background-color: white;outline: none;border-color:#02171e;padding: 0"
-                                                                                    onclick="$(this).hide();if($(this).html()<10){$('#sel_s<?= $store_id . "i" . $item_description_id ?>').show();}else{$('#qnty_s<?= $store_id . "i" . $item_description_id ?>').show();}">1</button>
-                                                                                <select
-                                                                                    id="sel_s<?= $store_id . "i" . $item_description_id ?>"
-                                                                                    onchange="select_item_option('<?= $store_id ?>','<?= $item_description_id ?>','<?= $t_mrp ?>');"
-                                                                                    name="quantity" autocomplete="off"
-                                                                                    style="width: 100%;min-width: 50px;bottom: 0;box-shadow: none;outline: none;border-color:#aaa;height:40px;display: none;background-color: white">
-                                                                                    <option value="1"
-                                                                                        id="sel_opt_s<?= $store_id . "i" . $item_description_id ?>"
-                                                                                        selected disabled>1</option>
-                                                                                    <option value="1"
-                                                                                        class="sc-update-quantity-option"
-                                                                                        data-a-css-class="quantity-option"
-                                                                                        data-a-html-content="1">1
-                                                                                    </option>
-                                                                                    <option value="2"
-                                                                                        class="sc-update-quantity-option"
-                                                                                        data-a-css-class="quantity-option"
-                                                                                        data-a-html-content="2">2
-                                                                                    </option>
-                                                                                    <option value="3"
-                                                                                        class="sc-update-quantity-option"
-                                                                                        data-a-css-class="quantity-option"
-                                                                                        data-a-html-content="3">3
-                                                                                    </option>
-                                                                                    <option value="4"
-                                                                                        class="sc-update-quantity-option"
-                                                                                        data-a-css-class="quantity-option"
-                                                                                        data-a-html-content="4">4
-                                                                                    </option>
-                                                                                    <option value="5"
-                                                                                        class="sc-update-quantity-option"
-                                                                                        data-a-css-class="quantity-option"
-                                                                                        data-a-html-content="5">5
-                                                                                    </option>
-                                                                                    <option value="6"
-                                                                                        class="sc-update-quantity-option"
-                                                                                        data-a-css-class="quantity-option"
-                                                                                        data-a-html-content="6">6
-                                                                                    </option>
-                                                                                    <option value="7"
-                                                                                        class="sc-update-quantity-option"
-                                                                                        data-a-css-class="quantity-option"
-                                                                                        data-a-html-content="7">7
-                                                                                    </option>
-                                                                                    <option value="8"
-                                                                                        class="sc-update-quantity-option"
-                                                                                        data-a-css-class="quantity-option"
-                                                                                        data-a-html-content="8">8
-                                                                                    </option>
-                                                                                    <option value="9"
-                                                                                        class="sc-update-quantity-option"
-                                                                                        data-a-css-class="quantity-option"
-                                                                                        data-a-html-content="9">9
-                                                                                    </option>
-                                                                                    <option value="10"
-                                                                                        class="sc-update-quantity-option"
-                                                                                        data-a-css-class="quantity-option quantity-option-10"
-                                                                                        data-a-html-content="10+">10+
-                                                                                    </option>
-                                                                                </select>
-                                                                                <input type="number"
-                                                                                    id="qnty_s<?= $store_id . "i" . $item_description_id ?>"
-                                                                                    size="4"
-                                                                                    onchange="total('<?= $store_id ?>','<?= $item_description_id ?>','<?= $t_mrp ?>')"
-                                                                                    onblur="$(this).hide();$('#sel_s<?= $store_id . "i" . $item_description_id ?>').hide();$('#btn_s<?= $store_id . "i" . $item_description_id ?>').show()"
-                                                                                    style="text-align: center;display: none;height: 40px;width: 100%;min-width: 50px;outline: none;font-weight: bold"
-                                                                                    class="input-text qty text"
-                                                                                    title="Quantity"
-                                                                                    value="<?= $row1['quantity'] ?>"
-                                                                                    min="1" step="1"
-                                                                                    onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
-                                                                            </div>
-                                                                            <div class="btn_add_q"
-                                                                                style="padding: 0px;margin: 0px;">
-                                                                                <button
-                                                                                    style="background-color: #02171e;-webkit-box-shadow: inset 0px 0px 15px 3px #02171e;box-shadow: inset 0px 0px 15px 3px #02171e;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #02171e;color: white;font-size: 18px;border-radius: 5px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;"
-                                                                                    id="add_s<?= $store_id . "i" . $item_description_id ?>"
-                                                                                    onclick="add_item_all('<?= $store_id ?>','<?= $item_description_id ?>','<?= $t_mrp ?>')"
-                                                                                    type="button">+</button>
-                                                                            </div>
-                                                                        </div>
-                                                                        <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
-                                                                    </td>
-                                                                    <td style="padding: 0px;width: 45%">
-                                                                        <button type="button"
-                                                                            onclick="updatecart(<?= $item_description_id ?>,<?= $store_id ?>)"
-                                                                            title="Add to wish list"
-                                                                            style="width: 100%;height: 40px;background-color: #f6f6f6;border: 0px solid #999;outline: none;font-weight: bold;-webkit-box-shadow: inset -1px 1px 15px 3px #bbb;box-shadow: inset -1px 1px 15px 3px #ccc;"><i
-                                                                                class="fa fa trash"></i> Add to Cart <i
-                                                                                style="color: #ff5722"
-                                                                                class="fa fa-shopping-cart fa-lg"></i></button>
-                                                                    </td>
-                                                                    <td class="product-remove"
-                                                                        style="padding: 0px;width: 45%;">
-                                                                        <button type="button" title="Buy this item"
-                                                                            style="width: 100%;height: 40px;border:none;border-color: #fff;color: #fff;background-color: #c50505;outline: none;-webkit-box-shadow: inset -1px 1px 15px 3px #76001d;box-shadow: inset -1px 1px 15px 3px #86001d;"
-                                                                            class="remove"
-                                                                            onclick="location.href='../Checkout/checkoutsingle.php?store_id=<?= $store_id ?>&item_description_id=<?= $item_description_id ?>';"
-                                                                            href="#"><b>Buy Now </b><i
-                                                                                class="fas fa-flash"></i></button>
-                                                                    </td>
-                                                                </tr>
-                                                            </table>
-                                                        </tr>
+                                                                                        <div class="btn_sub_q"
+                                                                                            style="padding: 0px;margin: 0px;margin-left: 2px;">
+                                                                                            <button
+                                                                                                style="background-color: #02171e;-webkit-box-shadow: inset 0px 0px 15px 3px #02171e;box-shadow: inset 0px 0px 15px 3px #02171e;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #02171e;color: white;font-size: 18px;border-radius: 5px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;"
+                                                                                                type="button"
+                                                                                                id="sub_s<?= $store_id . "i" . $item_description_id ?>"
+                                                                                                onclick="sub_item_all('<?= $store_id ?>','<?= $item_description_id ?>','<?= $t_mrp ?>')">-</button>
+                                                                                        </div>
+                                                                                        <div style="padding: 0px;margin: 0px;">
+                                                                                            <button
+                                                                                                id="btn_s<?= $store_id . "i" . $item_description_id ?>"
+                                                                                                type="button"
+                                                                                                style="width: 100%;min-width: 50px;height: 40px;font-weight: bold;font-size: 14px;background-color: white;outline: none;border-color:#02171e;padding: 0"
+                                                                                                onclick="$(this).hide();if($(this).html()<10){$('#sel_s<?= $store_id . "i" . $item_description_id ?>').show();}else{$('#qnty_s<?= $store_id . "i" . $item_description_id ?>').show();}">1</button>
+                                                                                            <select
+                                                                                                id="sel_s<?= $store_id . "i" . $item_description_id ?>"
+                                                                                                onchange="select_item_option('<?= $store_id ?>','<?= $item_description_id ?>','<?= $t_mrp ?>');"
+                                                                                                name="quantity" autocomplete="off"
+                                                                                                style="width: 100%;min-width: 50px;bottom: 0;box-shadow: none;outline: none;border-color:#aaa;height:40px;display: none;background-color: white">
+                                                                                                <option value="1"
+                                                                                                    id="sel_opt_s<?= $store_id . "i" . $item_description_id ?>"
+                                                                                                    selected disabled>1</option>
+                                                                                                <option value="1"
+                                                                                                    class="sc-update-quantity-option"
+                                                                                                    data-a-css-class="quantity-option"
+                                                                                                    data-a-html-content="1">1
+                                                                                                </option>
+                                                                                                <option value="2"
+                                                                                                    class="sc-update-quantity-option"
+                                                                                                    data-a-css-class="quantity-option"
+                                                                                                    data-a-html-content="2">2
+                                                                                                </option>
+                                                                                                <option value="3"
+                                                                                                    class="sc-update-quantity-option"
+                                                                                                    data-a-css-class="quantity-option"
+                                                                                                    data-a-html-content="3">3
+                                                                                                </option>
+                                                                                                <option value="4"
+                                                                                                    class="sc-update-quantity-option"
+                                                                                                    data-a-css-class="quantity-option"
+                                                                                                    data-a-html-content="4">4
+                                                                                                </option>
+                                                                                                <option value="5"
+                                                                                                    class="sc-update-quantity-option"
+                                                                                                    data-a-css-class="quantity-option"
+                                                                                                    data-a-html-content="5">5
+                                                                                                </option>
+                                                                                                <option value="6"
+                                                                                                    class="sc-update-quantity-option"
+                                                                                                    data-a-css-class="quantity-option"
+                                                                                                    data-a-html-content="6">6
+                                                                                                </option>
+                                                                                                <option value="7"
+                                                                                                    class="sc-update-quantity-option"
+                                                                                                    data-a-css-class="quantity-option"
+                                                                                                    data-a-html-content="7">7
+                                                                                                </option>
+                                                                                                <option value="8"
+                                                                                                    class="sc-update-quantity-option"
+                                                                                                    data-a-css-class="quantity-option"
+                                                                                                    data-a-html-content="8">8
+                                                                                                </option>
+                                                                                                <option value="9"
+                                                                                                    class="sc-update-quantity-option"
+                                                                                                    data-a-css-class="quantity-option"
+                                                                                                    data-a-html-content="9">9
+                                                                                                </option>
+                                                                                                <option value="10"
+                                                                                                    class="sc-update-quantity-option"
+                                                                                                    data-a-css-class="quantity-option quantity-option-10"
+                                                                                                    data-a-html-content="10+">10+
+                                                                                                </option>
+                                                                                            </select>
+                                                                                            <input type="number"
+                                                                                                id="qnty_s<?= $store_id . "i" . $item_description_id ?>"
+                                                                                                size="4"
+                                                                                                onchange="total('<?= $store_id ?>','<?= $item_description_id ?>','<?= $t_mrp ?>')"
+                                                                                                onblur="$(this).hide();$('#sel_s<?= $store_id . "i" . $item_description_id ?>').hide();$('#btn_s<?= $store_id . "i" . $item_description_id ?>').show()"
+                                                                                                style="text-align: center;display: none;height: 40px;width: 100%;min-width: 50px;outline: none;font-weight: bold"
+                                                                                                class="input-text qty text"
+                                                                                                title="Quantity"
+                                                                                                value="<?= $row1['quantity'] ?>"
+                                                                                                min="1" step="1"
+                                                                                                onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
+                                                                                        </div>
+                                                                                        <div class="btn_add_q"
+                                                                                            style="padding: 0px;margin: 0px;">
+                                                                                            <button
+                                                                                                style="background-color: #02171e;-webkit-box-shadow: inset 0px 0px 15px 3px #02171e;box-shadow: inset 0px 0px 15px 3px #02171e;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #02171e;color: white;font-size: 18px;border-radius: 5px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;"
+                                                                                                id="add_s<?= $store_id . "i" . $item_description_id ?>"
+                                                                                                onclick="add_item_all('<?= $store_id ?>','<?= $item_description_id ?>','<?= $t_mrp ?>')"
+                                                                                                type="button">+</button>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                    <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
+                                                                                </td>
+                                                                                <td style="padding: 0px;width: 45%">
+                                                                                    <button type="button"
+                                                                                        onclick="updatecart(<?= $item_description_id ?>,<?= $store_id ?>)"
+                                                                                        title="Add to wish list"
+                                                                                        style="width: 100%;height: 40px;background-color: #f6f6f6;border: 0px solid #999;outline: none;font-weight: bold;-webkit-box-shadow: inset -1px 1px 15px 3px #bbb;box-shadow: inset -1px 1px 15px 3px #ccc;"><i
+                                                                                            class="fa fa trash"></i> Add to Cart <i
+                                                                                            style="color: #ff5722"
+                                                                                            class="fa fa-shopping-cart fa-lg"></i></button>
+                                                                                </td>
+                                                                                <td class="product-remove"
+                                                                                    style="padding: 0px;width: 45%;">
+                                                                                    <button type="button" title="Buy this item"
+                                                                                        style="width: 100%;height: 40px;border:none;border-color: #fff;color: #fff;background-color: #c50505;outline: none;-webkit-box-shadow: inset -1px 1px 15px 3px #76001d;box-shadow: inset -1px 1px 15px 3px #86001d;"
+                                                                                        class="remove"
+                                                                                        onclick="location.href='../Checkout/checkoutsingle.php?store_id=<?= $store_id ?>&item_description_id=<?= $item_description_id ?>';"
+                                                                                        href="#"><b>Buy Now </b><i
+                                                                                            class="fas fa-flash"></i></button>
+                                                                                </td>
+                                                                            </tr>
+                                                                        </table>
+                                                                    </tr>
+                                                                </table>
+                                                            </tr>
+                                                        </table>
                                                     </table>
-                                                </tr>
-                                            </table>
-                                        </table>
-                                        <?php
-                                        $item_cnt++;
+                                                <?php
+                                                    $item_cnt++;
                                                 } ?>
-                                    </tr>
-                                </table>
+                                        </tr>
+                                    </table>
                                 <?php
                                             }
-                                            ?>
+                                ?>
                                 <hr class="make_divc" style="margin-top: 40px;margin-bottom: 20px;">
-                            </form>
-                            <br>
+                                </form>
+                                <br>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <!--LARGE-->
                     <!--LARGE-->
+                    <!--LARGE-->
+            </div>
+            <!--SMALL-->
+            <div class="row" style="margin:0px;padding: 0px">
+                <div class="col-md-9" style="margin:0px;padding: 0px">
                 </div>
-                <!--SMALL-->
-                <div class="row" style="margin:0px;padding: 0px">
-                    <div class="col-md-9" style="margin:0px;padding: 0px">
-                    </div>
-                    <div class="col-md-3"></div>
-                </div>
-                <div class="col-md-4 small" id="small_screen" style="margin:0px;padding: 0px"></div>
-                <?php
+                <div class="col-md-3"></div>
+            </div>
+            <div class="col-md-4 small" id="small_screen" style="margin:0px;padding: 0px"></div>
+        <?php
                 } else {
                     /*COLOR PICKER*/
                     $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
@@ -773,8 +773,7 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                     do {
                         $rancolor1 = array_rand($color, 1);
                         $rancolor2 = array_rand($color, 1);
-                    }
-                    while ($rancolor1 == $rancolor2);
+                    } while ($rancolor1 == $rancolor2);
                     if ($bgcolor[$rancolor1] == "cyan" || $bgcolor[$rancolor1] == "#FF6666" || $bgcolor[$rancolor1] == "#E6BF00") {
                         $c1 = "black";
                     }
@@ -793,8 +792,7 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                         $rand_sub_id2 = randomGen('1', $sub_cnt, (int) $sub_cnt);
                         $rand_sub_id2_rand2 = array_rand($rand_sub_id2, 1);
                         $rand_sub_id2 = $rand_sub_id2[$rand_sub_id2_rand2];
-                    }
-                    while ($rand_sub_id1 == $rand_sub_id2);
+                    } while ($rand_sub_id1 == $rand_sub_id2);
                     $catsql1 = "select* from sub_category where sub_category_id=" . (int) $rand_sub_id1;
                     $catstmt1 = $pdo->query($catsql1);
                     $sub_catrow1 = $catstmt1->fetch(PDO::FETCH_ASSOC);
@@ -807,149 +805,149 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                     $cat_id2 = $sub_catrow2['category_id'];
                     $sub_cat_id2 = $sub_catrow2['sub_category_id'];
                     $sub_cat_name2 = $sub_catrow2['sub_category_name'];
-                    ?>
-                <div class="row emp_cart">
-                    <div class="product-content-right">
-                        <center><img style="justify-content: center;max-height: 288px;" class="sidebar-title"
-                                src="../../images/logo/wishlist.png">
-                            <h2 class="sidebar-title"
-                                style="text-align: center;display: inline-flex;font-weight: 600;color:#c50505">This Wish
-                                List is Empty</h2>
-                    </div>
-                    <div class="element_grid">
-                        <div class="shadow_b">
-                            <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
-                                style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
-                                <?= $sub_cat_name1 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
-                                <span style="float: right;margin-right: 5px;margin-top: -4px;">
-                                    <button type="button"
-                                        style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor1] ?>;padding: 11px auto;font-size: 12px;"
-                                        name="proceed" class="checkout-button button alt wc-forward"><a href=""
-                                            style="color:<?= $c1 ?>;">View all</a></button>
-                                </span>
-                            </h4>
-                            <hr style="padding: 0;margin:0;">
-                            <div class="scrollmenu bl_item_scroll  <?= $color[$rancolor1] ?>"
-                                style="background-color: #fff">
-                                <?php
-                                $row = $pdo->query("select item_description.item_description_id,item.item_id,item.item_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from item
+        ?>
+            <div class="row emp_cart">
+                <div class="product-content-right">
+                    <center><img style="justify-content: center;max-height: 288px;" class="sidebar-title"
+                            src="../../images/logo/wishlist.png">
+                        <h2 class="sidebar-title"
+                            style="text-align: center;display: inline-flex;font-weight: 600;color:#c50505">This Wish
+                            List is Empty</h2>
+                </div>
+                <div class="element_grid">
+                    <div class="shadow_b">
+                        <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
+                            style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
+                            <?= $sub_cat_name1 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
+                            <span style="float: right;margin-right: 5px;margin-top: -4px;">
+                                <button type="button"
+                                    style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor1] ?>;padding: 11px auto;font-size: 12px;"
+                                    name="proceed" class="checkout-button button alt wc-forward"><a href=""
+                                        style="color:<?= $c1 ?>;">View all</a></button>
+                            </span>
+                        </h4>
+                        <hr style="padding: 0;margin:0;">
+                        <div class="scrollmenu bl_item_scroll  <?= $color[$rancolor1] ?>"
+                            style="background-color: #fff">
+                            <?php
+                            $row = $pdo->query("select item_description.item_description_id,item.item_id,item.item_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from item
     inner join item_description on item_description.item_id=item.item_id
     inner join category on category.category_id=item.category_id
     inner join sub_category on category.category_id=sub_category.category_id
     where  sub_category.category_id=$cat_id1 and sub_category.sub_category_id=$sub_cat_id1 and item.sub_category_id=$sub_cat_id1 ");
-                                while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
-                                    ?>
-                                    <a href="../Product/single.php?id=<?= $row1['item_description_id'] ?>"><img
-                                            title="<?= $row1['item_name'] ?> " alt=" <?= $row1['item_name'] ?>" class="new_size"
-                                            src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['item_description_id'] ?>.jpg"></a>
-                                    <?php
-                                }
-                                ?>
-                            </div>
+                            while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
+                            ?>
+                                <a href="../Product/single.php?id=<?= $row1['item_description_id'] ?>"><img
+                                        title="<?= $row1['item_name'] ?> " alt=" <?= $row1['item_name'] ?>" class="new_size"
+                                        src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['item_description_id'] ?>.jpg"></a>
+                            <?php
+                            }
+                            ?>
                         </div>
-                        <br>
-                        <div class="shadow_b">
-                            <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
-                                style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
-                                <?= $sub_cat_name2 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
-                                <span style="float: right;margin-right: 5px;margin-top: -4px;">
-                                    <button type="button"
-                                        style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor2] ?>;padding: 11px auto;font-size: 12px;"
-                                        name="proceed" class="checkout-button button alt wc-forward"><a href=""
-                                            style="color:<?= $c2 ?>;">View all</a></button>
-                                </span>
-                            </h4>
-                            <hr style="padding: 0;margin:0;">
-                            <div class="scrollmenu mui_item_scroll <?= $color[$rancolor2] ?> "
-                                style="background-color: #fff">
-                                <?php
-                                $row = $pdo->query("select item_description.item_description_id,item.item_id,item.item_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from item
+                    </div>
+                    <br>
+                    <div class="shadow_b">
+                        <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
+                            style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
+                            <?= $sub_cat_name2 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
+                            <span style="float: right;margin-right: 5px;margin-top: -4px;">
+                                <button type="button"
+                                    style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor2] ?>;padding: 11px auto;font-size: 12px;"
+                                    name="proceed" class="checkout-button button alt wc-forward"><a href=""
+                                        style="color:<?= $c2 ?>;">View all</a></button>
+                            </span>
+                        </h4>
+                        <hr style="padding: 0;margin:0;">
+                        <div class="scrollmenu mui_item_scroll <?= $color[$rancolor2] ?> "
+                            style="background-color: #fff">
+                            <?php
+                            $row = $pdo->query("select item_description.item_description_id,item.item_id,item.item_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from item
     inner join item_description on item_description.item_id=item.item_id
     inner join category on category.category_id=item.category_id
     inner join sub_category on category.category_id=sub_category.category_id
     where  sub_category.category_id=$cat_id2 and sub_category.sub_category_id=$sub_cat_id2 and item.sub_category_id=$sub_cat_id2");
-                                while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
-                                    ?>
-                                    <a href="../Product/single.php?id=<?= $row1['item_description_id'] ?>"><img
-                                            title="<?= $row1['item_name'] ?> " alt=" <?= $row1['item_name'] ?>" class="new_size"
-                                            src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['item_description_id'] ?>.jpg"></a>
-                                    <?php
-                                }
-                                ?>
-                            </div>
+                            while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
+                            ?>
+                                <a href="../Product/single.php?id=<?= $row1['item_description_id'] ?>"><img
+                                        title="<?= $row1['item_name'] ?> " alt=" <?= $row1['item_name'] ?>" class="new_size"
+                                        src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['item_description_id'] ?>.jpg"></a>
+                            <?php
+                            }
+                            ?>
                         </div>
                     </div>
-                </div><br><br>
-                <div class="col-md-4 small" id="small_screen"></div>
-                <?php
+                </div>
+            </div><br><br>
+            <div class="col-md-4 small" id="small_screen"></div>
+        <?php
                 }
-                ?>
-            <div class="container" style="width: 100%;background-color: #fff;margin-top: 15px;">
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="cart-collaterals">
-                            <div class="cart_totals " style="width: 100%">
-                                <h2>You may be interested in...</h2>
-                                <div class="agile_top_brands_grids" style="overflow-x: scroll;">
-                                    <?php
-                                    $it_id = 1;
-                                    $n = 0;
-                                    $sql5 = "select * from item
+        ?>
+        <div class="container" style="width: 100%;background-color: #fff;margin-top: 15px;">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="cart-collaterals">
+                        <div class="cart_totals " style="width: 100%">
+                            <h2>You may be interested in...</h2>
+                            <div class="agile_top_brands_grids" style="overflow-x: scroll;">
+                                <?php
+                                $it_id = 1;
+                                $n = 0;
+                                $sql5 = "select * from item
                                     inner join category on category.category_id=item.category_id
                                     inner join sub_category on category.category_id=sub_category.category_id
                                     inner join item_description on item.item_id=item_description.item_id
                                     inner join product_details on product_details.item_description_id=item_description.item_description_id
                                     where item.sub_category_id=sub_category.sub_category_id and item.item_id=$it_id ";
-                                    //Generate Dynamic Loading
-                                    function randomGen($min, $max, $quantity)
-                                    {
-                                        $numbers = range($min, $max);
-                                        shuffle($numbers);
-                                        return array_slice($numbers, 0, $quantity);
-                                    }
-                                    //Generate Dynamic Loading
-                                    $stmt5 = $pdo->query($sql5);
-                                    $row5 = $stmt5->fetch(PDO::FETCH_ASSOC);
-                                    $subcat = $row5['sub_category_id'];
-                                    $r = $pdo->query("select * from item_description
+                                //Generate Dynamic Loading
+                                function randomGen($min, $max, $quantity)
+                                {
+                                    $numbers = range($min, $max);
+                                    shuffle($numbers);
+                                    return array_slice($numbers, 0, $quantity);
+                                }
+                                //Generate Dynamic Loading
+                                $stmt5 = $pdo->query($sql5);
+                                $row5 = $stmt5->fetch(PDO::FETCH_ASSOC);
+                                $subcat = $row5['sub_category_id'];
+                                $r = $pdo->query("select * from item_description
                                         inner join item on item.item_id=item_description.item_id
                                         inner join category on category.category_id=item.category_id
                                         inner join sub_category on category.category_id=sub_category.category_id
                                         where item.sub_category_id=sub_category.sub_category_id and sub_category.sub_category_id=" . $subcat . " limit 4");
-                                    $cn = 0;
-                                    while ($rw = $r->fetch(PDO::FETCH_ASSOC)) {
-                                        ?>
-                                        <div class="col-md-3 top_brand_left-1">
-                                            <div class="hover14 column">
-                                                <div class="agile_top_brand_left_grid">
-                                                    <div class="agile_top_brand_left_grid_pos">
-                                                        <img src="../../images/offer.png" alt=" " class="img-responsive">
-                                                    </div>
-                                                    <div class="agile_top_brand_left_grid1">
-                                                        <figure>
-                                                            <div class="snipcart-item block" style="height: 230px">
-                                                                <div class="snipcart-thumb" style="height: 220px">
-                                                                    <a
-                                                                        href="../Product/single.php?id=<?= $rw['item_id'] ?>"><img
-                                                                            title=" " alt=" " style="height: 100px;"
-                                                                            class="new_size"
-                                                                            src="../../images/<?= $rw['category_id'] ?>/<?= $rw['sub_category_id'] ?>/<?= $rw['item_description_id'] ?>.jpg"></a>
-                                                                    <p style="height: 50px;"><?= $rw['item_name'] ?></p>
-                                                                    <div class="stars">
-                                                                        <i class="fa fa-star blue-star"
-                                                                            aria-hidden="true"></i>
-                                                                        <i class="fa fa-star blue-star"
-                                                                            aria-hidden="true"></i>
-                                                                        <i class="fa fa-star blue-star"
-                                                                            aria-hidden="true"></i>
-                                                                        <i class="fa fa-star blue-star"
-                                                                            aria-hidden="true"></i>
-                                                                        <i class="fa fa-star gray-star"
-                                                                            aria-hidden="true"></i>
-                                                                    </div>
-                                                                    <h4><i class="fa fa-inr"></i> <?= $rw['price'] ?></h4>
+                                $cn = 0;
+                                while ($rw = $r->fetch(PDO::FETCH_ASSOC)) {
+                                ?>
+                                    <div class="col-md-3 top_brand_left-1">
+                                        <div class="hover14 column">
+                                            <div class="agile_top_brand_left_grid">
+                                                <div class="agile_top_brand_left_grid_pos">
+                                                    <img src="../../images/offer.png" alt=" " class="img-responsive">
+                                                </div>
+                                                <div class="agile_top_brand_left_grid1">
+                                                    <figure>
+                                                        <div class="snipcart-item block" style="height: 230px">
+                                                            <div class="snipcart-thumb" style="height: 220px">
+                                                                <a
+                                                                    href="../Product/single.php?id=<?= $rw['item_id'] ?>"><img
+                                                                        title=" " alt=" " style="height: 100px;"
+                                                                        class="new_size"
+                                                                        src="../../images/<?= $rw['category_id'] ?>/<?= $rw['sub_category_id'] ?>/<?= $rw['item_description_id'] ?>.jpg"></a>
+                                                                <p style="height: 50px;"><?= $rw['item_name'] ?></p>
+                                                                <div class="stars">
+                                                                    <i class="fa fa-star blue-star"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star blue-star"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star blue-star"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star blue-star"
+                                                                        aria-hidden="true"></i>
+                                                                    <i class="fa fa-star gray-star"
+                                                                        aria-hidden="true"></i>
                                                                 </div>
-                                                                <!--
+                                                                <h4><i class="fa fa-inr"></i> <?= $rw['price'] ?></h4>
+                                                            </div>
+                                                            <!--
                                                             <div class="snipcart-details top_brand_home_details" style="margin-top: -30px;">
                                                                 <form action="#" method="post">
                                                                     <fieldset>
@@ -967,28 +965,28 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                                                                 </form>
                                                             </div>
 -->
-                                                            </div>
-                                                        </figure>
-                                                    </div>
+                                                        </div>
+                                                    </figure>
                                                 </div>
                                             </div>
                                         </div>
-                                        <?php
-                                        $cn++;
-                                        if ($cn == 4) {
-                                            $cn = 0;
-                                            ?>
-                                            <div class="clearfix"> </div><br>
-                                        </div>
-                                        <?php
-                                        }
-                                    }
+                                    </div>
+                                    <?php
+                                    $cn++;
+                                    if ($cn == 4) {
+                                        $cn = 0;
                                     ?>
+                                        <div class="clearfix"> </div><br>
                             </div>
+                    <?php
+                                    }
+                                }
+                    ?>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
         </div>
     </div>
 </div>
@@ -1004,13 +1002,11 @@ require "../Main/footer.php";
         var total_amt = document.getElementById('total_s' + store_id + "i" + item_description_id + '').innerHTML;
         if ($('#qnty_s' + store_id + "i" + item_description_id + '').css('display') != 'none') {
             var quantity = document.getElementById('qnty_s' + store_id + "i" + item_description_id + '').value;
-        }
-        else if ($('#sel_s' + store_id + "i" + item_description_id + '').css('display') != 'none') {
+        } else if ($('#sel_s' + store_id + "i" + item_description_id + '').css('display') != 'none') {
             var quantity = document.getElementById('sel_s' + store_id + "i" + item_description_id + '').value;
             document.getElementById('sel_opt_s' + store_id + "i" + item_description_id + '').innerHTML = quantity;
             document.getElementById('sel_opt_s' + store_id + "i" + item_description_id + '').value = quantity;
-        }
-        else if ($('#btn_s' + store_id + "i" + item_description_id + '').css('display') != 'none') {
+        } else if ($('#btn_s' + store_id + "i" + item_description_id + '').css('display') != 'none') {
             var quantity = document.getElementById('btn_s' + store_id + "i" + item_description_id + '').innerHTML;
         }
         //1=booking;2=cash_on_delivery
@@ -1018,19 +1014,26 @@ require "../Main/footer.php";
         var id = <?= $id ?>;
         $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "update_user_cart": 1, "item_description_id": item_description_id, "store_id": store_id, "quantity": quantity, "total_amt": total_amt, "order_type": order_type },  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+                "update_user_cart": 1,
+                "item_description_id": item_description_id,
+                "store_id": store_id,
+                "quantity": quantity,
+                "total_amt": total_amt,
+                "order_type": order_type
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
                 if (data.status == 'success') {
                     swal({
-                        title: "Updated!!!",
-                        text: "Cart is updated",
-                        icon: "success",
-                        closeOnClickOutside: false,
-                        dangerMode: true,
-                    })
+                            title: "Updated!!!",
+                            text: "Cart is updated",
+                            icon: "success",
+                            closeOnClickOutside: false,
+                            dangerMode: true,
+                        })
                         .then((willSubmit1) => {
                             if (willSubmit1) {
                                 //document.getElementById('tot_val1').innerHTML="";
@@ -1040,14 +1043,13 @@ require "../Main/footer.php";
                                 document.getElementById("sm-cartcnt").innerHTML = data.cartcnt;
                                 document.getElementById("lg-cartcnt").innerHTML = data.cartcnt;
                                 return;
-                            }
-                            else {
+                            } else {
                                 return;
                             }
                         });
                 }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                 if (textstatus === "timeout") {
                     swal({
                         title: "Oops!!!",
@@ -1058,8 +1060,9 @@ require "../Main/footer.php";
                         timer: 6000,
                     });
                     return;
+                } else {
+                    return;
                 }
-                else { return; }
             }
         }); //closing ajax
     }
@@ -1094,17 +1097,15 @@ require "../Main/footer.php";
             ));
             while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
                 $subcat = $row2['sub_category_name'];
-                ?>
+        ?>
                 var total_amt = document.getElementById('total_s' + '<?= $store_id . "i" . $item_description_id ?>').innerHTML;
                 if ($('#qnty_s<?= $store_id . "i" . $item_description_id ?>').css('display') != 'none') {
                     var quantity = document.getElementById('qnty_s<?= $store_id . "i" . $item_description_id ?>').value;
-                }
-                else if ($('#sel_s<?= $store_id . "i" . $item_description_id ?>').css('display') != 'none') {
+                } else if ($('#sel_s<?= $store_id . "i" . $item_description_id ?>').css('display') != 'none') {
                     var quantity = document.getElementById('sel_s<?= $store_id . "i" . $item_description_id ?>').value;
                     document.getElementById('sel_opt_s<?= $store_id . "i" . $item_description_id ?>').innerHTML = quantity;
                     document.getElementById('sel_opt_s<?= $store_id . "i" . $item_description_id ?>').value = quantity;
-                }
-                else if ($('#btn_s<?= $store_id . "i" . $item_description_id ?>').css('display') != 'none') {
+                } else if ($('#btn_s<?= $store_id . "i" . $item_description_id ?>').css('display') != 'none') {
                     var quantity = document.getElementById('btn_s<?= $store_id . "i" . $item_description_id ?>').innerHTML;
                 }
                 //1=booking;2=cash_on_delivery
@@ -1114,19 +1115,26 @@ require "../Main/footer.php";
                 var store_id = <?= $store_id ?>;
                 $.ajax({
                     url: "../Common/functions.php", //passing page info
-                    data: { "update_user_cart": 1, "item_description_id": item_description_id, "store_id": store_id, "quantity": quantity, "total_amt": total_amt, "order_type": order_type },  //form data
-                    type: "post",   //post data
-                    dataType: "json",   //datatype=json format
-                    timeout: 30000,   //waiting time 30 sec
-                    success: function (data) {    //if registration is success
+                    data: {
+                        "update_user_cart": 1,
+                        "item_description_id": item_description_id,
+                        "store_id": store_id,
+                        "quantity": quantity,
+                        "total_amt": total_amt,
+                        "order_type": order_type
+                    }, //form data
+                    type: "post", //post data
+                    dataType: "json", //datatype=json format
+                    timeout: 30000, //waiting time 30 sec
+                    success: function(data) { //if registration is success
                         if (data.status == 'success') {
                             swal({
-                                title: "Updated!!!",
-                                text: "Cart is updated",
-                                icon: "success",
-                                closeOnClickOutside: false,
-                                dangerMode: true,
-                            })
+                                    title: "Updated!!!",
+                                    text: "Cart is updated",
+                                    icon: "success",
+                                    closeOnClickOutside: false,
+                                    dangerMode: true,
+                                })
                                 .then((willSubmit1) => {
                                     if (willSubmit1) {
                                         //document.getElementById('tot_val1').innerHTML="";
@@ -1136,14 +1144,13 @@ require "../Main/footer.php";
                                         document.getElementById("sm-cartcnt").innerHTML = data.cartcnt;
                                         document.getElementById("lg-cartcnt").innerHTML = data.cartcnt;
                                         return;
-                                    }
-                                    else {
+                                    } else {
                                         return;
                                     }
                                 });
                         }
                     },
-                    error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+                    error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                         if (textstatus === "timeout") {
                             swal({
                                 title: "Oops!!!",
@@ -1154,11 +1161,12 @@ require "../Main/footer.php";
                                 timer: 6000,
                             });
                             return;
+                        } else {
+                            return;
                         }
-                        else { return; }
                     }
                 }); //closing ajax
-                <?php
+        <?php
             }
         }
         ?>
@@ -1173,8 +1181,7 @@ require "../Main/footer.php";
             $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
             $('#qnty_s' + store_id + 'i' + item_description_id + '').show();
             $('#btn_s' + store_id + 'i' + item_description_id + '').hide();
-        }
-        else {
+        } else {
             total(store_id, item_description_id, mrp);
         }
     }
@@ -1196,13 +1203,13 @@ require "../Main/footer.php";
             if ($('#btn_s' + store_id + 'i' + item_description_id).val() > 10) {
                 select_item_option(store_id, item_description_id, mrp);
             }
-        }
-        else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) == 1) {
+        } else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) == 1) {
             document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = 1;
             document.getElementById('qnty_s' + store_id + 'i' + item_description_id).innerHTML = 1;
         }
         total(store_id, item_description_id, mrp);
     }
+
     function add_item_all(store_id, item_description_id, tmrp) {
         var store_id = store_id;
         var item_description_id = item_description_id;
@@ -1217,8 +1224,7 @@ require "../Main/footer.php";
             if ($('#btn_s' + store_id + 'i' + item_description_id).val() > 10) {
                 select_item_option(store_id, item_description_id, mrp);
             }
-        }
-        else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) > 9) {
+        } else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) > 9) {
             select_item_option(store_id, item_description_id, tmrp)
         }
         total(store_id, item_description_id, mrp);
@@ -1234,12 +1240,10 @@ require "../Main/footer.php";
             var qnty = parseInt(document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value);
             document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
             document.getElementById('qnty_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-        }
-        else if ($('#sel_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
+        } else if ($('#sel_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
             var qnty = document.getElementById('sel_s' + store_id + 'i' + item_description_id).value;
             document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-        }
-        else if ($('#btn_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
+        } else if ($('#btn_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
             var qnty = document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML;
             if (qnty == 0) {
                 document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = 1;
@@ -1251,7 +1255,9 @@ require "../Main/footer.php";
             $('#qnty_s' + store_id + 'i' + item_description_id + '').hide();
             $('#btn_s' + store_id + 'i' + item_description_id + '').show();
             document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-            $('#sel_s' + store_id + 'i' + item_description_id + ' option').filter(function () { return ($(this).text() == qnty); }).prop('selected', true);
+            $('#sel_s' + store_id + 'i' + item_description_id + ' option').filter(function() {
+                return ($(this).text() == qnty);
+            }).prop('selected', true);
         }
         if (qnty >= 10) {
             $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
@@ -1264,29 +1270,31 @@ require "../Main/footer.php";
         if (qnty == 0) {
             document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = 1;
             document.getElementById('qnty_s' + store_id + 'i' + item_description_id).innerHTML = 1;
-        }
-        else {
+        } else {
             qnty = qnty;
         }
         var price = document.getElementById('price_s' + store_id + 'i' + item_description_id).innerHTML;
         $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "check_quantity": 1, "item_description_id": item_description_id, "store_id": store_id, "quantity": qnty },  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+                "check_quantity": 1,
+                "item_description_id": item_description_id,
+                "store_id": store_id,
+                "quantity": qnty
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
                 if (data.status == 'avail') {
                     return;
-                }
-                else if (data.status == 'notavail') {
+                } else if (data.status == 'notavail') {
                     document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
                     document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
                     document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = data.max_qnty;
                     if (data.max_qnty >= 10) {
                         document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = 9;
-                    }
-                    else if (data.max_qnty < 10) {
+                    } else if (data.max_qnty < 10) {
                         document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
                         $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
                         $('#qnty_s' + store_id + 'i' + item_description_id + '').hide();
@@ -1302,24 +1310,23 @@ require "../Main/footer.php";
                     var off = Math.round((save * 100) / t_amnt);
                     document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
                     swal({
-                        title: "Out of Stock!!!",
-                        text: "Choose another store !!!",
-                        icon: "warning",
-                        closeOnClickOutside: false,
-                        dangerMode: true,
-                        timer: 6000,
-                    })
+                            title: "Out of Stock!!!",
+                            text: "Choose another store !!!",
+                            icon: "warning",
+                            closeOnClickOutside: false,
+                            dangerMode: true,
+                            timer: 6000,
+                        })
                         .then((willSubmit1) => {
                             if (willSubmit1) {
                                 return;
-                            }
-                            else {
+                            } else {
                                 return;
                             }
                         });
                 }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                 if (textstatus === "timeout") {
                     swal({
                         title: "Oops!!!",
@@ -1330,8 +1337,9 @@ require "../Main/footer.php";
                         timer: 6000,
                     });
                     return;
+                } else {
+                    return;
                 }
-                else { return; }
             }
         }); //closing ajax
         if (qnty > 0) {
@@ -1343,8 +1351,7 @@ require "../Main/footer.php";
             var save = t_mrp - total;
             var off = Math.round((save * 100) / total);
             document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
-        }
-        else if (qnty == 0) {
+        } else if (qnty == 0) {
             var total = price * 1;
             document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = 1;
             document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = "";
@@ -1353,8 +1360,7 @@ require "../Main/footer.php";
             var save = t_mrp - total;
             var off = Math.round((save * 100) / total);
             document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
-        }
-        else if (qnty < 0) {
+        } else if (qnty < 0) {
             document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = qnty * -1;
             var total = price * qnty * -1;
             var t_mrp = t_mrp * qnty * -1;

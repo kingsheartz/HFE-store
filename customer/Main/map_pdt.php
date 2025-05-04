@@ -32,7 +32,7 @@
 			// Retrieving stores details
 			var stores;
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function () {
+			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					stores = JSON.parse(this.responseText);
 				}
@@ -74,8 +74,12 @@
 			/////////////////////////////////////////////////////
 			//ADD TO CART
 			var car;
+
 			function showPositiona(position) {
-				car = { lat: position.coords.latitude, lng: position.coords.longitude };
+				car = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
 				document.getElementById('daddr').value = car.lat + "," + car.lng;
 				//last cut
 				for (var i = 1; i <= stores.length; i++) {
@@ -97,7 +101,10 @@
 			/////////////////////////////////////////////////////
 			//WISHLIST
 			function showPositionb(position) {
-				car = { lat: position.coords.latitude, lng: position.coords.longitude };
+				car = {
+					lat: position.coords.latitude,
+					lng: position.coords.longitude
+				};
 				document.getElementById('wishlist_daddr').value = car.lat + "," + car.lng;
 				//last cut
 				for (var i = 1; i <= stores.length; i++) {
@@ -108,11 +115,11 @@
 				}
 				//last cut
 			}
+
 			function distance(lat1, lon1, lat2, lon2, unit) {
 				if ((lat1 == lat2) && (lon1 == lon2)) {
 					return 0;
-				}
-				else {
+				} else {
 					var radlat1 = Math.PI * lat1 / 180;
 					var radlat2 = Math.PI * lat2 / 180;
 					var theta = lon1 - lon2;
@@ -124,8 +131,12 @@
 					dist = Math.acos(dist);
 					dist = dist * 180 / Math.PI;
 					dist = dist * 60 * 1.1515;
-					if (unit == "K") { dist = dist * 1.609344 }
-					if (unit == "N") { dist = dist * 0.8684 }
+					if (unit == "K") {
+						dist = dist * 1.609344
+					}
+					if (unit == "N") {
+						dist = dist * 0.8684
+					}
 					dis = Math.floor(dist * 100) / 100;
 					return dist.toFixed(2);
 				}

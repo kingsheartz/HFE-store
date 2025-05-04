@@ -194,20 +194,20 @@
 				<ul class="info">
 					<?php
 					if (isset($_SESSION['name'])) {
-						?>
+					?>
 						<li><a href="../Cart/cart.php">My Cart</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
 						</li>
 						<li><a href="../Wishlist/wishlist.php">Wishlist</a><i class="fa fa-chevron-right"
 								aria-hidden="true"></i></li>
-						<?php
+					<?php
 					}
 					if (!isset($_SESSION['name'])) {
-						?>
+					?>
 						<li><a href="../Account/login.php">Login</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
 						</li>
 						<li><a href="../Account/registered.php">Create
 								Account</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
-						<?php
+					<?php
 					}
 					?>
 					<li><a href="../Main/faq.php">FAQ</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
@@ -248,13 +248,13 @@
 			$img_cnt_flag = 1;
 			if (!empty($img_cnt_row['img_count'])) {
 				while ($img_cnt_flag <= $img_cnt_row['img_count']) {
-					?>
+			?>
 					<div class="mySlides-single">
 						<div class="numbertext-single"><?= $img_cnt_flag + 1 ?> / <?= $img_cnt_row['img_count'] + 1 ?></div>
 						<img
 							src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>_<?= $img_cnt_flag ?>.jpg">
 					</div>
-					<?php
+			<?php
 					$img_cnt_flag++;
 				}
 			}
@@ -279,14 +279,14 @@
 			$img_cnt_flag = 1;
 			if (!empty($img_cnt_row['img_count'])) {
 				while ($img_cnt_flag <= $img_cnt_row['img_count']) {
-					?>
+			?>
 					<div class="column-single">
 						<img class="demo-single cursor-single img-responsive product-image"
 							src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>_<?= $img_cnt_flag ?>.jpg"
 							onclick="currentSlide(<?= $img_cnt_flag + 1 ?>)"
 							alt="<?= $row2['product_name'] ?>_<?= $img_cnt_flag ?>">
 					</div>
-					<?php
+			<?php
 					$img_cnt_flag++;
 				}
 			}
@@ -303,7 +303,7 @@
 	style="width: 100%; height:100% ;background-color: rgba(0,0,0,.80) !important;">
 	<div class="modal-dialog" style="width: 70%;height: 70%;">
 		<!-- Modal content-->
-		<div class="modal-content" style="width: 70%,height:70%;background-color:white;">
+		<div class="modal-content" style="width: 70%;height:70%;background-color:white;">
 			<div class="modal-header" style="padding: 0px;min-height: 0px;border:0px;">
 				<button type="button"
 					style="font-size: 2.2em;margin-right: -20px;margin-top: -20px;opacity: unset;outline: none;color: white"
@@ -387,7 +387,7 @@ if (isset($product_description_id)) {
 	INNER JOIN product_description on product_description.product_description_id=product_details.product_description_id
 	where product_details.product_description_id=$product_description_id and product_details.availability='yes'");
 	$status = 0;
-	?>
+?>
 	<script>
 		console.log("dghwgfey")
 	</script>
@@ -410,7 +410,7 @@ if (isset($product_description_id)) {
 							<?php
 							$rows = $result->rowCount();
 							if (!is_null($rows) && $rows > 0) {
-								?>
+							?>
 								<tr
 									style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
 									<td colspan="9">
@@ -434,10 +434,11 @@ if (isset($product_description_id)) {
 								$k = 0;
 								while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 									$store_id = $row['store_id'];
-									?>
+								?>
 									<tr>
 										<td style="padding: 0px;margin: 0px;">
-											<!--<i style="color:#00BD16;display: none;" id="tick<?//=$row['store_id'] ?>" class="fa fa-check-circle ticking"></i>-->
+											<!--<i style="color:#00BD16;display: none;" id="tick<? //=$row['store_id']
+																																					?>" class="fa fa-check-circle ticking"></i>-->
 											<input type="checkbox" id="check<?= $row['store_id'] ?>" name="select" class="sel_store"
 												onclick="pricing(<?= $row['store_id'] ?>)" value="<?= $row['store_id'] ?>">
 											<button id="btn<?= $row['store_id'] ?>"
@@ -451,7 +452,8 @@ if (isset($product_description_id)) {
 										</td>
 										<td style="background-color: white" class="view_avail_stores"><?= $row['store_name'] ?></td>
 										<td style="background-color: white" class="view_avail_stores">₹<?= $row['price'] ?></td>
-										<!--<td id="Q<?= $store_id ?>"><?//=$row['quantity'] ?></td>-->
+										<!--<td id="Q<?= $store_id ?>"><? //=$row['quantity']
+																										?></td>-->
 										<td style="background-color: white" class="view_avail_stores" id="c<?= $store_id ?>"></td>
 										<td>
 											<form action="https://maps.google.com/maps" method="get" target="_blank">
@@ -465,7 +467,7 @@ if (isset($product_description_id)) {
 											</form>
 										</td>
 									</tr>
-									<?php
+								<?php
 								}
 								$status = 1;
 								$k++;
@@ -478,7 +480,7 @@ if (isset($product_description_id)) {
 									<h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No result found</h3>
 								</div>
 								<br>
-								<?php
+							<?php
 							}
 							?>
 						</table>
@@ -523,7 +525,7 @@ if (isset($product_description_id)) {
 												$stmtfeature_name = $pdo->query($sqlfeature_name);
 												$rowfeature_name = $stmtfeature_name->fetch(PDO::FETCH_ASSOC);
 											}
-											?>
+									?>
 											<li class="sc-product-variation" style="font-size: 14px !important;">
 												<span class="a-list-item"
 													style="text-decoration: none;font-weight:normal;padding: 0px;font-size: 14px;">
@@ -532,25 +534,25 @@ if (isset($product_description_id)) {
 														:&nbsp; </span>
 													<?php
 													if ($features[$f] == "color") {
-														?>
+													?>
 														<span class="a-size-small"
 															style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
-														<?php
+													<?php
 													} else if ($features[$f] == "weight") {
-														?>
-															<span class="a-size-small"
-																style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
-														<?php
+													?>
+														<span class="a-size-small"
+															style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
+													<?php
 													} else {
-														?>
-															<span class="a-size-small"
-																style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
-														<?php
+													?>
+														<span class="a-size-small"
+															style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
+													<?php
 													}
 													?>
 												</span>
 											</li>
-											<?php
+									<?php
 										}
 										$f++;
 									}
@@ -572,7 +574,7 @@ if (isset($product_description_id)) {
 			</div>
 		</div>
 	</div>
-	<?php
+<?php
 }
 ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
@@ -587,7 +589,7 @@ if (isset($product_description_id)) {
 	INNER JOIN product_description on product_description.product_description_id=product_details.product_description_id
 	where product_details.product_description_id=$product_description_id and product_details.availability='yes'");
 	$status = 0;
-	?>
+?>
 	<div id="avail_stores_wishlist" tabindex="-1" role="dialog" aria-labelledby="store_title"
 		class="modal fade modal-xl hidescroll" style="height: 90%;">
 		<div class="modal-dialog modal-xl" style="height: 90%;">
@@ -608,7 +610,7 @@ if (isset($product_description_id)) {
 							<?php
 							$rows = $result->rowCount();
 							if (!is_null($rows) && $rows > 0) {
-								?>
+							?>
 								<tr
 									style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
 									<td colspan="9">
@@ -632,10 +634,11 @@ if (isset($product_description_id)) {
 								$wi = 0;
 								while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 									$store_id = $row['store_id'];
-									?>
+								?>
 									<tr>
 										<td style="padding: 0px;margin: 0px;">
-											<!--<i style="color:#00BD16;display: none;" id="tick<?//=$row['store_id'] ?>" class="fa fa-check-circle ticking"></i>-->
+											<!--<i style="color:#00BD16;display: none;" id="tick<? //=$row['store_id']
+																																					?>" class="fa fa-check-circle ticking"></i>-->
 											<input type="checkbox" id="wishlist_check<?= $row['store_id'] ?>" name="select"
 												class="sel_store2" onclick="wishlist_pricing(<?= $row['store_id'] ?>)"
 												value="<?= $row['store_id'] ?>">
@@ -646,7 +649,8 @@ if (isset($product_description_id)) {
 										</td>
 										<td style="background-color: white" class="view_avail_stores"><?= $row['store_name'] ?></td>
 										<td style="background-color: white" class="view_avail_stores">₹<?= $row['price'] ?></td>
-										<!--<td id="Q<?= $store_id ?>"><?//=$row['quantity'] ?></td>-->
+										<!--<td id="Q<?= $store_id ?>"><? //=$row['quantity']
+																										?></td>-->
 										<td style="background-color: white" class="view_avail_stores" id="w<?= $store_id ?>"></td>
 										<td>
 											<form action="https://maps.google.com/maps" method="get" target="_blank">
@@ -660,7 +664,7 @@ if (isset($product_description_id)) {
 											</form>
 										</td>
 									</tr>
-									<?php
+								<?php
 								}
 								$status = 1;
 								$wi++;
@@ -673,7 +677,7 @@ if (isset($product_description_id)) {
 									<h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No result found</h3>
 								</div>
 								<br>
-								<?php
+							<?php
 							}
 							?>
 						</table>
@@ -721,7 +725,7 @@ if (isset($product_description_id)) {
 												$stmtfeature_name = $pdo->query($sqlfeature_name);
 												$rowfeature_name = $stmtfeature_name->fetch(PDO::FETCH_ASSOC);
 											}
-											?>
+									?>
 											<li class="sc-product-variation" style="font-size: 14px !important;">
 												<span class="a-list-item"
 													style="text-decoration: none;font-weight:normal;padding: 0px;font-size: 14px;">
@@ -730,25 +734,25 @@ if (isset($product_description_id)) {
 														:&nbsp; </span>
 													<?php
 													if ($features[$f] == "color") {
-														?>
+													?>
 														<span class="a-size-small"
 															style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
-														<?php
+													<?php
 													} else if ($features[$f] == "weight") {
-														?>
-															<span class="a-size-small"
-																style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
-														<?php
+													?>
+														<span class="a-size-small"
+															style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
+													<?php
 													} else {
-														?>
-															<span class="a-size-small"
-																style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
-														<?php
+													?>
+														<span class="a-size-small"
+															style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
+													<?php
 													}
 													?>
 												</span>
 											</li>
-											<?php
+									<?php
 										}
 										$f++;
 									}
@@ -772,7 +776,7 @@ if (isset($product_description_id)) {
 			</div>
 		</div>
 	</div>
-	<?php
+<?php
 }
 ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
@@ -784,7 +788,7 @@ if (isset($product_description_id)) {
 if (isset($product_description_id, $_SESSION['id'])) {
 	$result = $pdo->query("select * from wishlist where customer_id=" . $_SESSION['id']);
 	$status = 0;
-	?>
+?>
 	<div id="avail_wishlist" tabindex="-1" role="dialog" aria-labelledby="store_title"
 		class="modal fade modal-xl hidescroll" style="height: 90%;">
 		<div class="modal-dialog modal-xl" style="height: 90%;">
@@ -805,7 +809,7 @@ if (isset($product_description_id, $_SESSION['id'])) {
 							<?php
 							$rows = $result->rowCount();
 							if (!is_null($rows) && $rows > 0) {
-								?>
+							?>
 								<tr
 									style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white">
 									<th style="border: none;" class="view_avail_stores">Select</th>
@@ -820,7 +824,7 @@ if (isset($product_description_id, $_SESSION['id'])) {
 									$stmt_wish1 = $pdo->prepare($sql_wish1);
 									$stmt_wish1->execute(array(':wish_id' => $row['wishlist_id']));
 									$row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
-									?>
+								?>
 									<tr>
 										<td style="padding: 0px;margin: 0px;">
 											<button id="list_btn<?= $row['wishlist_id'] ?>"
@@ -830,7 +834,8 @@ if (isset($product_description_id, $_SESSION['id'])) {
 										</td>
 										<td style="background-color: white" class="view_avail_stores"><?= $row['list_name'] ?></td>
 										<td style="background-color: white" class="view_avail_stores"><?= $row['privacy'] ?></td>
-										<!--<td id="Q<?= $store_id ?>"><?//=$row['quantity'] ?></td>-->
+										<!--<td id="Q<?= $store_id ?>"><? //=$row['quantity']
+																										?></td>-->
 										<td style="background-color: white" id="wish_cnt_<?= $row['wishlist_id'] ?>"
 											class="view_avail_stores"><?= $row_wish1['product_count'] ?></td>
 										<?php
@@ -839,7 +844,7 @@ if (isset($product_description_id, $_SESSION['id'])) {
 										?>
 										<td style="background-color: white" class="view_avail_stores"><?= $day ?></td>
 									</tr>
-									<?php
+								<?php
 								}
 								$status = 1;
 							}
@@ -851,7 +856,7 @@ if (isset($product_description_id, $_SESSION['id'])) {
 									<h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No list found</h3>
 								</div>
 								<br>
-								<?php
+							<?php
 							}
 							?>
 						</table>
@@ -869,7 +874,7 @@ if (isset($product_description_id, $_SESSION['id'])) {
 			</div>
 		</div>
 	</div>
-	<?php
+<?php
 }
 ?>
 <!--------------------------------------------------------------------------------------------------------------------------------->
@@ -884,7 +889,7 @@ if (isset($product_description_id)) {
 	INNER JOIN product_description on product_description.product_description_id=product_details.product_description_id
 	where product_details.product_description_id=$product_description_id and product_details.availability='yes'");
 	$status = 0;
-	?>
+?>
 	<div id="avail_stores_buy" tabindex="-1" role="dialog" aria-labelledby="store_title"
 		class="modal fade modal-xl hidescroll" style="height: 90%;">
 		<div class="modal-dialog modal-xl" style="height: 90%;">
@@ -905,7 +910,7 @@ if (isset($product_description_id)) {
 							<?php
 							$rows = $result->rowCount();
 							if (!is_null($rows) && $rows > 0) {
-								?>
+							?>
 								<tr
 									style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
 									<td colspan="9">
@@ -929,10 +934,11 @@ if (isset($product_description_id)) {
 								$bk = 0;
 								while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
 									$store_id = $row['store_id'];
-									?>
+								?>
 									<tr>
 										<td style="padding: 0px;margin: 0px;">
-											<!--<i style="color:#00BD16;display: none;" id="tick<?//=$row['store_id'] ?>" class="fa fa-check-circle ticking"></i>-->
+											<!--<i style="color:#00BD16;display: none;" id="tick<? //=$row['store_id']
+																																					?>" class="fa fa-check-circle ticking"></i>-->
 											<input type="checkbox" id="buynow_check<?= $row['store_id'] ?>" name="select"
 												class="sel_store3" onclick="buynow_pricing(<?= $row['store_id'] ?>)"
 												value="<?= $row['store_id'] ?>">
@@ -943,7 +949,8 @@ if (isset($product_description_id)) {
 										</td>
 										<td style="background-color: white" class="view_avail_stores"><?= $row['store_name'] ?></td>
 										<td style="background-color: white" class="view_avail_stores">₹<?= $row['price'] ?></td>
-										<!--<td id="Q<?= $store_id ?>"><?//=$row['quantity'] ?></td>-->
+										<!--<td id="Q<?= $store_id ?>"><? //=$row['quantity']
+																										?></td>-->
 										<td style="background-color: white" class="view_avail_stores" id="b<?= $store_id ?>"></td>
 										<td>
 											<form action="https://maps.google.com/maps" method="get" target="_blank">
@@ -957,7 +964,7 @@ if (isset($product_description_id)) {
 											</form>
 										</td>
 									</tr>
-									<?php
+								<?php
 								}
 								$status = 1;
 								$bk++;
@@ -970,7 +977,7 @@ if (isset($product_description_id)) {
 									<h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No result found</h3>
 								</div>
 								<br>
-								<?php
+							<?php
 							}
 							?>
 						</table>
@@ -1015,7 +1022,7 @@ if (isset($product_description_id)) {
 												$stmtfeature_name = $pdo->query($sqlfeature_name);
 												$rowfeature_name = $stmtfeature_name->fetch(PDO::FETCH_ASSOC);
 											}
-											?>
+									?>
 											<li class="sc-product-variation" style="font-size: 14px !important;">
 												<span class="a-list-item"
 													style="text-decoration: none;font-weight:normal;padding: 0px;font-size: 14px;">
@@ -1024,25 +1031,25 @@ if (isset($product_description_id)) {
 														:&nbsp; </span>
 													<?php
 													if ($features[$f] == "color") {
-														?>
+													?>
 														<span class="a-size-small"
 															style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
-														<?php
+													<?php
 													} else if ($features[$f] == "weight") {
-														?>
-															<span class="a-size-small"
-																style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
-														<?php
+													?>
+														<span class="a-size-small"
+															style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
+													<?php
 													} else {
-														?>
-															<span class="a-size-small"
-																style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
-														<?php
+													?>
+														<span class="a-size-small"
+															style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
+													<?php
 													}
 													?>
 												</span>
 											</li>
-											<?php
+									<?php
 										}
 										$f++;
 									}
@@ -1066,7 +1073,7 @@ if (isset($product_description_id)) {
 			</div>
 		</div>
 	</div>
-	<?php
+<?php
 }
 ?>
 <!-------------------------------------JAVA SCRIPT FUNCTIONS BEGIN------------------------------------------------------------->
@@ -1095,7 +1102,7 @@ if (isset($product_description_id)) {
 			<div class="modal-body">
 				<center>
 					<div
-						style="background-color: rgba(255,255,255);padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid #018a2a;height:100px;width">
+						style="background-color: rgba(255,255,255);padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid #018a2a;height:100px;">
 						<img src="../../images/logo/logofullfill.png" style="max-width: 80px;height:70px;">
 					</div>
 				</center>
@@ -1211,14 +1218,14 @@ if (isset($product_description_id)) {
 				dangerMode: true,
 				timer: 6000,
 			});
-		}
-		else {
+		} else {
 			copyText.select();
 			copyText.setSelectionRange(0, 999999)
 			document.execCommand("copy");
 			toastr.success('Link copied :- ' + copyText.value);
 		}
 	}
+
 	function downloadapk() {
 		var link = $('#input_apk_link').val();
 		if (link == "" || link == null) {
@@ -1230,19 +1237,17 @@ if (isset($product_description_id)) {
 				dangerMode: true,
 				timer: 6000,
 			});
-		}
-		else {
+		} else {
 			window.open('' + link + '', '_blank');
 		}
 	}
+
 	function copyapklink(n) {
 		if (n == 1) {
 			var link = "http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_high.apk";
-		}
-		else if (n == 2) {
+		} else if (n == 2) {
 			var link = "http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_low.apk";
-		}
-		else {
+		} else {
 			var link = "http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_low.apk";
 		}
 		$('#input_apk_link').val(link);
@@ -1369,6 +1374,7 @@ if (isset($product_description_id)) {
 		var wa_content = '<div style="margin:auto;width: 30px;height: 30px;background-color: darkgreen;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" data-action="share/whatsapp/share" href="https://api.whatsapp.com/send?text=See this product :- http://localhost:81/One-Store-Renewed/onestore-website/user/Product/single.php?id=' + code[1] + '"><i class="fa fa-whatsapp fa-lg" style="color: white;"></i></a></div><p>Whatsapp</p>';
 		$('.whatsapp').html(wa_content);
 	}
+
 	function sharelink(sm) {
 		var social_media = sm;
 		var link = document.getElementById("input_link").value;
@@ -1378,24 +1384,27 @@ if (isset($product_description_id)) {
 			return;
 		}
 	}
+
 	function socialWindow(url) {
 		var left = (screen.width - 570) / 2;
 		var top = (screen.height - 570) / 2;
 		var params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
 		window.open(url, "NewWindow", params);
 	}
+
 	function setShareLinks() {
 		var pageUrl = encodeURIComponent(document.getElementById("input_link").value);
 		var tweet = "See this product :) !!";
-		jQuery(".social-share.twitter").on("click", function () {
+		jQuery(".social-share.twitter").on("click", function() {
 			url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text=" + tweet;
 			socialWindow(url);
 		});
-		jQuery(".social-share.linkedin").on("click", function () {
+		jQuery(".social-share.linkedin").on("click", function() {
 			url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
 			socialWindow(url);
 		})
 	}
+
 	function clipboard() {
 		var copyText = document.getElementById("input_link");
 		var link = $('#input_link').val();
@@ -1408,8 +1417,7 @@ if (isset($product_description_id)) {
 				dangerMode: true,
 				timer: 6000,
 			});
-		}
-		else {
+		} else {
 			copyText.select();
 			copyText.setSelectionRange(0, 999999)
 			document.execCommand("copy");
@@ -1417,6 +1425,7 @@ if (isset($product_description_id)) {
 		}
 	}
 	lens_cnt = 0;
+
 	function imageZoom(imgID, resultID) {
 		var img, lens, result, cx, cy;
 		img = document.getElementById(imgID);
@@ -1441,6 +1450,7 @@ if (isset($product_description_id)) {
 			lens.addEventListener("touchmove", moveLens);
 			img.addEventListener("touchmove", moveLens);
 		}
+
 		function moveLens(e) {
 			var pos, x, y;
 			/*prevent any other actions that may occur when moving over the image:*/
@@ -1451,18 +1461,28 @@ if (isset($product_description_id)) {
 			x = pos.x - (lens.offsetWidth / 2);
 			y = pos.y - (lens.offsetHeight / 2);
 			/*prevent the lens from being positioned outside the image:*/
-			if (x > img.width - lens.offsetWidth) { x = img.width - lens.offsetWidth; }
-			if (x < 0) { x = 0; }
-			if (y > img.height - lens.offsetHeight) { y = img.height - lens.offsetHeight; }
-			if (y < 0) { y = 0; }
+			if (x > img.width - lens.offsetWidth) {
+				x = img.width - lens.offsetWidth;
+			}
+			if (x < 0) {
+				x = 0;
+			}
+			if (y > img.height - lens.offsetHeight) {
+				y = img.height - lens.offsetHeight;
+			}
+			if (y < 0) {
+				y = 0;
+			}
 			/*set the position of the lens:*/
 			lens.style.left = x + "px";
 			lens.style.top = y + "px";
 			/*display what the lens "sees":*/
 			result.style.backgroundPosition = "-" + (x * cx) + "px -" + (y * cy) + "px";
 		}
+
 		function getCursorPos(e) {
-			var a, x = 0, y = 0;
+			var a, x = 0,
+				y = 0;
 			e = e || window.event;
 			/*get the x and y positions of the image:*/
 			a = img.getBoundingClientRect();
@@ -1472,7 +1492,10 @@ if (isset($product_description_id)) {
 			/*consider any page scrolling:*/
 			x = x - window.pageXOffset;
 			y = y - window.pageYOffset;
-			return { x: x, y: y };
+			return {
+				x: x,
+				y: y
+			};
 		}
 	}
 	// Initiate zoom effect:
@@ -1488,19 +1511,18 @@ if (isset($product_description_id)) {
 	var capson_warning = document.getElementsByClassName("capson_warning");
 	var password_field = document.getElementsByClassName('password_fields');
 	for (var i = 0; i < password_field.length; i++) {
-		password_field[i].addEventListener("keyup", function (event) {
+		password_field[i].addEventListener("keyup", function(event) {
 			for (var j = 0; j < capson_warning.length; j++) {
 				if (event.getModifierState("CapsLock")) {
 					capson_warning[j].style.display = "block";
-				}
-				else {
+				} else {
 					capson_warning[j].style.display = "none"
 				}
 			}
 		});
 	}
 	//////////////////////////////////////////////////////////////
-	$('.tab-pane').on('click', function () {
+	$('.tab-pane').on('click', function() {
 		$('.tab-pane').css('border', '0px none');
 		$('.tab-pane').css('border-bottom', '1px solid transparent');
 		var elementtodisplay = $(this).find('.active');
@@ -1526,6 +1548,7 @@ if (isset($product_description_id)) {
 		$('#side_nav_bar_lock').css("display", "flex");
 		$('#side_nav_bar_lock').css("z-index", "9999999");
 	}
+
 	function closeNav() {
 		if (typeof NavScrollTop != 'undefined') {
 			var NavScrollNow = getCookieset(NavScrollTop);
@@ -1539,11 +1562,11 @@ if (isset($product_description_id)) {
 		$('#side_nav_bar_lock').css("z-index", "-9999999");
 		//document.getElementById("main_all").style.marginLeft= "0";
 	}
-	$('#side_nav_bar_lock').click(function () {
+	$('#side_nav_bar_lock').click(function() {
 		closeNav();
 	});
 	////////////////////////////////BREAK SIDE NAV EVENT/////////////////////////////////////////////////////////////////////////////////////////
-	$('#list_enda').click(function () {
+	$('#list_enda').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -1557,7 +1580,7 @@ if (isset($product_description_id)) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_enda").css("display", "block");
 	});
-	$('#list_endb').click(function () {
+	$('#list_endb').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
 		$("#side_cat_list_endd").css("display", "none");
@@ -1570,7 +1593,7 @@ if (isset($product_description_id)) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endb").css("display", "block");
 	});
-	$('#list_endc').click(function () {
+	$('#list_endc').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endd").css("display", "none");
@@ -1583,7 +1606,7 @@ if (isset($product_description_id)) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endc").css("display", "block");
 	});
-	$('#list_endd').click(function () {
+	$('#list_endd').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -1596,7 +1619,7 @@ if (isset($product_description_id)) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endd").css("display", "block");
 	});
-	$('#list_ende').click(function () {
+	$('#list_ende').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -1609,7 +1632,7 @@ if (isset($product_description_id)) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_ende").css("display", "block");
 	});
-	$('#list_endf').click(function () {
+	$('#list_endf').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -1622,7 +1645,7 @@ if (isset($product_description_id)) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endf").css("display", "block");
 	});
-	$('#list_endg').click(function () {
+	$('#list_endg').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -1635,7 +1658,7 @@ if (isset($product_description_id)) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endg").css("display", "block");
 	});
-	$('#list_endh').click(function () {
+	$('#list_endh').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -1648,7 +1671,7 @@ if (isset($product_description_id)) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endh").css("display", "block");
 	});
-	$('#list_endi').click(function () {
+	$('#list_endi').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -1661,7 +1684,7 @@ if (isset($product_description_id)) {
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endi").css("display", "block");
 	});
-	$('#list_endj').click(function () {
+	$('#list_endj').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -1678,7 +1701,7 @@ if (isset($product_description_id)) {
 	var dropdown = document.getElementsByClassName("dropdown-btn");
 	var i;
 	for (i = 0; i < dropdown.length; i++) {
-		dropdown[i].addEventListener("click", function () {
+		dropdown[i].addEventListener("click", function() {
 			this.classList.toggle("active");
 			var dropdownContent = this.nextElementSibling;
 			if (dropdownContent.style.display === "block") {
@@ -1697,9 +1720,8 @@ if (isset($product_description_id)) {
 				$("#side_cat_list_end_default").css("display", "block");
 				$("#side_nav_content_end_line").css("display", "block");
 				/*CLICK EVENT OVERRIDING USING DISPLAY BLOCK or NONE */
-			}
-			else {
-				$(".dropdown-container").hide();//HIDE ALL OPENED DROPDOWN WHEN OPEN DROPDOWN
+			} else {
+				$(".dropdown-container").hide(); //HIDE ALL OPENED DROPDOWN WHEN OPEN DROPDOWN
 				dropdownContent.style.display = "block";
 			}
 		});
@@ -1708,11 +1730,11 @@ if (isset($product_description_id)) {
 <!-------TESTING SIDE-NAV---------->
 <!-------TESTING NAV---------->
 <script type="text/javascript">
-	$(function () {
+	$(function() {
 		var navMain = $(".navbar-collapse"); // avoid dependency on #id
 		// "a:not([data-toggle])" - to avoid issues caused
 		// when you have dropdown inside navbar
-		navMain.on("click", "a:not([data-toggle])", null, function () {
+		navMain.on("click", "a:not([data-toggle])", null, function() {
 			navMain.collapse('hide');
 		});
 	});
@@ -1730,8 +1752,8 @@ if (isset($product_description_id)) {
 <!--///////////////////////////////////////////////////////////////-->
 <script src="https://cdn.jsdelivr.net/gh/vast-engineering/jquery-popup-overlay@2/jquery.popupoverlay.min.js"></script>
 <script type="text/javascript">
-	jQuery.fn.putCursorAtEnd = function () {
-		return this.each(function () {
+	jQuery.fn.putCursorAtEnd = function() {
+		return this.each(function() {
 			// Cache references
 			var $el = $(this),
 				el = this;
@@ -1744,7 +1766,7 @@ if (isset($product_description_id)) {
 				// Double the length because Opera is inconsistent about whether a carriage return is one character or two.
 				var len = $el.val().length * 2;
 				// Timeout seems to be required for Blink
-				setTimeout(function () {
+				setTimeout(function() {
 					el.setSelectionRange(len, len);
 				}, 1);
 			} else {
@@ -1757,8 +1779,8 @@ if (isset($product_description_id)) {
 			this.scrollTop = 999999;
 		});
 	};
-	$(document).ready(function (e) {
-		$('.search-panel .dropdown-menu').find('a').click(function (e) {
+	$(document).ready(function(e) {
+		$('.search-panel .dropdown-menu').find('a').click(function(e) {
 			e.preventDefault();
 			var param = $(this).attr("href").replace("#", "");
 			var concept = $(this).text();
@@ -1767,28 +1789,26 @@ if (isset($product_description_id)) {
 			$("#category").hide();
 		});
 	});
+
 	function catlistview() {
 		$('#display').hide();
-		document.onclick = function (div) {
+		document.onclick = function(div) {
 			if (div.target.id !== 'search-panel' && div.target.id !== 'search_concept' && div.target.id !== 'srch_pan') {
 				$("#category").hide();
-			}
-			else if (div.target.id == 'search-panel' || div.target.id == 'search_concept' || div.target.id == 'srch_pan') {
+			} else if (div.target.id == 'search-panel' || div.target.id == 'search_concept' || div.target.id == 'srch_pan') {
 				if ($('#category').css('display') != 'none') {
 					$("#category").hide();
-				}
-				else {
+				} else {
 					$("#category").show();
 				}
-			}
-			else {
+			} else {
 				$("#category").show();
 			}
 		}
 	}
 	/*SMALL DIV*/
-	$(document).ready(function (f) {
-		$('.search-panel .dropdown-menu').find('a').click(function (f) {
+	$(document).ready(function(f) {
+		$('.search-panel .dropdown-menu').find('a').click(function(f) {
 			f.preventDefault();
 			var param = $(this).attr("href").replace("#", "");
 			console.log(param)
@@ -1798,26 +1818,24 @@ if (isset($product_description_id)) {
 			$("#category2").hide();
 		});
 	});
+
 	function catlistview2() {
 		$('#display2').hide();
-		document.onclick = function (div) {
+		document.onclick = function(div) {
 			if (div.target.id !== 'search-panel2' && div.target.id !== 'search_concept2' && div.target.id !== 'srch_pan2') {
 				$("#category2").hide();
-			}
-			else if (div.target.id == 'search-panel2' || div.target.id == 'search_concept2' || div.target.id == 'srch_pan2') {
+			} else if (div.target.id == 'search-panel2' || div.target.id == 'search_concept2' || div.target.id == 'srch_pan2') {
 				if ($('#category2').css('display') != 'none') {
 					$("#category2").hide();
-				}
-				else {
+				} else {
 					$("#category2").show();
 				}
-			}
-			else {
+			} else {
 				$("#category2").show();
 			}
 		}
 	}
-	document.onclick = function (div) {
+	document.onclick = function(div) {
 		if (div.target.id !== 'search' && div.target.id !== 'search2') {
 			$("#display").hide();
 			$("#display2").hide();
@@ -1829,12 +1847,14 @@ if (isset($product_description_id)) {
 		location.href = "../Account/registered.php";
 		return;
 	}
+
 	function ValidateSigninEmail(mail) {
 		if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mail)) {
 			return true;
 		}
 		return false;
 	}
+
 	function signin() {
 		var password = document.getElementById("pwd").value;
 		var email = document.getElementById("mobile").value;
@@ -1875,117 +1895,112 @@ if (isset($product_description_id)) {
 			document.getElementById("pwd").value = "";
 			document.getElementById("pwd").focus();
 			return;
-		}
-		else {
+		} else {
 			$('.load_btn').show();
 			$('.real_btn').hide();
 			$.ajax({
 				url: "../Common/functions.php", //passing page info
-				data: { "login": 1, "email": email, "password": password },  //form data
-				type: "post",	//post data
-				dataType: "json", 	//datatype=json format
-				timeout: 18000,	//waiting time 3 sec
-				success: function (data) {	//if logging in is success
+				data: {
+					"login": 1,
+					"email": email,
+					"password": password
+				}, //form data
+				type: "post", //post data
+				dataType: "json", //datatype=json format
+				timeout: 18000, //waiting time 3 sec
+				success: function(data) { //if logging in is success
 					if (data.admin == 'true' && data.user == 'true') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						Swal.fire({
-							title: "<span style='font-family-arial'>Log in as</span>",
-							text: "User (or) Store owner",
-							icon: "success",
-							showCancelButton: true,
-							showConfirmButton: true,
-							confirmButtonColor: 'red',
-							confirmButtonText: '<i class="fas fa-store"></i> Admin',
-							cancelButtonColor: 'green',
-							allowOutsideClick: false,
-							cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
-						})
+								title: "<span style='font-family-arial'>Log in as</span>",
+								text: "User (or) Store owner",
+								icon: "success",
+								showCancelButton: true,
+								showConfirmButton: true,
+								confirmButtonColor: 'red',
+								confirmButtonText: '<i class="fas fa-store"></i> Admin',
+								cancelButtonColor: 'green',
+								allowOutsideClick: false,
+								cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
+							})
 							.then((willSubmit) => {
 								if (willSubmit.dismiss) {
 									location.href = "../Main/onestore.php";
-								}
-								else if (willSubmit.isConfirmed) {
+								} else if (willSubmit.isConfirmed) {
 									location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
 								}
 							});
 						return;
-					}
-					else if (data.admin == 'true') {
+					} else if (data.admin == 'true') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Success!!!",
-							text: "Admin privileges granted",
-							icon: "success",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Success!!!",
+								text: "Admin privileges granted",
+								icon: "success",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').hide();
 									location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'success') {
+					} else if (data.status == 'success') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Success!!!",
-							text: "Log in Success",
-							icon: "success",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Success!!!",
+								text: "Log in Success",
+								icon: "success",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
-									$(function () {
+									$(function() {
 										document.getElementById("pwd").value = "";
 										location.reload();
 										$('#emppass').hide();
 										$('#myModal').modal('toggle');
 									});
 									return;
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'admin') {
+					} else if (data.status == 'admin') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Success!!!",
-							text: "Admin privileges granted",
-							icon: "success",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Success!!!",
+								text: "Admin privileges granted",
+								icon: "success",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').hide();
 									location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'error') {
+					} else if (data.status == 'error') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Oops!!!",
-							text: "Error logging in",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Oops!!!",
+								text: "Error logging in",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').html("Incorrect Password");
@@ -1993,17 +2008,16 @@ if (isset($product_description_id)) {
 									//location.reload();
 								}
 							});
-					}
-					else if (data.status == 'errornotfound') {
+					} else if (data.status == 'errornotfound') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Oops!!!",
-							text: "You are not registered yet",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Oops!!!",
+								text: "You are not registered yet",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').html("You are not registered with us. Please sign up.");
@@ -2011,17 +2025,16 @@ if (isset($product_description_id)) {
 									//location.reload();
 								}
 							});
-					}
-					else if (data.status == 'error1') {
+					} else if (data.status == 'error1') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Check your mailbox!!!",
-							text: "Pending email verification",
-							icon: "warning",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Check your mailbox!!!",
+								text: "Pending email verification",
+								icon: "warning",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').html("Verify your email");
@@ -2031,7 +2044,7 @@ if (isset($product_description_id)) {
 							});
 					}
 				},
-				error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 					if (textstatus === "timeout") {
 						$('.real_btn').show();
 						$('.load_btn').hide();
@@ -2044,16 +2057,18 @@ if (isset($product_description_id)) {
 							timer: 6000,
 						});
 						return;
+					} else {
+						return;
 					}
-					else { return; }
 				}
 			}); //closing ajax
 		}
 	}
 	//<?php
-	//    $fourRandomDigit = mt_rand(1000,9999);
-//    echo $fourRandomDigit;
-// ?>
+		//    $fourRandomDigit = mt_rand(1000,9999);
+		//    echo $fourRandomDigit;
+		//
+		?>
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 </script>
@@ -2089,8 +2104,7 @@ if (isset($product_description_id)) {
 			});
 			document.getElementById("pincode").focus();
 			return;
-		}
-		else if (postcode.length != 6) {
+		} else if (postcode.length != 6) {
 			swal({
 				title: "Oops!!!",
 				text: "Please enter valid pincode !!! ",
@@ -2102,11 +2116,10 @@ if (isset($product_description_id)) {
 			document.getElementById("pincode").value = "";
 			document.getElementById("pincode").focus();
 			return;
-		}
-		else {
+		} else {
 			pin = "https://api.postalpincode.in/pincode/" + postcode + "";
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function () {
+			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					locate = JSON.parse(this.responseText);
 					console.log(locate);
@@ -2133,49 +2146,49 @@ if (isset($product_description_id)) {
 		//	'<%Session["location"]="'+po+'";%>';//SET JS VALUE TO PHP SESSION VARIABLE
 		$.ajax({
 			url: "../Common/functions.php", //passing page info
-			data: { "location_access": 1, "location": po },  //form data
-			type: "post",	//post data
-			dataType: "json", 	//datatype=json format
-			timeout: 30000,	//waiting time 3 sec
-			success: function (data) {	//if registration is success
+			data: {
+				"location_access": 1,
+				"location": po
+			}, //form data
+			type: "post", //post data
+			dataType: "json", //datatype=json format
+			timeout: 30000, //waiting time 3 sec
+			success: function(data) { //if registration is success
 				if (data.status == 'success') {
 					//CODE TO REMOVE
 					swal({
-						title: "Success!!!",
-						text: "Located Successfully",
-						icon: "success",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Success!!!",
+							text: "Located Successfully",
+							icon: "success",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								location.href = "../Main/onestore.php";
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 					//CODE TO REMOVE
-				}
-				else if (data.status == 'error') {
+				} else if (data.status == 'error') {
 					swal({
-						title: "Oops!!!",
-						text: "Couldn't locate your place",
-						icon: "error",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Oops!!!",
+							text: "Couldn't locate your place",
+							icon: "error",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								return;
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 				}
 			},
-			error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+			error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 				if (textstatus === "timeout") {
 					swal({
 						title: "Oops!!!",
@@ -2186,8 +2199,9 @@ if (isset($product_description_id)) {
 						timer: 6000,
 					});
 					return;
+				} else {
+					return;
 				}
-				else { return; }
 			}
 		}); //closing ajax
 		document.getElementById("location").innerHTML = "You";
@@ -2225,8 +2239,7 @@ if (isset($product_description_id)) {
 			});
 			document.getElementById("regpin").focus();
 			return;
-		}
-		else if (regpin.length != 6) {
+		} else if (regpin.length != 6) {
 			swal({
 				title: "Oops!!!",
 				text: "Please enter valid pincode !!! ",
@@ -2238,11 +2251,10 @@ if (isset($product_description_id)) {
 			document.getElementById("regpin").value = "";
 			document.getElementById("regpin").focus();
 			return;
-		}
-		else {
+		} else {
 			pin = "https://api.postalpincode.in/pincode/" + regpin + "";
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function () {
+			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					locate = JSON.parse(this.responseText);
 					console.log(locate);
@@ -2259,8 +2271,7 @@ if (isset($product_description_id)) {
 						document.getElementById("regpin").value = "";
 						document.getElementById("regpin").focus();
 						return;
-					}
-					else {
+					} else {
 						/*Getting the id of select*/
 						var po = document.getElementById("po_list1");
 						for (i = 0; i < locate[0].PostOffice.length; i++) {
@@ -2284,49 +2295,49 @@ if (isset($product_description_id)) {
 		//	'<%Session["location"]="'+po+'";%>';//SET JS VALUE TO PHP SESSION VARIABLE
 		$.ajax({
 			url: "../Common/functions.php", //passing page info
-			data: { "location_access": 1, "location": po },  //form data
-			type: "post",	//post data
-			dataType: "json", 	//datatype=json format
-			timeout: 30000,	//waiting time 3 sec
-			success: function (data) {	//if registration is success
+			data: {
+				"location_access": 1,
+				"location": po
+			}, //form data
+			type: "post", //post data
+			dataType: "json", //datatype=json format
+			timeout: 30000, //waiting time 3 sec
+			success: function(data) { //if registration is success
 				if (data.status == 'success') {
 					//CODE TO REMOVE
 					swal({
-						title: "Success!!!",
-						text: "Located Successfully",
-						icon: "success",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Success!!!",
+							text: "Located Successfully",
+							icon: "success",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								return;
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 					//CODE TO REMOVE
-				}
-				else if (data.status == 'error') {
+				} else if (data.status == 'error') {
 					swal({
-						title: "Oops!!!",
-						text: "Couldn't locate your place",
-						icon: "error",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Oops!!!",
+							text: "Couldn't locate your place",
+							icon: "error",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								return;
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 				}
 			},
-			error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+			error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 				if (textstatus === "timeout") {
 					swal({
 						title: "Oops!!!",
@@ -2337,8 +2348,9 @@ if (isset($product_description_id)) {
 						timer: 6000,
 					});
 					return;
+				} else {
+					return;
 				}
-				else { return; }
 			}
 		}); //closing ajax
 		////////////////////////////////////////////////////////////////////////////////////////
@@ -2371,10 +2383,10 @@ if (isset($product_description_id)) {
 <!-------------------------------------------------------------------- >
 	<!-- Bootstrap JS form CDN -->
 <script type="text/javascript">
-	$('#myModal').on('show.bs.modal', function (event) {
+	$('#myModal').on('show.bs.modal', function(event) {
 		$('#myModal').modal('handleUpdate');
 	});
-	$('#myModal2').on('show.bs.modal', function (event) {
+	$('#myModal2').on('show.bs.modal', function(event) {
 		$('myModal2').modal('handleUpdate');
 	});
 	/*
@@ -2408,29 +2420,40 @@ if (isset($product_description_id)) {
 <script src="../../js/minicart.min.js"></script>
 <!--// Mini Cart //-->
 <script>
-	<!--// Mini Cart //-->
+	<!--// Mini Cart //
+	-->
 	paypal.minicart.render({
-		action: '#'
+	action:
+	'#'
 	});
-	if (~window.location.search.indexOf('reset=true')) {
-		paypal.minicart.reset();
+	if
+	(~window.location.search.indexOf('reset=true'))
+	{
+	paypal.minicart.reset();
 	}
 </script>
 <!--// Mini Cart //-->
 <!-- main slider-banner -->
 <script type="text/javascript">
 	//TO REMOVE PADDING AFTER CLOSING MODAL
-	$(".close").on("hidden", function () {
+	$(".close").on("hidden", function() {
 		$('#strt').css('padding', '0px');
 	});
-	window.addEventListener("click", function (e) {
+	window.addEventListener("click", function(e) {
 		e.stopPropagation();
 		$('body').css('padding-right', '-10px');
 	});
 	//TO REMOVE PADDING AFTER CLOSING MODAL
-	jQuery(document).ready(function () {
-		jQuery('#demo1').skdslider({ 'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading' });
-		jQuery('#responsive').change(function () {
+	jQuery(document).ready(function() {
+		jQuery('#demo1').skdslider({
+			'delay': 5000,
+			'animationSpeed': 2000,
+			'showNextPrev': true,
+			'showPlayButton': true,
+			'autoSlide': true,
+			'animationType': 'fading'
+		});
+		jQuery('#responsive').change(function() {
 			$('#responsive_wrapper').width(jQuery(this).val());
 		});
 	});
@@ -2442,11 +2465,12 @@ if (isset($product_description_id)) {
 		pagecontainer: '#page',
 		escape: false
 	});
+
 	function cartview() {
 		location.href = "../Cart/cart.php"
 	}
 	//AUTO LOG IN
-	$(document).ready(function () {
+	$(document).ready(function() {
 		setTimeout(() => {
 			const loader1 = document.querySelector(".loader1");
 			const loader2 = document.querySelector(".loader2");
@@ -2455,6 +2479,7 @@ if (isset($product_description_id)) {
 			loader1.className += " hidden";
 			loader2.className += " hidden";
 		}, 3000);
+
 		function getCookie(name) {
 			// Split cookie string and get all individual name=value pairs in an array
 			var cookieArr = document.cookie.split(";");
@@ -2473,29 +2498,31 @@ if (isset($product_description_id)) {
 		}
 		<?php
 		if (!isset($_SESSION['id'])) {
-			?>
+		?>
 			var email = getCookie("OneStore_email");
 			var pass = getCookie("OneStore_password");
 			if (email != " " && pass != " ") {
 				//$("#strt").hide();
 				$.ajax({
 					url: "../Common/functions.php", //passing page info
-					data: { "login": 1, "email": email, "password": pass },  //form data
-					type: "post",	//post data
-					dataType: "json", 	//datatype=json format
-					timeout: 18000,	//waiting time 3 sec
-					success: function (data) {	//if logging in is success
+					data: {
+						"login": 1,
+						"email": email,
+						"password": pass
+					}, //form data
+					type: "post", //post data
+					dataType: "json", //datatype=json format
+					timeout: 18000, //waiting time 3 sec
+					success: function(data) { //if logging in is success
 						if (data.status == 'success') {
 							//location.href="onestore.php";
-						}
-						else if (data.status == 'admin') {
+						} else if (data.status == 'admin') {
 							location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
-						}
-						else if (data.status == 'error') {
+						} else if (data.status == 'error') {
 							return;
 						}
 					},
-					error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+					error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 						if (textstatus === "timeout") {
 							swal({
 								title: "Oops!!!",
@@ -2507,23 +2534,27 @@ if (isset($product_description_id)) {
 							});
 							location.href = "../Main/onestore.php";
 							return;
+						} else {
+							return;
 						}
-						else { return; }
 					}
 				}); //closing ajax
 			}
-			<?php
+		<?php
 		}
 		if (isset($_SESSION['id'])) {
-			?>
+		?>
 			//CART COUNT
 			$.ajax({
 				url: "../Common/functions.php", //passing page info
-				data: { "cartcnt": 1, "user": "<?= $_SESSION['id'] ?>" },  //form data
-				type: "post",	//post data
-				dataType: "json", 	//datatype=json format
-				timeout: 18000,	//waiting time 3 sec
-				success: function (data) {	//if logging in is success
+				data: {
+					"cartcnt": 1,
+					"user": "<?= $_SESSION['id'] ?>"
+				}, //form data
+				type: "post", //post data
+				dataType: "json", //datatype=json format
+				timeout: 18000, //waiting time 3 sec
+				success: function(data) { //if logging in is success
 					if (data.status == "success") {
 						document.getElementById("sm-cartcnt").innerHTML = "";
 						document.getElementById("lg-cartcnt").innerHTML = "";
@@ -2532,14 +2563,15 @@ if (isset($product_description_id)) {
 						return;
 					}
 				},
-				error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 					if (textstatus === "timeout") {
 						return;
+					} else {
+						return;
 					}
-					else { return; }
 				}
 			}); //closing ajax
-			<?php
+		<?php
 		}
 		?>
 	});
@@ -2552,6 +2584,7 @@ if (isset($product_description_id)) {
 		}
 		return false;
 	}
+
 	function nlcheckmail() {
 		var nle = document.getElementById("nlmail").value;
 		if (nle == null || nle == "") {
@@ -2565,8 +2598,7 @@ if (isset($product_description_id)) {
 			});
 			document.getElementById("nlmail").focus();
 			return;
-		}
-		else if (NLValidateEmail(nle) == false) {
+		} else if (NLValidateEmail(nle) == false) {
 			swal({
 				title: "Oops!!!",
 				text: "Invalid email address!!! ",
@@ -2577,15 +2609,17 @@ if (isset($product_description_id)) {
 			});
 			document.getElementById("nlmail").focus();
 			return false;
-		}
-		else {
+		} else {
 			$.ajax({
 				url: "../Common/functions.php",
-				data: { "nlmailcheck": 1, "email": nle },
+				data: {
+					"nlmailcheck": 1,
+					"email": nle
+				},
 				dataType: "json",
 				type: "post",
 				timeout: 30000,
-				success: function (data) {
+				success: function(data) {
 					if (data.status == 'success') {
 						swal({
 							title: "Added!!!",
@@ -2595,47 +2629,43 @@ if (isset($product_description_id)) {
 							dangerMode: true,
 							timer: 6000,
 						});
-					}
-					else if (data.status == 'error') {
+					} else if (data.status == 'error') {
 						swal({
-							title: "Oops!!!",
-							text: "Try agan later",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-							timer: 6000,
-						})
+								title: "Oops!!!",
+								text: "Try agan later",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+								timer: 6000,
+							})
 							.then((willSubmit1) => {
 								if (willSubmit1) {
 									location.href = "../Account/login.php"
 									return;
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'error2') {
+					} else if (data.status == 'error2') {
 						swal({
-							title: "Not found!!!",
-							text: "Please log in",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-							timer: 6000,
-						})
+								title: "Not found!!!",
+								text: "Please log in",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+								timer: 6000,
+							})
 							.then((willSubmit1) => {
 								if (willSubmit1) {
 									//location.href="login.php"
 									return;
-								}
-								else {
+								} else {
 									return;
 								}
 							});
 					}
 				},
-				error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 					if (textstatus === "timeout") {
 						swal({
 							title: "Oops!!!",
@@ -2646,8 +2676,9 @@ if (isset($product_description_id)) {
 							timer: 6000,
 						});
 						return;
+					} else {
+						return;
 					}
-					else { return; }
 				}
 			}); //closing ajax
 		}
@@ -2655,7 +2686,7 @@ if (isset($product_description_id)) {
 	//Newsletter activation
 	function hostReachable() {
 		// Handle IE and more capable browsers
-		var xhr = new (window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
+		var xhr = new(window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
 		// Open new request as a HEAD to the root hostname with a random param to bust the cache
 		xhr.open("HEAD", "//" + window.location.hostname + "/?rand=" + Math.floor((1 + Math.random()) * 0x10000), false);
 		// Issue request and handle response
@@ -2667,7 +2698,9 @@ if (isset($product_description_id)) {
 		}
 	}
 	var scrollNow = getCookieset(scrollTop);
-	$("html,body").animate({ scrollTop: scrollNow }, 1000);
+	$("html,body").animate({
+		scrollTop: scrollNow
+	}, 1000);
 </script>
 <!------------------------------------------------------------>
 <!--/////////////////////START-303///END-833/////////////////////////////////////////-->

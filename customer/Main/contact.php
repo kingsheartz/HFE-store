@@ -1,6 +1,6 @@
 <?php
 require "header.php"
-    ?>
+?>
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
     <div class="container">
@@ -157,23 +157,24 @@ require "footer.php";
         if (name == null || name == "") {
             $("#nameerror").hide();
             return;
-        }
-        else {
+        } else {
             $.ajax({
                 url: "../Common/functions.php",
-                data: { "checkname": 1, "name": name },
+                data: {
+                    "checkname": 1,
+                    "name": name
+                },
                 dataType: "json",
                 type: "post",
                 timeout: 30000,
-                success: function (data) {
+                success: function(data) {
                     if (data.status == 'success') {
                         $("#nameerror").hide();
-                    }
-                    else if (data.status == 'error') {
+                    } else if (data.status == 'error') {
                         $("#nameerror").show();
                     }
                 },
-                error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+                error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                     if (textstatus === "timeout") {
                         swal({
                             title: "Oops!!!",
@@ -184,8 +185,9 @@ require "footer.php";
                             timer: 6000,
                         });
                         return;
+                    } else {
+                        return;
                     }
-                    else { return; }
                 }
             }); //closing ajax
         }
@@ -196,23 +198,24 @@ require "footer.php";
         if (email == null || email == "") {
             $("#emailerror").hide();
             return;
-        }
-        else {
+        } else {
             $.ajax({
                 url: "../Common/functions.php",
-                data: { "checkmail": 1, "email": email },
+                data: {
+                    "checkmail": 1,
+                    "email": email
+                },
                 dataType: "json",
                 type: "post",
                 timeout: 30000,
-                success: function (data) {
+                success: function(data) {
                     if (data.status == 'success') {
                         $("#emailerror").hide();
-                    }
-                    else if (data.status == 'error') {
+                    } else if (data.status == 'error') {
                         $("#emailerror").show();
                     }
                 },
-                error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+                error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                     if (textstatus === "timeout") {
                         swal({
                             title: "Oops!!!",
@@ -223,8 +226,9 @@ require "footer.php";
                             timer: 6000,
                         });
                         return;
+                    } else {
+                        return;
                     }
-                    else { return; }
                 }
             }); //closing ajax
         }
@@ -236,9 +240,10 @@ require "footer.php";
         }
         return false;
     }
-    $(document).ready(function (e) {
+    $(document).ready(function(e) {
         $("#setloc2").hide();
     });
+
     function feedback() {
         var name = document.getElementById('input-25').value;
         var email = document.getElementById('input-26').value;
@@ -268,8 +273,7 @@ require "footer.php";
             });
             document.getElementById("input-25").focus();
             return false;
-        }
-        else if (namespace.length > 1) {
+        } else if (namespace.length > 1) {
             swal({
                 title: "Oops!!!",
                 text: "'SPACE' not allowed",
@@ -357,70 +361,69 @@ require "footer.php";
             });
             document.getElementById("input-27").focus();
             return false;
-        }
-        else {
+        } else {
             $.ajax({
                 url: "../Common/functions.php", //passing page info
-                data: { "feedback": 1, "name": name, "email": email, "msg": message },  //form data
-                type: "post",   //post data
-                dataType: "json",   //datatype=json format
-                timeout: 30000,   //waiting time 30 sec
-                success: function (data) {    //if registration is success
+                data: {
+                    "feedback": 1,
+                    "name": name,
+                    "email": email,
+                    "msg": message
+                }, //form data
+                type: "post", //post data
+                dataType: "json", //datatype=json format
+                timeout: 30000, //waiting time 30 sec
+                success: function(data) { //if registration is success
                     if (data.status == 'success') {
                         swal({
-                            title: "Success!!!",
-                            text: "Response recorded",
-                            icon: "success",
-                            closeOnClickOutside: false,
-                            dangerMode: true,
-                        })
+                                title: "Success!!!",
+                                text: "Response recorded",
+                                icon: "success",
+                                closeOnClickOutside: false,
+                                dangerMode: true,
+                            })
                             .then((willSubmit1) => {
                                 if (willSubmit1) {
                                     location.href = "../Main/contact.php"
                                     return;
-                                }
-                                else {
+                                } else {
                                     return;
                                 }
                             });
-                    }
-                    else if (data.status == 'error') {
+                    } else if (data.status == 'error') {
                         swal({
-                            title: "Oops!!!",
-                            text: "Try again later",
-                            icon: "error",
-                            closeOnClickOutside: false,
-                            dangerMode: true,
-                        })
+                                title: "Oops!!!",
+                                text: "Try again later",
+                                icon: "error",
+                                closeOnClickOutside: false,
+                                dangerMode: true,
+                            })
                             .then((willSubmit) => {
                                 if (willSubmit) {
                                     return;
-                                }
-                                else {
+                                } else {
                                     return;
                                 }
                             });
-                    }
-                    else if (data.status == 'error2') {
+                    } else if (data.status == 'error2') {
                         swal({
-                            title: "Sorry!!!",
-                            text: "Please log in ",
-                            icon: "warning",
-                            closeOnClickOutside: false,
-                            dangerMode: true,
-                        })
+                                title: "Sorry!!!",
+                                text: "Please log in ",
+                                icon: "warning",
+                                closeOnClickOutside: false,
+                                dangerMode: true,
+                            })
                             .then((willSubmit) => {
                                 if (willSubmit) {
                                     location.href = "../Account/login.php"
                                     return;
-                                }
-                                else {
+                                } else {
                                     return;
                                 }
                             });
                     }
                 },
-                error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+                error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                     if (textstatus === "timeout") {
                         swal({
                             title: "Oops!!!",
@@ -431,8 +434,9 @@ require "footer.php";
                             timer: 6000,
                         });
                         return;
+                    } else {
+                        return;
                     }
-                    else { return; }
                 }
             }); //closing ajax
         }

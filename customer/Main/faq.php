@@ -138,11 +138,11 @@ require "header.php";
 		</ul>
 		<!-- script for tabs -->
 		<script type="text/javascript">
-			$(function () {
+			$(function() {
 				var menu_ul = $('.faq > li > ul'),
 					menu_a = $('.faq > li > a');
 				menu_ul.hide();
-				menu_a.click(function (e) {
+				menu_a.click(function(e) {
 					e.preventDefault();
 					if (!$(this).hasClass('active')) {
 						menu_a.removeClass('active');

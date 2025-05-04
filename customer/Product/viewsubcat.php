@@ -155,7 +155,7 @@ where category_id=$ctid ";
             </div>
             <?php
             //display the link of the pages in URL
-            
+
             $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ctid  GROUP BY product_description.product_id LIMIT " . $page_first_result . "," . $results_per_page;
             $st = $pdo->query($query);
             while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
@@ -165,7 +165,7 @@ where category_id=$ctid ";
                 } else {
                     $item_name = $row['product_name'];
                 }
-                ?>
+            ?>
                 <div class="products col-lg-3 col-sm-4 col-xs-6"
                     onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
                     <div style="display: flex;
@@ -175,7 +175,7 @@ where category_id=$ctid ";
                     </div>
                     <div class="deupd"><?= $item_name ?><br></div>
                 </div>
-                <?php
+            <?php
             }
             ?>
         </div>
@@ -183,14 +183,14 @@ where category_id=$ctid ";
         <nav class="numbering">
             <ul class="pagination">
                 <li class="<?php if ($pageno <= 1) {
-                    echo 'disabled';
-                } ?>">
+                                echo 'disabled';
+                            } ?>">
                     <a id="prev" href="<?php if ($pageno <= 1) {
-                        echo '#';
-                    } else {
-                        $_GET['pageno'] = $pageno - 1;
-                        echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
-                    } ?>">Prev</a>
+                                            echo '#';
+                                        } else {
+                                            $_GET['pageno'] = $pageno - 1;
+                                            echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+                                        } ?>">Prev</a>
                 </li>
                 <?php
                 $ends_count = 1;  //how many items at the ends (before and after [...])
@@ -198,45 +198,45 @@ where category_id=$ctid ";
                 $dots = false;
                 for ($page = 1; $page <= $number_of_page; $page++) {
                     if ($page == $pageno) {
-                        ?>
+                ?>
                         <li class="active">
                             <a href="<?php
-                            $_GET['pageno'] = $page;
-                            echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
+                                        $_GET['pageno'] = $page;
+                                        echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
                                 <?= $page ?></a>
                         </li>
                         <?php
                         $dots = true;
                     } else {
                         if ($page <= $ends_count || ($pageno && $page >= $pageno - $middle_count && $page <= $pageno + $middle_count) || $page > $number_of_page - $ends_count) {
-                            ?>
+                        ?>
                             <li>
                                 <a href="<?php
-                                $_GET['pageno'] = $page;
-                                echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
+                                            $_GET['pageno'] = $page;
+                                            echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
                                     <?= $page ?></a>
                             </li>
-                            <?php
+                        <?php
                             $dots = true;
                         } elseif ($dots) {
-                            ?>
+                        ?>
                             <li><a>&hellip;</a></li><?php
-                            $dots = false;
-                        }
-                    }
-                    ?>
-                    <?php
+                                                    $dots = false;
+                                                }
+                                            }
+                                                    ?>
+                <?php
                 }
                 ?>
                 <li class="<?php if ($pageno >= $number_of_page) {
-                    echo 'disabled';
-                } ?>">
+                                echo 'disabled';
+                            } ?>">
                     <a id="next" href="<?php if ($pageno >= $number_of_page) {
-                        echo '#';
-                    } else {
-                        $_GET['pageno'] = $pageno + 1;
-                        echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
-                    } ?>">Next</a>
+                                            echo '#';
+                                        } else {
+                                            $_GET['pageno'] = $pageno + 1;
+                                            echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+                                        } ?>">Next</a>
                 </li>
             </ul>
         </nav>
@@ -246,17 +246,15 @@ where category_id=$ctid ";
             if ($(window).width() < 370) {
                 $("#prev").html("<i class='fa fa-angle-double-left'></i>");
                 $("#next").html("<i class='fa fa-angle-double-right'></i>");
-            }
-            else {
+            } else {
                 $("#prev").html("Prev");
                 $("#next").html("Next");
             }
-            $(window).resize(function () {
+            $(window).resize(function() {
                 if ($(window).width() < 370) {
                     $("#prev").html("<i class='fa fa-angle-double-left'></i>");
                     $("#next").html("<i class='fa fa-angle-double-right'></i>");
-                }
-                else {
+                } else {
                     $("#prev").html("Prev");
                     $("#next").html("Next");
                 }

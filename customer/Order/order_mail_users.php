@@ -234,4 +234,3 @@ echo ' <table style="width:100%!important">
     </tr>
    </tbody>
   </table>';
-?>

@@ -168,19 +168,19 @@ require "../Main/header.php";
 			class="agile_top_brands_grids">
 			<?php
 			if ($empty_check == 1) {
-				?>
-			<div class="product-content-right">
-				<center><img style="justify-content: center;" class="sidebar-title"
-						src="../../images/logo/error-no-search.png">
-					<h2 class="sidebar-title"
-						style="text-align: center;color:#2d70ff;display: inline-flex;font-weight: 600;">No result found
-					</h2>
+			?>
+				<div class="product-content-right">
+					<center><img style="justify-content: center;" class="sidebar-title"
+							src="../../images/logo/error-no-search.png">
+						<h2 class="sidebar-title"
+							style="text-align: center;color:#2d70ff;display: inline-flex;font-weight: 600;">No result found
+						</h2>
+					</center>
+				</div>
+				<center style="margin-bottom:0px;margin-top: 50px;">
+					<h4>Can't find requested product ?<a href="../Main/onestore.php"> Try again!</a></h4>
 				</center>
-			</div>
-			<center style="margin-bottom:0px;margin-top: 50px;">
-				<h4>Can't find requested product ?<a href="../Main/onestore.php"> Try again!</a></h4>
-			</center>
-			<?php
+				<?php
 			} else {
 				if (isset($_GET['popular'])) {
 					while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
@@ -190,45 +190,45 @@ require "../Main/header.php";
 			inner join item on item.item_id=item_description.item_id
 			where item_description.item_description_id=' . $item_desc_id . ' GROUP BY item_description.item_description_id');
 						$row = $res->fetch(PDO::FETCH_ASSOC);
-						?>
-			<div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
-				<div class="hover14 column ">
-					<div class="agile_top_brand_left_grid height_set">
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<div style="display: flex;
+				?>
+						<div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
+							<div class="hover14 column ">
+								<div class="agile_top_brand_left_grid height_set">
+									<div class="agile_top_brand_left_grid1">
+										<figure>
+											<div class="snipcart-item block">
+												<div class="snipcart-thumb">
+													<div style="display: flex;
   justify-content: center;height: 200px;width:100%;background: white;text-align: center;"> <a class="img-cont"
-												href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img
-													title=" " alt=" " class="img_size"
-													src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
-										</div>
-										<?php
-										if (strlen($row['item_name']) >= 35) {
-											$item = $row['item_name'];
-											$item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
-										} else {
-											$item_name = $row['item_name'];
-										}
-										?>
-										<p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden"
-											class="name_size">
-											<?= $item_name ?>
-										</p>
-										<h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
-											<?= $row['price'] ?> <span>&#8377;
-												<?= $row['mrp'] ?>
-											</span>
-										</h4>
+															href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img
+																title=" " alt=" " class="img_size"
+																src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
+													</div>
+													<?php
+													if (strlen($row['item_name']) >= 35) {
+														$item = $row['item_name'];
+														$item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+													} else {
+														$item_name = $row['item_name'];
+													}
+													?>
+													<p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden"
+														class="name_size">
+														<?= $item_name ?>
+													</p>
+													<h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
+														<?= $row['price'] ?> <span>&#8377;
+															<?= $row['mrp'] ?>
+														</span>
+													</h4>
+												</div>
+											</div>
+										</figure>
 									</div>
 								</div>
-							</figure>
+							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<?php
+					<?php
 					}
 				} else if (isset($_SESSION['id'], $_GET['recent'])) {
 					while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
@@ -237,43 +237,43 @@ require "../Main/header.php";
 			inner join item on item.item_id=item_description.item_id
 			where item_description.item_description_id=' . $item_desc_id . ' GROUP BY item_description.item_description_id');
 						$row = $res->fetch(PDO::FETCH_ASSOC);
-						?>
-			<div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
-				<div class="hover14 column ">
-					<div class="agile_top_brand_left_grid height_set">
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<div style="display: flex;
+					?>
+						<div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
+							<div class="hover14 column ">
+								<div class="agile_top_brand_left_grid height_set">
+									<div class="agile_top_brand_left_grid1">
+										<figure>
+											<div class="snipcart-item block">
+												<div class="snipcart-thumb">
+													<div style="display: flex;
   justify-content: center;height: 200px;width:100%;background: white;text-align: center;"> <a class="img-cont"
-												href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img
-													title=" " alt=" " class="img_size"
-													src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
-										</div>
-										<?php
-										if (strlen($row['item_name']) >= 35) {
-											$item = $row['item_name'];
-											$item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
-										} else {
-											$item_name = $row['item_name'];
-										}
-										?>
-										<p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden"
-											class="name_size">
-											<?= $item_name ?>
-										</p>
-										<h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
-											<?= $row['price'] ?>
-										</h4>
+															href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img
+																title=" " alt=" " class="img_size"
+																src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
+													</div>
+													<?php
+													if (strlen($row['item_name']) >= 35) {
+														$item = $row['item_name'];
+														$item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+													} else {
+														$item_name = $row['item_name'];
+													}
+													?>
+													<p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden"
+														class="name_size">
+														<?= $item_name ?>
+													</p>
+													<h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
+														<?= $row['price'] ?>
+													</h4>
+												</div>
+											</div>
+										</figure>
 									</div>
 								</div>
-							</figure>
+							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<?php
+					<?php
 					}
 				} else if (isset($_SESSION['id'], $_GET['prev'])) {
 					while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
@@ -283,43 +283,43 @@ require "../Main/header.php";
         inner join sub_category on category.category_id=sub_category.category_id
         where item.sub_category_id=sub_category.sub_category_id and item_description_id=" . $view['item_description_id']);
 						$row = $res->fetch(PDO::FETCH_ASSOC);
-						?>
-			<div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
-				<div class="hover14 column ">
-					<div class="agile_top_brand_left_grid height_set">
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<div style="display: flex;
+					?>
+						<div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
+							<div class="hover14 column ">
+								<div class="agile_top_brand_left_grid height_set">
+									<div class="agile_top_brand_left_grid1">
+										<figure>
+											<div class="snipcart-item block">
+												<div class="snipcart-thumb">
+													<div style="display: flex;
   justify-content: center;height: 200px;width:100%;background: white;text-align: center;"> <a class="img-cont"
-												href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img
-													title=" " alt=" " class="img_size"
-													src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
-										</div>
-										<?php
-										if (strlen($row['item_name']) >= 35) {
-											$item = $row['item_name'];
-											$item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
-										} else {
-											$item_name = $row['item_name'];
-										}
-										?>
-										<p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden"
-											class="name_size">
-											<?= $item_name ?>
-										</p>
-										<h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
-											<?= $row['price'] ?>
-										</h4>
+															href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img
+																title=" " alt=" " class="img_size"
+																src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
+													</div>
+													<?php
+													if (strlen($row['item_name']) >= 35) {
+														$item = $row['item_name'];
+														$item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+													} else {
+														$item_name = $row['item_name'];
+													}
+													?>
+													<p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden"
+														class="name_size">
+														<?= $item_name ?>
+													</p>
+													<h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
+														<?= $row['price'] ?>
+													</h4>
+												</div>
+											</div>
+										</figure>
 									</div>
 								</div>
-							</figure>
+							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<?php
+					<?php
 					}
 				}
 				if (isset($_GET['topseller'])) {
@@ -330,45 +330,45 @@ require "../Main/header.php";
 			inner join item on item.item_id=item_description.item_id
 			where item_description.item_description_id=' . $item_desc_id . ' GROUP BY item_description.item_description_id');
 						$row = $res->fetch(PDO::FETCH_ASSOC);
-						?>
-			<div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
-				<div class="hover14 column ">
-					<div class="agile_top_brand_left_grid height_set">
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<div style="display: flex;
+					?>
+						<div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
+							<div class="hover14 column ">
+								<div class="agile_top_brand_left_grid height_set">
+									<div class="agile_top_brand_left_grid1">
+										<figure>
+											<div class="snipcart-item block">
+												<div class="snipcart-thumb">
+													<div style="display: flex;
   justify-content: center;height: 200px;width:100%;background: white;text-align: center;"> <a class="img-cont"
-												href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img
-													title=" " alt=" " class="img_size"
-													src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
-										</div>
-										<?php
-										if (strlen($row['item_name']) >= 35) {
-											$item = $row['item_name'];
-											$item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
-										} else {
-											$item_name = $row['item_name'];
-										}
-										?>
-										<p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden"
-											class="name_size">
-											<?= $item_name ?>
-										</p>
-										<h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
-											<?= $row['price'] ?> <span>&#8377;
-												<?= $row['mrp'] ?>
-											</span>
-										</h4>
+															href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img
+																title=" " alt=" " class="img_size"
+																src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
+													</div>
+													<?php
+													if (strlen($row['item_name']) >= 35) {
+														$item = $row['item_name'];
+														$item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+													} else {
+														$item_name = $row['item_name'];
+													}
+													?>
+													<p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden"
+														class="name_size">
+														<?= $item_name ?>
+													</p>
+													<h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
+														<?= $row['price'] ?> <span>&#8377;
+															<?= $row['mrp'] ?>
+														</span>
+													</h4>
+												</div>
+											</div>
+										</figure>
 									</div>
 								</div>
-							</figure>
+							</div>
 						</div>
-					</div>
-				</div>
-			</div>
-			<?php
+					<?php
 					}
 				}
 				if (isset($_GET['brand'])) {
@@ -379,44 +379,44 @@ require "../Main/header.php";
 			inner join item on item.item_id=item_description.item_id
 			where item_description.item_description_id=' . $item_desc_id . ' GROUP BY item_description.item_description_id');
 						$row = $res->fetch(PDO::FETCH_ASSOC);
-						?>
-			<div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
-				<div class="hover14 column ">
-					<div class="agile_top_brand_left_grid height_set">
-						<div class="agile_top_brand_left_grid1">
-							<figure>
-								<div class="snipcart-item block">
-									<div class="snipcart-thumb">
-										<div style="display: flex;
+					?>
+						<div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
+							<div class="hover14 column ">
+								<div class="agile_top_brand_left_grid height_set">
+									<div class="agile_top_brand_left_grid1">
+										<figure>
+											<div class="snipcart-item block">
+												<div class="snipcart-thumb">
+													<div style="display: flex;
   justify-content: center;height: 200px;width:100%;background: white;text-align: center;"> <a class="img-cont"
-												href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img
-													title=" " alt=" " class="img_size"
-													src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
-										</div>
-										<?php
-										if (strlen($row['item_name']) >= 35) {
-											$item = $row['item_name'];
-											$item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
-										} else {
-											$item_name = $row['item_name'];
-										}
-										?>
-										<p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden"
-											class="name_size">
-											<?= $item_name ?>
-										</p>
-										<h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
-											<?= $row['price'] ?> <span>&#8377;
-												<?= $row['mrp'] ?>
-											</span>
-										</h4>
+															href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img
+																title=" " alt=" " class="img_size"
+																src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
+													</div>
+													<?php
+													if (strlen($row['item_name']) >= 35) {
+														$item = $row['item_name'];
+														$item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+													} else {
+														$item_name = $row['item_name'];
+													}
+													?>
+													<p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden"
+														class="name_size">
+														<?= $item_name ?>
+													</p>
+													<h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
+														<?= $row['price'] ?> <span>&#8377;
+															<?= $row['mrp'] ?>
+														</span>
+													</h4>
+												</div>
+											</div>
+										</figure>
 									</div>
 								</div>
-							</figure>
+							</div>
 						</div>
-					</div>
-				</div>
-			</div>
 			<?php
 					}
 				}
@@ -430,14 +430,14 @@ require "../Main/header.php";
 			<nav class="numbering">
 				<ul class="pagination">
 					<li class="<?php if ($pageno <= 1) {
-						echo 'disabled';
-					} ?>">
+												echo 'disabled';
+											} ?>">
 						<a id="prev" href="<?php if ($pageno <= 1) {
-							echo '#';
-						} else {
-							$_GET['pageno'] = $pageno - 1;
-							echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
-						} ?>">Prev</a>
+																	echo '#';
+																} else {
+																	$_GET['pageno'] = $pageno - 1;
+																	echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+																} ?>">Prev</a>
 					</li>
 					<?php
 					$ends_count = 1;  //how many items at the ends (before and after [...])
@@ -445,33 +445,33 @@ require "../Main/header.php";
 					$dots = false;
 					for ($page = 1; $page <= $total_pages; $page++) {
 						if ($page == $pageno) {
-							?>
-					<li class="active">
-						<a href="<?php
-						$_GET['pageno'] = $page;
-						echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
-							<?= $page ?>
-						</a>
-					</li>
-					<?php
-					$dots = true;
+					?>
+							<li class="active">
+								<a href="<?php
+													$_GET['pageno'] = $page;
+													echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
+									<?= $page ?>
+								</a>
+							</li>
+							<?php
+							$dots = true;
 						} else {
 							if ($page <= $ends_count || ($pageno && $page >= $pageno - $middle_count && $page <= $pageno + $middle_count) || $page > $total_pages - $ends_count) {
-								?>
-					<li>
-						<a href="<?php
-						$_GET['pageno'] = $page;
-						echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
-							<?= $page ?>
-						</a>
-					</li>
-					<?php
-					$dots = true;
+							?>
+								<li>
+									<a href="<?php
+														$_GET['pageno'] = $page;
+														echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
+										<?= $page ?>
+									</a>
+								</li>
+							<?php
+								$dots = true;
 							} elseif ($dots) {
-								?>
-					<li><a>&hellip;</a></li>
-					<?php
-					$dots = false;
+							?>
+								<li><a>&hellip;</a></li>
+						<?php
+								$dots = false;
 							}
 						}
 						?>
@@ -479,14 +479,14 @@ require "../Main/header.php";
 					}
 					?>
 					<li class="<?php if ($pageno >= $total_pages) {
-						echo 'disabled';
-					} ?>">
+												echo 'disabled';
+											} ?>">
 						<a id="next" href="<?php if ($pageno >= $total_pages) {
-							echo '#';
-						} else {
-							$_GET['pageno'] = $pageno + 1;
-							echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
-						} ?>">Next</a>
+																	echo '#';
+																} else {
+																	$_GET['pageno'] = $pageno + 1;
+																	echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+																} ?>">Next</a>
 					</li>
 				</ul>
 			</nav>

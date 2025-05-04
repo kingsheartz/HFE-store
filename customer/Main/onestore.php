@@ -97,28 +97,32 @@ require "../Common/cookie.php";
     }
     return "";
   }
-  $(document).ready(function () {
+  $(document).ready(function() {
     //DELETE THIS COOKIE//document.cookie = "cookieset=; expires=Thu, 01 Jan 1970 00:00:00 UTC; ";
     if (getCookieset('cookieset') !== "y") {
       <?php
       if (isset($_SESSION['id'])) {
-        ?>
+      ?>
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "getcookie": 1, "userid": <?= $_SESSION['id'] ?> },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "getcookie": 1,
+            "userid": <?= $_SESSION['id'] ?>
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               return;
-            }
-            else if (data.status == 'error') {
+            } else if (data.status == 'error') {
               $('.cookiesetting').css('display', 'flex');
-              setTimeout(function () { $('.cookiesetting').css('bottom', 25); }, 500);
+              setTimeout(function() {
+                $('.cookiesetting').css('bottom', 25);
+              }, 500);
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
                 title: "Oops!!!",
@@ -129,21 +133,26 @@ require "../Common/cookie.php";
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
-        <?php
+      <?php
       } else {
-        ?>
+      ?>
         $('.cookiesetting').css('display', 'flex');
-        setTimeout(function () { $('.cookiesetting').css('bottom', 25); }, 500);
-        <?php
+        setTimeout(function() {
+          $('.cookiesetting').css('bottom', 25);
+        }, 500);
+      <?php
       }
       ?>
     }
   });
-  $(window).unload(function () { document.cookie = 'mainscrollTop=' + $(window).scrollTop(); });
+  $(window).unload(function() {
+    document.cookie = 'mainscrollTop=' + $(window).scrollTop();
+  });
   var scrollTop = 'mainscrollTop';
 </script>
 <div
@@ -168,7 +177,7 @@ require "../Common/cookie.php";
 //}
 ?>
 <script>
-  $(document).ready(function () {
+  $(document).ready(function() {
     $('#customCarousel').carousel({
       interval: 3000 // Auto slide every 3 seconds
     });
@@ -179,7 +188,8 @@ require "../Common/cookie.php";
   <div class="block-slider block-slider4">
     <ul class="" id="bxslider-home4" style="height: 400px;">
       <?php
-      $slider = array("Power /Precision /Performance //Built for serious runners, this treadmill delivers smooth, quiet operation and advanced tracking features.
+      $slider = array(
+        "Power /Precision /Performance //Built for serious runners, this treadmill delivers smooth, quiet operation and advanced tracking features.
 
 ",
         " Run /With /Confidence //Engineered for stability and comfort, it's your go-to machine for consistent cardio training.",
@@ -192,7 +202,7 @@ require "../Common/cookie.php";
         unset($split);
         $divider = explode("//", $slider[$i]);
         $split = explode("/", $divider[0]);
-        ?>
+      ?>
         <li>
           <div class="row captions">
             <div class="col-md-12 ">
@@ -209,7 +219,7 @@ require "../Common/cookie.php";
             </div>
           </div>
         </li>
-        <?php
+      <?php
         $i++;
       }
       ?>
@@ -223,7 +233,7 @@ require "../Common/cookie.php";
   <!-- top-brands -->
   <?php
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//Generate Dynamic Loading
+  //Generate Dynamic Loading
   function randomGenerate($min, $max, $quantity)
   {
     $numbers = range($min, $max);
@@ -231,15 +241,14 @@ require "../Common/cookie.php";
     return array_slice($numbers, 0, $quantity);
   }
   //Generate Dynamic Loading
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /*COLOR PICKER*/
   $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
   $bgcolor = array('orange', '#0c99cc', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
   do {
     $rancolor1 = array_rand($color, 1);
     $rancolor2 = array_rand($color, 1);
-  }
-  while ($rancolor1 == $rancolor2);
+  } while ($rancolor1 == $rancolor2);
   $c1 = $c2 = "white";
   if ($bgcolor[$rancolor1] == "cyan" || $bgcolor[$rancolor1] == "#FF6666" || $bgcolor[$rancolor1] == "#E6BF00") {
     $c1 = "black";
@@ -445,12 +454,14 @@ require "../Common/cookie.php";
       }
       $('#' + x + '>.right-arrow-btn-all').show();
     }
+
     function moveright(x) {
       var y = $('#' + x).scrollLeft();
       var width = $('#' + x).outerWidth();
       var scrollWidth = $('#' + x)[0].scrollWidth;
       $('#' + x).scrollLeft(y + 250);
     }
+
     function moveleft(x) {
       var y = $('#' + x).scrollLeft();
       $('#' + x).scrollLeft(y - 250);
@@ -462,7 +473,7 @@ require "../Common/cookie.php";
   $st11 = $pdo->query($query11);
   while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
     $ct = $row11['category_id'];
-    ?>
+  ?>
     <?php
     //$query="SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ct and (product.added_date) in (select max(added_date) as date from product) GROUP BY product_description.product_id LIMIT 15";
     $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ct GROUP BY product_description.product_id LIMIT 15";
@@ -471,7 +482,7 @@ require "../Common/cookie.php";
     if ($product == 0) {
       continue;
     } else {
-      ?>
+    ?>
       <div class="difcat " style="border-radius: 5px;padding-bottom:3px">
         <div class="difhed"><?= $row11['category_name'] ?>
           <button onclick="location.href='../Product/viewsubcat.php?category_id=<?= $ct ?>'">View All</button>
@@ -483,7 +494,7 @@ require "../Common/cookie.php";
               class="fas fa-chevron-right"></i></button>
           <?php
           while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-            ?>
+          ?>
             <div class="products-all-in-one" title="<?= $row['product_name'] ?>"
               onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
               <div
@@ -501,12 +512,12 @@ require "../Common/cookie.php";
               ?>
               <div class="deupd"><?= $product_name ?><br></div>
             </div>
-            <?php
+      <?php
           }
           echo '</div></div>';
-    }
-  }
-  ?>
+        }
+      }
+      ?>
       <script type="text/javascript">
         function showupda(x) {
           document.forms[x].submit();
@@ -514,6 +525,7 @@ require "../Common/cookie.php";
         if (window.history.replaceState) {
           window.history.replaceState(null, null, window.location.href);
         }
+
         function conca() {
           console.log('helo');
           if ($('#w1').val() != 0) {
@@ -564,7 +576,7 @@ require "../Common/cookie.php";
         $prest = $pdo->query($presql);
         $precnt = $prest->rowCount();
         if ($precnt > 0) {
-          ?>
+      ?>
           <!-- new -->
           <div class="newproducts-w3agile" style="padding:0;padding-top:10px;">
             <h3>Previously Purchased</h3>
@@ -576,8 +588,7 @@ require "../Common/cookie.php";
             do {
               $rancolor1 = array_rand($color, 1);
               $rancolor2 = array_rand($color, 1);
-            }
-            while ($rancolor1 == $rancolor2);
+            } while ($rancolor1 == $rancolor2);
             if ($bgcolor[$rancolor1] == "cyan" || $bgcolor[$rancolor1] == "#FF6666" || $bgcolor[$rancolor1] == "#E6BF00") {
               $c1 = "black";
             }
@@ -610,10 +621,10 @@ require "../Common/cookie.php";
                 <div class="clearfix"> </div>
               </div>
               <!-- //new -->
-              <?php
+          <?php
         }
       }
-      ?>
+          ?>
           <div class="promo-area">
             <div class="zigzag-bottom"></div>
             <div class="container">
@@ -990,7 +1001,7 @@ GROUP BY product_description_id order by CAST(sum(product_keys.ordered_cnt) as U
                         } else {
                           $rating = 0;
                         }
-                        ?>
+                    ?>
                         <div class="single-wid-product">
                           <a class="product-thumb"
                             href="../Product/single.php?id=<?= $row['product_description_id'] ?>"><img
@@ -1015,7 +1026,7 @@ GROUP BY product_description_id order by CAST(sum(product_keys.ordered_cnt) as U
                             <ins><i class="fa fa-inr"></i> <?= $row['price'] ?></ins>
                           </div>
                         </div>
-                        <?php
+                    <?php
                         $l++;
                       }
                     }
@@ -1024,7 +1035,7 @@ GROUP BY product_description_id order by CAST(sum(product_keys.ordered_cnt) as U
                 </div>
                 <?php
                 if (isset($_SESSION['id'])) {
-                  ?>
+                ?>
                   <div class="col-md-4">
                     <div class="single-product-widget">
                       <h2 class="product-wid-title">Recently Viewed</h2>
@@ -1056,7 +1067,7 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                           } else {
                             $rating = 0;
                           }
-                          ?>
+                      ?>
                           <div class="single-wid-product">
                             <a class="product-thumb"
                               href="../Product/single.php?id=<?= $row['product_description_id'] ?>"><img
@@ -1082,12 +1093,12 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                               <ins><i class="fa fa-inr"></i> <?= $row['price'] ?></ins>
                             </div>
                           </div>
-                          <?php
+                      <?php
                           $m++;
                         }
                       }
-                } else {
-                  ?>
+                    } else {
+                      ?>
                       <div class="col-md-4">
                         <div class="single-product-widget">
                           <h2 class="product-wid-title">Popular Products</h2>
@@ -1116,7 +1127,7 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                               } else {
                                 $rating = 0;
                               }
-                              ?>
+                          ?>
                               <div class="single-wid-product">
                                 <a class="product-thumb"
                                   href="../Product/single.php?id=<?= $row['product_description_id'] ?>"><img
@@ -1143,17 +1154,17 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                                   <ins><i class="fa fa-inr"></i> <?= $row['price'] ?></ins>
                                 </div>
                               </div>
-                              <?php
+                        <?php
                               $n++;
                             }
                           }
-                }
-                ?>
+                        }
+                        ?>
+                        </div>
                       </div>
-                    </div>
 
+                    </div>
                   </div>
-                </div>
               </div> <!-- End product widget area -->
             </div>
             <?php

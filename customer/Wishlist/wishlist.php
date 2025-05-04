@@ -317,7 +317,7 @@ require "../Main/header.php";
 						$stmt_wish = $pdo->prepare($sql_wish);
 						$stmt_wish->execute(array(':user_id' => $_SESSION['id']));
 						if ($row_check['cnt'] > 0) {
-							?>
+					?>
 							<div class="container" style="margin-top: 50px;">
 								<div class="row">
 									<div class="col-md-12">
@@ -346,7 +346,7 @@ require "../Main/header.php";
 													$stmt_wish1 = $pdo->prepare($sql_wish1);
 													$stmt_wish1->execute(array(':wish_id' => $row_wish['wishlist_id']));
 													$row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
-													?>
+												?>
 													<tr class="wltr del_w_<?= $row_wish['wishlist_id'] ?>">
 														<?php
 														if (strlen($row_wish['list_name']) < 15) {
@@ -390,7 +390,7 @@ require "../Main/header.php";
 															</h4>
 														</td>
 													</tr>
-													<?php
+												<?php
 												}
 												?>
 											</tbody>
@@ -398,20 +398,20 @@ require "../Main/header.php";
 									</div>
 								</div>
 							</div>
-							<?php
+						<?php
 						} else {
-							?>
+						?>
 							<h4 style="margin-top: 50px;color: #ccc">No lists are found.<a data-backdrop="static"
 									data-keyboard="false" data-toggle="modal" data-target="#myModal_create_wishlist">Create
 									one!</a></h4>
 							<br><br><br><br><br>
-							<?php
+						<?php
 						}
 					} else {
 						?>
 						<h4 style="margin-top: 50px;color: #ccc">You are not logged in. Please <a href="#myModal"
 								data-toggle="modal" data-dismiss="modal">Log in!</a></h4>
-						<?php
+					<?php
 					}
 					?>
 				</div>
@@ -429,7 +429,7 @@ require "../Main/header.php";
 					$stmt_wish = $pdo->prepare($sql_wish);
 					$stmt_wish->execute(array(':user_id' => $_SESSION['id']));
 					if ($row_check['cnt'] > 0) {
-						?>
+					?>
 						<div class="container" style="margin-top: 50px;">
 							<div class="row" style="margin: 0;padding: 0;width: 100%">
 								<div class="col-md-12" style="margin: 0;padding: 0;width: 100%">
@@ -446,7 +446,7 @@ require "../Main/header.php";
 											$cutname = substr($row_wish['list_name'], 0, 15);
 											$listname = $cutname . "...";
 										}
-										?>
+									?>
 										<div id="show_wishlist_small">
 											<table class="wltr ywl_table_small del_w_<?= $row_wish['wishlist_id'] ?>"
 												cellpadding="20px" cellspacing="20px" width="100%"
@@ -510,20 +510,20 @@ require "../Main/header.php";
 											</table>
 											<br>
 										</div>
-										<?php
+									<?php
 									}
 									?>
 								</div>
 							</div>
 						</div>
-						<?php
+					<?php
 					} else {
-						?>
+					?>
 						<h4 style="margin-top: 50px;color: #ccc">No lists are found.<a data-backdrop="static"
 								data-keyboard="false" data-toggle="modal" data-target="#myModal_create_wishlist">Create
 								one!</a></h4>
 						<br><br><br><br><br>
-						<?php
+					<?php
 					}
 					?>
 				</div>
@@ -540,7 +540,9 @@ require "../Main/header.php";
 					//console.log('helo');
 					//var inputVal = $(this).val();
 					var inputVal = $('#wishsrch').val();
-					$.get("../Wishlist/getwishlist.php", { name: inputVal }).done(function (data) {
+					$.get("../Wishlist/getwishlist.php", {
+						name: inputVal
+					}).done(function(data) {
 						// Display the returned data in browser
 						console.log(data);
 						$('#wishlisttable tr.wltr').remove();
@@ -560,7 +562,7 @@ require "../Main/header.php";
 				$stmt_wish1 = $pdo->prepare($sql_wish1);
 				$stmt_wish1->execute();
 				if ($row_check1['cnt'] > 0) {
-					?>
+				?>
 					<div class="container" style="margin-top: 50px;">
 						<div class="row">
 							<div class="col-md-12">
@@ -609,7 +611,7 @@ require "../Main/header.php";
 										$stmt_wish2 = $pdo->prepare($sql_wish2);
 										$stmt_wish2->execute(array(':wish_id' => $row_wish1['wishlist_id']));
 										$row_wish2 = $stmt_wish2->fetch(PDO::FETCH_ASSOC);
-										?>
+									?>
 										<tr class="wltr"
 											onclick="location.href='../Wishlist/wishlist_public.php?wishlist_id=<?= $row_wish1['wishlist_id'] ?>'">
 											<?php
@@ -639,21 +641,21 @@ require "../Main/header.php";
 												<h4><?= $row_wish1['date'] ?></h4>
 											</td>
 										</tr>
-										<?php
+									<?php
 									}
 									?>
 								</table>
 							</div>
 						</div>
 					</div>
-					<?php
+				<?php
 				} else {
-					?>
+				?>
 					<h4 style="margin-top: 50px;color: #ccc;">No lists are found.<a data-backdrop="static"
 							data-keyboard="false" data-toggle="modal" data-target="#myModal_create_wishlist">Create one!</a>
 					</h4>
 					<br><br><br><br><br>
-					<?php
+				<?php
 				}
 				?>
 			</div>
@@ -887,6 +889,7 @@ require "../Main/header.php";
 		"wishlist_share.php?sharelink=62_60c9b30ccaa8a&amp;fbclid=IwAR310ESZCEPJ8uFUub--H6gnJ3FkFRjgzz1duPK3NVdARhV2f8VD1GWtpX0"
 		$('#myModal_share_wishlist').modal('show');
 	}
+
 	function sharelink(sm) {
 		var social_media = sm;
 		var link = document.getElementById("input_link").value;
@@ -896,24 +899,27 @@ require "../Main/header.php";
 			return;
 		}
 	}
+
 	function socialWindow(url) {
 		var left = (screen.width - 570) / 2;
 		var top = (screen.height - 570) / 2;
 		var params = "menubar=no,toolbar=no,status=no,width=570,height=570,top=" + top + ",left=" + left;
 		window.open(url, "NewWindow", params);
 	}
+
 	function setShareLinks() {
 		var pageUrl = encodeURIComponent(document.getElementById("input_link").value);
 		var tweet = "See my wishlist :) !!";
-		jQuery(".social-share.twitter").on("click", function () {
+		jQuery(".social-share.twitter").on("click", function() {
 			url = "https://twitter.com/intent/tweet?url=" + pageUrl + "&text=" + tweet;
 			socialWindow(url);
 		});
-		jQuery(".social-share.linkedin").on("click", function () {
+		jQuery(".social-share.linkedin").on("click", function() {
 			url = "https://www.linkedin.com/shareArticle?mini=true&url=" + pageUrl;
 			socialWindow(url);
 		})
 	}
+
 	function clipboard() {
 		var copyText = document.getElementById("input_link");
 		copyText.select();
@@ -921,21 +927,20 @@ require "../Main/header.php";
 		document.execCommand("copy");
 		toastr.success('Link copied :- ' + copyText.value);
 	}
+
 	function actions(selectmenu, wishlist_id) {
 		if (selectmenu.value == 2) {
 			del_list(wishlist_id);
 			selectmenu.value = 0;
-		}
-		else if (selectmenu.value == 1) {
+		} else if (selectmenu.value == 1) {
 			location.href = '../Wishlist/wishlist_single.php?wishlist_id=' + wishlist_id + '&setting=1';
-		}
-		else {
+		} else {
 			var link = selectmenu.value;
 			copylink(wishlist_id, link);
 			selectmenu.value = 0;
 		}
 	}
-	$('.caw').click(function () {
+	$('.caw').click(function() {
 		$('.caw').hide();
 		$('.caw-active').show();
 		$('.yw-active').hide();
@@ -949,7 +954,7 @@ require "../Main/header.php";
 		$('.your_wishlist_head').hide();
 		$('.create_wishlist_head').show();
 	})
-	$('.yw').click(function () {
+	$('.yw').click(function() {
 		$('.yw').hide();
 		$('.yw-active').show();
 		$('.caw-active').hide();
@@ -963,7 +968,7 @@ require "../Main/header.php";
 		$('.your_wishlist_head').show();
 		$('.create_wishlist_head').hide();
 	})
-	$('.sw').click(function () {
+	$('.sw').click(function() {
 		$('.sw').hide();
 		$('.sw-active').show();
 		$('.caw-active').hide();
@@ -981,51 +986,51 @@ require "../Main/header.php";
 	function del_list(wishlist_id) {
 		var wishlist_id = wishlist_id;
 		swal({
-			title: "Are you sure ?!",
-			icon: "warning",
-			buttons: true,
-			dangerMode: true,
-			closeOnClickOutside: false,
-			closeOnEsc: false,
-			buttons: true,
-			buttons: ["Cancel", "Remove"],
-		})
+				title: "Are you sure ?!",
+				icon: "warning",
+				buttons: true,
+				dangerMode: true,
+				closeOnClickOutside: false,
+				closeOnEsc: false,
+				buttons: true,
+				buttons: ["Cancel", "Remove"],
+			})
 			.then((willSubmit) => {
 				if (willSubmit) {
 					$.ajax({
 						url: "../Common/functions.php", //passing page info
-						data: { "del_list": 1, "wishlist_id": wishlist_id },  //form data
-						type: "post",   //post data
-						dataType: "json",   //datatype=json format
-						timeout: 30000,   //waiting time 30 sec
-						success: function (data) {    //if registration is success
+						data: {
+							"del_list": 1,
+							"wishlist_id": wishlist_id
+						}, //form data
+						type: "post", //post data
+						dataType: "json", //datatype=json format
+						timeout: 30000, //waiting time 30 sec
+						success: function(data) { //if registration is success
 							if (data.status == 'success') {
 								if (data.rem_list == 0) {
 									swal({
-										title: "Empty!!!",
-										text: "Your wishlist is empty",
-										icon: "warning",
-										closeOnClickOutside: false,
-										dangerMode: true,
-									})
+											title: "Empty!!!",
+											text: "Your wishlist is empty",
+											icon: "warning",
+											closeOnClickOutside: false,
+											dangerMode: true,
+										})
 										.then((willSubmit1) => {
 											if (willSubmit1) {
 												location.href = "../Wishlist/wishlist.php";
 												return;
-											}
-											else {
+											} else {
 												return;
 											}
 										});
-								}
-								else {
-									$("." + "del_w_" + data.del_list).fadeOut('slow', function (c) {
+								} else {
+									$("." + "del_w_" + data.del_list).fadeOut('slow', function(c) {
 										$("." + "del_w_" + data.del_list).hide();
 										return;
 									});
 								}
-							}
-							else {
+							} else {
 								swal({
 									title: "Try again!!!",
 									icon: "error",
@@ -1035,7 +1040,7 @@ require "../Main/header.php";
 								return;
 							}
 						},
-						error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+						error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 							if (textstatus === "timeout") {
 								swal({
 									title: "Oops!!!",
@@ -1046,14 +1051,17 @@ require "../Main/header.php";
 									timer: 6000,
 								});
 								return;
+							} else {
+								return;
 							}
-							else { return; }
 						}
 					}); //closing ajax
+				} else {
+					return;
 				}
-				else { return; }
 			});
 	}
+
 	function create_my_list() {
 		var listname = document.getElementById('Wishlist_name').value;
 		var listdescription = document.getElementById('Wishlist_descibe').value;
@@ -1069,25 +1077,30 @@ require "../Main/header.php";
 			return false;
 		}
 		Swal.fire({
-			text: "Creating new list  !!!",
-			icon: "warning",
-			showCancelButton: true,
-			showConfirmButton: true,
-			confirmButtonColor: 'red',
-			allowOutsideClick: false,
-			confirmButtonText: '<i class="fa fa-close"></i> Close',
-			cancelButtonColor: 'green',
-			cancelButtonText: '<i class="fa fa-check"></i> OK'
-		})
+				text: "Creating new list  !!!",
+				icon: "warning",
+				showCancelButton: true,
+				showConfirmButton: true,
+				confirmButtonColor: 'red',
+				allowOutsideClick: false,
+				confirmButtonText: '<i class="fa fa-close"></i> Close',
+				cancelButtonColor: 'green',
+				cancelButtonText: '<i class="fa fa-check"></i> OK'
+			})
 			.then((willSubmit) => {
 				if (willSubmit.dismiss) {
 					$.ajax({
 						url: "../Common/functions.php", //passing page info
-						data: { "create_list": 1, "listname": listname, "listdescription": listdescription, "privacy": privacy },  //form data
-						type: "post",   //post data
-						dataType: "json",   //datatype=json format
-						timeout: 30000,   //waiting time 30 sec
-						success: function (data) {    //if registration is success
+						data: {
+							"create_list": 1,
+							"listname": listname,
+							"listdescription": listdescription,
+							"privacy": privacy
+						}, //form data
+						type: "post", //post data
+						dataType: "json", //datatype=json format
+						timeout: 30000, //waiting time 30 sec
+						success: function(data) { //if registration is success
 							if (data.status == 'success') {
 								var markup = '<tr class="wltr del_w_' + data.wid + '"><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4 title="list_name">' + listname + '</h4></td><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4>' + privacy + '</h4></td><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4>0</h4></td><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4>' + data.date + '</h4></td><td><h4><select style="font-size: 16px;" onchange=\'actions(this,' + data.wid + ')\'><option value="0" selected="" disabled="">Select</option><option value="1" style="color: #333;">Edit</option><option value="2" style="color: #333;">Delete</i></option><option value="../Wishlist/wishlist.php?sharelink=' + data.link + '" style="color: #333;">Share</i></option></select></h4></td></tr>';
 								var tableBody = $('#show_wishlist');
@@ -1105,8 +1118,7 @@ require "../Main/header.php";
 									location.href = "../Wishlist/wishlist.php";
 								}
 								return;
-							}
-							else {
+							} else {
 								swal({
 									title: "Try again!!!",
 									icon: "error",
@@ -1116,7 +1128,7 @@ require "../Main/header.php";
 								return;
 							}
 						},
-						error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+						error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 							if (textstatus === "timeout") {
 								swal({
 									title: "Oops!!!",
@@ -1127,12 +1139,14 @@ require "../Main/header.php";
 									timer: 6000,
 								});
 								return;
+							} else {
+								return;
 							}
-							else { return; }
 						}
 					}); //closing ajax
+				} else if (willSubmit.isConfirmed) {
+					return false;
 				}
-				else if (willSubmit.isConfirmed) { return false; }
 			});
 		return false;
 	}

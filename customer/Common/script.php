@@ -13,27 +13,27 @@
 <!-- searching the items -->
 <script type="text/javascript" src="../JS/search.js"></script>
 <script type="text/javascript">
-	jQuery(document).ready(function ($) {
-		$(".scroll").click(function (event) {
+	jQuery(document).ready(function($) {
+		$(".scroll").click(function(event) {
 			event.preventDefault();
-			$('html,body').animate({ scrollTop: $(this.hash).offset().top }, 1000);
+			$('html,body').animate({
+				scrollTop: $(this.hash).offset().top
+			}, 1000);
 		});
 	});
+
 	function catlistview() {
 		$('#display').hide();
-		document.onclick = function (div) {
+		document.onclick = function(div) {
 			if (div.target.id !== 'search-panel' && div.target.id !== 'search_concept' && div.target.id !== 'srch_pan') {
 				$("#category").hide();
-			}
-			else if (div.target.id == 'search-panel' || div.target.id == 'search_concept' || div.target.id == 'srch_pan') {
+			} else if (div.target.id == 'search-panel' || div.target.id == 'search_concept' || div.target.id == 'srch_pan') {
 				if ($('#category').css('display') != 'none') {
 					$("#category").hide();
-				}
-				else {
+				} else {
 					$("#category").show();
 				}
-			}
-			else {
+			} else {
 				$("#category").show();
 			}
 		}
@@ -54,14 +54,14 @@
 				dangerMode: true,
 				timer: 6000,
 			});
-		}
-		else {
+		} else {
 			copyText.select();
 			copyText.setSelectionRange(0, 999999)
 			document.execCommand("copy");
 			toastr.success('Link copied :- ' + copyText.value);
 		}
 	}
+
 	function downloadapk() {
 		var link = $('#input_apk_link').val();
 		if (link == "" || link == null) {
@@ -73,19 +73,17 @@
 				dangerMode: true,
 				timer: 6000,
 			});
-		}
-		else {
+		} else {
 			window.open('' + link + '', '_blank');
 		}
 	}
+
 	function copyapklink(n) {
 		if (n == 1) {
 			var link = "../../extras/APK/RELEASE/OneStore_version_high.apk";
-		}
-		else if (n == 2) {
+		} else if (n == 2) {
 			var link = "../../extras/APK/RELEASE/OneStore_version_low.apk";
-		}
-		else {
+		} else {
 			var link = "../../extras/APK/RELEASE/OneStore_version_low.apk";
 		}
 		$('#input_apk_link').val(link);
@@ -114,6 +112,7 @@
 		$('#side_nav_bar_lock').css("display", "flex");
 		$('#side_nav_bar_lock').css("z-index", "9999999");
 	}
+
 	function closeNav() {
 		if (typeof NavScrollTop != 'undefined') {
 			var NavScrollNow = getCookieset(NavScrollTop);
@@ -127,11 +126,11 @@
 		$('#side_nav_bar_lock').css("z-index", "-9999999");
 		//document.getElementById("main_all").style.marginLeft= "0";
 	}
-	$('#side_nav_bar_lock').click(function () {
+	$('#side_nav_bar_lock').click(function() {
 		closeNav();
 	});
 	////////////////////////////////BREAK SIDE NAV EVENT/////////////////////////////////////////////////////////////////////////////////////////
-	$('#list_enda').click(function () {
+	$('#list_enda').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -145,7 +144,7 @@
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_enda").css("display", "block");
 	});
-	$('#list_endb').click(function () {
+	$('#list_endb').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
 		$("#side_cat_list_endd").css("display", "none");
@@ -158,7 +157,7 @@
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endb").css("display", "block");
 	});
-	$('#list_endc').click(function () {
+	$('#list_endc').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endd").css("display", "none");
@@ -171,7 +170,7 @@
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endc").css("display", "block");
 	});
-	$('#list_endd').click(function () {
+	$('#list_endd').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -184,7 +183,7 @@
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endd").css("display", "block");
 	});
-	$('#list_ende').click(function () {
+	$('#list_ende').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -197,7 +196,7 @@
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_ende").css("display", "block");
 	});
-	$('#list_endf').click(function () {
+	$('#list_endf').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -210,7 +209,7 @@
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endf").css("display", "block");
 	});
-	$('#list_endg').click(function () {
+	$('#list_endg').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -223,7 +222,7 @@
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endg").css("display", "block");
 	});
-	$('#list_endh').click(function () {
+	$('#list_endh').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -236,7 +235,7 @@
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endh").css("display", "block");
 	});
-	$('#list_endi').click(function () {
+	$('#list_endi').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -249,7 +248,7 @@
 		$("#side_cat_list_end_default").css("display", "none");
 		$("#side_cat_list_endi").css("display", "block");
 	});
-	$('#list_endj').click(function () {
+	$('#list_endj').click(function() {
 		$("#side_cat_list_enda").css("display", "none");
 		$("#side_cat_list_endb").css("display", "none");
 		$("#side_cat_list_endc").css("display", "none");
@@ -266,7 +265,7 @@
 	var dropdown = document.getElementsByClassName("dropdown-btn");
 	var i;
 	for (i = 0; i < dropdown.length; i++) {
-		dropdown[i].addEventListener("click", function () {
+		dropdown[i].addEventListener("click", function() {
 			this.classList.toggle("active");
 			var dropdownContent = this.nextElementSibling;
 			if (dropdownContent.style.display === "block") {
@@ -285,9 +284,8 @@
 				$("#side_cat_list_end_default").css("display", "block");
 				$("#side_nav_content_end_line").css("display", "block");
 				/*CLICK EVENT OVERRIDING USING DISPLAY BLOCK or NONE */
-			}
-			else {
-				$(".dropdown-container").hide();//HIDE ALL OPENED DROPDOWN WHEN OPEN DROPDOWN
+			} else {
+				$(".dropdown-container").hide(); //HIDE ALL OPENED DROPDOWN WHEN OPEN DROPDOWN
 				dropdownContent.style.display = "block";
 			}
 		});
@@ -296,11 +294,11 @@
 <!-------TESTING SIDE-NAV---------->
 <!-------TESTING NAV---------->
 <script type="text/javascript">
-	$(function () {
+	$(function() {
 		var navMain = $(".navbar-collapse"); // avoid dependency on #id
 		// "a:not([data-toggle])" - to avoid issues caused
 		// when you have dropdown inside navbar
-		navMain.on("click", "a:not([data-toggle])", null, function () {
+		navMain.on("click", "a:not([data-toggle])", null, function() {
 			navMain.collapse('hide');
 		});
 	});
@@ -322,33 +320,32 @@
 	var capson_warning = document.getElementsByClassName("capson_warning");
 	var password_field = document.getElementsByClassName('password_fields');
 	for (var i = 0; i < password_field.length; i++) {
-		password_field[i].addEventListener("keyup", function (event) {
+		password_field[i].addEventListener("keyup", function(event) {
 			for (var j = 0; j < capson_warning.length; j++) {
 				if (event.getModifierState("CapsLock")) {
 					capson_warning[j].style.display = "block";
-				}
-				else {
+				} else {
 					capson_warning[j].style.display = "none"
 				}
 			}
 		});
 	}
 	//////////////////////////////////////////////////////////////
-	$(document).mouseup(function (e) {
+	$(document).mouseup(function(e) {
 		if ($(e.target).closest(".mobcategory").length === 0) {
 			$(".mobcategory").hide();
 		}
 	});
+
 	function moblistview() {
 		if ($('.mobcategory').css('display') != 'none') {
 			$(".mobcategory").hide();
-		}
-		else {
+		} else {
 			$(".mobcategory").show();
 		}
 	}
-	$(document).ready(function (f) {
-		$('.mob-panel .dropdown-menu').find('a').click(function (f) {
+	$(document).ready(function(f) {
+		$('.mob-panel .dropdown-menu').find('a').click(function(f) {
 			f.preventDefault();
 			var param = $(this).attr("href").replace("#", "");
 			var concept = $(this).text();
@@ -358,15 +355,15 @@
 	});
 	//////////////////////////////////////////////////////////////
 	//MOBILE MENU
-	$(function () {
-		$("#mobile-menu").click(function () {
+	$(function() {
+		$("#mobile-menu").click(function() {
 			$("#mobile-menu").toggleClass("active");
 		});
 	})
 	//MOBILE MENU
 	//////////////////////////////////////////////////////////////
-	jQuery.fn.putCursorAtEnd = function () {
-		return this.each(function () {
+	jQuery.fn.putCursorAtEnd = function() {
+		return this.each(function() {
 			// Cache references
 			var $el = $(this),
 				el = this;
@@ -379,7 +376,7 @@
 				// Double the length because Opera is inconsistent about whether a carriage return is one character or two.
 				var len = $el.val().length * 2;
 				// Timeout seems to be required for Blink
-				setTimeout(function () {
+				setTimeout(function() {
 					el.setSelectionRange(len, len);
 				}, 1);
 			} else {
@@ -392,8 +389,8 @@
 			this.scrollTop = 999999;
 		});
 	};
-	$(document).ready(function (e) {
-		$('.search-panel .dropdown-menu').find('a').click(function (e) {
+	$(document).ready(function(e) {
+		$('.search-panel .dropdown-menu').find('a').click(function(e) {
 			e.preventDefault();
 			var param = $(this).attr("href").replace("#", "");
 			console.log(param)
@@ -403,28 +400,26 @@
 			$("#category").hide();
 		});
 	});
+
 	function catlistview() {
 		$('#display').hide();
-		document.onclick = function (div) {
+		document.onclick = function(div) {
 			if (div.target.id !== 'search-panel' && div.target.id !== 'search_concept' && div.target.id !== 'srch_pan') {
 				$("#category").hide();
-			}
-			else if (div.target.id == 'search-panel' || div.target.id == 'search_concept' || div.target.id == 'srch_pan') {
+			} else if (div.target.id == 'search-panel' || div.target.id == 'search_concept' || div.target.id == 'srch_pan') {
 				if ($('#category').css('display') != 'none') {
 					$("#category").hide();
-				}
-				else {
+				} else {
 					$("#category").show();
 				}
-			}
-			else {
+			} else {
 				$("#category").show();
 			}
 		}
 	}
 	/*SMALL DIV*/
-	$(document).ready(function (f) {
-		$('.search-panel .dropdown-menu').find('a').click(function (f) {
+	$(document).ready(function(f) {
+		$('.search-panel .dropdown-menu').find('a').click(function(f) {
 			f.preventDefault();
 			var param = $(this).attr("href").replace("#", "");
 			var concept = $(this).text();
@@ -433,26 +428,24 @@
 			$("#category2").hide();
 		});
 	});
+
 	function catlistview2() {
 		$('#display2').hide();
-		document.onclick = function (div) {
+		document.onclick = function(div) {
 			if (div.target.id !== 'search-panel2' && div.target.id !== 'search_concept2' && div.target.id !== 'srch_pan2') {
 				$("#category2").hide();
-			}
-			else if (div.target.id == 'search-panel2' || div.target.id == 'search_concept2' || div.target.id == 'srch_pan2') {
+			} else if (div.target.id == 'search-panel2' || div.target.id == 'search_concept2' || div.target.id == 'srch_pan2') {
 				if ($('#category2').css('display') != 'none') {
 					$("#category2").hide();
-				}
-				else {
+				} else {
 					$("#category2").show();
 				}
-			}
-			else {
+			} else {
 				$("#category2").show();
 			}
 		}
 	}
-	document.onclick = function (div) {
+	document.onclick = function(div) {
 		if (div.target.id !== 'search' && div.target.id !== 'search2') {
 			$("#display").hide();
 			$("#display2").hide();
@@ -464,12 +457,14 @@
 		location.href = "../Account/registered.php";
 		return;
 	}
+
 	function ValidateSigninEmail(mail) {
 		if (/^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/.test(mail)) {
 			return true;
 		}
 		return false;
 	}
+
 	function signin() {
 		var password = document.getElementById("pwd").value;
 		var email = document.getElementById("mobile").value;
@@ -510,117 +505,112 @@
 			document.getElementById("pwd").value = "";
 			document.getElementById("pwd").focus();
 			return;
-		}
-		else {
+		} else {
 			$('.load_btn').show();
 			$('.real_btn').hide();
 			$.ajax({
 				url: "../Common/functions.php", //passing page info
-				data: { "login": 1, "email": email, "password": password },  //form data
-				type: "post",	//post data
-				dataType: "json", 	//datatype=json format
-				timeout: 18000,	//waiting time 3 sec
-				success: function (data) {	//if logging in is success
+				data: {
+					"login": 1,
+					"email": email,
+					"password": password
+				}, //form data
+				type: "post", //post data
+				dataType: "json", //datatype=json format
+				timeout: 18000, //waiting time 3 sec
+				success: function(data) { //if logging in is success
 					if (data.admin == 'true' && data.user == 'true') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						Swal.fire({
-							title: "<span style='font-family-arial'>Log in as</span>",
-							text: "User (or) Store owner",
-							icon: "success",
-							showCancelButton: true,
-							showConfirmButton: true,
-							confirmButtonColor: 'red',
-							confirmButtonText: '<i class="fas fa-store"></i> Admin',
-							cancelButtonColor: 'green',
-							allowOutsideClick: false,
-							cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
-						})
+								title: "<span style='font-family-arial'>Log in as</span>",
+								text: "User (or) Store owner",
+								icon: "success",
+								showCancelButton: true,
+								showConfirmButton: true,
+								confirmButtonColor: 'red',
+								confirmButtonText: '<i class="fas fa-store"></i> Admin',
+								cancelButtonColor: 'green',
+								allowOutsideClick: false,
+								cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
+							})
 							.then((willSubmit) => {
 								if (willSubmit.dismiss) {
 									location.href = "onestore.php";
-								}
-								else if (willSubmit.isConfirmed) {
+								} else if (willSubmit.isConfirmed) {
 									location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
 								}
 							});
 						return;
-					}
-					else if (data.admin == 'true') {
+					} else if (data.admin == 'true') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Success!!!",
-							text: "Admin privileges granted",
-							icon: "success",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Success!!!",
+								text: "Admin privileges granted",
+								icon: "success",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').hide();
 									location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'success') {
+					} else if (data.status == 'success') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Success!!!",
-							text: "Log in Success",
-							icon: "success",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Success!!!",
+								text: "Log in Success",
+								icon: "success",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
-									$(function () {
+									$(function() {
 										document.getElementById("pwd").value = "";
 										location.reload();
 										$('#emppass').hide();
 										$('#myModal').modal('toggle');
 									});
 									return;
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'admin') {
+					} else if (data.status == 'admin') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Success!!!",
-							text: "Admin privileges granted",
-							icon: "success",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Success!!!",
+								text: "Admin privileges granted",
+								icon: "success",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').hide();
 									location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'error') {
+					} else if (data.status == 'error') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Oops!!!",
-							text: "Error logging in",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Oops!!!",
+								text: "Error logging in",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').html("Incorrect Password");
@@ -628,17 +618,16 @@
 									//location.reload();
 								}
 							});
-					}
-					else if (data.status == 'errornotfound') {
+					} else if (data.status == 'errornotfound') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Oops!!!",
-							text: "You are not registered yet",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Oops!!!",
+								text: "You are not registered yet",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').html("You are not registered with us. Please sign up.");
@@ -646,17 +635,16 @@
 									//location.reload();
 								}
 							});
-					}
-					else if (data.status == 'error1') {
+					} else if (data.status == 'error1') {
 						$('.real_btn').show();
 						$('.load_btn').hide();
 						swal({
-							title: "Check your mailbox!!!",
-							text: "Pending email verification",
-							icon: "warning",
-							closeOnClickOutside: false,
-							dangerMode: true,
-						})
+								title: "Check your mailbox!!!",
+								text: "Pending email verification",
+								icon: "warning",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
 							.then((willSubmit) => {
 								if (willSubmit) {
 									$('#emppass').html("Verify your email");
@@ -666,7 +654,7 @@
 							});
 					}
 				},
-				error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 					if (textstatus === "timeout") {
 						$('.real_btn').show();
 						$('.load_btn').side();
@@ -679,16 +667,18 @@
 							timer: 6000,
 						});
 						return;
+					} else {
+						return;
 					}
-					else { return; }
 				}
 			}); //closing ajax
 		}
 	}
 	//<?php
-	//    $fourRandomDigit = mt_rand(1000,9999);
-//    echo $fourRandomDigit;
-// ?>
+		//    $fourRandomDigit = mt_rand(1000,9999);
+		//    echo $fourRandomDigit;
+		//
+		?>
 	/*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 </script>
@@ -724,8 +714,7 @@
 			});
 			document.getElementById("pincode").focus();
 			return;
-		}
-		else if (postcode.length != 6) {
+		} else if (postcode.length != 6) {
 			swal({
 				title: "Oops!!!",
 				text: "Please enter valid pincode !!! ",
@@ -737,11 +726,10 @@
 			document.getElementById("pincode").value = "";
 			document.getElementById("pincode").focus();
 			return;
-		}
-		else {
+		} else {
 			pin = "https://api.postalpincode.in/pincode/" + postcode + "";
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function () {
+			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					locate = JSON.parse(this.responseText);
 					console.log(locate);
@@ -768,49 +756,49 @@
 		//	'<%Session["location"]="'+po+'";%>';//SET JS VALUE TO PHP SESSION VARIABLE
 		$.ajax({
 			url: "../Common/functions.php", //passing page info
-			data: { "location_access": 1, "location": po },  //form data
-			type: "post",	//post data
-			dataType: "json", 	//datatype=json format
-			timeout: 30000,	//waiting time 3 sec
-			success: function (data) {	//if registration is success
+			data: {
+				"location_access": 1,
+				"location": po
+			}, //form data
+			type: "post", //post data
+			dataType: "json", //datatype=json format
+			timeout: 30000, //waiting time 3 sec
+			success: function(data) { //if registration is success
 				if (data.status == 'success') {
 					//CODE TO REMOVE
 					swal({
-						title: "Success!!!",
-						text: "Located Successfully",
-						icon: "success",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Success!!!",
+							text: "Located Successfully",
+							icon: "success",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								location.href = "onestore.php";
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 					//CODE TO REMOVE
-				}
-				else if (data.status == 'error') {
+				} else if (data.status == 'error') {
 					swal({
-						title: "Oops!!!",
-						text: "Couldn't locate your place",
-						icon: "error",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Oops!!!",
+							text: "Couldn't locate your place",
+							icon: "error",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								return;
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 				}
 			},
-			error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+			error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 				if (textstatus === "timeout") {
 					swal({
 						title: "Oops!!!",
@@ -821,8 +809,9 @@
 						timer: 6000,
 					});
 					return;
+				} else {
+					return;
 				}
-				else { return; }
 			}
 		}); //closing ajax
 		document.getElementById("location").innerHTML = "You";
@@ -860,8 +849,7 @@
 			});
 			document.getElementById("regpin").focus();
 			return;
-		}
-		else if (regpin.length != 6) {
+		} else if (regpin.length != 6) {
 			swal({
 				title: "Oops!!!",
 				text: "Please enter valid pincode !!! ",
@@ -873,11 +861,10 @@
 			document.getElementById("regpin").value = "";
 			document.getElementById("regpin").focus();
 			return;
-		}
-		else {
+		} else {
 			pin = "https://api.postalpincode.in/pincode/" + regpin + "";
 			var xmlhttp = new XMLHttpRequest();
-			xmlhttp.onreadystatechange = function () {
+			xmlhttp.onreadystatechange = function() {
 				if (this.readyState == 4 && this.status == 200) {
 					locate = JSON.parse(this.responseText);
 					console.log(locate);
@@ -894,8 +881,7 @@
 						document.getElementById("regpin").value = "";
 						document.getElementById("regpin").focus();
 						return;
-					}
-					else {
+					} else {
 						/*Getting the id of select*/
 						var po = document.getElementById("po_list1");
 						for (i = 0; i < locate[0].PostOffice.length; i++) {
@@ -919,49 +905,49 @@
 		//	'<%Session["location"]="'+po+'";%>';//SET JS VALUE TO PHP SESSION VARIABLE
 		$.ajax({
 			url: "../Common/functions.php", //passing page info
-			data: { "location_access": 1, "location": po },  //form data
-			type: "post",	//post data
-			dataType: "json", 	//datatype=json format
-			timeout: 30000,	//waiting time 3 sec
-			success: function (data) {	//if registration is success
+			data: {
+				"location_access": 1,
+				"location": po
+			}, //form data
+			type: "post", //post data
+			dataType: "json", //datatype=json format
+			timeout: 30000, //waiting time 3 sec
+			success: function(data) { //if registration is success
 				if (data.status == 'success') {
 					//CODE TO REMOVE
 					swal({
-						title: "Success!!!",
-						text: "Located Successfully",
-						icon: "success",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Success!!!",
+							text: "Located Successfully",
+							icon: "success",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								return;
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 					//CODE TO REMOVE
-				}
-				else if (data.status == 'error') {
+				} else if (data.status == 'error') {
 					swal({
-						title: "Oops!!!",
-						text: "Couldn't locate your place",
-						icon: "error",
-						closeOnClickOutside: false,
-						dangerMode: true,
-					})
+							title: "Oops!!!",
+							text: "Couldn't locate your place",
+							icon: "error",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
 						.then((willSubmit) => {
 							if (willSubmit) {
 								return;
-							}
-							else {
+							} else {
 								return;
 							}
 						});
 				}
 			},
-			error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+			error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 				if (textstatus === "timeout") {
 					swal({
 						title: "Oops!!!",
@@ -972,8 +958,9 @@
 						timer: 6000,
 					});
 					return;
+				} else {
+					return;
 				}
-				else { return; }
 			}
 		}); //closing ajax
 		////////////////////////////////////////////////////////////////////////////////////////
@@ -1006,10 +993,10 @@
 <!-------------------------------------------------------------------- >
 	<!-- Bootstrap JS form CDN -->
 <script type="text/javascript">
-	$('#myModal').on('show.bs.modal', function (event) {
+	$('#myModal').on('show.bs.modal', function(event) {
 		$('#myModal').modal('handleUpdate');
 	});
-	$('#myModal2').on('show.bs.modal', function (event) {
+	$('#myModal2').on('show.bs.modal', function(event) {
 		$('myModal2').modal('handleUpdate');
 	});
 	/*
@@ -1043,29 +1030,40 @@
 <script src="../../js/minicart.min.js"></script>
 <!--// Mini Cart //-->
 <script>
-	<!--// Mini Cart //-->
+	<!--// Mini Cart //
+	-->
 	paypal.minicart.render({
-		action: '#'
+	action:
+	'#'
 	});
-	if (~window.location.search.indexOf('reset=true')) {
-		paypal.minicart.reset();
+	if
+	(~window.location.search.indexOf('reset=true'))
+	{
+	paypal.minicart.reset();
 	}
 </script>
 <!--// Mini Cart //-->
 <!-- main slider-banner -->
 <script type="text/javascript">
 	//TO REMOVE PADDING AFTER CLOSING MODAL
-	$(".close").on("hidden", function () {
+	$(".close").on("hidden", function() {
 		$('#strt').css('padding', '0px');
 	});
-	window.addEventListener("click", function (e) {
+	window.addEventListener("click", function(e) {
 		e.stopPropagation();
 		$('body').css('padding-right', '-10px');
 	});
 	//TO REMOVE PADDING AFTER CLOSING MODAL
-	jQuery(document).ready(function () {
-		jQuery('#demo1').skdslider({ 'delay': 5000, 'animationSpeed': 2000, 'showNextPrev': true, 'showPlayButton': true, 'autoSlide': true, 'animationType': 'fading' });
-		jQuery('#responsive').change(function () {
+	jQuery(document).ready(function() {
+		jQuery('#demo1').skdslider({
+			'delay': 5000,
+			'animationSpeed': 2000,
+			'showNextPrev': true,
+			'showPlayButton': true,
+			'autoSlide': true,
+			'animationType': 'fading'
+		});
+		jQuery('#responsive').change(function() {
 			$('#responsive_wrapper').width(jQuery(this).val());
 		});
 	});
@@ -1077,11 +1075,12 @@
 		pagecontainer: '#page',
 		escape: false
 	});
+
 	function cartview() {
 		location.href = "../Cart/cart.php"
 	}
 	//AUTO LOG IN
-	$(document).ready(function () {
+	$(document).ready(function() {
 		/*/////////////////////////////HIDDING LOADER//////////////////////////////////////////////
 			setTimeout(() => {
 			const loader = document.querySelector(".loader");
@@ -1091,7 +1090,7 @@
 			loader1.className += " hidden";
 			loader2.className += " hidden";
 			  }, 3000);
-		/*/////////////////////////////HIDDING LOADER//////////////////////////////////////////////
+		/*/ ////////////////////////////HIDDING LOADER//////////////////////////////////////////////
 		function getCookie(name) {
 			// Split cookie string and get all individual name=value pairs in an array
 			var cookieArr = document.cookie.split(";");
@@ -1110,29 +1109,31 @@
 		}
 		<?php
 		if (isset($_SESSION['id']) && !isset($_SESSION['cart_count'])) {
-			?>
+		?>
 			var email = getCookie("OneStore_email");
 			var pass = getCookie("OneStore_password");
 			if (email != " " && pass != " ") {
 				//$("#strt").hide();
 				$.ajax({
 					url: "../Common/functions.php", //passing page info
-					data: { "login": 1, "email": email, "password": pass },  //form data
-					type: "post",	//post data
-					dataType: "json", 	//datatype=json format
-					timeout: 18000,	//waiting time 3 sec
-					success: function (data) {	//if logging in is success
+					data: {
+						"login": 1,
+						"email": email,
+						"password": pass
+					}, //form data
+					type: "post", //post data
+					dataType: "json", //datatype=json format
+					timeout: 18000, //waiting time 3 sec
+					success: function(data) { //if logging in is success
 						if (data.status == 'success') {
 							//location.href="onestore.php";
-						}
-						else if (data.status == 'admin') {
+						} else if (data.status == 'admin') {
 							location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
-						}
-						else if (data.status == 'error') {
+						} else if (data.status == 'error') {
 							return;
 						}
 					},
-					error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+					error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 						if (textstatus === "timeout") {
 							swal({
 								title: "Oops!!!",
@@ -1144,23 +1145,27 @@
 							});
 							location.href = "onestore.php";
 							return;
+						} else {
+							return;
 						}
-						else { return; }
 					}
 				}); //closing ajax
 			}
-			<?php
+		<?php
 		}
 		if (isset($_SESSION['id']) && !isset($_SESSION['cart_count'])) {
-			?>
+		?>
 			//CART COUNT
 			$.ajax({
 				url: "../Common/functions.php", //passing page info
-				data: { "cartcnt": 1, "user": "<?= $_SESSION['id'] ?>" },  //form data
-				type: "post",	//post data
-				dataType: "json", 	//datatype=json format
-				timeout: 18000,	//waiting time 3 sec
-				success: function (data) {	//if logging in is success
+				data: {
+					"cartcnt": 1,
+					"user": "<?= $_SESSION['id'] ?>"
+				}, //form data
+				type: "post", //post data
+				dataType: "json", //datatype=json format
+				timeout: 18000, //waiting time 3 sec
+				success: function(data) { //if logging in is success
 					if (data.status == "success") {
 						document.getElementById("sm-cartcnt").innerHTML = "";
 						document.getElementById("lg-cartcnt").innerHTML = "";
@@ -1169,14 +1174,15 @@
 						return;
 					}
 				},
-				error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 					if (textstatus === "timeout") {
 						return;
+					} else {
+						return;
 					}
-					else { return; }
 				}
 			}); //closing ajax
-			<?php
+		<?php
 		}
 		?>
 	});
@@ -1189,6 +1195,7 @@
 		}
 		return false;
 	}
+
 	function nlcheckmail() {
 		var nle = document.getElementById("nlmail").value;
 		if (nle == null || nle == "") {
@@ -1202,8 +1209,7 @@
 			});
 			document.getElementById("nlmail").focus();
 			return;
-		}
-		else if (NLValidateEmail(nle) == false) {
+		} else if (NLValidateEmail(nle) == false) {
 			swal({
 				title: "Oops!!!",
 				text: "Invalid email address!!! ",
@@ -1214,15 +1220,17 @@
 			});
 			document.getElementById("nlmail").focus();
 			return false;
-		}
-		else {
+		} else {
 			$.ajax({
 				url: "../Common/functions.php",
-				data: { "nlmailcheck": 1, "email": nle },
+				data: {
+					"nlmailcheck": 1,
+					"email": nle
+				},
 				dataType: "json",
 				type: "post",
 				timeout: 30000,
-				success: function (data) {
+				success: function(data) {
 					if (data.status == 'success') {
 						swal({
 							title: "Added!!!",
@@ -1232,47 +1240,43 @@
 							dangerMode: true,
 							timer: 6000,
 						});
-					}
-					else if (data.status == 'error') {
+					} else if (data.status == 'error') {
 						swal({
-							title: "Oops!!!",
-							text: "Try agan later",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-							timer: 6000,
-						})
+								title: "Oops!!!",
+								text: "Try agan later",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+								timer: 6000,
+							})
 							.then((willSubmit1) => {
 								if (willSubmit1) {
 									location.href = "../Account/login.php"
 									return;
-								}
-								else {
+								} else {
 									return;
 								}
 							});
-					}
-					else if (data.status == 'error2') {
+					} else if (data.status == 'error2') {
 						swal({
-							title: "Not found!!!",
-							text: "Please log in",
-							icon: "error",
-							closeOnClickOutside: false,
-							dangerMode: true,
-							timer: 6000,
-						})
+								title: "Not found!!!",
+								text: "Please log in",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+								timer: 6000,
+							})
 							.then((willSubmit1) => {
 								if (willSubmit1) {
 									//location.href="../Account/login.php"
 									return;
-								}
-								else {
+								} else {
 									return;
 								}
 							});
 					}
 				},
-				error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
 					if (textstatus === "timeout") {
 						swal({
 							title: "Oops!!!",
@@ -1283,8 +1287,9 @@
 							timer: 6000,
 						});
 						return;
+					} else {
+						return;
 					}
-					else { return; }
 				}
 			}); //closing ajax
 		}
@@ -1292,7 +1297,7 @@
 	//Newsletter activation
 	function hostReachable() {
 		// Handle IE and more capable browsers
-		var xhr = new (window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
+		var xhr = new(window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
 		// Open new request as a HEAD to the root hostname with a random param to bust the cache
 		xhr.open("HEAD", "//" + window.location.hostname + "/?rand=" + Math.floor((1 + Math.random()) * 0x10000), false);
 		// Issue request and handle response
@@ -1361,11 +1366,13 @@
 <script src="../../extras/js/main.js"></script>
 <!-- Detail about shops-->
 <script>
-	$(document).ready(function () {
+	$(document).ready(function() {
 		if (typeof scrollTop != 'undefined') {
 			var scrollNow = getCookieset(scrollTop);
-			setTimeout(function () {
-				$("html,body").animate({ scrollTop: scrollNow }, 1500);
+			setTimeout(function() {
+				$("html,body").animate({
+					scrollTop: scrollNow
+				}, 1500);
 			}, 1500);
 		}
 	});

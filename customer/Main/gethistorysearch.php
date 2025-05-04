@@ -427,7 +427,7 @@ if (isset($_REQUEST["name"])) {
   }
   $dynamic_paging .= "</ul></nav></div></div>";
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//NAME CNT
+  //NAME CNT
   if ($getordercnt == 0) {
     $result_con .= '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
@@ -437,4 +437,3 @@ $response['output'] = $result_con;
 $response['status'] = "success";
 header('Content-type: application/json');
 echo json_encode($response);
-?>

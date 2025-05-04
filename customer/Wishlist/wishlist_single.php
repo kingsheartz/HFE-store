@@ -314,13 +314,13 @@ $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);
     }
 </style>
 <script type="text/javascript">
-    $(document).ready(function () {
+    $(document).ready(function() {
         $("#<?= $update_setting_row['privacy'] ?>").prop('checked', true);
         <?php
         if (isset($_GET['setting']) && $_GET['setting'] == 1) {
-            ?>
+        ?>
             $('.settings_row').click();
-            <?php
+        <?php
         }
         ?>
     });
@@ -555,165 +555,165 @@ $rowcount = $row_single_div['checksingle'];
                     ));
                     $rowc = $stmtc->fetch(PDO::FETCH_ASSOC);
                     if ($rowc) {
-                        ?>
-                <div class="col-md-12" style="margin:0px;padding: 0px;">
-                    <div class="product-content-right nopadding-margin"
-                        style="margin:0px;padding: 0px;margin-right:0px;background-color: white;border-radius: 10px;">
-                        <h2 class="sidebar-title"
-                            style="border-left: 5px solid #c50505;border-top-left-radius: 10px;text-align: left;padding-bottom: 30px;padding-top: 20px;background-color: white;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; ">
-                            Wish List <i style="color: red" class="fa fa-heart"></i>
-                            <span style="float: right;margin-right: 5px;margin-top: -16px;">
-                                <input type="button"
-                                    style="max-width: 150px;height: 60px;font-weight: bold;border-top-right-radius: 10px;background-color: #c50505"
-                                    onclick="updateall_cart()" value="Move to cart" id="proceed" name="proceed"
-                                    class="checkout-button button alt wc-forward">
-                            </span>
-                        </h2>
-                        <hr class="make_divc" style="margin-bottom: 0px;margin-top: -10px;">
-                        <div class="woocommerce" style="padding: 0;">
-                            <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;width: 100%">
-                                <?php
-                                $id = $_SESSION['id'];
-                                $sql1 = "select * from wishlist_items where wishlist_id=:wid order by item_description_id";
-                                $stmt1 = $pdo->prepare($sql1);
-                                $stmt1->execute(array(
-                                    ':wid' => $wishlist_id
-                                ));
-                                $dup = array();
-                                if (isset($dup)) {
-                                    unset($dup);
-                                }
-                                $flag = 0;
-                                $item_cnt = 0;
-                                while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
-                                    $wishlist_items_id = $row1['wishlist_items_id'];
-                                    $item_description_id = $row1['item_description_id'];
-                                    $store_id = $row1['store_id'];
-                                    $n = 0;
-                                    $sql2 = "select * from item inner join category on category.category_id=item.category_id
+                ?>
+                        <div class="col-md-12" style="margin:0px;padding: 0px;">
+                            <div class="product-content-right nopadding-margin"
+                                style="margin:0px;padding: 0px;margin-right:0px;background-color: white;border-radius: 10px;">
+                                <h2 class="sidebar-title"
+                                    style="border-left: 5px solid #c50505;border-top-left-radius: 10px;text-align: left;padding-bottom: 30px;padding-top: 20px;background-color: white;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; ">
+                                    Wish List <i style="color: red" class="fa fa-heart"></i>
+                                    <span style="float: right;margin-right: 5px;margin-top: -16px;">
+                                        <input type="button"
+                                            style="max-width: 150px;height: 60px;font-weight: bold;border-top-right-radius: 10px;background-color: #c50505"
+                                            onclick="updateall_cart()" value="Move to cart" id="proceed" name="proceed"
+                                            class="checkout-button button alt wc-forward">
+                                    </span>
+                                </h2>
+                                <hr class="make_divc" style="margin-bottom: 0px;margin-top: -10px;">
+                                <div class="woocommerce" style="padding: 0;">
+                                    <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;width: 100%">
+                                        <?php
+                                        $id = $_SESSION['id'];
+                                        $sql1 = "select * from wishlist_items where wishlist_id=:wid order by item_description_id";
+                                        $stmt1 = $pdo->prepare($sql1);
+                                        $stmt1->execute(array(
+                                            ':wid' => $wishlist_id
+                                        ));
+                                        $dup = array();
+                                        if (isset($dup)) {
+                                            unset($dup);
+                                        }
+                                        $flag = 0;
+                                        $item_cnt = 0;
+                                        while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
+                                            $wishlist_items_id = $row1['wishlist_items_id'];
+                                            $item_description_id = $row1['item_description_id'];
+                                            $store_id = $row1['store_id'];
+                                            $n = 0;
+                                            $sql2 = "select * from item inner join category on category.category_id=item.category_id
        inner join sub_category on category.category_id=sub_category.category_id
        inner join item_description on item_description.item_id=item.item_id
        inner join product_details on item_description.item_description_id=product_details.item_description_id
        inner join store on store.store_id=product_details.store_id
        where item.sub_category_id=sub_category.sub_category_id and item_description.item_description_id=:item_description_id and product_details.store_id=:store_id order by item_description.item_description_id";
-                                    $stmt2 = $pdo->prepare($sql2);
-                                    $stmt2->execute(array(
-                                        ':item_description_id' => $item_description_id,
-                                        ':store_id' => $store_id
-                                    ));
-                                    $mrpsql = "select item.price from item inner join item_description on item_description.item_id=item.item_id where item_description.item_description_id=$item_description_id";
-                                    $mrpstmt = $pdo->query($mrpsql);
-                                    $mrprow = $mrpstmt->fetch(PDO::FETCH_ASSOC);
-                                    $t_mrp = $mrprow['price'];
-                                    while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
-                                        $total = $row2['price'] * $row1['quantity'];
-                                        $save = ($t_mrp * $row1['quantity']) - $total;
-                                        $off = round(($save * 100) / $total);
-                                        $subcat = $row2['sub_category_name'];
-                                        if ($flag == 2) {
-                                            $flag == 0;
-                                        }
-                                        if ($flag == 0) {
-                                            ?>
-                                <div class="container" style="padding: 0px;margin:0;width: 100%">
-                                    <div class="row" style="padding: 0;margin:0;width: 100%;">
-                                        <div class="col-md-12 shop_table cart"
-                                            style="background-color: :#fff;margin: 0px;margin-top: -28px;padding: 0;width: 100%;">
-                                            <?php
-                                        }
+                                            $stmt2 = $pdo->prepare($sql2);
+                                            $stmt2->execute(array(
+                                                ':item_description_id' => $item_description_id,
+                                                ':store_id' => $store_id
+                                            ));
+                                            $mrpsql = "select item.price from item inner join item_description on item_description.item_id=item.item_id where item_description.item_description_id=$item_description_id";
+                                            $mrpstmt = $pdo->query($mrpsql);
+                                            $mrprow = $mrpstmt->fetch(PDO::FETCH_ASSOC);
+                                            $t_mrp = $mrprow['price'];
+                                            while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
+                                                $total = $row2['price'] * $row1['quantity'];
+                                                $save = ($t_mrp * $row1['quantity']) - $total;
+                                                $off = round(($save * 100) / $total);
+                                                $subcat = $row2['sub_category_name'];
+                                                if ($flag == 2) {
+                                                    $flag == 0;
+                                                }
+                                                if ($flag == 0) {
                                         ?>
-                                            <div style="margin-top: 0px;margin-right: 0px;padding: 0;border-right: 2px solid #a2a3a4"
-                                                class="col-md-6 tbl_wi<?= $wishlist_items_id ?>">
-                                                <div style="font-weight: bold;padding: 0;"
-                                                    class="tbl_wi<?= $wishlist_items_id ?> col-md-12">
-                                                    <div style="padding: 0px;"
-                                                        class="tbl_wi<?= $wishlist_items_id ?> col-md-12">
-                                                        <div class="product-name col-md-12" colspan="2"
-                                                            style="padding: 0px;margin-top: 5px;">
-                                                            <p style="margin:0px;margin-bottom: 20px;font-size:17px;">
-                                                            <div
-                                                                style="margin-left: 0px;background-color: #02171e;padding-left: 15px;padding-right:15px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
-                                                                <?php
-                                                                if (strlen($row2['item_name']) >= 50) {
-                                                                    $item_name = substr($row2['item_name'], 0, 50);
-                                                                    $item_name2 = $item_name . "...";
-                                                                } else {
-                                                                    $item_name2 = $row2['item_name'];
-                                                                }
-                                                                ?>
-                                                                <a href="#"
-                                                                    style="color: white;font-weight: normal;text-align:justify;font-size:17px;"><i
-                                                                        class="fa fa-product-hunt" style=""></i>
-                                                                    <?= $item_name2 ?>
-                                                                </a>
-                                                            </div>
-                                                            </p>
-                                                        </div>
-                                                        <div class="cart_item col-md-12"
-                                                            style=" background-color: #fff">
-                                                            <div class="div-wrapper height_setter"
-                                                                style="height: 250px;">
-                                                                <div class="img_check_big col-md-5"
-                                                                    style="padding: 0px;">
-                                                                    <div style="width: 180px;margin-top: 5px;"
-                                                                        class="tbl_wi<?= $wishlist_items_id ?>">
-                                                                        <div class="product-quantity quantity buttons_added"
-                                                                            style="justify-content: center;display: flex;text-align: center;align-items: center;position: relative;margin-right: 0px">
-                                                                            <div class="product_img div-wrapper"
-                                                                                style="padding: 0px; margin-top: 7px;margin-left: 15px;grid-gap: 10px;">
-                                                                                <input style="display:none"
-                                                                                    id="check_s<?= $store_id . "i" . $item_description_id ?>"
-                                                                                    type="checkbox" name="select_item">
-                                                                                <p class="product-thumbnail"
-                                                                                    style="text-align:right;">
-                                                                                    <a
-                                                                                        href="../Product/single.php?id=<?= $row2['item_description_id'] ?>">
-                                                                                        <img style="max-width:180px;max-height:180px;"
-                                                                                            alt="<?= $row2['item_name'] ?>"
-                                                                                            class="shop_thumbnail"
-                                                                                            src="../../images/<?= $row2['category_id'] ?>/<?= $row2['sub_category_id'] ?>/<?= $row2['item_description_id'] ?>.jpg">
-                                                                                    </a>
-                                                                                </p>
+                                                    <div class="container" style="padding: 0px;margin:0;width: 100%">
+                                                        <div class="row" style="padding: 0;margin:0;width: 100%;">
+                                                            <div class="col-md-12 shop_table cart"
+                                                                style="background-color: :#fff;margin: 0px;margin-top: -28px;padding: 0;width: 100%;">
+                                                            <?php
+                                                        }
+                                                            ?>
+                                                            <div style="margin-top: 0px;margin-right: 0px;padding: 0;border-right: 2px solid #a2a3a4"
+                                                                class="col-md-6 tbl_wi<?= $wishlist_items_id ?>">
+                                                                <div style="font-weight: bold;padding: 0;"
+                                                                    class="tbl_wi<?= $wishlist_items_id ?> col-md-12">
+                                                                    <div style="padding: 0px;"
+                                                                        class="tbl_wi<?= $wishlist_items_id ?> col-md-12">
+                                                                        <div class="product-name col-md-12" colspan="2"
+                                                                            style="padding: 0px;margin-top: 5px;">
+                                                                            <p style="margin:0px;margin-bottom: 20px;font-size:17px;">
+                                                                            <div
+                                                                                style="margin-left: 0px;background-color: #02171e;padding-left: 15px;padding-right:15px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
+                                                                                <?php
+                                                                                if (strlen($row2['item_name']) >= 50) {
+                                                                                    $item_name = substr($row2['item_name'], 0, 50);
+                                                                                    $item_name2 = $item_name . "...";
+                                                                                } else {
+                                                                                    $item_name2 = $row2['item_name'];
+                                                                                }
+                                                                                ?>
+                                                                                <a href="#"
+                                                                                    style="color: white;font-weight: normal;text-align:justify;font-size:17px;"><i
+                                                                                        class="fa fa-product-hunt" style=""></i>
+                                                                                    <?= $item_name2 ?>
+                                                                                </a>
                                                                             </div>
+                                                                            </p>
                                                                         </div>
-                                                                    </div>
-                                                                </div>
-                                                                <div class="tbl_wi<?= $wishlist_items_id ?> item_description_td col-md-7 product-img"
-                                                                    style="padding:0;">
-                                                                    <div class=" full-size-cart-store-div"
-                                                                        style="padding: 0px;margin-left: 20px;width: 200px;">
-                                                                        <p
-                                                                            style="z-index: 1;text-align:left;margin-top: 15px;">
-                                                                            <span
-                                                                                style='font-family: arial;color:#006904;font-weight: bold;text-decoration: none;font-size: 12px'>You
-                                                                                Save &#8377; <span
-                                                                                    id="save_s<?= $store_id . "i" . $item_description_id ?>"
-                                                                                    style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px">
-                                                                                    <?= $save ?>
-                                                                                </span> (<span
-                                                                                    style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"
-                                                                                    id="off_s<?= $store_id . "i" . $item_description_id ?>">
-                                                                                    <?= $off ?>
-                                                                                </span>%)
-                                                                            </span>
-                                                                        </p>
-                                                                        <p class="product-price"
-                                                                            style="z-index: 1;text-align:left;margin-top: 10px;;font-weight: bold;font-size: 2vw">
-                                                                            <span class="amount">&#8377;<span
-                                                                                    id="total_s<?= $store_id . "i" . $item_description_id ?>">
-                                                                                    <?= $total ?>
-                                                                                </span> <i style="color: #303030"
-                                                                                    class="fa fa-tags">&nbsp;<del
-                                                                                        style="color: #999;font-weight:normal;font-size: 13px;">&#8377;</del></i><del
-                                                                                    style="color: #999;font-weight:normal;font-size: 13px;"
-                                                                                    id="mrp_s<?= $store_id . "i" . $item_description_id ?>"
-                                                                                    style="text-decoration:">
-                                                                                    <?= (int) $t_mrp * (int) $row1['quantity'] ?>
-                                                                                </del></span>
-                                                                        </p>
-                                                                    </div>
-                                                                    <div>
-                                                                        <!--FEATURES-->
+                                                                        <div class="cart_item col-md-12"
+                                                                            style=" background-color: #fff">
+                                                                            <div class="div-wrapper height_setter"
+                                                                                style="height: 250px;">
+                                                                                <div class="img_check_big col-md-5"
+                                                                                    style="padding: 0px;">
+                                                                                    <div style="width: 180px;margin-top: 5px;"
+                                                                                        class="tbl_wi<?= $wishlist_items_id ?>">
+                                                                                        <div class="product-quantity quantity buttons_added"
+                                                                                            style="justify-content: center;display: flex;text-align: center;align-items: center;position: relative;margin-right: 0px">
+                                                                                            <div class="product_img div-wrapper"
+                                                                                                style="padding: 0px; margin-top: 7px;margin-left: 15px;grid-gap: 10px;">
+                                                                                                <input style="display:none"
+                                                                                                    id="check_s<?= $store_id . "i" . $item_description_id ?>"
+                                                                                                    type="checkbox" name="select_item">
+                                                                                                <p class="product-thumbnail"
+                                                                                                    style="text-align:right;">
+                                                                                                    <a
+                                                                                                        href="../Product/single.php?id=<?= $row2['item_description_id'] ?>">
+                                                                                                        <img style="max-width:180px;max-height:180px;"
+                                                                                                            alt="<?= $row2['item_name'] ?>"
+                                                                                                            class="shop_thumbnail"
+                                                                                                            src="../../images/<?= $row2['category_id'] ?>/<?= $row2['sub_category_id'] ?>/<?= $row2['item_description_id'] ?>.jpg">
+                                                                                                    </a>
+                                                                                                </p>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                                <div class="tbl_wi<?= $wishlist_items_id ?> item_description_td col-md-7 product-img"
+                                                                                    style="padding:0;">
+                                                                                    <div class=" full-size-cart-store-div"
+                                                                                        style="padding: 0px;margin-left: 20px;width: 200px;">
+                                                                                        <p
+                                                                                            style="z-index: 1;text-align:left;margin-top: 15px;">
+                                                                                            <span
+                                                                                                style='font-family: arial;color:#006904;font-weight: bold;text-decoration: none;font-size: 12px'>You
+                                                                                                Save &#8377; <span
+                                                                                                    id="save_s<?= $store_id . "i" . $item_description_id ?>"
+                                                                                                    style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px">
+                                                                                                    <?= $save ?>
+                                                                                                </span> (<span
+                                                                                                    style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"
+                                                                                                    id="off_s<?= $store_id . "i" . $item_description_id ?>">
+                                                                                                    <?= $off ?>
+                                                                                                </span>%)
+                                                                                            </span>
+                                                                                        </p>
+                                                                                        <p class="product-price"
+                                                                                            style="z-index: 1;text-align:left;margin-top: 10px;;font-weight: bold;font-size: 2vw">
+                                                                                            <span class="amount">&#8377;<span
+                                                                                                    id="total_s<?= $store_id . "i" . $item_description_id ?>">
+                                                                                                    <?= $total ?>
+                                                                                                </span> <i style="color: #303030"
+                                                                                                    class="fa fa-tags">&nbsp;<del
+                                                                                                        style="color: #999;font-weight:normal;font-size: 13px;">&#8377;</del></i><del
+                                                                                                    style="color: #999;font-weight:normal;font-size: 13px;"
+                                                                                                    id="mrp_s<?= $store_id . "i" . $item_description_id ?>"
+                                                                                                    style="text-decoration:">
+                                                                                                    <?= (int) $t_mrp * (int) $row1['quantity'] ?>
+                                                                                                </del></span>
+                                                                                        </p>
+                                                                                    </div>
+                                                                                    <div>
+                                                                                        <!--FEATURES-->
                                                                                         <ul>
                                                                                             <li class="large_specs_seen"><span
                                                                                                     class="a-list-item">
@@ -759,7 +759,7 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                                                                                                         $rowfeature_name = $stmtfeature_name->fetch(PDO::FETCH_ASSOC);
                                                                                                     }
                                                                                                     if ($features[$f] == "color") {
-                                                                                                        ?>
+                                                                                            ?>
                                                                                                         <li class="sc-product-variation">
                                                                                                             <span class="a-list-item">
                                                                                                                 <span
@@ -769,31 +769,31 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                                                                                                                     style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
                                                                                                             </span>
                                                                                                         </li>
-                                                                                                        <?php
+                                                                                                    <?php
                                                                                                     } else if ($features[$f] == "weight") {
-                                                                                                        ?>
-                                                                                                            <li class="sc-product-variation">
-                                                                                                                <span class="a-list-item">
-                                                                                                                    <span
-                                                                                                                        class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
-                                                                                                                        </b></span>
-                                                                                                                    <span class="a-size-small"
-                                                                                                                        style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
-                                                                                                                </span>
-                                                                                                            </li>
-                                                                                                        <?php
+                                                                                                    ?>
+                                                                                                        <li class="sc-product-variation">
+                                                                                                            <span class="a-list-item">
+                                                                                                                <span
+                                                                                                                    class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
+                                                                                                                    </b></span>
+                                                                                                                <span class="a-size-small"
+                                                                                                                    style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
+                                                                                                            </span>
+                                                                                                        </li>
+                                                                                                    <?php
                                                                                                     } else {
-                                                                                                        ?>
-                                                                                                            <li class="sc-product-variation">
-                                                                                                                <span class="a-list-item">
-                                                                                                                    <span
-                                                                                                                        class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
-                                                                                                                        </b></span>
-                                                                                                                    <span
-                                                                                                                        class="a-size-small"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
-                                                                                                                </span>
-                                                                                                            </li>
-                                                                                                        <?php
+                                                                                                    ?>
+                                                                                                        <li class="sc-product-variation">
+                                                                                                            <span class="a-list-item">
+                                                                                                                <span
+                                                                                                                    class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
+                                                                                                                    </b></span>
+                                                                                                                <span
+                                                                                                                    class="a-size-small"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
+                                                                                                            </span>
+                                                                                                        </li>
+                                                                                            <?php
                                                                                                     }
                                                                                                 }
                                                                                                 $f++;
@@ -864,17 +864,17 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                                                             $row_single_div = $stmt_single_div->fetch(PDO::FETCH_ASSOC);
                                                             $rowcount = $row_single_div['checksingle'];
                                                             if ($flag == 2 || $rowcount == 1) {
-                                                                ?>
+                                                            ?>
                                                             </div>
                                                         </div>
                                                     </div>
-                                                    <?php
-                                                            }
-                                    }
-                                    ?>
                                             <?php
-                                }
-                                ?>
+                                                            }
+                                                        }
+                                            ?>
+                                        <?php
+                                        }
+                                        ?>
                                     </form>
                                 </div>
                                 <hr class="make_divc" style="margin-top: 40px;margin-bottom: 20px;"> <br>
@@ -891,7 +891,7 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                         <center style="margin-bottom:0px;margin-top: 50px;">
                             <h4>Need more ?<a href="../Main/onestore.php"> Start adding!</a></h4>
                         </center>
-                        <?php
+                    <?php
                     } else {
                         /*COLOR PICKER*/
                         $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
@@ -900,8 +900,7 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                         do {
                             $rancolor1 = array_rand($color, 1);
                             $rancolor2 = array_rand($color, 1);
-                        }
-                        while ($rancolor1 == $rancolor2);
+                        } while ($rancolor1 == $rancolor2);
                         if ($bgcolor[$rancolor1] == "cyan" || $bgcolor[$rancolor1] == "#FF6666" || $bgcolor[$rancolor1] == "#E6BF00") {
                             $c1 = "black";
                         }
@@ -920,8 +919,7 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                             $rand_sub_id2 = randomGen('1', $sub_cnt, (int) $sub_cnt);
                             $rand_sub_id2_rand2 = array_rand($rand_sub_id2, 1);
                             $rand_sub_id2 = $rand_sub_id2[$rand_sub_id2_rand2];
-                        }
-                        while ($rand_sub_id1 == $rand_sub_id2);
+                        } while ($rand_sub_id1 == $rand_sub_id2);
                         $catsql1 = "select* from sub_category where sub_category_id=" . (int) $rand_sub_id1;
                         $catstmt1 = $pdo->query($catsql1);
                         $sub_catrow1 = $catstmt1->fetch(PDO::FETCH_ASSOC);
@@ -934,7 +932,7 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                         $cat_id2 = $sub_catrow2['category_id'];
                         $sub_cat_id2 = $sub_catrow2['sub_category_id'];
                         $sub_cat_name2 = $sub_catrow2['sub_category_name'];
-                        ?>
+                    ?>
                         <div class="row emp_cart">
                             <div class="product-content-right">
                                 <center><img style="justify-content: center;max-height: 288px;" class="sidebar-title"
@@ -967,12 +965,12 @@ where item_description.item_description_id=:item_description_id and store_id=:st
     inner join sub_category on category.category_id=sub_category.category_id
     where  sub_category.category_id=$cat_id1 and sub_category.sub_category_id=$sub_cat_id1 and item.sub_category_id=$sub_cat_id1 ");
                                         while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
-                                            ?>
+                                        ?>
                                             <a href="../Product/single.php?id=<?= $row1['item_description_id'] ?>"><img
                                                     title="<?= $row1['item_name'] ?> " alt=" <?= $row1['item_name'] ?>"
                                                     class="new_size"
                                                     src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['item_description_id'] ?>.jpg"></a>
-                                            <?php
+                                        <?php
                                         }
                                         ?>
                                     </div>
@@ -999,12 +997,12 @@ where item_description.item_description_id=:item_description_id and store_id=:st
     inner join sub_category on category.category_id=sub_category.category_id
     where  sub_category.category_id=$cat_id2 and sub_category.sub_category_id=$sub_cat_id2 and item.sub_category_id=$sub_cat_id2");
                                         while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
-                                            ?>
+                                        ?>
                                             <a href="../Product/single.php?id=<?= $row1['item_description_id'] ?>"><img
                                                     title="<?= $row1['item_name'] ?> " alt=" <?= $row1['item_name'] ?>"
                                                     class="new_size"
                                                     src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['item_description_id'] ?>.jpg"></a>
-                                            <?php
+                                        <?php
                                         }
                                         ?>
                                     </div>
@@ -1012,7 +1010,7 @@ where item_description.item_description_id=:item_description_id and store_id=:st
                             </div>
                         </div>
                         <div class="col-md-4 small" id="small_screen"></div>
-                        <?php
+                <?php
                     }
                 }
                 ?>
@@ -1037,7 +1035,7 @@ require "../Main/footer.php";
     function update_my_list() {
         var listname = document.getElementById('wishlist_name_input').value;
         var listdescription = document.getElementById('wishlist_description_input').value;
-        var wishlist_id =<?= $_GET['wishlist_id'] ?>;
+        var wishlist_id = <?= $_GET['wishlist_id'] ?>;
         var privacy_check = document.getElementsByName('privacy');
         for (i = 0; i < privacy_check.length; i++) {
             if (privacy_check[i].checked) {
@@ -1045,25 +1043,31 @@ require "../Main/footer.php";
             }
         }
         Swal.fire({
-            text: "Updating your list  !!!",
-            icon: "warning",
-            showCancelButton: true,
-            showConfirmButton: true,
-            confirmButtonColor: 'red',
-            allowOutsideClick: false,
-            confirmButtonText: '<i class="fa fa-close"></i> Close',
-            cancelButtonColor: 'green',
-            cancelButtonText: '<i class="fa fa-check"></i> OK'
-        })
+                text: "Updating your list  !!!",
+                icon: "warning",
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonColor: 'red',
+                allowOutsideClick: false,
+                confirmButtonText: '<i class="fa fa-close"></i> Close',
+                cancelButtonColor: 'green',
+                cancelButtonText: '<i class="fa fa-check"></i> OK'
+            })
             .then((willSubmit) => {
                 if (willSubmit.dismiss) {
                     $.ajax({
                         url: "../Common/functions.php", //passing page info
-                        data: { "update_list": 1, "listname": listname, "listdescription": listdescription, "privacy": privacy, "wishlist_id": wishlist_id },  //form data
-                        type: "post",   //post data
-                        dataType: "json",   //datatype=json format
-                        timeout: 30000,   //waiting time 30 sec
-                        success: function (data) {    //if registration is success
+                        data: {
+                            "update_list": 1,
+                            "listname": listname,
+                            "listdescription": listdescription,
+                            "privacy": privacy,
+                            "wishlist_id": wishlist_id
+                        }, //form data
+                        type: "post", //post data
+                        dataType: "json", //datatype=json format
+                        timeout: 30000, //waiting time 30 sec
+                        success: function(data) { //if registration is success
                             if (data.status == 'success') {
                                 swal({
                                     title: "Updated!!!",
@@ -1072,8 +1076,7 @@ require "../Main/footer.php";
                                     timer: 6000,
                                 });
                                 return;
-                            }
-                            else {
+                            } else {
                                 swal({
                                     title: "Try again!!!",
                                     icon: "error",
@@ -1083,7 +1086,7 @@ require "../Main/footer.php";
                                 return;
                             }
                         },
-                        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+                        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                             if (textstatus === "timeout") {
                                 swal({
                                     title: "Oops!!!",
@@ -1094,19 +1097,23 @@ require "../Main/footer.php";
                                     timer: 6000,
                                 });
                                 return;
+                            } else {
+                                return;
                             }
-                            else { return; }
                         }
                     }); //closing ajax
+                } else if (willSubmit.isConfirmed) {
+                    return false;
                 }
-                else if (willSubmit.isConfirmed) { return false; }
             });
         return false;
     }
+
     function changed_details() {
         $('#createlist').prop('disabled', false);
         listenchanges();
     }
+
     function succeeded() {
         var wishlist_name_input = document.getElementById("wishlist_name_input").value;
         var oldwishlist_name_input = '<?= $update_setting_row['list_name'] ?>';
@@ -1124,28 +1131,26 @@ require "../Main/footer.php";
         if (oldwishlist_description_input == "" || oldwishlist_description_input == null) {
             if ((wishlist_description_input != "") || (wishlist_description_input != null) || (wishlist_name_input != oldwishlist_name_input) || (curr_privacy != oldprivacy)) {
                 $('#createlist').prop('disabled', false);
-            }
-            else if ((wishlist_description_input == oldwishlist_description_input) && (wishlist_name_input == oldwishlist_name_input) && (curr_privacy == oldprivacy)) {
+            } else if ((wishlist_description_input == oldwishlist_description_input) && (wishlist_name_input == oldwishlist_name_input) && (curr_privacy == oldprivacy)) {
                 $('#createlist').prop('disabled', true);
             }
-        }
-        else {
+        } else {
             if ((wishlist_name_input != oldwishlist_name_input) || (wishlist_description_input != oldwishlist_description_input) || (curr_privacy != oldprivacy)) {
                 $('#createlist').prop('disabled', false);
-            }
-            else if ((wishlist_name_input == oldwishlist_name_input) && (wishlist_description_input == oldwishlist_description_input) && (curr_privacy == oldprivacy)) {
+            } else if ((wishlist_name_input == oldwishlist_name_input) && (wishlist_description_input == oldwishlist_description_input) && (curr_privacy == oldprivacy)) {
                 $('#createlist').prop('disabled', true);
             }
         }
+
         function privacycheck() {
             if (curr_privacy != oldprivacy) {
                 $('#createlist').prop('disabled', false);
-            }
-            else if (curr_privacy == oldprivacy) {
+            } else if (curr_privacy == oldprivacy) {
                 $('#createlist').prop('disabled', true);
             }
         }
     }
+
     function listenchanges() {
         var wishlist_name_input = document.getElementById("wishlist_name_input").value;
         var oldwishlist_name_input = '<?= $update_setting_row['list_name'] ?>';
@@ -1156,8 +1161,7 @@ require "../Main/footer.php";
             if (wishlist_name_input != oldwishlist_name_input) {
                 $('#hide_fn').show();
                 $('#hide_fn1').show();
-            }
-            else if (wishlist_name_input == oldwishlist_name_input) {
+            } else if (wishlist_name_input == oldwishlist_name_input) {
                 $('#hide_fn').show();
                 $('#hide_fn1').hide();
             }
@@ -1168,18 +1172,15 @@ require "../Main/footer.php";
                 if ((wishlist_description_input != "") || (wishlist_description_input != null)) {
                     $('#hide_add').show();
                     $('#hide_add1').show();
-                }
-                else if ((wishlist_description_input == "") || (wishlist_description_input == null)) {
+                } else if ((wishlist_description_input == "") || (wishlist_description_input == null)) {
                     $('#hide_add').show();
                     $('#hide_add1').hide();
                 }
-            }
-            else {
+            } else {
                 if (wishlist_description_input != oldwishlist_description_input) {
                     $('#hide_add').show();
                     $('#hide_add1').show();
-                }
-                else if (wishlist_description_input == oldwishlist_description_input) {
+                } else if (wishlist_description_input == oldwishlist_description_input) {
                     $('#hide_add').show();
                     $('#hide_add1').hide();
                 }
@@ -1187,6 +1188,7 @@ require "../Main/footer.php";
         }
         succeeded();
     }
+
     function dis_fn() {
         var wishlist_name_input = document.getElementById("wishlist_name_input").value;
         var oldwishlist_name_input = '<?= $update_setting_row['list_name'] ?>';
@@ -1203,11 +1205,10 @@ require "../Main/footer.php";
             document.getElementById("wishlist_name_input").readOnly = false;
             document.getElementById("wishlist_name_input").focus();
             var updatedetailInput = $("#wishlist_name_input");
-            updatedetailInput.putCursorAtEnd().on("focus", function () {
+            updatedetailInput.putCursorAtEnd().on("focus", function() {
                 updatedetailInput.putCursorAtEnd()
             });
-        }
-        else {
+        } else {
             $('#dis_fn').show();
             $('#hide_fn').hide();
             $('#hide_fn1').hide();
@@ -1215,6 +1216,7 @@ require "../Main/footer.php";
         }
         succeeded();
     }
+
     function reset_fn() {
         var wishlist_name_input = document.getElementById("wishlist_name_input").value;
         var oldwishlist_name_input = '<?= $update_setting_row['list_name'] ?>';
@@ -1222,8 +1224,7 @@ require "../Main/footer.php";
             $('#dis_fn').show();
             $('#hide_fn').hide();
             $('#hide_fn1').hide();
-        }
-        else if (($('#hide_fn').css('display') != 'none') && ($('#hide_fn1').css('display') == 'none')) {
+        } else if (($('#hide_fn').css('display') != 'none') && ($('#hide_fn1').css('display') == 'none')) {
             $('#dis_fn').show();
             $('#hide_fn').hide();
         }
@@ -1231,6 +1232,7 @@ require "../Main/footer.php";
         document.getElementById("wishlist_name_input").readOnly = true;
         succeeded();
     }
+
     function dis_add() {
         var wishlist_description_input = document.getElementById("wishlist_description_input").value;
         var oldwishlist_description_input = '<?= $update_setting_row['wishlist_description'] ?>';
@@ -1240,13 +1242,11 @@ require "../Main/footer.php";
                     $('#dis_add').hide();
                     $('#hide_add').show();
                     $('#hide_add1').show();
-                }
-                else if ((wishlist_description_input == "") || (wishlist_description_input == null)) {
+                } else if ((wishlist_description_input == "") || (wishlist_description_input == null)) {
                     $('#dis_add').hide();
                     $('#hide_add').show();
                 }
-            }
-            else {
+            } else {
                 if (wishlist_description_input == oldwishlist_description_input) {
                     $('#dis_add').hide();
                     $('#hide_add').show();
@@ -1260,11 +1260,10 @@ require "../Main/footer.php";
             document.getElementById("wishlist_description_input").readOnly = false;
             document.getElementById("wishlist_description_input").focus();
             var updatedetailInput = $("#wishlist_description_input");
-            updatedetailInput.putCursorAtEnd().on("focus", function () {
+            updatedetailInput.putCursorAtEnd().on("focus", function() {
                 updatedetailInput.putCursorAtEnd()
             });
-        }
-        else {
+        } else {
             $('#dis_add').show();
             $('#hide_add').hide();
             $('#hide_add1').hide();
@@ -1272,6 +1271,7 @@ require "../Main/footer.php";
         }
         succeeded();
     }
+
     function reset_add() {
         var wishlist_description_input = document.getElementById("wishlist_description_input").value;
         var oldwishlist_description_input = '<?= $update_setting_row['wishlist_description'] ?>';
@@ -1279,8 +1279,7 @@ require "../Main/footer.php";
             $('#dis_add').show();
             $('#hide_add').hide();
             $('#hide_add1').hide();
-        }
-        else if (($('#hide_add').css('display') != 'none') && ($('#hide_add1').css('display') == 'none')) {
+        } else if (($('#hide_add').css('display') != 'none') && ($('#hide_add1').css('display') == 'none')) {
             $('#dis_add').show();
             $('#hide_add').hide();
         }
@@ -1299,22 +1298,29 @@ require "../Main/footer.php";
         var total_amt = document.getElementById('total_s' + store_id + "i" + item_description_id + '').innerHTML;
         //1=booking;2=cash_on_delivery
         var order_type = 'booked';
-        var id =<?= $id ?>;
+        var id = <?= $id ?>;
         $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "update_user_cart": 1, "item_description_id": item_description_id, "store_id": store_id, "quantity": 1, "total_amt": total_amt, "order_type": order_type },  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+                "update_user_cart": 1,
+                "item_description_id": item_description_id,
+                "store_id": store_id,
+                "quantity": 1,
+                "total_amt": total_amt,
+                "order_type": order_type
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
                 if (data.status == 'success') {
                     swal({
-                        title: "Updated!!!",
-                        text: "Cart is updated",
-                        icon: "success",
-                        closeOnClickOutside: false,
-                        dangerMode: true,
-                    })
+                            title: "Updated!!!",
+                            text: "Cart is updated",
+                            icon: "success",
+                            closeOnClickOutside: false,
+                            dangerMode: true,
+                        })
                         .then((willSubmit1) => {
                             if (willSubmit1) {
                                 //document.getElementById('tot_val1').innerHTML="";
@@ -1324,14 +1330,13 @@ require "../Main/footer.php";
                                 document.getElementById("sm-cartcnt").innerHTML = data.cartcnt;
                                 document.getElementById("lg-cartcnt").innerHTML = data.cartcnt;
                                 return;
-                            }
-                            else {
+                            } else {
                                 return;
                             }
                         });
                 }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                 if (textstatus === "timeout") {
                     swal({
                         title: "Oops!!!",
@@ -1342,8 +1347,9 @@ require "../Main/footer.php";
                         timer: 6000,
                     });
                     return;
+                } else {
+                    return;
                 }
-                else { return; }
             }
         }); //closing ajax
     }
@@ -1378,28 +1384,35 @@ require "../Main/footer.php";
             ));
             while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
                 $subcat = $row2['sub_category_name'];
-                ?>
-        var total_amt = document.getElementById('total_s' + '<?= $store_id . "i" . $item_description_id ?>').innerHTML;
+        ?>
+                var total_amt = document.getElementById('total_s' + '<?= $store_id . "i" . $item_description_id ?>').innerHTML;
                 //1=booking;2=cash_on_delivery
                 var order_type = 'booked';
-                var id =<?= $id ?>;
-                var item_description_id =<?= $item_description_id ?>;
-                var store_id =<?= $store_id ?>;
+                var id = <?= $id ?>;
+                var item_description_id = <?= $item_description_id ?>;
+                var store_id = <?= $store_id ?>;
                 $.ajax({
                     url: "../Common/functions.php", //passing page info
-                    data: { "update_user_cart": 1, "item_description_id": item_description_id, "store_id": store_id, "quantity": 1, "total_amt": total_amt, "order_type": order_type },  //form data
-                    type: "post",   //post data
-                    dataType: "json",   //datatype=json format
-                    timeout: 30000,   //waiting time 30 sec
-                    success: function (data) {    //if registration is success
+                    data: {
+                        "update_user_cart": 1,
+                        "item_description_id": item_description_id,
+                        "store_id": store_id,
+                        "quantity": 1,
+                        "total_amt": total_amt,
+                        "order_type": order_type
+                    }, //form data
+                    type: "post", //post data
+                    dataType: "json", //datatype=json format
+                    timeout: 30000, //waiting time 30 sec
+                    success: function(data) { //if registration is success
                         if (data.status == 'success') {
                             swal({
-                                title: "Updated!!!",
-                                text: "Cart is updated",
-                                icon: "success",
-                                closeOnClickOutside: false,
-                                dangerMode: true,
-                            })
+                                    title: "Updated!!!",
+                                    text: "Cart is updated",
+                                    icon: "success",
+                                    closeOnClickOutside: false,
+                                    dangerMode: true,
+                                })
                                 .then((willSubmit1) => {
                                     if (willSubmit1) {
                                         //document.getElementById('tot_val1').innerHTML="";
@@ -1409,14 +1422,13 @@ require "../Main/footer.php";
                                         document.getElementById("sm-cartcnt").innerHTML = data.cartcnt;
                                         document.getElementById("lg-cartcnt").innerHTML = data.cartcnt;
                                         return;
-                                    }
-                                    else {
+                                    } else {
                                         return;
                                     }
                                 });
                         }
                     },
-                    error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+                    error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                         if (textstatus === "timeout") {
                             swal({
                                 title: "Oops!!!",
@@ -1427,53 +1439,56 @@ require "../Main/footer.php";
                                 timer: 6000,
                             });
                             return;
+                        } else {
+                            return;
                         }
-                        else { return; }
                     }
                 }); //closing ajax
-<?php
+        <?php
             }
         }
         ?>
-}
+    }
     //DELETE FROM CART
     function remove_item(wishlist_items_id) {
         var wishlist_items_id = wishlist_items_id;
         swal({
-            title: "Remove !!!",
-            text: "Are you sure!!! ",
-            icon: "warning",
-            buttons: true,
-            dangerMode: true,
-            closeOnClickOutside: false,
-            closeOnEsc: false,
-            buttons: true,
-            buttons: ["Cancel", "Remove"],
-        })
+                title: "Remove !!!",
+                text: "Are you sure!!! ",
+                icon: "warning",
+                buttons: true,
+                dangerMode: true,
+                closeOnClickOutside: false,
+                closeOnEsc: false,
+                buttons: true,
+                buttons: ["Cancel", "Remove"],
+            })
             .then((willSubmit) => {
                 if (willSubmit) {
                     $.ajax({
                         url: "../Common/functions.php", //passing page info
-                        data: { "wishlist_remove_item": 1, "wishlist_items_id": wishlist_items_id },  //form data
-                        type: "post",   //post data
-                        dataType: "json",   //datatype=json format
-                        timeout: 30000,   //waiting time 30 sec
-                        success: function (data) {    //if registration is success
+                        data: {
+                            "wishlist_remove_item": 1,
+                            "wishlist_items_id": wishlist_items_id
+                        }, //form data
+                        type: "post", //post data
+                        dataType: "json", //datatype=json format
+                        timeout: 30000, //waiting time 30 sec
+                        success: function(data) { //if registration is success
                             if (data.status == 'success') {
                                 if (data.cartcnt == 0) {
                                     swal({
-                                        title: "Empty!!!",
-                                        text: "Your list is empty",
-                                        icon: "warning",
-                                        closeOnClickOutside: false,
-                                        dangerMode: true,
-                                    })
+                                            title: "Empty!!!",
+                                            text: "Your list is empty",
+                                            icon: "warning",
+                                            closeOnClickOutside: false,
+                                            dangerMode: true,
+                                        })
                                         .then((willSubmit1) => {
                                             if (willSubmit1) {
                                                 location.href = "../Wishlist/wishlist_single.php";
                                                 return;
-                                            }
-                                            else {
+                                            } else {
                                                 return;
                                             }
                                         });
@@ -1485,13 +1500,12 @@ require "../Main/footer.php";
                                     return;
                                 }*/
                                 else {
-                                    $("." + data.divhide).fadeOut('slow', function (c) {
+                                    $("." + data.divhide).fadeOut('slow', function(c) {
                                         $("." + data.divhide).hide();
                                         return;
                                     });
                                 }
-                            }
-                            else {
+                            } else {
                                 swal({
                                     title: "Try again!!!",
                                     icon: "error",
@@ -1501,7 +1515,7 @@ require "../Main/footer.php";
                                 return;
                             }
                         },
-                        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+                        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                             if (textstatus === "timeout") {
                                 swal({
                                     title: "Oops!!!",
@@ -1512,12 +1526,14 @@ require "../Main/footer.php";
                                     timer: 6000,
                                 });
                                 return;
+                            } else {
+                                return;
                             }
-                            else { return; }
                         }
                     }); //closing ajax
+                } else {
+                    return;
                 }
-                else { return; }
             });
     }
     //SELECT BOX OPERATION
@@ -1526,17 +1542,15 @@ require "../Main/footer.php";
         var item_description_id = item_description_id;
         var mrp = tmrp;
         old_value = $('#sel_s' + store_id + 'i' + item_description_id + ' :selected').val();
-        if (old_value == '0') {//your specific condition
+        if (old_value == '0') { //your specific condition
             remove_item(store_id, item_id);
             document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = document.getElementById('sel_opt_s' + store_id + 'i' + item_description_id).value;
             return;
-        }
-        else if (old_value == '10') {
+        } else if (old_value == '10') {
             $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
             $('#qnty_s' + store_id + 'i' + item_description_id + '').show();
             $('#btn_s' + store_id + 'i' + item_description_id + '').hide();
-        }
-        else {
+        } else {
             total(store_id, item_description_id, mrp);
         }
     }
@@ -1558,12 +1572,12 @@ require "../Main/footer.php";
             if ($('#btn_s' + store_id + 'i' + item_description_id).val() > 10) {
                 select_item_option(store_id, item_description_id, mrp);
             }
-        }
-        else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) == 1) {
+        } else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) == 1) {
             remove_item(store_id, item_description_id);
         }
         total(store_id, item_description_id, mrp);
     }
+
     function add_item_all(store_id, item_id, tmrp) {
         var store_id = store_id;
         var item_description_id = item_description_id;
@@ -1578,8 +1592,7 @@ require "../Main/footer.php";
             if ($('#btn_s' + store_id + 'i' + item_description_id).val() > 10) {
                 select_item_option(store_id, item_description_id, mrp);
             }
-        }
-        else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) > 9) {
+        } else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) > 9) {
             select_item_option(store_id, item_description_id, tmrp)
         }
         total(store_id, item_description_id, mrp);
@@ -1587,8 +1600,8 @@ require "../Main/footer.php";
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     //PRICE AND CART SETTINGS
-    $(document).ready(function () {
-    });
+    $(document).ready(function() {});
+
     function total(store_id, item_description_id, tmrp) {
         var store_id = store_id;
         var item_description_id = item_description_id;
@@ -1598,12 +1611,10 @@ require "../Main/footer.php";
             var qnty = parseInt(document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value);
             document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
             document.getElementById('qnty_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-        }
-        else if ($('#sel_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
+        } else if ($('#sel_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
             var qnty = document.getElementById('sel_s' + store_id + 'i' + item_description_id).value;
             document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-        }
-        else if ($('#btn_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
+        } else if ($('#btn_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
             var qnty = document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML;
             if (qnty == 0) {
                 remove_item(store_id, item_description_id);
@@ -1614,7 +1625,9 @@ require "../Main/footer.php";
             $('#qnty_s' + store_id + 'i' + item_description_id + '').hide();
             $('#btn_s' + store_id + 'i' + item_description_id + '').show();
             document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-            $('#sel_s' + store_id + 'i' + item_description_id + ' option').filter(function () { return ($(this).text() == qnty); }).prop('selected', true);
+            $('#sel_s' + store_id + 'i' + item_description_id + ' option').filter(function() {
+                return ($(this).text() == qnty);
+            }).prop('selected', true);
         }
         if (qnty >= 10) {
             $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
@@ -1623,29 +1636,31 @@ require "../Main/footer.php";
         }
         if (qnty < 0) {
             qnty = qnty * -1;
-        }
-        else {
+        } else {
             qnty = qnty;
         }
         var price = document.getElementById('price_s' + store_id + 'i' + item_description_id).innerHTML;
         $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "check_quantity": 1, "item_description_id": item_description_id, "store_id": store_id, "quantity": qnty },  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+                "check_quantity": 1,
+                "item_description_id": item_description_id,
+                "store_id": store_id,
+                "quantity": qnty
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
                 if (data.status == 'avail') {
                     return;
-                }
-                else if (data.status == 'notavail') {
+                } else if (data.status == 'notavail') {
                     document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
                     document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
                     document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = data.max_qnty;
                     if (data.max_qnty >= 10) {
                         document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = 9;
-                    }
-                    else if (data.max_qnty < 10) {
+                    } else if (data.max_qnty < 10) {
                         document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
                         $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
                         $('#qnty_s' + store_id + 'i' + item_description_id + '').hide();
@@ -1662,24 +1677,23 @@ require "../Main/footer.php";
                     document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
                     document.getElementById('off_s' + store_id + 'i' + item_description_id).innerHTML = off;
                     swal({
-                        title: "Out of Stock!!!",
-                        text: "Choose another store !!!",
-                        icon: "warning",
-                        closeOnClickOutside: false,
-                        dangerMode: true,
-                        timer: 6000,
-                    })
+                            title: "Out of Stock!!!",
+                            text: "Choose another store !!!",
+                            icon: "warning",
+                            closeOnClickOutside: false,
+                            dangerMode: true,
+                            timer: 6000,
+                        })
                         .then((willSubmit1) => {
                             if (willSubmit1) {
                                 return;
-                            }
-                            else {
+                            } else {
                                 return;
                             }
                         });
                 }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                 if (textstatus === "timeout") {
                     swal({
                         title: "Oops!!!",
@@ -1690,8 +1704,9 @@ require "../Main/footer.php";
                         timer: 6000,
                     });
                     return;
+                } else {
+                    return;
                 }
-                else { return; }
             }
         }); //closing ajax
         if (qnty > 0) {
@@ -1704,8 +1719,7 @@ require "../Main/footer.php";
             var off = Math.round((save * 100) / total);
             document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
             document.getElementById('off_s' + store_id + 'i' + item_description_id).innerHTML = off;
-        }
-        else if (qnty == 0) {
+        } else if (qnty == 0) {
             var total = price * 1;
             document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = 1;
             document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = "";
@@ -1715,8 +1729,7 @@ require "../Main/footer.php";
             var off = Math.round((save * 100) / total);
             document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
             document.getElementById('off_s' + store_id + 'i' + item_description_id).innerHTML = off;
-        }
-        else if (qnty < 0) {
+        } else if (qnty < 0) {
             document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = qnty * -1;
             var total = price * qnty * -1;
             var t_mrp = t_mrp * qnty * -1;

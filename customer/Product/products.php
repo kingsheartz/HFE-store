@@ -51,36 +51,36 @@ if (isset($_GET['item'])) {
   if ($(window).width() < 635) {
     <?php
     if (isset($_GET['item'])) {
-      ?>
+    ?>
       location.href = '../Product/products_limited.php?item=<?= $_GET['item'] ?>';
-      <?php
+    <?php
     } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-      ?>
-        location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>';
-      <?php
+    ?>
+      location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>';
+    <?php
     } else if (isset($_GET['category_id'])) {
-      ?>
-          location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?>';
-      <?php
+    ?>
+      location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?>';
+    <?php
     }
     ?>
   }
   ///////////////////////////////RESIZE UPTO 635 FLOW CTRLS TO GRID PAGE #SMALL DEVICE PURPOSE/////////////
-  $(window).resize(function () {
+  $(window).resize(function() {
     if ($(window).width() < 635) {
       <?php
       if (isset($_GET['item'])) {
-        ?>
+      ?>
         location.href = '../Product/products_limited.php?item=<?= $_GET['item'] ?>';
-        <?php
+      <?php
       } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-        ?>
-          location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>';
-        <?php
+      ?>
+        location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>';
+      <?php
       } else if (isset($_GET['category_id'])) {
-        ?>
-            location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?>';
-        <?php
+      ?>
+        location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?>';
+      <?php
       }
       ?>
     }
@@ -111,14 +111,15 @@ if (isset($_GET['item'])) {
   var url = window.location.href;
   if (sessionStorage.getItem("prev_url") == url) {
     var scrollTop = 'pdtsscrollTop';
-  }
-  else {
+  } else {
     var scrollTop = 'scroll_begin';
   }
-  $(window).unload(function () { document.cookie = 'pdtsscrollTop=' + $(window).scrollTop(); });
+  $(window).unload(function() {
+    document.cookie = 'pdtsscrollTop=' + $(window).scrollTop();
+  });
   sessionStorage.setItem("prev_url", url);
   //showing onlt mrp at loading
-  $(document).ready(function (f) {
+  $(document).ready(function(f) {
     $("#per").hide();
     $("#per2").hide();
     $("#per3").hide();
@@ -138,38 +139,40 @@ if (isset($_GET['item'])) {
     }
     if (flag == 0) {
       swal({
-        title: "Sorry!!!",
-        text: "Select a store",
-        icon: "warning",
-        closeOnClickOutside: false,
-        dangerMode: true,
-      })
+          title: "Sorry!!!",
+          text: "Select a store",
+          icon: "warning",
+          closeOnClickOutside: false,
+          dangerMode: true,
+        })
         .then((willSubmit1) => {
           if (willSubmit1) {
             return;
-          }
-          else {
+          } else {
             return;
           }
         });
-    }
-    else {
+    } else {
       var item_description_id = document.getElementById('idid_keeper').value;
       $.ajax({
         url: "../Common/functions.php", //passing page info
-        data: { "cart": 1, "item_description_id": item_description_id, "store_id": id },  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
+        data: {
+          "cart": 1,
+          "item_description_id": item_description_id,
+          "store_id": id
+        }, //form data
+        type: "post", //post data
+        dataType: "json", //datatype=json format
+        timeout: 30000, //waiting time 30 sec
+        success: function(data) { //if registration is success
           if (data.status == 'success') {
             swal({
-              title: "Added!!!",
-              text: "Check your cart",
-              icon: "success",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Added!!!",
+                text: "Check your cart",
+                icon: "success",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit1) => {
                 if (willSubmit1) {
                   document.getElementById("sm-cartcnt").innerHTML = "";
@@ -177,60 +180,56 @@ if (isset($_GET['item'])) {
                   document.getElementById("sm-cartcnt").innerHTML = data.cartcnt;
                   document.getElementById("lg-cartcnt").innerHTML = data.cartcnt;
                   return;
-                }
-                else {
+                } else {
                   return;
                 }
-              });/*
-                      var qnty=document.getElementById("Q"+id+"").innerHTML;
-                      if(qnty!=0){
-                        document.getElementById("Q"+id+"").innerHTML="";
-                        document.getElementById("Q"+id+"").innerHTML=qnty-1;
-                      }*/
+              });
+            /*
+                                  var qnty=document.getElementById("Q"+id+"").innerHTML;
+                                  if(qnty!=0){
+                                    document.getElementById("Q"+id+"").innerHTML="";
+                                    document.getElementById("Q"+id+"").innerHTML=qnty-1;
+                                  }*/
             var qnty = document.getElementById("dis_qnty").innerHTML;
             if (qnty != 0) {
               document.getElementById("dis_qnty").innerHTML = "";
               document.getElementById("dis_qnty").innerHTML = qnty - 1;
             }
-          }
-          else if (data.status == 'error') {
+          } else if (data.status == 'error') {
             swal({
-              title: "Required!!!",
-              text: "You need to create an Account",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Required!!!",
+                text: "You need to create an Account",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   location.href = "../Account/registered.php";
                   return;
-                }
-                else {
+                } else {
                   return;
                 }
               });
-          }
-          else if (data.status == 'error1') {
+          } else if (data.status == 'error1') {
             swal({
-              title: "Not Available!!!",
-              text: "Choose another Store",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Not Available!!!",
+                text: "Choose another Store",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   location.href = "../Product/single.php?id=" + item_description_id + "";
                   return;
-                }
-                else {
+                } else {
                   return;
                 }
               });
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
               title: "Oops!!!",
@@ -241,13 +240,16 @@ if (isset($_GET['item'])) {
               timer: 6000,
             });
             return;
+          } else {
+            return;
           }
-          else { return; }
         }
       }); //closing ajax
-      //location.href="../Cart/cart.php?store="+id+"&item=<?//=$row['item_id'] ?>";
+      //location.href="../Cart/cart.php?store="+id+"&item=<? //=$row['item_id']
+                                                          ?>";
     }
   }
+
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("store");
@@ -302,22 +304,22 @@ if (isset($_GET['item'])) {
       }
     }
   }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//ITEM START HERE
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<?php
-if (isset($_GET['item'])) {
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //ITEM START HERE
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  <?php
+  if (isset($_GET['item'])) {
   ?>
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var filter = [];
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var filter = [];
     var page_id = 1;
     // Pagination code
-    $(document).on("click", ".pagination li a", function (e) {
+    $(document).on("click", ".pagination li a", function(e) {
       e.preventDefault();
       var pageId = $(this).attr("id");
       if ($('#mobile-filter').css("display") == "none") {
@@ -327,8 +329,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -342,11 +343,19 @@ var filter = [];
       $('.std_text2').css('display', 'flex');
       $.ajax({
         url: "../Common/functions.php", //passing page info
-        data: { "filter_item_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "page_no": pageId, "sort": sort, "item": '<?= $_GET['item'] ?>' },  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
+        data: {
+          "filter_item_b": 1,
+          "key": filter,
+          "min-price": minprice,
+          "max-price": maxprice,
+          "page_no": pageId,
+          "sort": sort,
+          "item": '<?= $_GET['item'] ?>'
+        }, //form data
+        type: "post", //post data
+        dataType: "json", //datatype=json format
+        timeout: 30000, //waiting time 30 sec
+        success: function(data) { //if registration is success
           if (data.status == 'success') {
             $("#table-data").html(data.content).show();
             $("#dynamic-paging").html(data.output).show();
@@ -355,7 +364,7 @@ var filter = [];
             return;
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           $('.background_loader').hide();
           $('.std_text2').hide();
           if (textstatus === "timeout") {
@@ -369,11 +378,13 @@ var filter = [];
             });
             location.reload();
             return;
+          } else {
+            return;
           }
-          else { return; }
         }
       }); //closing ajax
     });
+
     function sortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -382,8 +393,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -392,9 +402,9 @@ var filter = [];
         document.getElementById('min-price').value = minprice;
       }
       var filter_tag_cnt = 0;
-      var type = type;//TYPE category || brand ||rating
+      var type = type; //TYPE category || brand ||rating
       if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html();//INNER HTML
+        var cont = $('.val-' + val).html(); //INNER HTML
       }
       if (type == 'star') {
         var cont = $('#' + val).val();
@@ -402,12 +412,12 @@ var filter = [];
       //alert(type+" is "+cont)
       if ($('#' + val).prop('checked') == false) {
         $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', true);    //check radio
-        $('#mob' + val).prop('disabled', true);   //disabling radio
+        $('#mob' + val).prop('checked', true); //check radio
+        $('#mob' + val).prop('disabled', true); //disabling radio
         $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', true);    //check radio
-        $('#' + val).prop('disabled', true);   //disabling radio
-        $('.filter-container').show();//FILTER DIV UNHIDE
+        $('#' + val).prop('checked', true); //check radio
+        $('#' + val).prop('disabled', true); //disabling radio
+        $('.filter-container').show(); //FILTER DIV UNHIDE
         var newtag = $('#filter-tag').clone().appendTo('.filter-container-child'); //COPY THE DEFAULT TAG DESIGN #FILTER 1 & CREATE NEW
         newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)+(sub_category_id || brand_id) "
         if (type == 'brand' || type == 'category') {
@@ -418,7 +428,9 @@ var filter = [];
           var tag_content = "<label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" id=\"filter-tag-name\" class=\"filter-tag-name" + type + "-" + val + " \" style=\"padding-left:0px !important;\" >" + cont + "</label><label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" style=\"padding-left:2px !important;\" id=\"filter-tag-close\" class=\"filter-tag-close  filter-tag-close" + type + "-" + val + "\"><span style='padding-right:4px;color:#333' class='fa fa-star'></span><span class=\"close\" >&times;</span></label>"; //CONTENT INSIDE THE DIV
           $('.filter-tag-' + type + "-" + val).html(tag_content).show(); //APPENDING INNERHTML TO TAG & DISPLAY
         }
-        filter.push({ type: type + "-" + val + "-" + cont });
+        filter.push({
+          type: type + "-" + val + "-" + cont
+        });
         console.log(filter)
         $(".table-data").empty();
         $("#dynamic-paging").empty();
@@ -426,11 +438,18 @@ var filter = [];
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_item_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "item": '<?= $_GET['item'] ?>' },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_item_b": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "item": '<?= $_GET['item'] ?>'
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -439,7 +458,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -452,23 +471,30 @@ var filter = [];
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
-      }
-      else {
+      } else {
         $(".table-data").empty();
         $("#dynamic-paging").empty();
         $('.background_loader').css('display', 'flex');
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_item_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "item": '<?= $_GET['item'] ?>' },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_item_b": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "item": '<?= $_GET['item'] ?>'
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -477,7 +503,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -490,12 +516,14 @@ var filter = [];
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
     }
+
     function removesortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -504,8 +532,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -514,9 +541,9 @@ var filter = [];
         document.getElementById('min-price').value = minprice;
       }
       var filter_tag_cnt = 0;
-      var type = type;//TYPE category || brand ||rating
+      var type = type; //TYPE category || brand ||rating
       if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html();//INNER HTML
+        var cont = $('.val-' + val).html(); //INNER HTML
       }
       if (type == 'star') {
         var cont = $('#' + val).val();
@@ -524,16 +551,18 @@ var filter = [];
       $(".filter-tag-" + type + "-" + val).remove();
       if ($('#' + val).prop('checked') == true) {
         $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', false);    //check radio
-        $('#mob' + val).prop('disabled', true);   //disabling radio
+        $('#mob' + val).prop('checked', false); //check radio
+        $('#mob' + val).prop('disabled', true); //disabling radio
         $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', false);    //check radio
-        $('#' + val).prop('disabled', true);   //disabling radio
+        $('#' + val).prop('checked', false); //check radio
+        $('#' + val).prop('disabled', true); //disabling radio
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //REMOVING THE TAGS WITH VALUE OF THE KEY
         console.log('Before removing object from an array -> ' + JSON.stringify(filter));
-        var removeIndex = filter.map(function (item) { return item.type; }).indexOf(type + "-" + val + "-" + cont)
+        var removeIndex = filter.map(function(item) {
+          return item.type;
+        }).indexOf(type + "-" + val + "-" + cont)
         console.log(removeIndex)
         filter.splice(removeIndex, 1);
         console.log('After removing object from an array -> ' + JSON.stringify(filter));
@@ -547,11 +576,18 @@ var filter = [];
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_item_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "item": '<?= $_GET['item'] ?>' },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_item_b": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "item": '<?= $_GET['item'] ?>'
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -560,7 +596,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -573,35 +609,36 @@ var filter = [];
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<?php
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//ITEM ENDS HERE
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  <?php
+  }
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //ITEM ENDS HERE
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
   ?>
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var filter = [];
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var filter = [];
     var page_id = 1;
     // Pagination code
-    $(document).on("click", ".pagination li a", function (e) {
+    $(document).on("click", ".pagination li a", function(e) {
       e.preventDefault();
       var pageId = $(this).attr("id");
       if ($('#mobile-filter').css("display") == "none") {
@@ -611,8 +648,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -626,11 +662,20 @@ var filter = [];
       $('.std_text2').css('display', 'flex');
       $.ajax({
         url: "../Common/functions.php", //passing page info
-        data: { "filter_sub_cat_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "page_no": pageId, "sort": sort, "category":<?= $_GET['category_id'] ?>, "sub_category":<?= $_GET['subcategory_id'] ?>},  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
+        data: {
+          "filter_sub_cat_b": 1,
+          "key": filter,
+          "min-price": minprice,
+          "max-price": maxprice,
+          "page_no": pageId,
+          "sort": sort,
+          "category": <?= $_GET['category_id'] ?>,
+          "sub_category": <?= $_GET['subcategory_id'] ?>
+        }, //form data
+        type: "post", //post data
+        dataType: "json", //datatype=json format
+        timeout: 30000, //waiting time 30 sec
+        success: function(data) { //if registration is success
           if (data.status == 'success') {
             $("#table-data").html(data.content).show();
             $("#dynamic-paging").html(data.output).show();
@@ -639,7 +684,7 @@ var filter = [];
             return;
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           $('.background_loader').hide();
           $('.std_text2').hide();
           if (textstatus === "timeout") {
@@ -653,11 +698,13 @@ var filter = [];
             });
             location.reload();
             return;
+          } else {
+            return;
           }
-          else { return; }
         }
       }); //closing ajax
     });
+
     function sortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -666,8 +713,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -676,9 +722,9 @@ var filter = [];
         document.getElementById('min-price').value = minprice;
       }
       var filter_tag_cnt = 0;
-      var type = type;//TYPE category || brand ||rating
+      var type = type; //TYPE category || brand ||rating
       if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html();//INNER HTML
+        var cont = $('.val-' + val).html(); //INNER HTML
       }
       if (type == 'star') {
         var cont = $('#' + val).val();
@@ -686,12 +732,12 @@ var filter = [];
       //alert(type+" is "+cont)
       if ($('#' + val).prop('checked') == false) {
         $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', true);    //check radio
-        $('#mob' + val).prop('disabled', true);   //disabling radio
+        $('#mob' + val).prop('checked', true); //check radio
+        $('#mob' + val).prop('disabled', true); //disabling radio
         $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', true);    //check radio
-        $('#' + val).prop('disabled', true);   //disabling radio
-        $('.filter-container').show();//FILTER DIV UNHIDE
+        $('#' + val).prop('checked', true); //check radio
+        $('#' + val).prop('disabled', true); //disabling radio
+        $('.filter-container').show(); //FILTER DIV UNHIDE
         var newtag = $('#filter-tag').clone().appendTo('.filter-container-child'); //COPY THE DEFAULT TAG DESIGN #FILTER 1 & CREATE NEW
         newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)+(sub_category_id || brand_id) "
         if (type == 'brand' || type == 'category') {
@@ -702,7 +748,9 @@ var filter = [];
           var tag_content = "<label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" id=\"filter-tag-name\" class=\"filter-tag-name" + type + "-" + val + " \" style=\"padding-left:0px !important;\" >" + cont + "</label><label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" style=\"padding-left:2px !important;\" id=\"filter-tag-close\" class=\"filter-tag-close  filter-tag-close" + type + "-" + val + "\"><span style='padding-right:4px;color:#333' class='fa fa-star'></span><span class=\"close\" >&times;</span></label>"; //CONTENT INSIDE THE DIV
           $('.filter-tag-' + type + "-" + val).html(tag_content).show(); //APPENDING INNERHTML TO TAG & DISPLAY
         }
-        filter.push({ type: type + "-" + val + "-" + cont });
+        filter.push({
+          type: type + "-" + val + "-" + cont
+        });
         console.log(filter)
         $(".table-data").empty();
         $("#dynamic-paging").empty();
@@ -710,11 +758,19 @@ var filter = [];
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_sub_cat_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>, "sub_category":<?= $_GET['subcategory_id'] ?>},  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_sub_cat_b": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "category": <?= $_GET['category_id'] ?>,
+            "sub_category": <?= $_GET['subcategory_id'] ?>
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -723,7 +779,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -736,23 +792,31 @@ var filter = [];
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
-      }
-      else {
+      } else {
         $(".table-data").empty();
         $("#dynamic-paging").empty();
         $('.background_loader').css('display', 'flex');
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_sub_cat_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>, "sub_category":<?= $_GET['subcategory_id'] ?>},  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_sub_cat_b": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "category": <?= $_GET['category_id'] ?>,
+            "sub_category": <?= $_GET['subcategory_id'] ?>
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -761,7 +825,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -774,12 +838,14 @@ var filter = [];
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
     }
+
     function removesortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -788,8 +854,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -798,9 +863,9 @@ var filter = [];
         document.getElementById('min-price').value = minprice;
       }
       var filter_tag_cnt = 0;
-      var type = type;//TYPE category || brand ||rating
+      var type = type; //TYPE category || brand ||rating
       if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html();//INNER HTML
+        var cont = $('.val-' + val).html(); //INNER HTML
       }
       if (type == 'star') {
         var cont = $('#' + val).val();
@@ -808,16 +873,18 @@ var filter = [];
       $(".filter-tag-" + type + "-" + val).remove();
       if ($('#' + val).prop('checked') == true) {
         $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', false);    //check radio
-        $('#mob' + val).prop('disabled', true);   //disabling radio
+        $('#mob' + val).prop('checked', false); //check radio
+        $('#mob' + val).prop('disabled', true); //disabling radio
         $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', false);    //check radio
-        $('#' + val).prop('disabled', true);   //disabling radio
+        $('#' + val).prop('checked', false); //check radio
+        $('#' + val).prop('disabled', true); //disabling radio
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //REMOVING THE TAGS WITH VALUE OF THE KEY
         console.log('Before removing object from an array -> ' + JSON.stringify(filter));
-        var removeIndex = filter.map(function (item) { return item.type; }).indexOf(type + "-" + val + "-" + cont)
+        var removeIndex = filter.map(function(item) {
+          return item.type;
+        }).indexOf(type + "-" + val + "-" + cont)
         console.log(removeIndex)
         filter.splice(removeIndex, 1);
         console.log('After removing object from an array -> ' + JSON.stringify(filter));
@@ -831,11 +898,19 @@ var filter = [];
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_sub_cat_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>, "sub_category":<?= $_GET['subcategory_id'] ?>},  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_sub_cat_b": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "category": <?= $_GET['category_id'] ?>,
+            "sub_category": <?= $_GET['subcategory_id'] ?>
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -844,7 +919,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -857,28 +932,29 @@ var filter = [];
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<?php
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-else if (isset($_GET['category_id'])) {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  <?php
+  }
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  else if (isset($_GET['category_id'])) {
   ?>
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var filter = [];
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var filter = [];
     var page_id = 1;
     // Pagination code
-    $(document).on("click", ".pagination li a", function (e) {
+    $(document).on("click", ".pagination li a", function(e) {
       e.preventDefault();
       var pageId = $(this).attr("id");
       if ($('#mobile-filter').css("display") == "none") {
@@ -888,8 +964,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -903,11 +978,19 @@ var filter = [];
       $('.std_text2').css('display', 'flex');
       $.ajax({
         url: "../Common/functions.php", //passing page info
-        data: { "filter_cat_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "page_no": pageId, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
+        data: {
+          "filter_cat_b": 1,
+          "key": filter,
+          "min-price": minprice,
+          "max-price": maxprice,
+          "page_no": pageId,
+          "sort": sort,
+          "category": <?= $_GET['category_id'] ?>
+        }, //form data
+        type: "post", //post data
+        dataType: "json", //datatype=json format
+        timeout: 30000, //waiting time 30 sec
+        success: function(data) { //if registration is success
           if (data.status == 'success') {
             $("#table-data").html(data.content).show();
             $("#dynamic-paging").html(data.output).show();
@@ -916,7 +999,7 @@ var filter = [];
             return;
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           $('.background_loader').hide();
           $('.std_text2').hide();
           if (textstatus === "timeout") {
@@ -930,11 +1013,13 @@ var filter = [];
             });
             location.reload();
             return;
+          } else {
+            return;
           }
-          else { return; }
         }
       }); //closing ajax
     });
+
     function sortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -943,8 +1028,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -953,9 +1037,9 @@ var filter = [];
         document.getElementById('min-price').value = minprice;
       }
       var filter_tag_cnt = 0;
-      var type = type;//TYPE category || brand ||rating
+      var type = type; //TYPE category || brand ||rating
       if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html();//INNER HTML
+        var cont = $('.val-' + val).html(); //INNER HTML
       }
       if (type == 'star') {
         var cont = $('#' + val).val();
@@ -963,12 +1047,12 @@ var filter = [];
       //alert(type+" is "+cont)
       if ($('#' + val).prop('checked') == false) {
         $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', true);    //check radio
-        $('#mob' + val).prop('disabled', true);   //disabling radio
+        $('#mob' + val).prop('checked', true); //check radio
+        $('#mob' + val).prop('disabled', true); //disabling radio
         $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', true);    //check radio
-        $('#' + val).prop('disabled', true);   //disabling radio
-        $('.filter-container').show();//FILTER DIV UNHIDE
+        $('#' + val).prop('checked', true); //check radio
+        $('#' + val).prop('disabled', true); //disabling radio
+        $('.filter-container').show(); //FILTER DIV UNHIDE
         var newtag = $('#filter-tag').clone().appendTo('.filter-container-child'); //COPY THE DEFAULT TAG DESIGN #FILTER 1 & CREATE NEW
         newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)+(sub_category_id || brand_id) "
         if (type == 'brand' || type == 'category') {
@@ -979,7 +1063,9 @@ var filter = [];
           var tag_content = "<label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" id=\"filter-tag-name\" class=\"filter-tag-name" + type + "-" + val + " \" style=\"padding-left:0px !important;\" >" + cont + "</label><label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" style=\"padding-left:2px !important;\" id=\"filter-tag-close\" class=\"filter-tag-close  filter-tag-close" + type + "-" + val + "\"><span style='padding-right:4px;color:#333' class='fa fa-star'></span><span class=\"close\" >&times;</span></label>"; //CONTENT INSIDE THE DIV
           $('.filter-tag-' + type + "-" + val).html(tag_content).show(); //APPENDING INNERHTML TO TAG & DISPLAY
         }
-        filter.push({ type: type + "-" + val + "-" + cont });
+        filter.push({
+          type: type + "-" + val + "-" + cont
+        });
         console.log(filter)
         $(".table-data").empty();
         $("#dynamic-paging").empty();
@@ -987,11 +1073,18 @@ var filter = [];
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_cat_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_cat_b": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "category": <?= $_GET['category_id'] ?>
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -1000,7 +1093,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -1013,23 +1106,30 @@ var filter = [];
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
-      }
-      else {
+      } else {
         $(".table-data").empty();
         $("#dynamic-paging").empty();
         $('.background_loader').css('display', 'flex');
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_cat_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_cat_b": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "category": <?= $_GET['category_id'] ?>
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -1038,7 +1138,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -1051,12 +1151,14 @@ var filter = [];
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
     }
+
     function removesortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -1065,8 +1167,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -1075,9 +1176,9 @@ var filter = [];
         document.getElementById('min-price').value = minprice;
       }
       var filter_tag_cnt = 0;
-      var type = type;//TYPE category || brand ||rating
+      var type = type; //TYPE category || brand ||rating
       if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html();//INNER HTML
+        var cont = $('.val-' + val).html(); //INNER HTML
       }
       if (type == 'star') {
         var cont = $('#' + val).val();
@@ -1085,16 +1186,18 @@ var filter = [];
       $(".filter-tag-" + type + "-" + val).remove();
       if ($('#' + val).prop('checked') == true) {
         $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', false);    //check radio
-        $('#mob' + val).prop('disabled', true);   //disabling radio
+        $('#mob' + val).prop('checked', false); //check radio
+        $('#mob' + val).prop('disabled', true); //disabling radio
         $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', false);    //check radio
-        $('#' + val).prop('disabled', true);   //disabling radio
+        $('#' + val).prop('checked', false); //check radio
+        $('#' + val).prop('disabled', true); //disabling radio
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //REMOVING THE TAGS WITH VALUE OF THE KEY
         console.log('Before removing object from an array -> ' + JSON.stringify(filter));
-        var removeIndex = filter.map(function (item) { return item.type; }).indexOf(type + "-" + val + "-" + cont)
+        var removeIndex = filter.map(function(item) {
+          return item.type;
+        }).indexOf(type + "-" + val + "-" + cont)
         console.log(removeIndex)
         filter.splice(removeIndex, 1);
         console.log('After removing object from an array -> ' + JSON.stringify(filter));
@@ -1108,11 +1211,18 @@ var filter = [];
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_cat_b": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_cat_b": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "category": <?= $_GET['category_id'] ?>
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -1121,7 +1231,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -1134,19 +1244,20 @@ var filter = [];
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<?php
-}
-?>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  <?php
+  }
+  ?>
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1157,8 +1268,8 @@ var filter = [];
 <?php
 $result_cnt = $res->rowCount();
 if ($result_cnt == 0) {
-  ?>
-<!-- breadcrumbs -->
+?>
+  <!-- breadcrumbs -->
   <div class="breadcrumbs">
     <div class="container" style="width:100%;">
       <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
@@ -1169,7 +1280,7 @@ if ($result_cnt == 0) {
   </div>
   <!-- //breadcrumbs -->
   <div class="container" style="padding-top:100px;padding-bottom:100px;margin: 0;width: 100%;">
-    <?php
+  <?php
 } else {
   ?>
     <!-- breadcrumbs -->
@@ -1184,15 +1295,15 @@ if ($result_cnt == 0) {
     </div>
     <!-- //breadcrumbs -->
     <div class="container" style="padding: 0;margin: 0;width: 100%;">
-      <?php
-}
-?>
+    <?php
+  }
+    ?>
     <div class="row no_padding">
       <div class="col-xs-12 col-md-12 col-sm-12">
         <?php
         $result_cnt = $res->rowCount();
         if ($result_cnt == 0) {
-          ?>
+        ?>
           <div class="product-content-right">
             <center><img style="justify-content: center;" class="sidebar-title"
                 src="../../images/logo/error-no-search.png">
@@ -1203,44 +1314,44 @@ if ($result_cnt == 0) {
           <center style="margin-bottom:0px;margin-top: 50px;">
             <h4>Can't find requested product ?<a href="../Main/onestore.php"> Try again!</a></h4>
           </center>
-          <?php
+        <?php
         } else {
-          ?>
+        ?>
           <div class="wrapper hide_nav_small" style="margin: 0;width: 100% !important;">
             <div class="d-md-flex align-items-md-center" style="width: 100%;">
               <?php
               if (isset($_GET['item'])) {
-                ?>
+              ?>
                 <div class="h3" style="font-family: 'Poppins', sans-serif">Search results <span class='fa fa-search'></span>
                 </div>
-                <?php
+              <?php
               } else {
-                ?>
+              ?>
                 <div class="h3" style="font-family: 'Poppins', sans-serif"><?= $name ?></div>
-                <?php
+              <?php
               }
               ?>
               <div class="ml-auto d-flex align-items-center views">
                 <?php
                 if (isset($_GET['item'])) {
-                  ?>
+                ?>
                   <span class="btn-pdt_pg gridview"
                     onclick="location.href='../Product/products_limited.php?item=<?= $_GET['item'] ?>'"> &nbsp; <span
                       class="fas fa-th px-md-2 px-1"></span><span class="px-md-2 px-1">Grid view</span></span>
-                  <?php
+                <?php
                 } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-                  ?>
-                    <span class="btn-pdt_pg gridview"
-                      onclick="location.href='../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>'">
-                      &nbsp; <span class="fas fa-th px-md-2 px-1"></span><span class="px-md-2 px-1">Grid view</span></span>
-                  <?php
+                ?>
+                  <span class="btn-pdt_pg gridview"
+                    onclick="location.href='../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>'">
+                    &nbsp; <span class="fas fa-th px-md-2 px-1"></span><span class="px-md-2 px-1">Grid view</span></span>
+                <?php
                 } else if (isset($_GET['category_id'])) {
-                  ?>
-                      <span class="btn-pdt_pg gridview"
-                        onclick="location.href='../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?>'">
-                        &nbsp;
-                        <span class="fas fa-th px-md-2 px-1"></span><span class="px-md-2 px-1">Grid view</span></span>
-                  <?php
+                ?>
+                  <span class="btn-pdt_pg gridview"
+                    onclick="location.href='../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?>'">
+                    &nbsp;
+                    <span class="fas fa-th px-md-2 px-1"></span><span class="px-md-2 px-1">Grid view</span></span>
+                <?php
                 }
                 ?>
                 <span class="btn-pdt_pg listview"> &nbsp; <span class="fas fa-list-ul text-success"></span><span
@@ -1297,10 +1408,10 @@ if ($result_cnt == 0) {
                 </div>
                 <?php
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if (isset($_GET['category_id']) && !isset($_GET['subcategory_id'])) {
-                  ?>
+                ?>
                   <div class="py-3 side-nav-filters-head">
                     <h5 data-toggle="collapse" data-target="#cat-filter-mob" aria-expanded="false"
                       aria-controls="cat-filter-mob" class="font-weight-bold side-nav-filters"
@@ -1327,7 +1438,7 @@ if ($result_cnt == 0) {
                         if ($getsubcatqnty_row == false) {
                           $getsubcatqnty_row['qntycnt'] = 0;
                         }
-                        ?>
+                      ?>
                         <li onclick="sortandfilter('getcat-<?= $getcat_row['sub_category_id'] ?>','category')"
                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category cat-font  getcat-<?= $getcat_row['sub_category_id'] ?>"
                           style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
@@ -1339,7 +1450,7 @@ if ($result_cnt == 0) {
                               name="mob-radio-getcat-<?= $getcat_row['sub_category_id'] ?>"> <span class="checkmark"></span>
                           </label><span class="badge badge-primary badge-pill"><?= $getsubcatqnty_row['qntycnt'] ?></span>
                         </li>
-                        <?php
+                      <?php
                       }
                       ?>
                     </ul>
@@ -1347,8 +1458,8 @@ if ($result_cnt == 0) {
                   <?php
                 }
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 if (isset($_GET['category_id']) || isset($_GET['subcategory_id']) || isset($_GET['item'])) {
                   if (isset($_GET['item'])) {
                     $brandsql = "select brand.brand_name,brand.brand_id from item
@@ -1381,7 +1492,7 @@ if ($result_cnt == 0) {
                   $brandstmt = $pdo->query($brandsql);
                   $brandcnt = $brandstmt->rowCount();
                   if ($brandcnt > 0) {
-                    ?>
+                  ?>
                     <div class="py-3 side-nav-filters-head">
                       <h5 data-toggle="collapse" data-target="#brand-filter-mob" aria-expanded="false"
                         aria-controls="brand-filter-mob" class="font-weight-bold side-nav-filters"
@@ -1392,7 +1503,7 @@ if ($result_cnt == 0) {
                       <form class="brand collapse" id="brand-filter-mob" style="">
                         <?php
                         while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
-                          ?>
+                        ?>
                           <li onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
                             class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
                             style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
@@ -1403,17 +1514,17 @@ if ($result_cnt == 0) {
                                 type="radio" disabled name="mob-radio-getbrand-<?= $getbrand_row['brand_id'] ?>"> <span
                                 class="checkmark"></span> </label>
                           </li>
-                          <?php
+                        <?php
                         }
                         ?>
                       </form>
                     </div>
-                    <?php
+                <?php
                   }
                 }
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 ?>
                 <div class="py-3 side-nav-filters-head">
                   <h5 data-toggle="collapse" data-target="#rating-filter-mob" aria-expanded="false"
@@ -1527,9 +1638,9 @@ where category_id=$cat_id");
                             if ($divident * $i > $minprice and $divident * $i < $maxprice) {
                               $pricelist = $divident * $i;
                             }
-                            ?>
+                          ?>
                             <option><?= $pricelist ?></option>
-                            <?php
+                          <?php
                           }
                           ?>
                         </select>
@@ -1552,9 +1663,9 @@ where category_id=$cat_id");
                             if ($divident * $i > $minprice and $divident * $i < $maxprice) {
                               $pricelist = $divident * $i;
                             }
-                            ?>
+                          ?>
                             <option><?= $pricelist ?></option>
-                            <?php
+                          <?php
                           }
                           ?>
                         </select>
@@ -1586,10 +1697,10 @@ where category_id=$cat_id");
                   <hr style="margin-top: 15px;margin-bottom: 1px;">
                   <?php
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   if (isset($_GET['category_id']) && !isset($_GET['subcategory_id'])) {
-                    ?>
+                  ?>
                     <div class="py-3 side-nav-filters-head">
                       <h5 data-toggle="collapse" data-target="#cat-filter" aria-expanded="false" aria-controls="cat-filter"
                         class="font-weight-bold side-nav-filters"
@@ -1615,7 +1726,7 @@ where category_id=$cat_id");
                           if ($getsubcatqnty_row == false) {
                             $getsubcatqnty_row['qntycnt'] = 0;
                           }
-                          ?>
+                        ?>
                           <li onclick="sortandfilter('getcat-<?= $getcat_row['sub_category_id'] ?>','category')"
                             class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category cat-font  getcat-<?= $getcat_row['sub_category_id'] ?>"
                             style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
@@ -1627,7 +1738,7 @@ where category_id=$cat_id");
                                 name="radio-getcat-<?= $getcat_row['sub_category_id'] ?>"> <span class="checkmark"></span>
                             </label><span class="badge badge-primary badge-pill"><?= $getsubcatqnty_row['qntycnt'] ?></span>
                           </li>
-                          <?php
+                        <?php
                         }
                         ?>
                       </ul>
@@ -1635,8 +1746,8 @@ where category_id=$cat_id");
                     <?php
                   }
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   if (isset($_GET['category_id']) || isset($_GET['subcategory_id']) || isset($_GET['item'])) {
                     if (isset($_GET['item'])) {
                       $brandsql = "select brand.brand_name,brand.brand_id from item
@@ -1669,7 +1780,7 @@ where category_id=$cat_id");
                     $brandstmt = $pdo->query($brandsql);
                     $brandcnt = $brandstmt->rowCount();
                     if ($brandcnt > 0) {
-                      ?>
+                    ?>
                       <div class="py-3 side-nav-filters-head">
                         <h5 data-toggle="collapse" data-target="#brand-filter" aria-expanded="false"
                           aria-controls="brand-filter" class="font-weight-bold side-nav-filters"
@@ -1680,7 +1791,7 @@ where category_id=$cat_id");
                         <ul id="brand-filter" class="list-group collapse" style="margin-bottom: 0px;">
                           <?php
                           while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
-                            ?>
+                          ?>
                             <li onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
                               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
                               style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
@@ -1691,17 +1802,17 @@ where category_id=$cat_id");
                                   type="radio" disabled name="radio-getbrand-<?= $getbrand_row['brand_id'] ?>"> <span
                                   class="checkmark"></span> </label>
                             </li>
-                            <?php
+                          <?php
                           }
                           ?>
                         </ul>
                       </div>
-                      <?php
+                  <?php
                     }
                   }
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   ?>
                   <div class="py-3 side-nav-filters-head">
                     <h5 data-toggle="collapse" data-target="#rating-filter" aria-expanded="false"
@@ -1800,9 +1911,9 @@ where category_id=$cat_id");
                               if ($divident * $i > $minprice and $divident * $i < $maxprice) {
                                 $pricelist = $divident * $i;
                               }
-                              ?>
+                            ?>
                               <option><?= $pricelist ?></option>
-                              <?php
+                            <?php
                             }
                             ?>
                           </select>
@@ -1825,9 +1936,9 @@ where category_id=$cat_id");
                               if ($divident * $i > $minprice and $divident * $i < $maxprice) {
                                 $pricelist = $divident * $i;
                               }
-                              ?>
+                            ?>
                               <option><?= $pricelist ?></option>
-                              <?php
+                            <?php
                             }
                             ?>
                           </select>
@@ -1839,347 +1950,347 @@ where category_id=$cat_id");
               </div>
             </div>
             <!----------------------------------------------------------------------------------------------------------------------------------------------->
-          <!----------------------------------------------------------------------------------------------------------------------------------------------->
-          <!----------------------------------------------------------------------------------------------------------------------------------------------->
-          <!----------------------------------------------------------------------------------------------------------------------------------------------->
-          <!----------------------------------------------------------------------------------------------------------------------------------------------->
-          <div class="col-md-9 col-sm-12 col-xs-12" style="padding:0px;margin:0px">
-            <div style="margin-bottom: 0px;padding:0px"></div>
-            <section>
-              <div class="container py-3" style="padding:0px;">
-                <div class="row" style="margin:0;padding-top:0px !important">
-                  <?php
-                  require "../Common/pdo.php";
-                  if (isset($_GET['item'])) {
-                    $nm = $_GET['item'];
-                    $res = $pdo->query("select store.store_name ,item.item_id,item.price as 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item
+            <!----------------------------------------------------------------------------------------------------------------------------------------------->
+            <!----------------------------------------------------------------------------------------------------------------------------------------------->
+            <!----------------------------------------------------------------------------------------------------------------------------------------------->
+            <!----------------------------------------------------------------------------------------------------------------------------------------------->
+            <div class="col-md-9 col-sm-12 col-xs-12" style="padding:0px;margin:0px">
+              <div style="margin-bottom: 0px;padding:0px"></div>
+              <section>
+                <div class="container py-3" style="padding:0px;">
+                  <div class="row" style="margin:0;padding-top:0px !important">
+                    <?php
+                    require "../Common/pdo.php";
+                    if (isset($_GET['item'])) {
+                      $nm = $_GET['item'];
+                      $res = $pdo->query("select store.store_name ,item.item_id,item.price as 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item
 	        	inner join item_description on item_description.item_id=item.item_id
                 inner join product_details on product_details.item_description_id=item_description.item_description_id
                 inner join store on product_details.store_id=store.store_id
         		inner join category on category.category_id=item.category_id
         		inner join sub_category on category.category_id= sub_category.category_id
         		where item.item_name like \"%$nm%\" and sub_category.sub_category_id=item.sub_category_id");
-                  } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-                    $cat = $_GET['category_id'];
-                    $sub = $_GET['subcategory_id'];
-                    $res = $pdo->query("select store.store_name ,item.item_id,item.price as 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item
+                    } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
+                      $cat = $_GET['category_id'];
+                      $sub = $_GET['subcategory_id'];
+                      $res = $pdo->query("select store.store_name ,item.item_id,item.price as 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item
 	        	inner join item_description on item_description.item_id=item.item_id
                 inner join product_details on product_details.item_description_id=item_description.item_description_id
                 inner join store on product_details.store_id=store.store_id
         		inner join category on category.category_id=item.category_id
         		inner join sub_category on category.category_id= sub_category.category_id
                 where category.category_id=$cat and sub_category.sub_category_id=$sub GROUP BY item.item_id order by item.sub_category_id");
-                  } else if (isset($_GET['category_id'])) {
-                    $cat = $_GET['category_id'];
-                    $res = $pdo->query("select store.store_name ,item.item_id,item.price as 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id,category.category_name,sub_category.sub_category_name,store.store_name from item
+                    } else if (isset($_GET['category_id'])) {
+                      $cat = $_GET['category_id'];
+                      $res = $pdo->query("select store.store_name ,item.item_id,item.price as 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id,category.category_name,sub_category.sub_category_name,store.store_name from item
         		inner join item_description on item_description.item_id=item.item_id
                 inner join product_details on product_details.item_description_id=item_description.item_description_id
                 inner join store on product_details.store_id=store.store_id
         		inner join category on category.category_id=item.category_id
         		inner join sub_category on category.category_id= sub_category.category_id
                 where category.category_id=$cat GROUP BY item.item_id order by item.sub_category_id");
-                  }
-                  ?>
-                  <div class="col-lg-12 col-md-12 col-sm-12 col xs-12 dynamic-content" id="dynamic-content"
-                    style="width: 100%;padding:0">
-                    <div id="table-data">
-                      <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                    }
+                    ?>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col xs-12 dynamic-content" id="dynamic-content"
+                      style="width: 100%;padding:0">
+                      <div id="table-data">
+                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
                         <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
                         <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
                         <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
                         <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
                         <!---ALL CONTENTS ARE LOADED HERE--->
-                      <?php
-                      while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
-                        if (strlen($row['item_name']) >= 35) {
-                          $item = $row['item_name'];
-                          $item_name = substr($item, 0, 35) . "...";
-                        } else {
-                          $item_name = $row['item_name'];
-                        }
-                        if (strlen($row['description']) >= 65) {
-                          $description = substr($row['description'], 65);
-                          $description2 = $description . "...";
-                        } else {
-                          $description = $row['description'];
-                          $description2 = $row['description'] . "... ";
-                        }
-                        ?>
-                      <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1"
-                        style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">
                         <?php
-                        $query = "select store.store_name, category.category_name,sub_category.sub_category_name,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material FROM product_details
+                        while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+                          if (strlen($row['item_name']) >= 35) {
+                            $item = $row['item_name'];
+                            $item_name = substr($item, 0, 35) . "...";
+                          } else {
+                            $item_name = $row['item_name'];
+                          }
+                          if (strlen($row['description']) >= 65) {
+                            $description = substr($row['description'], 65);
+                            $description2 = $description . "...";
+                          } else {
+                            $description = $row['description'];
+                            $description2 = $row['description'] . "... ";
+                          }
+                        ?>
+                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1"
+                            style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">
+                            <?php
+                            $query = "select store.store_name, category.category_name,sub_category.sub_category_name,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material FROM product_details
       JOIN item_description ON product_details.item_description_id=item_description.item_description_id
       JOIN item ON item.item_id=item_description.item_id
       JOIN category ON category.category_id=item.category_id
       JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
       JOIN store on store.store_id=product_details.store_id
       where item_description.item_description_id=:idid";
-                        $statement = $pdo->prepare($query);
-                        $statement->execute(array(
-                          ':idid' => $row['item_description_id']
-                        ));
-                        $row_feature = $statement->fetch(PDO::FETCH_ASSOC);
-                        ?>
-                        <div class="order-single"
-                          style="margin:0;padding:0;background-color:#fff;width:100%;height:100%;border-bottom: 1px solid #666;">
-                          <div class="col-sm-3 col-xs-3" style="background-color:#fff"
-                            onclick="location.href='../Product/single.php?id=<?= $row['item_description_id'] ?>'">
-                            <table>
-                              <tr style="padding-bottom:30px;"></tr>
-                              <tr>
-                                <td>
-                                  <div style="height: 150px;width: 100%">
-                                    <img
-                                      style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px "
-                                      class="img-responsive"
-                                      src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
-                                  </div>
-                                </td>
-                              </tr>
-                            </table>
-                          </div>
-                          <div class="col-sm-9 col-xs-9" style="padding:0px;">
-                            <table>
-                              <tr>
-                                <td>
-                                  <div
-                                    style="width: 100%;text-align: center;color: #000;font-weight:bold;font-size:20px;padding-top:30px">
-                                    <?= $row['item_name'] ?>
-                                  </div>
-                                </td>
-                              </tr>
-                            </table>
-                            <div class="col-sm-12 col-xs-12" style="padding:0px;">
-                              <div class="col-sm-7 col-xs-7" style="min-height:200px;padding:0;">
-                                <table width="100%" style="padding:0px;margin:0px;">
-                                  <tr style="padding-top:10px;">
-                                    <td colspan="2">
-                                      <div
-                                        style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size:14px;padding-top:30px;padding-bottom:10px">
+                            $statement = $pdo->prepare($query);
+                            $statement->execute(array(
+                              ':idid' => $row['item_description_id']
+                            ));
+                            $row_feature = $statement->fetch(PDO::FETCH_ASSOC);
+                            ?>
+                            <div class="order-single"
+                              style="margin:0;padding:0;background-color:#fff;width:100%;height:100%;border-bottom: 1px solid #666;">
+                              <div class="col-sm-3 col-xs-3" style="background-color:#fff"
+                                onclick="location.href='../Product/single.php?id=<?= $row['item_description_id'] ?>'">
+                                <table>
+                                  <tr style="padding-bottom:30px;"></tr>
+                                  <tr>
+                                    <td>
+                                      <div style="height: 150px;width: 100%">
+                                        <img
+                                          style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px "
+                                          class="img-responsive"
+                                          src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
                                       </div>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  if ($row_feature['size'] != 0) {
-                                    $query1 = "SELECT * FROM size where size_id=" . $row_feature['size'];
-                                    $st1 = $pdo->query($query1);
-                                    $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                    ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Size</li>
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row1['size_name'] ?>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  }
-                                  if ($row_feature['color'] != 0) {
-                                    $query1 = "SELECT * FROM color where color_id=" . $row_feature['color'];
-                                    $st1 = $pdo->query($query1);
-                                    $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                    ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Color</li>
-                                    </th>
-                                    <td class="cust_details">
-                                      <div
-                                        style="height:16px;width:16px;border:.5px solid #999;background-color:<?= $row1['color_name'] ?>">
-                                      </div>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  }
-                                  if ($row_feature['weight'] != 0) {
-                                    ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Weight</li>
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row_feature['weight'] ?>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  }
-                                  if ($row_feature['flavour'] != 0) {
-                                    $query1 = "SELECT * FROM flavour where flavour_id=" . $row_feature['flavour'];
-                                    $st1 = $pdo->query($query1);
-                                    $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                    ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Flavour</li>
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row1['flavour_name'] ?>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  }
-                                  if ($row_feature['processor'] != 0) {
-                                    $query1 = "SELECT * FROM processor where processor_id=" . $row_feature['processor'];
-                                    $st1 = $pdo->query($query1);
-                                    $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                    ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Processor</li>
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row1['processor_name'] ?>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  }
-                                  if ($row_feature['display'] != 0) {
-                                    $query1 = "SELECT * FROM display where display_id=" . $row_feature['display'];
-                                    $st1 = $pdo->query($query1);
-                                    $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                    ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Display</li>
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row1['display_name'] ?>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  }
-                                  if ($row_feature['battery'] != 0) {
-                                    $query1 = "SELECT * FROM battery where battery_id=" . $row_feature['battery'];
-                                    $st1 = $pdo->query($query1);
-                                    $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                    ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Battery</li>
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row1['battery_name'] ?>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  }
-                                  if ($row_feature['internal_storage'] != 0) {
-                                    $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row_feature['internal_storage'];
-                                    $st1 = $pdo->query($query1);
-                                    $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                    ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Internal Storage</li>
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row1['internal_storage_name'] ?>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  }
-                                  if ($row_feature['brand'] != 0) {
-                                    $query1 = "SELECT * FROM brand where brand_id=" . $row_feature['brand'];
-                                    $st1 = $pdo->query($query1);
-                                    $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                    ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Brand</li>
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row1['brand_name'] ?>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  }
-                                  if ($row_feature['material'] != 0) {
-                                    $query1 = "SELECT * FROM material where material_id=" . $row_feature['material'];
-                                    $st1 = $pdo->query($query1);
-                                    $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                    ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Material</li>
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row1['material_name'] ?>
-                                    </td>
-                                  </tr>
-                                  <?php
-                                  }
-                                  ?>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Category
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row_feature['category_name'] ?>
-                                      </li>
-                                    </td>
-                                  </tr>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Sub Category
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row_feature['sub_category_name'] ?>
-                                      </li>
-                                    </td>
-                                  </tr>
-                                  <tr class=" dw">
-                                    <th class="cust_header2">
-                                      <li>Seller
-                                    </th>
-                                    <td class="cust_details">
-                                      <?= $row_feature['store_name'] ?>
-                                      </li>
                                     </td>
                                   </tr>
                                 </table>
                               </div>
-                              <div class="col-sm-5 col-xs-5">
-                                <table width="100%" style="padding:0px;margin:0px;">
-                                  <?php
-                                  $save = round(($row['mrp'] - $row['price']) / $row['mrp'] * 100);
-                                  ?>
+                              <div class="col-sm-9 col-xs-9" style="padding:0px;">
+                                <table>
                                   <tr>
-                                    <td align="right">
-                                      <img
-                                        style="height:auto;max-width: 100%;width:auto;max-height: 50px;display: block;padding-top:30px; "
-                                        class="img-responsive" src="../../images/logo/logofill-sm.png">
+                                    <td>
+                                      <div
+                                        style="width: 100%;text-align: center;color: #000;font-weight:bold;font-size:20px;padding-top:30px">
+                                        <?= $row['item_name'] ?>
+                                      </div>
                                     </td>
-                                  </tr>
-                                  <tr class="div-wrapper dw" style="padding-top:30px;">
-                                    <td class="cust_details" style="font-size:24px;font-weight:bold" align="right"><i
-                                        class='fa fa-rupee-sign'></i>
-                                      <?= $row['price'] ?>
-                                    </td>
-                                  </tr>
-                                  <td class="cust_details" style="font-size:14px;font-weight:normal" align="right">
-                                    <del><i class='fa fa-rupee-sign'></i>
-                                      <?= $row['mrp'] ?>
-                                    </del> <span style="color: #119904;font-weight:bold">
-                                      <?= $save ?>% off
-                                    </span>
-                                  </td>
                                   </tr>
                                 </table>
+                                <div class="col-sm-12 col-xs-12" style="padding:0px;">
+                                  <div class="col-sm-7 col-xs-7" style="min-height:200px;padding:0;">
+                                    <table width="100%" style="padding:0px;margin:0px;">
+                                      <tr style="padding-top:10px;">
+                                        <td colspan="2">
+                                          <div
+                                            style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size:14px;padding-top:30px;padding-bottom:10px">
+                                          </div>
+                                        </td>
+                                      </tr>
+                                      <?php
+                                      if ($row_feature['size'] != 0) {
+                                        $query1 = "SELECT * FROM size where size_id=" . $row_feature['size'];
+                                        $st1 = $pdo->query($query1);
+                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                      ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Size</li>
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row1['size_name'] ?>
+                                          </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                      if ($row_feature['color'] != 0) {
+                                        $query1 = "SELECT * FROM color where color_id=" . $row_feature['color'];
+                                        $st1 = $pdo->query($query1);
+                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                      ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Color</li>
+                                          </th>
+                                          <td class="cust_details">
+                                            <div
+                                              style="height:16px;width:16px;border:.5px solid #999;background-color:<?= $row1['color_name'] ?>">
+                                            </div>
+                                          </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                      if ($row_feature['weight'] != 0) {
+                                      ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Weight</li>
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row_feature['weight'] ?>
+                                          </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                      if ($row_feature['flavour'] != 0) {
+                                        $query1 = "SELECT * FROM flavour where flavour_id=" . $row_feature['flavour'];
+                                        $st1 = $pdo->query($query1);
+                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                      ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Flavour</li>
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row1['flavour_name'] ?>
+                                          </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                      if ($row_feature['processor'] != 0) {
+                                        $query1 = "SELECT * FROM processor where processor_id=" . $row_feature['processor'];
+                                        $st1 = $pdo->query($query1);
+                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                      ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Processor</li>
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row1['processor_name'] ?>
+                                          </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                      if ($row_feature['display'] != 0) {
+                                        $query1 = "SELECT * FROM display where display_id=" . $row_feature['display'];
+                                        $st1 = $pdo->query($query1);
+                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                      ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Display</li>
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row1['display_name'] ?>
+                                          </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                      if ($row_feature['battery'] != 0) {
+                                        $query1 = "SELECT * FROM battery where battery_id=" . $row_feature['battery'];
+                                        $st1 = $pdo->query($query1);
+                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                      ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Battery</li>
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row1['battery_name'] ?>
+                                          </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                      if ($row_feature['internal_storage'] != 0) {
+                                        $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row_feature['internal_storage'];
+                                        $st1 = $pdo->query($query1);
+                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                      ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Internal Storage</li>
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row1['internal_storage_name'] ?>
+                                          </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                      if ($row_feature['brand'] != 0) {
+                                        $query1 = "SELECT * FROM brand where brand_id=" . $row_feature['brand'];
+                                        $st1 = $pdo->query($query1);
+                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                      ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Brand</li>
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row1['brand_name'] ?>
+                                          </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                      if ($row_feature['material'] != 0) {
+                                        $query1 = "SELECT * FROM material where material_id=" . $row_feature['material'];
+                                        $st1 = $pdo->query($query1);
+                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                      ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Material</li>
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row1['material_name'] ?>
+                                          </td>
+                                        </tr>
+                                      <?php
+                                      }
+                                      ?>
+                                      <tr class=" dw">
+                                        <th class="cust_header2">
+                                          <li>Category
+                                        </th>
+                                        <td class="cust_details">
+                                          <?= $row_feature['category_name'] ?>
+                                          </li>
+                                        </td>
+                                      </tr>
+                                      <tr class=" dw">
+                                        <th class="cust_header2">
+                                          <li>Sub Category
+                                        </th>
+                                        <td class="cust_details">
+                                          <?= $row_feature['sub_category_name'] ?>
+                                          </li>
+                                        </td>
+                                      </tr>
+                                      <tr class=" dw">
+                                        <th class="cust_header2">
+                                          <li>Seller
+                                        </th>
+                                        <td class="cust_details">
+                                          <?= $row_feature['store_name'] ?>
+                                          </li>
+                                        </td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                  <div class="col-sm-5 col-xs-5">
+                                    <table width="100%" style="padding:0px;margin:0px;">
+                                      <?php
+                                      $save = round(($row['mrp'] - $row['price']) / $row['mrp'] * 100);
+                                      ?>
+                                      <tr>
+                                        <td align="right">
+                                          <img
+                                            style="height:auto;max-width: 100%;width:auto;max-height: 50px;display: block;padding-top:30px; "
+                                            class="img-responsive" src="../../images/logo/logofill-sm.png">
+                                        </td>
+                                      </tr>
+                                      <tr class="div-wrapper dw" style="padding-top:30px;">
+                                        <td class="cust_details" style="font-size:24px;font-weight:bold" align="right"><i
+                                            class='fa fa-rupee-sign'></i>
+                                          <?= $row['price'] ?>
+                                        </td>
+                                      </tr>
+                                      <td class="cust_details" style="font-size:14px;font-weight:normal" align="right">
+                                        <del><i class='fa fa-rupee-sign'></i>
+                                          <?= $row['mrp'] ?>
+                                        </del> <span style="color: #119904;font-weight:bold">
+                                          <?= $save ?>% off
+                                        </span>
+                                      </td>
+                                      </tr>
+                                    </table>
+                                  </div>
+                                </div>
                               </div>
                             </div>
                           </div>
-                        </div>
-                      </div>
-                      <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
                           <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
                           <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
                           <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
                           <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                          <?php
-                      }
-                      ?>
+                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                        <?php
+                        }
+                        ?>
                       </div>
                     </div>
                   </div>
@@ -2187,23 +2298,23 @@ where category_id=$cat_id");
               <div id="dynamic-paging"></div>
             </div>
             <!----------------------------------------------------------------------------------------------------------------------------------------------->
-          <!----------------------------------------------------------------------------------------------------------------------------------------------->
-          <!----------------------------------------------------------------------------------------------------------------------------------------------->
-          <!----------------------------------------------------------------------------------------------------------------------------------------------->
-          <!----------------------------------------------------------------------------------------------------------------------------------------------->
-        </div>
-        <!--to be removed-->
-          <?php
+            <!----------------------------------------------------------------------------------------------------------------------------------------------->
+            <!----------------------------------------------------------------------------------------------------------------------------------------------->
+            <!----------------------------------------------------------------------------------------------------------------------------------------------->
+            <!----------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!--to be removed-->
+        <?php
         }
         ?>
         <!--to be removed-->
       </div>
     </div>
-  </div>
-  <?php
-  require "../Product/products_footer.php";
-  ?>
-  <script>
+    </div>
+    <?php
+    require "../Product/products_footer.php";
+    ?>
+    <script>
       //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       //STORE LISTING
@@ -2212,25 +2323,27 @@ where category_id=$cat_id");
         var idid = item_description_id;
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "storefinder": 1, "item_description_id": idid },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 60000,   //waiting time 60 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "storefinder": 1,
+            "item_description_id": idid
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 60000, //waiting time 60 sec
+          success: function(data) { //if registration is success
             if (data.status == "success") {
               if (data.avail != 0) {
                 $('.store_rows').remove();
                 $('#store').append(data.data);
                 $("avail_store").show();
-              }
-              else {
+              } else {
                 $("multi_store_response").show();
               }
               //$("#multi_store_listing").show();
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
                 title: "Oops!!!",
@@ -2241,159 +2354,40 @@ where category_id=$cat_id");
                 timer: 6000,
               });
               return;
-            }
-            else { return; }
-          }
-        }); //closing ajax
-      }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function wishlist_storefinder(item_description_id) {
-      $("#per2").hide();
-      var idid = item_description_id;
-      $.ajax({
-        url: "../Common/functions.php", //passing page info
-        data: { "wishlist_storefinder": 1, "item_description_id": idid },  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 60000,   //waiting time 60 sec
-        success: function (data) {    //if registration is success
-          if (data.status == "success") {
-            if (data.avail != 0) {
-              $('.wishlist_store_rows').remove();
-              $('#wishlist_store').append(data.data);
-              $("avail_store_wishlist").show();
-            }
-            else {
-              $("wishlist_multi_store_response").show();
-            }
-            //$("#multi_store_listing").show();
-            return;
-          }
-        },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-          if (textstatus === "timeout") {
-            swal({
-              title: "Oops!!!",
-              text: "server time out",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-              timer: 6000,
-            });
-            return;
-          }
-          else { return; }
-        }
-      }); //closing ajax
-    }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //PRICE AND CART SETTINGS
-    function pricing(store, item_description_id) {
-      var idid = item_description_id;
-      var store_id = store;
-      $('.sel_store').css('display', 'unset');
-      $('.element_cart').hide();
-      $('#check' + store_id).css('display', 'none');
-      $('#btn' + store_id).css('display', 'unset');
-      //if none is checked
-      if ($('.sel_store:checkbox:checked').length == 0) {
-        $("#ini").show();
-        $("#per").hide();
-      }
-      //if none is checked
-      else {
-        $.ajax({
-          url: "../Common/functions.php", //passing page info
-          data: { "pricefinder": 1, "item_description_id": idid, "store_id": store_id },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
-            $("#ini").hide();
-            document.getElementById('save').innerHTML = "";
-            document.getElementById('save').innerHTML += data.save;
-            document.getElementById('off').innerHTML = "";
-            document.getElementById('off').innerHTML += data.off;
-            document.getElementById('dis_avail').innerHTML = "";
-            document.getElementById('dis_avail').innerHTML = "" + data.availability;
-            document.getElementById('dis_sts').innerHTML = "";
-            document.getElementById('dis_sts').innerHTML = "" + data.sts;
-            document.getElementById('dis_qnty').innerHTML = "";
-            document.getElementById('dis_qnty').innerHTML = "" + data.quantity;
-            document.getElementById('dis_add').innerHTML = "";
-            document.getElementById('dis_add').innerHTML = "" + data.address;
-            document.getElementById('idid_keeper').value = "";
-            document.getElementById('idid_keeper').value = "" + data.idid;
-            $('#item_detailed_features').append(data.features);
-            $("#oldpriceofitem").show();
-            $("#per").show();
-            return;
-          },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-            if (textstatus === "timeout") {
-              swal({
-                title: "Oops!!!",
-                text: "server time out",
-                icon: "error",
-                closeOnClickOutside: false,
-                dangerMode: true,
-                timer: 6000,
-              });
+            } else {
               return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
-    }
-    //PRICE AND CART SETTINGS
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //PRICE AND CART SETTINGS WISHLIST
-    function wishlist_pricing(store, item_description_id) {
-      var idid = item_description_id;
-      var store_id = store;
-      $('.sel_store2').css('display', 'unset');
-      $('.element_cart2').hide();
-      $('#wishlist_check' + store_id).css('display', 'none');
-      $('#wishlist_btn' + store_id).css('display', 'unset');
-      //if none is checked
-      if ($('.sel_store2:checkbox:checked').length == 0) {
-        $("#ini").show();
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      function wishlist_storefinder(item_description_id) {
         $("#per2").hide();
-      }
-      //if none is checked
-      else {
+        var idid = item_description_id;
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "wishlist_pricefinder": 1, "item_description_id": idid, "store_id": store_id },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
-            $("#ini").hide();
-            document.getElementById('save2').innerHTML = "";
-            document.getElementById('save2').innerHTML += data.save;
-            document.getElementById('off2').innerHTML = "";
-            document.getElementById('off2').innerHTML += data.off;
-            document.getElementById('dis_avail2').innerHTML = "";
-            document.getElementById('dis_avail2').innerHTML = "" + data.availability;
-            document.getElementById('dis_sts2').innerHTML = "";
-            document.getElementById('dis_sts2').innerHTML = "" + data.sts;
-            document.getElementById('dis_qnty2').innerHTML = "";
-            document.getElementById('dis_qnty2').innerHTML = "" + data.quantity;
-            document.getElementById('dis_add2').innerHTML = "";
-            document.getElementById('dis_add2').innerHTML = "" + data.address;
-            document.getElementById('wishlist_idid_keeper').value = "";
-            document.getElementById('wishlist_idid_keeper').value = "" + data.idid;
-            $('#wishlist_item_detailed_features').append(data.features);
-            $("#oldpriceofitem").show();
-            $("#per2").show();
-            return;
+          data: {
+            "wishlist_storefinder": 1,
+            "item_description_id": idid
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 60000, //waiting time 60 sec
+          success: function(data) { //if registration is success
+            if (data.status == "success") {
+              if (data.avail != 0) {
+                $('.wishlist_store_rows').remove();
+                $('#wishlist_store').append(data.data);
+                $("avail_store_wishlist").show();
+              } else {
+                $("wishlist_multi_store_response").show();
+              }
+              //$("#multi_store_listing").show();
+              return;
+            }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
                 title: "Oops!!!",
@@ -2404,143 +2398,279 @@ where category_id=$cat_id");
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
-    }
-    //PRICE AND CART SETTINGS  WISHLIST
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //WISHLIST ENTRY ITEMS
-    function wishlist_check_store_select() {
-      var tbl = document.getElementById("wishlist_store");
-      var chks = tbl.getElementsByTagName("INPUT");
-      var id = 0;
-      var flag = 0;
-      for (var i = 0; i < chks.length; i++) {
-        if (chks[i].checked == true) {
-          id = chks[i].value;
-          flag = 1;
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //PRICE AND CART SETTINGS
+      function pricing(store, item_description_id) {
+        var idid = item_description_id;
+        var store_id = store;
+        $('.sel_store').css('display', 'unset');
+        $('.element_cart').hide();
+        $('#check' + store_id).css('display', 'none');
+        $('#btn' + store_id).css('display', 'unset');
+        //if none is checked
+        if ($('.sel_store:checkbox:checked').length == 0) {
+          $("#ini").show();
+          $("#per").hide();
+        }
+        //if none is checked
+        else {
+          $.ajax({
+            url: "../Common/functions.php", //passing page info
+            data: {
+              "pricefinder": 1,
+              "item_description_id": idid,
+              "store_id": store_id
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
+              $("#ini").hide();
+              document.getElementById('save').innerHTML = "";
+              document.getElementById('save').innerHTML += data.save;
+              document.getElementById('off').innerHTML = "";
+              document.getElementById('off').innerHTML += data.off;
+              document.getElementById('dis_avail').innerHTML = "";
+              document.getElementById('dis_avail').innerHTML = "" + data.availability;
+              document.getElementById('dis_sts').innerHTML = "";
+              document.getElementById('dis_sts').innerHTML = "" + data.sts;
+              document.getElementById('dis_qnty').innerHTML = "";
+              document.getElementById('dis_qnty').innerHTML = "" + data.quantity;
+              document.getElementById('dis_add').innerHTML = "";
+              document.getElementById('dis_add').innerHTML = "" + data.address;
+              document.getElementById('idid_keeper').value = "";
+              document.getElementById('idid_keeper').value = "" + data.idid;
+              $('#item_detailed_features').append(data.features);
+              $("#oldpriceofitem").show();
+              $("#per").show();
+              return;
+            },
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+              if (textstatus === "timeout") {
+                swal({
+                  title: "Oops!!!",
+                  text: "server time out",
+                  icon: "error",
+                  closeOnClickOutside: false,
+                  dangerMode: true,
+                  timer: 6000,
+                });
+                return;
+              } else {
+                return;
+              }
+            }
+          }); //closing ajax
         }
       }
-      if (flag == 0) {
-        swal({
-          title: "Sorry!!!",
-          text: "Select a store",
-          icon: "warning",
-          closeOnClickOutside: false,
-          dangerMode: true,
-        })
-          .then((willSubmit1) => {
-            if (willSubmit1) {
+      //PRICE AND CART SETTINGS
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //PRICE AND CART SETTINGS WISHLIST
+      function wishlist_pricing(store, item_description_id) {
+        var idid = item_description_id;
+        var store_id = store;
+        $('.sel_store2').css('display', 'unset');
+        $('.element_cart2').hide();
+        $('#wishlist_check' + store_id).css('display', 'none');
+        $('#wishlist_btn' + store_id).css('display', 'unset');
+        //if none is checked
+        if ($('.sel_store2:checkbox:checked').length == 0) {
+          $("#ini").show();
+          $("#per2").hide();
+        }
+        //if none is checked
+        else {
+          $.ajax({
+            url: "../Common/functions.php", //passing page info
+            data: {
+              "wishlist_pricefinder": 1,
+              "item_description_id": idid,
+              "store_id": store_id
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
+              $("#ini").hide();
+              document.getElementById('save2').innerHTML = "";
+              document.getElementById('save2').innerHTML += data.save;
+              document.getElementById('off2').innerHTML = "";
+              document.getElementById('off2').innerHTML += data.off;
+              document.getElementById('dis_avail2').innerHTML = "";
+              document.getElementById('dis_avail2').innerHTML = "" + data.availability;
+              document.getElementById('dis_sts2').innerHTML = "";
+              document.getElementById('dis_sts2').innerHTML = "" + data.sts;
+              document.getElementById('dis_qnty2').innerHTML = "";
+              document.getElementById('dis_qnty2').innerHTML = "" + data.quantity;
+              document.getElementById('dis_add2').innerHTML = "";
+              document.getElementById('dis_add2').innerHTML = "" + data.address;
+              document.getElementById('wishlist_idid_keeper').value = "";
+              document.getElementById('wishlist_idid_keeper').value = "" + data.idid;
+              $('#wishlist_item_detailed_features').append(data.features);
+              $("#oldpriceofitem").show();
+              $("#per2").show();
               return;
+            },
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+              if (textstatus === "timeout") {
+                swal({
+                  title: "Oops!!!",
+                  text: "server time out",
+                  icon: "error",
+                  closeOnClickOutside: false,
+                  dangerMode: true,
+                  timer: 6000,
+                });
+                return;
+              } else {
+                return;
+              }
             }
-            else {
-              return;
-            }
-          });
+          }); //closing ajax
+        }
       }
-      else {
-        var item_description_id = document.getElementById('wishlist_idid_keeper').value;
-        $.ajax({
-          url: "../Common/functions.php", //passing page info
-          data: { "addtowishlist": 1, "item_description_id": item_description_id, "store_id": id },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
-            if (data.status == 'success') {
-              return;
-            }
-            else {
-              return;
-            }
-          },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-            if (textstatus === "timeout") {
-              swal({
-                title: "Oops!!!",
-                text: "server time out",
-                icon: "error",
-                closeOnClickOutside: false,
-                dangerMode: true,
-                timer: 6000,
-              });
-              return;
-            }
-            else { return; }
+      //PRICE AND CART SETTINGS  WISHLIST
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      //WISHLIST ENTRY ITEMS
+      function wishlist_check_store_select() {
+        var tbl = document.getElementById("wishlist_store");
+        var chks = tbl.getElementsByTagName("INPUT");
+        var id = 0;
+        var flag = 0;
+        for (var i = 0; i < chks.length; i++) {
+          if (chks[i].checked == true) {
+            id = chks[i].value;
+            flag = 1;
           }
-        }); //closing ajax
-      }
-    }
-    //WISHLIST ENTRY ITEMS
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function wishlist_check_list_select(wishlist_id) {
-      $.ajax({
-        url: "../Common/functions.php", //passing page info
-        data: { "fetchedwishlistid": 1, "wishlist_id": wishlist_id },  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
-          if (data.status == 'success') {
-            swal({
-              title: "Added!!!",
-              text: "Check your wishlist",
-              icon: "success",
+        }
+        if (flag == 0) {
+          swal({
+              title: "Sorry!!!",
+              text: "Select a store",
+              icon: "warning",
               closeOnClickOutside: false,
               dangerMode: true,
             })
-              .then((willSubmit1) => {
-                if (willSubmit1) {
-                  return;
-                }
-                else {
-                  return;
-                }
-              });
-          }
-          else if (data.status == 'error') {
-            swal({
-              title: "Required!!!",
-              text: "You need to create an Account",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
-              .then((willSubmit) => {
-                if (willSubmit) {
-                  location.href = "../Account/registered.php";
-                  return;
-                }
-                else {
-                  return;
-                }
-              });
-          }
-        },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-          if (textstatus === "timeout") {
-            swal({
-              title: "Oops!!!",
-              text: "server time out",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-              timer: 6000,
+            .then((willSubmit1) => {
+              if (willSubmit1) {
+                return;
+              } else {
+                return;
+              }
             });
-            return;
-          }
-          else { return; }
+        } else {
+          var item_description_id = document.getElementById('wishlist_idid_keeper').value;
+          $.ajax({
+            url: "../Common/functions.php", //passing page info
+            data: {
+              "addtowishlist": 1,
+              "item_description_id": item_description_id,
+              "store_id": id
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
+              if (data.status == 'success') {
+                return;
+              } else {
+                return;
+              }
+            },
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+              if (textstatus === "timeout") {
+                swal({
+                  title: "Oops!!!",
+                  text: "server time out",
+                  icon: "error",
+                  closeOnClickOutside: false,
+                  dangerMode: true,
+                  timer: 6000,
+                });
+                return;
+              } else {
+                return;
+              }
+            }
+          }); //closing ajax
         }
-      }); //closing ajax
-    }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  </script>
-  </body>
-  <html>
+      }
+      //WISHLIST ENTRY ITEMS
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      function wishlist_check_list_select(wishlist_id) {
+        $.ajax({
+          url: "../Common/functions.php", //passing page info
+          data: {
+            "fetchedwishlistid": 1,
+            "wishlist_id": wishlist_id
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
+            if (data.status == 'success') {
+              swal({
+                  title: "Added!!!",
+                  text: "Check your wishlist",
+                  icon: "success",
+                  closeOnClickOutside: false,
+                  dangerMode: true,
+                })
+                .then((willSubmit1) => {
+                  if (willSubmit1) {
+                    return;
+                  } else {
+                    return;
+                  }
+                });
+            } else if (data.status == 'error') {
+              swal({
+                  title: "Required!!!",
+                  text: "You need to create an Account",
+                  icon: "error",
+                  closeOnClickOutside: false,
+                  dangerMode: true,
+                })
+                .then((willSubmit) => {
+                  if (willSubmit) {
+                    location.href = "../Account/registered.php";
+                    return;
+                  } else {
+                    return;
+                  }
+                });
+            }
+          },
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            if (textstatus === "timeout") {
+              swal({
+                title: "Oops!!!",
+                text: "server time out",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+                timer: 6000,
+              });
+              return;
+            } else {
+              return;
+            }
+          }
+        }); //closing ajax
+      }
+      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    </script>
+    </body>
+    <html>
