@@ -2,33 +2,33 @@
 require "../../db.php";
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'GET') {
-	$data = array(
-		':store_id' => "%" . $_GET['store_id'] . "%",
-		':store_name' => "%" . $_GET['store_name'] . "%",
-		':opening_hours' => "%" . $_GET['opening_hours'] . "%",
-		':address' => "%" . $_GET['address'] . "%",
-		':status' => "%" . $_GET['status'] . "%",
-		':longitude' => "%" . $_GET['longitude'] . "%",
-		':latitude' => "%" . $_GET['latitude'] . "%"
-	);
-	$query = "SELECT * FROM store WHERE store_name LIKE :store_name AND opening_hours LIKE :opening_hours AND
+  $data = array(
+    ':store_id' => "%" . $_GET['store_id'] . "%",
+    ':store_name' => "%" . $_GET['store_name'] . "%",
+    ':opening_hours' => "%" . $_GET['opening_hours'] . "%",
+    ':address' => "%" . $_GET['address'] . "%",
+    ':status' => "%" . $_GET['status'] . "%",
+    ':longitude' => "%" . $_GET['longitude'] . "%",
+    ':latitude' => "%" . $_GET['latitude'] . "%"
+  );
+  $query = "SELECT * FROM store WHERE store_name LIKE :store_name AND opening_hours LIKE :opening_hours AND
 	 address LIKE :address AND status LIKE :status AND longitude LIKE :longitude AND latitude LIKE :latitude
 	  AND store_id LIKE :store_id";
-	$statement = $pdo->prepare($query);
-	$statement->execute($data);
-	$result = $statement->fetchAll();
-	foreach ($result as $row) {
-		$output[] = array(
-			'store_id' => $row['store_id'],
-			'store_name' => $row['store_name'],
-			'opening_hours' => $row['opening_hours'],
-			'address' => $row['address'],
-			'status' => $row['status'],
-			'longitude' => $row['longitude'],
-			'latitude' => $row['latitude']
-		);
-	}
-	echo json_encode($output);
+  $statement = $pdo->prepare($query);
+  $statement->execute($data);
+  $result = $statement->fetchAll();
+  foreach ($result as $row) {
+    $output[] = array(
+      'store_id' => $row['store_id'],
+      'store_name' => $row['store_name'],
+      'opening_hours' => $row['opening_hours'],
+      'address' => $row['address'],
+      'status' => $row['status'],
+      'longitude' => $row['longitude'],
+      'latitude' => $row['latitude']
+    );
+  }
+  echo json_encode($output);
 }/*
 if($method=='POST'){
 $data=array(

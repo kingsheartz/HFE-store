@@ -1020,13 +1020,13 @@ WHERE product_description_id=:product_description_id
           $('#' + i + 'w3').val(v1);
         }
       }
+
       function showupda(x, y) {
-        $('#' + x).on("submit", function (e) {
+        $('#' + x).on("submit", function(e) {
           var dataString = new FormData(document.forms[0]);
           if (y == 1) {
             dataString.append('update_data', '1');
-          }
-          else if (y == 0) {
+          } else if (y == 0) {
             dataString.append('remove_data', '1');
           }
           console.log(dataString);
@@ -1037,24 +1037,24 @@ WHERE product_description_id=:product_description_id
             contentType: false,
             cache: false,
             processData: true,
-            success: function () {
+            success: function() {
               console.log('success');
               $("#" + x).html("<div id='message'></div>");
               $("#message")
                 .hide()
-                .fadeIn(1500, function () {
+                .fadeIn(1500, function() {
                   $("#message").append(
                     "<div class='alert alert-success'>Product Updated \
                         <button onclick='location.reload()' style='background: green;padding: 5px;border: none;color: white;border-radius: 5px;height: 30px;display: block;margin: auto;'>Refresh</button></div>"
                   );
                 });
             },
-            error: function () {
+            error: function() {
               console.log('error');
               $("#" + x).html("<div id='message'></div>");
               $("#message")
                 .hide()
-                .fadeIn(1500, function () {
+                .fadeIn(1500, function() {
                   $("#message").append(
                     "<div class='alert alert-danger'>Product Not Updated</div>"
                   );
@@ -1078,6 +1078,7 @@ WHERE product_description_id=:product_description_id
         $('#' + x).scrollLeft(y + 100);
         $('#' + x + '>.right-arrow').show();
       }
+
       function moveright(x) {
         var y = $('#' + x).scrollLeft();
         $('#' + x + '>.left-arrow').show();
@@ -1086,17 +1087,16 @@ WHERE product_description_id=:product_description_id
         }
         $('#' + x).scrollLeft(y - 100);
       }
+
       function movefr(x) {
         var y = $('#' + x).scrollLeft();
         var width = $('#' + x).outerWidth()
         var scrollWidth = $('#' + x)[0].scrollWidth;
         if (scrollWidth - width === y) {
           $('#' + x + '>.left-arrow').hide();
-        }
-        else if (y === 0) {
+        } else if (y === 0) {
           $('#' + x + '>.right-arrow').hide();
-        }
-        else {
+        } else {
           $('#' + x + '>.left-arrow').show();
           $('#' + x + '>.right-arrow').show();
         }
@@ -1114,7 +1114,7 @@ WHERE product_description_id=:product_description_id
       $description = $_POST['description'];
       $price = $_POST['price'];
       $it = $_POST['product_id'];
-      ?>
+    ?>
       <div class="pr1" style="margin-top: 80px
       ;">
         <div class="proupda ">
@@ -1131,7 +1131,7 @@ WHERE product_description_id=:product_description_id
                 $query = "SELECT * FROM product  where product_id=$it ";
                 $st = $pdo->query($query);
                 while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-                  ?>
+                ?>
                   <div class="form-group" style="margin-bottom: 30px;">
                     <span class="floating-label">Price</span>
                     <input name="price"
@@ -1146,7 +1146,7 @@ WHERE product_description_id=:product_description_id
                     <textarea name="description"><?= $row['description'] ?></textarea>
                   </div>
                   <input type="hidden" name="cid" value="<?= $it ?>">
-                  <?php
+                <?php
                 }
                 ?>
                 <button name="update_data" style="    font-weight: bold;
@@ -1168,7 +1168,7 @@ WHERE product_description_id=:product_description_id
               $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product_description.product_id=$it ";
               $st = $pdo->query($query);
               while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-                ?>
+              ?>
                 <div class="col-sm-12">
                   <div class="imgdis">
                     <form id="<?= $row['product_description_id'] ?>" method="post"
@@ -1209,7 +1209,7 @@ WHERE product_description_id=:product_description_id
                           <?php
                           $t = $row['img_count'];
                           for ($i = 1; $i <= $t; $i++) {
-                            ?>
+                          ?>
                             <div class="product">
                               <img style=" display: inline-block;
     text-align: center;
@@ -1220,7 +1220,7 @@ WHERE product_description_id=:product_description_id
    " onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
                                 src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg">
                             </div>
-                            <?php
+                          <?php
                           }
                           ?>
                         </div>
@@ -1235,8 +1235,10 @@ WHERE product_description_id=:product_description_id
                             $query1 = "SELECT * FROM size where size_id=" . $row['size'];
                             $st1 = $pdo->query($query1);
                             $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                            ?>
-                            <script type="text/javascript">$('#<?= $row['product_description_id'] ?>check1').prop('checked', true); $('#<?= $row['product_description_id'] ?>check1').attr('disabled', true);
+                          ?>
+                            <script type="text/javascript">
+                              $('#<?= $row['product_description_id'] ?>check1').prop('checked', true);
+                              $('#<?= $row['product_description_id'] ?>check1').attr('disabled', true);
                             </script>
                             <div class="form-group">
                               <select id="<?= $row['product_description_id'] ?>size" class="form-control" name="size">
@@ -1244,16 +1246,16 @@ WHERE product_description_id=:product_description_id
                                 <?php
                                 $cat = $pdo->query("select * from size");
                                 while ($row2 = $cat->fetch(PDO::FETCH_ASSOC)) {
-                                  ?>
+                                ?>
                                   <option value="<?= $row2['size_id'] ?>"><?= $row2['size_name'] ?></option>
-                                  <?php
+                                <?php
                                 }
                                 ?>
                               </select>
                             </div>
-                            <?php
+                          <?php
                           } else {
-                            ?>
+                          ?>
                             <div class="form-group">
                               <select id="<?= $row['product_description_id'] ?>size" class="form-control"
                                 style="display:none;width: 100%" name="size">
@@ -1261,14 +1263,14 @@ WHERE product_description_id=:product_description_id
                                 <?php
                                 $cat = $pdo->query("select * from size");
                                 while ($row2 = $cat->fetch(PDO::FETCH_ASSOC)) {
-                                  ?>
+                                ?>
                                   <option value="<?= $row2['size_id'] ?>"><?= $row2['size_name'] ?></option>
-                                  <?php
+                                <?php
                                 }
                                 ?>
                               </select>
                             </div>
-                            <?php
+                          <?php
                           } ?>
 
                           <label class="checkbox">
@@ -1280,8 +1282,10 @@ WHERE product_description_id=:product_description_id
                             if ($row['weight'] != 0) {
                               $we = $row['weight'];
                               $we3 = explode(' ', $we);
-                              ?>
-                              <script type="text/javascript">$('#<?= $row['product_description_id'] ?>check3').prop('checked', true); $('#<?= $row['product_description_id'] ?>check3').attr('disabled', true);
+                            ?>
+                              <script type="text/javascript">
+                                $('#<?= $row['product_description_id'] ?>check3').prop('checked', true);
+                                $('#<?= $row['product_description_id'] ?>check3').attr('disabled', true);
                               </script>
                               <div class="form-group">
                                 <input type="number"
@@ -1300,9 +1304,9 @@ WHERE product_description_id=:product_description_id
                                 </select>
                                 <input type="hidden" id="<?= $row['product_description_id'] ?>w3" name="weight">
                               </div>
-                              <?php
+                            <?php
                             } else {
-                              ?>
+                            ?>
                               <div class="form-group">
 
                                 <input
@@ -1321,7 +1325,7 @@ WHERE product_description_id=:product_description_id
                                 </select>
                                 <input type="hidden" id="<?= $row['product_description_id'] ?>w3" name="weight">
                               </div>
-                              <?php
+                            <?php
                             }
                             ?>
                           </label>
@@ -1335,8 +1339,10 @@ WHERE product_description_id=:product_description_id
                               $query1 = "SELECT * FROM brand where brand_id=" . $row['brand'];
                               $st1 = $pdo->query($query1);
                               $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                              ?>
-                              <script type="text/javascript">$('#<?= $row['product_description_id'] ?>check9').prop('checked', true); $('#<?= $row['product_description_id'] ?>check9').attr('disabled', true);
+                            ?>
+                              <script type="text/javascript">
+                                $('#<?= $row['product_description_id'] ?>check9').prop('checked', true);
+                                $('#<?= $row['product_description_id'] ?>check9').attr('disabled', true);
                               </script>
                               <div class="form-group">
                                 <span id="<?= $row['product_description_id'] ?>brand" class="floating-label"
@@ -1346,16 +1352,16 @@ WHERE product_description_id=:product_description_id
                                   <?php
                                   $cat = $pdo->query("select * from brand where category_id=" . $row['category_id']);
                                   while ($row2 = $cat->fetch(PDO::FETCH_ASSOC)) {
-                                    ?>
+                                  ?>
                                     <option value="<?= $row2['brand_id'] ?>"><?= $row2['brand_name'] ?></option>
-                                    <?php
+                                  <?php
                                   }
                                   ?>
                                 </select>
                               </div>
-                              <?php
+                            <?php
                             } else {
-                              ?>
+                            ?>
                               <div class="form-group">
                                 <select id="<?= $row['product_description_id'] ?>brand" placeholder="brand"
                                   class="form-control" style="display:none;width: 100%" name="brand">
@@ -1363,14 +1369,14 @@ WHERE product_description_id=:product_description_id
                                   <?php
                                   $cat = $pdo->query("select * from brand where category_id=" . $row['category_id']);
                                   while ($row2 = $cat->fetch(PDO::FETCH_ASSOC)) {
-                                    ?>
+                                  ?>
                                     <option value="<?= $row2['brand_id'] ?>"><?= $row2['brand_name'] ?></option>
-                                    <?php
+                                  <?php
                                   }
                                   ?>
                                 </select>
                               </div>
-                              <?php
+                            <?php
                             }
                             ?>
                           </label>
@@ -1395,14 +1401,14 @@ WHERE product_description_id=:product_description_id
                     </form>
                   </div>
                 </div>
-                <?php
+              <?php
               }
               ?>
             </div>
           </div>
         </div>
       </div>
-      <?php
+    <?php
     }
     ?>
     <?php

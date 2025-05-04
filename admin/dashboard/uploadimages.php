@@ -21,6 +21,7 @@ if (!empty($_SESSION['_contact_form_success'])) {
     <script type="text/javascript">
       $('li').removeClass('active');
       $('#uploadimagesphp').addClass('active');
+
       function clr() {
         x = confirm("R yu sure ..?.It will clear all the text entered")
         if (x == true) {
@@ -280,7 +281,9 @@ if (!empty($_SESSION['_contact_form_success'])) {
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.9/angular.min.js"></script>
 
     <form name="form" id="myform" method="post" action="upload.php" enctype="multipart/form-data">
-      <div class="hed">Add Product</div><br>
+      <div class="hed">
+        Add Product
+      </div><br>
       <?php
       if (!empty($success)) {
         ?>
@@ -330,7 +333,7 @@ if (!empty($_SESSION['_contact_form_success'])) {
             <span class="floating-label">Price</span>
             <input type="number" required="" class="form-control"
               onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-              style="width: 100%" name="item_price">
+              style="width: 100%" name="item_price"/>
           </div>
           <div class="form-group">
             <span class="floating-label">Product Description</span>
@@ -347,133 +350,152 @@ if (!empty($_SESSION['_contact_form_success'])) {
           <div id="position_fields">
           </div>
           <br><br>
+          </div>
+        </div>
+        <div class="col-md-12 addte">
+          <style type="text/css">
+            .image-upload {
+              border: 1px dashed #fdfdfd;
+              background: url(images/upbck.jpg);
+              padding-top: 20px;
+              padding-bottom: 20px;
+              cursor: pointer;
+              border-radius: 20px;
+            }
+          </style>
+
+          <?php
+          require "..\..\db.php";
+          ?>
+          <!--features-->
+          <script type="text/javascript">
+            function conca(i) {
+              console.log('helo');
+              if ($('#w1' + i).val() != 0) {
+                var v1 = $('#w1' + i).val() + ' ' + $('#w2' + i).val();
+                $('#w3' + i).val(v1);
+              }
+            }
+          </script>
+          <!--features-->
+          <script>
+            function previewFile(inp, i) {
+              var file = $('' + inp).get(0).files[0];
+              if (file) {
+                var reader = new FileReader();
+                reader.onload = function () {
+                  $("#previewImg" + i).attr("src", reader.result);
+                }
+                reader.readAsDataURL(file);
+              }
+            }
+          </script>
+          <script type="text/javascript">
+            countpos = 0;
+            $(document).ready(function () {
+              console.log('document ready');
+              $('#addpos').click(function (event) {
+                event.preventDefault();
+                if (countpos >= 9) {
+                  alert('maximum reached');
+                  return;
+                }
+                countpos++;
+                console.log('adding...');
+                $('#position_fields').append(
+                  '<div id="position' + countpos + '" style="position:relative;padding-top: 20px;">\
+                    <button type="button" class="rempos" onclick="$(\'#position'+ countpos + '\').remove();return(false);">\
+                      <i style="font-size: 24px;float:left"  class="fa fa-minus-circle"></i>\
+                      Remove\
+                    </button>\
+                    <label style="color:#088DA9">Select the features</label><br><br>\
+                    <div class="col-sm-12" style="text-align:center">\
+                      <label class="checkbox"><input class="form-control-check" type="checkbox" onclick="$(\'#size'+ countpos + '\').toggle();$(\'#size1' + countpos + '\').toggle()" name="check1' + countpos + '" value="size"><span>Size</span>\
+                        <div class="form-group">\
+                          <select id="size'+ countpos + '" class="form-control" style="display:none;width: 100%"name="size' + countpos + '" >\
+                            <option value="">Select...</option>\
+                            <?php
+                            $cat = $pdo->query("select * from size");
+                            while ($row = $cat->fetch(PDO::FETCH_ASSOC)) {
+                            ?>
+                            <option value = "<?= $row['size_id'] ?>" > <?= $row['size_name'] ?></option >\
+                            <?php
+                            }
+                            ?>'
+                            + '</select>\
+                          </div>\
+                        </label>\
+                        <label class="checkbox"><input type="checkbox" class="form-control-check" onclick="$(\'#brand'+countpos+'\').toggle();$(\'#brand1'+countpos+'\').toggle()" name="check1'+countpos+'" value="brand">\
+                          <span>Brand</span>\
+                          <div class="form-group">\
+                            <select id="brand'+countpos+'" placeholder="brand" class="form-control" style="display:none;width: 100%" name="brand'+countpos+'" >\
+                              <option value="">Select...</option>\
+                              <?php
+                              $cat = $pdo->query("select * from brand");
+                              while ($row = $cat->fetch(PDO::FETCH_ASSOC)) {
+                              ?>
+                              <option value="<?= $row['brand_id'] ?>"><?= $row['brand_name'] ?></option>\
+                              <?php
+                              }
+                              ?>'
+                            + '</select>\
+                          </div>\
+                        </label>\
+                        <label class="checkbox"><input type="checkbox" class="form-control-check" onclick="$(\'#w1'+countpos+'\').toggle();$(\'#w2'+countpos+'\').toggle();$(\'#weight1'+countpos+'\').toggle()" name="check1'+countpos+'" value="weight">\
+                          <span>Weight</span>\
+                          <div class="form-group" >\
+                            <input onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" type="number" class="form-control" style="display:none;width:70%;border-right:none; float:left;" id="w1'+countpos+'" onkeyup="conca('+countpos+')"/>\
+                            <select class="form-control" style="display:none;width:30%;float:left;color: white;background: #0B7383" id="w2'+countpos+'" onchange="conca('+countpos+')">\
+                              <option value="kg">kg</option>\
+                              <option value="g">g</option>\
+                              <option value="lt">lt</option>\
+                              <option value="ml">ml</option>\
+                            </select>\
+                            <input type="hidden" id="w3'+countpos+'" name="weight'+countpos+'"/>\
+                          </div>\
+                        </label>\
+                      </div>\
+                      <label>File Input</label>\
+                      <div class="image-upload">  \
+                      <label for="file-input'+countpos+'" style="width: 100%; cursor: pointer;">\
+                        <center>\
+                          <img id="previewImg'+countpos+'" src="images/upload.png" style="max-width: 150px;max-height: 150px;height: auto;width: auto;">\
+                        </center>\
+                      </label>\
+                      <input id="file-input'+countpos+'" type="file" name="my_file'+countpos+'" onchange="previewFile(\'#file-input'+countpos+'\','+countpos+');" style="display: none; cursor: pointer;"/>\
+                    </div>\
+                  </div>'
+                );
+              });
+            });
+          </script>
+          <button type="submit" name="add" name="submit">
+            <span
+              style="color: #F9F9F9;
+              font-size: 16px;
+              float: left;
+              border-right: 1px solid #F9F9F9;
+              height: 100%;
+              padding-left: 5px;
+              padding-right: 5px;" class="glyphicon glyphicon-save-file">
+            </span>
+            Save
+          </button>
+          <button type="reset" onclick="clr()" name="reset">
+            <i style="color: #FF0000;
+              font-size: 16px;
+              float: left;
+              border-right: 1px solid #FF0000;
+              height: 100%;
+              padding-left: 5px;
+              padding-right: 5px;" class="fa fa-ban">
+            </i>
+            Cancel
+          </button><br/>
         </div>
       </div>
-      <div class="col-md-12 addte">
-        <style type="text/css">
-          .image-upload {
-            border: 1px dashed #fdfdfd;
-            background: url(images/upbck.jpg);
-            padding-top: 20px;
-            padding-bottom: 20px;
-            cursor: pointer;
-            border-radius: 20px;
-          }
-        </style>
-
-        <?php
-        require "..\..\db.php";
-        ?>
-        <!--features-->
-        <script type="text/javascript">
-          function conca(i) {
-            console.log('helo');
-            if ($('#w1' + i).val() != 0) {
-              var v1 = $('#w1' + i).val() + ' ' + $('#w2' + i).val();
-              $('#w3' + i).val(v1);
-            }
-          }
-        </script>
-        <!--features-->
-        <script>
-          function previewFile(inp, i) {
-            var file = $('' + inp).get(0).files[0];
-            if (file) {
-              var reader = new FileReader();
-              reader.onload = function () {
-                $("#previewImg" + i).attr("src", reader.result);
-              }
-              reader.readAsDataURL(file);
-            }
-          }
-        </script>
-        <script type="text/javascript">
-          countpos = 0;
-          $(document).ready(function () {
-            console.log('document ready');
-            $('#addpos').click(function (event) {
-              event.preventDefault();
-              if (countpos >= 9) {
-                alert('maximum reached');
-                return;
-              }
-              countpos++;
-              console.log('adding...');
-              $('#position_fields').append(
-                '<div id="position' + countpos + '" style="position:relative;padding-top: 20px;">\
-        <button type="button" class="rempos" \
-        onclick="$(\'#position'+ countpos + '\').remove();return(false);"><i style="font-size: 24px;float:left"  class="fa fa-minus-circle"></i>Remove</button>\
-        <label style="color:#088DA9">Select the features</label><br><br>\
-        <div class="col-sm-12" style="text-align:center">\
-<label class="checkbox"><input class="form-control-check" type="checkbox" onclick="$(\'#size'+ countpos + '\').toggle();$(\'#size1' + countpos + '\').toggle()" name="check1' + countpos + '" value="size"><span>Size</span>\
-<div class="form-group">\
-  <select id="size'+ countpos + '" class="form-control" style="display:none;width: 100%"name="size' + countpos + '" >\
-     <option value="">Select...</option>\
-    <?php
-    $cat = $pdo->query("select * from size");
-    while ($row = $cat->fetch(PDO::FETCH_ASSOC)) {
-      ?>
-                  < option value = "<?= $row['size_id'] ?>" > <?= $row['size_name'] ?></option >\
-                <?php
-    }
-    ?></select ></div ></label >\
-              <label class="checkbox"><input type="checkbox" class="form-control-check" onclick="$(\'#brand'+countpos+'\').toggle();$(\'#brand1'+countpos+'\').toggle()" name="check1'+countpos+'" value="brand"><span>Brand</span>\
-                <div class="form-group">\
-                  <select id="brand'+countpos+'" placeholder="brand" class="form-control" style="display:none;width: 100%" name="brand'+countpos+'" >\
-                    <option value="">Select...</option>\
-                    <?php
-                    $cat = $pdo->query("select * from brand");
-                    while ($row = $cat->fetch(PDO::FETCH_ASSOC)) {
-                      ?>
-                      <option value="<?= $row['brand_id'] ?>"><?= $row['brand_name'] ?></option>\
-                      <?php
-                    }
-                    ?>
-                  </select>\
-                </div>\
-              </label>\
-              <label class="checkbox"><input type="checkbox" class="form-control-check" onclick="$(\'#w1'+countpos+'\').toggle();$(\'#w2'+countpos+'\').toggle();$(\'#weight1'+countpos+'\').toggle()" name="check1'+countpos+'" value="weight"><span>Weight</span>\
-                <div class="form-group" >\
-                  <input onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57" type="number" class="form-control" style="display:none;width:70%;border-right:none;\
-        float:left;" id="w1'+countpos+'" onkeyup="conca('+countpos+')">\
-                    <select class="form-control" style="display:none;width:30%;float:left;color: white;background: #0B7383" id="w2'+countpos+'" onchange="conca('+countpos+')">\
-                      <option value="kg">kg</option>\
-                      <option value="g">g</option>\
-                      <option value="lt">lt</option>\
-                      <option value="ml">ml</option>\
-                    </select>\
-                    <input type="hidden" id="w3'+countpos+'" name="weight'+countpos+'">\
-                    </div>\
-                  </label>\
-                </div>\
-                <label>File Input</label>\
-                <div class="image-upload">  \
-                  <label for="file-input'+countpos+'" style="width: 100%; cursor: pointer;">      <center>  <img id="previewImg'+countpos+'" src="images/upload.png" style="max-width: 150px;max-height: 150px;height: auto;width: auto;"></center>      </label>      <input id="file-input'+countpos+'" type="file" name="my_file'+countpos+'" onchange="previewFile(\'#file-input'+countpos+'\','+countpos+');" style="display: none; cursor: pointer;"></div>\
-              </div>'
-                );
-       });
-  });
-        </script>
-        <button type="submit" name="add" name="submit">
-          <span style="color: #F9F9F9;
-    font-size: 16px;
-    float: left;
-    border-right: 1px solid #F9F9F9;
-    height: 100%;
-    padding-left: 5px;
-    padding-right: 5px;" class="glyphicon glyphicon-save-file"></span>Save</button>
-        <button type="reset" onclick="clr()" name="reset"><i style="color: #FF0000;
-    font-size: 16px;
-    float: left;
-    border-right: 1px solid #FF0000;
-    height: 100%;
-    padding-left: 5px;
-    padding-right: 5px;" class="fa fa-ban"></i>Cancel</button><br />
-      </div><br /><br />
-      <div style="margin-bottom:20px;"></div>
     </form>
   </div>
   <?php
   require "foot.php";
   ?>
-  </div>

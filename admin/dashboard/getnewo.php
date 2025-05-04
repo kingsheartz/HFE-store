@@ -2,14 +2,14 @@
 require "../../db.php";
 $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'GET') {
-	$data = array(
-		':item_name' => "%" . $_GET['item_name'] . "%",
-		':order_date' => "%" . $_GET['order_date'] . "%",
-		':store_name' => "%" . $_GET['store_name'] . "%",
-		':delivery_status' => "%" . $_GET['delivery_status'] . "%",
-		':total_amt' => "%" . $_GET['total_amt'] . "%"
-	);
-	$query = "SELECT *  FROM new_orders
+  $data = array(
+    ':item_name' => "%" . $_GET['item_name'] . "%",
+    ':order_date' => "%" . $_GET['order_date'] . "%",
+    ':store_name' => "%" . $_GET['store_name'] . "%",
+    ':delivery_status' => "%" . $_GET['delivery_status'] . "%",
+    ':total_amt' => "%" . $_GET['total_amt'] . "%"
+  );
+  $query = "SELECT *  FROM new_orders
 	JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
 	JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
 	JOIN users ON users.user_id=user_delivery_details.user_id
@@ -26,19 +26,19 @@ if ($method == 'GET') {
 	  LIKE :order_date AND store.store_name LIKE :store_name
 	  AND new_ordered_products.delivery_status LIKE :delivery_status AND
 	  new_ordered_products.total_amt LIKE :total_amt ";
-	$statement = $pdo->prepare($query);
-	$statement->execute($data);
-	$result = $statement->fetchAll();
-	foreach ($result as $row) {
-		$output[] = array(
-			'new_ordered_products_id' => $row['new_ordered_products_id'],
-			'item_name' => $row['item_name'],
-			'order_date' => $row['order_date'],
-			'store_name' => $row['store_name'],
-			'delivery_status' => $row['delivery_status'],
-			'total_amt' => $row['total_amt']
-		);
-	}
-	echo json_encode($output);
+  $statement = $pdo->prepare($query);
+  $statement->execute($data);
+  $result = $statement->fetchAll();
+  foreach ($result as $row) {
+    $output[] = array(
+      'new_ordered_products_id' => $row['new_ordered_products_id'],
+      'item_name' => $row['item_name'],
+      'order_date' => $row['order_date'],
+      'store_name' => $row['store_name'],
+      'delivery_status' => $row['delivery_status'],
+      'total_amt' => $row['total_amt']
+    );
+  }
+  echo json_encode($output);
 }
 ?>

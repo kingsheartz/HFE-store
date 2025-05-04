@@ -46,22 +46,27 @@ include "header.php";
         //var result = JSON.stringify(data);
         console.log(data[0]);
         var p = "";
-        p += "<table><tr>\
-<th>OrderId</th>\
-<th>Product</th>\
-<th>Order Date</th>\
-<th>Store Name</th>\
-<th>Status</th>\
-<th>Total Amount</th></tr>\
-";
+        p += "\
+          <table>\
+            <tr>\
+              <th>OrderId</th>\
+              <th>Product</th>\
+              <th>Order Date</th>\
+              <th>Store Name</th>\
+              <th>Status</th>\
+              <th>Total Amount</th>\
+            </tr>\
+          ";
         for (var i = 0; i < data.length; i++) {
-          p += "<tr>\
-  <th>"+ data[i].new_ordered_products_id + "</th>\
-<th>"+ data[i].item_name + "</th>\
-<th>"+ data[i].order_date + "</th>\
-<th>"+ data[i].store_name + "</th>\
-<th>"+ data[i].delivery_status + "</th>\
-<th>"+ data[i].total_amt + "</th></tr>";
+          p += "\
+            <tr>\
+              <th>" + data[i].new_ordered_products_id + "</th>\
+              <th>" + data[i].item_name + "</th>\
+              <th>" + data[i].order_date + "</th>\
+              <th>" + data[i].store_name + "</th>\
+              <th>" + data[i].delivery_status + "</th>\
+              <th>" + data[i].total_amt + "</th>\
+            </tr>";
         }
         p += "</table>";
         return p;
@@ -71,6 +76,7 @@ include "header.php";
         p = tblpr();
         window.open('data:application/vnd.ms-excel;base64,' + base64_encode(p));
       }
+
       function base64_encode(data) {
         var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
         var o1, o2, o3, h1, h2, h3, h4, bits, i = 0,
@@ -115,7 +121,7 @@ include "header.php";
         paging: true,
         autoload: true,
         controller: {
-          loadData: function (filter) {
+          loadData: function(filter) {
             console.log(filter);
             return $.ajax({
               type: "GET",
@@ -125,15 +131,44 @@ include "header.php";
             });
           },
         },
-        fields: [
-          { name: "new_ordered_products_id", css: 'hidden' },
-          { name: "item_name", title: "Product", type: "text", width: 150 },
-          { name: "order_date", title: "Ordered Date", type: "text", width: 100 },
-          { name: "store_name", title: "Store Name", type: "text", width: 100 },
-          { name: "delivery_status", title: "Status", type: "text", width: 100 },
-          { name: "total_amt", title: "Total", type: "text", width: 100 },
+        fields: [{
+            name: "new_ordered_products_id",
+            css: 'hidden'
+          },
           {
-            type: "control", deleteButton: false, editButton: false
+            name: "item_name",
+            title: "Product",
+            type: "text",
+            width: 150
+          },
+          {
+            name: "order_date",
+            title: "Ordered Date",
+            type: "text",
+            width: 100
+          },
+          {
+            name: "store_name",
+            title: "Store Name",
+            type: "text",
+            width: 100
+          },
+          {
+            name: "delivery_status",
+            title: "Status",
+            type: "text",
+            width: 100
+          },
+          {
+            name: "total_amt",
+            title: "Total",
+            type: "text",
+            width: 100
+          },
+          {
+            type: "control",
+            deleteButton: false,
+            editButton: false
           }
         ]
       });

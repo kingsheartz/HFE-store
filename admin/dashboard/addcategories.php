@@ -36,8 +36,8 @@ include "header.php";
         pageButtonCount: 5,
         deleteConfirm: "Do you really want to delete?",
         controller: {
-          loadData: function (filter) {
-            filter.type = "filter";//EDITED LINE
+          loadData: function(filter) {
+            filter.type = "filter"; //EDITED LINE
             return $.ajax({
               type: "GET",
               url: "getaddcategories.php",
@@ -46,19 +46,19 @@ include "header.php";
             });
           },
           //EDITED BY KINGSHEARTZ
-          insertItem: function (item) {
-            item.type = "insert";//EDITED LINE
-            console.log(item)//NOT ESSENTIAL : ARELUM POVO VARO CHEYYINDO NNU NOKKAN
+          insertItem: function(item) {
+            item.type = "insert"; //EDITED LINE
+            console.log(item) //NOT ESSENTIAL : ARELUM POVO VARO CHEYYINDO NNU NOKKAN
             return $.ajax({
               type: "POST",
               url: "getaddcategories.php",
               data: item,
               dataType: "json",
-              timeout: 30000,   //waiting time 30 sec
-              success: function (data) {
+              timeout: 30000, //waiting time 30 sec
+              success: function(data) {
                 location.href = "addcategories.php";
               },
-              error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+              error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                 if (textstatus === "timeout") {
                   swal({
                     title: "Oops!!!",
@@ -73,19 +73,19 @@ include "header.php";
               }
             });
           },
-          updateItem: function (item) {
-            item.type = "update";//EDITED LINE
+          updateItem: function(item) {
+            item.type = "update"; //EDITED LINE
             console.log(item)
             return $.ajax({
               type: "POST",
               url: "getaddcategories.php",
               data: item,
               dataType: "json",
-              timeout: 30000,   //waiting time 30 sec
-              success: function (data) {
+              timeout: 30000, //waiting time 30 sec
+              success: function(data) {
                 location.href = "addcategories.php";
               },
-              error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+              error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                 if (textstatus === "timeout") {
                   swal({
                     title: "Oops!!!",
@@ -100,19 +100,19 @@ include "header.php";
               }
             });
           },
-          deleteItem: function (item) {
-            item.type = "delete";//EDITED LINE
+          deleteItem: function(item) {
+            item.type = "delete"; //EDITED LINE
             console.log(item)
             return $.ajax({
               type: "POST",
               url: "getaddcategories.php",
               data: item,
               dataType: "json",
-              timeout: 30000,   //waiting time 30 sec
-              success: function (data) {
+              timeout: 30000, //waiting time 30 sec
+              success: function(data) {
                 return;
               },
-              error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+              error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                 if (textstatus === "timeout") {
                   swal({
                     title: "Oops!!!",
@@ -130,22 +130,22 @@ include "header.php";
           },
         },
         fields: [{
-          name: "category_id",
-          title: "Category Id",
-          type: "text",
-          width: 150,
-          editing: false
-        },
-        {
-          name: "category_name",
-          title: "Categories",
-          type: "text",
-          width: 150,
-          validate: "required"
-        },
-        {
-          type: "control"
-        }
+            name: "category_id",
+            title: "Category Id",
+            type: "text",
+            width: 150,
+            editing: false
+          },
+          {
+            name: "category_name",
+            title: "Categories",
+            type: "text",
+            width: 150,
+            validate: "required"
+          },
+          {
+            type: "control"
+          }
         ]
       });
     </script>
