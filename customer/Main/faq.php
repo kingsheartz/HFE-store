@@ -123,7 +123,7 @@ require "header.php";
 					</li>
 				</ul>
 			</li>
-			<li class="item10"><a href="#" title="click here" class="que">How can I connect with you ?</a>
+			<li class="item11"><a href="#" title="click here" class="que">How can I connect with you ?</a>
 				<ul>
 					<li class="subitem1">
 						<p>It's very simple just click <a href="../Main/contact.php">"Contact us"</a> option and there

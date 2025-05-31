@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
       <title>ERROR 404 || ONESTORE</title>
@@ -6,7 +6,7 @@
 <link href="../../../../images/logo/favicon.png" rel="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
   <script src="../../../../js/jquery-1.11.1.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -81,14 +81,14 @@
 ::-moz-selection {
   background-color: rgba(0,0,0,0.2);
 }
-  
+
 .four_zero_four_bg{
- 
+
  background-image: url(dribbble_1.gif);
     height: 400px;
     background-position: center;
  }
- 
+
 
 a {
   color: white;
@@ -314,7 +314,7 @@ a:hover {
   <div class="row" style="width:100%;background-color: white;padding:0px;margin: 0px; ">
     <section class="page_404">
       <div class="container">
-        <div class="row">   
+        <div class="row">
           <div class="col-sm-12 ">
             <div class="col-sm-10 col-sm-offset-1  text-center">
               <div class="four_zero_four_bg">
@@ -325,7 +325,7 @@ a:hover {
       <div class="error-page">
         <div class="error-content">
           <h3><i style="color: #FFCC00" class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
-<!--          
+<!--
           <br>
           <h5 style="text-align: left;">
             We could not find the page you were looking for.
@@ -487,13 +487,13 @@ a:hover {
       temporarily unavailable, moved or no longer exist.</p>
 
       <p>Check the URL you entered for any mistakes and try again. Alternatively, search
-      for whatever is missing or take a look around the rest of our site. Go to <a href="../../../../onestore.php" style="color:#007BFF;;font-weight: bold;">Home Page</a>or try to <a style="color:#007BFF;font-weight: bold;" href="../../../../login.php">Logging in</a> .</p>
+      for whatever is missing or take a look around the rest of our site. Go to <a href="../../../../hfe.php" style="color:#007BFF;;font-weight: bold;">Home Page</a>or try to <a style="color:#007BFF;font-weight: bold;" href="../../../../login.php">Logging in</a> .</p>
 
     </div>
   </div>
 
   <br>
-  
+
   <script type="text/javascript">
     $(function () {
     var liWidth = $("li").css("width");
