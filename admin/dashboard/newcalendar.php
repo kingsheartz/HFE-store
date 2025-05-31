@@ -267,6 +267,7 @@
         var refresh = 1000; // Refresh rate in milli seconds
         mytime = setTimeout('display_ct6()', refresh)
       }
+
       display_c6()
     </script>
     <div class="caltwo">
@@ -277,6 +278,7 @@
       </div>
     </div>
   </div>
+
   <script type="text/javascript">
     var month = new Array();
 

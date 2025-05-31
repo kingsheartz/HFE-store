@@ -1,6 +1,8 @@
 <?php
 require "../../db.php";
+
 $method = $_SERVER['REQUEST_METHOD'];
+
 if ($method == 'GET') {
   $data = array(
     ':item_name' => "%" . $_GET['item_name'] . "%",
@@ -20,15 +22,17 @@ if ($method == 'GET') {
 	JOIN category ON category.category_id=item.category_id
 	JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
 	JOIN store on store.store_id=product_details.store_id
-	 WHERE
-	  new_ordered_products.delivery_status='pending' AND
-	  item.item_name LIKE :item_name AND new_orders.order_date
-	  LIKE :order_date AND store.store_name LIKE :store_name
-	  AND new_ordered_products.delivery_status LIKE :delivery_status AND
-	  new_ordered_products.total_amt LIKE :total_amt ";
+    WHERE new_ordered_products.delivery_status='pending'
+      AND item.item_name LIKE :item_name
+      AND new_orders.order_date LIKE :order_date
+      AND store.store_name LIKE :store_name
+      AND new_ordered_products.delivery_status LIKE :delivery_status
+      AND new_ordered_products.total_amt LIKE :total_amt ";
+
   $statement = $pdo->prepare($query);
   $statement->execute($data);
   $result = $statement->fetchAll();
+
   foreach ($result as $row) {
     $output[] = array(
       'new_ordered_products_id' => $row['new_ordered_products_id'],
@@ -39,6 +43,6 @@ if ($method == 'GET') {
       'total_amt' => $row['total_amt']
     );
   }
+
   echo json_encode($output);
 }
-?>

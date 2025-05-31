@@ -200,7 +200,7 @@ where category_id=$ctid ";
           echo 'disabled';
         }
         ?>
-         ">
+        ">
           <a href="
             <?php
             if ($pageno <= 1) {
@@ -243,7 +243,8 @@ where category_id=$ctid ";
                   echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
                   ?>
                 ">
-                  <?= $page ?></a>
+                  <?= $page ?>
+                </a>
               </li>
             <?php
               $dots = true;

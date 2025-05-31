@@ -339,8 +339,7 @@ include "header.php";
         padding-top: 70px;
         min-height: 150px;
       }
-    </style>
-    <style type="text/css">
+
       #close {
         position: relative;
         float: right;
@@ -679,8 +678,7 @@ include "header.php";
         padding-top: 10px;
         min-height: fit-content;
       }
-    </style>
-    <style type="text/css">
+
       select {
         width: 100%;
         color: black;
@@ -903,7 +901,6 @@ include "header.php";
         border: 0px;
       }
 
-
       .form-control {
         border: 0px solid black;
       }
@@ -930,7 +927,7 @@ include "header.php";
     </style>
     <?php
     require "../../db.php";
-    echo "\n\n\n\n\n\n\n\n\n\n\n\nfefefefef";
+
     if (isset($_POST['cid'])) {
       echo "cid SET";
       $gt1 = $_POST['cid'];
@@ -941,13 +938,12 @@ include "header.php";
         ':description' => $des1,
         ':price' => $rt1
       );
-      $query6 = "UPDATE product SET
-  description=:description, price=:price
-  WHERE product_id=:product_id";
+      $query6 = "UPDATE product SET description=:description, price=:price WHERE product_id=:product_id";
       $statement6 = $pdo->prepare($query6);
       print_r($statement6);
       $statement6->execute($data8);
     }
+
     if (isset($_POST['it_id'])) {
       if (isset($_POST['update_data'])) {
         $it_id = $_POST['it_id'];
@@ -973,15 +969,15 @@ include "header.php";
           ':brand' => $brand
         );
         $query1 = "UPDATE product_description SET
-product_id=:product_id,
-size=:size,
-weight=:weight,
-brand=:brand
-WHERE product_description_id=:product_description_id
-";
+                    product_id=:product_id,
+                    size=:size,
+                    weight=:weight,
+                    brand=:brand
+                    WHERE product_description_id=:product_description_id ";
         $statement = $pdo->prepare($query1);
         $statement->execute($data);
       }
+
       if (isset($_POST['remove_data'])) {
         $it_id = $_POST['it_id'];
         $gt = $_POST['product_id'];
@@ -991,17 +987,20 @@ WHERE product_description_id=:product_description_id
         $query1 = "SELECT * from product_description where product_id=$gt";
         $st1 = $pdo->query($query1);
         $gn = $st1->rowCount();
+
         if ($gn == 0) {
           $query2 = "DELETE FROM product WHERE product_id=$gt";
           $st2 = $pdo->query($query2);
         }
         $filename = $_POST['imfinm'];
+
         if (file_exists($filename)) {
           unlink($filename);
         }
+
         $count = $_POST['count'];
-        if ($count == 0) {
-        } else {
+
+        if ($count != 0) {
           for ($i = 1; $i <= $count; $i++) {
             $filename = "../../images/" . $cat . "/" . $it_id . "_" . $i . ".jpg";
             if (file_exists($filename)) {
@@ -1115,31 +1114,25 @@ WHERE product_description_id=:product_description_id
       $price = $_POST['price'];
       $it = $_POST['product_id'];
     ?>
-      <div class="pr1" style="margin-top: 80px
-      ;">
+      <div class="pr1" style="margin-top: 80px;">
         <div class="proupda ">
           <div class="newupdation">
-            <span style="
-    ">
-              <h4 style="
-    "> <?= $itna ?></h4>
+            <span>
+              <h4><?= $itna ?></h4>
             </span><br>
             <form id="productdesc" method="post">
-              <div class="col-sm-12 imgdis" style="padding-top: 100px;
-    position: relative;">
+              <div class="col-sm-12 imgdis" style="padding-top: 100px;position: relative;">
                 <?php
-                $query = "SELECT * FROM product  where product_id=$it ";
+                $query = "SELECT * FROM product  where product_id=$it";
                 $st = $pdo->query($query);
                 while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                   <div class="form-group" style="margin-bottom: 30px;">
                     <span class="floating-label">Price</span>
-                    <input name="price"
+                    <input
+                      name="price"
                       onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                      style="    width: 100%;
-    height: 40px;
-    border-radius: 5px;
-    outline: none;" value="<?= $row['price'] ?>">
+                      style="width: 100%;height: 40px;border-radius: 5px;outline: none;" value="<?= $row['price'] ?>">
                   </div>
                   <div class="form-group">
                     <span class="floating-label">Description</span>
@@ -1149,75 +1142,53 @@ WHERE product_description_id=:product_description_id
                 <?php
                 }
                 ?>
-                <button name="update_data" style="    font-weight: bold;
-    float: right;
-    background: #1336ff;
-    margin-right: 12px;
-    color: white;
-    padding: 10px;
-    border: none;
-    border-radius: 5px;
-    position: absolute;
-    right: 0;
-    top: 10px;" onclick="showupda('productdesc',1)">
-                  <i class="fa fa-pencil" style="margin-right: 20px;float: left;font-size: 24px"></i>Update</button>
+                <button name="update_data" style="font-weight: bold;float: right;background: #1336ff;margin-right: 12px;color: white;padding: 10px;border: none;border-radius: 5px;position: absolute;right: 0;top: 10px;" onclick="showupda('productdesc',1)">
+                  <i class="fa fa-pencil" style="margin-right: 20px;float: left;font-size: 24px"></i>Update
+                </button>
               </div>
             </form>
             <div class="row">
               <?php
-              $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product_description.product_id=$it ";
+              $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product_description.product_id=$it";
               $st = $pdo->query($query);
               while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
               ?>
                 <div class="col-sm-12">
                   <div class="imgdis">
-                    <form id="<?= $row['product_description_id'] ?>" method="post"
-                      name="<?= $row['product_description_id'] ?>">
+                    <form id="<?= $row['product_description_id'] ?>" method="post" name="<?= $row['product_description_id'] ?>">
                       <div class="prim col-sm-5">
-                        <div class="product" style="position: absolute;
-    left: 10px;
-    top: 55px;
-    width: 100px;
-    height: 100px;">
-                          <img style=" display: inline-block;
-  text-align: center;
-  padding: 14px;
-  position: relative;
-    height: 100px;
-    max-width: 100px;
-   " onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
+                        <div class="product" style="position: absolute;left: 10px;top: 55px;width: 100px;height: 100px;">
+                          <img
+                            style=" display: inline-block;text-align: center;padding: 14px;position: relative;height: 100px;max-width: 100px;"
+                            onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
                             src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                         </div>
-                        <div style="    width: 100%;
-    height: 280px;
-    margin-top: 80px;">
-                          <img id="imr<?= $row['product_description_id'] ?>"
-                            src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                        <div style="width: 100%;height: 280px;margin-top: 80px;">
+                          <img id="imr<?= $row['product_description_id'] ?>" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                         </div>
-                        <input type="hidden" name="imfinm"
-                          value="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                        <input type="hidden" name="imfinm" value="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                         <input type="hidden" name="count" value="<?= $row['img_count'] ?>">
                         <input type="hidden" name="catid" value="<?= $row['category_id'] ?>">
-                        <div class="imscr" id="imsrc<?= $row['product_description_id'] ?>"
-                          onscroll="movefr('imsrc<?= $row['product_description_id'] ?>')">
-                          <button type="button" name="lfarr" class="left-arrow"
-                            onclick="moveleft('imsrc<?= $row['product_description_id'] ?>')"><i
-                              class="fas fa-chevron-right"></i></button>
-                          <button type="button" name="rfarr" class="right-arrow"
-                            onclick="moveright('imsrc<?= $row['product_description_id'] ?>')" style="display: none;"><i
-                              class="fas fa-chevron-left"></i></button>
+                        <div class="imscr" id="imsrc<?= $row['product_description_id'] ?>" onscroll="movefr('imsrc<?= $row['product_description_id'] ?>')">
+                          <button type="button" name="lfarr" class="left-arrow" onclick="moveleft('imsrc<?= $row['product_description_id'] ?>')">
+                            <i class="fas fa-chevron-right"></i>
+                          </button>
+                          <button
+                            type="button"
+                            name="rfarr"
+                            class="right-arrow"
+                            onclick="moveright('imsrc<?= $row['product_description_id'] ?>')"
+                            style="display: none;">
+                            <i class="fas fa-chevron-left"></i>
+                          </button>
                           <?php
                           $t = $row['img_count'];
                           for ($i = 1; $i <= $t; $i++) {
                           ?>
                             <div class="product">
-                              <img style=" display: inline-block;
-    text-align: center;
-    padding: 14px;
-    position: relative;
-    height: 80px;
-    max-width: 100px;
-   " onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
+                              <img
+                                style="display: inline-block;text-align: center;padding: 14px;position: relative;height: 80px;max-width: 100px;"
+                                onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
                                 src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg">
                             </div>
                           <?php
@@ -1227,9 +1198,14 @@ WHERE product_description_id=:product_description_id
                       </div>
                       <div class="imdeta col-sm-7">
                         <label class="checkbox">
-                          <input class="form-control-check" type="checkbox"
+                          <input
+                            class="form-control-check"
+                            type="checkbox"
                             onclick="$('#<?= $row['product_description_id'] ?>size').toggle();$('#<?= $row['product_description_id'] ?>size1').toggle()"
-                            name="check1" id="<?= $row['product_description_id'] ?>check1" value="size"><span>Size</span>
+                            name="check1"
+                            id="<?= $row['product_description_id'] ?>check1"
+                            value="size">
+                          <span>Size</span>
                           <?php
                           if ($row['size'] != 0) {
                             $query1 = "SELECT * FROM size where size_id=" . $row['size'];
@@ -1257,8 +1233,7 @@ WHERE product_description_id=:product_description_id
                           } else {
                           ?>
                             <div class="form-group">
-                              <select id="<?= $row['product_description_id'] ?>size" class="form-control"
-                                style="display:none;width: 100%" name="size">
+                              <select id="<?= $row['product_description_id'] ?>size" class="form-control" style="display:none;width: 100%" name="size">
                                 <option value="">Select...</option>
                                 <?php
                                 $cat = $pdo->query("select * from size");
@@ -1274,10 +1249,14 @@ WHERE product_description_id=:product_description_id
                           } ?>
 
                           <label class="checkbox">
-                            <input type="checkbox" class="form-control-check"
+                            <input
+                              type="checkbox"
+                              class="form-control-check"
                               onclick="$('#<?= $row['product_description_id'] ?>w1').toggle();$('#<?= $row['product_description_id'] ?>w2').toggle();$('#<?= $row['product_description_id'] ?>weight1').toggle()"
-                              name="check1" id="<?= $row['product_description_id'] ?>check3"
-                              value="weight"><span>Weight</span>
+                              name="check1"
+                              id="<?= $row['product_description_id'] ?>check3"
+                              value="weight">
+                            <span>Weight</span>
                             <?php
                             if ($row['weight'] != 0) {
                               $we = $row['weight'];
@@ -1288,12 +1267,17 @@ WHERE product_description_id=:product_description_id
                                 $('#<?= $row['product_description_id'] ?>check3').attr('disabled', true);
                               </script>
                               <div class="form-group">
-                                <input type="number"
+                                <input
+                                  type="number"
                                   onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                                  class="form-control" style="width:70%;border-right:none;
-        float:left;" id="<?= $row['product_description_id'] ?>w1"
-                                  onkeyup="conca(<?= $row['product_description_id'] ?>)" value="<?= $we3[0] ?>">
-                                <select class="form-control" style="width:30%;float:left;color: white;background: #0B7383"
+                                  class="form-control"
+                                  style="width:70%;border-right:none; float:left;"
+                                  id="<?= $row['product_description_id'] ?>w1"
+                                  onkeyup="conca(<?= $row['product_description_id'] ?>)"
+                                  value="<?= $we3[0] ?>">
+                                <select
+                                  class="form-control"
+                                  style="width:30%;float:left;color: white;background: #0B7383"
                                   id="<?= $row['product_description_id'] ?>w2"
                                   onchange="conca(<?= $row['product_description_id'] ?>)">
                                   <option value="<?= $we3[1] ?>" selected><?= $we3[1] ?></option>
@@ -1308,13 +1292,15 @@ WHERE product_description_id=:product_description_id
                             } else {
                             ?>
                               <div class="form-group">
-
                                 <input
                                   onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                                  type="number" class="form-control" style="display:none;width:70%;border-right:none;
-        float:left;" id="<?= $row['product_description_id'] ?>w1"
+                                  type="number"
+                                  class="form-control"
+                                  style="display:none;width:70%;border-right:none;float:left;"
+                                  id="<?= $row['product_description_id'] ?>w1"
                                   onkeyup="conca(<?= $row['product_description_id'] ?>)">
-                                <select class="form-control"
+                                <select
+                                  class="form-control"
                                   style="display:none;width:30%;float:left;color: white;background: #0B7383"
                                   id="<?= $row['product_description_id'] ?>w2"
                                   onchange="conca(<?= $row['product_description_id'] ?>)">
@@ -1330,10 +1316,13 @@ WHERE product_description_id=:product_description_id
                             ?>
                           </label>
                           <label class="checkbox">
-                            <input type="checkbox" class="form-control-check"
+                            <input
+                              type="checkbox"
+                              class="form-control-check"
                               onclick="$('#<?= $row['product_description_id'] ?>brand').toggle();$('#<?= $row['product_description_id'] ?>brand1').toggle()"
                               name="check1" id="<?= $row['product_description_id'] ?>check9"
-                              value="brand"><span>Brand</span>
+                              value="brand">
+                            <span>Brand</span>
                             <?php
                             if ($row['brand'] != 0) {
                               $query1 = "SELECT * FROM brand where brand_id=" . $row['brand'];
@@ -1345,8 +1334,7 @@ WHERE product_description_id=:product_description_id
                                 $('#<?= $row['product_description_id'] ?>check9').attr('disabled', true);
                               </script>
                               <div class="form-group">
-                                <span id="<?= $row['product_description_id'] ?>brand" class="floating-label"
-                                  id="<?= $row['product_description_id'] ?>brand1">Brand</span>
+                                <span id="<?= $row['product_description_id'] ?>brand" class="floating-label" id="<?= $row['product_description_id'] ?>brand1">Brand</span>
                                 <select class="form-control" name="brand">
                                   <option value="<?= $row1['brand_id'] ?>"><?= $row1['brand_name'] ?></option>
                                   <?php
@@ -1363,8 +1351,7 @@ WHERE product_description_id=:product_description_id
                             } else {
                             ?>
                               <div class="form-group">
-                                <select id="<?= $row['product_description_id'] ?>brand" placeholder="brand"
-                                  class="form-control" style="display:none;width: 100%" name="brand">
+                                <select id="<?= $row['product_description_id'] ?>brand" placeholder="brand" class="form-control" style="display:none;width: 100%" name="brand">
                                   <option value="">Select...</option>
                                   <?php
                                   $cat = $pdo->query("select * from brand where category_id=" . $row['category_id']);
@@ -1383,20 +1370,14 @@ WHERE product_description_id=:product_description_id
                           <input type="hidden" name="it_id" value="<?= $row['product_description_id'] ?>">
                           <input type="hidden" name="product_id" value="<?= $it ?>">
                       </div>
-                      <div class="col-sm-12 subb" style="
-    left: 0;
-    padding: 0;">
+                      <div class="col-sm-12 subb" style="left: 0; padding: 0;">
                         <input type="hidden" name="check_id" value="<?= $row['product_description_id'] ?>">
-                        <button name="update_data" style="font-weight: bold;
-    float: right;
-    background: green;
-    margin-right: 12px;" onclick="showupda(<?= $row['product_description_id'] ?>,1)"><i class="fas fa-pen-alt"
-                            style="margin-right: 20px;float: left;font-size: 24px"></i>Update</button>
-                        <button name="remove_data" style="font-weight: bold;
-    float: right;
-    background: red;
-    margin-right: 5px;" onclick="showupda(<?= $row['product_description_id'] ?>,0)"><i class="fas fa-trash"
-                            style="margin-right: 20px;float: left;font-size: 24px"></i>Remove</button>
+                        <button name="update_data" style="font-weight: bold;float: right;background: green;margin-right: 12px;" onclick="showupda(<?= $row['product_description_id'] ?>,1)">
+                          <i class="fas fa-pen-alt" style="margin-right: 20px;float: left;font-size: 24px"></i>Update
+                        </button>
+                        <button name="remove_data" style="font-weight: bold;float: right;background: red;margin-right: 5px;" onclick="showupda(<?= $row['product_description_id'] ?>,0)">
+                          <i class="fas fa-trash" style="margin-right: 20px;float: left;font-size: 24px"></i>Remove
+                        </button>
                       </div>
                     </form>
                   </div>

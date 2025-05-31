@@ -35,25 +35,23 @@ require "header.php";
                 $pro = $pdo->query("select * from product");
                 $product = $pro->rowCount();
                 //new product
-                $new = $pdo->query("select  product_id
-from product where (added_date) in (
-    select max(added_date) as date
-    from product
-) ");
+                $new = $pdo->query(
+                  "select  product_id from product where (added_date) in (select max(added_date) as date from product)"
+                );
                 $new_it = $new->rowCount();
                 //new orders
                 $stmt = $pdo->query(
                   "select *  FROM new_orders
-                 JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-                 JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
-                 JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
-                 JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
-                 JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-                 JOIN product_description ON product_details.product_description_id=product_description.product_description_id
-                 JOIN product ON product.product_id=product_description.product_id
-                 JOIN category ON category.category_id=product.category_id
-                 JOIN store on store.store_id=product_details.store_id
-                 WHERE new_ordered_products.delivery_status='pending'"
+                  JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
+                  JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+                  JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
+                  JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
+                  JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
+                  JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+                  JOIN product ON product.product_id=product_description.product_id
+                  JOIN category ON category.category_id=product.category_id
+                  JOIN store on store.store_id=product_details.store_id
+                  WHERE new_ordered_products.delivery_status='pending'"
                 );
                 $stmtn = $stmt->rowCount();
                 ?>
@@ -65,8 +63,7 @@ from product where (added_date) in (
               </div>
             </div>
             <div class="new-text ">
-              <a href="categories.php" class="text-under"><span>Details</span><span><i
-                    class="fa fa-arrow-right"></i></span></a>
+              <a href="categories.php" class="text-under"><span>Details</span><span><i class="fa fa-arrow-right"></i></span></a>
             </div>
           </div>
         </div>
@@ -82,8 +79,7 @@ from product where (added_date) in (
               </div>
             </div>
             <div class="new-text ">
-              <a href="products.php" class="text-under"><span>Details</span><span><i
-                    class="fa fa-arrow-right"></i></span></a>
+              <a href="products.php" class="text-under"><span>Details</span><span><i class="fa fa-arrow-right"></i></span></a>
             </div>
           </div>
         </div>
@@ -99,8 +95,7 @@ from product where (added_date) in (
               </div>
             </div>
             <div class="new-text ">
-              <a href="new_item.php" class="text-under"><span>Details</span><span><i
-                    class="fa fa-arrow-right"></i></span></a>
+              <a href="new_item.php" class="text-under"><span>Details</span><span><i class="fa fa-arrow-right"></i></span></a>
             </div>
           </div>
         </div>
@@ -116,8 +111,7 @@ from product where (added_date) in (
               </div>
             </div>
             <div class="new-text ">
-              <a href="neworders.php" class="text-under">
-                <span>Details</span><span><i class="fa fa-arrow-right"></i></span></a>
+              <a href="neworders.php" class="text-under"> <span>Details</span><span><i class="fa fa-arrow-right"></i></span></a>
             </div>
           </div>
         </div>
@@ -252,33 +246,31 @@ from product where (added_date) in (
                 <ul class="list-group">
                   <?php
                   $stmt = $pdo->query(
-                    "select  *
-        from product join product_description on product_description.product_id=product.product_id where product.added_date in (
-            select max(added_date) as date
-            from product
-        ) LIMIT 2"
+                    "select  * from product join product_description on product_description.product_id=product.product_id
+                    where product.added_date in (select max(added_date) as date from product) LIMIT 2"
                   );
                   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   ?>
                     <li class="list-group-item" style="display: flex;">
                       <div style="width:70px">
-                        <img class="smimg"
-                          src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                        <img class="smimg" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                       </div>
                       <div class="list-group-item-text">
                         <?= $row['product_name'] ?>
-                        <button class="price"
-                          style="background:<?= $colors[array_rand($colors)] ?>;"><i
-                            class="fas fa-rupee-sign"></i> <?= $row['price'] ?></button>
+                        <button class="price" style="background:<?= $colors[array_rand($colors)] ?>;">
+                          <i class="fas fa-rupee-sign"></i> <?= $row['price'] ?>
+                        </button>
                       </div>
-                    </li> <?php
-                        }
-                          ?>
+                    </li>
+                  <?php
+                  }
+                  ?>
                 </ul>
               </div>
             </div>
           </div>
         </div>
+
         <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
         <script type="text/javascript">
           var clients;

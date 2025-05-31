@@ -8,8 +8,8 @@ include "header.php";
     include "navigationbar.php";
     ?>
     <div class="table1">
-      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;"><i
-          class="fab fa-linode" style="padding-right: 12px" aria-hidden="true"></i>Categories
+      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;">
+        <i class="fab fa-linode" style="padding-right: 12px" aria-hidden="true"></i>Categories
       </h4>
       <div id="jsGrid"></div>
     </div>

@@ -1,6 +1,8 @@
 <?php
 require "pdo.php";
+
 $method = $_SERVER['REQUEST_METHOD'];
+
 if ($method == 'GET') {
   // Check if the required parameters are set in the GET request
   $data = array(
@@ -28,6 +30,7 @@ if ($method == 'GET') {
   }
   echo json_encode($output);
 }
+
 if (isset($_POST['type'])) {
   if ($_POST['type'] == "update") { //EDITED LINE
     parse_str(file_get_contents("php://input"), $_POST);
@@ -40,6 +43,7 @@ if (isset($_POST['type'])) {
     $statement = $pdo->prepare($query);
     $statement->execute($data);
   }
+
   if ($_POST['type'] == "delete") { //EDITED LINE
     parse_str(file_get_contents("php://input"), $_POST);
     echo json_encode($_POST['type']); //EDITED LINE
@@ -48,4 +52,3 @@ if (isset($_POST['type'])) {
     $statement->execute();
   }
 }
-?>

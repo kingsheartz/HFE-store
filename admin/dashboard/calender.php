@@ -122,6 +122,7 @@
     background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0300a6), color-stop(1, #29015d)) !important;
   }
 </style>
+
 <?php
 if (isset($_POST['newData'])) {
   $updatedData = $_POST['newData'];
@@ -129,8 +130,8 @@ if (isset($_POST['newData'])) {
   $myfile = fopen("event.json", "w") or die("Unable to open file!");
   fwrite($myfile, $updatedData);
 }
-
 ?>
+
 <script type="text/javascript">
   var today = new Date();
   var month = today.getMonth();
@@ -213,6 +214,7 @@ if (isset($_POST['newData'])) {
   }
   // Done Hiding -->
 </script>
+
 <script>
   $(function() {
     $('#current_month').hide();
@@ -242,14 +244,19 @@ if (isset($_POST['newData'])) {
     })
   });
 </script>
+
 <div class="cont">
   <button id="prev"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i></button>
-  <div id="show_calendar">&nbsp;</div><button id="nextbt"><i class="fas fa-chevron-right"></i><i
-      class="fas fa-chevron-right"></i></button>
+  <div id="show_calendar">&nbsp;</div>
+  <button id="nextbt">
+    <i class="fas fa-chevron-right"></i>
+    <i class="fas fa-chevron-right"></i>
+  </button>
   <div id="current_month">&nbsp;</div>
 </div>
 <div id="event"></div>
 </div>
+
 <script>
   document.addEventListener("load", $.getJSON("event.json", function(data) {
     var flag = 0;
@@ -269,16 +276,12 @@ if (isset($_POST['newData'])) {
       h += "<div>" + evnm + "<div>";
       h += '<div class="progress" style="height:10px">  <div class="progress-bar bg-success" role="progressbar" style="width: 25%" aria-valuenow="25" aria-valuemin="0" aria-valuemax="100"></div></div>';
       $('#event').append(h);
-
     } else {
       $('#event').empty();
 
       $('#event').append('No Event');
     }
-
   }));
-
-
 
   $("#show_calendar").on("click", "td.day", function() {
     $('.day').not('#current_day').css("background", "transparent");
@@ -367,6 +370,7 @@ if (isset($_POST['newData'])) {
     });
   }
 </script>
+
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">

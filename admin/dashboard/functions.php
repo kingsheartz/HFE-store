@@ -6,6 +6,7 @@ function redirectWithError($error)
   echo "Error: " . $error;
   die();
 }
+
 function redirectSuccess()
 {
   $_SESSION['_contact_form_success'] = true;
