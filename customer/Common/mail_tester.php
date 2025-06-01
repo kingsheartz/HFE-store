@@ -14,7 +14,7 @@ $mail->Username = CONTACTFORM_SMTP_USERNAME; // email
 $mail->Password = CONTACTFORM_SMTP_PASSWORD; // Applicaton password
 // Recipients
 $mail->setFrom(CONTACTFORM_FROM_ADDRESS, CONTACTFORM_FROM_NAME);
-$mail->addAddress("krishnendugopi8592@gmail.com", "Krish"); // to email and name
+$mail->addAddress("govind.das279@gmail.com", "Krish"); // to email and name
 // Content
 $mail->Subject = "activation";
 $mail->msgHTML("fghgfeygfyewgyuwgrywrytr"); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,

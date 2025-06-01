@@ -125,7 +125,7 @@ try {
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <script type="text/javascript">
     //ANIMATION
-    window.addEventListener("load", function() {
+    window.addEventListener("load", function () {
       const loader = document.querySelector(".loader");
       console.log(loader);
       loader.className += " hidden";
