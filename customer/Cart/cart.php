@@ -1,6 +1,7 @@
 <?php
 require "../Main/header.php";
 require "../../db.php";
+
 //Generate Dynamic Loading
 function randomGen($min, $max, $quantity)
 {
@@ -19,6 +20,7 @@ function randomGen($min, $max, $quantity)
     </ol>
   </div>
 </div>
+
 <!-- //breadcrumbs -->
 <style type="text/css">
   input[type="submit"],
@@ -403,6 +405,7 @@ function randomGen($min, $max, $quantity)
     width: 100% !important;
   }
 </style>
+
 <script>
   $(document).ready(function() {
     $('.deselect').attr('checked', false);
@@ -690,39 +693,43 @@ function randomGen($min, $max, $quantity)
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 </script>
-<div class="side-arrow"
-  style="position: fixed;bottom: 0px;height:148px;right:198px;z-index: 100;color:rgb(255, 255, 255);background-color: rgba(250, 245, 245, 0);padding:10px;border-top-left-radius: 10px;display: none;justify-content: center;align-products: center;">
-  <div class="shadow_all_none"
-    style="display: flex;justify-content: center;align-products: center;border-radius: 50%; background-color: rgb(1, 134, 187);width:35px;height:35px">
-    <i style="display: none;margin-bottom: 0px;margin-left: -2px;" class="fa fa-shopping-cart fa-lg arr-l"
-      onclick="$('.side-ext-r').css('visibility','visible');$('.side-ext-r').css('opacity','1');$('.side-arrow').css('right','198px');$('.arr-l').hide();$('.arr-r').show();"></i>
-    <i style="font-size: 40px;margin-left: 10px;margin-bottom: 2px;" class="fa fa-angle-right fa-3x arr-r"
-      onclick="$('.side-ext-r').css('visibility','hidden');$('.side-ext-r').css('opacity','0');$('.side-arrow').css('right','0');$('.arr-r').hide();$('.arr-l').show();"></i>
+<div class="side-arrow" style="position: fixed;bottom: 0px;height:148px;right:198px;z-index: 100;color:rgb(255, 255, 255);background-color: rgba(250, 245, 245, 0);padding:10px;border-top-left-radius: 10px;display: none;justify-content: center;align-products: center;">
+  <div class="shadow_all_none" style="display: flex;justify-content: center;align-items: center;border-radius: 50%; background-color: rgb(1, 134, 187);width:35px;height:35px">
+    <i
+      style="display: none;margin-bottom: 0px;margin-left: -2px;"
+      class="fa fa-shopping-cart fa-lg arr-l"
+      onclick="$('.side-ext-r').css('visibility','visible');$('.side-ext-r').css('opacity','1');$('.side-arrow').css('right','198px');$('.arr-l').hide();$('.arr-r').show();">
+    </i>
+    <i
+      style="font-size: 40px;margin-left: 10px;margin-bottom: 2px;"
+      class="fa fa-angle-right fa-3x arr-r"
+      onclick="$('.side-ext-r').css('visibility','hidden');$('.side-ext-r').css('opacity','0');$('.side-arrow').css('right','0');$('.arr-r').hide();$('.arr-l').show();">
+    </i>
   </div>
 </div>
 <div class="side-ext shadow_l">
-  <div class="div_wrapper side-ext-l side-ext-r shadow_l"
-    style="display:flex;padding:0;display: none;bottom:100px;position: fixed;width: 200px;right:0;z-index: 99;">
+  <div class="div_wrapper side-ext-l side-ext-r shadow_l" style="display:flex;padding:0;display: none;bottom:100px;position: fixed;width: 200px;right:0;z-index: 99;">
     <input type="button"
       style="height: 50px;font-weight: bold;border-top-left-radius: 10px;background-color: #ff5722;bottom:100px;position: fixed;width: 200px;right:0;"
-      onclick="check_mul()" value="Proceed to buy" name="proceed" class=" button alt wc-forward side-ext-k shadow_l">
+      onclick="check_mul()"
+      value="Proceed to buy"
+      name="proceed"
+      class=" button alt wc-forward side-ext-k shadow_l">
   </div>
-  <div class="side-ext-l side-ext-r shadow_l"
-    style="visibility: visible;opacity: 1;display: none;position: fixed;width: 200px;right:0;bottom:0;z-index: 99;">
-    <div class="side-ext-l side-ext-r shadow_l"
-      style="position: fixed;bottom: 50px;right:0;z-index: 99;color:white;background-color: rgb(70, 70, 70);padding:10px;width:200px;">
-      <label class="options"><span class="val-getbrand">Deselect all</span><input onclick="deselect()" class="deselect"
-          value="" id="mobgetbrand" type="radio" name="mob-radio-getbrand"> <span class="checkmark "></span></label>
+  <div class="side-ext-l side-ext-r shadow_l" style="visibility: visible;opacity: 1;display: none;position: fixed;width: 200px;right:0;bottom:0;z-index: 99;">
+    <div class="side-ext-l side-ext-r shadow_l" style="position: fixed;bottom: 50px;right:0;z-index: 99;color:white;background-color: rgb(70, 70, 70);padding:10px;width:200px;">
+      <label class="options">
+        <span class="val-getbrand">Deselect all</span>
+        <input onclick="deselect()" class="deselect" value="" id="mobgetbrand" type="radio" name="mob-radio-getbrand">
+        <span class="checkmark "></span>
+      </label>
     </div>
-    <div class="side-ext-l side-ext-r"
-      style="display:flex;width: 100%;padding:0;justify-content: flex-end;padding-right: 0px;position: fixed;right:0;bottom:0;z-index: 99;">
-      <div class="shadow_l"
-        style="background-color: rgb(250, 245, 245);padding-left:10px;padding-right:10px;display:flex;justify-content: center;align-products: center;width:200px">
+    <div class="side-ext-l side-ext-r" style="display:flex;width: 100%;padding:0;justify-content: flex-end;padding-right: 0px;position: fixed;right:0;bottom:0;z-index: 99;">
+      <div class="shadow_l" style="background-color: rgb(250, 245, 245);padding-left:10px;padding-right:10px;display:flex;justify-content: center;align-items: center;width:200px">
         <i class="fa fa-check fa-2x" style="color: seagreen;float:left;padding-right: 10px;"></i>
         <h5 style="float:left;font-weight: bold;">Selected <span id="sel_itcnt">0</span> product(s)
           <div class="clearfix"></div>
-          <span style="float: left;margin-bottom: -5px;margin-top: 5px;">Subtotals <i class="fa fa-inr"></i>
-            <span id="sub_mul">0</span></span>
+          <span style="float: left;margin-bottom: -5px;margin-top: 5px;">Subtotals <i class="fa fa-inr"></i><span id="sub_mul">0</span></span>
         </h5>
       </div>
     </div>
@@ -731,12 +738,11 @@ function randomGen($min, $max, $quantity)
 <!--side-ext-->
 <div class="single-product-area" style="padding-top: 0px; background-color: #eaeded;padding-bottom:0px">
   <div class="zigzag-bottom"></div>
-  <h2 class="sidebar-title" style=" ">
+  <h2 class="sidebar-title">
     Shopping Cart <i class="fa fa-shopping-cart"></i>
   </h2>
   <div class="container nopadding-margin" style="margin-left: 0px;width: 100%;padding:0">
     <div class="row" style="margin: 0px;">
-
       <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%">
         <script>
           console.log("saasaDDFFWR<?php echo $_SESSION['id']; ?>");
@@ -754,7 +760,6 @@ function randomGen($min, $max, $quantity)
         ?>
             <div class="col-md-12" style="margin:0px;padding: 0px;margin-bottom: 20px;">
               <div class="product-content-right nopadding-margin">
-
                 <hr class=" make_divc" style="margin-bottom: 0px;margin-top: -10px;">
                 <div class="woocommerce">
                   <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;">
@@ -776,10 +781,10 @@ function randomGen($min, $max, $quantity)
                         $store_id = $row1['store_id'];
                         $n = 0;
                         $sql2 = "select * from product inner join category on category.category_id=product.category_id
-                                                                inner join product_description on product_description.product_id=product.product_id
-                                                                inner join product_details on product_description.product_description_id=product_details.product_description_id
-                                                                inner join store on store.store_id=product_details.store_id
-                                                                where product_description.product_description_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id LIMIT 1";
+                                inner join product_description on product_description.product_id=product.product_id
+                                inner join product_details on product_description.product_description_id=product_details.product_description_id
+                                inner join store on store.store_id=product_details.store_id
+                                where product_description.product_description_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id LIMIT 1";
                         $stmt2 = $pdo->prepare($sql2);
                         $stmt2->execute(array(
                           ':product_description_id' => $product_description_id,
@@ -804,24 +809,22 @@ function randomGen($min, $max, $quantity)
                           <div class="cross-sells">
                             <div class="each-product" style="padding: 0px;width: 100%;"
                               class="tbl_s<?= $store_id . "i" . $product_description_id ?>">
-                              <div class="col-sm-1" style="    padding: 0px;
-    padding-left: 10px;
-    padding-right: 10px;
-    position: relative;
-    top: 200px;
-    left: 20px;">
-                                <input id="check_s<?= $store_id . "i" . $product_description_id ?>" class="checktobuy"
-                                  onclick="addorremove(this)" type="checkbox" name="select_product"
+                              <div class="col-sm-1" style="padding: 0px;padding-left: 10px;padding-right: 10px;position: relative;top: 200px;left: 20px;">
+                                <input
+                                  id="check_s<?= $store_id . "i" . $product_description_id ?>"
+                                  class="checktobuy"
+                                  onclick="addorremove(this)"
+                                  type="checkbox"
+                                  name="select_product"
                                   value="s-<?= $store_id . "_i-" . $product_description_id ?>">
                               </div>
                               <div class="col-sm-4">
-                                <div class="product-quantity quantity buttons_added"
-                                  style="justify-content: center;display: flex;text-align: center;align-products: center;position: relative;margin-right: 0px">
+                                <div class="product-quantity quantity buttons_added" style="justify-content: center;display: flex;text-align: center;align-items: center;position: relative;margin-right: 0px">
                                   <div class="product_img" style="padding: 0px; margin-top: 7px;margin-left: 15px;">
                                     <p class="product-thumbnail" style="text-align:right;">
-                                      <a href="../Product/single.php?id=<?= $row2['product_description_id'] ?>"><img style="    max-width: 400px;
-    max-height: 400px;" alt="<?= $row2['product_name'] ?>" class="shop_thumbnail"
-                                          src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg"></a>
+                                      <a href="../Product/single.php?id=<?= $row2['product_description_id'] ?>">
+                                        <img style="max-width: 400px;max-height: 400px;" alt="<?= $row2['product_name'] ?>" class="shop_thumbnail" src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg">
+                                      </a>
                                     </p>
                                   </div>
                                 </div>
@@ -829,26 +832,25 @@ function randomGen($min, $max, $quantity)
                               <div class="col-sm-7 product_description_td">
                                 <div class="product-name" colspan="2" style="padding: 0px;margin-top: 5px;">
                                   <p style="margin:0px;margin-bottom: 20px;font-size:17px;">
-                                  <div
-                                    style="margin-right:10px;background-color: transparent;padding-right:20px;padding-left:10px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
+                                  <div style="margin-right:10px;background-color: transparent;padding-right:20px;padding-left:10px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
                                     <div style="display: flex;">
                                       <a class="pd_name" href="#" style="color: black;font-weight: normal;text-align:justify;">
-                                        <?= $row2['product_name'] ?></a>
+                                        <?= $row2['product_name'] ?>
+                                      </a>
                                     </div>
                                   </div>
                                   </p>
                                 </div>
                                 <div class="cart_product" style="width: 100%; background-color: #fff">
-                                  <div class="large_specs_seen"
-                                    style="width:100%;float: left;text-align: left;margin-left:10px;">
+                                  <div class="large_specs_seen" style="width:100%;float: left;text-align: left;margin-left:10px;">
                                     <div style="margin-top: 40px;">
                                       <!--FEATURES-->
                                       <ul>
 
                                         <?php
                                         $sqlfeatures = "select * from product_details
-                                                                                                inner join product_description on product_description.product_description_id=product_details.product_description_id
-                                                                                                where product_description.product_description_id=:product_description_id and store_id=:store_id";
+                                                        inner join product_description on product_description.product_description_id=product_details.product_description_id
+                                                        where product_description.product_description_id=:product_description_id and store_id=:store_id";
                                         $stmtfeatures = $pdo->prepare($sqlfeatures);
                                         $stmtfeatures->execute(array(
                                           ':product_description_id' => $product_description_id,
@@ -860,6 +862,7 @@ function randomGen($min, $max, $quantity)
                                         $rowfeatures['f2'] = $rowfeatures['brand'];
                                         $features = array('size', 'weight', 'brand', 'price', 'quantity');
                                         $f = 0;
+
                                         while ($f < 3) {
                                           if ($rowfeatures['f' . $f] != 0 && $rowfeatures['f' . $f] != '0') {
                                             if ($features[$f] != 'weight') {
@@ -867,14 +870,13 @@ function randomGen($min, $max, $quantity)
                                               $stmtfeature_name = $pdo->query($sqlfeature_name);
                                               $rowfeature_name = $stmtfeature_name->fetch(PDO::FETCH_ASSOC);
                                             }
+
                                             if ($features[$f] == "color") {
                                         ?>
                                               <li class="sc-product-variation">
                                                 <span class="a-list-product">
-                                                  <span class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
-                                                    </b></span>
-                                                  <span class="a-size-small"
-                                                    style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
+                                                  <span class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>: </b></span>
+                                                  <span class="a-size-small" style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
                                                 </span>
                                               </li>
                                             <?php
@@ -882,10 +884,8 @@ function randomGen($min, $max, $quantity)
                                             ?>
                                               <li class="sc-product-variation">
                                                 <span class="a-list-product">
-                                                  <span class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
-                                                    </b></span>
-                                                  <span class="a-size-small"
-                                                    style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
+                                                  <span class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>: </b></span>
+                                                  <span class="a-size-small" style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
                                                 </span>
                                               </li>
                                             <?php
@@ -893,8 +893,7 @@ function randomGen($min, $max, $quantity)
                                             ?>
                                               <li class="sc-product-variation">
                                                 <span class="a-list-product">
-                                                  <span class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>:
-                                                    </b></span>
+                                                  <span class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>: </b></span>
                                                   <span class="a-size-small"><?= $rowfeature_name[$features[$f] . '_name'] ?></span>
                                                 </span>
                                               </li>
@@ -912,9 +911,10 @@ function randomGen($min, $max, $quantity)
                                         ?>
                                         <li class="sc-product-variation">
                                           <span class="a-list-product">
-                                            <small><span class="a-size-small a-text-bold"><b>Description:
-                                                </b></span>
-                                              <span class="a-size-small"><?= $description2 ?></span></small>
+                                            <small>
+                                              <span class="a-size-small a-text-bold"><b>Description: </b></span>
+                                              <span class="a-size-small"><?= $description2 ?></span>
+                                            </small>
                                           </span>
                                         </li>
                                       </ul>
@@ -922,36 +922,32 @@ function randomGen($min, $max, $quantity)
                                   </div>
                                   <div style="width:100%;float: left;text-align: left;">
                                     <div class="row" style="margin-left: 0px;float: left;margin-right: 0px;">
-                                      <div class="col-md-6 full-size-cart-store-div"
-                                        style="padding: 0px;margin-left: 20px;width: 200px;">
+                                      <div class="col-md-6 full-size-cart-store-div" style="padding: 0px;margin-left: 20px;width: 200px;">
                                         <p style="z-index: 1;text-align:left;margin-top: 35px;">
-                                          <span
-                                            style='font-family: arial;color:#006904;font-weight: bold;text-decoration: none;font-size: 12px'>You
-                                            Save &#8377; <span id="save_s<?= $store_id . "i" . $product_description_id ?>"
-                                              style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"><?= $save ?></span>
-                                            (<span
-                                              style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"
-                                              id="off_s<?= $store_id . "i" . $product_description_id ?>"><?= $off ?></span>%)
+                                          <span style='font-family: arial;color:#006904;font-weight: bold;text-decoration: none;font-size: 12px'>
+                                            You Save &#8377; <span id="save_s<?= $store_id . "i" . $product_description_id ?>" style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"><?= $save ?></span>
+                                            (<span style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px" id="off_s<?= $store_id . "i" . $product_description_id ?>"><?= $off ?></span>%)
                                           </span>
                                         </p>
-                                        <p class="product-price"
-                                          style="z-index: 1;text-align:left;margin-top: 10px;;font-weight: bold;font-size: 2vw">
-                                          <span class="amount">&#8377;<span
-                                              id="total_s<?= $store_id . "i" . $product_description_id ?>"><?= $total ?></span>
-                                            <i style="color: #303030" class="fa fa-tags">&nbsp;<del
-                                                style="color: #999;font-weight:normal;font-size: 13px;">&#8377;</del></i><del
+                                        <p class="product-price" style="z-index: 1;text-align:left;margin-top: 10px;;font-weight: bold;font-size: 2vw">
+                                          <span class="amount">&#8377;<span id="total_s<?= $store_id . "i" . $product_description_id ?>"><?= $total ?></span>
+                                            <i style="color: #303030" class="fa fa-tags">&nbsp;<del style="color: #999;font-weight:normal;font-size: 13px;">&#8377;</del></i>
+                                            <del
                                               style="color: #999;font-weight:normal;font-size: 13px;"
                                               id="mrp_s<?= $store_id . "i" . $product_description_id ?>"
-                                              style="text-decoration:"><?= (int) $t_mrp * (int) $row1['quantity'] ?></del></span>
+                                              style="text-decoration:"><?= (int) $t_mrp * (int) $row1['quantity'] ?>
+                                            </del>
+                                          </span>
                                         </p>
                                         <p style="margin-top:10px;">
                                           <select
                                             style="outline: none;border:none;background-color:#006904;color: white;padding: 5px;border-radius: 3px;padding-top: 1px;padding-bottom: 1px; "
                                             id="order_s<?= $store_id . "i" . $product_description_id ?>">
-                                            <option selected="" disabled=""
+                                            <option
+                                              selected=""
+                                              disabled=""
                                               style="background-color: white;font-weight: bold;text-align: center;"
-                                              value="<?= $row1['order_type'] ?>">
-                                              <?= ucwords($row1['order_type']) ?>
+                                              value="<?= $row1['order_type'] ?>"><?= ucwords($row1['order_type']) ?>
                                             </option>
                                             <?php
                                             $preordsql = $pdo->query("select order_preference from product_details where store_id=" . $store_id . " and product_description_id=" . $product_description_id);
@@ -992,74 +988,112 @@ function randomGen($min, $max, $quantity)
                                       </div>
                                     </div>
                                   </div>
-                                  <div style="padding: 0px;
-    position: absolute;
-    top: 200px;
-    right: 30px;
-    width: fit-content;">
-                                    <div class="div-wrapper"
-                                      style="text-align: left;padding: 0px;margin:0px;height: 40px;grid-gap: 0px;">
+                                  <div style="padding: 0px;position: absolute;top: 200px;right: 30px;width: fit-content;">
+                                    <div class="div-wrapper" style="text-align: left;padding: 0px;margin:0px;height: 40px;grid-gap: 0px;">
                                       <div class="btn_sub_q" style="padding: 0px;margin: 0px;margin-left: 2px;">
                                         <button
                                           style="background-color: #02171e;-webkit-box-shadow: inset 0px 0px 15px 3px #02171e;box-shadow: inset 0px 0px 15px 3px #02171e;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #02171e;color: white;font-size: 18px;border-radius: 5px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;"
                                           type="button" id="sub_s<?= $store_id . "i" . $product_description_id ?>"
-                                          onclick="sub_product_all('<?= $store_id ?>','<?= $product_description_id ?>','<?= $t_mrp ?>')">-</button>
+                                          onclick="sub_product_all('<?= $store_id ?>','<?= $product_description_id ?>','<?= $t_mrp ?>')">-
+                                        </button>
                                       </div>
                                       <div style="padding: 0px;margin: 0px;">
-                                        <button id="btn_s<?= $store_id . "i" . $product_description_id ?>" type="button"
+                                        <button
+                                          id="btn_s<?= $store_id . "i" . $product_description_id ?>"="button"
                                           style="width: 100%;min-width: 50px;height: 40px;font-weight: bold;font-size: 14px;background-color: white;outline: none;border-color:#02171e;padding: 0"
                                           onclick="$(this).hide();if($(this).html()<10){$('#sel_s<?= $store_id . "i" . $product_description_id ?>').show();}else{$('#qnty_s<?= $store_id . "i" . $product_description_id ?>').show();}">
                                           <?= $row1['quantity'] ?>
                                         </button>
-                                        <select id="sel_s<?= $store_id . "i" . $product_description_id ?>"
+                                        <select
+                                          id="sel_s<?= $store_id . "i" . $product_description_id ?>"
                                           onchange="select_product_option('<?= $store_id ?>','<?= $product_description_id ?>','<?= $t_mrp ?>');"
-                                          name="quantity" autocomplete="off"
+                                          name="quantity"
+                                          autocomplete="off"
                                           style="width: 100%;min-width: 50px;bottom: 0;box-shadow: none;outline: none;border-color:#aaa;height:40px;display: none;background-color: white">
-                                          <option value="<?= $row1['quantity'] ?>"
-                                            id="sel_opt_s<?= $store_id . "i" . $product_description_id ?>" selected disabled>
-                                            <?= $row1['quantity'] ?>
+                                          <option
+                                            value="<?= $row1['quantity'] ?>"
+                                            id="sel_opt_s<?= $store_id . "i" . $product_description_id ?>"
+                                            selected
+                                            disabled><?= $row1['quantity'] ?>
                                           </option>
-                                          <option value="0" class="sc-update-quantity-option" data-a-css-class="quantity-option"
-                                            data-a-html-content="0 (Delete)">
-                                            0 (Delete)</option>
-                                          <option value="1" class="sc-update-quantity-option" data-a-css-class="quantity-option"
+                                          <option
+                                            value="0"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option"
+                                            data-a-html-content="0 (Delete)">0 (Delete)
+                                          </option>
+                                          <option
+                                            value="1"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option"
                                             data-a-html-content="1">1
                                           </option>
-                                          <option value="2" class="sc-update-quantity-option" data-a-css-class="quantity-option"
+                                          <option
+                                            value="2"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option"
                                             data-a-html-content="2">2
                                           </option>
-                                          <option value="3" class="sc-update-quantity-option" data-a-css-class="quantity-option"
+                                          <option
+                                            value="3"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option"
                                             data-a-html-content="3">3
                                           </option>
-                                          <option value="4" class="sc-update-quantity-option" data-a-css-class="quantity-option"
+                                          <option
+                                            value="4"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option"
                                             data-a-html-content="4">4
                                           </option>
-                                          <option value="5" class="sc-update-quantity-option" data-a-css-class="quantity-option"
+                                          <option
+                                            value="5"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option"
                                             data-a-html-content="5">5
                                           </option>
-                                          <option value="6" class="sc-update-quantity-option" data-a-css-class="quantity-option"
+                                          <option
+                                            value="6"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option"
                                             data-a-html-content="6">6
                                           </option>
-                                          <option value="7" class="sc-update-quantity-option" data-a-css-class="quantity-option"
+                                          <option
+                                            value="7"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option"
                                             data-a-html-content="7">7
                                           </option>
-                                          <option value="8" class="sc-update-quantity-option" data-a-css-class="quantity-option"
+                                          <option
+                                            value="8"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option"
                                             data-a-html-content="8">8
                                           </option>
-                                          <option value="9" class="sc-update-quantity-option" data-a-css-class="quantity-option"
+                                          <option
+                                            value="9"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option"
                                             data-a-html-content="9">9
                                           </option>
-                                          <option value="10" class="sc-update-quantity-option"
-                                            data-a-css-class="quantity-option quantity-option-10" data-a-html-content="10+">
-                                            10+
+                                          <option
+                                            value="10"
+                                            class="sc-update-quantity-option"
+                                            data-a-css-class="quantity-option quantity-option-10"
+                                            data-a-html-content="10+">10+
                                           </option>
                                         </select>
-                                        <input type="number" id="qnty_s<?= $store_id . "i" . $product_description_id ?>"
+                                        <input
+                                          type="number"
+                                          id="qnty_s<?= $store_id . "i" . $product_description_id ?>"
                                           size="4"
                                           onchange="total('<?= $store_id ?>','<?= $product_description_id ?>','<?= $t_mrp ?>')"
-                                          onblur="$(this).hide();$('#sel_s<?= $store_id . "i" . $product_description_id ?>').hide();$('#btn_s<?= $store_id . "i" . $product_description_id ?>').show()"
+                                          onblur="$(this).hide();$('#sel_s<?= $store_id . 'i' . $product_description_id ?>').hide();$('#btn_s<?= $store_id . 'i' . $product_description_id ?>').show()"
                                           style="text-align: center;display: none;height: 40px;width: 100%;min-width: 50px;outline: none;font-weight: bold"
-                                          class="input-text qty text" title="Quantity" value="<?= $row1['quantity'] ?>" min="1"
+                                          class="input-text qty text"
+                                          title="Quantity"
+                                          value="<?= $row1['quantity'] ?>"
+                                          min="1"
                                           step="1"
                                           onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57">
                                       </div>
@@ -1068,47 +1102,40 @@ function randomGen($min, $max, $quantity)
                                           style="background-color: #02171e;-webkit-box-shadow: inset 0px 0px 15px 3px #02171e;box-shadow: inset 0px 0px 15px 3px #02171e;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #02171e;color: white;font-size: 18px;border-radius: 5px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;"
                                           id="add_s<?= $store_id . "i" . $product_description_id ?>"
                                           onclick="add_product_all('<?= $store_id ?>','<?= $product_description_id ?>','<?= $t_mrp ?>')"
-                                          type="button">+</button>
+                                          type="button">+
+                                        </button>
                                       </div>
                                     </div>
                                   </div>
                                 </div>
                                 <div style="width: 100%">
                                   <div>
-                                    <p class="product-subtotal"
-                                      style="margin-left: 0px;float: left;font-weight: bold;width:100%">
-                                      Price
-                                      <span class="amount">&#8377;<span
-                                          id="price_s<?= $store_id . "i" . $product_description_id ?>">
-                                          <?= $row2['price'] ?>
-                                        </span><span>/-</span>
-                                        (1 Qty) </span>
+                                    <p class="product-subtotal" style="margin-left: 0px;float: left;font-weight: bold;width:100%">Price
+                                      <span class="amount">&#8377;
+                                        <span id="price_s<?= $store_id . "i" . $product_description_id ?>"><?= $row2['price'] ?></span>
+                                        <span>/-</span> (1 Qty)
+                                      </span>
                                     </p>
                                   </div>
                                 </div>
                                 <div style="width: 100%;">
                                   <div>
-                                    <button type="button" title="Add to wish list" style="width: 47%;
-    height: 40px;
-    border-radius: 5px;
-    background-color: #000000;
-    border: 0px solid #999;
-    outline: none;
-    font-weight: bold;
-    color: white;
-    float: left;" data-toggle="modal" data-target="#avail_wishlist"
-                                      onclick="wishlist_check_store_select(<?= $product_description_id ?>,<?= $store_id ?>)">
-                                      Wishlist <i style="color: red" class="fa fa-heart"></i></button>
-                                    <button type="button" title="Remove this product" style="    width: 47%;
-    height: 40px;
-    float: right;
-    border: none;
-    border-color: #fff;
-    color: #fff;
-    background-color: #c70000;
-    outline: none;
-    border-radius: 5px;" class="remove" onclick="remove_product('<?= $store_id ?>','<?= $product_description_id ?>')"
-                                      href="#"><b>Remove </b><i class="fas fa-trash-alt"></i></button>
+                                    <button
+                                      type="button"
+                                      title="Add to wish list"
+                                      style="width: 47%;height: 40px;border-radius: 5px;background-color: #000000;border: 0px solid #999;outline: none;font-weight: bold;color: white;float: left;"
+                                      data-toggle="modal"
+                                      data-target="#avail_wishlist"
+                                      onclick="wishlist_check_store_select(<?= $product_description_id ?>,<?= $store_id ?>)">Wishlist <i style="color: red" class="fa fa-heart"></i>
+                                    </button>
+                                    <button
+                                      type="button"
+                                      title="Remove this product"
+                                      style="width: 47%;height: 40px;float: right;border: none;border-color: #fff;color: #fff;background-color: #c70000;outline: none;border-radius: 5px;"
+                                      class="remove"
+                                      onclick="remove_product('<?= $store_id ?>','<?= $product_description_id ?>')"
+                                      href="#"><b>Remove</b> <i class="fas fa-trash-alt"></i>
+                                    </button>
                                   </div>
                                 </div>
                               </div>
@@ -1124,65 +1151,52 @@ function randomGen($min, $max, $quantity)
                     <?php
                     $id = $_SESSION['id'];
                     $sql = "select sum(product_details.price*cart.quantity) as subtotal from cart
-                                                inner join product_description on product_description.product_description_id=cart.product_description_id
-                                                inner join product_details on product_details.product_description_id=cart.product_description_id
-                                                WHERE product_description.product_description_id=cart.product_description_id AND cart.store_id=product_details.store_id and cart.customer_id=:id";
+                            inner join product_description on product_description.product_description_id=cart.product_description_id
+                            inner join product_details on product_details.product_description_id=cart.product_description_id
+                            WHERE product_description.product_description_id=cart.product_description_id AND cart.store_id=product_details.store_id AND cart.customer_id=:id";
                     $stmt = $pdo->prepare($sql);
                     $stmt->execute(array(
                       ':id' => $id
                     ));
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
                     ?>
-                    <div class="cart-collaterals" style="margin: 0px;
-    padding: 0px;
-    background: black;
-    border-radius: 10px;">
-                      <div class="cart_totals shadow_all_none"
-                        style="width: 100%;margin:0px;padding: 0px;padding-top: 0px;">
+                    <div class="cart-collaterals" style="margin: 0px;padding: 0px;background: black;border-radius: 10px;">
+                      <div class="cart_totals shadow_all_none" style="width: 100%;margin:0px;padding: 0px;padding-top: 0px;">
                         <div class="row">
                           <div class="col-md-12" style="float:right;">
                             <h4 style="padding-right: 10px;text-transform: capitalize;color:white;float: right;">
-                              Subtotals(<span id="total_rm_cnt">
-                                <?= $product_cnt ?>
-                              </span> product) <small style="font-weight: bolder;color:white;">&#8377;</small><b
-                                id="tot_val2">
-                                <?= $row['subtotal'] ?>
-                              </b></h4>
+                              Subtotals (<span id="total_rm_cnt"><?= $product_cnt ?></span> product)
+                              <small style="font-weight: bolder;color:white;">&#8377;</small>
+                              <b id="tot_val2"><?= $row['subtotal'] ?></b>
+                            </h4>
                           </div>
                           <div class="col-md-12">
                             <div class="row">
                               <div class="div-wrapper"
                                 style="padding-left: 15px;color:white;padding-right: 15px;grid-gap: 0px;padding-top: 20px;">
                                 <div style="padding: 10px;">
-                                  <button type="button" style="    width: 100%;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-radius: 5px;
-    font-weight: bold;
-    float: left;
-    border: 0px;
-    background: #696969;" onclick="updatecart()" name="update_cart" class="btn-primary btn button"><i
-                                      class="fas fa-upload fa-lg"></i> UPDATE
-                                    CART</button>
+                                  <button
+                                    type="button"
+                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;float: left;border: 0px;background: #696969;"
+                                    onclick="updatecart()"
+                                    name="update_cart"
+                                    class="btn-primary btn button">
+                                    <i class="fas fa-upload fa-lg"></i> UPDATE CART
+                                  </button>
                                 </div>
                                 <div style="padding: 10px;">
-                                  <button type="button" style="width: 100%;
-    padding-top: 8px;
-    padding-bottom: 8px;
-    border-radius: 5px;
-    font-weight: bold;
-    border: 0px;
-    float: right;
-    background: #696969;" onclick="go()" name="proceed"
-                                    class="checkout-button btn btn-primary button alt wc-forward"><i
-                                      class="fa fa-check-square-o fa-lg"></i>
-                                    CHECKOUT</button>
+                                  <button
+                                    type="button"
+                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;border: 0px;float: right;background: #696969;"
+                                    onclick="go()"
+                                    name="proceed"
+                                    class="checkout-button btn btn-primary button alt wc-forward"><i class="fa fa-check-square-o fa-lg"></i> CHECKOUT
+                                  </button>
                                 </div>
                               </div>
                             </div>
                           </div>
                         </div>
-
                       </div>
                     </div>
                   </form>
@@ -1194,8 +1208,7 @@ function randomGen($min, $max, $quantity)
       </div>
       <!--SMALL-->
       <div class="row" style="margin:0px;padding: 0px">
-        <div class="col-md-9" style="margin:0px;padding: 0px">
-        </div>
+        <div class="col-md-9" style="margin:0px;padding: 0px"></div>
         <div class="col-md-3"></div>
       </div>
       <div class="col-md-4 small" id="small_screen" style="margin:0px;padding: 0px"></div>
@@ -1216,15 +1229,13 @@ function randomGen($min, $max, $quantity)
               $c2 = "black";
             }
             /*COLOR PICKER*/
-
-
     ?>
       <div class="row emp_cart">
         <div class="product-content-right">
           <center><img style="justify-content: center;" class="sidebar-title" src="../../images/logo/cart-empty.png">
             <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #005549">
-              Your Cart is
-              Empty</h2>
+              Your Cart is Empty
+            </h2>
           </center>
         </div>
       </div><br><br>
@@ -1233,14 +1244,20 @@ function randomGen($min, $max, $quantity)
           <hr style="padding: 0;margin:0;">
           <div class="scrollmenu bl_product_scroll  <?= $color[$rancolor1] ?>" style="background-color: #fff">
             <?php
-            $row = $pdo->query("select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
-    inner join product_description on product_description.product_id=product.product_id
-    inner join category on category.category_id=product.category_id");
+            $row = $pdo->query(
+              "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
+              inner join product_description on product_description.product_id=product.product_id
+              inner join category on category.category_id=product.category_id"
+            );
             while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
             ?>
-              <a href="../Product/single.php?id=<?= $row1['product_description_id'] ?>"><img
-                  title="<?= $row1['product_name'] ?> " alt=" <?= $row1['product_name'] ?>" class="new_size"
-                  src="../../images/<?= $row1['category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg"></a>
+              <a href="../Product/single.php?id=<?= $row1['product_description_id'] ?>">
+                <img
+                  title="<?= $row1['product_name'] ?> "
+                  alt=" <?= $row1['product_name'] ?>"
+                  class="new_size"
+                  src="../../images/<?= $row1['category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg">
+              </a>
             <?php
             }
             ?>
@@ -1252,14 +1269,20 @@ function randomGen($min, $max, $quantity)
           <hr style="padding: 0;margin:0;">
           <div class="scrollmenu mui_product_scroll <?= $color[$rancolor2] ?> " style="background-color: #fff">
             <?php
-            $row = $pdo->query("select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
-    inner join product_description on product_description.product_id=product.product_id
-    inner join category on category.category_id=product.category_id");
+            $row = $pdo->query(
+              "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
+              inner join product_description on product_description.product_id=product.product_id
+              inner join category on category.category_id=product.category_id"
+            );
             while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
             ?>
-              <a href="../Product/single.php?id=<?= $row1['product_description_id'] ?>"><img
-                  title="<?= $row1['product_name'] ?> " alt=" <?= $row1['product_name'] ?>" class="new_size"
-                  src="../../images/<?= $row1['category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg"></a>
+              <a href="../Product/single.php?id=<?= $row1['product_description_id'] ?>">
+                <img
+                  title="<?= $row1['product_name'] ?> "
+                  alt=" <?= $row1['product_name'] ?>"
+                  class="new_size"
+                  src="../../images/<?= $row1['category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg">
+              </a>
             <?php
             }
             ?>
@@ -1440,12 +1463,15 @@ function randomGen($min, $max, $quantity)
         }
       </script>
       <?php
-            $viewstmt = $pdo->query("select views ,product_keys.product_description_id from product_keys
-JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
-join product on product.product_id=product_description.product_id
-join product_details on product_description.product_description_id=product_details.product_description_id
-where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.views as UNSIGNED) DESC");
+            $viewstmt = $pdo->query(
+              "select views ,product_keys.product_description_id from product_keys
+              JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
+              join product on product.product_id=product_description.product_id
+              join product_details on product_description.product_description_id=product_details.product_description_id
+              where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.views as UNSIGNED) DESC"
+            );
             $isready = $viewstmt->rowCount();
+
             if ($isready != 0 && is_null($isready) == false) {
       ?>
         <!-- new -->
@@ -1455,40 +1481,46 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
               <div class="cart-collaterals">
                 <div class="cart_totals " style="width: 100%">
                   <h2 style="padding-left:15px;padding-right:15px;">You may be interested in...</h2>
-                  <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
+                  <h4
+                    class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
                     style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
                     Explore <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
                     <span style="float: right;margin-right: 5px;margin-top: -4px;">
-                      <button type="button"
+                      <button
+                        type="button"
                         style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor1] ?>;padding: 11px auto;font-size: 12px;"
-                        name="proceed" class="checkout-button button alt wc-forward"><a
-                          href="../Product/products_viewall.php?category_id=<?= $cat_id1 ?>"
-                          style="color:<?= $c2 ?>;">View all</a></button>
+                        name="proceed"
+                        class="checkout-button button alt wc-forward">
+                        <a href="../Product/products_viewall.php?category_id=<?= $cat_id1 ?>" style="color:<?= $c2 ?>;">View all</a>
+                      </button>
                     </span>
                   </h4>
                   <div class="difcat " style="border-radius: 5px;">
-                    <span class="difhed">
-                    </span>
+                    <span class="difhed"></span>
                     <div class="difrow hidescroll" id="difrow" onscroll="scrolllisten('difrow');">
-                      <button class="left-arrow-btn-all shadow_all_none" onclick="moveleft('difrow')"
-                        style="display: none;"><i class="fas fa-chevron-left"></i></button>
-                      <button class="right-arrow-btn-all shadow_all_none" onclick="moveright('difrow')"><i
-                          class="fas fa-chevron-right"></i></button>
+                      <button class="left-arrow-btn-all shadow_all_none" onclick="moveleft('difrow')" style="display: none;">
+                        <i class="fas fa-chevron-left"></i>
+                      </button>
+                      <button class="right-arrow-btn-all shadow_all_none" onclick="moveright('difrow')">
+                        <i class="fas fa-chevron-right"></i>
+                      </button>
                       <?php
                       while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
                         $product_desc_id = $view['product_description_id'];
-                        $ran = $pdo->query('select * from product_description
-    inner join product on product.product_id=product_description.product_id
-    INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
-    where product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id');
+                        $ran = $pdo->query(
+                          'select * from product_description
+                          inner join product on product.product_id=product_description.product_id
+                          INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
+                          where product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id'
+                        );
                         $row = $ran->fetch(PDO::FETCH_ASSOC);
                       ?>
-                        <div class="products-all-in-one" title="<?= $row['product_name'] ?>"
+                        <div
+                          class="products-all-in-one"
+                          title="<?= $row['product_name'] ?>"
                           onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
-                          <div
-                            style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
-                            <img class="image" align="middle"
-                              src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                            <img class="image" align="middle" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           </div>
                           <?php
                           if (strlen($row['product_name']) >= 22) {
@@ -1498,8 +1530,7 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                             $product_name = $row['product_name'];
                           }
                           ?>
-                          <div class="deupd"><?= $product_name ?><br>
-                          </div>
+                          <div class="deupd"><?= $product_name ?><br></div>
                         </div>
                       <?php
                       }
@@ -1519,49 +1550,60 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
           <div class="newproducts-w3agile" style="padding:0;padding-top:10px;">
             <h3>Recently Viewed</h3>
             <?php
-            $ran = $pdo->query("select views ,product_keys.product_description_id from product_keys
-JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
-join product on product.product_id=product_description.product_id
-where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC");
+            $ran = $pdo->query(
+              "SELECT views ,product_keys.product_description_id from product_keys
+              JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
+              JOIN product ON product.product_id=product_description.product_id
+              WHERE customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC"
+            );
             $isready = $ran->rowCount();
             if ($isready != 0 && is_null($isready) == false) {
             ?>
-              <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
+              <h4
+                class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
                 style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
                 Explore <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
                 <span style="float: right;margin-right: 5px;margin-top: -4px;">
-                  <button type="button"
+                  <button
+                    type="button"
                     style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor2] ?>;padding: 11px auto;font-size: 12px;"
-                    name="proceed" class="checkout-button button alt wc-forward"><a
-                      href="../Product/products_viewall.php?category_id=<?= $cat_id2 ?>" style="color:<?= $c2 ?>;">View
-                      all</a></button>
+                    name="proceed"
+                    class="checkout-button button alt wc-forward">
+                    <a href="../Product/products_viewall.php?category_id=<?= $cat_id2 ?>" style="color:<?= $c2 ?>;">View all</a>
+                  </button>
                 </span>
               </h4>
               <div class="difcat " style="border-radius: 5px;">
-                <span class="difhed">
-                </span>
-                <div class="difrow hidescroll" id="difrow<?= $row['product_description_id'] ?>"
+                <span class="difhed"></span>
+                <div
+                  class="difrow hidescroll"
+                  id="difrow<?= $row['product_description_id'] ?>"
                   onscroll="scrolllisten('difrow<?= $row['product_description_id'] ?>');">
-                  <button class="left-arrow-btn-all shadow_all_none"
-                    onclick="moveleft('difrow<?= $row['product_description_id'] ?>')" style="display: none;"><i
-                      class="fas fa-chevron-left"></i></button>
-                  <button class="right-arrow-btn-all shadow_all_none"
-                    onclick="moveright('difrow<?= $row['product_description_id'] ?>')"><i
-                      class="fas fa-chevron-right"></i></button>
+                  <button
+                    class="left-arrow-btn-all shadow_all_none"
+                    onclick="moveleft('difrow<?= $row['product_description_id'] ?>')"
+                    style="display: none;">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
+                  <button class="right-arrow-btn-all shadow_all_none" onclick="moveright('difrow<?= $row['product_description_id'] ?>')">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
                   <?php
                   while ($view = $ran->fetch(PDO::FETCH_ASSOC)) {
                     $product_desc_id = $view['product_description_id'];
-                    $preview = $pdo->query('select * from product_description
-    inner join product on product.product_id=product_description.product_id
-    where product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id');
+                    $preview = $pdo->query(
+                      'SELECT * FROM product_description
+                      INNER JOIN product ON product.product_id=product_description.product_id
+                      WHERE product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id'
+                    );
                     $row = $preview->fetch(PDO::FETCH_ASSOC);
                   ?>
-                    <div class="products-all-in-one" title="<?= $row['product_name'] ?>"
+                    <div
+                      class="products-all-in-one"
+                      title="<?= $row['product_name'] ?>"
                       onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
-                      <div
-                        style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
-                        <img class="image" align="middle"
-                          src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                      <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                        <img class="image" align="middle" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                       </div>
                       <?php
                       if (strlen($row['product_name']) >= 22) {
@@ -1571,8 +1613,7 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                         $product_name = $row['product_name'];
                       }
                       ?>
-                      <div class="deupd"><?= $product_name ?><br>
-                      </div>
+                      <div class="deupd"><?= $product_name ?><br></div>
                     </div>
                 <?php
                   }
@@ -1691,11 +1732,11 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                 $store_id = $row1['store_id'];
                 $n = 0;
                 $sql2 = "select * from product
-            inner join category on category.category_id=product.category_id
-            inner join product_description on product_description.product_id=product.product_id
-            inner join product_details on product_description.product_description_id=product_details.product_description_id
-            inner join store on store.store_id=product_details.store_id
-            where product_description.product_description_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
+                        inner join category on category.category_id=product.category_id
+                        inner join product_description on product_description.product_id=product.product_id
+                        inner join product_details on product_description.product_description_id=product_details.product_description_id
+                        inner join store on store.store_id=product_details.store_id
+                        where product_description.product_description_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
                 $stmt2 = $pdo->prepare($sql2);
                 $stmt2->execute(array(
                   ':product_description_id' => $product_description_id,
