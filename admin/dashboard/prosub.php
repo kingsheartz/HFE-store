@@ -50,4 +50,3 @@ if (isset($_POST['desc_id'])) {
     redirectSuccess();
   }
 }
-?>

@@ -1,6 +1,8 @@
 <?php
 require "../../db.php";
+
 $method = $_SERVER['REQUEST_METHOD'];
+
 if ($method == 'GET') {
   $data = array(
     ':category_name' => "%" . $_GET['category_name'] . "%"
@@ -9,6 +11,7 @@ if ($method == 'GET') {
   $statement = $pdo->prepare($query);
   $statement->execute($data);
   $result = $statement->fetchAll();
+
   foreach ($result as $row) {
     $output[] = array(
       'category_id' => $row['category_id'],
@@ -18,6 +21,7 @@ if ($method == 'GET') {
   }
   echo json_encode($output);
 }
+
 //EDITED BY KINGSHEARTZ
 if (isset($_POST['type'])) {
   if ($_POST['type'] == "insert") { //EDITED LINE
@@ -29,6 +33,7 @@ if (isset($_POST['type'])) {
     $statement = $pdo->prepare($query);
     $statement->execute($data);
   }
+
   if ($_POST['type'] == "update") { //EDITED LINE
     parse_str(file_get_contents("php://input"), $_POST);
     $data = array(
@@ -40,6 +45,7 @@ if (isset($_POST['type'])) {
     $statement = $pdo->prepare($query);
     $statement->execute($data);
   }
+
   if ($_POST['type'] == "delete") { //EDITED LINE
     parse_str(file_get_contents("php://input"), $_POST);
     echo json_encode($_POST['type']); //EDITED LINE
@@ -49,4 +55,3 @@ if (isset($_POST['type'])) {
   }
 }
 //EDITED BY KINGSHEARTZ
-?>

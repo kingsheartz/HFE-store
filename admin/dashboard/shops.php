@@ -31,8 +31,9 @@ include "header.php";
       }
     </style>
     <div class="table1">
-      <h4 style="padding:10px;"><i class="fas fa-store-alt" style="font-size: 24px;padding-right: 12px"
-          aria-hidden="true"></i>Stores</h4>
+      <h4 style="padding:10px;">
+        <i class="fas fa-store-alt" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Stores
+      </h4>
       <script type="text/JavaScript"
         src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.6.0/jQuery.print.js"></script>
       <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsgrid@1.5.3/dist/jsgrid.min.css" />

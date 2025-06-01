@@ -411,47 +411,45 @@ include "header.php";
       $ct = 'ab';
       ?>
       <div class="difcat ">
-        <div class="difhed">Recently Added Products
-        </div>
+        <span class="difhed">Recently Added Products</span>
         <div class="difrow" id="difrow<?= $ct ?>" onscroll="movefr('difrow<?= $ct ?>')">
-          <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')"><i
-              class="fas fa-chevron-right"></i></button>
-          <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;"><i
-              class="fas fa-chevron-left"></i></button>
+          <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;">
+            <i class="fas fa-chevron-left"></i>
+          </button>
           <?php
           while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
           ?>
             <div class="products">
-              <div style="display: flex;
-justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
-                  align="middle" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                <img class="image" align="middle" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
               </div>
               <div class="middle">
-                <form id="C<?= $row['product_description_id'] ?>" method="post" action="change.php"
-                  name="<?= $row['product_description_id'] ?>">
+                <form id="C<?= $row['product_description_id'] ?>" method="post" action="change.php" name="<?= $row['product_description_id'] ?>">
                   <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
                   <input type="hidden" name="product_id" value="<?= $row['product_id'] ?>">
-                  <input type="hidden" name="im_url"
-                    value="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                  <input type="hidden" name="im_url" value="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                   <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
                   <input type="hidden" name="description" value="<?= $row['description'] ?>">
                   <input type="hidden" name="price" value="<?= $row['price'] ?>">
-                  <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation"><i
-                      class="fa fa-pencil-square-o" style="font-size: 24px;padding-right: 12px"
-                      aria-hidden="true"></i>Change</button>
+                  <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation">
+                    <i class="fa fa-pencil-square-o" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>
+                    Change
+                  </button>
                 </form>
-                <form id="D<?= $row['product_description_id'] ?>" method="post" action="productuplo.php"
-                  name="1<?= $row['product_description_id'] ?>">
+                <form id="D<?= $row['product_description_id'] ?>" method="post" action="productuplo.php" name="1<?= $row['product_description_id'] ?>">
                   <input type="hidden" name="uppr_id" value="<?= $row['product_description_id'] ?>">
                   <input type="hidden" name="upproduct_id" value="<?= $row['product_id'] ?>">
-                  <input type="hidden" name="upim_url"
-                    value="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                  <input type="hidden" name="upim_url" value="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                   <input type="hidden" name="upname" value="<?= $row['product_name'] ?>">
                   <input type="hidden" name="updescription" value="<?= $row['description'] ?>">
                   <input type="hidden" name="upprice" value="<?= $row['price'] ?>">
-                  <button onclick="showupda('1<?= $row['product_description_id'] ?>')" class="updation"><i
-                      class="fas fa-upload" style="font-size: 24px;padding-right: 12px"
-                      aria-hidden="true"></i>Upload</button>
+                  <button onclick="showupda('1<?= $row['product_description_id'] ?>')" class="updation">
+                    <i class="fas fa-upload" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>
+                    Upload
+                  </button>
                 </form>
               </div>
               <div class="deupd"><?= $row['product_name'] ?><br><br>
@@ -475,49 +473,47 @@ justify-content: center;height: 200px;width:100%;background: white;text-align: c
             } else {
             ?>
               <div class="difcat ">
-                <div class="difhed"><?= $row11['category_name'] ?>
+                <span class="difhed"><?= $row11['category_name'] ?>
                   <button onclick="location.href='viewproducts.php?category_id=<?= $ct ?>'">View All</button>
-                </div>
+                </span>
                 <div class="difrow" id="difrow<?= $ct ?>" onscroll="movefr('difrow<?= $ct ?>')">
-                  <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')"><i
-                      class="fas fa-chevron-right"></i></button>
-                  <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;"><i
-                      class="fas fa-chevron-left"></i></button>
+                  <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')">
+                    <i class="fas fa-chevron-right"></i>
+                  </button>
+                  <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;">
+                    <i class="fas fa-chevron-left"></i>
+                  </button>
                   <?php
                   while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
                   ?>
                     <div class="products">
-                      <div style="display: flex;
-  justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
-                          align="middle"
-                          src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                      <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                        <img class="image" align="middle" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                       </div>
                       <div class="middle">
-                        <form id="<?= $row['product_description_id'] ?>" method="post" action="change.php"
-                          name="<?= $row['product_description_id'] ?>">
+                        <form id="<?= $row['product_description_id'] ?>" method="post" action="change.php" name="<?= $row['product_description_id'] ?>">
                           <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
                           <input type="hidden" name="product_id" value="<?= $row['product_id'] ?>">
-                          <input type="hidden" name="im_url"
-                            value="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                          <input type="hidden" name="im_url" value="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
                           <input type="hidden" name="description" value="<?= $row['description'] ?>">
                           <input type="hidden" name="price" value="<?= $row['price'] ?>">
-                          <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation"><i
-                              class="fa fa-pencil-square-o" style="font-size: 24px;padding-right: 12px"
-                              aria-hidden="true"></i>Change</button>
+                          <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation">
+                            <i class="fa fa-pencil-square-o" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>
+                            Change
+                          </button>
                         </form>
-                        <form id="a<?= $row['product_description_id'] ?>" method="post" action="productuplo.php"
-                          name="1<?= $row['product_description_id'] ?>">
+                        <form id="a<?= $row['product_description_id'] ?>" method="post" action="productuplo.php" name="1<?= $row['product_description_id'] ?>">
                           <input type="hidden" name="uppr_id" value="<?= $row['product_description_id'] ?>">
                           <input type="hidden" name="upproduct_id" value="<?= $row['product_id'] ?>">
-                          <input type="hidden" name="upim_url"
-                            value="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                          <input type="hidden" name="upim_url" value="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           <input type="hidden" name="upname" value="<?= $row['product_name'] ?>">
                           <input type="hidden" name="updescription" value="<?= $row['description'] ?>">
                           <input type="hidden" name="upprice" value="<?= $row['price'] ?>">
-                          <button onclick="showupda('1<?= $row['product_description_id'] ?>')" class="updation"><i
-                              class="fas fa-upload" style="font-size: 24px;padding-right: 12px"
-                              aria-hidden="true"></i>Upload</button>
+                          <button onclick="showupda('1<?= $row['product_description_id'] ?>')" class="updation">
+                            <i class="fas fa-upload" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>
+                            Upload
+                          </button>
                         </form>
                       </div>
                       <div class="deupd"><?= $row['product_name'] ?><br><br>

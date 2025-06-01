@@ -215,11 +215,14 @@
     while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
     ?>
       <li>
-        <span class="handle"><i class="fas fa-ellipsis-v"></i><i class="fas fa-ellipsis-v"></i>
-          <input type="checkbox" id="<?= $row['list_id'] ?>"
-            onclick="updatelement(<?= $row['list_id'] ?>,'<?= $row['title'] ?>')"></span>
-        <?= $row['title'] ?><span class="nday" style="background:<?= $colors[array_rand($colors)] ?>;">
-          <i style="padding-right: 4px; padding-left: 4px;" class="fas fa-clock"></i>
+        <span class="handle">
+          <i class="fas fa-ellipsis-v"></i>
+          <i class="fas fa-ellipsis-v"></i>
+          <input type="checkbox" id="<?= $row['list_id'] ?>" onclick="updatelement(<?= $row['list_id'] ?>,'<?= $row['title'] ?>')">
+        </span>
+        <?= $row['title'] ?>
+        <span class="nday" style="background:<?= $colors[array_rand($colors)] ?>;">
+          <i style="padding-right: 4px;padding-left: 4px;" class="fas fa-clock"></i>
           <?php
           $start = strtotime($row['add_date']);
           $end = strtotime(date("Y/m/d"));
@@ -231,7 +234,9 @@
           }
           ?>
         </span>
-        <span class="close" onclick="postelement(<?= $row['list_id'] ?>)"><i class="fa fa-times"></i></span>
+        <span class="close" onclick="postelement(<?= $row['list_id'] ?>)">
+          <i class="fa fa-times"></i>
+        </span>
       </li>
       <?php
       $r = explode('<strike>', $row['title']);

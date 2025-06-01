@@ -182,89 +182,96 @@
   <div class="sidebar-header">
     <h3>
       <div class="text">
-        <p style=" height: 62px;
-    vertical-align: -webkit-baseline-middle;
-    margin-left: -15px;
-    margin-right: -15px;
-    display: -webkit-box;
-    text-align: left;
-    padding: 5px;
-    box-shadow: 0px 1px 0px #3c3c3c;"><img class="img-responsive" style="height:47px;" src="..\images/logo\logo.png">
-        <div style="
-    margin: 0px;
-    position: absolute;
-    top: 15px;
-    left: 70px;
-">HFE</div>
+        <p style=" height: 62px;vertical-align: -webkit-baseline-middle;margin-left: -15px;margin-right: -15px;display: -webkit-box;text-align: left;padding: 5px;box-shadow: 0px 1px 0px #3c3c3c;">
+          <img class="img-responsive" style="height:47px;" src="..\images/logo\logo.png">
+        <div style="margin: 0px;position: absolute;top: 15px;left: 70px;">HFE</div>
         </p>
-        <p style="text-decoration: none;
-    padding-right: 5px;
-    margin-top: 3px;
-    font-size: 11px;"><i class="fa fa-circle" style="color: #3c763d;display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased"></i> Online</p>
+        <p style="text-decoration: none;padding-right: 5px;margin-top: 3px;font-size: 11px;">
+          <i class="fa fa-circle" style="color: #3c763d;display: inline-block;font: normal normal normal 14px/1 FontAwesome;font-size: inherit;text-rendering: auto;-webkit-font-smoothing: antialiased"></i> Online
+        </p>
       </div>
     </h3>
   </div>
   <ul class="list-unstyled components">
     <li id="indexphp" class="active">
       <a href="main.php">
-        <span class="icons">
-          <i class="fa fa-th"></i>
-        </span>
+        <span class="icons"><i class="fa fa-th"></i></span>
         <span class="nav_text">Dashboard</span>
-        <span style="float: right;">
-          <i class="fa fa-angle-right"></i>
-        </span>
+        <span style="float: right;"><i class="fa fa-angle-right"></i></span>
       </a>
     </li>
-    <li id="shopsphp"><a href="shops.php"><span class="icons"><i class="fa fa-users"></i></span><span
-          class="nav_text">Shops</span><span style="float: right;"><i
-            class="fa fa-angle-right"></i></span></a></li>
+    <li id="shopsphp">
+      <a href="shops.php">
+        <span class="icons"><i class="fa fa-users"></i></span>
+        <span class="nav_text">Shops</span>
+        <span style="float: right;"><i class="fa fa-angle-right"></i></span>
+      </a>
+    </li>
     <li id="addcategoriesphp"><a href="addcategories.php"><span class="icons"><i
             class="fa fa-tasks"></i></span><span class="nav_text">Category</span><span
           style="float: right;"><i class="fa fa-angle-right"></i></span></a></li>
 
-    <li id="requestphp"><a href="request.php"><span class="icons"><i class="fa fa-bell"></i></span>
-        <span class="nav_text">Requests</span><span style="float: right;"><i
-            class="fa fa-angle-right"></i></span></a></li>
-    <li id="selledproductsphp"><a href="selledproducts.php"><span class="icons"><i class="fa fa-check"></i></span>
-        <span class="nav_text">Completed Orders</span><span style="float: right;"><i
-            class="fa fa-angle-right"></i></span></a></li>
-    <li id="uploadimagesphp"><a href="uploadimages.php"><span class="icons"><i class="fa fa-plus"></i></span><span
-          class="nav_text"> Add Product</span><span style="float: right;"><i
-            class="fa fa-angle-right"></i></span></a></li>
-    <li id="viewphp"><a href="view.php"><span class="icons"><i class="fa fa-pencil-square-o"></i></span>
-        <span class="nav_text">Update Products</span><span style="float: right;"><i
-            class="fa fa-angle-right"></i></span></a></li>
-    <li id="addstorephp"><a href="addstore.php"><span class="icons"><i class="fa fa-plus"></i></span><span
-          class="nav_text"> Add Store</span><span style="float: right;"><i
-            class="fa fa-angle-right"></i></span></a>
+    <li id="requestphp"><a href="request.php">
+        <span class="icons"><i class="fa fa-bell"></i></span>
+        <span class="nav_text">Requests</span>
+        <span style="float: right;"><i class="fa fa-angle-right"></i></span>
+      </a>
     </li>
-    <li id="addfeatphp"><a href="#"><span class="icons"><i class="fa fa-plus"></i></span>
-        <span class="nav_text"> Add Features</span><span style="float: right;"><i id="featic"
-            class="fa fa-angle-right"></i></span></a>
+    <li id="selledproductsphp"><a href="selledproducts.php">
+        <span class="icons"><i class="fa fa-check"></i></span>
+        <span class="nav_text">Completed Orders</span>
+        <span style="float: right;"><i class="fa fa-angle-right"></i></span>
+      </a>
+    </li>
+    <li id="uploadimagesphp"><a href="uploadimages.php">
+        <span class="icons"><i class="fa fa-plus"></i></span>
+        <span class="nav_text"> Add Product</span>
+        <span style="float: right;"><i class="fa fa-angle-right"></i></span>
+      </a>
+    </li>
+    <li id="viewphp"><a href="view.php">
+        <span class="icons"><i class="fa fa-pencil-square-o"></i></span>
+        <span class="nav_text">Update Products</span>
+        <span style="float: right;"><i class="fa fa-angle-right"></i></span>
+      </a>
+    </li>
+    <li id="addstorephp"><a href="addstore.php">
+        <span class="icons"><i class="fa fa-plus"></i></span>
+        <span class="nav_text"> Add Store</span>
+        <span style="float: right;"><i class="fa fa-angle-right"></i></span>
+      </a>
+    </li>
+    <li id="addfeatphp">
+      <a href="#">
+        <span class="icons"><i class="fa fa-plus"></i></span>
+        <span class="nav_text"> Add Features</span>
+        <span style="float: right;"><i id="featic" class="fa fa-angle-right"></i></span>
+      </a>
       <ul class="list-unstyled components">
         <li>
           <a href="addfeat.php?size=1">
             <span class="icons"><i class="fa fa-box"></i></span>
-            <span class="nav_text"> Size</span></a>
+            <span class="nav_text"> Size</span>
+          </a>
         </li>
         <li>
           <a href="addfeat.php?brand=1">
             <span class="icons"><i class="fa fa-box"></i></span>
-            <span class="nav_text"> Brand</span></a>
+            <span class="nav_text"> Brand</span>
+          </a>
         </li>
       </ul>
     </li>
     <li id="updatepassphp"><a href="updatepass.php"><span class="icons"><i
             class="fa fa-pencil-square-o"></i></span><span class="nav_text">Password</span><span
           style="float: right;"><i class="fa fa-angle-right"></i></span></a></li>
-    <li id="chatphp"><a href="message.php"><span class="icons">
-          <i class="fa fa-comments"></i></span> <span class="nav_text">Chats</span>
-        <span style="float: right;"><i class="fa fa-angle-right"></i></span></a></li>
+    <li id="chatphp">
+      <a href="message.php">
+        <span class="icons"><i class="fa fa-comments"></i></span>
+        <span class="nav_text">Chats</span>
+        <span style="float: right;"><i class="fa fa-angle-right"></i></span>
+      </a>
+    </li>
 
 </nav>
 <script>
@@ -289,8 +296,12 @@
         <i class="fas fa-align-left"></i>
         <span></span>
       </button>
-      <button class="btn btn-dark d-inline-block d-lg-none ml-auto  visible-xs" type="button"
-        data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+      <button
+        class="btn btn-dark d-inline-block d-lg-none ml-auto  visible-xs"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
         aria-expanded="false" aria-label="Toggle navigation">
         <i class="fas fa-align-justify"></i>
       </button>
@@ -308,26 +319,22 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item active">
-            <a class="nav-link" href="main.php">
-              <i class="fa fa-home"></i>Home</a>
+            <a class="nav-link" href="main.php"><i class="fa fa-home"></i>Home</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="request.php">
-              <i class="fa fa-bell"></i><span class="uppernum"><?= $row['COUNT(*)'] ?></span>Requests</a>
+            <a class="nav-link" href="request.php"><i class="fa fa-bell"></i><span class="uppernum"><?= $row['COUNT(*)'] ?></span>Requests</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="message.php">
-              <i class="fa fa-comments"></i><span
-                class="uppernum1"><?= $row1['COUNT(*)'] ?></span>Chat</a>
+            <a class="nav-link" href="message.php"><i class="fa fa-comments"></i><span class="uppernum1"><?= $row1['COUNT(*)'] ?></span>Chat</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.php">
-              <i class="fa fa-power-off"></i>Log Out</a>
+            <a class="nav-link" href="login.php"><i class="fa fa-power-off"></i>Log Out</a>
           </li>
         </ul>
       </div>
     </div>
   </nav>
+
   <script>
     $('#sidebar li').on('click', 'a', function(e) {
       if ($(this).parent().children('ul').length) {

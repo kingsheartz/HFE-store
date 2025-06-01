@@ -1,5 +1,6 @@
 <?php
 require "../../db.php";
+
 if (isset($_POST['size'])) {
   $s = $_POST['size'];
   echo $s;
@@ -7,6 +8,7 @@ if (isset($_POST['size'])) {
   $statement1 = $pdo->prepare($query1);
   $statement1->execute();
 }
+
 if (isset($_POST['brand'])) {
   $s = $_POST['brand'];
   echo $s;
@@ -15,4 +17,3 @@ if (isset($_POST['brand'])) {
   $statement1 = $pdo->prepare($query1);
   $statement1->execute();
 }
-?>
