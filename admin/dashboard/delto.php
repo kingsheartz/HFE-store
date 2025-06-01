@@ -1,5 +1,6 @@
 <?php
 require "pdo.php";
+
 if (isset($_POST['dl_id'])) {
   $DELETE = $_POST['dl_id'];
   $data = array(
@@ -10,6 +11,7 @@ if (isset($_POST['dl_id'])) {
   $statement->execute($data);
   echo 'helo';
 }
+
 if (isset($_POST['addnm'])) {
   $data = array(
     ':title' => $_POST['addnm']
@@ -18,6 +20,7 @@ if (isset($_POST['addnm'])) {
   $statement = $pdo->prepare($query);
   $statement->execute($data);
 }
+
 if (isset($_POST['up_id']) || isset($_POST['up_tit'])) {
   $up = '<strike>' . $_POST['up_tit'] . '</strike>';
   echo 'updated';
@@ -29,4 +32,3 @@ if (isset($_POST['up_id']) || isset($_POST['up_tit'])) {
   $statement = $pdo->prepare($query);
   $statement->execute($data);
 }
-?>

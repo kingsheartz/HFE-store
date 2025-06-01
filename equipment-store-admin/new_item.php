@@ -353,6 +353,7 @@ require "head.php";
           $('#' + x).scrollLeft(y + 100);
           $('#' + x + '>.right-arrow').show();
         }
+
         function moveright(x) {
           var y = $('#' + x).scrollLeft();
           $('#' + x + '>.left-arrow').show();
@@ -361,17 +362,16 @@ require "head.php";
           }
           $('#' + x).scrollLeft(y - 100);
         }
+
         function movefr(x) {
           var y = $('#' + x).scrollLeft();
           var width = $('#' + x).outerWidth()
           var scrollWidth = $('#' + x)[0].scrollWidth;
           if (scrollWidth - width === y) {
             $('#' + x + '>.left-arrow').hide();
-          }
-          else if (y === 0) {
+          } else if (y === 0) {
             $('#' + x + '>.right-arrow').hide();
-          }
-          else {
+          } else {
             $('#' + x + '>.left-arrow').show();
             $('#' + x + '>.right-arrow').show();
           }
@@ -385,18 +385,20 @@ require "head.php";
         $ct = $row11['category_id'];
         ?>
         <?php
-        $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id where item.category_id=$ct and (item.added_date) in (
-    select max(added_date) as date
-    from item) GROUP BY item_description.item_id";
+        $query = "SELECT * FROM item
+          JOIN item_description ON item.item_id=item_description.item_id
+          where item.category_id=$ct and (item.added_date) in (
+            select max(added_date) as date from item
+          ) GROUP BY item_description.item_id";
         $st = $pdo->query($query);
         $product = $st->rowCount();
         if ($product == 0) {
           continue;
         } else {
           ?>
-          <div class="difcat ">
+          <div class="difcat">
             <span class="difhed"><?= $row11['category_name'] ?>
-              <button onclick="location.href='viewnewitems.php?category_id=<?= $ct ?>'">View All</button></span>
+              <button onclick="location.href='viewnewitems.php?category_id=<?= $ct ?>'">View All</button>
             </span>
             <div class="difrow" id="difrow<?= $ct ?>" onscroll="movefr('difrow<?= $ct ?>')">
               <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')"><i
@@ -407,9 +409,9 @@ require "head.php";
               while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
                 ?>
                 <div class="products">
-                  <div style="display: flex;
-  justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
-                      align="middle"
+                  <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;
+                    text-align: center;">
+                    <img class="image" align="middle"
                       src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
                   </div>
                   <div class="deupd"><?= $row['item_name'] ?><br>
@@ -417,26 +419,30 @@ require "head.php";
                 </div>
                 <?php
               }
-              echo '</div></div>';
+              ?>
+            </div>
+          </div>
+          <?php
         }
       }
       ?>
-          <script type="text/javascript">
-            function showupda(x) {
-              document.forms[x].submit();
-            }
-            if (window.history.replaceState) {
-              window.history.replaceState(null, null, window.location.href);
-            }
-            function conca() {
-              console.log('helo');
-              if ($('#w1').val() != 0) {
-                var v1 = $('#w1').val() + ' ' + $('#w2').val();
-                $('#w3').val(v1);
-              }
-            }
-          </script>
-        </div>
-        <?php
-        require "foot.php";
-        ?>
+      <script type="text/javascript">
+        function showupda(x) {
+          document.forms[x].submit();
+        }
+        if (window.history.replaceState) {
+          window.history.replaceState(null, null, window.location.href);
+        }
+
+        function conca() {
+          console.log('helo');
+          if ($('#w1').val() != 0) {
+            var v1 = $('#w1').val() + ' ' + $('#w2').val();
+            $('#w3').val(v1);
+          }
+        }
+      </script>
+      </div>
+      <?php
+      require "foot.php";
+      ?>

@@ -10,18 +10,17 @@ include "header.php";
     <script type="text/javascript">
       $('li').removeClass('active');
       $('#chatphp').addClass('active');
-    </script>
-    <script type="text/javascript">
-      $("#chatphp").click(
-      );
+      $("#chatphp").click();
     </script>
     <?php
     unset($_SESSION['name']);
+
     if (isset($_POST['status'])) {
       $sql = "UPDATE chats SET stat=1 where rname='admin' AND uname='" . $_GET['name'] . "'";
       $st = $pdo->prepare($sql);
       $st->execute();
     }
+
     if (isset($_POST['submit'])) {
       /* Attempt MySQL server connection. Assuming
       you are running MySQL server with default
@@ -40,12 +39,11 @@ include "header.php";
         ':dt' => $ts
       );
       // Attempt insert query execution
-      $sql = "INSERT INTO chats (uname,rname, msg, dt)
-    VALUES (:uname,:rname, :msg, :dt)";
+      $sql = "INSERT INTO chats (uname,rname, msg, dt) VALUES (:uname,:rname, :msg, :dt)";
       $st = $pdo->prepare($sql);
       $st->execute($data);
-      if ($st) {
-      } else {
+
+      if (!$st) {
         echo "ERROR: Message not sent!!!";
       }
       // Close connection
@@ -393,8 +391,7 @@ include "header.php";
           <span class="icon-bar"></span>
         </button>
         <div class="connect" style="background: #000000;text-align: center;">
-          <span><i class="fa fa-user-circle-o
-"></i></span>
+          <span><i class="fa fa-user-circle-o"></i></span>
           <h6 style="color:white;font-size:16px">CONTACTS</h6>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar2">
@@ -404,22 +401,22 @@ include "header.php";
           $cn = 0;
           while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
             $cn++;
-            ?>
+          ?>
             <div id="<?= $row['username'] ?>" class="connect" onclick="getfile('<?= $row['username'] ?>')">
-              <span class="conimg"><i id="<?= $row['username'] ?><?= $cn ?>" class="fa fa-user-circle-o"></i> <span
-                  class="uppernum3">
+              <span class="conimg">
+                <i id="<?= $row['username'] ?><?= $cn ?>" class="fa fa-user-circle-o"></i>
+                <span class="uppernum3">
                   <?php
                   $query1 = "SELECT COUNT(*) FROM chats WHERE uname='" . $row['username'] . "' AND stat=0";
                   $statement1 = $pdo->prepare($query1);
                   $statement1->execute();
                   $row1 = $statement1->fetch(PDO::FETCH_ASSOC);
-                  ?>   <?= $row1['COUNT(*)'] ?>
-                </span></span>
-              <h6>
-                <?= $row['username'] ?>
-              </h6>
+                  ?> <?= $row1['COUNT(*)'] ?>
+                </span>
+              </span>
+              <h6><?= $row['username'] ?></h6>
             </div>
-            <?php
+          <?php
           }
           ?>
         </div>
@@ -435,10 +432,10 @@ include "header.php";
                 $statement->execute(array(':name' => $_GET['name']));
                 $row1 = $statement->fetch(PDO::FETCH_ASSOC);
                 $_SESSION['name'] = $row1['username'];
-                ?>
+              ?>
                 <span class="conimg"><i class="fa fa-user-circle-o" style="color:white;"></i></span>
                 <h4><?= $_SESSION['name'] ?></h4>
-                <?php
+              <?php
               }
               ?>
             </div>
@@ -452,8 +449,8 @@ include "header.php";
                 container.scrollTop = container.scrollHeight - container.clientHeight;
             var pageRefresh = 5000; //5 s
                 setInterval(function() {
-                   $('#chathist').load(location.href + " #chathist >");
-                   $('#myNavbar2').load(location.href + " #myNavbar2 >");
+                  $('#chathist').load(location.href + " #chathist >");
+                  $('#myNavbar2').load(location.href + " #myNavbar2 >");
                 }, pageRefresh);
             });
             */
@@ -461,8 +458,9 @@ include "header.php";
               var element = document.getElementById("chathist");
               element.scrollTop = element.scrollHeight;
             }
+
             function sub() {
-              $('#myform').on("submit", function (e) {
+              $('#myform').on("submit", function(e) {
                 var dataString = new FormData(this);
                 dataString.append('submit', '1');
                 $.ajax({
@@ -472,7 +470,7 @@ include "header.php";
                   contentType: false,
                   cache: false,
                   processData: false,
-                  success: function () {
+                  success: function() {
                     $('textarea').val('');
                   }
                 });
@@ -485,7 +483,7 @@ include "header.php";
             <div class="inner_div" id="chathist">
               <?php
               if (isset($_SESSION['name'])) {
-                ?>
+              ?>
                 <input type="hidden" id="rname" name="rname" value="<?= $_SESSION['name'] ?>">
                 <input type="hidden" id="uname" name="uname" value="admin">
                 <?php
@@ -500,22 +498,19 @@ include "header.php";
                   $date[0] = date("d-m-Y", strtotime($date[0]));
                   if ($date[0] != $ct) {
                     $ct = date("d-m-Y", strtotime($date[0]));
-                    ?>
+                ?>
                     <div class="clear-fix"></div><br><br>
                     <div class="date"><?= $ct ?></div><br><br>
                     <div class="clear-fix"></div>
-                    <?php
+                  <?php
                   }
                   if ($i == 0) {
                     $i = 5;
                     $first = $row;
-                    ?>
+                  ?>
                     <div id="triangle1" class="triangle1"></div>
                     <div id="message1" class="message1">
-                      <div style="color: white;
-    float: right;
-    padding: 0;
-    width: 100%;">
+                      <div style="color: white;float: right;padding: 0;width: 100%;">
                         <pre><?php echo trim($row['msg']); ?></pre>
                       </div>
                       <div class="spdat">
@@ -526,13 +521,10 @@ include "header.php";
                     <?php
                   } else {
                     if ($row['uname'] != $first['uname']) {
-                      ?>
+                    ?>
                       <div id="triangle" class="triangle"></div>
                       <div id="message" class="message">
-                        <div style="color: white;
-    float: right;
-    padding: 0;
-    width: 100%;">
+                        <div style="color: white;float: right;padding: 0;width: 100%;">
                           <pre><?php echo trim($row['msg']); ?></pre>
                         </div>
                         <div class="spdat">
@@ -540,15 +532,12 @@ include "header.php";
                         </div>
                       </div>
                       <br /><br />
-                      <?php
+                    <?php
                     } else {
-                      ?>
+                    ?>
                       <div id="triangle1" class="triangle1"></div>
                       <div id="message1" class="message1">
-                        <div style="color: white;
-    float: right;
-    padding: 0;
-    width: 100%;">
+                        <div style="color: white;float: right;padding: 0;width: 100%;">
                           <pre><?php echo trim($row['msg']); ?></pre>
                         </div>
                         <div class="spdat">
@@ -556,7 +545,7 @@ include "header.php";
                         </div>
                       </div>
                       <br /><br />
-                      <?php
+              <?php
                     }
                   }
                 endwhile;
@@ -570,6 +559,7 @@ include "header.php";
                 }
                 setText(e.target.value);
               }
+
               function change() {
                 console.log('helo');
                 if ($.trim($("#chat-head").html()) == '') {
@@ -578,27 +568,27 @@ include "header.php";
                   alert('please select a contact');
                   document.getElementById('textarea').value = '';
                   return false;
-                }
-                else if ($('#textarea').val() == '') {
+                } else if ($('#textarea').val() == '') {
                   console.log('helo5656');
                   $('#myBtn').prop('disabled', true);
                   return false;
-                }
-                else {
+                } else {
                   console.log('kildjfrekrh');
                   // $('#myBtn').removeAttr('disabled');
                   $('#myBtn').prop('disabled', false);
                   return true;
                 }
               }
+
               function getfile(x) {
                 console.log(x);
                 $.ajax({
                   type: "POST",
                   url: "message.php?name=" + x,
-                  data: { status: 1 },
-                  success: function () {
-                  }
+                  data: {
+                    status: 1
+                  },
+                  success: function() {}
                 });
                 location.href = "message.php?name=" + x;
               }
@@ -607,10 +597,17 @@ include "header.php";
               }
             </script>
             <footer>
-              <textarea class="col-sm-12" id="textarea" style="white-space: pre-line" wrap="hard" name="msg"
-                onChange={handleChange} onkeyup="change()"></textarea>
+              <textarea
+                class="col-sm-12"
+                id="textarea"
+                style="white-space: pre-line"
+                wrap="hard"
+                name="msg"
+                onChange={handleChange}
+                onkeyup="change()"></textarea>
               <button id="myBtn" disabled name="submit" type="submit">
-                <i class="fa fa-arrow-right"></i></button>
+                <i class="fa fa-arrow-right"></i>
+              </button>
             </footer>
           </form>
         </main>
@@ -620,7 +617,7 @@ include "header.php";
     require 'foot.php';
     ?>
     <script>
-      $(".inner-switch").on("click", function () {
+      $(".inner-switch").on("click", function() {
         if ($("#chat").hasClass("dark")) {
           $("#chat").removeClass("dark");
           $(".inner-switch").text("OFF");

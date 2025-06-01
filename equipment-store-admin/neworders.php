@@ -13,8 +13,8 @@ require "head.php";
     </script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
       integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
-    <script type="text/JavaScript"
-      src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.6.0/jQuery.print.js"></script>
+    <script type="text/JavaScript" src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.6.0/jQuery.print.js">
+    </script>
     <style type="text/css">
       .order {
         position: relative;
@@ -142,16 +142,17 @@ require "head.php";
     if (isset($_POST['neworder'])) {
       $new = $_POST['neworder'];
       $query = "UPDATE new_ordered_products
-   JOIN new_orders ON new_ordered_products.new_orders_id=new_orders.new_orders_id
-   JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-   JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
-   JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
-    JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-   JOIN product_description ON product_details.product_description_id=product_description.product_description_id
-   JOIN product ON product.product_id=product_description.product_id
-   JOIN category ON category.category_id=product.category_id
-   JOIN store on store.store_id=product_details.store_id
-    SET new_ordered_products.delivery_status='completed',new_ordered_products.delivery_date=NOW() WHERE customer_delivery_details.customer_delivery_details_id=$new";
+                JOIN new_orders ON new_ordered_products.new_orders_id=new_orders.new_orders_id
+                JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
+                JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+                JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
+                JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
+                JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+                JOIN product ON product.product_id=product_description.product_id
+                JOIN category ON category.category_id=product.category_id
+                JOIN store on store.store_id=product_details.store_id
+                SET new_ordered_products.delivery_status='completed',new_ordered_products.delivery_date=NOW()
+                WHERE customer_delivery_details.customer_delivery_details_id=$new";
       $statement = $pdo->prepare($query);
       $statement->execute();
     }
@@ -162,43 +163,44 @@ require "head.php";
       </h4>
       <button style="float:right" class="prbt" onclick="$('#printarea').print();">Print All</button>
     </div>
-    <div id="printarea"><?php
-    require "pdo.php";
-    $id = $_SESSION['id'];
-    $query = "select *  FROM new_orders
-    JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-    JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
-    JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
-    JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
-    JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-    JOIN product_description ON product_details.product_description_id=product_description.product_description_id
-    JOIN product ON product.product_id=product_description.product_id
-    JOIN category ON category.category_id=product.category_id
-    JOIN store on store.store_id=product_details.store_id
-    WHERE new_ordered_products.delivery_status='pending' AND product_details.store_id=$id";
-    $statement = $pdo->prepare($query);
-    $statement->execute();
-    $product = $statement->rowCount();
-    if ($product == 0) {
-      echo '<center><img src="images/sad.png" height="400px" width="400px"><h3>No Orders Yet.....</h3></center><br><br>';
-    } else {
-      $uid = 0;
-      $lk = 0;
-      while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
-        if ($row['customer_delivery_details_id'] != $uid) {
-          $lk++;
-          $uid = $row['customer_delivery_details_id'];
-          if ($lk != 1) {
-            echo '</table></div> </div>';
-          }
-          ?>
+    <div id="printarea">
+      <?php
+      require "pdo.php";
+      $id = $_SESSION['id'];
+      $query = "select *  FROM new_orders
+          JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
+          JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+          JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
+          JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
+          JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
+          JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+          JOIN product ON product.product_id=product_description.product_id
+          JOIN category ON category.category_id=product.category_id
+          JOIN store on store.store_id=product_details.store_id
+          WHERE new_ordered_products.delivery_status='pending' AND product_details.store_id=$id";
+      $statement = $pdo->prepare($query);
+      $statement->execute();
+      $product = $statement->rowCount();
+      if ($product == 0) {
+        echo '<center><img src="images/sad.png" height="400px" width="400px"><h3>No Orders Yet.....</h3></center><br><br>';
+      } else {
+        $uid = 0;
+        $lk = 0;
+        while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
+          if ($row['customer_delivery_details_id'] != $uid) {
+            $lk++;
+            $uid = $row['customer_delivery_details_id'];
+            if ($lk != 1) {
+              echo '</table></div> </div>';
+            }
+            ?>
             <div class="order" id="order<?= $row['new_ordered_products_id'] ?>">
               <button class="prbt" onclick="$('#order<?= $row['new_ordered_products_id'] ?>').print();">Print to Pdf</button>
               <br><br>
               <div class="col-sm-12">
                 <button type="button" data-toggle="collapse" href="#myNavbarc<?= $row['new_ordered_products_id'] ?>">
-                  <span style="padding: 5px;font-size:16px"> Customer details</span> <span class="amount"> Total Amount <i
-                      class="fas fa-rupee" style="padding-left: 12px;"></i><?= $row['sub_total'] ?> </span>
+                  <span style="padding: 5px;font-size:16px"> Customer details</span> <span class="amount"> Total Amount
+                    <i class="fas fa-rupee" style="padding-left: 12px;"></i><?= $row['sub_total'] ?> </span>
                 </button>
                 <div class="panel-collapse collapse " id="myNavbarc<?= $row['new_ordered_products_id'] ?>">
                   <table class="center" style="width: auto;margin-left:20px">
@@ -225,23 +227,20 @@ require "head.php";
                   </table>
                 </div>
               </div> <br>
-              <div style="    overflow-x: auto;
-    width: 100%;
-    background: white;
-    border-radius: 5px;
-    margin-bottom: 30px;
-    border: 0px;">
+              <div
+                style="overflow-x: auto; width: 100%; background: white; border-radius: 5px; margin-bottom: 30px; border: 0px;">
                 <table>
-                  <?php
-        } ?>
-                <tr class="orow">
-                  <td> <?= $row['new_ordered_products_id'] ?></td>
-                  <td align="center">
-                    <img style="height:auto;max-width: 100%;width:auto;max-height: 150px;display: block;margin: auto "
-                      class="img-responsive"
-                      src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
-            </div>
-            <?= $row['product_name'] ?></td>
+                <?php
+          }
+          ?>
+          <tr class="orow">
+            <td> <?= $row['new_ordered_products_id'] ?></td>
+            <td align="center">
+              <img style="height:auto;max-width: 100%;width:auto;max-height: 150px;display: block;margin: auto "
+                class="img-responsive"
+                src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              <?= $row['product_name'] ?>
+            </td>
             <td>
               <table cellpadding="10">
                 <?php
@@ -298,20 +297,20 @@ require "head.php";
                 </tr>
               </table>
             </td>
-            </tr>
-            <script type="text/javascript">
-              function ordchn() {
-                $('orderbutton>i').attr('class', 'fas fa-check-double');
-              }
-            </script>
-            <form method="post">
-              <input type="hidden" name="neworder" value="<?= $row['customer_delivery_details_id'] ?>">
-              <button name="deliver" class="orderbutton" onclick="ordchn()">Mark As Shipped</button>
-            </form>
-            <?php
+          </tr>
+          <script type="text/javascript">
+            function ordchn() {
+              $('orderbutton>i').attr('class', 'fas fa-check-double');
+            }
+          </script>
+          <form method="post">
+            <input type="hidden" name="neworder" value="<?= $row['customer_delivery_details_id'] ?>">
+            <button name="deliver" class="orderbutton" onclick="ordchn()">Mark As Shipped</button>
+          </form>
+          <?php
+        }
       }
-    }
-    ?>
+      ?>
       </div>
       <?php
       require "foot.php";

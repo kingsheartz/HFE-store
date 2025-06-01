@@ -5,7 +5,7 @@ require "../Common/pdo.php";
 if (isset($_GET['item'])) {
   $nm = strtolower($_GET['item']);
   $res = $pdo->query("select category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
-	        inner join product_description on product_description.product_id=product.product_id
+          inner join product_description on product_description.product_id=product.product_id
           inner join product_details on product_details.product_description_id=product_description.product_description_id
           inner join store on product_details.store_id=store.store_id
           inner join category on category.category_id=product.category_id
@@ -17,23 +17,21 @@ if (isset($_GET['item'])) {
   $cat = $_GET['category_id'];
   $sub = $_GET['subcategory_id'];
   $sql = "select category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
-	        	inner join product_description on product_description.product_id=product.product_id
-                inner join product_details on product_details.product_description_id=product_description.product_description_id
-        		inner join category on category.category_id=product.category_id
-               ";
+          inner join product_description on product_description.product_id=product.product_id
+          inner join product_details on product_details.product_description_id=product_description.product_description_id
+          inner join category on category.category_id=product.category_id";
   $res = $pdo->query($sql);
   if ($res) {
     $row2 = $res->fetch(PDO::FETCH_ASSOC);
-
   }
 } else if (isset($_GET['category_id'])) {
   $cat = $_GET['category_id'];
   try {
     $res = $pdo->query("select category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
-        	inner join product_description on product_description.product_id=product.product_id
-          inner join product_details on product_details.product_description_id=product_description.product_description_id
-        	inner join category on category.category_id=product.category_id
-          where category.category_id=$cat GROUP BY product.product_id");
+            inner join product_description on product_description.product_id=product.product_id
+            inner join product_details on product_details.product_description_id=product_description.product_description_id
+            inner join category on category.category_id=product.category_id
+            where category.category_id=$cat GROUP BY product.product_id");
     if ($res) {
       $row2 = $res->fetch(PDO::FETCH_ASSOC);
       if ($row2) {
@@ -70,20 +68,20 @@ if (isset($_GET['item'])) {
   var url = window.location.href;
   if (sessionStorage.getItem("prev_url") == url) {
     var scrollTop = 'pdts_ltdscrollTop';
-  }
-  else {
+  } else {
     var scrollTop = 'scroll_begin';
   }
-  $(window).unload(function () { document.cookie = 'pdts_ltdscrollTop=' + $(window).scrollTop(); });
+  $(window).unload(function() {
+    document.cookie = 'pdts_ltdscrollTop=' + $(window).scrollTop();
+  });
   sessionStorage.setItem("prev_url", url);
   if ($(window).width() < 635) {
     $('.list_view_mul').hide();
   }
-  $(window).resize(function () {
+  $(window).resize(function() {
     if ($(window).width() < 635) {
       $('.list_view_mul').hide();
-    }
-    else {
+    } else {
       $('.list_view_mul').show();
     }
   });
@@ -95,7 +93,7 @@ if (isset($_GET['item'])) {
 <!--------------------------------------------------------------------------------------------------------------------------------------------------->
 <script type="text/javascript">
   //showing onlt mrp at loading
-  $(document).ready(function (f) {
+  $(document).ready(function(f) {
     $("#per").hide();
     $("#per2").hide();
     $("#per3").hide();
@@ -115,38 +113,40 @@ if (isset($_GET['item'])) {
     }
     if (flag == 0) {
       swal({
-        title: "Sorry!!!",
-        text: "Select a store",
-        icon: "warning",
-        closeOnClickOutside: false,
-        dangerMode: true,
-      })
+          title: "Sorry!!!",
+          text: "Select a store",
+          icon: "warning",
+          closeOnClickOutside: false,
+          dangerMode: true,
+        })
         .then((willSubmit1) => {
           if (willSubmit1) {
             return;
-          }
-          else {
+          } else {
             return;
           }
         });
-    }
-    else {
+    } else {
       var item_description_id = document.getElementById('idid_keeper').value;
       $.ajax({
         url: "../Common/functions.php", //passing page info
-        data: { "cart": 1, "item_description_id": item_description_id, "store_id": id },  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
+        data: {
+          "cart": 1,
+          "item_description_id": item_description_id,
+          "store_id": id
+        }, //form data
+        type: "post", //post data
+        dataType: "json", //datatype=json format
+        timeout: 30000, //waiting time 30 sec
+        success: function(data) { //if registration is success
           if (data.status == 'success') {
             swal({
-              title: "Added!!!",
-              text: "Check your cart",
-              icon: "success",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Added!!!",
+                text: "Check your cart",
+                icon: "success",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit1) => {
                 if (willSubmit1) {
                   document.getElementById("sm-cartcnt").innerHTML = "";
@@ -154,60 +154,56 @@ if (isset($_GET['item'])) {
                   document.getElementById("sm-cartcnt").innerHTML = data.cartcnt;
                   document.getElementById("lg-cartcnt").innerHTML = data.cartcnt;
                   return;
-                }
-                else {
+                } else {
                   return;
                 }
-              });/*
-                      var qnty=document.getElementById("Q"+id+"").innerHTML;
-                      if(qnty!=0){
-                        document.getElementById("Q"+id+"").innerHTML="";
-                        document.getElementById("Q"+id+"").innerHTML=qnty-1;
-                      }*/
+              });
+            /*
+                                  var qnty=document.getElementById("Q"+id+"").innerHTML;
+                                  if(qnty!=0){
+                                    document.getElementById("Q"+id+"").innerHTML="";
+                                    document.getElementById("Q"+id+"").innerHTML=qnty-1;
+                                  }*/
             var qnty = document.getElementById("dis_qnty").innerHTML;
             if (qnty != 0) {
               document.getElementById("dis_qnty").innerHTML = "";
               document.getElementById("dis_qnty").innerHTML = qnty - 1;
             }
-          }
-          else if (data.status == 'error') {
+          } else if (data.status == 'error') {
             swal({
-              title: "Required!!!",
-              text: "You need to create an Account",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Required!!!",
+                text: "You need to create an Account",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   location.href = "../Account/registered.php";
                   return;
-                }
-                else {
+                } else {
                   return;
                 }
               });
-          }
-          else if (data.status == 'error1') {
+          } else if (data.status == 'error1') {
             swal({
-              title: "Not Available!!!",
-              text: "Choose another Store",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Not Available!!!",
+                text: "Choose another Store",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   location.href = "../Product/single.php?id=" + item_description_id + "";
                   return;
-                }
-                else {
+                } else {
                   return;
                 }
               });
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
               title: "Oops!!!",
@@ -218,22 +214,23 @@ if (isset($_GET['item'])) {
               timer: 6000,
             });
             return;
+          } else {
+            return;
           }
-          else { return; }
         }
       }); //closing ajax
-      //location.href="../Cart/cart.php?store="+id+"&item=<?//=$row['item_id'] ?>";
+      //location.href="../Cart/cart.php?store="+id+"&item=<? //=$row['item_id']
+                                                          ?>";
     }
   }
+
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     if ($('#avail_stores').css('display') != 'none') {
       table = document.getElementById("store");
-    }
-    else if ($('#avail_stores_wishlist').css('display') != 'none') {
+    } else if ($('#avail_stores_wishlist').css('display') != 'none') {
       table = document.getElementById("store_wishlist");
-    }
-    else if ($('#avail_stores_buy').css('display') != 'none') {
+    } else if ($('#avail_stores_buy').css('display') != 'none') {
       table = document.getElementById("store_buynow");
     }
     switching = true;
@@ -272,8 +269,7 @@ if (isset($_GET['item'])) {
               break;
             }
           }
-        }
-        else if (n == 3) {
+        } else if (n == 3) {
           if (dir == "asc") {
             if (Number(x.innerHTML) > Number(y.innerHTML)) {
               // If so, mark as a switch and break the loop:
@@ -288,7 +284,7 @@ if (isset($_GET['item'])) {
             }
           }
         }
-      }//END FOR LOOP
+      } //END FOR LOOP
       if (shouldSwitch) {
         /* If a switch has been marked, make the switch
         and mark that a switch has been done: */
@@ -306,22 +302,22 @@ if (isset($_GET['item'])) {
       }
     }
   }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//ITEM START HERE
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<?php
-if (isset($_GET['item'])) {
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //ITEM START HERE
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  <?php
+  if (isset($_GET['item'])) {
   ?>
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var filter = [];
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var filter = [];
     var page_id = 1;
     // Pagination code
-    $(document).on("click", ".pagination li a", function (e) {
+    $(document).on("click", ".pagination li a", function(e) {
       e.preventDefault();
       var pageId = $(this).attr("id");
       if ($('#mobile-filter').css("display") == "none") {
@@ -331,8 +327,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -346,11 +341,19 @@ var filter = [];
       $('.std_text2').css('display', 'flex');
       $.ajax({
         url: "../Common/functions.php", //passing page info
-        data: { "filter_item_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "page_no": pageId, "sort": sort, "item": '<?= $_GET['item'] ?>' },  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
+        data: {
+          "filter_item_a": 1,
+          "key": filter,
+          "min-price": minprice,
+          "max-price": maxprice,
+          "page_no": pageId,
+          "sort": sort,
+          "item": '<?= $_GET['item'] ?>'
+        }, //form data
+        type: "post", //post data
+        dataType: "json", //datatype=json format
+        timeout: 30000, //waiting time 30 sec
+        success: function(data) { //if registration is success
           if (data.status == 'success') {
             $("#table-data").html(data.content).show();
             $("#dynamic-paging").html(data.output).show();
@@ -359,7 +362,7 @@ var filter = [];
             return;
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           $('.background_loader').hide();
           $('.std_text2').hide();
           if (textstatus === "timeout") {
@@ -373,11 +376,13 @@ var filter = [];
             });
             location.reload();
             return;
+          } else {
+            return;
           }
-          else { return; }
         }
       }); //closing ajax
     });
+
     function sortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -386,8 +391,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -397,9 +401,9 @@ var filter = [];
       }
       if (typeof minprice !== 'undefined' && typeof maxprice !== 'undefined' && minprice != 0 && maxprice != 0 && minprice != null && maxprice != null) {
         var filter_tag_cnt = 0;
-        var type = type;//TYPE category || brand ||rating
+        var type = type; //TYPE category || brand ||rating
         if (type == 'brand' || type == 'category') {
-          var cont = $('.val-' + val).html();//INNER HTML
+          var cont = $('.val-' + val).html(); //INNER HTML
         }
         if (type == 'star') {
           var cont = $('#' + val).val();
@@ -407,12 +411,12 @@ var filter = [];
         //alert(type+" is "+cont)
         if ($('#' + val).prop('checked') == false) {
           $('#mob' + val).prop('disabled', false); //enabling radio
-          $('#mob' + val).prop('checked', true);    //check radio
-          $('#mob' + val).prop('disabled', true);   //disabling radio
+          $('#mob' + val).prop('checked', true); //check radio
+          $('#mob' + val).prop('disabled', true); //disabling radio
           $('#' + val).prop('disabled', false); //enabling radio
-          $('#' + val).prop('checked', true);    //check radio
-          $('#' + val).prop('disabled', true);   //disabling radio
-          $('.filter-container').show();//FILTER DIV UNHIDE
+          $('#' + val).prop('checked', true); //check radio
+          $('#' + val).prop('disabled', true); //disabling radio
+          $('.filter-container').show(); //FILTER DIV UNHIDE
           var newtag = $('#filter-tag').clone().appendTo('.filter-container-child'); //COPY THE DEFAULT TAG DESIGN #FILTER 1 & CREATE NEW
           newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)+(sub_category_id || brand_id) "
           if (type == 'brand' || type == 'category') {
@@ -423,7 +427,9 @@ var filter = [];
             var tag_content = "<label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" id=\"filter-tag-name\" class=\"filter-tag-name" + type + "-" + val + " \" style=\"padding-left:0px !important;\" >" + cont + "</label><label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" style=\"padding-left:2px !important;\" id=\"filter-tag-close\" class=\"filter-tag-close  filter-tag-close" + type + "-" + val + "\"><span style='padding-right:4px;color:#333' class='fa fa-star'></span><span class=\"close\" >&times;</span></label>"; //CONTENT INSIDE THE DIV
             $('.filter-tag-' + type + "-" + val).html(tag_content).show(); //APPENDING INNERHTML TO TAG & DISPLAY
           }
-          filter.push({ type: type + "-" + val + "-" + cont });
+          filter.push({
+            type: type + "-" + val + "-" + cont
+          });
           console.log(filter)
           $(".table-data").empty();
           $("#dynamic-paging").empty();
@@ -431,11 +437,18 @@ var filter = [];
           $('.std_text2').css('display', 'flex');
           $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "filter_item_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "item": '<?= $_GET['item'] ?>' },  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+              "filter_item_a": 1,
+              "key": filter,
+              "min-price": minprice,
+              "max-price": maxprice,
+              "sort": sort,
+              "item": '<?= $_GET['item'] ?>'
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
@@ -444,7 +457,7 @@ var filter = [];
                 return;
               }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               $('.background_loader').hide();
               $('.std_text2').hide();
               if (textstatus === "timeout") {
@@ -458,23 +471,30 @@ var filter = [];
                 });
                 $('.background_loader').hide();
                 return;
+              } else {
+                return;
               }
-              else { return; }
             }
           }); //closing ajax
-        }
-        else {
+        } else {
           $(".table-data").empty();
           $("#dynamic-paging").empty();
           $('.background_loader').css('display', 'flex');
           $('.std_text2').css('display', 'flex');
           $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "filter_item_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "item": '<?= $_GET['item'] ?>' },  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+              "filter_item_a": 1,
+              "key": filter,
+              "min-price": minprice,
+              "max-price": maxprice,
+              "sort": sort,
+              "item": '<?= $_GET['item'] ?>'
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
@@ -483,7 +503,7 @@ var filter = [];
                 return;
               }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               $('.background_loader').hide();
               $('.std_text2').hide();
               if (textstatus === "timeout") {
@@ -497,8 +517,7 @@ var filter = [];
                 });
                 $('.background_loader').hide();
                 return;
-              }
-              else {
+              } else {
                 $('.background_loader').hide();
                 return;
               }
@@ -507,6 +526,7 @@ var filter = [];
         }
       }
     }
+
     function removesortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -515,8 +535,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -525,9 +544,9 @@ var filter = [];
         document.getElementById('min-price').value = minprice;
       }
       var filter_tag_cnt = 0;
-      var type = type;//TYPE category || brand ||rating
+      var type = type; //TYPE category || brand ||rating
       if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html();//INNER HTML
+        var cont = $('.val-' + val).html(); //INNER HTML
       }
       if (type == 'star') {
         var cont = $('#' + val).val();
@@ -535,16 +554,18 @@ var filter = [];
       $(".filter-tag-" + type + "-" + val).remove();
       if ($('#' + val).prop('checked') == true) {
         $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', false);    //check radio
-        $('#mob' + val).prop('disabled', true);   //disabling radio
+        $('#mob' + val).prop('checked', false); //check radio
+        $('#mob' + val).prop('disabled', true); //disabling radio
         $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', false);    //check radio
-        $('#' + val).prop('disabled', true);   //disabling radio
+        $('#' + val).prop('checked', false); //check radio
+        $('#' + val).prop('disabled', true); //disabling radio
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //REMOVING THE TAGS WITH VALUE OF THE KEY
         console.log('Before removing object from an array -> ' + JSON.stringify(filter));
-        var removeIndex = filter.map(function (item) { return item.type; }).indexOf(type + "-" + val + "-" + cont)
+        var removeIndex = filter.map(function(item) {
+          return item.type;
+        }).indexOf(type + "-" + val + "-" + cont)
         console.log(removeIndex)
         filter.splice(removeIndex, 1);
         console.log('After removing object from an array -> ' + JSON.stringify(filter));
@@ -558,11 +579,18 @@ var filter = [];
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_item_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "item": '<?= $_GET['item'] ?>' },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_item_a": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "item": '<?= $_GET['item'] ?>'
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -571,7 +599,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -585,35 +613,36 @@ var filter = [];
               });
               $('.background_loader').hide();
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<?php
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//ITEM ENDS HERE
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  <?php
+  }
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  //ITEM ENDS HERE
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
   ?>
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var filter = [];
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var filter = [];
     var page_id = 1;
     // Pagination code
-    $(document).on("click", ".pagination li a", function (e) {
+    $(document).on("click", ".pagination li a", function(e) {
       e.preventDefault();
       var pageId = $(this).attr("id");
       if ($('#mobile-filter').css("display") == "none") {
@@ -623,8 +652,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -638,11 +666,19 @@ var filter = [];
       $('.std_text2').css('display', 'flex');
       $.ajax({
         url: "../Common/functions.php", //passing page info
-        data: { "filter_sub_cat_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "page_no": pageId, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
+        data: {
+          "filter_sub_cat_a": 1,
+          "key": filter,
+          "min-price": minprice,
+          "max-price": maxprice,
+          "page_no": pageId,
+          "sort": sort,
+          "category": <?= $_GET['category_id'] ?>
+        }, //form data
+        type: "post", //post data
+        dataType: "json", //datatype=json format
+        timeout: 30000, //waiting time 30 sec
+        success: function(data) { //if registration is success
           if (data.status == 'success') {
             $("#table-data").html(data.content).show();
             $("#dynamic-paging").html(data.output).show();
@@ -651,7 +687,7 @@ var filter = [];
             return;
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           $('.background_loader').hide();
           $('.std_text2').hide();
           if (textstatus === "timeout") {
@@ -665,11 +701,13 @@ var filter = [];
             });
             location.reload();
             return;
+          } else {
+            return;
           }
-          else { return; }
         }
       }); //closing ajax
     });
+
     function sortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -678,8 +716,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -689,9 +726,9 @@ var filter = [];
       }
       if (typeof minprice !== 'undefined' && typeof maxprice !== 'undefined' && minprice != 0 && maxprice != 0 && minprice != null && maxprice != null) {
         var filter_tag_cnt = 0;
-        var type = type;//TYPE category || brand ||rating
+        var type = type; //TYPE category || brand ||rating
         if (type == 'brand' || type == 'category') {
-          var cont = $('.val-' + val).html();//INNER HTML
+          var cont = $('.val-' + val).html(); //INNER HTML
         }
         if (type == 'star') {
           var cont = $('#' + val).val();
@@ -699,12 +736,12 @@ var filter = [];
         //alert(type+" is "+cont)
         if ($('#' + val).prop('checked') == false) {
           $('#mob' + val).prop('disabled', false); //enabling radio
-          $('#mob' + val).prop('checked', true);    //check radio
-          $('#mob' + val).prop('disabled', true);   //disabling radio
+          $('#mob' + val).prop('checked', true); //check radio
+          $('#mob' + val).prop('disabled', true); //disabling radio
           $('#' + val).prop('disabled', false); //enabling radio
-          $('#' + val).prop('checked', true);    //check radio
-          $('#' + val).prop('disabled', true);   //disabling radio
-          $('.filter-container').show();//FILTER DIV UNHIDE
+          $('#' + val).prop('checked', true); //check radio
+          $('#' + val).prop('disabled', true); //disabling radio
+          $('.filter-container').show(); //FILTER DIV UNHIDE
           var newtag = $('#filter-tag').clone().appendTo('.filter-container-child'); //COPY THE DEFAULT TAG DESIGN #FILTER 1 & CREATE NEW
           newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)+(sub_category_id || brand_id) "
           if (type == 'brand' || type == 'category') {
@@ -715,7 +752,9 @@ var filter = [];
             var tag_content = "<label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" id=\"filter-tag-name\" class=\"filter-tag-name" + type + "-" + val + " \" style=\"padding-left:0px !important;\" >" + cont + "</label><label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" style=\"padding-left:2px !important;\" id=\"filter-tag-close\" class=\"filter-tag-close  filter-tag-close" + type + "-" + val + "\"><span style='padding-right:4px;color:#333' class='fa fa-star'></span><span class=\"close\" >&times;</span></label>"; //CONTENT INSIDE THE DIV
             $('.filter-tag-' + type + "-" + val).html(tag_content).show(); //APPENDING INNERHTML TO TAG & DISPLAY
           }
-          filter.push({ type: type + "-" + val + "-" + cont });
+          filter.push({
+            type: type + "-" + val + "-" + cont
+          });
           console.log(filter)
           $(".table-data").empty();
           $("#dynamic-paging").empty();
@@ -723,11 +762,18 @@ var filter = [];
           $('.std_text2').css('display', 'flex');
           $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "filter_sub_cat_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+              "filter_sub_cat_a": 1,
+              "key": filter,
+              "min-price": minprice,
+              "max-price": maxprice,
+              "sort": sort,
+              "category": <?= $_GET['category_id'] ?>
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
@@ -736,7 +782,7 @@ var filter = [];
                 return;
               }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               $('.background_loader').hide();
               $('.std_text2').hide();
               if (textstatus === "timeout") {
@@ -750,23 +796,30 @@ var filter = [];
                 });
                 $('.background_loader').hide();
                 return;
+              } else {
+                return;
               }
-              else { return; }
             }
           }); //closing ajax
-        }
-        else {
+        } else {
           $(".table-data").empty();
           $("#dynamic-paging").empty();
           $('.background_loader').css('display', 'flex');
           $('.std_text2').css('display', 'flex');
           $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "filter_sub_cat_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+              "filter_sub_cat_a": 1,
+              "key": filter,
+              "min-price": minprice,
+              "max-price": maxprice,
+              "sort": sort,
+              "category": <?= $_GET['category_id'] ?>
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
@@ -775,7 +828,7 @@ var filter = [];
                 return;
               }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               $('.background_loader').hide();
               $('.std_text2').hide();
               if (textstatus === "timeout") {
@@ -789,13 +842,15 @@ var filter = [];
                 });
                 $('.background_loader').hide();
                 return;
+              } else {
+                return;
               }
-              else { return; }
             }
           }); //closing ajax
         }
       }
     }
+
     function removesortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -804,8 +859,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -814,9 +868,9 @@ var filter = [];
         document.getElementById('min-price').value = minprice;
       }
       var filter_tag_cnt = 0;
-      var type = type;//TYPE category || brand ||rating
+      var type = type; //TYPE category || brand ||rating
       if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html();//INNER HTML
+        var cont = $('.val-' + val).html(); //INNER HTML
       }
       if (type == 'star') {
         var cont = $('#' + val).val();
@@ -824,16 +878,18 @@ var filter = [];
       $(".filter-tag-" + type + "-" + val).remove();
       if ($('#' + val).prop('checked') == true) {
         $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', false);    //check radio
-        $('#mob' + val).prop('disabled', true);   //disabling radio
+        $('#mob' + val).prop('checked', false); //check radio
+        $('#mob' + val).prop('disabled', true); //disabling radio
         $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', false);    //check radio
-        $('#' + val).prop('disabled', true);   //disabling radio
+        $('#' + val).prop('checked', false); //check radio
+        $('#' + val).prop('disabled', true); //disabling radio
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //REMOVING THE TAGS WITH VALUE OF THE KEY
         console.log('Before removing object from an array -> ' + JSON.stringify(filter));
-        var removeIndex = filter.map(function (item) { return item.type; }).indexOf(type + "-" + val + "-" + cont)
+        var removeIndex = filter.map(function(item) {
+          return item.type;
+        }).indexOf(type + "-" + val + "-" + cont)
         console.log(removeIndex)
         filter.splice(removeIndex, 1);
         console.log('After removing object from an array -> ' + JSON.stringify(filter));
@@ -847,11 +903,18 @@ var filter = [];
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_sub_cat_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_sub_cat_a": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "category": <?= $_GET['category_id'] ?>
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -860,7 +923,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -874,28 +937,29 @@ var filter = [];
               });
               $('.background_loader').hide();
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<?php
-}
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-else if (isset($_GET['category_id'])) {
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  <?php
+  }
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  else if (isset($_GET['category_id'])) {
   ?>
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-var filter = [];
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    var filter = [];
     var page_id = 1;
     // Pagination code
-    $(document).on("click", ".pagination li a", function (e) {
+    $(document).on("click", ".pagination li a", function(e) {
       e.preventDefault();
       var pageId = $(this).attr("id");
       if ($('#mobile-filter').css("display") == "none") {
@@ -905,8 +969,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -920,11 +983,19 @@ var filter = [];
       $('.std_text2').css('display', 'flex');
       $.ajax({
         url: "../Common/functions.php", //passing page info
-        data: { "filter_cat_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "page_no": pageId, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
+        data: {
+          "filter_cat_a": 1,
+          "key": filter,
+          "min-price": minprice,
+          "max-price": maxprice,
+          "page_no": pageId,
+          "sort": sort,
+          "category": <?= $_GET['category_id'] ?>
+        }, //form data
+        type: "post", //post data
+        dataType: "json", //datatype=json format
+        timeout: 30000, //waiting time 30 sec
+        success: function(data) { //if registration is success
           if (data.status == 'success') {
             $("#table-data").html(data.content).show();
             $("#dynamic-paging").html(data.output).show();
@@ -933,7 +1004,7 @@ var filter = [];
             return;
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           $('.background_loader').hide();
           $('.std_text2').hide();
           if (textstatus === "timeout") {
@@ -947,11 +1018,13 @@ var filter = [];
             });
             location.reload();
             return;
+          } else {
+            return;
           }
-          else { return; }
         }
       }); //closing ajax
     });
+
     function sortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -960,8 +1033,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -971,9 +1043,9 @@ var filter = [];
       }
       if (typeof minprice !== 'undefined' && typeof maxprice !== 'undefined' && minprice != 0 && maxprice != 0 && minprice != null && maxprice != null) {
         var filter_tag_cnt = 0;
-        var type = type;//TYPE category || brand ||rating
+        var type = type; //TYPE category || brand ||rating
         if (type == 'brand' || type == 'category') {
-          var cont = $('.val-' + val).html();//INNER HTML
+          var cont = $('.val-' + val).html(); //INNER HTML
         }
         if (type == 'star') {
           var cont = $('#' + val).val();
@@ -981,12 +1053,12 @@ var filter = [];
         //alert(type+" is "+cont)
         if ($('#' + val).prop('checked') == false) {
           $('#mob' + val).prop('disabled', false); //enabling radio
-          $('#mob' + val).prop('checked', true);    //check radio
-          $('#mob' + val).prop('disabled', true);   //disabling radio
+          $('#mob' + val).prop('checked', true); //check radio
+          $('#mob' + val).prop('disabled', true); //disabling radio
           $('#' + val).prop('disabled', false); //enabling radio
-          $('#' + val).prop('checked', true);    //check radio
-          $('#' + val).prop('disabled', true);   //disabling radio
-          $('.filter-container').show();//FILTER DIV UNHIDE
+          $('#' + val).prop('checked', true); //check radio
+          $('#' + val).prop('disabled', true); //disabling radio
+          $('.filter-container').show(); //FILTER DIV UNHIDE
           var newtag = $('#filter-tag').clone().appendTo('.filter-container-child'); //COPY THE DEFAULT TAG DESIGN #FILTER 1 & CREATE NEW
           newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)+(sub_category_id || brand_id) "
           if (type == 'brand' || type == 'category') {
@@ -997,7 +1069,9 @@ var filter = [];
             var tag_content = "<label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" id=\"filter-tag-name\" class=\"filter-tag-name" + type + "-" + val + " \" style=\"padding-left:0px !important;\" >" + cont + "</label><label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" style=\"padding-left:2px !important;\" id=\"filter-tag-close\" class=\"filter-tag-close  filter-tag-close" + type + "-" + val + "\"><span style='padding-right:4px;color:#333' class='fa fa-star'></span><span class=\"close\" >&times;</span></label>"; //CONTENT INSIDE THE DIV
             $('.filter-tag-' + type + "-" + val).html(tag_content).show(); //APPENDING INNERHTML TO TAG & DISPLAY
           }
-          filter.push({ type: type + "-" + val + "-" + cont });
+          filter.push({
+            type: type + "-" + val + "-" + cont
+          });
           console.log(filter)
           $(".table-data").empty();
           $("#dynamic-paging").empty();
@@ -1005,11 +1079,18 @@ var filter = [];
           $('.std_text2').css('display', 'flex');
           $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "filter_cat_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+              "filter_cat_a": 1,
+              "key": filter,
+              "min-price": minprice,
+              "max-price": maxprice,
+              "sort": sort,
+              "category": <?= $_GET['category_id'] ?>
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
@@ -1018,7 +1099,7 @@ var filter = [];
                 return;
               }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               $('.background_loader').hide();
               $('.std_text2').hide();
               if (textstatus === "timeout") {
@@ -1032,23 +1113,30 @@ var filter = [];
                 });
                 $('.background_loader').hide();
                 return;
+              } else {
+                return;
               }
-              else { return; }
             }
           }); //closing ajax
-        }
-        else {
+        } else {
           $(".table-data").empty();
           $("#dynamic-paging").empty();
           $('.background_loader').css('display', 'flex');
           $('.std_text2').css('display', 'flex');
           $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "filter_cat_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+              "filter_cat_a": 1,
+              "key": filter,
+              "min-price": minprice,
+              "max-price": maxprice,
+              "sort": sort,
+              "category": <?= $_GET['category_id'] ?>
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
@@ -1057,7 +1145,7 @@ var filter = [];
                 return;
               }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               $('.background_loader').hide();
               $('.std_text2').hide();
               if (textstatus === "timeout") {
@@ -1071,13 +1159,15 @@ var filter = [];
                 });
                 $('.background_loader').hide();
                 return;
+              } else {
+                return;
               }
-              else { return; }
             }
           }); //closing ajax
         }
       }
     }
+
     function removesortandfilter(val, type) {
       if ($('#mobile-filter').css("display") == "none") {
         var maxprice = document.getElementById('max-price').value;
@@ -1086,8 +1176,7 @@ var filter = [];
         document.getElementById('mobsortall').value = sort;
         document.getElementById('mob-max-price').value = maxprice;
         document.getElementById('mob-min-price').value = minprice;
-      }
-      else if ($('#mobile-filter').css("display") == "block") {
+      } else if ($('#mobile-filter').css("display") == "block") {
         var maxprice = document.getElementById('mob-max-price').value;
         var minprice = document.getElementById('mob-min-price').value;
         var sort = document.getElementById('mobsortall').value;
@@ -1096,9 +1185,9 @@ var filter = [];
         document.getElementById('min-price').value = minprice;
       }
       var filter_tag_cnt = 0;
-      var type = type;//TYPE category || brand ||rating
+      var type = type; //TYPE category || brand ||rating
       if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html();//INNER HTML
+        var cont = $('.val-' + val).html(); //INNER HTML
       }
       if (type == 'star') {
         var cont = $('#' + val).val();
@@ -1106,16 +1195,18 @@ var filter = [];
       $(".filter-tag-" + type + "-" + val).remove();
       if ($('#' + val).prop('checked') == true) {
         $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', false);    //check radio
-        $('#mob' + val).prop('disabled', true);   //disabling radio
+        $('#mob' + val).prop('checked', false); //check radio
+        $('#mob' + val).prop('disabled', true); //disabling radio
         $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', false);    //check radio
-        $('#' + val).prop('disabled', true);   //disabling radio
+        $('#' + val).prop('checked', false); //check radio
+        $('#' + val).prop('disabled', true); //disabling radio
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
         //REMOVING THE TAGS WITH VALUE OF THE KEY
         console.log('Before removing object from an array -> ' + JSON.stringify(filter));
-        var removeIndex = filter.map(function (item) { return item.type; }).indexOf(type + "-" + val + "-" + cont)
+        var removeIndex = filter.map(function(item) {
+          return item.type;
+        }).indexOf(type + "-" + val + "-" + cont)
         console.log(removeIndex)
         filter.splice(removeIndex, 1);
         console.log('After removing object from an array -> ' + JSON.stringify(filter));
@@ -1129,11 +1220,18 @@ var filter = [];
         $('.std_text2').css('display', 'flex');
         $.ajax({
           url: "../Common/functions.php", //passing page info
-          data: { "filter_cat_a": 1, "key": filter, "min-price": minprice, "max-price": maxprice, "sort": sort, "category":<?= $_GET['category_id'] ?>},  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
+          data: {
+            "filter_cat_a": 1,
+            "key": filter,
+            "min-price": minprice,
+            "max-price": maxprice,
+            "sort": sort,
+            "category": <?= $_GET['category_id'] ?>
+          }, //form data
+          type: "post", //post data
+          dataType: "json", //datatype=json format
+          timeout: 30000, //waiting time 30 sec
+          success: function(data) { //if registration is success
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
@@ -1142,7 +1240,7 @@ var filter = [];
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             $('.background_loader').hide();
             $('.std_text2').hide();
             if (textstatus === "timeout") {
@@ -1155,19 +1253,20 @@ var filter = [];
                 timer: 6000,
               });
               return;
+            } else {
+              return;
             }
-            else { return; }
           }
         }); //closing ajax
       }
     }
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-<?php
-}
-?>
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  <?php
+  }
+  ?>
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -1179,235 +1278,489 @@ var filter = [];
 $result_cnt = $res->rowCount();
 if ($result_cnt == 0) {
   ?>
-<!-- breadcrumbs -->
+  <!-- breadcrumbs -->
   <div class="breadcrumbs">
     <div class="container" style="width:100%;">
       <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-        <li><a href="../Main/onestore.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+        <li><a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
         <li class="active">Products</li>
       </ol>
     </div>
   </div>
   <!-- //breadcrumbs -->
   <div class="container" style="padding-top:100px;padding-bottom:100px;margin: 0;width: 100%;">
-    <?php
+  <?php
 } else {
   ?>
-    <!-- breadcrumbs -->
-    <div class="breadcrumbs">
-      <div class="container" style="width:100%">
-        <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-          <li><a href="../Main/onestore.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
-          </li>
-          <li class="active">Search results <span class='fa fa-search'></span></li>
-        </ol>
-      </div>
+  <!-- breadcrumbs -->
+  <div class="breadcrumbs">
+    <div class="container" style="width:100%">
+      <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
+        <li><a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+        </li>
+        <li class="active">Search results <span class='fa fa-search'></span></li>
+      </ol>
     </div>
-    <!-- //breadcrumbs -->
-    <div class="container" style="padding: 0;margin: 0;width: 100%;">
-      <?php
+  </div>
+  <!-- //breadcrumbs -->
+  <div class="container" style="padding: 0;margin: 0;width: 100%;">
+  <?php
 }
-?>
-    <div class="row">
-      <div class="col-xs-12 col-md-12 col-sm-12">
-        <?php
-        $result_cnt = $res->rowCount();
-        if ($result_cnt == 0) {
-          ?>
-          <div class="product-content-right">
-            <center><img style="justify-content: center;" class="sidebar-title"
-                src="../../images/logo/error-no-search.png">
-              <h2 class="sidebar-title" style="text-align: center;color:#2d70ff;display: inline-flex;font-weight: 600;">No
-                result found</h2>
-            </center>
-          </div>
-          <center style="margin-bottom:0px;margin-top: 50px;">
-            <h4>Can't find requested product ?<a href="../Main/onestore.php"> Try again!</a></h4>
+  ?>
+  <div class="row">
+    <div class="col-xs-12 col-md-12 col-sm-12">
+      <?php
+      $result_cnt = $res->rowCount();
+      if ($result_cnt == 0) {
+        ?>
+        <div class="product-content-right">
+          <center><img style="justify-content: center;" class="sidebar-title"
+              src="../../images/logo/error-no-search.png">
+            <h2 class="sidebar-title" style="text-align: center;color:#2d70ff;display: inline-flex;font-weight: 600;">No
+              result found</h2>
           </center>
-          <?php
-        } else {
-          ?>
-          <div class="wrapper hide_nav_small" style="margin: 0;width: 100% !important;">
-            <div class="d-md-flex align-items-md-center" style="width: 100%;">
+        </div>
+        <center style="margin-bottom:0px;margin-top: 50px;">
+          <h4>Can't find requested product ?<a href="../Main/hfe.php"> Try again!</a></h4>
+        </center>
+        <?php
+      } else {
+        ?>
+        <div class="wrapper hide_nav_small" style="margin: 0;width: 100% !important;">
+          <div class="d-md-flex align-items-md-center" style="width: 100%;">
+            <?php
+            if (isset($_GET['item'])) {
+            ?>
+              <div class="h3" style="font-family: 'Poppins', sans-serif">Search results <span class='fa fa-search'></span>
+              </div>
+            <?php
+            } else {
+            ?>
+              <div class="h3" style="font-family: 'Poppins', sans-serif"><?= $name ?></div>
+            <?php
+            }
+            ?>
+            <div class="ml-auto d-flex align-items-center views "> <span
+                class="btn-pdt_pg text-success grid_view_mul gridview"> <span
+                  class="fas fa-th px-md-2 px-1"></span><span>Grid view</span> </span>
               <?php
               if (isset($_GET['item'])) {
-                ?>
-                <div class="h3" style="font-family: 'Poppins', sans-serif">Search results <span class='fa fa-search'></span>
-                </div>
-                <?php
-              } else {
-                ?>
-                <div class="h3" style="font-family: 'Poppins', sans-serif"><?= $name ?></div>
-                <?php
+              ?>
+                <span class="btn-pdt_pg list_view_mul listview"
+                  onclick="location.href='../Product/products.php?item=<?= $_GET['item'] ?>'"> &nbsp; <span
+                    class="fas fa-list-ul"></span><span class="px-md-2 px-1">List view</span></span>
+              <?php
+              } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
+              ?>
+                <span class="btn-pdt_pg list_view_mul listview"
+                  onclick="location.href='../Product/products.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>'">
+                  &nbsp; <span class="fas fa-list-ul"></span><span class="px-md-2 px-1">List view</span></span>
+              <?php
+              } else if (isset($_GET['category_id'])) {
+              ?>
+                <span class="btn-pdt_pg list_view_mul listview"
+                  onclick="location.href='../Product/products.php?category_id=<?= $_GET['category_id'] ?>'"> &nbsp; <span
+                    class="fas fa-list-ul"></span><span class="px-md-2 px-1">List view</span></span>
+              <?php
               }
               ?>
-              <div class="ml-auto d-flex align-items-center views "> <span
-                  class="btn-pdt_pg text-success grid_view_mul gridview"> <span
-                    class="fas fa-th px-md-2 px-1"></span><span>Grid view</span> </span>
-                <?php
-                if (isset($_GET['item'])) {
-                  ?>
-                  <span class="btn-pdt_pg list_view_mul listview"
-                    onclick="location.href='../Product/products.php?item=<?= $_GET['item'] ?>'"> &nbsp; <span
-                      class="fas fa-list-ul"></span><span class="px-md-2 px-1">List view</span></span>
-                  <?php
-                } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-                  ?>
-                    <span class="btn-pdt_pg list_view_mul listview"
-                      onclick="location.href='../Product/products.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>'">
-                      &nbsp; <span class="fas fa-list-ul"></span><span class="px-md-2 px-1">List view</span></span>
-                  <?php
-                } else if (isset($_GET['category_id'])) {
-                  ?>
-                      <span class="btn-pdt_pg list_view_mul listview"
-                        onclick="location.href='../Product/products.php?category_id=<?= $_GET['category_id'] ?>'"> &nbsp; <span
-                          class="fas fa-list-ul"></span><span class="px-md-2 px-1">List view</span></span>
-                  <?php
-                }
-                ?>
-                <span class="green-label px-md-2 px-1"><?= $result_cnt ?></span> <span class="text-muted">Products</span>
-              </div>
+              <span class="green-label px-md-2 px-1"><?= $result_cnt ?></span> <span class="text-muted">Products</span>
             </div>
           </div>
-          <hr class="make_divb">
-          <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #f1f3f6;padding:0;">
-            <!--FILTER-->
-            <div class="col-md-3 sidebar_divider no_margin"
-              style="padding:0;padding-bottom: 0px;margin-top:10px;border-radius: 5px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63));">
-              <div class="container"
-                style="margin:0;padding:0;padding-top: 15px;padding-bottom: 15px;width: 100%;height: auto;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;">
-                <div class="text-muted filter-label" style="padding-left: 15px;color:#ddd !important;font-size:20px;">
-                  <b>Filters</b>
-                </div>
-                <div class="row filter-container" style="margin:0;padding:0;display:none">
-                  <div class="col-12 filter-container-child" style="margin:0;padding:0;">
-                    <!--FILTER TICKES-->
-                    <div id="filter-tag"
-                      class="form-inline filter-tag d-flex align-items-center my-2 checkbox bg-light border mx-lg-2 filter-ticket"
-                      style="display:none !important;float: left;margin:0px;max-width:max-content;padding-top: 3px;padding-bottom:3px;">
-                    </div>
+        </div>
+        <hr class="make_divb">
+        <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #f1f3f6;padding:0;">
+          <!--FILTER-->
+          <div class="col-md-3 sidebar_divider no_margin"
+            style="padding:0;padding-bottom: 0px;margin-top:10px;border-radius: 5px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63));">
+            <div class="container"
+              style="margin:0;padding:0;padding-top: 15px;padding-bottom: 15px;width: 100%;height: auto;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;">
+              <div class="text-muted filter-label" style="padding-left: 15px;color:#ddd !important;font-size:20px;">
+                <b>Filters</b>
+              </div>
+              <div class="row filter-container" style="margin:0;padding:0;display:none">
+                <div class="col-12 filter-container-child" style="margin:0;padding:0;">
+                  <!--FILTER TICKES-->
+                  <div id="filter-tag"
+                    class="form-inline filter-tag d-flex align-items-center my-2 checkbox bg-light border mx-lg-2 filter-ticket"
+                    style="display:none !important;float: left;margin:0px;max-width:max-content;padding-top: 3px;padding-bottom:3px;">
                   </div>
                 </div>
               </div>
-              <div style="clear: both;"></div>
-              <hr style="margin-top: 0px;margin-bottom: -10px;">
-              <div class="filters" style="margin-right:0px;"> <button
-                  style="display: block;border-color:#002b41;outline:#0c99cc;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;margin-bottom:0px;height:40px;border-radius:5px"
-                  class="btn-pdt_pg btn-success" type="button" data-toggle="collapse" data-target="#mobile-filter"
-                  aria-expanded="false" aria-controls="mobile-filter"><span class="px-1 fas fa-list"></span><span
-                    class="px-1 fas fa-filter fa-lg"></span></button>
+            </div>
+            <div style="clear: both;"></div>
+            <hr style="margin-top: 0px;margin-bottom: -10px;">
+            <div class="filters" style="margin-right:0px;"> <button
+                style="display: block;border-color:#002b41;outline:#0c99cc;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;margin-bottom:0px;height:40px;border-radius:5px"
+                class="btn-pdt_pg btn-success" type="button" data-toggle="collapse" data-target="#mobile-filter"
+                aria-expanded="false" aria-controls="mobile-filter"><span class="px-1 fas fa-list"></span><span
+                  class="px-1 fas fa-filter fa-lg"></span></button>
+            </div>
+            <div style="clear: both;"></div>
+            <div id="mobile-filter" class="collapse">
+              <div class="d-lg-flex align-items-lg-center pt-2 small-sort-select"
+                style="padding-bottom: 5px;margin-top: -15px;">
+                <!--LABEL TICKES-->
+                <!--<div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2"> <label class="tick">Farm <input type="checkbox" checked="checked"> <span class="check"></span> </label> <span class="text-success px-2 count"> 328</span> </div>-->
+                <div class="checkbox bg-light border "
+                  style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;width:100% !important;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;border-radius: 5px;">
+                  <select id="mobsortall" class="frm-field required sect"
+                    style="font-family: 'Poppins', sans-serif;height: 22px;font-size: 13px;display: flex;padding:0;border: none;width:100%;background-color: transparent;background-color: transparent;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;outline:none;color:white"
+                    onchange="sortandfilter('getsort','sort')">
+                    <option value="default"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
+                    <option value="high"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price high to low</option>
+                    <option value="low"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price low to high</option>
+                    <option value="view"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option>
+                  </select>
+                </div>
               </div>
-              <div style="clear: both;"></div>
-              <div id="mobile-filter" class="collapse">
-                <div class="d-lg-flex align-items-lg-center pt-2 small-sort-select"
-                  style="padding-bottom: 5px;margin-top: -15px;">
-                  <!--LABEL TICKES-->
-                  <!--<div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2"> <label class="tick">Farm <input type="checkbox" checked="checked"> <span class="check"></span> </label> <span class="text-success px-2 count"> 328</span> </div>-->
-                  <div class="checkbox bg-light border "
-                    style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;width:100% !important;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;border-radius: 5px;">
-                    <select id="mobsortall" class="frm-field required sect"
-                      style="font-family: 'Poppins', sans-serif;height: 22px;font-size: 13px;display: flex;padding:0;border: none;width:100%;background-color: transparent;background-color: transparent;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;outline:none;color:white"
+              <?php
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+              if (isset($_GET['category_id']) && !isset($_GET['subcategory_id'])) {
+                ?>
+                <div class="py-3 side-nav-filters-head">
+                  <h5 data-toggle="collapse" data-target="#cat-filter-mob" aria-expanded="false"
+                    aria-controls="cat-filter-mob" class="font-weight-bold side-nav-filters"
+                    style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                    onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
+                    Categories<i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i><i
+                      class="fa fa-angle-up cat-down"
+                      style="float: right;display: none;padding-right:5px;border-bottom:none;"></i></h5>
+
+                </div>
+                <?php
+              }
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+              if (isset($_GET['category_id']) || isset($_GET['subcategory_id']) || isset($_GET['item'])) {
+                if (isset($_GET['item'])) {
+                  $brandsql = "select brand.brand_name,brand.brand_id from product
+                    inner join product_description on product_description.product_id=product.product_id
+                    INNER JOIN brand ON product_description.brand=brand.brand_id
+                    INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
+                    inner join product_details on product_details.product_description_id=product_description.product_description_id
+                    inner join store on product_details.store_id=store.store_id
+                    inner join category on category.category_id=product.category_id
+                    where product.product_name like '%" . $_GET['product'] . "%' GROUP BY brand.brand_name";
+                } else if (isset($_GET['category_id']) || isset($_GET['subcategory_id'])) {
+                  if (isset($_GET['subcategory_id'])) {
+                    $brandval = $_GET['subcategory_id'];
+                  } else if (isset($_GET['category_id'])) {
+                    $keeper = 'product.category_id';
+                    $brandval = $_GET['category_id'];
+                  }
+                  $brandsql = "select brand.brand_name,brand.brand_id from product
+                    inner join product_description on product_description.product_id=product.product_id
+                    INNER JOIN brand ON product_description.brand=brand.brand_id
+                    INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
+                    inner join product_details on product_details.product_description_id=product_description.product_description_id
+                    inner join store on product_details.store_id=store.store_id
+                    inner join category on category.category_id=product.category_id
+                    where " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
+                }
+                $brandstmt = $pdo->query($brandsql);
+                $brandcnt = $brandstmt->rowCount();
+                if ($brandcnt > 0) {
+                  ?>
+                  <div class="py-3 side-nav-filters-head">
+                    <h5 data-toggle="collapse" data-target="#brand-filter-mob" aria-expanded="false"
+                      aria-controls="brand-filter-mob" class="font-weight-bold side-nav-filters"
+                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                      onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
+                      Brands<i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i><i
+                        class="fa fa-angle-up brand-down" style="float: right;display: none;padding-right:5px"></i></h5>
+                    <form class="brand collapse" id="brand-filter-mob" style="">
+                      <?php
+                      while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
+                      ?>
+                        <li onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
+                          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
+                          style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
+                          <label class="options"
+                            style="display:flex;justify-content:center;align-items:center;margin-top:3px;"><span
+                              class="val-getbrand-<?= $getbrand_row['brand_id'] ?>"><?= $getbrand_row['brand_name'] ?></span><input
+                              value="<?= $getbrand_row['brand_id'] ?>" id="mobgetbrand-<?= $getbrand_row['brand_id'] ?>"
+                              type="radio" disabled name="mob-radio-getbrand-<?= $getbrand_row['brand_id'] ?>"> <span
+                              class="checkmark"></span> </label>
+                        </li>
+                      <?php
+                      }
+                      ?>
+                    </form>
+                  </div>
+                  <?php
+                }
+              }
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              ?>
+              <div class="py-3 side-nav-filters-head">
+                <h5 data-toggle="collapse" data-target="#rating-filter-mob" aria-expanded="false"
+                  aria-controls="rating-filter-mob" class="font-weight-bold side-nav-filters"
+                  style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                  onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
+                  Rating <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i><i
+                    class="fa fa-angle-up rating-down" style="float: right;display: none;padding-right:5px"></i></h5>
+                <form class="rating collapse" id="rating-filter-mob" style="">
+                  <div class="form-inline star-font align-items-center py-2"
+                    onclick="sortandfilter('getstar-5','star')">
+                    <label class="tick">
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star"></span>
+                      <input type="checkbox" id="mobgetstar-5" disabled value="5">
+                      <span class="check"></span>
+                    </label>
+                  </div>
+                  <div class="form-inline star-font align-items-center py-2"
+                    onclick="sortandfilter('getstar-4','star')">
+                    <label class="tick">
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star px-1 text-muted"></span>
+                      <input type="checkbox" id="mobgetstar-4" disabled value="4">
+                      <span class="check"></span>
+                    </label>
+                  </div>
+                  <div class="form-inline star-font align-items-center py-2"
+                    onclick="sortandfilter('getstar-3','star')">
+                    <label class="tick">
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star px-1 text-muted"></span>
+                      <span class="fas fa-star px-1 text-muted"></span>
+                      <input type="checkbox" id="mobgetstar-3" disabled value="3">
+                      <span class="check"></span>
+                    </label>
+                  </div>
+                  <div class="form-inline star-font align-items-center py-2"
+                    onclick="sortandfilter('getstar-2','star')">
+                    <label class="tick">
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star px-1 text-muted"></span>
+                      <span class="fas fa-star px-1 text-muted"></span>
+                      <span class="fas fa-star px-1 text-muted"></span>
+                      <input type="checkbox" id="mobgetstar-2" disabled value="2">
+                      <span class="check"></span>
+                    </label>
+                  </div>
+                  <div class="form-inline star-font align-items-center py-2"
+                    onclick="sortandfilter('getstar-1','star')">
+                    <label class="tick">
+                      <span class="fas fa-star"></span>
+                      <span class="fas fa-star px-1 text-muted"></span>
+                      <span class="fas fa-star px-1 text-muted"></span>
+                      <span class="fas fa-star px-1 text-muted"></span>
+                      <span class="fas fa-star px-1 text-muted"></span>
+                      <input type="checkbox" id="mobgetstar-1" disabled value="1">
+                      <span class="check"></span>
+                    </label>
+                  </div>
+                </form>
+              </div>
+              <?php
+              $pricesql = $pdo->query("select product_details.price FROM product_details
+                join product_description on product_description.product_description_id=product_details.product_description_id
+                join product on product_description.product_id=product.product_id
+                where category_id=$cat_id");
+              $pricecnt = 0;
+              while ($pricerow = $pricesql->fetch(PDO::FETCH_ASSOC)) {
+                $pricearray[$pricecnt] = $pricerow['price'];
+                $pricecnt++;
+              }
+              $maxprice = max($pricearray);
+              $minprice = min($pricearray);
+              $maxpricelen = strlen($maxprice);
+              $minpricelen = strlen($minprice);
+              ?>
+              <div class="py-3 side-nav-filters-head">
+                <h5 data-toggle="collapse" data-target="#mob-pricing-filter" aria-expanded="false"
+                  aria-controls="mob-pricing-filter" class="font-weight-bold side-nav-filters"
+                  style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                  onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
+                  Price <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i><i
+                    class="fa fa-angle-up pricing-down" style="float: right;display: none;padding-right:5px"></i></h5>
+                <form class=" pricing collapse range-field my-5" id="mob-pricing-filter" style="margin:5px !important">
+                  <div class="div-wrapper">
+                    <label>
+                      <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
+                      <select style="width: 100%;height:40px" class="min-price" id="mob-min-price"
+                        onchange="sortandfilter('getprice','price')">
+                        <option><?= $minprice ?></option>
+                        <?php
+                        $divident = 10;
+                        for ($j = 1; $j < $minpricelen; $j++) {
+                          $divident .= 0;
+                        }
+                        ?>
+                        <?php
+                        $divident = (int) $divident;
+                        $cnt = $maxprice / $divident;
+                        for ($i = 1; $i < $cnt; $i++) {
+                          if ($divident * $i > $minprice and $divident * $i < $maxprice) {
+                            $pricelist = $divident * $i;
+                          }
+                        ?>
+                          <option> <?= $pricelist ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </label>
+                    <label>
+                      <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
+                      <select style="width: 100%;height:40px" class="max-price" id="mob-max-price"
+                        onchange="sortandfilter('getprice','price')">
+                        <option><?= $maxprice ?></option>
+                        <?php
+                        $divident = 10;
+                        for ($j = 1; $j < $minpricelen; $j++) {
+                          $divident .= 0;
+                        }
+                        ?>
+                        <?php
+                        $divident = (int) $divident;
+                        $cnt = $maxprice / $divident;
+                        for ($i = 1; $i < $cnt; $i++) {
+                          if ($divident * $i > $minprice and $divident * $i < $maxprice) {
+                            $pricelist = $divident * $i;
+                          }
+                        ?>
+                          <option><?= $pricelist ?></option>
+                        <?php
+                        }
+                        ?>
+                      </select>
+                    </label>
+                  </div>
+                </form>
+              </div>
+            </div>
+            <div class="content py-md-0 py-3" style="width: 100%;padding: 0px !important;">
+              <section id="sidebar" style="width: 100%;background-color: white;">
+                <!--DEFAULT FILTERS-->
+                <div class=" align-items-lg-center pt-2" style="padding-bottom: 0px;margin-top:15px !important">
+                  <div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2"
+                    style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;">
+                    <select id="sortall" class="frm-field required sect"
+                      style="font-family: 'Poppins', sans-serif;height: 22px;font-size: 13px;display: flex;padding:0;border: none;width:100%;background-color: transparent;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;outline:none;color:white"
                       onchange="sortandfilter('getsort','sort')">
-                      <option value="default"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
-                      <option value="high"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price high to low</option>
+                      <option value="default"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting
+                      </option>
+                      <option value="high"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price high to low
+                      </option>
                       <option value="low"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price low to high</option>
-                      <option value="view"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option>
+                      <option value="view"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity
+                      </option>
                     </select>
                   </div>
                 </div>
+                <!--DEFAULT FILTERS-->
+                <hr style="margin-top: 15px;margin-bottom: 1px;">
                 <?php
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                 if (isset($_GET['category_id']) && !isset($_GET['subcategory_id'])) {
                   ?>
                   <div class="py-3 side-nav-filters-head">
-                    <h5 data-toggle="collapse" data-target="#cat-filter-mob" aria-expanded="false"
-                      aria-controls="cat-filter-mob" class="font-weight-bold side-nav-filters"
-                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                    <h5 data-toggle="collapse" data-target="#cat-filter" aria-expanded="false" aria-controls="cat-filter"
+                      class="font-weight-bold side-nav-filters"
+                      style="width: 100%;color:black;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(1, #fff)) !important;"
                       onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
                       Categories<i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i><i
-                        class="fa fa-angle-up cat-down"
-                        style="float: right;display: none;padding-right:5px;border-bottom:none;"></i></h5>
-
+                        class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px"></i></h5>
+                    <ul id="cat-filter" class="list-group collapse" style="margin-bottom: 0px;">
+                    </ul>
                   </div>
                   <?php
                 }
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                 if (isset($_GET['category_id']) || isset($_GET['subcategory_id']) || isset($_GET['item'])) {
                   if (isset($_GET['item'])) {
                     $brandsql = "select brand.brand_name,brand.brand_id from product
-      inner join product_description on product_description.product_id=product.product_id
-      INNER JOIN brand ON product_description.brand=brand.brand_id
-      INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
-      inner join product_details on product_details.product_description_id=product_description.product_description_id
-      inner join store on product_details.store_id=store.store_id
-      inner join category on category.category_id=product.category_id
-      where product.product_name like '%" . $_GET['product'] . "%' GROUP BY brand.brand_name";
+                      inner join product_description on product_description.product_id=product.product_id
+                      INNER JOIN brand ON product_description.brand=brand.brand_id
+                      INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
+                      inner join product_details on product_details.product_description_id=product_description.product_description_id
+                      inner join store on product_details.store_id=store.store_id
+                      inner join category on category.category_id=product.category_id
+                      where product.product_name like '%" . $_GET['item'] . "%' GROUP BY brand.brand_name";
                   } else if (isset($_GET['category_id']) || isset($_GET['subcategory_id'])) {
-                    if (isset($_GET['subcategory_id'])) {
-                      $brandval = $_GET['subcategory_id'];
-                    } else if (isset($_GET['category_id'])) {
+                    if (isset($_GET['category_id'])) {
                       $keeper = 'product.category_id';
                       $brandval = $_GET['category_id'];
                     }
                     $brandsql = "select brand.brand_name,brand.brand_id from product
-      inner join product_description on product_description.product_id=product.product_id
-      INNER JOIN brand ON product_description.brand=brand.brand_id
-      INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
-      inner join product_details on product_details.product_description_id=product_description.product_description_id
-      inner join store on product_details.store_id=store.store_id
-      inner join category on category.category_id=product.category_id
-      where " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
+                      inner join product_description on product_description.product_id=product.product_id
+                      INNER JOIN brand ON product_description.brand=brand.brand_id
+                      INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
+                      inner join product_details on product_details.product_description_id=product_description.product_description_id
+                      inner join store on product_details.store_id=store.store_id
+                      inner join category on category.category_id=product.category_id
+                      where " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
                   }
                   $brandstmt = $pdo->query($brandsql);
                   $brandcnt = $brandstmt->rowCount();
                   if ($brandcnt > 0) {
                     ?>
                     <div class="py-3 side-nav-filters-head">
-                      <h5 data-toggle="collapse" data-target="#brand-filter-mob" aria-expanded="false"
-                        aria-controls="brand-filter-mob" class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                      <h5 data-toggle="collapse" data-target="#brand-filter" aria-expanded="false"
+                        aria-controls="brand-filter" class="font-weight-bold side-nav-filters"
+                        style="width: 100%;color:#000;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(1, #fff)) !important;"
                         onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
-                        Brands<i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i><i
+                        Brands <i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i><i
                           class="fa fa-angle-up brand-down" style="float: right;display: none;padding-right:5px"></i></h5>
-                      <form class="brand collapse" id="brand-filter-mob" style="">
+                      <ul id="brand-filter" class="list-group collapse" style="margin-bottom: 0px;">
                         <?php
                         while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
                           ?>
                           <li onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
                             class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
-                            style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
+                            style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fff), color-stop(1, #fff)) !important;color:#000 ">
                             <label class="options"
                               style="display:flex;justify-content:center;align-items:center;margin-top:3px;"><span
                                 class="val-getbrand-<?= $getbrand_row['brand_id'] ?>"><?= $getbrand_row['brand_name'] ?></span><input
-                                value="<?= $getbrand_row['brand_id'] ?>" id="mobgetbrand-<?= $getbrand_row['brand_id'] ?>"
-                                type="radio" disabled name="mob-radio-getbrand-<?= $getbrand_row['brand_id'] ?>"> <span
+                                value="<?= $getbrand_row['brand_id'] ?>" id="getbrand-<?= $getbrand_row['brand_id'] ?>"
+                                type="radio" disabled name="radio-getbrand-<?= $getbrand_row['brand_id'] ?>"> <span
                                 class="checkmark"></span> </label>
                           </li>
                           <?php
                         }
                         ?>
-                      </form>
+                      </ul>
                     </div>
                     <?php
                   }
                 }
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 ?>
                 <div class="py-3 side-nav-filters-head">
-                  <h5 data-toggle="collapse" data-target="#rating-filter-mob" aria-expanded="false"
-                    aria-controls="rating-filter-mob" class="font-weight-bold side-nav-filters"
-                    style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                  <h5 data-toggle="collapse" data-target="#rating-filter" aria-expanded="false"
+                    aria-controls="rating-filter" class="font-weight-bold side-nav-filters"
+                    style="width: 100%;color:#000;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(1, #fff)) !important;"
                     onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
                     Rating <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i><i
                       class="fa fa-angle-up rating-down" style="float: right;display: none;padding-right:5px"></i></h5>
-                  <form class="rating collapse" id="rating-filter-mob" style="">
+                  <form class="rating collapse" id="rating-filter" style="background-color: white;">
                     <div class="form-inline star-font align-items-center py-2"
                       onclick="sortandfilter('getstar-5','star')">
                       <label class="tick">
@@ -1416,7 +1769,7 @@ if ($result_cnt == 0) {
                         <span class="fas fa-star"></span>
                         <span class="fas fa-star"></span>
                         <span class="fas fa-star"></span>
-                        <input type="checkbox" id="mobgetstar-5" disabled value="5">
+                        <input type="checkbox" id="getstar-5" disabled value="5">
                         <span class="check"></span>
                       </label>
                     </div>
@@ -1428,7 +1781,7 @@ if ($result_cnt == 0) {
                         <span class="fas fa-star"></span>
                         <span class="fas fa-star"></span>
                         <span class="fas fa-star px-1 text-muted"></span>
-                        <input type="checkbox" id="mobgetstar-4" disabled value="4">
+                        <input type="checkbox" id="getstar-4" disabled value="4">
                         <span class="check"></span>
                       </label>
                     </div>
@@ -1440,7 +1793,7 @@ if ($result_cnt == 0) {
                         <span class="fas fa-star"></span>
                         <span class="fas fa-star px-1 text-muted"></span>
                         <span class="fas fa-star px-1 text-muted"></span>
-                        <input type="checkbox" id="mobgetstar-3" disabled value="3">
+                        <input type="checkbox" id="getstar-3" disabled value="3">
                         <span class="check"></span>
                       </label>
                     </div>
@@ -1452,7 +1805,7 @@ if ($result_cnt == 0) {
                         <span class="fas fa-star px-1 text-muted"></span>
                         <span class="fas fa-star px-1 text-muted"></span>
                         <span class="fas fa-star px-1 text-muted"></span>
-                        <input type="checkbox" id="mobgetstar-2" disabled value="2">
+                        <input type="checkbox" id="getstar-2" disabled value="2">
                         <span class="check"></span>
                       </label>
                     </div>
@@ -1464,39 +1817,25 @@ if ($result_cnt == 0) {
                         <span class="fas fa-star px-1 text-muted"></span>
                         <span class="fas fa-star px-1 text-muted"></span>
                         <span class="fas fa-star px-1 text-muted"></span>
-                        <input type="checkbox" id="mobgetstar-1" disabled value="1">
+                        <input type="checkbox" id="getstar-1" disabled value="1">
                         <span class="check"></span>
                       </label>
                     </div>
                   </form>
                 </div>
-                <?php
-                $pricesql = $pdo->query("select product_details.price FROM product_details
-join product_description on product_description.product_description_id=product_details.product_description_id
-join product on product_description.product_id=product.product_id
-where category_id=$cat_id");
-                $pricecnt = 0;
-                while ($pricerow = $pricesql->fetch(PDO::FETCH_ASSOC)) {
-                  $pricearray[$pricecnt] = $pricerow['price'];
-                  $pricecnt++;
-                }
-                $maxprice = max($pricearray);
-                $minprice = min($pricearray);
-                $maxpricelen = strlen($maxprice);
-                $minpricelen = strlen($minprice);
-                ?>
                 <div class="py-3 side-nav-filters-head">
-                  <h5 data-toggle="collapse" data-target="#mob-pricing-filter" aria-expanded="false"
-                    aria-controls="mob-pricing-filter" class="font-weight-bold side-nav-filters"
-                    style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                  <h5 data-toggle="collapse" data-target="#pricing-filter" aria-expanded="false"
+                    aria-controls="pricing-filter" class="font-weight-bold side-nav-filters"
+                    style="width: 100%;color:#000;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(1, #fff)) !important;"
                     onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
                     Price <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i><i
                       class="fa fa-angle-up pricing-down" style="float: right;display: none;padding-right:5px"></i></h5>
-                  <form class=" pricing collapse range-field my-5" id="mob-pricing-filter" style="margin:5px !important">
+                  <form class=" pricing collapse range-field my-5" id="pricing-filter"
+                    style="margin:0px !important;background-color: white;">
                     <div class="div-wrapper">
-                      <label>
+                      <label style="margin:5px !important;">
                         <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
-                        <select style="width: 100%;height:40px" class="min-price" id="mob-min-price"
+                        <select style="width: 100%;height:35px" class="min-price" id="min-price"
                           onchange="sortandfilter('getprice','price')">
                           <option><?= $minprice ?></option>
                           <?php
@@ -1512,16 +1851,16 @@ where category_id=$cat_id");
                             if ($divident * $i > $minprice and $divident * $i < $maxprice) {
                               $pricelist = $divident * $i;
                             }
-                            ?>
+                          ?>
                             <option><?= $pricelist ?></option>
-                            <?php
+                          <?php
                           }
                           ?>
                         </select>
                       </label>
-                      <label>
+                      <label style="margin:5px !important;">
                         <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
-                        <select style="width: 100%;height:40px" class="max-price" id="mob-max-price"
+                        <select style="width: 100%;height:35px" class="max-price" id="max-price"
                           onchange="sortandfilter('getprice','price')">
                           <option><?= $maxprice ?></option>
                           <?php
@@ -1537,9 +1876,9 @@ where category_id=$cat_id");
                             if ($divident * $i > $minprice and $divident * $i < $maxprice) {
                               $pricelist = $divident * $i;
                             }
-                            ?>
+                          ?>
                             <option><?= $pricelist ?></option>
-                            <?php
+                          <?php
                           }
                           ?>
                         </select>
@@ -1547,249 +1886,10 @@ where category_id=$cat_id");
                     </div>
                   </form>
                 </div>
-              </div>
-              <div class="content py-md-0 py-3" style="width: 100%;padding: 0px !important;">
-                <section id="sidebar" style="width: 100%;background-color: white;">
-                  <!--DEFAULT FILTERS-->
-                  <div class=" align-items-lg-center pt-2" style="padding-bottom: 0px;margin-top:15px !important">
-                    <div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2"
-                      style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;">
-                      <select id="sortall" class="frm-field required sect"
-                        style="font-family: 'Poppins', sans-serif;height: 22px;font-size: 13px;display: flex;padding:0;border: none;width:100%;background-color: transparent;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;outline:none;color:white"
-                        onchange="sortandfilter('getsort','sort')">
-                        <option value="default"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting
-                        </option>
-                        <option value="high"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price high to low
-                        </option>
-                        <option value="low"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price low to high</option>
-                        <option value="view"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity
-                        </option>
-                      </select>
-                    </div>
-                  </div>
-                  <!--DEFAULT FILTERS-->
-                  <hr style="margin-top: 15px;margin-bottom: 1px;">
-                  <?php
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                
-                  if (isset($_GET['category_id']) && !isset($_GET['subcategory_id'])) {
-                    ?>
-                    <div class="py-3 side-nav-filters-head">
-                      <h5 data-toggle="collapse" data-target="#cat-filter" aria-expanded="false" aria-controls="cat-filter"
-                        class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:black;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(1, #fff)) !important;"
-                        onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
-                        Categories<i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i><i
-                          class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px"></i></h5>
-                      <ul id="cat-filter" class="list-group collapse" style="margin-bottom: 0px;">
-
-                      </ul>
-                    </div>
-                    <?php
-                  }
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  if (isset($_GET['category_id']) || isset($_GET['subcategory_id']) || isset($_GET['item'])) {
-                    if (isset($_GET['item'])) {
-                      $brandsql = "select brand.brand_name,brand.brand_id from product
-      inner join product_description on product_description.product_id=product.product_id
-      INNER JOIN brand ON product_description.brand=brand.brand_id
-      INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
-      inner join product_details on product_details.product_description_id=product_description.product_description_id
-      inner join store on product_details.store_id=store.store_id
-      inner join category on category.category_id=product.category_id
-      where product.product_name like '%" . $_GET['item'] . "%' GROUP BY brand.brand_name";
-                    } else if (isset($_GET['category_id']) || isset($_GET['subcategory_id'])) {
-                      if (isset($_GET['category_id'])) {
-                        $keeper = 'product.category_id';
-                        $brandval = $_GET['category_id'];
-                      }
-                      $brandsql = "select brand.brand_name,brand.brand_id from product
-      inner join product_description on product_description.product_id=product.product_id
-      INNER JOIN brand ON product_description.brand=brand.brand_id
-      INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
-      inner join product_details on product_details.product_description_id=product_description.product_description_id
-      inner join store on product_details.store_id=store.store_id
-      inner join category on category.category_id=product.category_id
-      where " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
-                    }
-                    $brandstmt = $pdo->query($brandsql);
-                    $brandcnt = $brandstmt->rowCount();
-                    if ($brandcnt > 0) {
-                      ?>
-                      <div class="py-3 side-nav-filters-head">
-                        <h5 data-toggle="collapse" data-target="#brand-filter" aria-expanded="false"
-                          aria-controls="brand-filter" class="font-weight-bold side-nav-filters"
-                          style="width: 100%;color:#000;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(1, #fff)) !important;"
-                          onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
-                          Brands <i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i><i
-                            class="fa fa-angle-up brand-down" style="float: right;display: none;padding-right:5px"></i></h5>
-                        <ul id="brand-filter" class="list-group collapse" style="margin-bottom: 0px;">
-                          <?php
-                          while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
-                            ?>
-                            <li onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
-                              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
-                              style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fff), color-stop(1, #fff)) !important;color:#000 ">
-                              <label class="options"
-                                style="display:flex;justify-content:center;align-items:center;margin-top:3px;"><span
-                                  class="val-getbrand-<?= $getbrand_row['brand_id'] ?>"><?= $getbrand_row['brand_name'] ?></span><input
-                                  value="<?= $getbrand_row['brand_id'] ?>" id="getbrand-<?= $getbrand_row['brand_id'] ?>"
-                                  type="radio" disabled name="radio-getbrand-<?= $getbrand_row['brand_id'] ?>"> <span
-                                  class="checkmark"></span> </label>
-                            </li>
-                            <?php
-                          }
-                          ?>
-                        </ul>
-                      </div>
-                      <?php
-                    }
-                  }
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  ?>
-                  <div class="py-3 side-nav-filters-head">
-                    <h5 data-toggle="collapse" data-target="#rating-filter" aria-expanded="false"
-                      aria-controls="rating-filter" class="font-weight-bold side-nav-filters"
-                      style="width: 100%;color:#000;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(1, #fff)) !important;"
-                      onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
-                      Rating <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i><i
-                        class="fa fa-angle-up rating-down" style="float: right;display: none;padding-right:5px"></i></h5>
-                    <form class="rating collapse" id="rating-filter" style="background-color: white;">
-                      <div class="form-inline star-font align-items-center py-2"
-                        onclick="sortandfilter('getstar-5','star')">
-                        <label class="tick">
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star"></span>
-                          <input type="checkbox" id="getstar-5" disabled value="5">
-                          <span class="check"></span>
-                        </label>
-                      </div>
-                      <div class="form-inline star-font align-items-center py-2"
-                        onclick="sortandfilter('getstar-4','star')">
-                        <label class="tick">
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star px-1 text-muted"></span>
-                          <input type="checkbox" id="getstar-4" disabled value="4">
-                          <span class="check"></span>
-                        </label>
-                      </div>
-                      <div class="form-inline star-font align-items-center py-2"
-                        onclick="sortandfilter('getstar-3','star')">
-                        <label class="tick">
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star px-1 text-muted"></span>
-                          <span class="fas fa-star px-1 text-muted"></span>
-                          <input type="checkbox" id="getstar-3" disabled value="3">
-                          <span class="check"></span>
-                        </label>
-                      </div>
-                      <div class="form-inline star-font align-items-center py-2"
-                        onclick="sortandfilter('getstar-2','star')">
-                        <label class="tick">
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star px-1 text-muted"></span>
-                          <span class="fas fa-star px-1 text-muted"></span>
-                          <span class="fas fa-star px-1 text-muted"></span>
-                          <input type="checkbox" id="getstar-2" disabled value="2">
-                          <span class="check"></span>
-                        </label>
-                      </div>
-                      <div class="form-inline star-font align-items-center py-2"
-                        onclick="sortandfilter('getstar-1','star')">
-                        <label class="tick">
-                          <span class="fas fa-star"></span>
-                          <span class="fas fa-star px-1 text-muted"></span>
-                          <span class="fas fa-star px-1 text-muted"></span>
-                          <span class="fas fa-star px-1 text-muted"></span>
-                          <span class="fas fa-star px-1 text-muted"></span>
-                          <input type="checkbox" id="getstar-1" disabled value="1">
-                          <span class="check"></span>
-                        </label>
-                      </div>
-                    </form>
-                  </div>
-                  <div class="py-3 side-nav-filters-head">
-                    <h5 data-toggle="collapse" data-target="#pricing-filter" aria-expanded="false"
-                      aria-controls="pricing-filter" class="font-weight-bold side-nav-filters"
-                      style="width: 100%;color:#000;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(1, #fff)) !important;"
-                      onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
-                      Price <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i><i
-                        class="fa fa-angle-up pricing-down" style="float: right;display: none;padding-right:5px"></i></h5>
-                    <form class=" pricing collapse range-field my-5" id="pricing-filter"
-                      style="margin:0px !important;background-color: white;">
-                      <div class="div-wrapper">
-                        <label style="margin:5px !important;">
-                          <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
-                          <select style="width: 100%;height:35px" class="min-price" id="min-price"
-                            onchange="sortandfilter('getprice','price')">
-                            <option><?= $minprice ?></option>
-                            <?php
-                            $divident = 10;
-                            for ($j = 1; $j < $minpricelen; $j++) {
-                              $divident .= 0;
-                            }
-                            ?>
-                            <?php
-                            $divident = (int) $divident;
-                            $cnt = $maxprice / $divident;
-                            for ($i = 1; $i < $cnt; $i++) {
-                              if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                                $pricelist = $divident * $i;
-                              }
-                              ?>
-                              <option><?= $pricelist ?></option>
-                              <?php
-                            }
-                            ?>
-                          </select>
-                        </label>
-                        <label style="margin:5px !important;">
-                          <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
-                          <select style="width: 100%;height:35px" class="max-price" id="max-price"
-                            onchange="sortandfilter('getprice','price')">
-                            <option><?= $maxprice ?></option>
-                            <?php
-                            $divident = 10;
-                            for ($j = 1; $j < $minpricelen; $j++) {
-                              $divident .= 0;
-                            }
-                            ?>
-                            <?php
-                            $divident = (int) $divident;
-                            $cnt = $maxprice / $divident;
-                            for ($i = 1; $i < $cnt; $i++) {
-                              if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                                $pricelist = $divident * $i;
-                              }
-                              ?>
-                              <option><?= $pricelist ?></option>
-                              <?php
-                            }
-                            ?>
-                          </select>
-                        </label>
-                      </div>
-                    </form>
-                  </div>
-                </section> <!-- Products Section -->
-              </div>
+              </section> <!-- Products Section -->
             </div>
-            <!----------------------------------------------------------------------------------------------------------------------------------------------->
+          </div>
+          <!----------------------------------------------------------------------------------------------------------------------------------------------->
           <!----------------------------------------------------------------------------------------------------------------------------------------------->
           <!----------------------------------------------------------------------------------------------------------------------------------------------->
           <!----------------------------------------------------------------------------------------------------------------------------------------------->
@@ -1803,19 +1903,19 @@ where category_id=$cat_id");
                     style="width: 100%;padding:0">
                     <div id="table-data">
                       <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!---ALL CONTENTS ARE LOADED HERE--->
                       <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <?php
-        }
-        ?>
+                      <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                      <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                      <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                      <!---ALL CONTENTS ARE LOADED HERE--->
+                      <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                      <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                      <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                      <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                      <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                    <?php
+      }
+                    ?>
                     </div>
                   </div>
                 </div>
@@ -1829,387 +1929,403 @@ where category_id=$cat_id");
           <!----------------------------------------------------------------------------------------------------------------------------------------------->
           <!----------------------------------------------------------------------------------------------------------------------------------------------->
         </div>
-      </div>
     </div>
   </div>
-  <?php
-  require "../Product/products_footer.php";
-  ?>
-  <script>
-      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      //STORE LISTING
-      function storefinder(item_description_id) {
-        $("#per").hide();
-        var idid = item_description_id;
-        $.ajax({
-          url: "../Common/functions.php", //passing page info
-          data: { "storefinder": 1, "item_description_id": idid },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 60000,   //waiting time 60 sec
-          success: function (data) {    //if registration is success
-            if (data.status == "success") {
-              if (data.avail != 0) {
-                console.log(data.data);
-                $('.store_rows').remove();
-                $('#store').append(data.data);
-                $("avail_store").show();
-              }
-              else {
-                console.log("multistore");
-                $("multi_store_response").show();
-              }
-              //$("#multi_store_listing").show();
-              return;
-            }
-          },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-            console.log("error");
-            if (textstatus === "timeout") {
-              swal({
-                title: "Oops!!!",
-                text: "server time out",
-                icon: "error",
-                closeOnClickOutside: false,
-                dangerMode: true,
-                timer: 6000,
-              });
-              return;
-            }
-            else { return; }
-          }
-        }); //closing ajax
-      }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function wishlist_storefinder(item_description_id) {
-      $("#per2").hide();
-      var idid = item_description_id;
-      $.ajax({
-        url: "../Common/functions.php", //passing page info
-        data: { "wishlist_storefinder": 1, "item_description_id": idid },  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 60000,   //waiting time 60 sec
-        success: function (data) {    //if registration is success
-          if (data.status == "success") {
-            if (data.avail != 0) {
-              $('.wishlist_store_rows').remove();
-              $('#wishlist_store').append(data.data);
-              $("avail_store_wishlist").show();
-            }
-            else {
-              $("wishlist_multi_store_response").show();
-            }
-            //$("#multi_store_listing").show();
-            return;
-          }
-        },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-          if (textstatus === "timeout") {
-            swal({
-              title: "Oops!!!",
-              text: "server time out",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-              timer: 6000,
-            });
-            return;
-          }
-          else { return; }
-        }
-      }); //closing ajax
-    }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //PRICE AND CART SETTINGS
-    function pricing(store, item_description_id) {
-      var idid = item_description_id;
-      var store_id = store;
-      $('.sel_store').css('display', 'unset');
-      $('.element_cart').hide();
-      $('#check' + store_id).css('display', 'none');
-      $('#btn' + store_id).css('display', 'unset');
-      //if none is checked
-      if ($('.sel_store:checkbox:checked').length == 0) {
-        $("#ini").show();
-        $("#per").hide();
-      }
-      //if none is checked
-      else {
-        $.ajax({
-          url: "../Common/functions.php", //passing page info
-          data: { "pricefinder": 1, "item_description_id": idid, "store_id": store_id },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
-            $("#ini").hide();
-            document.getElementById('save').innerHTML = "";
-            document.getElementById('save').innerHTML += data.save;
-            document.getElementById('off').innerHTML = "";
-            document.getElementById('off').innerHTML += data.off;
-            document.getElementById('dis_avail').innerHTML = "";
-            document.getElementById('dis_avail').innerHTML = "" + data.availability;
-            document.getElementById('dis_sts').innerHTML = "";
-            document.getElementById('dis_sts').innerHTML = "" + data.sts;
-            document.getElementById('dis_qnty').innerHTML = "";
-            document.getElementById('dis_qnty').innerHTML = "" + data.quantity;
-            document.getElementById('dis_add').innerHTML = "";
-            document.getElementById('dis_add').innerHTML = "" + data.address;
-            document.getElementById('idid_keeper').value = "";
-            document.getElementById('idid_keeper').value = "" + data.idid;
-            $('#addfeature').html(data.features);
-            $("#oldpriceofitem").show();
-            $("#per").show();
-            return;
-          },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-            if (textstatus === "timeout") {
-              swal({
-                title: "Oops!!!",
-                text: "server time out",
-                icon: "error",
-                closeOnClickOutside: false,
-                dangerMode: true,
-                timer: 6000,
-              });
-              return;
-            }
-            else { return; }
-          }
-        }); //closing ajax
-      }
-    }
-    //PRICE AND CART SETTINGS
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //PRICE AND CART SETTINGS WISHLIST
-    function wishlist_pricing(store, item_description_id) {
-      var idid = item_description_id;
-      var store_id = store;
-      $('.sel_store2').css('display', 'unset');
-      $('.element_cart2').hide();
-      $('#wishlist_check' + store_id).css('display', 'none');
-      $('#wishlist_btn' + store_id).css('display', 'unset');
-      //if none is checked
-      if ($('.sel_store2:checkbox:checked').length == 0) {
-        $("#ini").show();
-        $("#per2").hide();
-      }
-      //if none is checked
-      else {
-        $.ajax({
-          url: "../Common/functions.php", //passing page info
-          data: { "wishlist_pricefinder": 1, "item_description_id": idid, "store_id": store_id },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
-            $("#ini").hide();
-            document.getElementById('save2').innerHTML = "";
-            document.getElementById('save2').innerHTML += data.save;
-            document.getElementById('off2').innerHTML = "";
-            document.getElementById('off2').innerHTML += data.off;
-            document.getElementById('dis_avail2').innerHTML = "";
-            document.getElementById('dis_avail2').innerHTML = "" + data.availability;
-            document.getElementById('dis_sts2').innerHTML = "";
-            document.getElementById('dis_sts2').innerHTML = "" + data.sts;
-            document.getElementById('dis_qnty2').innerHTML = "";
-            document.getElementById('dis_qnty2').innerHTML = "" + data.quantity;
-            document.getElementById('dis_add2').innerHTML = "";
-            document.getElementById('dis_add2').innerHTML = "" + data.address;
-            document.getElementById('wishlist_idid_keeper').value = "";
-            document.getElementById('wishlist_idid_keeper').value = "" + data.idid;
-            $('#wishaddfeature').html(data.features);
-            $("#oldpriceofitem").show();
-            $("#per2").show();
-            return;
-          },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-            if (textstatus === "timeout") {
-              swal({
-                title: "Oops!!!",
-                text: "server time out",
-                icon: "error",
-                closeOnClickOutside: false,
-                dangerMode: true,
-                timer: 6000,
-              });
-              return;
-            }
-            else { return; }
-          }
-        }); //closing ajax
-      }
-    }
-    //PRICE AND CART SETTINGS  WISHLIST
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    //WISHLIST ENTRY ITEMS
-    function wishlist_check_store_select() {
-      var tbl = document.getElementById("wishlist_store");
-      var chks = tbl.getElementsByTagName("INPUT");
-      var id = 0;
-      var flag = 0;
-      for (var i = 0; i < chks.length; i++) {
-        if (chks[i].checked == true) {
-          id = chks[i].value;
-          flag = 1;
-        }
-      }
-      if (flag == 0) {
-        swal({
-          title: "Sorry!!!",
-          text: "Select a store",
-          icon: "warning",
-          closeOnClickOutside: false,
-          dangerMode: true,
-        })
-          .then((willSubmit1) => {
-            if (willSubmit1) {
-              return;
-            }
-            else {
-              return;
-            }
-          });
-      }
-      else {
-        var item_description_id = document.getElementById('wishlist_idid_keeper').value;
-        $.ajax({
-          url: "../Common/functions.php", //passing page info
-          data: { "addtowishlist": 1, "item_description_id": item_description_id, "store_id": id },  //form data
-          type: "post",   //post data
-          dataType: "json",   //datatype=json format
-          timeout: 30000,   //waiting time 30 sec
-          success: function (data) {    //if registration is success
-            if (data.status == 'success') {
-              return;
-            }
-            else if (data.status == 'error') {
-              swal({
-                title: "Required!!!",
-                text: "You need to create an Account",
-                icon: "error",
-                closeOnClickOutside: false,
-                dangerMode: true,
-              })
-                .then((willSubmit) => {
-                  if (willSubmit) {
-                    location.href = "../Account/registered.php";
-                    return;
-                  }
-                  else {
-                    return;
-                  }
-                });
-            }
-          },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-            if (textstatus === "timeout") {
-              swal({
-                title: "Oops!!!",
-                text: "server time out",
-                icon: "error",
-                closeOnClickOutside: false,
-                dangerMode: true,
-                timer: 6000,
-              });
-              return;
-            }
-            else { return; }
-          }
-        }); //closing ajax
-      }
-    }
-    //WISHLIST ENTRY ITEMS
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    function wishlist_check_list_select(wishlist_id) {
-      $.ajax({
-        url: "../Common/functions.php", //passing page info
-        data: { "fetchedwishlistid": 1, "wishlist_id": wishlist_id },  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
-          if (data.status == 'success') {
-            $('#wish_cnt_' + wishlist_id + '').html(data.new_wish_cnt);
-            swal({
-              title: "Added!!!",
-              text: "Check your wishlist",
-              icon: "success",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
-              .then((willSubmit1) => {
-                if (willSubmit1) {
-                  return;
-                }
-                else {
-                  return;
-                }
-              });
-          }
-          else if (data.status == 'success1') {
-            $(".background_loader").hide();
-            swal({
-              title: "Item exists!!!",
-              text: "Check your wishlist",
-              icon: "warning",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
-              .then((willSubmit1) => {
-                if (willSubmit1) {
-                  return;
-                }
-                else {
-                  return;
-                }
-              });
-          }
-          else if (data.status == 'error') {
-            swal({
-              title: "Required!!!",
-              text: "You need to create an Account",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
-              .then((willSubmit) => {
-                if (willSubmit) {
-                  location.href = "../Account/registered.php";
-                  return;
-                }
-                else {
-                  return;
-                }
-              });
-          }
-        },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-          if (textstatus === "timeout") {
-            swal({
-              title: "Oops!!!",
-              text: "server time out",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-              timer: 6000,
-            });
-            return;
-          }
-          else { return; }
-        }
-      }); //closing ajax
-    }
-    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  </script>
-  </body>
-  <html>
+	</div>
+<?php
+require "../Product/products_footer.php";
+?>
+<script>
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//STORE LISTING
+	function storefinder(item_description_id) {
+		$("#per").hide();
+		var idid = item_description_id;
+		$.ajax({
+			url: "../Common/functions.php", //passing page info
+			data: {
+				"storefinder": 1,
+				"item_description_id": idid
+			}, //form data
+			type: "post", //post data
+			dataType: "json", //datatype=json format
+			timeout: 60000, //waiting time 60 sec
+			success: function(data) { //if registration is success
+				if (data.status == "success") {
+					if (data.avail != 0) {
+						console.log(data.data);
+						$('.store_rows').remove();
+						$('#store').append(data.data);
+						$("avail_store").show();
+					} else {
+						console.log("multistore");
+						$("multi_store_response").show();
+					}
+					//$("#multi_store_listing").show();
+					return;
+				}
+			},
+			error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				console.log("error");
+				if (textstatus === "timeout") {
+					swal({
+						title: "Oops!!!",
+						text: "server time out",
+						icon: "error",
+						closeOnClickOutside: false,
+						dangerMode: true,
+						timer: 6000,
+					});
+					return;
+				} else {
+					return;
+				}
+			}
+		}); //closing ajax
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	function wishlist_storefinder(item_description_id) {
+		$("#per2").hide();
+		var idid = item_description_id;
+		$.ajax({
+			url: "../Common/functions.php", //passing page info
+			data: {
+				"wishlist_storefinder": 1,
+				"item_description_id": idid
+			}, //form data
+			type: "post", //post data
+			dataType: "json", //datatype=json format
+			timeout: 60000, //waiting time 60 sec
+			success: function(data) { //if registration is success
+				if (data.status == "success") {
+					if (data.avail != 0) {
+						$('.wishlist_store_rows').remove();
+						$('#wishlist_store').append(data.data);
+						$("avail_store_wishlist").show();
+					} else {
+						$("wishlist_multi_store_response").show();
+					}
+					//$("#multi_store_listing").show();
+					return;
+				}
+			},
+			error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				if (textstatus === "timeout") {
+					swal({
+						title: "Oops!!!",
+						text: "server time out",
+						icon: "error",
+						closeOnClickOutside: false,
+						dangerMode: true,
+						timer: 6000,
+					});
+					return;
+				} else {
+					return;
+				}
+			}
+		}); //closing ajax
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//PRICE AND CART SETTINGS
+	function pricing(store, item_description_id) {
+		var idid = item_description_id;
+		var store_id = store;
+		$('.sel_store').css('display', 'unset');
+		$('.element_cart').hide();
+		$('#check' + store_id).css('display', 'none');
+		$('#btn' + store_id).css('display', 'unset');
+		//if none is checked
+		if ($('.sel_store:checkbox:checked').length == 0) {
+			$("#ini").show();
+			$("#per").hide();
+		}
+		//if none is checked
+		else {
+			$.ajax({
+				url: "../Common/functions.php", //passing page info
+				data: {
+					"pricefinder": 1,
+					"item_description_id": idid,
+					"store_id": store_id
+				}, //form data
+				type: "post", //post data
+				dataType: "json", //datatype=json format
+				timeout: 30000, //waiting time 30 sec
+				success: function(data) { //if registration is success
+					$("#ini").hide();
+					document.getElementById('save').innerHTML = "";
+					document.getElementById('save').innerHTML += data.save;
+					document.getElementById('off').innerHTML = "";
+					document.getElementById('off').innerHTML += data.off;
+					document.getElementById('dis_avail').innerHTML = "";
+					document.getElementById('dis_avail').innerHTML = "" + data.availability;
+					document.getElementById('dis_sts').innerHTML = "";
+					document.getElementById('dis_sts').innerHTML = "" + data.sts;
+					document.getElementById('dis_qnty').innerHTML = "";
+					document.getElementById('dis_qnty').innerHTML = "" + data.quantity;
+					document.getElementById('dis_add').innerHTML = "";
+					document.getElementById('dis_add').innerHTML = "" + data.address;
+					document.getElementById('idid_keeper').value = "";
+					document.getElementById('idid_keeper').value = "" + data.idid;
+					$('#addfeature').html(data.features);
+					$("#oldpriceofitem").show();
+					$("#per").show();
+					return;
+				},
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+					if (textstatus === "timeout") {
+						swal({
+							title: "Oops!!!",
+							text: "server time out",
+							icon: "error",
+							closeOnClickOutside: false,
+							dangerMode: true,
+							timer: 6000,
+						});
+						return;
+					} else {
+						return;
+					}
+				}
+			}); //closing ajax
+		}
+	}
+	//PRICE AND CART SETTINGS
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//PRICE AND CART SETTINGS WISHLIST
+	function wishlist_pricing(store, item_description_id) {
+		var idid = item_description_id;
+		var store_id = store;
+		$('.sel_store2').css('display', 'unset');
+		$('.element_cart2').hide();
+		$('#wishlist_check' + store_id).css('display', 'none');
+		$('#wishlist_btn' + store_id).css('display', 'unset');
+		//if none is checked
+		if ($('.sel_store2:checkbox:checked').length == 0) {
+			$("#ini").show();
+			$("#per2").hide();
+		}
+		//if none is checked
+		else {
+			$.ajax({
+				url: "../Common/functions.php", //passing page info
+				data: {
+					"wishlist_pricefinder": 1,
+					"item_description_id": idid,
+					"store_id": store_id
+				}, //form data
+				type: "post", //post data
+				dataType: "json", //datatype=json format
+				timeout: 30000, //waiting time 30 sec
+				success: function(data) { //if registration is success
+					$("#ini").hide();
+					document.getElementById('save2').innerHTML = "";
+					document.getElementById('save2').innerHTML += data.save;
+					document.getElementById('off2').innerHTML = "";
+					document.getElementById('off2').innerHTML += data.off;
+					document.getElementById('dis_avail2').innerHTML = "";
+					document.getElementById('dis_avail2').innerHTML = "" + data.availability;
+					document.getElementById('dis_sts2').innerHTML = "";
+					document.getElementById('dis_sts2').innerHTML = "" + data.sts;
+					document.getElementById('dis_qnty2').innerHTML = "";
+					document.getElementById('dis_qnty2').innerHTML = "" + data.quantity;
+					document.getElementById('dis_add2').innerHTML = "";
+					document.getElementById('dis_add2').innerHTML = "" + data.address;
+					document.getElementById('wishlist_idid_keeper').value = "";
+					document.getElementById('wishlist_idid_keeper').value = "" + data.idid;
+					$('#wishaddfeature').html(data.features);
+					$("#oldpriceofitem").show();
+					$("#per2").show();
+					return;
+				},
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+					if (textstatus === "timeout") {
+						swal({
+							title: "Oops!!!",
+							text: "server time out",
+							icon: "error",
+							closeOnClickOutside: false,
+							dangerMode: true,
+							timer: 6000,
+						});
+						return;
+					} else {
+						return;
+					}
+				}
+			}); //closing ajax
+		}
+	}
+	//PRICE AND CART SETTINGS  WISHLIST
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	//WISHLIST ENTRY ITEMS
+	function wishlist_check_store_select() {
+		var tbl = document.getElementById("wishlist_store");
+		var chks = tbl.getElementsByTagName("INPUT");
+		var id = 0;
+		var flag = 0;
+		for (var i = 0; i < chks.length; i++) {
+			if (chks[i].checked == true) {
+				id = chks[i].value;
+				flag = 1;
+			}
+		}
+		if (flag == 0) {
+			swal({
+					title: "Sorry!!!",
+					text: "Select a store",
+					icon: "warning",
+					closeOnClickOutside: false,
+					dangerMode: true,
+				})
+				.then((willSubmit1) => {
+					if (willSubmit1) {
+						return;
+					} else {
+						return;
+					}
+				});
+		} else {
+			var item_description_id = document.getElementById('wishlist_idid_keeper').value;
+			$.ajax({
+				url: "../Common/functions.php", //passing page info
+				data: {
+					"addtowishlist": 1,
+					"item_description_id": item_description_id,
+					"store_id": id
+				}, //form data
+				type: "post", //post data
+				dataType: "json", //datatype=json format
+				timeout: 30000, //waiting time 30 sec
+				success: function(data) { //if registration is success
+					if (data.status == 'success') {
+						return;
+					} else if (data.status == 'error') {
+						swal({
+								title: "Required!!!",
+								text: "You need to create an Account",
+								icon: "error",
+								closeOnClickOutside: false,
+								dangerMode: true,
+							})
+							.then((willSubmit) => {
+								if (willSubmit) {
+									location.href = "../Account/registered.php";
+									return;
+								} else {
+									return;
+								}
+							});
+					}
+				},
+				error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+					if (textstatus === "timeout") {
+						swal({
+							title: "Oops!!!",
+							text: "server time out",
+							icon: "error",
+							closeOnClickOutside: false,
+							dangerMode: true,
+							timer: 6000,
+						});
+						return;
+					} else {
+						return;
+					}
+				}
+			}); //closing ajax
+		}
+	}
+	//WISHLIST ENTRY ITEMS
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	function wishlist_check_list_select(wishlist_id) {
+		$.ajax({
+			url: "../Common/functions.php", //passing page info
+			data: {
+				"fetchedwishlistid": 1,
+				"wishlist_id": wishlist_id
+			}, //form data
+			type: "post", //post data
+			dataType: "json", //datatype=json format
+			timeout: 30000, //waiting time 30 sec
+			success: function(data) { //if registration is success
+				if (data.status == 'success') {
+					$('#wish_cnt_' + wishlist_id + '').html(data.new_wish_cnt);
+					swal({
+							title: "Added!!!",
+							text: "Check your wishlist",
+							icon: "success",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
+						.then((willSubmit1) => {
+							if (willSubmit1) {
+								return;
+							} else {
+								return;
+							}
+						});
+				} else if (data.status == 'success1') {
+					$(".background_loader").hide();
+					swal({
+							title: "Item exists!!!",
+							text: "Check your wishlist",
+							icon: "warning",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
+						.then((willSubmit1) => {
+							if (willSubmit1) {
+								return;
+							} else {
+								return;
+							}
+						});
+				} else if (data.status == 'error') {
+					swal({
+							title: "Required!!!",
+							text: "You need to create an Account",
+							icon: "error",
+							closeOnClickOutside: false,
+							dangerMode: true,
+						})
+						.then((willSubmit) => {
+							if (willSubmit) {
+								location.href = "../Account/registered.php";
+								return;
+							} else {
+								return;
+							}
+						});
+				}
+			},
+			error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+				if (textstatus === "timeout") {
+					swal({
+						title: "Oops!!!",
+						text: "server time out",
+						icon: "error",
+						closeOnClickOutside: false,
+						dangerMode: true,
+						timer: 6000,
+					});
+					return;
+				} else {
+					return;
+				}
+			}
+		}); //closing ajax
+	}
+	//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+	/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+</script>
+</body>
+<html>

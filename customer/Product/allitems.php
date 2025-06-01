@@ -126,7 +126,6 @@ require "../Main/header.php";
     border-radius: 5px;
   }
 </style>
-
 <body>
   <div class="table1">
     <h4 style="margin-top: 10px;border-bottom:  1px solid#E3E3E3;padding:10px;"><i class="fas fa-boxes"
@@ -152,12 +151,14 @@ require "../Main/header.php";
       }
       $('#' + x + '>.right-arrow-btn-all').show();
     }
+
     function moveright(x) {
       var y = $('#' + x).scrollLeft();
       var width = $('#' + x).outerWidth();
       var scrollWidth = $('#' + x)[0].scrollWidth;
       $('#' + x).scrollLeft(y + 250);
     }
+
     function moveleft(x) {
       var y = $('#' + x).scrollLeft();
       $('#' + x).scrollLeft(y - 250);
@@ -176,9 +177,12 @@ require "../Main/header.php";
     $ct = $row11['category_id'];
     ?>
     <?php
-    $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id where item.category_id=$ct and (item.added_date) in (
-    select max(added_date) as date
-    from item) GROUP BY item_description.item_id ORDER BY CAST(item.item_id AS UNSIGNED) DESC";
+    $query = "SELECT * FROM item
+      JOIN item_description ON item.item_id=item_description.item_id
+      where item.category_id=$ct and (item.added_date) in (
+        select max(added_date) as date from item
+      ) GROUP BY item_description.item_id
+      ORDER BY CAST(item.item_id AS UNSIGNED) DESC";
     $st = $pdo->query($query);
     $product = $st->rowCount();
     if ($product == 0) {
@@ -197,8 +201,7 @@ require "../Main/header.php";
           while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
             ?>
             <div class="products-all-in-one">
-              <div style="display: flex;
-  justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
+              <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
                   align="middle"
                   src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"
                   onclick="location.href='../Product/single.php?id=<?= $row['item_description_id'] ?>'"></div>
@@ -215,26 +218,30 @@ require "../Main/header.php";
             </div>
             <?php
           }
-          echo '</div></div>';
+          ?>
+        </div>
+      </div>
+      <?php
     }
   }
   ?>
-      <script type="text/javascript">
-        function showupda(x) {
-          document.forms[x].submit();
-        }
-        if (window.history.replaceState) {
-          window.history.replaceState(null, null, window.location.href);
-        }
-        function conca() {
-          console.log('helo');
-          if ($('#w1').val() != 0) {
-            var v1 = $('#w1').val() + ' ' + $('#w2').val();
-            $('#w3').val(v1);
-          }
-        }
-      </script>
-    </div>
-    <?php
-    require "../Main/footer.php";
-    ?>
+  <script type="text/javascript">
+    function showupda(x) {
+      document.forms[x].submit();
+    }
+    if (window.history.replaceState) {
+      window.history.replaceState(null, null, window.location.href);
+    }
+
+    function conca() {
+      console.log('helo');
+      if ($('#w1').val() != 0) {
+        var v1 = $('#w1').val() + ' ' + $('#w2').val();
+        $('#w3').val(v1);
+      }
+    }
+  </script>
+</div>
+<?php
+require "../Main/footer.php";
+?>

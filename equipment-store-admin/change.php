@@ -964,13 +964,13 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
           $('#' + i + 'w3').val(v1);
         }
       }
+
       function showupda(x, y) {
-        $('#' + x).on("submit", function (e) {
+        $('#' + x).on("submit", function(e) {
           var dataString = new FormData(this);
           if (y == 1) {
             dataString.append('update_data', '1');
-          }
-          else if (y == 0) {
+          } else if (y == 0) {
             dataString.append('remove_data', '1');
           }
           $.ajax({
@@ -980,11 +980,11 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
             contentType: false,
             cache: false,
             processData: false,
-            success: function () {
+            success: function() {
               $("#" + x).html("<div id='message'></div>");
               $("#message")
                 .hide()
-                .fadeIn(1500, function () {
+                .fadeIn(1500, function() {
                   $("#message").append(
                     "<div class='alert alert-success'>Product Updated \
                     <button onclick='location.reload()' style='background: green;padding: 5px;border: none;color: white;border-radius: 5px;height: 30px;display: block;margin: auto;'>Refresh</button></div>"
@@ -1009,6 +1009,7 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
         $('#' + x).scrollLeft(y + 50);
         $('#' + x + '>.right-arrow').show();
       }
+
       function moveright(x) {
         var y = $('#' + x).scrollLeft();
         $('#' + x + '>.left-arrow').show();
@@ -1017,17 +1018,16 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
         }
         $('#' + x).scrollLeft(y - 50);
       }
+
       function movefr(x) {
         var y = $('#' + x).scrollLeft();
         var width = $('#' + x).outerWidth()
         var scrollWidth = $('#' + x)[0].scrollWidth;
         if (scrollWidth - width === y) {
           $('#' + x + '>.left-arrow').hide();
-        }
-        else if (y === 0) {
+        } else if (y === 0) {
           $('#' + x + '>.right-arrow').hide();
-        }
-        else {
+        } else {
           $('#' + x + '>.left-arrow').show();
           $('#' + x + '>.right-arrow').show();
         }
@@ -1045,14 +1045,12 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
       $description = $_POST['description'];
       $price = $_POST['price'];
       $it = $_POST['item_id'];
-      ?>
+    ?>
       <div class="pr1" style="margin-top: 120px;">
         <div class="proupda ">
           <div class="newupdation">
-            <span style="
-    ">
-              <h4 style="
-    "> <?= $itna ?></h4>
+            <span>
+              <h4><?= $itna ?></h4>
             </span><br>
             <div class="row">
               <?php
@@ -1061,32 +1059,24 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
               $st = $pdo->query($query);
               $tr = $st->rowCount();
               if ($tr == 0) {
-                ?>
+              ?>
                 <div class="alert alert-danger">item not yet added</div>
-                <button
-                  style="background: red;padding: 10px;color: white;border-radius: 5px;border:none;font-weight: bolder;"
-                  onclick="location.href='additem.php'">Go To Add Product</button>
+                <button style="background: red; padding: 10px; color: white; border-radius: 5px; border: none; font-weight: bolder;"
+                  onclick="location.href='additem.php'">Go To Add Product
+                </button>
                 <?php
               } else {
                 while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-                  ?>
+                ?>
                   <div class="col-sm-12">
                     <div class="imgdis">
                       <form id="<?= $row['product_description_id'] ?>" method="post"
                         name="<?= $row['product_description_id'] ?>">
                         <div class="prim col-sm-5">
-                          <div class="product" style="position: absolute;
-    left: 10px;
-    top: 55px;
-    width: 100px;
-    height: 80px;">
-                            <img style=" display: inline-block;
-    text-align: center;
-    padding: 14px;
-    position: relative;
-    height: 80px;
-    max-width: 100px;
-   " onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
+                          <div class="product" style="position: absolute; left: 10px; top: 55px; width: 100px; height: 80px;">
+                            <img style=" display: inline-block;text-align: center; padding: 14px;position: relative;
+                              height: 80px;max-width: 100px;"
+                              onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
                               src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           </div>
                           <div style="width: 100%;">
@@ -1096,26 +1086,22 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                           <div class="imscr" id="imsrc<?= $row['product_description_id'] ?>"
                             onscroll="movefr('imsrc<?= $row['product_description_id'] ?>')">
                             <button type="button" name="lfarr" class="left-arrow"
-                              onclick="moveleft('imsrc<?= $row['product_description_id'] ?>')"><i
-                                class="fas fa-chevron-right"></i></button>
+                              onclick="moveleft('imsrc<?= $row['product_description_id'] ?>')">
+                              <i class="fas fa-chevron-right"></i>
+                            </button>
                             <button type="button" name="rfarr" class="right-arrow"
-                              onclick="moveright('imsrc<?= $row['product_description_id'] ?>')" style="display: none;"><i
-                                class="fas fa-chevron-left"></i></button>
+                              onclick="moveright('imsrc<?= $row['product_description_id'] ?>')" style="display: none;">
+                              <i class="fas fa-chevron-left"></i>
+                            </button>
                             <?php
                             $t = $row['img_count'];
                             for ($i = 1; $i <= $t; $i++) {
-                              ?>
+                            ?>
                               <div class="product">
-                                <img style=" display: inline-block;
-    text-align: center;
-    padding: 14px;
-    position: relative;
-    height: 80px;
-    max-width: 100px;
-   " onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
+                                <img style="display: inline-block; text-align: center; padding: 14px; position: relative; height: 80px; max-width: 100px;" onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
                                   src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg">
                               </div>
-                              <?php
+                            <?php
                             }
                             ?>
                           </div>
@@ -1130,31 +1116,31 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                                 $query1 = "SELECT * FROM size where size_id=" . $row['size'];
                                 $st1 = $pdo->query($query1);
                                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                ?>
+                              ?>
                                 <tr>
                                   <th>Size</th>
                                   <td> <?= $row1['size_name'] ?></td>
                                 </tr>
-                                <?php
+                              <?php
                               }
                               if ($row['weight'] != 0) {
-                                ?>
+                              ?>
                                 <tr>
                                   <th>Weight</th>
                                   <td><?= $row['weight'] ?></td>
                                 </tr>
-                                <?php
+                              <?php
                               }
                               if ($row['brand'] != 0) {
                                 $query1 = "SELECT * FROM brand where brand_id=" . $row['brand'];
                                 $st1 = $pdo->query($query1);
                                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                ?>
+                              ?>
                                 <tr>
                                   <th>Brand</th>
                                   <td><?= $row1['brand_name'] ?></td>
                                 </tr>
-                                <?php
+                              <?php
                               }
                               ?>
                             </table>
@@ -1176,8 +1162,8 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                               <label class="floating-label">Order Preference</label>
                               <select name="pref" required="" class="form-control">
                                 <option value="<?php if ($row['order_preference'] != 0) {
-                                  echo $row['order_preference'];
-                                } ?>">
+                                                  echo $row['order_preference'];
+                                                } ?>">
                                   <?php
                                   if ($row['order_preference'] == 1) {
                                     echo 'Booking';
@@ -1201,23 +1187,21 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                         </div>
                         <div class="col-sm-12 subb" style="">
                           <input type="hidden" name="check_id" value="<?= $row['product_details_id'] ?>">
-                          <button name="update_data" style="float: right;
-    background: green;
-    margin-left: 12px;
-    margin-right: 12px;
-" onclick="showupda(<?= $row['product_description_id'] ?>,1)">
+                          <button name="update_data" style="float: right; background: green; margin-left: 12px; margin-right: 12px;"
+                            onclick="showupda(<?= $row['product_description_id'] ?>,1)">
                             <i class="fas fa-pencil-square"
-                              style="margin-right: 20px;float: left;font-size: 24px"></i>Update</button>
-                          <button name="remove_data" style="float: right;
-    background: #fd0018;
-    margin-left: 12px;
-    margin-right: 12px;" onclick="showupda(<?= $row['product_description_id'] ?>,0)"><i class="fas fa-trash"
-                              style="margin-right: 20px;float: left;font-size: 24px"></i>Remove</button>
+                              style="margin-right: 20px; float: left; font-size: 24px"></i>Update
+                          </button>
+                          <button name="remove_data" style="float: right; background: #fd0018; margin-left: 12px; margin-right: 12px;"
+                            onclick="showupda(<?= $row['product_description_id'] ?>,0)">
+                            <i class="fas fa-trash"
+                            style="margin-right: 20px; float: left; font-size: 24px"></i>Remove
+                          </button>
                         </div>
                       </form>
                     </div>
                   </div>
-                  <?php
+              <?php
                 }
               }
               ?>
@@ -1225,7 +1209,7 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
           </div>
         </div>
       </div>
-      <?php
+    <?php
     }
     ?>
     <?php

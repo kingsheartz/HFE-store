@@ -1,12 +1,8 @@
 <?php
 include "header.php";
-?>
-<?php
 
 require_once '../vendor/autoload.php';
 require_once __DIR__ . '/config.php';
-
-
 
 if (!empty($_SESSION['_contact_form_error'])) {
   $error = $_SESSION['_contact_form_error'];
@@ -17,9 +13,7 @@ if (!empty($_SESSION['_contact_form_success'])) {
   $success = true;
   unset($_SESSION['_contact_form_success']);
 }
-
 ?>
-
 
 <body>
   <div class="wrapper">
@@ -106,12 +100,14 @@ if (!empty($_SESSION['_contact_form_success'])) {
 
           y = 'addfeat.php?size=1';
           z = 'size=' + selected_option_value;
-        }
-        else if (x == 'brand') {
+        } else if (x == 'brand') {
           var selected_option_value = $("#brand").val();
           t = $("#brct").val();
           y = 'addfeat.php?	brand=1';
-          z = { brand: selected_option_value, category: t };
+          z = {
+            brand: selected_option_value,
+            category: t
+          };
         }
         console.log(selected_option_value);
         $.ajax({
@@ -119,10 +115,9 @@ if (!empty($_SESSION['_contact_form_success'])) {
           url: 'featsub.php',
           data: z,
 
-          success: function (html) {
+          success: function(html) {
             $('#event').empty();
-            $('#event').append('<div style=" width:100%" class="alert alert-success">New row added\
-           </div>');
+            $('#event').append('<div style=" width:100%" class="alert alert-success">New row added</div>');
           }
         });
 
@@ -130,7 +125,7 @@ if (!empty($_SESSION['_contact_form_success'])) {
     </script>
     <?php
     if (isset($_GET['size'])) {
-      ?>
+    ?>
       <form id="size1">
         <div class="new" id="myModal" tabindex="-1" role="dialog">
           <div class="modal-dialog1" role="document">
@@ -142,17 +137,16 @@ if (!empty($_SESSION['_contact_form_success'])) {
                 <input type="text" id="size" class="ftcl" name="size">
                 <button type="button" onclick="appjo('size')" class="btn btn-primary">Save changes</button>
               </div>
-
             </div>
           </div>
         </div>
       </form>
-      <?php
+    <?php
     }
 
     //brand
     if (isset($_GET['brand'])) {
-      ?>
+    ?>
       <form id="brand1">
         <div class="new" id="myModal" tabindex="-1" role="dialog">
           <div class="modal-dialog1" role="document">
@@ -166,23 +160,20 @@ if (!empty($_SESSION['_contact_form_success'])) {
                   <?php
                   $cat = $pdo->query("select * from category");
 
-
-
                   while ($row = $cat->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
+                  ?>
                     <option value="<?= $row['category_id'] ?>"><?= $row['category_name'] ?></option>
-                    <?php
+                  <?php
                   }
                   ?>
                 </select>
                 <button type="button" onclick="appjo('brand')" class="btn btn-primary">Save changes</button>
               </div>
-
             </div>
           </div>
         </div>
       </form>
-      <?php
+    <?php
     }
 
     ?>

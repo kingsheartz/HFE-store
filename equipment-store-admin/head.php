@@ -23,7 +23,7 @@
   <!--JS GRID 1 KRG--><!--
 <link type="text/css" rel="stylesheet" href="js/jsgrid.min.css" />
 <link type="text/css" rel="stylesheet" href="js/jsgrid-theme.min.css" />
-<script type="text/javascript" src="js/jsgrid.min.js"></script>-->
+<script type="text/javascript" srcF="js/jsgrid.min.js"></script>-->
   <!--JS GRID 1 KRG-->
   <!--JS GRID 1 GDAS-->
   <!--JS GRID 1 GDAS-->
@@ -54,12 +54,10 @@ if (isset($_GET['id'])) {
   $_SESSION['username'] = $r['username'];
 }
 if (!isset($_SESSION['username'])) {
-  die("<div style='width: 100%;
-display: flex;
-flex-wrap: wrap;
-margin-right: -0.75rem;
-margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50px'>
-<a href='../login.php'><img class='img-responsive' src='images/logo/loginerr.png'></a></div>");
+  die("<div style='width: 100%;display: flex;flex-wrap: wrap;margin-right: -0.75rem;margin-left: -0.75rem;
+          justify-content:center;padding-top:50px;padding-bottom:50px'>
+        <a href='../login.php'><img class='img-responsive' src='images/logo/loginerr.png'></a>
+      </div>");
 }
 ?>
 <style>

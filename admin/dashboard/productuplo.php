@@ -257,58 +257,65 @@ if (!empty($_SESSION['_contact_form_success'])) {
         console.log(document.forms);
         document.forms[x].submit();
       }
+
       function previewFile(inp, i, x) {
         var file = $('' + inp).get(0).files[0];
         if (file) {
           var reader = new FileReader();
-          reader.onload = function () {
+          reader.onload = function() {
             $("#" + x + "previewImg" + i).attr("src", reader.result);
           }
           reader.readAsDataURL(file);
         }
       }
+
       function ImageExist(url) {
         result = false;
-        $.ajaxSetup({ async: false });
+        $.ajaxSetup({
+          async: false
+        });
         $.get(url)
-          .done(function () {
+          .done(function() {
             result = true;
           })
-          .fail(function () {
+          .fail(function() {
             result = false;
           })
-        $.ajaxSetup({ async: true });
+        $.ajaxSetup({
+          async: true
+        });
         return (result);
         /*var xhr = new XMLHttpRequest();
         xhr.onreadystatechange = function () {
-           if (this.readyState === this.DONE) {
-               if (xhr.status === 200) {
-                   console.log('file exist');
-               } else {
-                   return false;
-               }
-           }
-       }
+          if (this.readyState === this.DONE) {
+            if (xhr.status === 200) {
+              console.log('file exist');
+            } else {
+              return false;
+            }
+          }
+        }
         xhr.error = function() {
-                            return false;
+                  return false;
         }
         xhr.onabort = function() {
-                            return false;
+                  return false;
         }
         xhr.timeout = function() {
-                            return false;
+                  return false;
         }
-         xhr.timeout = 5000;
-       xhr.open('HEAD', url, true);
-       xhr.send(null);
-       if (xhr.status == "404") {
-           console.log("File doesn't exist");
-           return false;
-       } else {
-           console.log("File exists");
-           return true;
-       }*/
+        xhr.timeout = 5000;
+        xhr.open('HEAD', url, true);
+        xhr.send(null);
+        if (xhr.status == "404") {
+          console.log("File doesn't exist");
+          return false;
+        } else {
+          console.log("File exists");
+          return true;
+        }*/
       }
+
       function upimg(cn, x) {
         cn = cn + 1;
         for (var i = cn; i <= 10; i++) {
@@ -317,21 +324,23 @@ if (!empty($_SESSION['_contact_form_success'])) {
         var n = $('#nj' + x).val();
         for (var i = cn; i <= n; i++) {
           $('#imgdiv' + x).append('<div class="image-upload">  \
-        <label for="'+ x + 'file-input' + i + '" style="width: 100%; cursor: pointer;"><center>\
-        <img id="'+ x + 'previewImg' + i + '" src="images/upload2.png" style="max-width: 150px;max-height: 150px;height: auto;width: auto;"> </center>      </label>      <input id="' + x + 'file-input' + i + '" required type="file" name="my_file' + i + '" onchange="previewFile(\'#' + x + 'file-input' + i + '\',' + i + ',' + x + ');" style="display: none; cursor: pointer;">    </div>');
+          <label for="' + x + 'file-input' + i + '" style="width: 100%; cursor: pointer;"><center>\
+          <img id="' + x + 'previewImg' + i + '" src="images/upload2.png" style="max-width: 150px;max-height: 150px;height: auto;width: auto;"> </center>      </label>      <input id="' + x + 'file-input' + i + '" required type="file" name="my_file' + i + '" onchange="previewFile(\'#' + x + 'file-input' + i + '\',' + i + ',' + x + ');" style="display: none; cursor: pointer;">    </div>');
+
           /* url="../images/"+cat+"/"+sub+"/"+it+"_"+i+".jpg";
-         st=ImageExist(url) ;
-         console.log(st);
+            st=ImageExist(url) ;
+            console.log(st);
             if(st){
               console.log('helo')
-                $("#previewImg"+i).attr("src", url);
+              $("#previewImg"+i).attr("src", url);
             }else {
-                    console.log('hi')
-                 $("#previewImg"+i).attr("src", 'images/upload2.png');
-            }
+                console.log('hi')
+            $("#previewImg"+i).attr("src", 'images/upload2.png');
+          }
         */
         }
       }
+
       function numplusone(cn, x) {
         var n = parseInt($('#nj' + x).val());
         console.log(n);
@@ -347,6 +356,7 @@ if (!empty($_SESSION['_contact_form_success'])) {
         $('#nj' + x).val(b);
         upimg(cn, x);
       }
+
       function numminone(cn, x) {
         var n = parseInt($('#nj' + x).val());
         if (n < 1) {
@@ -363,30 +373,22 @@ if (!empty($_SESSION['_contact_form_success'])) {
     </script>
     <?php
     if (!empty($success)) {
-      ?>
+    ?>
       <div class="alert alert-success">Images Added Successfully!</div>
-      <a href="view.php"><button style="background: green;color: white;
-    border: none;
-    height: 40px;
-    padding: 10px;
-    width: 200px;
-    border-radius: 5px;
-    font-weight: bolder;">Go back</button></a>
-      <?php
+      <a href="view.php">
+        <button style="background: green;color: white;border: none;height: 40px;padding: 10px;width: 200px;border-radius: 5px;font-weight: bolder;">Go back</button>
+      </a>
+    <?php
     }
     ?>
     <?php
     if (!empty($error)) {
-      ?>
+    ?>
       <div class="alert alert-danger"><?= $error ?></div>
-      <a href="view.php"><button style="background: red;color: white;
-    border: none;
-    height: 40px;
-    padding: 10px;
-    width: 200px;
-    border-radius: 5px;
-    font-weight: bolder;">Go back</button></a>
-      <?php
+      <a href="view.php">
+        <button style="background: red;color: white;border: none;height: 40px;padding: 10px;width: 200px;border-radius: 5px;font-weight: bolder;">Go back</button>
+      </a>
+    <?php
     }
     ?>
     <?php
@@ -402,38 +404,28 @@ if (!empty($_SESSION['_contact_form_success'])) {
       $price = $_POST['upprice'];
       $it = $_POST['upproduct_id'];
       echo $it;
-      ?>
+    ?>
       <div class="pr1">
         <div class="proupda ">
           <div class="newupdation">
-            <span style="font-size: 16px;
-    font-weight: bolder;
-    color: #ffffff;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffc107), color-stop(1, #ff9800)) !important;    position: relative;
-    top: 0px;
-    left: 0;
-    text-align: center;
-    padding: 10px;
-    width: 100%;
-    justify-content: center;
-    display: flex;
-    ">
-              <h4 style="text-overflow: ellipsis;
-    width: 400px;
-    white-space: nowrap;
-    overflow: hidden;
-    "> <?= $itna ?></h4>
+            <span style="font-size: 16px;font-weight: bolder;color: #ffffff;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffc107), color-stop(1, #ff9800)) !important;    position: relative;top: 0px;left: 0;text-align: center;padding: 10px;width: 100%;justify-content: center;display: flex;">
+              <h4 style="text-overflow: ellipsis;width: 400px;white-space: nowrap;overflow: hidden;"> <?= $itna ?></h4>
             </span><br>
             <div class="row">
               <?php
               $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product_description.product_id=$it ";
               $st = $pdo->query($query);
               while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-                ?>
+              ?>
                 <div class="col-sm-12" style="padding: 20px;">
                   <div class="imgdis">
-                    <form target='ifr<?= $row['product_description_id'] ?>' method="post"
-                      name="<?= $row['product_description_id'] ?>" action="prosub.php" enctype="multipart/form-data">
+                    <form
+                      id="<?= $row['product_description_id'] ?>"
+                      target='ifr<?= $row['product_description_id'] ?>'
+                      method="post"
+                      name="<?= $row['product_description_id'] ?>"
+                      action="prosub.php"
+                      enctype="multipart/form-data">
                       <table>
                         <tr>
                           <th class="ttd">
@@ -459,22 +451,24 @@ if (!empty($_SESSION['_contact_form_success'])) {
                                 $ico = $itcn;
                                 if ($itcn > 0) {
                                   for ($i = 1; $i <= $ico; $i++) {
-                                    ?>
+                                ?>
                                     <div class="image-upload">
-                                      <label for="<?= $row['product_description_id'] ?>file-input<?= $i ?>"
-                                        style="width: 100%; cursor: pointer;">
+                                      <label for="<?= $row['product_description_id'] ?>file-input<?= $i ?>" style="width: 100%; cursor: pointer;">
                                         <center>
-                                          <img id="<?= $row['product_description_id'] ?>previewImg<?= $i ?>"
+                                          <img
+                                            id="<?= $row['product_description_id'] ?>previewImg<?= $i ?>"
                                             src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg"
                                             style="max-width: 150px;max-height: 150px;height: auto;width: auto;">
                                         </center>
                                       </label>
-                                      <input id="<?= $row['product_description_id'] ?>file-input<?= $i ?>" type="file"
+                                      <input
+                                        id="<?= $row['product_description_id'] ?>file-input<?= $i ?>"
+                                        type="file"
                                         name="my_file<?= $i ?>"
                                         onchange="previewFile('#<?= $row['product_description_id'] ?>file-input<?= $i ?>',<?= $i ?>,<?= $row['product_description_id'] ?>);"
                                         style="display: none; cursor: pointer;">
                                     </div>
-                                    <?php
+                                <?php
                                   }
                                 }
                                 ?>
@@ -486,74 +480,75 @@ if (!empty($_SESSION['_contact_form_success'])) {
                           <td class="ttd">
                             <div class="thd ">Number of Images</div>
                             <div class="imdeta col-sm-12">
-                              <input type="number" maxlength="10" required="" class="form-control" name="nj"
+                              <input
+                                type="number"
+                                maxlength="10"
+                                required=""
+                                class="form-control"
+                                name="nj"
                                 style="height: 30px;"
                                 onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= <?= $k ?> && event.charCode <= 57"
                                 id="nj<?= $row['product_description_id'] ?>">
                               <div style="display: flex;width:100%;margin-top: 20px;">
-                                <button name="newim" type="button" style="
-  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #151414), color-stop(1, #1d1d1d)) !important;
-    color: white;
-    border: none;
-    border-radius: 5px;
-    height: 30px;
-    width: 100%;" onclick="upimg(<?= $itcn ?>,<?= $row['product_description_id'] ?>)">OK</button>
-                                <button class="addim" type="button" style="width: 100%;
-    height: 30px;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ff0000), color-stop(1, #d00303)) !important;
-    border: none;
-    color: white;
-    font-size: 16px;
-    padding: 2px;
-    border-radius: 5px;" name="numi" onclick="numplusone(<?= $itcn ?>,<?= $row['product_description_id'] ?>)"><i
-                                    class="fas fa-plus"></i></button>
-                                <button class="subim" type="button" style="width: 100%;
-    height: 30px;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #4caf50), color-stop(1, #08c310)) !important;
-    border: none;
-    color: white;
-    font-size: 16px;
-    padding: 2px;
-    border-radius: 5px;" name="numk" onclick="numminone(<?= $itcn ?>,<?= $row['product_description_id'] ?>)"><i
-                                    class="fas fa-minus"></i></button>
+                                <button
+                                  name="newim"
+                                  type="button"
+                                  style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #151414), color-stop(1, #1d1d1d)) !important;color: white;border: none;border-radius: 5px;height: 30px;width: 100%;"
+                                  onclick="upimg(<?= $itcn ?>,<?= $row['product_description_id'] ?>)">OK
+                                </button>
+                                <button
+                                  class="addim"
+                                  type="button"
+                                  style="width: 100%;height: 30px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ff0000), color-stop(1, #d00303)) !important;border: none;color: white;font-size: 16px;padding: 2px;border-radius: 5px;"
+                                  name="numi"
+                                  onclick="numplusone(<?= $itcn ?>,<?= $row['product_description_id'] ?>)">
+                                  <i class="fas fa-plus"></i>
+                                </button>
+                                <button
+                                  class="subim"
+                                  type="button"
+                                  style="width: 100%;height: 30px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #4caf50), color-stop(1, #08c310)) !important;border: none;color: white;font-size: 16px;padding: 2px;border-radius: 5px;"
+                                  name="numk"
+                                  onclick="numminone(<?= $itcn ?>,<?= $row['product_description_id'] ?>)">
+                                  <i class="fas fa-minus"></i>
+                                </button>
                               </div>
                             </div>
                           </td>
                         </tr>
                         <input type="hidden" name="cat" value="<?= $row['category_id'] ?>">
+                        <input type="hidden" name="sub" value="<?= $row['sub_category_id'] ?>">
                         <input type="hidden" name="desc_id" value="<?= $row['product_description_id'] ?>">
-                        <div class="col-sm-12" style="position: absolute;
-    bottom: 0;"><button id="btnSubmit" onclick="showupda(0)" name="upload_image" style="width: 100%;
-    padding: 5px;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #2196f4), color-stop(1, #1965a2)) !important;
-    border: none;
-    color: white;
-    font-weight: bolder;
-    position: absolute;
-    bottom: 0;
-    left: 0;"><i class="fas fa-upload" style="font-size: 24px;float: left;"></i>Upload</button></div>
+                        <div class="col-sm-12" style="position: absolute;bottom: 0;">
+                          <button
+                            id="btnSubmit"
+                            onclick="showupda(<?= $row['product_description_id'] ?>)"
+                            name="upload_image"
+                            style="width: 100%;padding: 5px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #2196f4), color-stop(1, #1965a2)) !important;border: none;color: white;font-weight: bolder;position: absolute;bottom: 0;left: 0;">
+                            <i class="fas fa-upload" style="font-size: 24px;float: left;"></i>Upload
+                          </button>
+                        </div>
                       </table>
                     </form>
                   </div>
                 </div>
-                <iframe name='ifr<?= $row['product_description_id'] ?>' id="ifr<?= $row['product_description_id'] ?>"
-                  style='display: none;'></iframe>
+                <iframe name='ifr<?= $row['product_description_id'] ?>' id="ifr<?= $row['product_description_id'] ?>" style='display: none;'></iframe>
                 <script>
                   var iframe = document.getElementById("ifr<?= $row['product_description_id'] ?>");
-                  iframe.onload = function () {
+                  iframe.onload = function() {
                     var bodycontent = iframe.contentDocument.body.innerHTML;
                     console.log(bodycontent);
                     // processing content acquired;
                   }
                 </script>
-                <?php
+              <?php
               }
               ?>
             </div>
           </div>
         </div>
       </div>
-      <?php
+    <?php
     }
     ?>
     <?php

@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
 }
 require "../Main/header.php";
 require "../Common/pdo.php";
@@ -288,11 +288,14 @@ require "../Common/pdo.php";
   $(document).ready(function (f) {
     $.ajax({
       url: "../Common/functions.php", //passing page info
-      data: { "cartcnt": 1, "user": "<?= $_SESSION['id'] ?>" },  //form data
-      type: "post",	//post data
-      dataType: "json", 	//datatype=json format
-      timeout: 18000,	//waiting time 3 sec
-      success: function (data) {	//if logging in is success
+      data: {
+        "cartcnt": 1,
+        "user": "<?= $_SESSION['id'] ?>"
+      }, //form data
+      type: "post", //post data
+      dataType: "json", //datatype=json format
+      timeout: 18000, //waiting time 3 sec
+      success: function (data) { //if logging in is success
         if (data.status == "success") {
           document.getElementById("sm-cartcnt").innerHTML = "";
           document.getElementById("lg-cartcnt").innerHTML = "";
@@ -304,8 +307,9 @@ require "../Common/pdo.php";
       error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           return;
+        } else {
+          return;
         }
-        else { return; }
       }
     }); //closing ajax
     var pageId = 1;
@@ -314,7 +318,12 @@ require "../Common/pdo.php";
     $('.std_text1').css('display', 'flex');
     var filter = $('#ord_filt').val();
     var inputVal = $('#order_search').val();
-    $.get("getorder.php", { name: inputVal, "filter": filter, 'page_no': pageId, "id": <?= $_SESSION['id'] ?> }).done(function (data) {
+    $.get("getorder.php", {
+      name: inputVal,
+      "filter": filter,
+      'page_no': pageId,
+      "id": <?= $_SESSION['id'] ?>
+    }).done(function (data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
       $('#content_order').append(data.output);
@@ -332,7 +341,11 @@ require "../Common/pdo.php";
     $('.std_text1').css('display', 'flex');
     var inputVal = $('#order_search').val();
     var filter = $('#ord_filt').val();
-    $.get("getorder.php", { name: inputVal, 'filter': filter, id: <?= $_SESSION['id'] ?> }).done(function (data) {
+    $.get("getorder.php", {
+      name: inputVal,
+      'filter': filter,
+      id: <?= $_SESSION['id'] ?>
+    }).done(function (data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
       $('#content_order').append(data.output);
@@ -349,7 +362,11 @@ require "../Common/pdo.php";
     $('.std_text1').css('display', 'flex');
     var inputVal = $('#order_search').val();
     var filter = $('#ord_filt').val();
-    $.get("getorder.php", { 'name': inputVal, 'filter': filter, "id": <?= $_SESSION['id'] ?> }).done(function (data) {
+    $.get("getorder.php", {
+      'name': inputVal,
+      'filter': filter,
+      "id": <?= $_SESSION['id'] ?>
+    }).done(function (data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
       $('#content_order').append(data.output);
@@ -369,7 +386,12 @@ require "../Common/pdo.php";
     $('.std_text1').css('display', 'flex');
     var inputVal = $('#order_search').val();
     var filter = $('#ord_filt').val();
-    $.get("getorder.php", { 'name': inputVal, 'filter': filter, 'page_no': pageId, "id": <?= $_SESSION['id'] ?> }).done(function (data) {
+    $.get("getorder.php", {
+      'name': inputVal,
+      'filter': filter,
+      'page_no': pageId,
+      "id": <?= $_SESSION['id'] ?>
+    }).done(function (data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
       $('#content_order').append(data.output);
@@ -389,7 +411,8 @@ JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=ord
   $stmt_order_cnt->execute();
   $order_cnt = $stmt_order_cnt->rowCount();
   if ($order_cnt == 0) {
-    echo '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Orders Yet...</h2></center><br><br>';
+    echo '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;
+      height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Orders Yet...</h2></center><br><br>';
   } else {
     ?>
     <div class="container" style="padding: 0;margin:0;width:100%">
@@ -401,7 +424,8 @@ JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=ord
                 style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline: none;">
               <span id="" class="input-group-btn">
                 <button id="ord_srch" onclick="dispsrch()"
-                  style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"
+                  style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;
+                    padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"
                   class="btn btn-default search_btn" type="button"><span class="fa fa-search"></span></button>
               </span>
             </div>

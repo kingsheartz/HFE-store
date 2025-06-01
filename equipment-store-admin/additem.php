@@ -334,189 +334,208 @@ require "head.php";
         border-radius: 5px;
       }
     </style>
-
-    <body>
-      <div class="table1">
-        <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;">
-          <i class="fa fa-plus-square" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Add Products
-        </h4>
-        <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-        <script>
-          $(document).ready(function () {
-            $('#search-box input[type="text"]').on("keyup input", function () {
-              /* Get input value on change */
-              var inputVal = $(this).val();
-              var resultDropdown = $("#result");
-              if (inputVal.length) {
-                $.get("livesearch.php", { term: inputVal }).done(function (data) {
-                  // Display the returned data in browser
-                  resultDropdown.html(data);
-                });
-              } else {
-                resultDropdown.empty();
-              }
-            });
-            // Set search input value on click of result item
+    <div class="table1">
+      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;">
+        <i class="fa fa-plus-square" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Add Products
+      </h4>
+      <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+      <script>
+        $(document).ready(function() {
+          $('#search-box input[type="text"]').on("keyup input", function() {
+            /* Get input value on change */
+            var inputVal = $(this).val();
+            var resultDropdown = $("#result");
+            if (inputVal.length) {
+              $.get("livesearch.php", {
+                term: inputVal
+              }).done(function(data) {
+                // Display the returned data in browser
+                resultDropdown.html(data);
+              });
+            } else {
+              resultDropdown.empty();
+            }
           });
-        </script>
-        <div class="col-sm-12" id="search-box">
-          <input type="text" class="col-sm-12" style="width: 100%" autocomplete="off" placeholder="Search here..." />
-          <i class="fa fa-search"></i>
-          <div class="col-sm-12" id="result"></div>
-        </div> <br><br>
-      </div>
-      <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
-      <script type="text/javascript">
-        function moveleft(x) {
-          var y = $('#' + x).scrollLeft();
-          var width = $('#' + x).outerWidth()
-          var scrollWidth = $('#' + x)[0].scrollWidth;
-          if (scrollWidth - width === y) {
-            $('#' + x + '>.left-arrow').hide();
-            return;
-          }
-          $('#' + x).scrollLeft(y + 100);
+          // Set search input value on click of result item
+        });
+      </script>
+      <div class="col-sm-12" id="search-box">
+        <input type="text" class="col-sm-12" style="width: 100%" autocomplete="off" placeholder="Search here..." />
+        <i class="fa fa-search"></i>
+        <div class="col-sm-12" id="result"></div>
+      </div> <br><br>
+    </div>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
+    <script type="text/javascript">
+      function moveleft(x) {
+        var y = $('#' + x).scrollLeft();
+        var width = $('#' + x).outerWidth()
+        var scrollWidth = $('#' + x)[0].scrollWidth;
+        if (scrollWidth - width === y) {
+          $('#' + x + '>.left-arrow').hide();
+          return;
+        }
+        $('#' + x).scrollLeft(y + 100);
+        $('#' + x + '>.right-arrow').show();
+      }
+
+      function moveright(x) {
+        var y = $('#' + x).scrollLeft();
+        $('#' + x + '>.left-arrow').show();
+        if (y === 0) {
+          $('#' + x + '>.right-arrow').hide();
+        }
+        $('#' + x).scrollLeft(y - 100);
+      }
+
+      function movefr(x) {
+        var y = $('#' + x).scrollLeft();
+        var width = $('#' + x).outerWidth()
+        var scrollWidth = $('#' + x)[0].scrollWidth;
+        if (scrollWidth - width === y) {
+          $('#' + x + '>.left-arrow').hide();
+        } else if (y === 0) {
+          $('#' + x + '>.right-arrow').hide();
+        } else {
+          $('#' + x + '>.left-arrow').show();
           $('#' + x + '>.right-arrow').show();
         }
-        function moveright(x) {
-          var y = $('#' + x).scrollLeft();
-          $('#' + x + '>.left-arrow').show();
-          if (y === 0) {
-            $('#' + x + '>.right-arrow').hide();
-          }
-          $('#' + x).scrollLeft(y - 100);
-        }
-        function movefr(x) {
-          var y = $('#' + x).scrollLeft();
-          var width = $('#' + x).outerWidth()
-          var scrollWidth = $('#' + x)[0].scrollWidth;
-          if (scrollWidth - width === y) {
-            $('#' + x + '>.left-arrow').hide();
-          }
-          else if (y === 0) {
-            $('#' + x + '>.right-arrow').hide();
-          }
-          else {
-            $('#' + x + '>.left-arrow').show();
-            $('#' + x + '>.right-arrow').show();
-          }
-        }
-      </script>
-      <?php
-      $id = $_SESSION['id'];
-      require "pdo.php";
-      $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where
-product_description.product_description_id NOT IN (SELECT product_description_id FROM product_details where store_id=$id ) GROUP BY product_description.product_id ORDER BY product_description.product_description_id DESC LIMIT 8";
-      $st = $pdo->query($query);
-      $ct = 'ab';
-      ?>
-      <div class="difcat ">
-        <span class="difhed">Recently Added Products
-        </span>
-        <div class="difrow" id="difrow<?= $ct ?>" onscroll="movefr('difrow<?= $ct ?>')">
-          <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')"><i
-              class="fas fa-chevron-right"></i></button>
-          <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;"><i
-              class="fas fa-chevron-left"></i></button>
-          <?php
-          while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-            ?>
-            <div class="products">
-              <div style="display: flex;
+      }
+    </script>
+    <?php
+    $id = $_SESSION['id'];
+    require "pdo.php";
+    $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id
+                where product_description.product_description_id NOT IN
+                (SELECT product_description_id FROM product_details where store_id=$id )
+                GROUP BY product_description.product_id
+                ORDER BY product_description.product_description_id DESC LIMIT 8";
+    $st = $pdo->query($query);
+    $ct = 'ab';
+    ?>
+    <div class="difcat ">
+      <span class="difhed">Recently Added Products</span>
+      <div class="difrow" id="difrow<?= $ct ?>" onscroll="movefr('difrow<?= $ct ?>')">
+        <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')">
+          <i class="fas fa-chevron-right"></i>
+        </button>
+        <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <?php
+        while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+        ?>
+          <div class="products">
+            <div style="display: flex;
 justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
-                  align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
-              </div>
-              <div class="middle">
-                <form id="C<?= $row['product_description_id'] ?>" method="post" action="addsub.php"
-                  name="<?= $row['product_description_id'] ?>">
-                  <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
-                  <input type="hidden" name="item_id" value="<?= $row['product_id'] ?>">
-                  <input type="hidden" name="im_url"
-                    value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
-                  <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
-                  <input type="hidden" name="description" value="<?= $row['description'] ?>">
-                  <input type="hidden" name="price" value="<?= $row['price'] ?>">
-                  <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation"><i
-                      class="fab fa-buffer" style="font-size: 24px;padding-right: 12px"
-                      aria-hidden="true"></i>Add</button>
-                </form>
-              </div>
-              <div class="deupd"><?= $row['product_name'] ?><br>
-              </div>
+                align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
             </div>
+            <div class="middle">
+              <form id="C<?= $row['product_description_id'] ?>" method="post" action="addsub.php"
+                name="<?= $row['product_description_id'] ?>">
+                <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
+                <input type="hidden" name="item_id" value="<?= $row['product_id'] ?>">
+                <input type="hidden" name="im_url"
+                  value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
+                <input type="hidden" name="description" value="<?= $row['description'] ?>">
+                <input type="hidden" name="price" value="<?= $row['price'] ?>">
+                <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation"><i
+                    class="fab fa-buffer" style="font-size: 24px;padding-right: 12px"
+                    aria-hidden="true"></i>Add</button>
+              </form>
+            </div>
+            <div class="deupd"><?= $row['product_name'] ?>
+            <br>
+            </div>
+          </div>
+        <?php
+        }
+        ?>
+      </div>
+    </div>
+    <?php
+    $query11 = "SELECT * from  category";
+    $st11 = $pdo->query($query11);
+    while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
+      $ct = $row11['category_id'];
+    ?>
+      <?php
+      $query = "SELECT * FROM product
+                JOIN product_description ON product.product_id=product_description.product_id
+                where product.category_id=$ct and
+                product_description.product_description_id NOT IN
+                (SELECT product_description_id FROM product_details where store_id=$id )
+                GROUP BY product_description.product_id";
+      $st = $pdo->query($query);
+      $product = $st->rowCount();
+      if ($product == 0) {
+        continue;
+      } else {
+      ?>
+        <div class="difcat ">
+          <span class="difhed"><?= $row11['category_name'] ?>
+            <button onclick="location.href='viewadd.php?category_id=<?= $ct ?>'">View All</button>
+          </span>
+          <div class="difrow" id="difrow<?= $ct ?>">
+            <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')">
+              <i class="fas fa-chevron-right"></i>
+            </button>
+            <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;">
+              <i class="fas fa-chevron-left"></i>
+            </button>
             <?php
-          }
-          echo '</div></div>';
-          $query11 = "SELECT * from  category";
-          $st11 = $pdo->query($query11);
-          while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
-            $ct = $row11['category_id'];
+            while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
             ?>
-            <?php
-            $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ct and
-product_description.product_description_id NOT IN (SELECT product_description_id FROM product_details where store_id=$id ) GROUP BY product_description.product_id";
-            $st = $pdo->query($query);
-            $product = $st->rowCount();
-            if ($product == 0) {
-              continue;
-            } else {
-              ?>
-              <div class="difcat ">
-                <span class="difhed"><?= $row11['category_name'] ?>
-                  <button onclick="location.href='viewadd.php?category_id=<?= $ct ?>'">View All</button></span>
-                <div class="difrow" id="difrow<?= $ct ?>">
-                  <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')"><i
-                      class="fas fa-chevron-right"></i></button>
-                  <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;"><i
-                      class="fas fa-chevron-left"></i></button>
-                  <?php
-                  while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-                    ?>
-                    <div class="products">
-                      <div style="display: flex;
-  justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
-                          align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
-                      </div>
-                      <div class="middle">
-                        <form id="<?= $row['product_description_id'] ?>" method="post" action="addsub.php"
-                          name="<?= $row['product_description_id'] ?>">
-                          <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
-                          <input type="hidden" name="item_id" value="<?= $row['product_id'] ?>">
-                          <input type="hidden" name="im_url"
-                            value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
-                          <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
-                          <input type="hidden" name="description" value="<?= $row['description'] ?>">
-                          <input type="hidden" name="price" value="<?= $row['price'] ?>">
-                          <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation"><i
-                              class="fab fa-buffer" style="font-size: 24px;padding-right: 12px"
-                              aria-hidden="true"></i>Add</button>
-                        </form>
-                      </div>
-                      <div class="deupd"><?= $row['product_name'] ?><br>
-                      </div>
-                    </div>
-                    <?php
-                  }
-                  echo '</div></div>';
+              <div class="products">
+                <div style="display: flex;justify-content: center;height: 200px;width:100%;
+                    background: white;text-align: center;">
+                    <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                </div>
+                <div class="middle">
+                  <form id="<?= $row['product_description_id'] ?>" method="post" action="addsub.php"
+                    name="<?= $row['product_description_id'] ?>">
+                    <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
+                    <input type="hidden" name="item_id" value="<?= $row['product_id'] ?>">
+                    <input type="hidden" name="im_url"
+                      value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                    <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
+                    <input type="hidden" name="description" value="<?= $row['description'] ?>">
+                    <input type="hidden" name="price" value="<?= $row['price'] ?>">
+                    <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation">
+                      <i class="fab fa-buffer" style="font-size: 24px;padding-right: 12px"
+                        aria-hidden="true"></i>Add</button>
+                  </form>
+                </div>
+                <div class="deupd"><?= $row['product_name'] ?><br>
+                </div>
+              </div>
+        <?php
             }
-          }
-          ?>
-              <script type="text/javascript">
-                function showupda(x) {
-                  document.forms[x].submit();
-                }
-                if (window.history.replaceState) {
-                  window.history.replaceState(null, null, window.location.href);
-                }
-                function conca() {
-                  console.log('helo');
-                  if ($('#w1').val() != 0) {
-                    var v1 = $('#w1').val() + ' ' + $('#w2').val();
-                    $('#w3').val(v1);
-                  }
-                }
-              </script>
-            </div>
-            <?php
-            require "foot.php";
             ?>
+          </div>
+        </div>
+        <?php
+      }
+    }
+    ?>
+    <script type="text/javascript">
+      function showupda(x) {
+        document.forms[x].submit();
+      }
+      if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+      }
+
+      function conca() {
+        console.log('helo');
+        if ($('#w1').val() != 0) {
+          var v1 = $('#w1').val() + ' ' + $('#w2').val();
+          $('#w3').val(v1);
+        }
+      }
+    </script>
+  </div>
+  <?php
+  require "foot.php";
+  ?>

@@ -17,9 +17,10 @@ include "header.php";
       require "..\..\db.php";
       ?>
       <div class="table1">
-        <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;"><i
-            class="fas fa-file-contract" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Permssion
-          for Stores</h4>
+        <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;">
+          <i class="fas fa-file-contract" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>
+          Permission for Stores
+        </h4>
         <div id="jsGrid1"></div>
       </div><br><br>
       <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsgrid@1.5.3/dist/jsgrid.min.css" />
@@ -40,18 +41,18 @@ include "header.php";
           pageButtonCount: 5,
           deleteConfirm: "Do you really want to delete?",
           controller: {
-            loadData: function (filter) {
+            loadData: function(filter) {
               console.log(filter)
-              filter.type = "filter";//EDITED LINE
+              filter.type = "filter"; //EDITED LINE
               return $.ajax({
                 type: "GET",
                 url: "getrequest1.php",
                 data: filter,
                 dataType: "json",
-                success: function (data) {
+                success: function(data) {
                   console.log(data)
                 },
-                error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+                error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                   console.log(textstatus)
                   console.log(message)
                   if (textstatus === "timeout") {
@@ -69,19 +70,19 @@ include "header.php";
               });
             },
             //EDITED BY KINGSHEARTZ
-            updateItem: function (item) {
-              item.type = "update";//EDITED LINE
+            updateItem: function(item) {
+              item.type = "update"; //EDITED LINE
               console.log(item)
               return $.ajax({
                 type: "POST",
                 url: "getrequest1.php",
                 data: item,
                 dataType: "json",
-                timeout: 30000,   //waiting time 30 sec
-                success: function (data) {
+                timeout: 30000, //waiting time 30 sec
+                success: function(data) {
                   location.href = " request.php";
                 },
-                error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+                error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                   if (textstatus === "timeout") {
                     swal({
                       title: "Oops!!!",
@@ -96,19 +97,19 @@ include "header.php";
                 }
               });
             },
-            deleteItem: function (item) {
-              item.type = "delete";//EDITED LINE
+            deleteItem: function(item) {
+              item.type = "delete"; //EDITED LINE
               console.log(item)
               return $.ajax({
                 type: "POST",
                 url: "getrequest1.php",
                 data: item,
                 dataType: "json",
-                timeout: 30000,   //waiting time 30 sec
-                success: function (data) {
+                timeout: 30000, //waiting time 30 sec
+                success: function(data) {
                   return;
                 },
-                error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+                error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                   if (textstatus === "timeout") {
                     swal({
                       title: "Oops!!!",
@@ -126,48 +127,57 @@ include "header.php";
             },
           },
           fields: [{
-            name: "item_details_id",
-            title: "Id",
-            type: "text",
-            width: 50,
-            editing: false,
-            validate: "required"
-          },
-          {
-            name: "item_description_id",
-            title: "description_id",
-            type: "text",
-            width: 100,
-            editing: false,
-            validate: "required"
-          },
-          {
-            name: "item_name",
-            title: "Product",
-            type: "text",
-            width: 150,
-            editing: false,
-            validate: "required"
-          },
-          {
-            name: "store_name",
-            title: "Store",
-            type: "text",
-            editing: false,
-            width: 100,
-            validate: "required"
-          },
-          {
-            name: "permission",
-            title: "Permission",
-            type: "select",
-            items: [{ Name: "", Id: "" }, { Name: "Allow", Id: "1" }, { Name: "Denied", Id: "0" }],
-            valueField: "Id",
-            textField: "Name"
-          },
-          {
-            type: "control"
-          }
+              name: "item_details_id",
+              title: "Id",
+              type: "text",
+              width: 50,
+              editing: false,
+              validate: "required"
+            },
+            {
+              name: "item_description_id",
+              title: "description_id",
+              type: "text",
+              width: 100,
+              editing: false,
+              validate: "required"
+            },
+            {
+              name: "item_name",
+              title: "Product",
+              type: "text",
+              width: 150,
+              editing: false,
+              validate: "required"
+            },
+            {
+              name: "store_name",
+              title: "Store",
+              type: "text",
+              editing: false,
+              width: 100,
+              validate: "required"
+            },
+            {
+              name: "permission",
+              title: "Permission",
+              type: "select",
+              items: [{
+                Name: "",
+                Id: ""
+              }, {
+                Name: "Allow",
+                Id: "1"
+              }, {
+                Name: "Denied",
+                Id: "0"
+              }],
+              valueField: "Id",
+              textField: "Name"
+            },
+            {
+              type: "control"
+            }
           ]
         });
       </script>

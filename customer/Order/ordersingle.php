@@ -1,12 +1,12 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
 }
 if (isset($_GET['nopid'])) {
   $nopid = $_GET['nopid'];
 } else {
-  header('location:../Main/onestore.php');
+  header('location:../Main/hfe.php');
 }
 require "../Main/header.php";
 require "../Common/pdo.php";
@@ -230,37 +230,40 @@ require "../Common/pdo.php";
 <script>
   function cancel() {
     Swal.fire({
-      title: "Are you sure?",
-      text: "Cancel this orders !!!",
-      icon: "warning",
-      showCancelButton: true,
-      showConfirmButton: true,
-      confirmButtonColor: 'red',
-      allowOutsideClick: false,
-      confirmButtonText: '<i class="fa fa-close"></i> Cancel',
-      cancelButtonColor: 'green',
-      cancelButtonText: '<i class="fa fa-check"></i> Yes'
-    })
+        title: "Are you sure?",
+        text: "Cancel this orders !!!",
+        icon: "warning",
+        showCancelButton: true,
+        showConfirmButton: true,
+        confirmButtonColor: 'red',
+        allowOutsideClick: false,
+        confirmButtonText: '<i class="fa fa-close"></i> Cancel',
+        cancelButtonColor: 'green',
+        cancelButtonText: '<i class="fa fa-check"></i> Yes'
+      })
       .then((willSubmit) => {
         if (willSubmit.dismiss) {
           $('.background_loader').css('display', 'flex');
           $('.std_text').css('display', 'flex');
           $.ajax({
             url: "../Common/functions.php", //passing page info
-            data: { "cancel_product": 1, "nopid": <?= $nopid ?> },  //form data
-            type: "post",   //post data
-            dataType: "json",   //datatype=json format
-            timeout: 30000,   //waiting time 30 sec
-            success: function (data) {    //if registration is success
+            data: {
+              "cancel_product": 1,
+              "nopid": <?= $nopid ?>
+            }, //form data
+            type: "post", //post data
+            dataType: "json", //datatype=json format
+            timeout: 30000, //waiting time 30 sec
+            success: function(data) { //if registration is success
               if (data.status == 'success') {
                 $('.background_loader').hide();
                 $('.std_text').hide();
                 swal({
-                  title: "Order cancelled !!!",
-                  icon: "success",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                })
+                    title: "Order cancelled !!!",
+                    icon: "success",
+                    closeOnClickOutside: false,
+                    dangerMode: true,
+                  })
                   .then((willSubmit1) => {
                     if (willSubmit1) {
                       var new_sts = '<span style="background-color: rgb(255, 0, 0);border-radius: 5px;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;<i class="fa fa-close" style="color: rgb(255, 255, 255);text-shadow: 1px 2px 3px grey"></i><i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white"> cancelled</i></span>';
@@ -268,14 +271,13 @@ require "../Common/pdo.php";
                       $('.sts-now').html(new_sts);
                       $('.check-pending').hide();
                       return;
-                    }
-                    else {
+                    } else {
                       return;
                     }
                   });
               }
             },
-            error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+            error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               if (textstatus === "timeout") {
                 $('.background_loader').hide();
                 $('.std_text').hide();
@@ -288,28 +290,31 @@ require "../Common/pdo.php";
                   timer: 6000,
                 });
                 return;
-              }
-              else {
+              } else {
                 $('.background_loader').hide();
                 $('.std_text').hide();
                 return;
               }
             }
           }); //closing ajax
+        } else if (willSubmit.isConfirmed === Swal.DismissReason.cancel) {
+          return;
         }
-        else if (willSubmit.isConfirmed === Swal.DismissReason.cancel) { return; }
-      });//NOW .(THIS) END WILL SUBMIT (NOT NEEDED)
+      }); //NOW .(THIS) END WILL SUBMIT (NOT NEEDED)
   }
 </script>
 <div class="table1">
   <div class="order">
     <div class="orhead">
       <h2 class="sidebar-title"
-        style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 29px;padding-top: 20px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white ">
+        style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 29px;padding-top: 20px;
+          margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;
+          text-transform: capitalize;padding-left: 10px;color:white ">
         Ordered Product <i style="color: #fffd00" class="fa fa-product-hunt "></i>
         <span style="float: right;margin-right: 5px;margin-top: -16px;">
           <button type="button"
-            style="max-width: 180px;min-width:90px;height: 62px;font-weight: bold;border-top-right-radius: 10px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;;"
+            style="max-width: 180px;min-width:90px;height: 62px;font-weight: bold;border-top-right-radius: 10px;
+              background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;"
             id="proceed" name="proceed" class="checkout-button button alt wc-forward back-lg"
             onclick="location.href='../Order/myorders.php'"><i class='fas fa-arrow-circle-left'></i> Back</button>
           <button type="button"
@@ -357,9 +362,9 @@ require "../Common/pdo.php";
     $flag = 0;
     while ($row = $statement->fetch(PDO::FETCH_ASSOC)) {
       if ($flag != 0) {
-        ?>
+    ?>
         <br>
-        <?php
+      <?php
       }
       $itm_nm = substr($row['item_name'], 0, 63) . "...";
       ?>
@@ -395,18 +400,18 @@ require "../Common/pdo.php";
                 $query1 = "SELECT * FROM size where size_id=" . $row['size'];
                 $st1 = $pdo->query($query1);
                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+              ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Size</th>
                   <td class="cust_details"> <?= $row1['size_name'] ?></td>
                 </tr>
-                <?php
+              <?php
               }
               if ($row['color'] != 0) {
                 $query1 = "SELECT * FROM color where color_id=" . $row['color'];
                 $st1 = $pdo->query($query1);
                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+              ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Color</th>
                   <td class="cust_details">
@@ -415,115 +420,115 @@ require "../Common/pdo.php";
                     </div>
                   </td>
                 </tr>
-                <?php
+              <?php
               }
               if ($row['weight'] != 0) {
-                ?>
+              ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Weight</th>
                   <td class="cust_details"><?= $row['weight'] ?></td>
                 </tr>
-                <?php
+              <?php
               }
               if ($row['flavour'] != 0) {
                 $query1 = "SELECT * FROM flavour where flavour_id=" . $row['flavour'];
                 $st1 = $pdo->query($query1);
                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+              ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Flavour</th>
                   <td class="cust_details"><?= $row1['flavour_name'] ?></td>
                 </tr>
-                <?php
+              <?php
               }
               if ($row['processor'] != 0) {
                 $query1 = "SELECT * FROM processor where processor_id=" . $row['processor'];
                 $st1 = $pdo->query($query1);
                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+              ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Processor</th>
                   <td class="cust_details"><?= $row1['processor_name'] ?></td>
                 </tr>
-                <?php
+              <?php
               }
               if ($row['display'] != 0) {
                 $query1 = "SELECT * FROM display where display_id=" . $row['display'];
                 $st1 = $pdo->query($query1);
                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+              ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Display</th>
                   <td class="cust_details"><?= $row1['display_name'] ?></td>
                 </tr>
-                <?php
+              <?php
               }
               if ($row['battery'] != 0) {
                 $query1 = "SELECT * FROM battery where battery_id=" . $row['battery'];
                 $st1 = $pdo->query($query1);
                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+              ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Battery</th>
                   <td class="cust_details"><?= $row1['battery_name'] ?></td>
                 </tr>
-                <?php
+              <?php
               }
               if ($row['internal_storage'] != 0) {
                 $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row['internal_storage'];
                 $st1 = $pdo->query($query1);
                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+              ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Internal Storage</th>
                   <td class="cust_details"><?= $row1['internal_storage_name'] ?></td>
                 </tr>
-                <?php
+              <?php
               }
               if ($row['brand'] != 0) {
                 $query1 = "SELECT * FROM brand where brand_id=" . $row['brand'];
                 $st1 = $pdo->query($query1);
                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+              ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Brand</th>
                   <td class="cust_details"><?= $row1['brand_name'] ?></td>
                 </tr>
-                <?php
+              <?php
               }
               if ($row['material'] != 0) {
                 $query1 = "SELECT * FROM material where material_id=" . $row['material'];
                 $st1 = $pdo->query($query1);
                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+              ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Material</th>
                   <td class="cust_details"><?= $row1['material_name'] ?></td>
                 </tr <?php
-              }
-              ?> </table>
-              <table>
-                <tr>
-                  <th class="tablhde" colspan="2"> Price details </th>
-                </tr>
-                <tr style="padding-bottom:30px;"></tr>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">MRP</th>
-                  <td class="cust_details"><del><i class='fa fa-rupee-sign'></i> <?= $row['mrp'] ?></del></td>
-                </tr>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">Selling Price</th>
-                  <td class="cust_details"><span><i class='fa fa-rupee-sign'></i> <?= $row['price'] ?></span></td>
-                </tr>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">Item Quantity</th>
-                  <td class="cust_details"><?= $row['item_quantity'] ?></td>
-                </tr>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">Total</th>
-                  <td class="cust_details"><b><i class='fa fa-rupee-sign'></i> <?= $row['total_amt'] ?></b></td>
-                </tr>
-              </table>
+                    }
+                      ?> </table>
+                <table>
+                  <tr>
+                    <th class="tablhde" colspan="2"> Price details </th>
+                  </tr>
+                  <tr style="padding-bottom:30px;"></tr>
+                  <tr class="div-wrapper dw">
+                    <th class="cust_header2">MRP</th>
+                    <td class="cust_details"><del><i class='fa fa-rupee-sign'></i> <?= $row['mrp'] ?></del></td>
+                  </tr>
+                  <tr class="div-wrapper dw">
+                    <th class="cust_header2">Selling Price</th>
+                    <td class="cust_details"><span><i class='fa fa-rupee-sign'></i> <?= $row['price'] ?></span></td>
+                  </tr>
+                  <tr class="div-wrapper dw">
+                    <th class="cust_header2">Item Quantity</th>
+                    <td class="cust_details"><?= $row['item_quantity'] ?></td>
+                  </tr>
+                  <tr class="div-wrapper dw">
+                    <th class="cust_header2">Total</th>
+                    <td class="cust_details"><b><i class='fa fa-rupee-sign'></i> <?= $row['total_amt'] ?></b></td>
+                  </tr>
+                </table>
           </div>
           <div class="col-sm-6">
             <table>
@@ -566,21 +571,21 @@ require "../Common/pdo.php";
                     <?php
                   } else if ($row['delivery_status'] == 'pending') {
                     ?>
-                      <span
-                        style="background-color: rgb(255, 123, 0);border-radius: 5px;color:white;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;
-                        <i class="fa fa-clock-o" style="color: rgb(0, 0, 0);text-shadow: 1px 2px 3px grey"></i>
-                        <i style="text-transform:capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white">
-                          pending &nbsp;</i>
-                      </span>
+                    <span
+                      style="background-color: rgb(255, 123, 0);border-radius: 5px;color:white;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;
+                      <i class="fa fa-clock-o" style="color: rgb(0, 0, 0);text-shadow: 1px 2px 3px grey"></i>
+                      <i style="text-transform:capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white">
+                        pending &nbsp;</i>
+                    </span>
                     <?php
                   } else if ($row['delivery_status'] == 'cancelled') {
                     ?>
-                        <span
-                          style="background-color: rgb(255, 0, 0);border-radius: 5px;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;
-                          <i class="fa fa-close" style="color: rgb(255, 255, 255);text-shadow: 1px 2px 3px grey"></i>
-                          <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white">
-                            cancelled</i>
-                        </span>
+                    <span
+                      style="background-color: rgb(255, 0, 0);border-radius: 5px;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;
+                      <i class="fa fa-close" style="color: rgb(255, 255, 255);text-shadow: 1px 2px 3px grey"></i>
+                      <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white">
+                        cancelled</i>
+                    </span>
                     <?php
                   }
                   ?>
@@ -595,9 +600,9 @@ require "../Common/pdo.php";
           <tr>
             <th class="tablhde" colspan="2"> Delivery details </th>
           </tr>
-          <tr style="padding-bottom;30px;"></tr>
+          <tr style="padding-bottom:30px;"></tr>
           <tr class="div-wrapper dw" col-span="2">
-            <th class="cust_header" style="font-size:18px;width:100%;"><?= $row['first_name'] ?>   <?= $row['last_name'] ?>
+            <th class="cust_header" style="font-size:18px;width:100%;"><?= $row['first_name'] ?> <?= $row['last_name'] ?>
             </th>
           <tr>
             <td></td>
@@ -621,7 +626,7 @@ require "../Common/pdo.php";
         </table>
         <br>
       </div>
-      <?php
+    <?php
       $flag += 1;
     }
     ?>

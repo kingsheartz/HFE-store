@@ -3,15 +3,18 @@ require '../Main/header.php';
 require "../../db.php";
 $product_description_id = $_GET['id'];
 if (isset($_GET['id'], $_SESSION['id'])) {
-  $check = $pdo->query('select product_description_id from product_keys where product_description_id=' . $_GET['id'] . ' and customer_id=' . $_SESSION['id']);
+  $check = $pdo->query('select product_description_id from product_keys
+    where product_description_id=' . $_GET['id'] . ' and customer_id=' . $_SESSION['id']);
   if ($check->rowCount() > 0) {
-    $viewedsql = $pdo->prepare("update product_keys set views=views+1,date_of_preview=:dop where product_description_id=" . $_GET['id']);
+    $viewedsql = $pdo->prepare("update product_keys set views=views+1,date_of_preview=:dop
+      where product_description_id=" . $_GET['id']);
     $date = date("Y\-m\-d");
     $viewedsql->execute(array(
       ':dop' => $date
     ));
   } else {
-    $viewedsql = $pdo->prepare("insert into product_keys (views,customer_id,product_description_id,date_of_preview) values (1,:uid,:idid,:dop)");
+    $viewedsql = $pdo->prepare("insert into product_keys (views,customer_id,product_description_id,date_of_preview)
+      values (1,:uid,:idid,:dop)");
     $date = date("Y\-m\-d");
     $viewedsql->execute(array(
       ':uid' => $_SESSION['id'],
@@ -20,7 +23,8 @@ if (isset($_GET['id'], $_SESSION['id'])) {
     ));
   }
 }
-$ratingstmt = $pdo->query("select avg(product_keys.rating) AS avgrate from product_keys where product_description_id=" . $_GET['id'] . " and rating>0 and ordered_cnt>0 and review!='0'");
+$ratingstmt = $pdo->query("select avg(product_keys.rating) AS avgrate from product_keys
+  where product_description_id=" . $_GET['id'] . " and rating>0 and ordered_cnt>0 and review!='0'");
 $ratecount = $ratingstmt->rowCount();
 if ($ratecount != 0) {
   $ratingrow = $ratingstmt->fetch(PDO::FETCH_ASSOC);
@@ -31,12 +35,14 @@ if ($ratecount != 0) {
 $n = 0;
 //CHANGE 1////////////////////////////////////////////////////////////////////////////////////////////////////////
 $sql = "select * from product
-inner join product_description on product_description.product_id=product.product_id
-inner join category on category.category_id=product.category_id and product_description.product_description_id=$product_description_id ";
+  inner join product_description on product_description.product_id=product.product_id
+  inner join category on category.category_id=product.category_id and product_description.product_description_id=$product_description_id ";
 $stmt = $pdo->query($sql);
 $row2 = $stmt->fetch(PDO::FETCH_ASSOC);
 $cat_id = $row2['category_id'];
-$sql1 = "select price from product inner join product_description on product_description.product_id=product.product_id where product_description_id=:product_description_id ";
+$sql1 = "select price from product
+  inner join product_description on product_description.product_id=product.product_id
+  where product_description_id=:product_description_id ";
 $stmt1 = $pdo->prepare($sql1);
 $stmt1->execute(array(
   ':product_description_id' => $product_description_id
@@ -252,7 +258,7 @@ function randomGen($min, $max, $quantity)
   .column-single img {
     display: flex;
     justify-content: center;
-    align-products: center;
+    align-items: center;
     margin: auto;
   }
 
@@ -298,7 +304,7 @@ function randomGen($min, $max, $quantity)
   .mySlides-single img {
     display: flex;
     justify-content: center;
-    align-products: center;
+    align-items: center;
     margin-left: auto;
     margin-right: auto;
     width: auto;
@@ -325,8 +331,8 @@ function randomGen($min, $max, $quantity)
     font-size: 20px;
     transition: 0.6s ease;
     border-radius: 0 3px 3px 0;
-    customer-select: none;
-    -webkit-customer-select: none;
+    user-select: none;
+    -webkit-user-select: none;
   }
 
   /* Position the "next button" to the right */
@@ -424,7 +430,7 @@ function randomGen($min, $max, $quantity)
       overflow-y: scroll;
       display: flex;
       justify-content: flex-end;
-      align-products: flex-end;
+      align-items: flex-end;
       max-height: 100%;
       min-height: 50%;
       border-radius: 5px;
@@ -688,11 +694,12 @@ function randomGen($min, $max, $quantity)
   var url = window.location.href;
   if (sessionStorage.getItem("prev_url") == url) {
     var scrollTop = 'singlescrollTop';
-  }
-  else {
+  } else {
     var scrollTop = 'scroll_begin';
   }
-  $(window).unload(function () { document.cookie = 'singlescrollTop=' + $(window).scrollTop(); });
+  $(window).unload(function () {
+    document.cookie = 'singlescrollTop=' + $(window).scrollTop();
+  });
   sessionStorage.setItem("prev_url", url);
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //SCROLLING AND RESIZING EFFECTS
@@ -704,22 +711,19 @@ function randomGen($min, $max, $quantity)
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '90px');
         $('#myresult').css('height', screen.height - 200);
-      }
-      else if ($(window).width() <= 825 && $(window).width() > 767) {
+      } else if ($(window).width() <= 825 && $(window).width() > 767) {
         $('.fixed-pos-left').css('top', '80px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '120px');
         $('#myresult').css('height', screen.height - 355);
       }
-    }
-    else {
+    } else {
       if ($(window).width() > 825) {
         $('.fixed-pos-left').css('top', '200px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '200px');
         $('#myresult').css('height', screen.height - 310);
-      }
-      else if ($(window).width() <= 825 && $(window).width() > 767) {
+      } else if ($(window).width() <= 825 && $(window).width() > 767) {
         $('.fixed-pos-left').css('top', '230px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '230px');
@@ -735,23 +739,20 @@ function randomGen($min, $max, $quantity)
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '90px');
         $('#myresult').css('height', screen.height - 200);
-      }
-      else if ($(window).width() <= 825 && $(window).width() > 767) {
+      } else if ($(window).width() <= 825 && $(window).width() > 767) {
         $('.fixed-pos-left').css('top', '80px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '120px');
         $('#myresult').css('height', screen.height - 355);
       }
-    }
-    else {
+    } else {
       if ($(window).width() > 825) {
         big_screen = 1;
         $('.fixed-pos-left').css('top', '200px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '200px');
         $('#myresult').css('height', screen.height - 310);
-      }
-      else if ($(window).width() <= 825 && $(window).width() > 767) {
+      } else if ($(window).width() <= 825 && $(window).width() > 767) {
         big_screen = 1;
         $('.fixed-pos-left').css('top', '230px');
         $('.fixed-pos-left-container').css('height', '0');
@@ -771,12 +772,10 @@ function randomGen($min, $max, $quantity)
     if ($(window).width() < 568) {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
         $('.small-btn').hide();
-      }
-      else {
+      } else {
         $('.small-btn').show();
       }
-    }
-    else {
+    } else {
       $('.small-btn').show();
     }
     if ($(window).width() > 767) {
@@ -791,15 +790,13 @@ function randomGen($min, $max, $quantity)
         if ($(window).scrollTop() <= 60) {
           $('.fixed-pos-left').css('top', 0);
         }
-      }
-      else if ($(window).scrollTop() <= 60) {
+      } else if ($(window).scrollTop() <= 60) {
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
         $('.fixed-pos-left').css('top', '-20px');
         $('#myresult').css('position', 'inherit');
         $('#myresult').css('width', '50%');
-      }
-      else if ($(window).scrollTop() > 60) {
+      } else if ($(window).scrollTop() > 60) {
         $('.fixed-pos-left').css('position', 'fixed');
         $('.fixed-pos-left').css('width', '50%');
         $('#myresult').css('position', 'fixed');
@@ -818,12 +815,10 @@ function randomGen($min, $max, $quantity)
     if ($(window).width() < 568) {
       if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight - 50) {
         $('.small-btn').hide();
-      }
-      else {
+      } else {
         $('.small-btn').show();
       }
-    }
-    else {
+    } else {
       $('.small-btn').show();
     }
     if ($(window).width() > 767) {
@@ -834,15 +829,13 @@ function randomGen($min, $max, $quantity)
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
         $('.fixed-pos-left').css('top', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - $('.fixed-pos-left').outerHeight() - 250);
-      }
-      else if ($(window).scrollTop() <= 60) {
+      } else if ($(window).scrollTop() <= 60) {
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
         $('.fixed-pos-left').css('top', '-20px');
         $('#myresult').css('position', 'inherit');
         $('#myresult').css('width', '50%');
-      }
-      else if ($(window).scrollTop() > 60) {
+      } else if ($(window).scrollTop() > 60) {
         $('.fixed-pos-left').css('position', 'fixed');
         $('.fixed-pos-left').css('width', '50%');
         $('#myresult').css('position', 'fixed');
@@ -865,22 +858,19 @@ function randomGen($min, $max, $quantity)
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '90px');
         $('#myresult').css('height', screen.height - 200);
-      }
-      else if ($(window).width() <= 825 && $(window).width() > 767) {
+      } else if ($(window).width() <= 825 && $(window).width() > 767) {
         $('.fixed-pos-left').css('top', '120px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '120px');
         $('#myresult').css('height', screen.height - 355);
       }
-    }
-    else {
+    } else {
       if ($(window).width() > 825) {
         $('.fixed-pos-left').css('top', 'auto');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '200px');
         $('#myresult').css('height', screen.height - 310);
-      }
-      else if ($(window).width() <= 825 && $(window).width() > 767) {
+      } else if ($(window).width() <= 825 && $(window).width() > 767) {
         $('.fixed-pos-left').css('top', 'auto');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '230px');
@@ -920,22 +910,24 @@ function randomGen($min, $max, $quantity)
         .then((willSubmit1) => {
           if (willSubmit1) {
             return;
-          }
-          else {
+          } else {
             return;
           }
         });
-    }
-    else {
+    } else {
       var product_description_id = <?= $product_description_id ?>;
       console.log("product_description_id=" + product_description_id);
       $.ajax({
         url: "../Common/functions.php", //passing page info
-        data: { "cart": 1, "product_description_id": product_description_id, "store_id": id },  //form data
-        type: "post",   //post data
-        dataType: "json",   //datatype=json format
-        timeout: 30000,   //waiting time 30 sec
-        success: function (data) {    //if registration is success
+        data: {
+          "cart": 1,
+          "product_description_id": product_description_id,
+          "store_id": id
+        }, //form data
+        type: "post", //post data
+        dataType: "json", //datatype=json format
+        timeout: 30000, //waiting time 30 sec
+        success: function (data) { //if registration is success
           console.log("data=" + data);
           if (data.status == 'success') {
             swal({
@@ -952,23 +944,22 @@ function randomGen($min, $max, $quantity)
                   document.getElementById("sm-cartcnt").innerHTML = data.cartcnt;
                   document.getElementById("lg-cartcnt").innerHTML = data.cartcnt;
                   return;
-                }
-                else {
+                } else {
                   return;
                 }
-              });/*
-                      var qnty=document.getElementById("Q"+id+"").innerHTML;
-                      if(qnty!=0){
-                        document.getElementById("Q"+id+"").innerHTML="";
-                        document.getElementById("Q"+id+"").innerHTML=qnty-1;
-                      }*/
+              });
+            /*
+                                  var qnty=document.getElementById("Q"+id+"").innerHTML;
+                                  if(qnty!=0){
+                                    document.getElementById("Q"+id+"").innerHTML="";
+                                    document.getElementById("Q"+id+"").innerHTML=qnty-1;
+                                  }*/
             var qnty = document.getElementById("dis_qnty").innerHTML;
             if (qnty != 0) {
               document.getElementById("dis_qnty").innerHTML = "";
               document.getElementById("dis_qnty").innerHTML = qnty - 1;
             }
-          }
-          else if (data.status == 'error') {
+          } else if (data.status == 'error') {
             swal({
               title: "Required!!!",
               text: "You need to create an Account",
@@ -980,13 +971,11 @@ function randomGen($min, $max, $quantity)
                 if (willSubmit) {
                   location.href = "../Account/registered.php";
                   return;
-                }
-                else {
+                } else {
                   return;
                 }
               });
-          }
-          else if (data.status == 'error1') {
+          } else if (data.status == 'error1') {
             swal({
               title: "Not Available!!!",
               text: "Choose another Store",
@@ -998,8 +987,7 @@ function randomGen($min, $max, $quantity)
                 if (willSubmit) {
                   location.href = "../Product/single.php?id=" + product_description_id + "";
                   return;
-                }
-                else {
+                } else {
                   return;
                 }
               });
@@ -1017,13 +1005,16 @@ function randomGen($min, $max, $quantity)
               timer: 6000,
             });
             return;
+          } else {
+            return;
           }
-          else { return; }
         }
       }); //closing ajax
-      //location.href="../Cart/cart.php?store="+id+"&product=<?//=$row['product_id'] ?>";
+      //location.href="../Cart/cart.php?store="+id+"&product=<? //=$row['product_id']
+      ?>";
     }
   }
+
   function sortTable(n) {
     var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
     table = document.getElementById("store");
@@ -1078,15 +1069,14 @@ function randomGen($min, $max, $quantity)
       }
     }
   }
+
   function sortTable(n) {
     var table, rows, switching, i, x, y, a, b, c, d, shouldSwitch, dir, switchcount = 0;
     if ($('#avail_stores').css('display') != 'none') {
       table = document.getElementById("store");
-    }
-    else if ($('#avail_stores_wishlist').css('display') != 'none') {
+    } else if ($('#avail_stores_wishlist').css('display') != 'none') {
       table = document.getElementById("store_wishlist");
-    }
-    else if ($('#avail_stores_buy').css('display') != 'none') {
+    } else if ($('#avail_stores_buy').css('display') != 'none') {
       table = document.getElementById("store_buynow");
     }
     switching = true;
@@ -1125,8 +1115,7 @@ function randomGen($min, $max, $quantity)
               break;
             }
           }
-        }
-        else if (n == 3) {
+        } else if (n == 3) {
           if (dir == "asc") {
             if (Number(x.innerHTML) > Number(y.innerHTML)) {
               // If so, mark as a switch and break the loop:
@@ -1141,7 +1130,7 @@ function randomGen($min, $max, $quantity)
             }
           }
         }
-      }//END FOR LOOP
+      } //END FOR LOOP
       if (shouldSwitch) {
         /* If a switch has been marked, make the switch
         and mark that a switch has been done: */
@@ -1209,7 +1198,7 @@ function randomGen($min, $max, $quantity)
     padding: 4px;
     margin-right: 20px;
     background-color: transparent;">
-      <i style="color: orange;display: flex;align-products: center;justify-content: center;margin-left: 50%;"
+      <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;"
         class="fas fa-flash mr-2"></i>
     </div>
     Buy Now
@@ -1244,90 +1233,84 @@ function randomGen($min, $max, $quantity)
                             ?>
                             <div class=" col-md-1 col-sm-1 hidescroll left-small-img"
                               style="justify-content: right;overflow-y:scroll;width:100%">
-                              <?php
+                            <?php
                           } else {
                             ?>
-                              <div class=" col-md-1 col-sm-1 left-small-img" style="justify-content: right;">
-                                <?php
+                            <div class=" col-md-1 col-sm-1 left-small-img" style="justify-content: right;">
+                            <?php
                           }
                         } else {
                           ?>
-                              <div class=" col-md-1 col-sm-1 left-small-img" style="justify-content: right;">
-                                <?php
+                          <div class=" col-md-1 col-sm-1 left-small-img" style="justify-content: right;">
+                          <?php
                         }
                         ?>
-                              <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
-                              <div style="margin:0;padding:0;width:100%">
-                                <ul class="img-example-left">
-                                  <li>
-                                    <div class="product-image-thumb active"><img
-                                        src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg"
-                                        alt=" " class="product-image img-responsive" alt="Product Image"></div>
-                                  </li>
-                                  <?php
-                                  if (!empty($img_cnt_row['img_count'])) {
-                                    $img_cnt_flag = 1;
-                                    while ($img_cnt_flag <= $img_cnt_row['img_count']) {
-                                      ?>
-                                      <li>
-                                        <div class="product-image-thumb"><img
-                                            src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>_<?= $img_cnt_flag ?>.jpg"
-                                            alt=" " class="product-image img-responsive" alt="Product Image"></div>
-                                      </li>
-                                      <?php
-                                      $img_cnt_flag++;
-                                    }
-                                  }
-                                  ?>
-                                </ul>
-                              </div>
-                            </div>
-                            <div class="col-md-10 col-sm-10 col-xs-10 img-big"
-                              style="position: relative;justify-content:center;align-products:center;display:flex;padding-left:0;">
-                              <div id="img-zoom-container" class="img-zoom-container"
-                                onmouseover="$('.img-zoom-result').css('display','unset');imageZoom('myimage', 'myresult');$('.img-zoom-lens').css('display','unset');$('.zoom-in-adjust').css('height','max-content');"
-                                onmouseleave="$('.img-zoom-result').css('display','none');$('.img-zoom-lens').hide();$('.zoom-in-adjust').css('height','max-content');">
-                                <img id="myimage"
+                        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                        //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                        <div style="margin:0;padding:0;width:100%">
+                          <ul class="img-example-left">
+                            <li>
+                              <div class="product-image-thumb active"><img
                                   src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg"
-                                  alt=" " class="product-image product-image-view img-responsive myimage">
-                              </div>
-                              <div id="img-zoom-conatiner-none" class="img-zoom-conatiner-none" style="display: none;">
-                                <img id="example"
-                                  src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg"
-                                  alt=" " class="product-image product-image-view img-responsive">
-                              </div>
-                              <!--<div id="view-single-img" style="display: flex;position: absolute;bottom: 20px;right: 25px;border:1px solid #999;padding:10px;padding-top: 13px;background-color: rgba(0,0,0,0.75);" onclick="openModal_single();currentSlide(1)"><i style="color: #fff" class="fa fa-search-plus fa-lg"></i></div>-->
-                            </div>
-                            <div class=" col-md-1 col-sm-1" style="justify-content: right;padding:0px;">
-                              <div class="btn btn-default btn-lg btn-flat product_wish" type="button" name="submit"
-                                class="btn btn-primary btn-lg button" data-toggle="modal"
-                                data-target="#avail_stores_wishlist"
-                                style="width: 40px;position: relative;justify-content: center;border-radius: 50%;clear:right">
-                                <i style="color: #c50505;display: flex;align-products: center;justify-content: center;margin-left: 3px;"
-                                  class="fas fa-heart fa-lg mr-2"></i>
-                              </div>
-                              <div onclick="copylink(<?= $_GET['id'] ?>,'single.php?id=<?= $_GET['id'] ?>')"
-                                class="btn btn-default btn-lg btn-flat product_share" type="button" name="submit"
-                                class="btn btn-primary btn-lg button" data-toggle="modal"
-                                data-target="#myModal_share_product"
-                                style="width: 40px;position: relative;justify-content: center;border-radius: 50%;align-products: left;justify-content: left;display: flex;">
-                                <i style="color: #999898;display: flex;align-products: left;justify-content: left;margin-left: -8px;border-color: #e2e2e2;"
-                                  class="fas fa-share fa-lg mr-2"></i>
-                              </div>
-                              <div id="view-single-img" style="display: flex
-;
-    position: absolute;
-    bottom: 20px;
-    float: left;
-    border: 0px;
-    padding: 10px;
-    padding-top: 13px;
-    background-color: transparent;" onclick="openModal_single();currentSlide(1)"><i style="color: #00000"
-                                  class="fa fa-search-plus fa-lg"></i></div>
-                            </div>
+                                  alt=" " class="product-image img-responsive" alt="Product Image"></div>
+                            </li>
+                            <?php
+                            if (!empty($img_cnt_row['img_count'])) {
+                              $img_cnt_flag = 1;
+                              while ($img_cnt_flag <= $img_cnt_row['img_count']) {
+                                ?>
+                                <li>
+                                  <div class="product-image-thumb"><img
+                                      src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>_<?= $img_cnt_flag ?>.jpg"
+                                      alt=" " class="product-image img-responsive" alt="Product Image"></div>
+                                </li>
+                                <?php
+                                $img_cnt_flag++;
+                              }
+                            }
+                            ?>
+                          </ul>
+                        </div>
+                        </div>
+                        <div class="col-md-10 col-sm-10 col-xs-10 img-big"
+                          style="position: relative;justify-content:center;align-items:center;display:flex;padding-left:0;">
+                          <div id="img-zoom-container" class="img-zoom-container"
+                            onmouseover="$('.img-zoom-result').css('display','unset');imageZoom('myimage', 'myresult');$('.img-zoom-lens').css('display','unset');$('.zoom-in-adjust').css('height','max-content');"
+                            onmouseleave="$('.img-zoom-result').css('display','none');$('.img-zoom-lens').hide();$('.zoom-in-adjust').css('height','max-content');">
+                            <img id="myimage"
+                              src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg"
+                              alt=" " class="product-image product-image-view img-responsive myimage">
                           </div>
+                          <div id="img-zoom-conatiner-none" class="img-zoom-conatiner-none" style="display: none;">
+                            <img id="example"
+                              src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg"
+                              alt=" " class="product-image product-image-view img-responsive">
+                          </div>
+                          <!--<div id="view-single-img" style="display: flex;position: absolute;bottom: 20px;right: 25px;border:1px solid #999;padding:10px;padding-top: 13px;background-color: rgba(0,0,0,0.75);" onclick="openModal_single();currentSlide(1)"><i style="color: #fff" class="fa fa-search-plus fa-lg"></i></div>-->
+                        </div>
+                        <div class=" col-md-1 col-sm-1" style="justify-content: right;padding:0px;">
+                          <div class="btn btn-default btn-lg btn-flat product_wish" type="button" name="submit"
+                            class="btn btn-primary btn-lg button" data-toggle="modal"
+                            data-target="#avail_stores_wishlist"
+                            style="width: 40px;position: relative;justify-content: center;border-radius: 50%;clear:right">
+                            <i style="color: #c50505;display: flex;align-items: center;justify-content: center;margin-left: 3px;"
+                              class="fas fa-heart fa-lg mr-2"></i>
+                          </div>
+                          <div onclick="copylink(<?= $_GET['id'] ?>,'single.php?id=<?= $_GET['id'] ?>')"
+                            class="btn btn-default btn-lg btn-flat product_share" type="button" name="submit"
+                            class="btn btn-primary btn-lg button" data-toggle="modal"
+                            data-target="#myModal_share_product"
+                            style="width: 40px;position: relative;justify-content: center;border-radius: 50%;align-items: left;justify-content: left;display: flex;">
+                            <i style="color: #999898;display: flex;align-items: left;justify-content: left;margin-left: -8px;border-color: #e2e2e2;"
+                              class="fas fa-share fa-lg mr-2"></i>
+                          </div>
+                          <div id="view-single-img" style="display: flex;position: absolute;bottom: 20px;float: left;border: 0px;
+                            padding: 10px;padding-top: 13px; background-color: transparent;"
+                            onclick="openModal_single();currentSlide(1)"><i style="color: #000000" class="fa fa-search-plus fa-lg"></i>
+                          </div>
+                        </div>
+                        </div>
                         </div>
                         <div style="margin-top:20px;"></div>
                         <div class="div-wrapper big-btn" style="width: 100%;display: flex;">
@@ -1339,16 +1322,10 @@ function randomGen($min, $max, $quantity)
                           <div class="btn btn-default btn-lg btn-flat btn-buy button" type="button" name="submit"
                             data-toggle="modal" data-target="#avail_stores_buy"
                             style="width: 100%;position: relative;float: left;justify-content: flex-start;border-radius: 4px;">
-                            <div class="btn btn-default btn-lg btn-flat" type="button" name="submit" style="width: 25px;
-    height: 25px;
-    position: relative;
-    border: 0px;
-    justify-content: center;
-    border-radius: 50%;
-    padding: 4px;
-    margin-right: 20px;
-    background-color: transparent;">
-                              <i style="color: orange;display: flex;align-products: center;justify-content: center;margin-left: 50%;"
+                            <div class="btn btn-default btn-lg btn-flat" type="button" name="submit" style="width: 25px;height: 25px;
+                              position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px; margin-right: 20px;
+                              background-color: transparent;">
+                              <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;"
                                 class="fas fa-flash mr-2"></i>
                             </div>
                             Buy Now
@@ -1365,7 +1342,8 @@ function randomGen($min, $max, $quantity)
               <div class="container bottom-small-img" style="margin:0;">
                 <div class="row" style="margin:0;margin-right:5px;margin-left:5px">
                   <?php
-                  $img_cnt_sql = "select img_count from product_description where product_description_id=$product_description_id";
+                  $img_cnt_sql = "select img_count from product_description
+                    where product_description_id=$product_description_id";
                   $img_cnt_stmt = $pdo->prepare($sql);
                   $img_cnt_stmt->execute();
                   $img_cnt_row = $img_cnt_stmt->fetch(PDO::FETCH_ASSOC);
@@ -1386,9 +1364,9 @@ function randomGen($min, $max, $quantity)
                           <?php
                   }
                   ?>
-                        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                  <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
                         <ul class="img-example-left" style="display: flex;">
                           <li style="margin-right: 5px;">
                             <div class="product-image-thumb active"><img
@@ -1419,7 +1397,7 @@ function randomGen($min, $max, $quantity)
                       <h3 class="my-3"><?= $row2['product_name'] ?></h3>
                       <div class="div-wrapper" style="width: max-content;">
                         <div
-                          style="display: flex;align-products: center;justify-content: flex-start;width: max-content;">
+                          style="display: flex;align-items: center;justify-content: flex-start;width: max-content;">
                           <span class="starRating"
                             style="margin: 0px;margin-left:0px;width:max-content;height:max-content;">
                             <span class="stars-outer" style="width:max-content;height:max-content;margin:0;padding:0;">
@@ -1432,7 +1410,7 @@ function randomGen($min, $max, $quantity)
                       </div>
                       <hr>
                       <div
-                        style="padding:0px !important;display: flex;align-products: center;justify-content: flex-start;width: max-content;">
+                        style="padding:0px !important;display: flex;align-items: center;justify-content: flex-start;width: max-content;">
                         <div class="px-3" style="padding-bottom: 5px;">
                           <h2 class="mb-0">
                             <span class="m-sing pricetag" id="ini"> &#8377;<?= $mrp ?> /-</span>
@@ -1450,23 +1428,13 @@ function randomGen($min, $max, $quantity)
                       </div>
                       <hr>
                       <!---------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------>
+											-----------------------------------------------------------------------------------------------------------------------------------------------------------
+											-----------------------------------------------------------------------------------------------------------------------------------------------------------
+											-----------------------------------------------------------------------------------------------------------------------------------------------------------
+											----------------------------------------------------------------------------------------------------------------------------------------------------------->
                       <?php
-                      //CHANGE 2////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-        $sqlfeatures_color="select * from product_details
-        inner join product_description on product_description.product_description_id=product_details.product_description_id
-        where product_description.product_id=:product_id and store_id=:store_id";
-        $stmtfeatures_color=$pdo->prepare($sqlfeatures_color);
-        $stmtfeatures_color->execute(array(
-                ':product_id'=>$row2['product_id'],
-                'store_id'=>$row2['store_id']));
-*/
                       $sqlfeatures_color = "select * from product_description
-        where product_description.product_id=:product_id";
+       									 where product_description.product_id=:product_id";
                       $stmtfeatures_color = $pdo->prepare($sqlfeatures_color);
                       $stmtfeatures_color->execute(array(
                         ':product_id' => $row2['product_id']
@@ -1476,18 +1444,8 @@ function randomGen($min, $max, $quantity)
                       if ($color_cnt > 0) {
                         echo "<hr>";
                       }
-                      //CHANGE 3////////////////////////////////////////////////////////////////////////////////////////////////////////
-/*
-        $sqlfeatures_size="select * from product_details
-        inner join product_description on product_description.product_description_id=product_details.product_description_id
-        where product_description.product_id=:product_id and store_id=:store_id";
-        $stmtfeatures_size=$pdo->prepare($sqlfeatures_size);
-        $stmtfeatures_size->execute(array(
-                ':product_id'=>$row2['product_id'],
-                'store_id'=>$row2['store_id']));
-*/
                       $sqlfeatures_size = "select * from product_description
-        where product_description.product_id=:product_id";
+        								where product_description.product_id=:product_id";
                       $stmtfeatures_size = $pdo->prepare($sqlfeatures_size);
                       $stmtfeatures_size->execute(array(
                         ':product_id' => $row2['product_id']
@@ -1497,51 +1455,51 @@ function randomGen($min, $max, $quantity)
                         if (!is_null($rowfeatures_size['size']) && $rowfeatures_size['size'] != 0) {
                           if ($size_cnt == 0) {
                             ?>
-                      <h4 class="mt-3">Size <small>Please select one</small></h4>
-                      <?php
+														<h4 class="mt-3">Size <small>Please select one</small></h4>
+														<?php
                           }
                           ?>
-                      <div class="btn-group btn-group-toggle" data-toggle="buttons"
-                        onclick="location.href='../Product/single.php?id=<?= $rowfeatures_size['product_description_id'] ?>'">
-                        <?php
-                        $sqlsize_name = 'select size_name from size where size_id=' . (int) $rowfeatures_size['size'];
-                        $stmtsize_name = $pdo->query($sqlsize_name);
-                        while ($rowsize_name = $stmtsize_name->fetch(PDO::FETCH_ASSOC)) {
-                          ;
-                          if ($rowsize_name['size_name'] == 'XL') {
-                            $size_abbreviation = 'Xtra-Large';
-                          }
-                          if ($rowsize_name['size_name'] == 'XXL') {
-                            $size_abbreviation = 'Xtra-Xtra-Large';
-                          }
-                          if ($rowsize_name['size_name'] == 'L') {
-                            $size_abbreviation = 'Large';
-                          }
-                          if ($rowsize_name['size_name'] == 'M') {
-                            $size_abbreviation = 'Medium';
-                          }
-                          if ($rowsize_name['size_name'] == 'SM' || $rowsize_name['size_name'] == 'S') {
-                            $size_abbreviation = 'Small';
-                          }
-                          if ($rowsize_name['size_name'] == 'XS') {
-                            $size_abbreviation = 'Xtra-Small';
-                          }
-                          ?>
-                        <label class="btn btn-default text-center">
-                          <input type="radio" name="color_option" id="color_option_b1<?= $rowsize_name['size_name'] ?>"
-                            autocomplete="off">
-                          <span class="text-xl">
-                            <?= $rowsize_name['size_name'] ?>
-                          </span>
-                          <br>
-                          <?= $size_abbreviation ?>
-                        </label>
-                        <?php
-                        }
-                        ?>
-                      </div>
-                      <?php
-                      $size_cnt += 1;
+													<div class="btn-group btn-group-toggle" data-toggle="buttons"
+														onclick="location.href='../Product/single.php?id=<?= $rowfeatures_size['product_description_id'] ?>'">
+														<?php
+														$sqlsize_name = 'select size_name from size where size_id=' . (int) $rowfeatures_size['size'];
+														$stmtsize_name = $pdo->query($sqlsize_name);
+														while ($rowsize_name = $stmtsize_name->fetch(PDO::FETCH_ASSOC)) {
+															;
+															if ($rowsize_name['size_name'] == 'XL') {
+																$size_abbreviation = 'Xtra-Large';
+															}
+															if ($rowsize_name['size_name'] == 'XXL') {
+																$size_abbreviation = 'Xtra-Xtra-Large';
+															}
+															if ($rowsize_name['size_name'] == 'L') {
+																$size_abbreviation = 'Large';
+															}
+															if ($rowsize_name['size_name'] == 'M') {
+																$size_abbreviation = 'Medium';
+															}
+															if ($rowsize_name['size_name'] == 'SM' || $rowsize_name['size_name'] == 'S') {
+																$size_abbreviation = 'Small';
+															}
+															if ($rowsize_name['size_name'] == 'XS') {
+																$size_abbreviation = 'Xtra-Small';
+															}
+															?>
+														<label class="btn btn-default text-center">
+															<input type="radio" name="color_option" id="color_option_b1<?= $rowsize_name['size_name'] ?>"
+																autocomplete="off">
+															<span class="text-xl">
+																<?= $rowsize_name['size_name'] ?>
+															</span>
+															<br>
+															<?= $size_abbreviation ?>
+														</label>
+														<?php
+														}
+														?>
+                      		</div>
+													<?php
+													$size_cnt += 1;
                         }
                       }
                       if ($size_cnt > 0) {
@@ -1554,20 +1512,20 @@ function randomGen($min, $max, $quantity)
                         $cats = explode("\n", $row2['description']);
                         foreach ($cats as $cat) {
                           ?>
-                        <li>
-                          <?= $cat ?>
-                        </li>
-                        <?php
+													<li>
+														<?= $cat ?>
+													</li>
+													<?php
                         }
                         ?>
                       </ul>
                       </p>
                       <hr>
                       <!---------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------
------------------------------------------------------------------------------------------------------------------------------------------------------------>
+											-----------------------------------------------------------------------------------------------------------------------------------------------------------
+											-----------------------------------------------------------------------------------------------------------------------------------------------------------
+											-----------------------------------------------------------------------------------------------------------------------------------------------------------
+											----------------------------------------------------------------------------------------------------------------------------------------------------------->
                       <div class="container">
                         <div class="agileinfo_single">
                           <div class="col-md-12 agileinfo_single_right">
@@ -1584,16 +1542,10 @@ function randomGen($min, $max, $quantity)
                               <div class="btn btn-default btn-lg btn-flat btn-buy button" id="btn-buy" type="button"
                                 name="submit" data-toggle="modal" data-target="#avail_stores_buy"
                                 style="max-width: 200px;min-width: 150px;position: relative;float: left;justify-content: flex-start;border-radius: 4px;">
-                                <div class="btn btn-default btn-lg btn-flat" type="button" name="submit" style="width: 25px;
-    height: 25px;
-    position: relative;
-    border: 0px;
-    justify-content: center;
-    border-radius: 50%;
-    padding: 4px;
-    margin-right: 20px;
-    background-color: transparent;">
-                                  <i style="color: orange;display: flex;align-products: center;justify-content: center;margin-left: 50%;"
+                                <div class="btn btn-default btn-lg btn-flat" type="button" name="submit" style="width: 25px;height: 25px;
+    															position: relative;border: 0px;justify-content: center;border-radius: 50%; padding: 4px;
+																	margin-right: 20px; background-color: transparent;">
+                                  <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;"
                                     class="fas fa-flash mr-2"></i>
                                 </div>
                                 Buy Now
@@ -1666,7 +1618,7 @@ function randomGen($min, $max, $quantity)
                 $bgcolor = array('orange', '#0c99cc', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
                 $reviewlen = 0;
                 //customer REVIEW
-//-------------------------------------------------------------------------------------------------------------------
+                //-------------------------------------------------------------------------------------------------------------------
                 $myreview = 0;
                 if (isset($_SESSION['id'])) {
                   $myreviewstmt = $pdo->query("select ordered_cnt,review,rating,date_of_review as date,customers.first_name,customers.last_name from product_keys join customers on customers.customer_id=product_keys.customer_id where product_description_id=" . $_GET['id'] . " and product_keys.customer_id=" . $_SESSION['id']);
@@ -1691,12 +1643,12 @@ function randomGen($min, $max, $quantity)
                       }
                       /*COLOR PICKER*/
                       //MY REVIEW HERE
-//-------------------------------------------------------------------------------------------------------------------
+                      //-------------------------------------------------------------------------------------------------------------------
                       ?>
                 <section id="customer_reviewed_already" style="margin-top:20px;">
                   <div class="div-wrapper" style="width:max-content">
                     <div
-                      style="height:20px;width:20px;border-radius:50%;background-color: <?= $bgcolor[$rancolor1] ?>;display:flex;align-products:center;justify-content:center;color: <?= $c1 ?>">
+                      style="height:20px;width:20px;border-radius:50%;background-color: <?= $bgcolor[$rancolor1] ?>;display:flex;align-items:center;justify-content:center;color: <?= $c1 ?>">
                       <?= $customer_firstletter ?>
                     </div>
                     <p>
@@ -1738,9 +1690,9 @@ function randomGen($min, $max, $quantity)
                 $reviewlen++;
                     }
                     //MY REVIEW HERE
-//-------------------------------------------------------------------------------------------------------------------
-//
-//customer RATING & REVIEW
+                    //-------------------------------------------------------------------------------------------------------------------
+                    //
+                    //customer RATING & REVIEW
                     else {
                       $checkbuysql = $pdo->query("select ordered_cnt,customers.first_name,customers.last_name from product_keys join customers on customers.customer_id=product_keys.customer_id where product_description_id=" . $_GET['id'] . " and product_keys.customer_id=" . $_SESSION['id'] . " and product_keys.ordered_cnt>0");
                       $checkbuycnt = $checkbuysql->rowCount();
@@ -1819,7 +1771,7 @@ function randomGen($min, $max, $quantity)
                   }
                 }
                 //customer REVIEW
-//--------------------------------------------------------------------------------------------------------------------
+                //--------------------------------------------------------------------------------------------------------------------
                 if (isset($_SESSION['id'])) {
                   ?>
                 <script>
@@ -1827,26 +1779,30 @@ function randomGen($min, $max, $quantity)
                     var reviewlen = document.getElementById('reviewinput').value.length;
                     $('#charnow').html(reviewlen);
                   }
+
                   function editurresponse() {
                     $('#background_loader').show();
                     $('#std_loader').show();
                     $('#customer_reviewed_already').hide();
-                    var product_description_id =<?= $_GET['id'] ?>;
-                    var customer_id =<?= $_SESSION['id'] ?>;
+                    var product_description_id = <?= $_GET['id'] ?>;
+                    var customer_id = <?= $_SESSION['id'] ?>;
                     $.ajax({
                       url: "../Common/functions.php", //passing page info
-                      data: { "editcustomerrated": 1, "product_description_id": product_description_id, "customer_id": customer_id },  //form data
-                      type: "post",   //post data
-                      dataType: "json",   //datatype=json format
-                      timeout: 30000,   //waiting time 30 sec
-                      success: function (data) {    //if registration is success
+                      data: {
+                        "editcustomerrated": 1,
+                        "product_description_id": product_description_id,
+                        "customer_id": customer_id
+                      }, //form data
+                      type: "post", //post data
+                      dataType: "json", //datatype=json format
+                      timeout: 30000, //waiting time 30 sec
+                      success: function (data) { //if registration is success
                         if (data.status == 'success') {
                           $('#edit_customer_reviewed').html(data.editreview);
                           $('#background_loader').show();
                           $('#std_loader').show();
                           return;
-                        }
-                        else {
+                        } else {
                           return;
                         }
                       },
@@ -1863,11 +1819,13 @@ function randomGen($min, $max, $quantity)
                           $('#background_loader').show();
                           $('#std_loader').show();
                           return;
+                        } else {
+                          return;
                         }
-                        else { return; }
                       }
                     }); //closing ajax
                   }
+
                   function ratethisnow() {
                     var reviewtext = document.getElementById('reviewinput').value;
                     var getSelectedValue = document.querySelector(
@@ -1885,17 +1843,23 @@ function randomGen($min, $max, $quantity)
                     }
                     if (getSelectedValue != null) {
                       var noofstars = getSelectedValue.value;
-                      var product_description_id =<?= $_GET['id'] ?>;
-                      var customer_id =<?= $_SESSION['id'] ?>;
+                      var product_description_id = <?= $_GET['id'] ?>;
+                      var customer_id = <?= $_SESSION['id'] ?>;
                       $('.real_btn').hide();
                       $('.load_btn').show();
                       $.ajax({
                         url: "../Common/functions.php", //passing page info
-                        data: { "customerrated": 1, "product_description_id": product_description_id, "customer_id": customer_id, "rating": noofstars, "review": reviewtext },  //form data
-                        type: "post",   //post data
-                        dataType: "json",   //datatype=json format
-                        timeout: 30000,   //waiting time 30 sec
-                        success: function (data) {    //if registration is success
+                        data: {
+                          "customerrated": 1,
+                          "product_description_id": product_description_id,
+                          "customer_id": customer_id,
+                          "rating": noofstars,
+                          "review": reviewtext
+                        }, //form data
+                        type: "post", //post data
+                        dataType: "json", //datatype=json format
+                        timeout: 30000, //waiting time 30 sec
+                        success: function (data) { //if registration is success
                           if (data.status == 'success') {
                             $('#editoraddreview').hide();
                             $('#edit_customer_reviewed').html(data.addreview);
@@ -1928,30 +1892,35 @@ function randomGen($min, $max, $quantity)
                               timer: 6000,
                             });
                             return;
+                          } else {
+                            return;
                           }
-                          else { return; }
                         }
                       }); //closing ajax
                     }
                   }
+
                   function canceledit() {
-                    var product_description_id =<?= $_GET['id'] ?>;
-                    var customer_id =<?= $_SESSION['id'] ?>;
+                    var product_description_id = <?= $_GET['id'] ?>;
+                    var customer_id = <?= $_SESSION['id'] ?>;
                     $.ajax({
                       url: "../Common/functions.php", //passing page info
-                      data: { "cancelcustomerrated": 1, "product_description_id": product_description_id, "customer_id": customer_id },  //form data
-                      type: "post",   //post data
-                      dataType: "json",   //datatype=json format
-                      timeout: 30000,   //waiting time 30 sec
-                      success: function (data) {    //if registration is success
+                      data: {
+                        "cancelcustomerrated": 1,
+                        "product_description_id": product_description_id,
+                        "customer_id": customer_id
+                      }, //form data
+                      type: "post", //post data
+                      dataType: "json", //datatype=json format
+                      timeout: 30000, //waiting time 30 sec
+                      success: function (data) { //if registration is success
                         if (data.status == 'success') {
                           $('#editoraddreview').hide();
                           $('#edit_customer_reviewed').html(data.addreview);
                           $('.real_btn').hide();
                           $('.load_btn').hide();
                           return;
-                        }
-                        else {
+                        } else {
                           return;
                         }
                       },
@@ -1966,11 +1935,13 @@ function randomGen($min, $max, $quantity)
                             timer: 6000,
                           });
                           return;
+                        } else {
+                          return;
                         }
-                        else { return; }
                       }
                     }); //closing ajax
                   }
+
                   function listenchanges() {
                     var reviewinput = document.getElementById("reviewinput").value;
                     var oldreviewinput = '<?= $myreview ?>';
@@ -1979,25 +1950,25 @@ function randomGen($min, $max, $quantity)
                       if (reviewinput != oldreviewinput) {
                         $('#hide_add').show();
                         $('#hide_add1').show();
-                      }
-                      else if (reviewinput == oldreviewinput) {
+                      } else if (reviewinput == oldreviewinput) {
                         $('#hide_add').show();
                         $('#hide_add1').hide();
                       }
                     }
                   }
+
                   function changed_details() {
                     $('#add_customer_review').show();
                     listenchanges();
                     succeeded();
                   }
+
                   function succeeded() {
                     var reviewinput = document.getElementById("reviewinput").value;
                     var oldreviewinput = '<?= $myreview ?>';
                     if (reviewinput != oldreviewinput && reviewinput.length > 3) {
                       $('#add_customer_review').show();
-                    }
-                    else {
+                    } else {
                       $('#add_customer_review').hide();
                     }
                   }
@@ -2022,18 +1993,19 @@ function randomGen($min, $max, $quantity)
                       updatedetailInput.putCursorAtEnd().on("focus", function () {
                         updatedetailInput.putCursorAtEnd()
                       });
-                    }
-                    else if ($('#hide_add1').css('display') == 'none') {
+                    } else if ($('#hide_add1').css('display') == 'none') {
                       $('#dis_add').show();
                       $('#hide_add').hide();
                       $('#hide_add1').hide();
                     }
                   }
+
                   function dis_ok() {
                     $('#dis_add').show();
                     $('#hide_add').hide();
                     $('#hide_add1').hide();
                   }
+
                   function reset_add() {
                     var reviewinput = document.getElementById("reviewinput").value;
                     var oldreviewinput = '<?= $myreview ?>';
@@ -2044,8 +2016,7 @@ function randomGen($min, $max, $quantity)
                       $('#dis_add').show();
                       $('#hide_add').hide();
                       $('#hide_add1').hide();
-                    }
-                    else if (($('#hide_add').css('display') != 'none') && ($('#hide_add1').css('display') == 'none')) {
+                    } else if (($('#hide_add').css('display') != 'none') && ($('#hide_add1').css('display') == 'none')) {
                       $('#dis_add').show();
                       $('#hide_add').hide();
                     }
@@ -2058,9 +2029,12 @@ function randomGen($min, $max, $quantity)
                 }
                 //PUBLIC REVIEW
                 if (isset($_SESSION['id'])) {
-                  $reviewstmt = $pdo->query("select product_keys.ordered_cnt,product_keys.review,rating,customers.first_name,customers.last_name,date_of_review as date from product_keys join customers on customers.customer_id=product_keys.customer_id where product_description_id=" . $_GET['id'] . " and product_keys.customer_id not in (" . $_SESSION['id'] . ") and rating>0 and review!='0' and product_keys.ordered_cnt>0 and review!='0' limit 5");
+                  $reviewstmt = $pdo->query("select product_keys.ordered_cnt,product_keys.review,rating,customers.first_name,customers.last_name,date_of_review
+										as date from product_keys join customers on customers.customer_id=product_keys.customer_id
+										where product_description_id=" . $_GET['id'] . " and product_keys.customer_id not in (" . $_SESSION['id'] . ") and rating>0 and review!='0' and product_keys.ordered_cnt>0 and review!='0' limit 5");
                 } else {
-                  $reviewstmt = $pdo->query("select product_keys.ordered_cnt,product_keys.review,rating,customers.first_name,customers.last_name,date_of_review as date from product_keys join customers on customers.customer_id=product_keys.customer_id where product_description_id=" . $_GET['id'] . " and rating>0 and review!='0' and product_keys.ordered_cnt>0 and review!='0' limit 5");
+                  $reviewstmt = $pdo->query("select product_keys.ordered_cnt,product_keys.review,rating,customers.first_name,customers.last_name,date_of_review as date from product_keys
+										join customers on customers.customer_id=product_keys.customer_id where product_description_id=" . $_GET['id'] . " and rating>0 and review!='0' and product_keys.ordered_cnt>0 and review!='0' limit 5");
                 }
                 $reviewcount = $reviewstmt->rowCount();
                 if ($reviewcount != 0) {
@@ -2090,7 +2064,7 @@ function randomGen($min, $max, $quantity)
                 <section>
                   <div class="div-wrapper" style="width:max-content;margin-top:20px;">
                     <div
-                      style="height:20px;width:20px;border-radius:50%;background-color: <?= $bgcolor[$rancolor1] ?>;display:flex;align-products:center;justify-content:center;color: <?= $c1 ?>">
+                      style="height:20px;width:20px;border-radius:50%;background-color: <?= $bgcolor[$rancolor1] ?>;display:flex;align-items:center;justify-content:center;color: <?= $c1 ?>">
                       <?= $firstletter ?>
                     </div>
                     <p>
@@ -2182,8 +2156,6 @@ function randomGen($min, $max, $quantity)
                     color: orange;
                   }
 
-                  .dark {}
-
                   /* Individual bars */
                   .bar-a {
                     background-color: #04AA6D;
@@ -2274,13 +2246,15 @@ function randomGen($min, $max, $quantity)
                   }
                 </style>
                 <?php
-                $tot_ratingstarstmt = $pdo->query("select count(product_keys.rating) as totratingcnt from product_keys where product_description_id=" . $_GET['id'] . " and rating>0 and ordered_cnt>0 and review!='0'");
+                $tot_ratingstarstmt = $pdo->query("select count(product_keys.rating) as totratingcnt from product_keys
+									where product_description_id=" . $_GET['id'] . " and rating>0 and ordered_cnt>0 and review!='0'");
                 $tot_ratestarcount = $tot_ratingstarstmt->rowCount();
                 if (is_null($tot_ratestarcount) == false && $tot_ratestarcount != 0) {
                   $tot_ratingstarrow = $tot_ratingstarstmt->fetch(PDO::FETCH_ASSOC);
                   $tot_ratingstar = $tot_ratingstarrow['totratingcnt'];
                   for ($i = 5; $i > 0; $i--) {
-                    $ratingstarstmt = $pdo->query("select count(product_keys.rating) as ratingcnt,rating from product_keys where product_description_id=" . $_GET['id'] . " and rating=" . $i . " and ordered_cnt>0 and review!='0'");
+                    $ratingstarstmt = $pdo->query("select count(product_keys.rating) as ratingcnt,rating from product_keys
+											where product_description_id=" . $_GET['id'] . " and rating=" . $i . " and ordered_cnt>0 and review!='0'");
                     $ratestarcount = $ratingstarstmt->rowCount();
                     if ($ratecount != 0) {
                       $ratingstarrow = $ratingstarstmt->fetch(PDO::FETCH_ASSOC);
@@ -2386,12 +2360,14 @@ function randomGen($min, $max, $quantity)
     }
     $('#' + x + '>.right-arrow-btn-all').show();
   }
+
   function moveright(x) {
     var y = $('#' + x).scrollLeft();
     var width = $('#' + x).outerWidth();
     var scrollWidth = $('#' + x)[0].scrollWidth;
     $('#' + x).scrollLeft(y + 250);
   }
+
   function moveleft(x) {
     var y = $('#' + x).scrollLeft();
     $('#' + x).scrollLeft(y - 250);
@@ -2411,8 +2387,7 @@ function randomGen($min, $max, $quantity)
   do {
     $rancolor1 = array_rand($color, 1);
     $rancolor2 = array_rand($color, 1);
-  }
-  while ($rancolor1 == $rancolor2);
+  } while ($rancolor1 == $rancolor2);
   if ($bgcolor[$rancolor1] == "cyan" || $bgcolor[$rancolor1] == "#FF6666" || $bgcolor[$rancolor1] == "#E6BF00") {
     $c1 = "black";
   }
@@ -2424,11 +2399,14 @@ function randomGen($min, $max, $quantity)
   if ($product != 0) {
     ?>
     <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
-      style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
+      style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;
+				padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;
+				border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
       Explore <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
       <span style="float: right;margin-right: 5px;margin-top: -4px;">
         <button type="button"
-          style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor1] ?>;padding: 11px auto;font-size: 12px;"
+          style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;
+						background-color: <?= $bgcolor[$rancolor1] ?>;padding: 11px auto;font-size: 12px;"
           name="proceed" class="checkout-button button alt wc-forward"><a
             href="../Product/products_viewall.php?category_id=<?= $cat_id ?>" style="color:<?= $c2 ?>;">View
             all</a></button>
@@ -2481,16 +2459,19 @@ function randomGen($min, $max, $quantity)
         <h3>Recently Viewed</h3>
         <?php
         //CHANGE 4////////////////////////////////////////////////////////////////////////////////////////////////////////
-      
+
         $ran = $pdo->query("select views ,product_keys.product_description_id from product_keys
-JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
-join product on product.product_id=product_description.product_id
-where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC");
+					JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
+					join product on product.product_id=product_description.product_id
+					where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC");
         $isready = $ran->rowCount();
         if ($isready != 0 && is_null($isready) == false) {
           ?>
           <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
-            style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
+            style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;
+							padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;
+							margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;
+							padding-left: 10px; overflow: hidden;font-size: 18px;">
             Explore <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
             <span style="float: right;margin-right: 5px;margin-top: -4px;">
               <button type="button"
@@ -2514,8 +2495,8 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
               while ($view = $ran->fetch(PDO::FETCH_ASSOC)) {
                 $product_desc_id = $view['product_description_id'];
                 $preview = $pdo->query('select * from product_description
-    inner join product on product.product_id=product_description.product_id
-    where product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id');
+									inner join product on product.product_id=product_description.product_id
+									where product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id');
                 $row = $preview->fetch(PDO::FETCH_ASSOC);
 
                 ?>
@@ -2578,24 +2559,32 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
           function openModal_single() {
             document.getElementById("myModal-single").style.display = "block";
           }
+
           function closeModal_single() {
             document.getElementById("myModal-single").style.display = "none";
           }
           var slideIndex = 1;
           showSlides_single(slideIndex);
+
           function plusSlides(n) {
             showSlides_single(slideIndex += n);
           }
+
           function currentSlide(n) {
             showSlides_single(slideIndex = n);
           }
+
           function showSlides_single(n) {
             var i;
             var slides = document.getElementsByClassName("mySlides-single");
             var dots = document.getElementsByClassName("demo-single");
             var captionText = document.getElementById("caption-single");
-            if (n > slides.length) { slideIndex = 1 }
-            if (n < 1) { slideIndex = slides.length }
+            if (n > slides.length) {
+              slideIndex = 1
+            }
+            if (n < 1) {
+              slideIndex = slides.length
+            }
             for (i = 0; i < slides.length; i++) {
               slides[i].style.display = "none";
             }
@@ -2624,11 +2613,15 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
             else {
               $.ajax({
                 url: "../Common/functions.php", //passing page info
-                data: { "price": 1, "product_description_id": product_description_id, "store_id": store_id },  //form data
-                type: "post",   //post data
-                dataType: "json",   //datatype=json format
-                timeout: 30000,   //waiting time 30 sec
-                success: function (data) {    //if registration is success
+                data: {
+                  "price": 1,
+                  "product_description_id": product_description_id,
+                  "store_id": store_id
+                }, //form data
+                type: "post", //post data
+                dataType: "json", //datatype=json format
+                timeout: 30000, //waiting time 30 sec
+                success: function (data) { //if registration is success
                   $("#ini").hide();
                   document.getElementById('org').innerHTML = "";
                   document.getElementById('org').innerHTML += "&#8377;" + data.price + " /-";
@@ -2659,8 +2652,9 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                       timer: 6000,
                     });
                     return;
+                  } else {
+                    return;
                   }
-                  else { return; }
                 }
               }); //closing ajax
             }
@@ -2685,11 +2679,15 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
             else {
               $.ajax({
                 url: "../Common/functions.php", //passing page info
-                data: { "price": 1, "product_description_id": product_description_id, "store_id": store_id },  //form data
-                type: "post",   //post data
-                dataType: "json",   //datatype=json format
-                timeout: 30000,   //waiting time 30 sec
-                success: function (data) {    //if registration is success
+                data: {
+                  "price": 1,
+                  "product_description_id": product_description_id,
+                  "store_id": store_id
+                }, //form data
+                type: "post", //post data
+                dataType: "json", //datatype=json format
+                timeout: 30000, //waiting time 30 sec
+                success: function (data) { //if registration is success
                   $("#ini").hide();
                   document.getElementById('org').innerHTML = "";
                   document.getElementById('org').innerHTML += "&#8377;" + data.price + " /-";
@@ -2720,8 +2718,9 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                       timer: 6000,
                     });
                     return;
+                  } else {
+                    return;
                   }
-                  else { return; }
                 }
               }); //closing ajax
             }
@@ -2753,25 +2752,26 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                 .then((willSubmit1) => {
                   if (willSubmit1) {
                     return;
-                  }
-                  else {
+                  } else {
                     return;
                   }
                 });
-            }
-            else {
+            } else {
               var product_description_id = <?= $product_description_id ?>;
               $.ajax({
                 url: "../Common/functions.php", //passing page info
-                data: { "addtowishlist": 1, "product_description_id": product_description_id, "store_id": id },  //form data
-                type: "post",   //post data
-                dataType: "json",   //datatype=json format
-                timeout: 30000,   //waiting time 30 sec
-                success: function (data) {    //if registration is success
+                data: {
+                  "addtowishlist": 1,
+                  "product_description_id": product_description_id,
+                  "store_id": id
+                }, //form data
+                type: "post", //post data
+                dataType: "json", //datatype=json format
+                timeout: 30000, //waiting time 30 sec
+                success: function (data) { //if registration is success
                   if (data.status == 'success') {
                     return;
-                  }
-                  else if (data.status == 'error') {
+                  } else if (data.status == 'error') {
                     swal({
                       title: "Required!!!",
                       text: "You need to create an Account",
@@ -2783,8 +2783,7 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                         if (willSubmit) {
                           location.href = "../Account/registered.php";
                           return;
-                        }
-                        else {
+                        } else {
                           return;
                         }
                       });
@@ -2801,8 +2800,9 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                       timer: 6000,
                     });
                     return;
+                  } else {
+                    return;
                   }
-                  else { return; }
                 }
               }); //closing ajax
             }
@@ -2815,11 +2815,14 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
             console.log("wishlist_check_list_select");
             $.ajax({
               url: "../Common/functions.php", //passing page info
-              data: { "fetchedwishlistid": 1, "wishlist_id": wishlist_id },  //form data
-              type: "post",   //post data
-              dataType: "json",   //datatype=json format
-              timeout: 30000,   //waiting time 30 sec
-              success: function (data) {    //if registration is success
+              data: {
+                "fetchedwishlistid": 1,
+                "wishlist_id": wishlist_id
+              }, //form data
+              type: "post", //post data
+              dataType: "json", //datatype=json format
+              timeout: 30000, //waiting time 30 sec
+              success: function (data) { //if registration is success
                 if (data.status == 'success') {
                   $('#wish_cnt_' + wishlist_id + '').html(data.new_wish_cnt);
                   swal({
@@ -2832,13 +2835,11 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                     .then((willSubmit1) => {
                       if (willSubmit1) {
                         return;
-                      }
-                      else {
+                      } else {
                         return;
                       }
                     });
-                }
-                else if (data.status == 'success1') {
+                } else if (data.status == 'success1') {
                   $(".background_loader").hide();
                   $(".std_loader").hide();
                   swal({
@@ -2851,13 +2852,11 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                     .then((willSubmit1) => {
                       if (willSubmit1) {
                         return;
-                      }
-                      else {
+                      } else {
                         return;
                       }
                     });
-                }
-                else if (data.status == 'error') {
+                } else if (data.status == 'error') {
                   swal({
                     title: "Required!!!",
                     text: "You need to create an Account",
@@ -2869,8 +2868,7 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                       if (willSubmit) {
                         location.href = "../Account/registered.php";
                         return;
-                      }
-                      else {
+                      } else {
                         return;
                       }
                     });
@@ -2887,8 +2885,9 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                     timer: 6000,
                   });
                   return;
+                } else {
+                  return;
                 }
-                else { return; }
               }
             }); //closing ajax
           }
@@ -2911,11 +2910,15 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
             else {
               $.ajax({
                 url: "../Common/functions.php", //passing page info
-                data: { "price": 1, "product_description_id": product_description_id, "store_id": store_id },  //form data
-                type: "post",   //post data
-                dataType: "json",   //datatype=json format
-                timeout: 30000,   //waiting time 30 sec
-                success: function (data) {    //if registration is success
+                data: {
+                  "price": 1,
+                  "product_description_id": product_description_id,
+                  "store_id": store_id
+                }, //form data
+                type: "post", //post data
+                dataType: "json", //datatype=json format
+                timeout: 30000, //waiting time 30 sec
+                success: function (data) { //if registration is success
                   $("#ini").hide();
                   document.getElementById('org').innerHTML = "";
                   document.getElementById('org').innerHTML += "&#8377;" + data.price + " /-";
@@ -2946,8 +2949,9 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                       timer: 6000,
                     });
                     return;
+                  } else {
+                    return;
                   }
-                  else { return; }
                 }
               }); //closing ajax
             }
@@ -2980,26 +2984,27 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                 .then((willSubmit1) => {
                   if (willSubmit1) {
                     return;
-                  }
-                  else {
+                  } else {
                     return;
                   }
                 });
-            }
-            else {
+            } else {
               var product_description_id = <?= $product_description_id ?>;
               $.ajax({
                 url: "../Common/functions.php", //passing page info
-                data: { "buynow_product": 1, "product_description_id": product_description_id, "store_id": id },  //form data
-                type: "post",   //post data
-                dataType: "json",   //datatype=json format
-                timeout: 30000,   //waiting time 30 sec
-                success: function (data) {    //if registration is success
+                data: {
+                  "buynow_product": 1,
+                  "product_description_id": product_description_id,
+                  "store_id": id
+                }, //form data
+                type: "post", //post data
+                dataType: "json", //datatype=json format
+                timeout: 30000, //waiting time 30 sec
+                success: function (data) { //if registration is success
                   if (data.status == 'success') {
                     location.href = "../Checkout/checkoutsingle.php?store_id=" + id + "&product_description_id=" + product_description_id + "";
                     return;
-                  }
-                  else if (data.status == 'error') {
+                  } else if (data.status == 'error') {
                     swal({
                       title: "Not Available!!!",
                       text: "Choose another Store",
@@ -3011,13 +3016,11 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                         if (willSubmit) {
                           location.href = "../Product/single.php?id=" + product_description_id + "";
                           return;
-                        }
-                        else {
+                        } else {
                           return;
                         }
                       });
-                  }
-                  else if (data.status == 'error1') {
+                  } else if (data.status == 'error1') {
                     swal({
                       title: "Required!!!",
                       text: "You need to create an Account",
@@ -3029,8 +3032,7 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                         if (willSubmit) {
                           location.href = "../Account/registered.php";
                           return;
-                        }
-                        else {
+                        } else {
                           return;
                         }
                       });
@@ -3047,8 +3049,9 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                       timer: 6000,
                     });
                     return;
+                  } else {
+                    return;
                   }
-                  else { return; }
                 }
               }); //closing ajax
             }

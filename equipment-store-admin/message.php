@@ -12,8 +12,7 @@ require "head.php";
       $('#chatphp').addClass('active');
     </script>
     <script type="text/javascript">
-      $("#chatphp").click(
-      );
+      $("#chatphp").click();
     </script>
     <?php
     require 'pdo.php';
@@ -40,7 +39,7 @@ require "head.php";
       );
       // Attempt insert query execution
       $sql = "INSERT INTO chats (uname,rname, msg, dt)
-    VALUES (:uname,:rname, :msg, :dt)";
+              VALUES (:uname,:rname, :msg, :dt)";
       $st = $pdo->prepare($sql);
       $st->execute($data);
       if ($st) {
@@ -392,8 +391,7 @@ require "head.php";
           <span class="icon-bar"></span>
         </button>
         <div class="connect" style="background: #000000;text-align: center;">
-          <span><i class="fa fa-user-circle-o
-"></i></span>
+          <span><i class="fa fa-user-circle-o"></i></span>
           <h6 style="color:white;">CONTACTS</h6>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar2">
@@ -415,7 +413,7 @@ require "head.php";
                 <?= $row['username'] ?>
               </h6>
             </div>
-            <?php
+          <?php
           }
           ?>
         </div>
@@ -431,32 +429,34 @@ require "head.php";
                 $statement->execute(array(':name' => $_GET['name']));
                 $row1 = $statement->fetch(PDO::FETCH_ASSOC);
                 $_SESSION['name'] = $row1['username'];
-                ?>
+              ?>
                 <span class="conimg"><i class="fa fa-user-circle-o" style="color:white;"></i></span>
                 <h4><?= $_SESSION['name'] ?></h4>
-                <?php
+              <?php
               }
               ?>
             </div>
           </header>
           <script>
-            $(document).ready(function () {
+            $(document).ready(function() {
               var container = $('#chathist')[0];
               var containerHeight = container.clientHeight;
               var contentHeight = container.scrollHeight;
               container.scrollTop = container.scrollHeight - container.clientHeight;
               var pageRefresh = 5000; //5 s
-              setInterval(function () {
+              setInterval(function() {
                 $('#chathist').load(location.href + " #chathist >");
                 $('#myNavbar2').load(location.href + " #myNavbar2 >");
               }, pageRefresh);
             });
+
             function show_func() {
               var element = document.getElementById("chathist");
               element.scrollTop = element.scrollHeight;
             }
+
             function sub() {
-              $('#myform').on("submit", function (e) {
+              $('#myform').on("submit", function(e) {
                 var dataString = new FormData(this);
                 dataString.append('submit', '1');
                 $.ajax({
@@ -466,7 +466,7 @@ require "head.php";
                   contentType: false,
                   cache: false,
                   processData: false,
-                  success: function () {
+                  success: function() {
                     $('textarea').val('');
                   }
                 });
@@ -486,15 +486,18 @@ require "head.php";
               $run = $pdo->query($query);
               $i = 0;
               $ct = 0;
-              while ($row = $run->fetch(PDO::FETCH_ASSOC)):
+              while ($row = $run->fetch(PDO::FETCH_ASSOC)){
                 $date = explode(' ', $row['dt']);
                 $date[0] = date("d-m-Y", strtotime($date[0]));
                 if ($date[0] != $ct) {
                   $ct = date("d-m-Y", strtotime($date[0]));
                   ?>
-                  <div class="clear-fix"></div><br><br>
-                  <div class="date"><?= $ct ?></div><br><br>
-                  <div class="clear-fix"></div><?php
+                  <div class="clear-fix"></div>
+                  <br><br>
+                  <div class="date"><?= $ct ?></div>
+                  <br><br>
+                  <div class="clear-fix"></div>
+                  <?php
                 }
                 if ($i == 0) {
                   $i = 5;
@@ -502,27 +505,21 @@ require "head.php";
                   ?>
                   <div id="triangle1" class="triangle1"></div>
                   <div id="message1" class="message1">
-                    <div style="color: white;
-    float: right;
-    padding: 0;
-    width: 100%;">
-                      <pre><?php echo trim($row['msg']); ?></pre>
+                    <div style="color: white;float: right; padding: 0;width: 100%;">
+                        <pre><?php echo trim($row['msg']); ?></pre>
                     </div>
                     <div class="spdat">
                       <i style="font-size:16px;margin-right:4px" class="fa fa-clock"></i><?php echo $date[1]; ?>
                     </div>
                   </div>
                   <br /><br />
-                  <?php
+                <?php
                 } else {
                   if ($row['uname'] != $first['uname']) {
-                    ?>
+                  ?>
                     <div id="triangle" class="triangle"></div>
                     <div id="message" class="message">
-                      <div style="color: white;
-    float: right;
-    padding: 0;
-    width: 100%;">
+                      <div style="color: white;float: right;padding: 0;width: 100%;">
                         <pre><?php echo trim($row['msg']); ?></pre>
                       </div>
                       <div class="spdat">
@@ -530,15 +527,12 @@ require "head.php";
                       </div>
                     </div>
                     <br /><br />
-                    <?php
+                  <?php
                   } else {
                     ?>
                     <div id="triangle1" class="triangle1"></div>
                     <div id="message1" class="message1">
-                      <div style="color: white;
-    float: right;
-    padding: 0;
-    width: 100%;">
+                      <div style="color: white;float: right;padding: 0;width: 100%;">
                         <pre><?php echo trim($row['msg']); ?></pre>
                       </div>
                       <div class="spdat">
@@ -546,10 +540,10 @@ require "head.php";
                       </div>
                     </div>
                     <br /><br />
-                    <?php
+                  <?php
                   }
                 }
-              endwhile;
+              }
               ?>
             </div>
             <script type="text/javascript">
@@ -559,6 +553,7 @@ require "head.php";
                 }
                 setText(e.target.value);
               }
+
               function change() {
                 console.log('helo');
                 if ($.trim($("#chat-head").html()) == '') {
@@ -567,27 +562,27 @@ require "head.php";
                   alert('please select a contact');
                   document.getElementById('textarea').value = '';
                   return false;
-                }
-                else if ($('#textarea').val() == '') {
+                } else if ($('#textarea').val() == '') {
                   console.log('helo5656');
                   $('#myBtn').prop('disabled', true);
                   return false;
-                }
-                else {
+                } else {
                   console.log('kildjfrekrh');
                   // $('#myBtn').removeAttr('disabled');
                   $('#myBtn').prop('disabled', false);
                   return true;
                 }
               }
+
               function getfile(x) {
                 console.log(x);
                 $.ajax({
                   type: "POST",
                   url: "message.php?name=" + x,
-                  data: { status: 1 },
-                  success: function () {
-                  }
+                  data: {
+                    status: 1
+                  },
+                  success: function() {}
                 });
                 location.href = "message.php?name=" + x;
               }
@@ -609,7 +604,7 @@ require "head.php";
     require 'foot.php';
     ?>
     <script>
-      $(".inner-switch").on("click", function () {
+      $(".inner-switch").on("click", function() {
         if ($("#chat").hasClass("dark")) {
           $("#chat").removeClass("dark");
           $(".inner-switch").text("OFF");

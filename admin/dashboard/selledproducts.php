@@ -35,9 +35,9 @@ include "header.php";
       $('#selledproductsphp').addClass('active');
     </script>
     <div class="table1">
-      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;"><i
-          class="fas fa-clipboard-list" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Completed
-        Orders</h4>
+      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;">
+        <i class="fas fa-clipboard-list" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Completed Orders
+      </h4>
       <div id="jsGrid"></div>
       <br><br><br>
       <a class="excelbt" href="javascript:void(0);" onclick="printPageArea('jsGrid')">Print to Excel</a>
@@ -50,24 +50,28 @@ include "header.php";
         //var result = JSON.stringify(data);
         console.log(data[0]);
         var p = "";
-        p += "<table><tr>\
-<th>OrderId</th>\
-<th>Product</th>\
-<th>Order Date</th>\
-<th>Delivered Date</th>\
-<th>Store Name</th>\
-<th>Status</th>\
-<th>Total Amount</th></tr>\
-";
+        p += "\
+          <table>\
+            <tr>\
+              <th>OrderId</th>\
+              <th>Product</th>\
+              <th>Order Date</th>\
+              <th>Delivered Date</th>\
+              <th>Store Name</th>\
+              <th>Status</th>\
+              <th>Total Amount</th>\
+            </tr>";
         for (var i = 0; i < data.length; i++) {
-          p += "<tr>\
-  <th>"+ data[i].new_ordered_products_id + "</th>\
-<th>"+ data[i].item_name + "</th>\
-<th>"+ data[i].order_date + "</th>\
-<th>"+ data[i].delivery_date + "</th>\
-<th>"+ data[i].store_name + "</th>\
-<th>"+ data[i].delivery_status + "</th>\
-<th>"+ data[i].total_amt + "</th></tr>";
+          p += "\
+            <tr>\
+              <th>" + data[i].new_ordered_products_id + "</th>\
+              <th>" + data[i].item_name + "</th>\
+              <th>" + data[i].order_date + "</th>\
+              <th>" + data[i].delivery_date + "</th>\
+              <th>" + data[i].store_name + "</th>\
+              <th>" + data[i].delivery_status + "</th>\
+              <th>" + data[i].total_amt + "</th>\
+            </tr>";
         }
         p += "</table>";
         return p;
@@ -77,6 +81,7 @@ include "header.php";
         p = tblpr();
         window.open('data:application/vnd.ms-excel;base64,' + base64_encode(p));
       }
+
       function base64_encode(data) {
         var b64 = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=";
         var o1, o2, o3, h1, h2, h3, h4, bits, i = 0,
@@ -123,29 +128,60 @@ include "header.php";
         pageSize: 5,
         pageButtonCount: 5,
         controller: {
-          loadData: function (filter) {
-            filter.type = "filter";//EDITED LINE
+          loadData: function(filter) {
+            filter.type = "filter"; //EDITED LINE
             console.log(filter);
             return $.ajax({
               type: "GET",
               url: "getselled.php",
               data: filter,
               dataType: "json",
-              success: function (data) {
+              success: function(data) {
                 console.log(data);
               },
             });
           }
         },
-        fields: [
-          { name: "product_name", title: "Product", type: "text", width: 150 },
-          { name: "order_date", title: "Ordered Date", type: "text", width: 100 },
-          { name: "delivery_date", title: "Delivered Date", type: "text", width: 150 },
-          { name: "store_name", title: "Store Name", type: "text", width: 100 },
-          { name: "delivery_status", title: "Status", type: "text", width: 100 },
-          { name: "total_amt", title: "Total", type: "text", width: 100 },
+        fields: [{
+            name: "product_name",
+            title: "Product",
+            type: "text",
+            width: 150
+          },
           {
-            type: "control", editButton: false, deleteButton: false
+            name: "order_date",
+            title: "Ordered Date",
+            type: "text",
+            width: 100
+          },
+          {
+            name: "delivery_date",
+            title: "Delivered Date",
+            type: "text",
+            width: 150
+          },
+          {
+            name: "store_name",
+            title: "Store Name",
+            type: "text",
+            width: 100
+          },
+          {
+            name: "delivery_status",
+            title: "Status",
+            type: "text",
+            width: 100
+          },
+          {
+            name: "total_amt",
+            title: "Total",
+            type: "text",
+            width: 100
+          },
+          {
+            type: "control",
+            editButton: false,
+            deleteButton: false
           }
         ]
       });

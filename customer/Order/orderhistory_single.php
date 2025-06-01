@@ -1,12 +1,12 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
 }
 if (isset($_GET['nopid'])) {
   $nopid = $_GET['nopid'];
 } else {
-  header('location:../Main/onestore.php');
+  header('location:../Main/hfe.php');
 }
 require "../Main/header.php";
 require "../Common/pdo.php";
@@ -231,7 +231,9 @@ require "../Common/pdo.php";
   <div class="order">
     <div class="orhead">
       <h2 class="sidebar-title"
-        style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 29px;padding-top: 20px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white ">
+        style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 29px;
+          padding-top: 20px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;
+          text-transform: capitalize;padding-left: 10px;color:white ">
         Purchased Product <i style="color: #fffd00" class="fa fa-product-hunt "></i>
         <span style="float: right;margin-right: 5px;margin-top: -16px;">
           <button type="button"
@@ -240,7 +242,8 @@ require "../Common/pdo.php";
             onclick="location.href='../Order/orderhistory.php'"><i class='fas fa-angle-left'></i> Back to <i
               class="fa fa-history"></i></button>
           <button type="button"
-            style="display:none;max-width: 180px;width:50px;height: 62px;font-weight: bold;border-top-right-radius: 10px;color:#c7c7c7;background-color:#0080ff"
+            style="display:none;max-width: 180px;width:50px;height: 62px;font-weight: bold;border-top-right-radius: 10px;
+              color:#c7c7c7;background-color:#0080ff"
             id="proceed" name="proceed" class="checkout-button button alt wc-forward back-sm"
             onclick="location.href='../Order/orderhistory.php'"><i class='fas fa-arrow-left'
               style="background-color:#000;padding:6px;border-radius:50%"></i></button>
@@ -511,7 +514,7 @@ require "../Common/pdo.php";
           <tr>
             <th class="tablhde" colspan="2"> Delivery details </th>
           </tr>
-          <tr style="padding-bottom;30px;"></tr>
+          <tr style="padding-bottom:30px;"></tr>
           <tr class="div-wrapper dw" col-span="2">
             <th class="cust_header" style="font-size:18px;width:100%;"><?= $row['first_name'] ?>   <?= $row['last_name'] ?>
             </th>

@@ -31,8 +31,9 @@ include "header.php";
       }
     </style>
     <div class="table1">
-      <h4 style="padding:10px;"><i class="fas fa-store-alt" style="font-size: 24px;padding-right: 12px"
-          aria-hidden="true"></i>Stores</h4>
+      <h4 style="padding:10px;">
+        <i class="fas fa-store-alt" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Stores
+      </h4>
       <script type="text/JavaScript"
         src="https://cdnjs.cloudflare.com/ajax/libs/jQuery.print/1.6.0/jQuery.print.js"></script>
       <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsgrid@1.5.3/dist/jsgrid.min.css" />
@@ -61,7 +62,7 @@ include "header.php";
         pageButtonCount: 5,
         deleteConfirm: "Do you really want to delete?",
         controller: {
-          loadData: function (filter) {
+          loadData: function(filter) {
             console.log("hdgahgdjagj")
             return $.ajax({
               type: "GET",
@@ -70,7 +71,7 @@ include "header.php";
               dataType: "json"
             });
           },
-          insertItem: function (item) {
+          insertItem: function(item) {
             return $.ajax({
               type: "POST",
               url: "getneworders.php",
@@ -78,14 +79,14 @@ include "header.php";
               dataType: "json"
             });
           },
-          updateItem: function (item) {
+          updateItem: function(item) {
             return $.ajax({
               type: "PUT",
               url: "getneworders.php",
               data: item
             });
           },
-          deleteItem: function (item) {
+          deleteItem: function(item) {
             return $.ajax({
               type: "DELETE",
               url: "getneworders.php",
@@ -94,54 +95,54 @@ include "header.php";
           },
         },
         fields: [{
-          name: "store_id",
-          title: "# Id",
-          type: "text",
-          //width:80,
-          validate: "required"
-        },
-        {
-          name: "store_name",
-          title: "Store Name",
-          type: "text",
-          //width:150,
-          validate: "required"
-        },
-        {
-          name: "opening_hours",
-          title: "Opening Hours",
-          type: "text",
-          //width:150,
-          validate: "required"
-        },
-        {
-          name: "address",
-          title: "Address",
-          type: "text",
-          // width:150,
-          validate: "required"
-        },
-        {
-          name: "status",
-          title: "Open/Closed",
-          type: "text",
-          //width:150,
-          validate: "required"
-        },
-        {
-          name: "longitude",
-          title: "Longitude",
-          type: "text",
-          //width:150,
-          validate: "required"
-        },
-        {
-          name: "latitude",
-          title: "Latitude",
-          type: "text",
-          // width:150,
-          validate: "required"
-        },
+            name: "store_id",
+            title: "# Id",
+            type: "text",
+            //width:80,
+            validate: "required"
+          },
+          {
+            name: "store_name",
+            title: "Store Name",
+            type: "text",
+            //width:150,
+            validate: "required"
+          },
+          {
+            name: "opening_hours",
+            title: "Opening Hours",
+            type: "text",
+            //width:150,
+            validate: "required"
+          },
+          {
+            name: "address",
+            title: "Address",
+            type: "text",
+            // width:150,
+            validate: "required"
+          },
+          {
+            name: "status",
+            title: "Open/Closed",
+            type: "text",
+            //width:150,
+            validate: "required"
+          },
+          {
+            name: "longitude",
+            title: "Longitude",
+            type: "text",
+            //width:150,
+            validate: "required"
+          },
+          {
+            name: "latitude",
+            title: "Latitude",
+            type: "text",
+            // width:150,
+            validate: "required"
+          },
         ]
       });
     </script>
