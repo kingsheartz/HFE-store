@@ -2,6 +2,7 @@
 require "header.php";
 require "../Common/cookie.php";
 ?>
+
 <style type="text/css">
   .cn-slider img {
     height: 150px;
@@ -21,7 +22,7 @@ require "../Common/cookie.php";
     width: 100%;
     transition: .3s;
     justify-content: center;
-    align-products: center;
+    align-items: center;
     text-align: center;
     padding-top: 0px !important;
   }
@@ -62,7 +63,7 @@ require "../Common/cookie.php";
   .owl-product {
     display: flex !important;
     justify-content: center !important;
-    align-products: center !important;
+    align-items: center !important;
     height: 100% !important;
   }
 
@@ -159,17 +160,27 @@ require "../Common/cookie.php";
   style="display:none;position: fixed;bottom:-500px;width:100%;z-index:999;padding-left:5px;padding-right:5px;justify-content:center"
   class="cookiesetting">
   <center>
-    <div
-      style="padding:10px;border-radius:5px;background-color: rgba(0,0,0,0.85);max-width: max-content;text-align: left;">
+    <div style="padding:10px;border-radius:5px;background-color: rgba(0,0,0,0.85);max-width: max-content;text-align: left;">
       <h4 style="color: white;">Your privacy</h4>
-      <p style="color:white;text-align: justify;">By clicking "Accept all cookies", you agree Stack Exchange can store
-        cookies on your device and disclose information in accordance with our <a
-          href="https://www.cookiesandyou.com/about-cookies/" target="_blank" style="color: white;">Cookie Policy</a>.
+      <p style="color:white;text-align: justify;">
+        By clicking "Accept all cookies", you agree Stack Exchange can store
+        cookies on your device and disclose information in accordance with our
+        <a href="https://www.cookiesandyou.com/about-cookies/" target="_blank" style="color: white;">Cookie Policy</a>.
       </p>
-      <button type="button" class="btn btn btn-primary" style="font-size:14px"
-        onclick="$('.cookiesetting').hide();setcookie(1);" data-dismiss="modal">Accept all cookies</button>
-      <button type="button" class="btn btn btn-success small-cookie-accept" onclick="$('#cookiemodal').modal('show');"
-        style="font-size:14px" data-dismiss="modal">Customize settings</button>
+      <button
+        type="button"
+        class="btn btn btn-primary"
+        style="font-size:14px"
+        onclick="$('.cookiesetting').hide();setcookie(1);"
+        data-dismiss="modal">Accept all cookies
+      </button>
+      <button
+        type="button"
+        class="btn btn btn-success small-cookie-accept"
+        onclick="$('#cookiemodal').modal('show');"
+        style="font-size:14px"
+        data-dismiss="modal">Customize settings
+      </button>
     </div>
   </center>
 </div>
@@ -189,12 +200,10 @@ require "../Common/cookie.php";
     <ul class="" id="bxslider-home4" style="height: 400px;">
       <?php
       $slider = array(
-        "Power /Precision /Performance //Built for serious runners, this treadmill delivers smooth, quiet operation and advanced tracking features.
-
-",
+        "Power /Precision /Performance //Built for serious runners, this treadmill delivers smooth, quiet operation and advanced tracking features.",
         " Run /With /Confidence //Engineered for stability and comfort, it's your go-to machine for consistent cardio training.",
-        "Elevate /Your /Routine. //Achieve new goals with intuitive controls, powerful motor, and a spacious running surface.",
-        "Built /For /Speed //From light jogs to intense sprints, this treadmill supports every pace with ease."
+        " Elevate /Your /Routine. //Achieve new goals with intuitive controls, powerful motor, and a spacious running surface.",
+        " Built /For /Speed //From light jogs to intense sprints, this treadmill supports every pace with ease."
       );
       $i = 0;
       while ($i < sizeof($slider)) {
@@ -488,19 +497,24 @@ require "../Common/cookie.php";
           <button onclick="location.href='../Product/viewsubcat.php?category_id=<?= $ct ?>'">View All</button>
         </div>
         <div class="difrow hidescroll" id="difrow<?= $ct ?>" onscroll="scrolllisten('difrow<?= $ct ?>');">
-          <button class="left-arrow-btn-all shadow_all_none" onclick="moveleft('difrow<?= $ct ?>')"
-            style="display: none;"><i class="fas fa-chevron-left"></i></button>
-          <button class="right-arrow-btn-all shadow_all_none" onclick="moveright('difrow<?= $ct ?>')"><i
-              class="fas fa-chevron-right"></i></button>
+          <button
+            class="left-arrow-btn-all shadow_all_none"
+            onclick="moveleft('difrow<?= $ct ?>')"
+            style="display: none;">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="right-arrow-btn-all shadow_all_none" onclick="moveright('difrow<?= $ct ?>')">
+            <i class="fas fa-chevron-right"></i>
+          </button>
           <?php
           while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
           ?>
-            <div class="products-all-in-one" title="<?= $row['product_name'] ?>"
+            <div
+              class="products-all-in-one"
+              title="<?= $row['product_name'] ?>"
               onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
-              <div
-                style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
-                <img class="image" align="middle"
-                  src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                <img class="image" align="middle" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
               </div>
               <?php
               if (strlen($row['product_name']) >= 22) {
@@ -541,20 +555,17 @@ require "../Common/cookie.php";
         <div class="container">
           <div class="col-md-6 ban-bottom3">
             <div class="ban-top">
-              <img src="../../images/p2.jpg" class="img-responsive" alt=""
-                onclick="location.href='../Product/products_limited.php?category_id=6&subcategory_id=30'" />
+              <img src="../../images/p2.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6&subcategory_id=30'" />
             </div>
             <div class="ban-img">
               <div class=" ban-bottom1">
                 <div class="ban-top">
-                  <img src="../../images/p1.jpg" class="img-responsive" alt=""
-                    onclick="location.href='../Product/products_limited.php?category_id=4&subcategory_id=20'" />
+                  <img src="../../images/p1.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=4&subcategory_id=20'" />
                 </div>
               </div>
               <div class="ban-bottom2">
                 <div class="ban-top">
-                  <img src="../../images/p3.jpg" class="img-responsive" alt=""
-                    onclick="location.href='../Product/products_limited.php?category_id=6&subcategory_id=28'" />
+                  <img src="../../images/p3.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6&subcategory_id=28'" />
                 </div>
               </div>
               <div class="clearfix"></div>
@@ -562,8 +573,7 @@ require "../Common/cookie.php";
           </div>
           <div class="col-md-6 ban-bottom">
             <div class="ban-top">
-              <img src="../../images/p4.jpg" class="img-responsive" alt=""
-                onclick="location.href='../Product/products_limited.php?category_id=6&subcategory_id=27'" />
+              <img src="../../images/p4.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6&subcategory_id=27'" />
             </div>
           </div>
           <div class="clearfix"></div>
@@ -597,27 +607,27 @@ require "../Common/cookie.php";
             }
             /*COLOR PICKER*/
             ?>
-            <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
-              style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
+            <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat" style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
               Rate this <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
               <span style="float: right;margin-right: 5px;margin-top: -4px;">
-                <button type="button"
+                <button
+                  type="button"
                   style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor1] ?>;padding: 11px auto;font-size: 12px;"
-                  name="proceed" class="checkout-button button alt wc-forward"><a href="../Product/diff_views.php?prev=1"
-                    style="color:<?= $c2 ?>;">View all</a></button>
+                  name="proceed"
+                  class="checkout-button button alt wc-forward">
+                  <a href="../Product/diff_views.php?prev=1" style="color:<?= $c2 ?>;">View all</a>
+                </button>
               </span>
             </h4>
             <div class="difcat " style="border-radius: 5px;">
-              <span class="difhed">
-              </span>
-              <div class="difrow hidescroll" id="difrow<?= $prerow['product_description_id'] ?>"
-                onscroll="scrolllisten('difrow<?= $prerow['product_description_id'] ?>');">
-                <button class="left-arrow-btn-all shadow_all_none"
-                  onclick="moveleft('difrow<?= $prerow['product_description_id'] ?>')" style="display: none;"><i
-                    class="fas fa-chevron-left"></i></button>
-                <button class="right-arrow-btn-all shadow_all_none"
-                  onclick="moveright('difrow<?= $prerow['product_description_id'] ?>')"><i
-                    class="fas fa-chevron-right"></i></button>
+              <span class="difhed"></span>
+              <div class="difrow hidescroll" id="difrow<?= $prerow['product_description_id'] ?>" onscroll="scrolllisten('difrow<?= $prerow['product_description_id'] ?>');">
+                <button class="left-arrow-btn-all shadow_all_none" onclick="moveleft('difrow<?= $prerow['product_description_id'] ?>')" style="display: none;">
+                  <i class="fas fa-chevron-left"></i>
+                </button>
+                <button class="right-arrow-btn-all shadow_all_none" onclick="moveright('difrow<?= $prerow['product_description_id'] ?>')">
+                  <i class="fas fa-chevron-right"></i>
+                </button>
                 <div class="clearfix"> </div>
               </div>
               <!-- //new -->
@@ -666,14 +676,11 @@ require "../Common/cookie.php";
                       <img style="height:130px;width:auto" src="../../images/brand/nokia.png" alt="">
                       <img style="height:130px;width:auto" src="../../images/brand/canon.png" alt="">
                       <img style="height:130px;width:auto" src="../../images/brand/samsung.png" alt="">
-                      <img style="height:130px;width:auto" src="../../images/brand/apple.png"
-                        onclick="location.href='../Product/diff_views.php?brand=Apple'" alt="Apple">
+                      <img style="height:130px;width:auto" src="../../images/brand/apple.png" onclick="location.href='../Product/diff_views.php?brand=Apple'" alt="Apple">
                       <img style="height:130px;width:auto" src="../../images/brand/htc.png" alt="">
                       <img style="height:130px;width:auto" src="../../images/brand/lg.png" alt="">
-                      <img style="height:130px;width:auto" src="../../images/brand/vivo.png"
-                        onclick="location.href='../Product/diff_views.php?brand=Vivo'" alt="Vivo">
-                      <img style="height:140px;width:auto" src="../../images/brand/oppo.png"
-                        onclick="location.href='../Product/diff_views.php?brand=Oppo'" alt="Oppo">
+                      <img style="height:130px;width:auto" src="../../images/brand/vivo.png" onclick="location.href='../Product/diff_views.php?brand=Vivo'" alt="Vivo">
+                      <img style="height:140px;width:auto" src="../../images/brand/oppo.png" onclick="location.href='../Product/diff_views.php?brand=Oppo'" alt="Oppo">
                     </div>
                   </div>
                 </div>
@@ -975,18 +982,22 @@ require "../Common/cookie.php";
                     <h2 class="product-wid-title">Top Sellers</h2>
                     <a href="../Product/diff_views.php?topseller=1" class="wid-view-more">View All</a>
                     <?php
-                    $ran = $pdo->query("select distinct(product_keys.product_description_id) from product_keys
-inner join product_details on product_details.product_description_id=product_keys.product_description_id
-GROUP BY product_description_id order by CAST(sum(product_keys.ordered_cnt) as UNSIGNED) DESC LIMIT 3");
+                    $ran = $pdo->query(
+                      "SELECT DISTINCT(product_keys.product_description_id) FROM product_keys
+                      INNER JOIN product_details ON product_details.product_description_id=product_keys.product_description_id
+                      GROUP BY product_description_id ORDER BY CAST(sum(product_keys.ordered_cnt) AS UNSIGNED) DESC LIMIT 3"
+                    );
                     $isready = $ran->rowCount();
                     if ($isready != 0 && is_null($isready) == false) {
                       $l = 1;
                       while ($view = $ran->fetch(PDO::FETCH_ASSOC)) {
                         $product_desc_id = $view['product_description_id'];
-                        $preview = $pdo->query('select * from product_description
-    inner join product on product.product_id=product_description.product_id
-    INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
-    where product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id');
+                        $preview = $pdo->query(
+                          'SELECT * FROM product_description
+                          INNER JOIN product ON product.product_id=product_description.product_id
+                          INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
+                          WHERE product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id'
+                        );
                         $row = $preview->fetch(PDO::FETCH_ASSOC);
                         if (strlen($row['product_name']) > 28) {
                           $product_name = substr($row['product_name'], 0, 28) . "...";
@@ -1003,11 +1014,12 @@ GROUP BY product_description_id order by CAST(sum(product_keys.ordered_cnt) as U
                         }
                     ?>
                         <div class="single-wid-product">
-                          <a class="product-thumb"
-                            href="../Product/single.php?id=<?= $row['product_description_id'] ?>"><img
+                          <a class="product-thumb" href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
+                            <img
                               style="max-width:100px;width:auto;height:auto"
                               src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg"
-                              alt="<?= $product_name ?>"></a>
+                              alt="<?= $product_name ?>">
+                          </a>
                           <h2><a href="single-product.html"><?= $product_name ?></a></h2>
                           <?php
                           if ($rating == "" || $rating == 0 || is_null($rating)) {
@@ -1041,25 +1053,29 @@ GROUP BY product_description_id order by CAST(sum(product_keys.ordered_cnt) as U
                       <h2 class="product-wid-title">Recently Viewed</h2>
                       <a href="../Product/diff_views.php?recent=1" class="wid-view-more">View All</a>
                       <?php
-                      $ran = $pdo->query("select views ,product_keys.product_description_id from product_keys
-JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
-join product on product.product_id=product_description.product_id
-where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC limit 3");
+                      $ran = $pdo->query(
+                        "SELECT views ,product_keys.product_description_id FROM product_keys
+                        JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
+                        JOIN product ON product.product_id=product_description.product_id
+                        WHERE customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC limit 3"
+                      );
                       $isready = $ran->rowCount();
                       if ($isready != 0 && is_null($isready) == false) {
                         $m = 0;
                         while ($view = $ran->fetch(PDO::FETCH_ASSOC)) {
                           $product_desc_id = $view['product_description_id'];
-                          $preview = $pdo->query('select * from product_description
-    inner join product on product.product_id=product_description.product_id
-    where product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id');
+                          $preview = $pdo->query(
+                            'SELECT * FROM product_description
+                            INNER JOIN product ON product.product_id=product_description.product_id
+                            WHERE product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id'
+                          );
                           $row = $preview->fetch(PDO::FETCH_ASSOC);
                           if (strlen($row['product_name']) > 28) {
                             $product_name = substr($row['product_name'], 0, 28) . "...";
                           } else {
                             $product_name = $row['product_name'];
                           }
-                          $ratingstmt = $pdo->query("select round(avg(product_keys.rating)) AS avgrate from product_keys where product_description_id=" . $product_desc_id . " and rating>0 and ordered_cnt>0 and review!='0'");
+                          $ratingstmt = $pdo->query("SELECT round(avg(product_keys.rating)) AS avgrate FROM product_keys WHERE product_description_id=" . $product_desc_id . " and rating>0 and ordered_cnt>0 and review!='0'");
                           $ratecount = $ratingstmt->rowCount();
                           if ($ratecount != 0 && !is_null($ratecount)) {
                             $ratingrow = $ratingstmt->fetch(PDO::FETCH_ASSOC);
@@ -1069,10 +1085,9 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                           }
                       ?>
                           <div class="single-wid-product">
-                            <a class="product-thumb"
-                              href="../Product/single.php?id=<?= $row['product_description_id'] ?>"><img
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg"
-                                style="max-width:100px;width:auto;height:auto" alt="<?= $product_name ?>"></a>
+                            <a class="product-thumb" href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
+                              <img src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg" style="max-width:100px;width:auto;height:auto" alt="<?= $product_name ?>">
+                            </a>
                             <h2><a
                                 href="../Product/single.php?id=<?= $row['product_description_id'] ?>"><?= $product_name ?></a>
                             </h2>
@@ -1104,22 +1119,25 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                           <h2 class="product-wid-title">Popular Products</h2>
                           <a href="../Product/diff_views.php?popular=1" class="wid-view-more">View All</a>
                           <?php
-                          $ran = $pdo->query("select distinct(product_keys.product_description_id) from product_keys GROUP BY product_description_id order by CAST(sum(product_keys.views) as UNSIGNED) DESC LIMIT 3");
+                          $ran = $pdo->query("SELECT DISTINCT(product_keys.product_description_id) FROM product_keys GROUP BY product_description_id ORDER BY CAST(sum(product_keys.views) AS UNSIGNED) DESC LIMIT 3");
                           $isready = $ran->rowCount();
                           if ($isready != 0 && is_null($isready) == false) {
                             $n = 0;
                             while ($view = $ran->fetch(PDO::FETCH_ASSOC)) {
                               $product_desc_id = $view['product_description_id'];
-                              $preview = $pdo->query('select * from product_description
-    inner join product on product.product_id=product_description.product_id
-    where product_description.product_description_id=' . $product_desc_id . ' GROUP BY product_description.product_description_id');
+                              $preview = $pdo->query(
+                                'SELECT * from product_description
+                                INNER JOIN product ON product.product_id=product_description.product_id
+                                WHERE product_description.product_description_id=' . $product_desc_id . ' 
+                                GROUP BY product_description.product_description_id'
+                              );
                               $row = $preview->fetch(PDO::FETCH_ASSOC);
                               if (strlen($row['product_name']) > 28) {
                                 $product_name = substr($row['product_name'], 0, 28) . "...";
                               } else {
                                 $product_name = $row['product_name'];
                               }
-                              $ratingstmt = $pdo->query("select round(avg(product_keys.rating)) AS avgrate from product_keys where product_description_id=" . $product_desc_id . " and rating>0 and ordered_cnt>0 and review!='0'");
+                              $ratingstmt = $pdo->query("SELECT round(avg(product_keys.rating)) AS avgrate FROM product_keys WHERE product_description_id=" . $product_desc_id . " and rating>0 and ordered_cnt>0 and review!='0'");
                               $ratecount = $ratingstmt->fetch(PDO::FETCH_ASSOC);
                               $rating = $ratecount['avgrate'];
                               if ($rating != 0 && !is_null($rating)) {
@@ -1129,13 +1147,14 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                               }
                           ?>
                               <div class="single-wid-product">
-                                <a class="product-thumb"
-                                  href="../Product/single.php?id=<?= $row['product_description_id'] ?>"><img
+                                <a class="product-thumb" href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
+                                  <img
                                     style="max-width:100px;width:auto;height:autoo"
                                     src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg"
-                                    alt="<?= $product_name ?>"></a>
-                                <h2><a
-                                    href="../Product/single.php?id=<?= $row['product_description_id'] ?>"><?= $product_name ?></a>
+                                    alt="<?= $product_name ?>">
+                                </a>
+                                <h2>
+                                  <a href="../Product/single.php?id=<?= $row['product_description_id'] ?>"><?= $product_name ?></a>
                                 </h2>
                                 <?php
                                 if ($rating == "" || $rating == 0 || is_null($rating)) {
@@ -1162,7 +1181,6 @@ where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER 
                         ?>
                         </div>
                       </div>
-
                     </div>
                   </div>
               </div> <!-- End product widget area -->

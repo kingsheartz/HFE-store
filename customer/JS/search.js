@@ -135,7 +135,9 @@ function searchele2() {
     $("#display2").hide();
   } else {
     $("#display2").show();
-    var cat = $("input[type=radio][name=sel-category]").filter(":checked").val();
+    var cat = $("input[type=radio][name=sel-category]")
+      .filter(":checked")
+      .val();
     console.log(cat);
     var src = document.getElementById("search2").value;
     src = src.toLowerCase();
