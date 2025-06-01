@@ -6,12 +6,12 @@ if (!isset($_SESSION['id'])) {
 require "../Main/header.php";
 $uid = $_SESSION['id'];
 $sql = "select product.category_id,product_description.product_description_id,cart.quantity,cart.store_id,product.product_name,product_details.price from cart
-inner join product_description on cart.product_description_id=product_description.product_description_id
-inner join product on product_description.product_id=product.product_id
-inner join category on category.category_id=product.category_id
-inner join product_details on cart.product_description_id=product_details.product_description_id
-inner join store on store.store_id=cart.store_id
-where customer_id=:customer and product_details.store_id=cart.store_id and product_details.product_description_id=cart.product_description_id GROUP BY cart.cart_id order by cart.cart_id";
+        inner join product_description on cart.product_description_id=product_description.product_description_id
+        inner join product on product_description.product_id=product.product_id
+        inner join category on category.category_id=product.category_id
+        inner join product_details on cart.product_description_id=product_details.product_description_id
+        inner join store on store.store_id=cart.store_id
+        where customer_id=:customer and product_details.store_id=cart.store_id and product_details.product_description_id=cart.product_description_id GROUP BY cart.cart_id order by cart.cart_id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(array(
   ":customer" => $uid
@@ -334,39 +334,33 @@ $pdt_cnt = $stmt->rowCount();
   <!--<div style="background-image: url(../../images/logo/check.jpg);width: 100%;height: 100%;" >-->
   <!-- checkout -->
   <a href="../Main/onestore.php">
-    <button id="bill_gap" class="shadow_b" style="padding:10px;background-color:#3399cc "><i
-        class="glyphicon glyphicon-menu-left" style="color: white" aria-hidden="true"></i><span
-        style="color: white">Continue Shopping</span>
+    <button id="bill_gap" class="shadow_b" style="padding:10px;background-color:#3399cc ">
+      <i class="glyphicon glyphicon-menu-left" style="color: white" aria-hidden="true"></i>
+      <span style="color: white">Continue Shopping</span>
     </button>
   </a>
-  <span style="padding:15px;">Your shopping cart contains: <span style="font-family: arial"><?= $pdt_cnt ?>
-      Products</span></span>
+  <span style="padding:15px;">Your shopping cart contains: <span style="font-family: arial"><?= $pdt_cnt ?> Products</span></span>
   <div class="slno col-sm-12">Order details</div>
   <div class="checkout" style="padding-top: 0px;padding-bottom: 0px; background-color: rgba(255,255,255,0.05);">
-
-
-    <div class="container col-sm-12" style="    width: 99%;
-    padding: 10px;
-    padding-bottom: 30px;
-    background: white;
-    margin: 10px;
-    border-radius: 5px;
-    border: 1px solid gray;">
+    <div class="container col-sm-12" style="width: 99%;padding: 10px;padding-bottom: 30px;background: white;margin: 10px;border-radius: 5px;border: 1px solid gray;">
+      <h2 style="padding:15px;">
+        Your shopping cart contains: <span style="font-family: arial"><?= $pdt_cnt ?> Products</span>
+      </h2>
       <div class="col-md-12" style="margin-bottom: 15px;">
         <div class="woocommerce-billing-fields small-size">
           <div class="checkout-left-basket" style="width: 100%;background-color: white">
             <ul style="margin: 0px;padding:0px;width: 100%;">
               <div style="width: 100%;">
                 <li>
-                  <h4 style="font-weight: bolder;width: 100%;" class="shadow_b">Shopping products <i
-                      class="fa fa-shopping-cart"></i></h4>
+                  <h4 style="font-weight: bolder;width: 100%;" class="shadow_b">
+                    Shopping products <i class="fa fa-shopping-cart"></i>
+                  </h4>
                 </li>
               </div>
             </ul>
           </div>
         </div>
         <div class="checkout-right">
-
           <table class="timetable_sub " style="background-color: white;">
             <?php
             $ai = 1;
@@ -379,13 +373,13 @@ $pdt_cnt = $stmt->rowCount();
             ?>
                 <tr class="rem1">
                   <td class="invert slno"><?= $ai ?></td>
-                  <td class="invert-image" style=" "><a
-                      href="../Product/single.php?id=<?= $row['product_description_id'] ?>"><img
-                        src="../../images\<?= $row['category_id'] ?>\<?= $row['product_description_id'] ?>.jpg"
-                        alt=" " class="img-responsive" /></a></td>
+                  <td class="invert-image">
+                    <a href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
+                      <img src="../../images\<?= $row['category_id'] ?>\<?= $row['product_description_id'] ?>.jpg" class="img-responsive" />
+                    </a>
+                  </td>
                   <td class="invert">
-                    <div
-                      style="margin:auto;justify-content: left;align-products:left;display:flex;padding-left:20px;">
+                    <div style="margin:auto;justify-content: left;align-items:left;display:flex;padding-left:20px;">
                       <ul style="list-style: none;">
                         <li>
                           <h4 style="text-align: left;"><?= $row['product_name'] ?></h4>
@@ -416,7 +410,6 @@ $pdt_cnt = $stmt->rowCount();
           <div class="checkout-left-basket" style="width: 100%;background-color: white;">
             <ul style="margin: 0px;padding:0px;width: 100%;">
               <div style="width: 100%;">
-
                 <div style="padding-left: 20px;padding-right:20px;width: 100%;">
                   <?php
                   $total = 0;
@@ -425,23 +418,10 @@ $pdt_cnt = $stmt->rowCount();
                   $base = 0;
                   $uid = $_SESSION['id'];
                   $sql = "select DISTINCT c.cart_id,i.product_id,id.product_description_id,i.product_name,pd.price,i.price as mrp,c.quantity,c.total_amt from cart c
-inner join product_description id on c.product_description_id=id.product_description_id
-inner join product i on i.product_id=id.product_id
-inner join product_details pd on id.product_description_id=pd.product_description_id
-where customer_id=$uid GROUP BY c.cart_id";
-                  /*
-                                    //(int)$row['mrp']*(int)$row['quantity'];
-                                    //CODE:-<span style="text-decoration:line-through;padding-left:3px  ">  &#8377;<?=(int)$row['mrp']*(int)$row['quantity']?></span>
-                                    //TOTAL AMOUNT / EACH PRODUCT
-                                    */
-                  /*
-                                    //CODE:-<span style="text-decoration:line-through;padding-left:3px;float: right;"> &#8377;<?=$mrp_chrg?></span>
-                                    //TOTAL SERVICE CHARGES
-                                    */
-                  /*
-                                    //CODE:-<span style="text-decoration:line-through;padding-left:3px;color: #333;font-weight: normal;"><?=$base?></span>
-                                    //TOTAL AMOUNT TO BE PAID
-                                    */
+                          inner join product_description id on c.product_description_id=id.product_description_id
+                          inner join product i on i.product_id=id.product_id
+                          inner join product_details pd on id.product_description_id=pd.product_description_id
+                          where customer_id=$uid GROUP BY c.cart_id";
                   $stmt = $pdo->query($sql);
                   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                     $qty = $row['quantity'];
@@ -461,10 +441,11 @@ where customer_id=$uid GROUP BY c.cart_id";
                   <li>Total Savings <i>-</i>
                     <span>&#8377;<?= $total_mrp - $total_amt . " " ?></span>
                   </li>
-                  <li><i
-                      style="font-weight: bolder;font-family:sans-serif; ;color: black;font-style: unset;">Total
-                      <i>-</i> </i><span
-                      style="font-weight: bolder;font-family:sans-serif; ;color: black;">&#8377;<?= $total_amt ?></span>
+                  <li>
+                    <i style="font-weight: bolder;font-family:sans-serif; ;color: black;font-style: unset;">
+                      Total <i>-</i>
+                    </i>
+                    <span style="font-weight: bolder;font-family:sans-serif; ;color: black;">&#8377;<?= $total_amt ?></span>
                   </li>
                   <hr style="color:gray;">
                 </div>
@@ -479,8 +460,9 @@ where customer_id=$uid GROUP BY c.cart_id";
             <form enctype="multipart/form-data" action="#" class="checkout" method="post" name="checkout"
               style="padding: 0px">
               <div class="col-sm-12">
-                <p style="color: grey;"><b>NOTE : </b>Booked products need to received from the
-                  corresponding shops.</p>
+                <p style="color: grey;">
+                  <b>NOTE : </b>Booked products need to received from the corresponding shops.
+                </p>
               </div>
               <div id="customer_details" class="col2-set" style="margin:0px;padding: 0px;width: 100%">
                 <div class="col-sm-6">
@@ -498,82 +480,124 @@ where customer_id=$uid GROUP BY c.cart_id";
                 </div>
                 <div class="col-sm-6">
                   <div class="shipping_address" style="display: none;" id="stda_div">
-                    <hr class="make_divc"><br>
-                    <p id="shipping_first_name_field"
-                      class="form-row form-row-first validate-required">
-                      <label class="" for="shipping_first_name"
-                        style="font-weight: normal;text-transform: capitalize;">First Name <abbr
-                          title="required" class="required" style="color: #c50505">*</abbr>
+                    <hr class="make_divc">
+                    <br />
+                    <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
+                      <label
+                        class=""
+                        for="shipping_first_name"
+                        style="font-weight: normal;text-transform: capitalize;">First Name
+                        <abbr title="required" class="required" style="color: #c50505">*</abbr>
                       </label>
-                      <input type="text" oninput="$(this).removeClass('invalid')" value=""
-                        placeholder="First name" id="shipping_first_name"
-                        name="shipping_first_name" class="input-text validate"
-                        pattern="^\S[a-zA-Z]{3,30}$" title="Minimum character '3'.Use alphabets"
+                      <input
+                        type="text"
+                        oninput="$(this).removeClass('invalid')"
+                        value=""
+                        placeholder="First name"
+                        id="shipping_first_name"
+                        name="shipping_first_name"
+                        class="input-text validate"
+                        pattern="^\S[a-zA-Z]{3,30}$"
+                        title="Minimum character '3'.Use alphabets"
                         required="">
                     </p>
-                    <p id="shipping_last_name_field"
-                      class="form-row form-row-last validate-required">
-                      <label class="" for="shipping_last_name"
-                        style="font-weight: normal;text-transform: capitalize;">Last Name <abbr
-                          title="required" class="required" style="color: #c50505">*</abbr>
+                    <p id="shipping_last_name_field" class="form-row form-row-last validate-required">
+                      <label class="" for="shipping_last_name" style="font-weight: normal;text-transform: capitalize;">Last Name
+                        <abbr title="required" class="required" style="color: #c50505">*</abbr>
                       </label>
-                      <input type="text" oninput="$(this).removeClass('invalid')" value=""
-                        placeholder="Last name" id="shipping_last_name"
-                        name="shipping_last_name" class="input-text validate"
-                        pattern="^[a-zA-Z ]{1,20}$" title="Use alphabets" required="">
+                      <input
+                        type="text"
+                        oninput="$(this).removeClass('invalid')"
+                        value=""
+                        placeholder="Last name"
+                        id="shipping_last_name"
+                        name="shipping_last_name"
+                        class="input-text validate"
+                        pattern="^[a-zA-Z ]{1,20}$"
+                        title="Use alphabets"
+                        required="">
                     </p>
-                    <p id="shipping_phone_number_field"
-                      class="form-row form-row-last validate-required">
-                      <label class="" for="shipping_phone_number"
-                        style="font-weight: normal;text-transform: capitalize;">Phone
-                        Number<abbr title="required" class="required"
-                          style="color: #c50505">*</abbr>
+                    <p id="shipping_phone_number_field" class="form-row form-row-last validate-required">
+                      <label
+                        class=""
+                        for="shipping_phone_number"
+                        style="font-weight: normal;text-transform: capitalize;">Phone Number
+                        <abbr title="required" class="required" style="color: #c50505">*</abbr>
                       </label>
-                      <input type="text" oninput="$(this).removeClass('invalid')" value=""
-                        placeholder="Phone number" id="shipping_ph_no" maxlength="10"
-                        name="shipping_ph_no" class="input-text validate"
+                      <input
+                        type="text"
+                        oninput="$(this).removeClass('invalid')"
+                        value=""
+                        placeholder="Phone number"
+                        id="shipping_ph_no"
+                        maxlength="10"
+                        name="shipping_ph_no"
+                        class="input-text validate"
                         onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57;"
-                        pattern="^\d{10}$" title="Phone Number Format (9876543210)- 10 digits"
+                        pattern="^\d{10}$"
+                        title="Phone Number Format (9876543210)- 10 digits"
                         required="">
                     </p>
-                    <p id="shipping_phone_number2_field"
-                      class="form-row form-row-last validate-required">
-                      <label class="" for="shipping_ph_no2"
-                        style="font-weight: normal;text-transform: capitalize;">Alternate phone
-                        number<small title="required" class="required" style="color: #c50505">
-                          (Optional)</small>
+                    <p id="shipping_phone_number2_field" class="form-row form-row-last validate-required">
+                      <label
+                        class=""
+                        for="shipping_ph_no2"
+                        style="font-weight: normal;text-transform: capitalize;">Alternate phone number
+                        <small title="required" class="required" style="color: #c50505">(Optional)</small>
                       </label>
-                      <input type="text" oninput="$(this).removeClass('invalid')" value=""
-                        placeholder="Alternate Phone Number" id="shipping_ph_no2" maxlength="10"
-                        name="shipping_ph_no2" class="input-text validate"
+                      <input
+                        type="text"
+                        oninput="$(this).removeClass('invalid')"
+                        value=""
+                        placeholder="Alternate Phone Number"
+                        id="shipping_ph_no2"
+                        maxlength="10"
+                        name="shipping_ph_no2"
+                        class="input-text validate"
                         onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57;"
                         pattern="^(\d{0}|\d{10})$"
                         title="Phone Number Format (9876543210)- 10 digits">
                     </p>
                     <div class="clear"></div>
-                    <p id="shipping_address_1_field"
-                      class="form-row form-row-wide address-field validate-required">
-                      <label class="" for="shipping_address_1"
-                        style="font-weight: normal;text-transform: capitalize;">Address <abbr
-                          title="required" class="required" style="color: #c50505">*</abbr>
+                    <p id="shipping_address_1_field" class="form-row form-row-wide address-field validate-required">
+                      <label
+                        class=""
+                        for="shipping_address_1"
+                        style="font-weight: normal;text-transform: capitalize;">Address
+                        <abbr title="required" class="required" style="color: #c50505">*</abbr>
                       </label>
-                      <textarea oninput="$(this).removeClass('invalid')" value=""
-                        title="Minimal character count is 10" placeholder="Street address"
-                        id="shipping_address_1" name="shipping_address_1"
-                        class="input-text validate" required=""></textarea>
+                      <textarea
+                        oninput="$(this).removeClass('invalid')"
+                        value=""
+                        title="Minimal character count is 10"
+                        placeholder="Street address"
+                        id="shipping_address_1"
+                        name="shipping_address_1"
+                        class="input-text validate"
+                        required=""></textarea>
                     </p>
-                    <p id="shipping_postcode_field"
+                    <p
+                      id="shipping_postcode_field"
                       class="form-row form-row-last address-field validate-required validate-postcode"
                       data-o_class="form-row form-row-last address-field validate-required validate-postcode">
-                      <label class="" for="shipping_postcode"
-                        style="font-weight: normal;text-transform: capitalize;">Postcode <abbr
-                          title="required" class="required" style="color: #c50505">*</abbr>
+                      <label
+                        class=""
+                        for="shipping_postcode"
+                        style="font-weight: normal;text-transform: capitalize;">Postcode
+                        <abbr title="required" class="required" style="color: #c50505">*</abbr>
                       </label>
-                      <input type="text" oninput="$(this).removeClass('invalid')" value=""
-                        placeholder="Postcode / Zip" id="shipping_postcode" maxlength="6"
-                        name="shipping_postcode" class="input-text validate"
+                      <input
+                        type="text"
+                        oninput="$(this).removeClass('invalid')"
+                        value=""
+                        placeholder="Postcode / Zip"
+                        id="shipping_postcode"
+                        maxlength="6"
+                        name="shipping_postcode"
+                        class="input-text validate"
                         onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                        pattern="^\d{6}$" title="PIN Number Format (654321)- 6 digits"
+                        pattern="^\d{6}$"
+                        title="PIN Number Format (654321)- 6 digits"
                         required="">
                     </p>
                     <div class="clear"></div>
@@ -582,17 +606,24 @@ where customer_id=$uid GROUP BY c.cart_id";
                 </div>
                 <div id="payment" class="col-sm-12">
                   <div class="form-row place-order" style="width: 100%">
-                    <button type="button" data-value="Place order" id="place_order"
+                    <button
+                      type="button"
+                      data-value="Place order"
+                      id="place_order"
                       name="woocommerce_checkout_place_order"
-                      class="button alt real_btn place_order" style="width: 100%;font-size:1em"
+                      class="button alt real_btn place_order"
+                      style="width: 100%;font-size:1em"
                       onclick="placeorder()"><i class="fas fa-shopping-bag"></i>&nbsp; PLACE ORDER
                     </button>
                   </div>
                   <div class="form-row place-order" style="width: 100%">
-                    <button class="load_btn place_order" data-value="Place order"
+                    <button
+                      class="load_btn place_order"
+                      data-value="Place order"
                       style="display:none;width: 100%;font-weight:bold"
-                      name="woocommerce_checkout_place_order" type="button"><i
-                        class="fa fa-refresh fa-spin"></i>&nbsp;PLACE ORDER</button>
+                      name="woocommerce_checkout_place_order"
+                      type="button"><i class="fa fa-refresh fa-spin"></i>&nbsp;PLACE ORDER
+                    </button>
                   </div>
                   <div class="clear"></div>
                 </div>
@@ -657,8 +688,6 @@ require "../Main/footer.php";
     $("#stda_div").css("display", "none");
     checkBox_diff.checked = false;
   });
-  /*///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--->
-/*/ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--->
 </script>
 <script>
   function placeorder() {
@@ -666,11 +695,10 @@ require "../Main/footer.php";
     if (order_notes == "" || order_notes == null) {
       order_notes = 0;
     }
-    // if(checkBox_user.checked==false && checkBox_diff.checked==false){
-    //     toastr.error('Require billing details!!!')
-    //     return;
-    // }
-    if (true) {
+    if (checkBox_user.checked == false && checkBox_diff.checked == false) {
+      toastr.error('Require billing details!!!')
+      return;
+    } else if (checkBox_user.checked == true) {
       var uid = "<?= $_SESSION['id'] ?>";
       var pdt_cnt = "<?= $pdt_cnt ?>";
       var total_amt = "<?= $total_amt ?>";
@@ -869,8 +897,6 @@ require "../Main/footer.php";
       }
     }
   }
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--->
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////--->
 </script>
 <!--</div>-->
 </body>
