@@ -1,8 +1,10 @@
 <?php
 session_start();
+
 if (isset($_SESSION['id'])) {
   header("location:../Main/onestore.php");
 }
+
 require "../Main/header.php";
 ?>
 <style type="text/css">
@@ -883,31 +885,7 @@ require "../Main/header.php";
 <?php
 require "../Main/footer.php";
 ?>
-<!--///////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!-- Bootstrap Core JavaScript -->
-<!--<script src="../../js/bootstrap.min.js"></script>-->
-<!-- top-header and slider -->
-<!-- here stars scrolling icon --><!--
-    <script type="text/javascript">
-        $(document).ready(function() {
-            /*
-                var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-                };
-            */
-            $().UItoTop({ easingType: 'easeOutQuart' });
-            });
-    </script>-->
-<!-- //here ends scrolling icon -->
-<!--<script src="../../js/minicart.min.js"></script>-->
-<!--///////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
 <script>
   var page_selector = 0;
   var currentTab_reg = 0; // Current tab_reg is set to be the first tab_reg (0)
@@ -1267,14 +1245,14 @@ if (isset($_GET['verified'])) {
     //validating first name is not a number
     if (!(isNaN(first_name))) {
       /*
-                  swal({
-                  title: "Oops!!!",
-                  text: "Please use Albhabets",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-                  });
+        swal({
+          title: "Oops!!!",
+          text: "Please use Albhabets",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#profile_button').click();
       document.getElementById("first_name").focus();
@@ -1299,14 +1277,14 @@ if (isset($_GET['verified'])) {
     //limiting the name length
     else if (first_name.length > 20) {
       /*
-                  swal({
-                  title: "Oops!!!",
-                  text: "Entry is too long !!! ",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-                  });
+        swal({
+          title: "Oops!!!",
+          text: "Entry is too long !!! ",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#profile_button').click();
       document.getElementById("first_name").focus();
@@ -1316,14 +1294,14 @@ if (isset($_GET['verified'])) {
     //minimal character check
     else if (first_name.length < 2) {
       /*
-                  swal({
-                  title: "Oops!!!",
-                  text: "Entry is too short !!! ",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-                  });
+        swal({
+          title: "Oops!!!",
+          text: "Entry is too short !!! ",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#profile_button').click();
       document.getElementById("first_name").focus();
@@ -1333,14 +1311,14 @@ if (isset($_GET['verified'])) {
     //validating last name isempty
     if (last_name == null || last_name == "") {
       /*
-                  swal({
-                  title: "Oops!!!",
-                  text: "Please enter  your last name",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-                  });
+        swal({
+          title: "Oops!!!",
+          text: "Please enter  your last name",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#profile_button').click();
       document.getElementById("last_name").focus();
@@ -1365,14 +1343,14 @@ if (isset($_GET['verified'])) {
     //Phone number check
     if (phone == null || phone == "") {
       /*
-                  swal({
-                  title: "Oops!!!",
-                  text: "Please enter your phone number",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-                  });
+        swal({
+          title: "Oops!!!",
+          text: "Please enter your phone number",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#profile_button').click();
       document.getElementById("phone").focus();
@@ -1382,14 +1360,14 @@ if (isset($_GET['verified'])) {
     //validating Phone is a number
     else if (isNaN(phone) || phone.length != 10) {
       /*
-                  swal({
-                  title: "Oops!!!",
-                  text: "Invalid phone number",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-                  });
+        swal({
+          title: "Oops!!!",
+          text: "Invalid phone number",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#profile_button').click();
       document.getElementById("phone").focus();
@@ -1400,14 +1378,14 @@ if (isset($_GET['verified'])) {
     //PIN check
     else if (regpin == null || regpin == "") {
       /*
-          swal({
-                  title: "Oops!!!",
-                  text: "Please enter the pincode !!! ",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-              });
+        swal({
+          title: "Oops!!!",
+          text: "Please enter the pincode !!! ",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#profile_button').click();
       document.getElementById("regpin").focus();
@@ -1535,14 +1513,14 @@ if (isset($_GET['verified'])) {
     //email verification of null value
     if (email == null || email == "") {
       /*
-          swal({
-                  title: "Oops!!!",
-                  text: "Please enter your email ID !!! ",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-                  });
+        swal({
+          title: "Oops!!!",
+          text: "Please enter your email ID !!! ",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#login_button').click();
       document.getElementById("email").focus();
@@ -1551,14 +1529,14 @@ if (isset($_GET['verified'])) {
     }
     if (ValidateEmail(email) == false) {
       /*
-          swal({
-                  title: "Oops!!!",
-                  text: "Invalid email address!!! ",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-                  });
+        swal({
+          title: "Oops!!!",
+          text: "Invalid email address!!! ",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#login_button').click();
       document.getElementById("email").focus();
@@ -1567,14 +1545,15 @@ if (isset($_GET['verified'])) {
     }
     //password verification of null value
     if (pass1 == null || pass1 == "") {
-      /*    swal({
-                  title: "Oops!!!",
-                  text: "Please enter the password !!! ",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-                  });
+      /*    
+        swal({
+          title: "Oops!!!",
+          text: "Please enter the password !!! ",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#login_button').click();
       document.getElementById("passfir").focus();
@@ -1608,14 +1587,14 @@ if (isset($_GET['verified'])) {
     //weak password verification
     if (pass1.length < 8) {
       /*
-          swal({
-                  title: "Oops!!!",
-                  text: "Weak Password !!! Try again ",
-                  icon: "error",
-                  closeOnClickOutside: false,
-                  dangerMode: true,
-                  timer: 6000,
-                  });
+        swal({
+          title: "Oops!!!",
+          text: "Weak Password !!! Try again ",
+          icon: "error",
+          closeOnClickOutside: false,
+          dangerMode: true,
+          timer: 6000,
+        });
       */
       $('#login_button').click();
       document.getElementById("passfir").focus();
@@ -1702,41 +1681,12 @@ if (isset($_GET['verified'])) {
               } else {
                 var subscribe = "0";
               }
-              //var post="http://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+loc+"";
-              ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /* var post="http://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+loc+"";//JSON RESPONSE
-//REQUIRED FOR GEOLOCATION ACCESS
-    var xmlhttp = new XMLHttpRequest();//HTTP REQUEST START
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) { ////START IF
-            addr = JSON.parse(this.responseText);
-            console.log(addr);
-            var lat=addr.data[0].latitude;
-            console.log(lat);
-            var long=addr.data[0].longitude;
-            console.log(long); */
-              /*//NOT NECESSARY
-                  geocoder = new google.maps.Geocoder();
-                  var address = document.getElementById("my-address").value;
-                  geocoder.geocode( { 'address': address}, function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                    alert("Latitude: "+results[0].geometry.location.lat());
-                    alert("Longitude: "+results[0].geometry.location.lng());
-                    }
-                    else {
-                      alert("Geocode was not successful for the following reason: " + status);
-                    }
-                  });
-                }
-              */
+
               var lat = long = 0;
-              ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
               //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
               $.ajax({
                 url: "../Common/functions.php", //passing page info
                 data: {
@@ -1913,18 +1863,7 @@ if (isset($_GET['verified'])) {
                   }
                 }
               }); //closing ajax
-              /*
-                  } //closing xmlhttprequest for lat & long
-                  };
-
-                  xmlhttp.open("GET", post , true);
-                  xmlhttp.send();
-              }//END IF SUBMITTED
-                  else{
-                      return;
-                  }
-
-              }); */ //END OF SWAL WILLSUBMITTED
+              //END OF SWAL WILLSUBMITTED
             } //ELSE CLOSING (IN ACTUAL PRGM) ,NOW END WILL SUBMIT
             else if (willSubmit.isConfirmed === Swal.DismissReason.cancel) {
               $('.round_reg_3').removeClass('active');
@@ -2017,14 +1956,14 @@ if (isset($_GET['verified'])) {
         //validating shipping_ph_no is a number
         else if (isNaN(shipping_ph_no) || shipping_ph_no.length != 10) {
           /*
-                      swal({
-                      title: "Oops!!!",
-                      text: "Invalid phone number",
-                      icon: "error",
-                      closeOnClickOutside: false,
-                      dangerMode: true,
-                      timer: 6000,
-                      });
+            swal({
+              title: "Oops!!!",
+              text: "Invalid phone number",
+              icon: "error",
+              closeOnClickOutside: false,
+              dangerMode: true,
+              timer: 6000,
+            });
           */
           $('#delivery_button').click();
           document.getElementById("shipping_ph_no").focus();
@@ -2034,14 +1973,14 @@ if (isset($_GET['verified'])) {
         //validating shipping_ph_no 2 is a number
         if (shipping_ph_no2 != "" && shipping_ph_no2.length != 10) {
           /*
-                      swal({
-                      title: "Oops!!!",
-                      text: "Invalid shipping_ph_no number",
-                      icon: "error",
-                      closeOnClickOutside: false,
-                      dangerMode: true,
-                      timer: 6000,
-                      });
+            swal({
+              title: "Oops!!!",
+              text: "Invalid shipping_ph_no number",
+              icon: "error",
+              closeOnClickOutside: false,
+              dangerMode: true,
+              timer: 6000,
+            });
           */
           $('#delivery_button').click();
           document.getElementById("shipping_ph_no2").focus();
@@ -2074,14 +2013,14 @@ if (isset($_GET['verified'])) {
         //PIN check
         else if (shipping_postcode == null || shipping_postcode == "") {
           /*
-              swal({
-                      title: "Oops!!!",
-                      text: "Please enter the pincode !!! ",
-                      icon: "error",
-                      closeOnClickOutside: false,
-                      dangerMode: true,
-                      timer: 6000,
-                  });
+            swal({
+              title: "Oops!!!",
+              text: "Please enter the pincode !!! ",
+              icon: "error",
+              closeOnClickOutside: false,
+              dangerMode: true,
+              timer: 6000,
+            });
           */
           $('#delivery_button').click();
           document.getElementById("shipping_postcode").focus();
@@ -2139,36 +2078,7 @@ if (isset($_GET['verified'])) {
               } else {
                 var subscribe = "0";
               }
-              //var post="http://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+loc+"";
-              ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /* var post="http://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+loc+"";//JSON RESPONSE
-//REQUIRED FOR GEOLOCATION ACCESS
-    var xmlhttp = new XMLHttpRequest();//HTTP REQUEST START
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) { ////START IF
-            addr = JSON.parse(this.responseText);
-            console.log(addr);
-            var lat=addr.data[0].latitude;
-            console.log(lat);
-            var long=addr.data[0].longitude;
-            console.log(long); */
-              /*//NOT NECESSARY
-                  geocoder = new google.maps.Geocoder();
-                  var address = document.getElementById("my-address").value;
-                  geocoder.geocode( { 'address': address}, function(results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                    alert("Latitude: "+results[0].geometry.location.lat());
-                    alert("Longitude: "+results[0].geometry.location.lng());
-                    }
-                    else {
-                      alert("Geocode was not successful for the following reason: " + status);
-                    }
-                  });
-                }
-              */
+
               var lat = long = 0;
               ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
               //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2356,18 +2266,7 @@ if (isset($_GET['verified'])) {
                   }
                 }
               }); //closing ajax
-              /*
-                  } //closing xmlhttprequest for lat & long
-                  };
-
-                  xmlhttp.open("GET", post , true);
-                  xmlhttp.send();
-              }//END IF SUBMITTED
-                  else{
-                      return;
-                  }
-
-              }); */ //END OF SWAL WILLSUBMITTED
+              //END OF SWAL WILLSUBMITTED
             } //ELSE CLOSING (IN ACTUAL PRGM) ,NOW END WILL SUBMIT
             else if (willSubmit.isConfirmed === Swal.DismissReason.cancel) {
               $('.round_reg_3').removeClass('active');

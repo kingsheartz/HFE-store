@@ -1,14 +1,18 @@
 <?php
 session_start();
+
 if (!isset($_SESSION['id'])) {
   header("location:../Main/onestore.php");
 }
+
 require "../Main/header.php";
+
 if (isset($_SESSION['id'])) {
   $id = $_SESSION['id'];
 } else if (isset($_GET['id'])) {
   $id = $_GET['id'];
 }
+
 $usersql = 'select* from users where user_id=' . $id;
 $userstmt = $pdo->query($usersql);
 $userrow = $userstmt->fetch(PDO::FETCH_ASSOC);
@@ -140,12 +144,11 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
             <h5><i class="fa fa-info-circle fa-lg"></i>&nbsp;profile information
               <span id='succeeded' style="float: right;background-color: green;border-radius: 5px;color:white">&nbsp;
                 <i class="fa fa-check" style="color: orange;text-shadow: 1px 2px 3px grey"></i>
-                <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey">
-                  verified &nbsp;</i>
+                <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey">verified &nbsp;</i>
               </span>
               <span id='pending' style="display: none;float: right;background-color: white;border: 1px solid black;border-radius: 5px;color:white">&nbsp;
                 <i class="fa fa-close" style="color: red;text-shadow: 1px 2px 3px grey"></i>
-                <i style="text-transform: capitalize;font-size: 12px;color: black;text-shadow: 1px 2px 3px grey"> pending &nbsp;</i>
+                <i style="text-transform: capitalize;font-size: 12px;color: black;text-shadow: 1px 2px 3px grey">pending &nbsp;</i>
               </span>
             </h5>
             <div id="error_dis" style="display: none;margin-bottom: 50px;">
@@ -1041,31 +1044,7 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
 <?php
 require "../Main/footer.php";
 ?>
-<!--///////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////-->
-<!-- Bootstrap Core JavaScript -->
-<!--<script src="../../js/bootstrap.min.js"></script>-->
-<!-- top-header and slider -->
-<!-- here stars scrolling icon --><!--
-    <script type="text/javascript">
-        $(document).ready(function() {
-            /*
-                var defaults = {
-                containerID: 'toTop', // fading element id
-                containerHoverID: 'toTopHover', // fading element hover id
-                scrollSpeed: 1200,
-                easingType: 'linear'
-                };
-            */
-            $().UItoTop({ easingType: 'easeOutQuart' });
-            });
-    </script>-->
-<!-- //here ends scrolling icon -->
-<!--<script src="../../js/minicart.min.js"></script>-->
-<!--///////////////////////////////////////////////////////////////////////////////////////////////////
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-////////////////////////////////////////////////////////////////////////////////////////////////////-->
+
 <script>
   // Mini Cart
   paypal.minicart.render({
@@ -2634,36 +2613,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
           if (willSubmit.dismiss) {
             $('.load_btn').show();
             $('.real_btn').hide();
-            //var post="http://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+loc+"";
-            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            /* var post="http://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+loc+"";//JSON RESPONSE
-//REQUIRED FOR GEOLOCATION ACCESS
-    var xmlhttp = new XMLHttpRequest();//HTTP REQUEST START
-    xmlhttp.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) { ////START IF
-            addr = JSON.parse(this.responseText);
-            console.log(addr);
-            var lat=addr.data[0].latitude;
-            console.log(lat);
-            var long=addr.data[0].longitude;
-            console.log(long); */
-            /*//NOT NECESSARY
-                geocoder = new google.maps.Geocoder();
-                var address = document.getElementById("my-address").value;
-                geocoder.geocode( { 'address': address}, function(results, status) {
-                  if (status == google.maps.GeocoderStatus.OK) {
-                  alert("Latitude: "+results[0].geometry.location.lat());
-                  alert("Longitude: "+results[0].geometry.location.lng());
-                  }
-                  else {
-                    alert("Geocode was not successful for the following reason: " + status);
-                  }
-                });
-              }
-            */
+            
             var lat = long = 0;
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -2890,16 +2840,6 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
                 }
               }
             }); //closing ajax
-            /*
-                } //closing xmlhttprequest for lat & long
-                };
-                xmlhttp.open("GET", post , true);
-                xmlhttp.send();
-            }//END IF SUBMITTED
-                else{
-                    return;
-                }
-            }); */ //END OF SWAL WILLSUBMITTED
           } //ELSE CLOSING (IN ACTUAL PRGM) ,NOW END WILL SUBMIT
           else if (willSubmit.isConfirmed === Swal.DismissReason.cancel) {
             return;
