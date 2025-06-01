@@ -114,7 +114,7 @@ try {
   <div id="main">
     <?php
     if (isset($_SESSION['failed'])) {
-      echo '<div id="cont"><div style="padding-top:100px;"><center><a href="../Main/onestore.php" ><img src="../../images/logo/logomail.png"  ></a></center></div>';
+      echo '<div id="cont"><div style="padding-top:100px;"><center><a href="../Main/hfe.php" ><img src="../../images/logo/logomail.png"  ></a></center></div>';
       echo '<div id="error">';
       echo "<p style='text-align:center;font-size:42px;color:white;padding-top:5%;'><i style='color:yellow' class='fa fa-warning'></i> " . $_SESSION['failed'] . " <span style='color:red'>!!!</span></p><br>";
       echo "<center><a style='font-size:34px;color:white;font-weight:bold;text-decoration:none' href='../Account/login.php'><i style='color:#FFB04A' class='fas fa-hand-point-right'></i> <span style='color:red'><u>Log In</u></span></a></center>";
@@ -125,7 +125,7 @@ try {
   <script src="https://kit.fontawesome.com/a076d05399.js"></script>
   <script type="text/javascript">
     //ANIMATION
-    window.addEventListener("load", function() {
+    window.addEventListener("load", function () {
       const loader = document.querySelector(".loader");
       console.log(loader);
       loader.className += " hidden";

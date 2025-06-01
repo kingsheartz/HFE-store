@@ -3,16 +3,15 @@ session_start();
 $_COOKIE['animate'] = 0;
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
-  <title>OneStore || for all your needs</title>
+  <title>Healthcare & Fitness Equipment</title>
   <!-- for-mobile-apps -->
   <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <link href="images/logo/favicon.png" rel="icon" />
   <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
-  <link href="css/loading-animations.css" rel="stylesheet" type="text/css" />
   <script src="js/jquery-1.11.1.min.js"></script>
   <style type="text/css">
     img.log {
@@ -209,28 +208,36 @@ $_COOKIE['animate'] = 0;
 
 <body onload="userlogged_in()">
   <div class="loader">
-    <img src="images/load/3.svg" height="70" alt="loading..." />
+    <img src="images\load\3.svg" height="70" alt="loading..." />
   </div>
   <div class="loader1">
-    <img src="images/logo/store.jpg" class="ri" alt="store background" />
+    <img src="images/logo/store.jpg" class="ri" />
   </div>
   <div class="loader2">
-    <img src="images/logo/logo-high.png" class="ic" alt="logo" />
+    <img src="images/logo/logo-high.png" class="ic">
   </div>
   <div class="loader3">
-    <img src="images/logo/logofullfill.png" class="log" alt="animated logo" />
+    <img src="images/logo/logofullfill.png" class="log">
   </div>
   <script src="js/sweetalert.min.js"></script>
   <script type="text/javascript">
     function getCookie(name) {
-      const cookieArr = document.cookie.split(";");
+      // Split cookie string and get all individual name=value pairs in an array
+      var cookieArr = document.cookie.split(";");
 
-      for (let i = 0; i < cookieArr.length; i++) {
-        const cookiePair = cookieArr[i].split("=");
-        if (name === cookiePair[0].trim()) {
+      // Loop through the array elements
+      for (var i = 0; i < cookieArr.length; i++) {
+        var cookiePair = cookieArr[i].split("=");
+
+        /* Removing whitespace at the beginning of the cookie name
+        and compare it with the given string */
+        if (name == cookiePair[0].trim()) {
+          // Decode the cookie value and return
           return decodeURIComponent(cookiePair[1]);
         }
       }
+
+      // Return null if not found
       return " ";
     }
 
@@ -240,12 +247,13 @@ $_COOKIE['animate'] = 0;
         console.log(loader);
         loader.className += " hidden";
 
+
         var email = getCookie("OneStore_email");
         var pass = getCookie("OneStore_password");
         if (email != " " && pass != " ") {
           //$("#strt").hide();
           $.ajax({
-            url: "user/Common/functions.php", //passing page info
+            url: "customer/Common/functions.php", //passing page info
             data: {
               "login": 1,
               "email": email,
@@ -257,14 +265,15 @@ $_COOKIE['animate'] = 0;
 
             success: function(data) { //if logging in is success
               if (data.admin == 'true' && data.user == 'true') {
-                location.href = "user/Main/hfe.php";
+                location.href = "customer/Main/onestore.php";
               } else if (data.status == 'success') {
-                location.href = "user/Main/hfe.php";
+                location.href = "customer/Main/onestore.php";
                 return
               } else if (data.admin == 'true') {
+
                 location.href = "store-admin/index.php?id=" + data.id + "";
               } else if (data.status == 'error') {
-                location.href = "user/Main/hfe.php";
+                location.href = "customer/Main/onestore.php";
                 return;
               } else {
                 if (status === "error1") {
@@ -276,9 +285,9 @@ $_COOKIE['animate'] = 0;
                     dangerMode: true,
                     timer: 6000,
                   });
-                  location.href = "user/Main/hfe.php";
+                  location.href = "customer/Main/onestore.php";
                 }
-                location.href = "user/Main/hfe.php";
+                location.href = "customer/Main/onestore.php";
               }
             },
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
@@ -291,7 +300,7 @@ $_COOKIE['animate'] = 0;
                   dangerMode: true,
                   timer: 6000,
                 });
-                location.href = "user/Main/hfe.php";
+                location.href = "customer/Main/onestore.php";
                 return;
               } else {
                 return;
@@ -299,7 +308,7 @@ $_COOKIE['animate'] = 0;
             }
           }); //closing ajax
         } else {
-          location.href = "user/Main/hfe.php";
+          location.href = "customer/Main/onestore.php";
         }
       }, 4800);
     }

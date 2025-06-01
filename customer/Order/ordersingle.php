@@ -1,12 +1,12 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
 }
 if (isset($_GET['nopid'])) {
   $nopid = $_GET['nopid'];
 } else {
-  header('location:../Main/onestore.php');
+  header('location:../Main/hfe.php');
 }
 require "../Main/header.php";
 require "../Common/pdo.php";
@@ -307,11 +307,14 @@ require "../Common/pdo.php";
   <div class="order">
     <div class="orhead">
       <h2 class="sidebar-title"
-        style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 29px;padding-top: 20px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white ">
+        style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 29px;padding-top: 20px;
+          margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;
+          text-transform: capitalize;padding-left: 10px;color:white ">
         Ordered Product <i style="color: #fffd00" class="fa fa-product-hunt "></i>
         <span style="float: right;margin-right: 5px;margin-top: -16px;">
           <button type="button"
-            style="max-width: 180px;min-width:90px;height: 62px;font-weight: bold;border-top-right-radius: 10px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;;"
+            style="max-width: 180px;min-width:90px;height: 62px;font-weight: bold;border-top-right-radius: 10px;
+              background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;"
             id="proceed" name="proceed" class="checkout-button button alt wc-forward back-lg"
             onclick="location.href='../Order/myorders.php'"><i class='fas fa-arrow-circle-left'></i> Back</button>
           <button type="button"
@@ -327,14 +330,14 @@ require "../Common/pdo.php";
     $chkpendrow = $chkpendstmt->fetch(PDO::FETCH_ASSOC);
     $sts = $chkpendrow['delivery_status'];
     if ($sts == 'pending') {
-    ?>
+      ?>
       <div class="check-pending">
         <div onclick="cancel();" onmouseover="$(this).css('cursor','pointer')"
           style="float:right;border:1px solid rgb(165, 164, 164);color:red;padding-left:10px;padding-right:10px;margin-top:10px;clear:both;border-radius: 3px;">
           <i class="fa fa-close"></i><span style="color: #000;"><b> Cancel this order</b></span>
         </div><br>
       </div>
-    <?php
+      <?php
     }
     ?>
     <br>
@@ -558,32 +561,32 @@ require "../Common/pdo.php";
                 <td class="cust_details sts-now">
                   <?php
                   if ($row['delivery_status'] == 'completed') {
-                  ?>
+                    ?>
                     <span
                       style="background-color: green;border-radius: 5px;color:white;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;
                       <i class="fa fa-check" style="color: orange;text-shadow: 1px 2px 3px grey"></i>
                       <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white">
                         completed</i>
                     </span>
-                  <?php
+                    <?php
                   } else if ($row['delivery_status'] == 'pending') {
-                  ?>
+                    ?>
                     <span
                       style="background-color: rgb(255, 123, 0);border-radius: 5px;color:white;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;
                       <i class="fa fa-clock-o" style="color: rgb(0, 0, 0);text-shadow: 1px 2px 3px grey"></i>
                       <i style="text-transform:capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white">
                         pending &nbsp;</i>
                     </span>
-                  <?php
+                    <?php
                   } else if ($row['delivery_status'] == 'cancelled') {
-                  ?>
+                    ?>
                     <span
                       style="background-color: rgb(255, 0, 0);border-radius: 5px;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;
                       <i class="fa fa-close" style="color: rgb(255, 255, 255);text-shadow: 1px 2px 3px grey"></i>
                       <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white">
                         cancelled</i>
                     </span>
-                  <?php
+                    <?php
                   }
                   ?>
                 </td>

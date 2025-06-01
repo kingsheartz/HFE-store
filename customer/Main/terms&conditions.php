@@ -402,21 +402,21 @@ require "header.php";
   </style>
   <?php
   require "footer.php"
-  ?>
+    ?>
   <script src="../../js/jquery-1.11.1.min.js"></script>
   <script>
-    $(document).ready(function() {
+    $(document).ready(function () {
       $('.hidden').hide()
     });
-    $('.imagesDiv-link').click(function() {
+    $('.imagesDiv-link').click(function () {
       $('#imagesDiv').animate({
         width: 'toggle'
       }, "slow")
     });
   </script>
   <script>
-    $(document).ready(function() {
-      $("div.bhoechie-tab-menu>div.list-group>a").click(function(e) {
+    $(document).ready(function () {
+      $("div.bhoechie-tab-menu>div.list-group>a").click(function (e) {
         e.preventDefault();
         $(this).siblings('a.active').removeClass("active");
         $(this).addClass("active");
@@ -427,33 +427,33 @@ require "header.php";
     });
     <?php
     if (isset($_GET['shipping'])) {
-    ?>
+      ?>
       $("div.bhoechie-tab>div.bhoechie-tab-content.active").removeClass("active");
       $(".bhoechie-tab-menu>.list-group>.list-group-item.active").removeClass("active");
       $('.shipping').addClass("active");
       $('#shipping').addClass("active");
-    <?php
+      <?php
     } else if (isset($_GET['payment'])) {
-    ?>
-      $("div.bhoechie-tab>div.bhoechie-tab-content.active").removeClass("active");
-      $(".bhoechie-tab-menu>.list-group>.list-group-item.active").removeClass("active");
-      $('.payment').addClass("active");
-      $('#payment').addClass("active");
-    <?php
+      ?>
+        $("div.bhoechie-tab>div.bhoechie-tab-content.active").removeClass("active");
+        $(".bhoechie-tab-menu>.list-group>.list-group-item.active").removeClass("active");
+        $('.payment').addClass("active");
+        $('#payment').addClass("active");
+      <?php
     } else if (isset($_GET['return'])) {
-    ?>
-      $("div.bhoechie-tab>div.bhoechie-tab-content.active").removeClass("active");
-      $(".bhoechie-tab-menu>.list-group>.list-group-item.active").removeClass("active");
-      $('.return').addClass("active");
-      $('#return').addClass("active");
-    <?php
+      ?>
+          $("div.bhoechie-tab>div.bhoechie-tab-content.active").removeClass("active");
+          $(".bhoechie-tab-menu>.list-group>.list-group-item.active").removeClass("active");
+          $('.return').addClass("active");
+          $('#return').addClass("active");
+      <?php
     }
     ?>
   </script>
   <script type="text/javascript" language="javascript">
-    $(document).ready(function() { /// Wait till page is loaded
-      $('#bk-btn').click(function() {
-        $('.bk-block').load('property-detailed.php #main', function() {
+    $(document).ready(function () { /// Wait till page is loaded
+      $('#bk-btn').click(function () {
+        $('.bk-block').load('property-detailed.php #main', function () {
           /// can add another function here
         });
       });
