@@ -142,7 +142,10 @@ require "head.php";
     require "pdo.php";
     $results_per_page = 12;
     //find the total number of results stored in the database
-    $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id where item.category_id=$ctid  GROUP BY item_description.item_id";
+    $query = "SELECT * FROM item JOIN item_description
+              ON item.item_id=item_description.item_id
+              where item.category_id=$ctid
+              GROUP BY item_description.item_id";
     $result = $pdo->query($query);
     $number_of_result = $result->rowCount();
     //determine the total number of pages available
@@ -160,7 +163,7 @@ require "head.php";
       <div class="divhed">
         <?php
         $query6 = "SELECT * FROM category
-where category_id=$ctid ";
+                  where category_id=$ctid ";
         $st6 = $pdo->query($query6);
         $row6 = $st6->fetch(PDO::FETCH_ASSOC);
         ?><?= $row6['category_name'] ?>
@@ -168,13 +171,17 @@ where category_id=$ctid ";
       <?php
       //display the link of the pages in URL
 
-      $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id where item.category_id=$ctid  GROUP BY item_description.item_id LIMIT " . $page_first_result . "," . $results_per_page;
+      $query = "SELECT * FROM item
+                JOIN item_description
+                ON item.item_id=item_description.item_id
+                where item.category_id=$ctid
+                GROUP BY item_description.item_id
+                LIMIT " . $page_first_result . "," . $results_per_page;
       $st = $pdo->query($query);
       while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-      ?>
+        ?>
         <div class="products col-sm-4">
-          <div style="display: flex;
-  justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
             <img class="image" data-toggle="modal" data-target="#exampleModal"
               onclick="appjos('<?= $row['item_description_id'] ?>' )" align="middle"
               src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
@@ -209,7 +216,7 @@ where category_id=$ctid ";
         $dots = false;
         for ($page = 1; $page <= $number_of_page; $page++) {
           if ($page == $pageno) {
-        ?>
+            ?>
             <li class="active">
               <a href="<?php
                         $_GET['pageno'] = $page;
@@ -220,23 +227,22 @@ where category_id=$ctid ";
             $dots = true;
           } else {
             if ($page <= $ends_count || ($pageno && $page >= $pageno - $middle_count && $page <= $pageno + $middle_count) || $page > $number_of_page - $ends_count) {
-            ?>
+              ?>
               <li>
                 <a href="<?php
                           $_GET['pageno'] = $page;
                           echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
                   <?= $page ?></a>
               </li>
-            <?php
+              <?php
               $dots = true;
             } elseif ($dots) {
-            ?>
-              <li><a>&hellip;</a></li><?php
-                                      $dots = false;
-                                    }
-                                  }
-                                      ?>
-        <?php
+              ?>
+              <li><a>&hellip;</a></li>
+              <?php
+              $dots = false;
+            }
+          }
         }
         ?>
         <li class="<?php if ($pageno >= $number_of_page) {

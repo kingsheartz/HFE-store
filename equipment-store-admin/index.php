@@ -252,8 +252,7 @@ require "head.php";
               <div id="collapse2" class="panel-collapse collapse in">
                 <ul class="list-group">
                   <?php
-                  $stmt = $pdo->query(
-                    "select * from product
+                  $stmt = $pdo->query("select * from product
                     join product_description on product_description.product_id=product.product_id
                     where product.added_date in (select max(added_date) as date from product) LIMIT 2"
                   );

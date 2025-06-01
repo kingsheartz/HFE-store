@@ -9,7 +9,6 @@ if (isset($_POST['dl_id'])) {
   $query = "DELETE FROM to_do_list_store WHERE list_id=:title";
   $statement = $pdo->prepare($query);
   $statement->execute($data);
-  echo 'helo';
 }
 if (isset($_POST['addnm'])) {
   $data = array(

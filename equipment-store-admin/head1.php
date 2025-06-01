@@ -19,7 +19,6 @@
   }
 
   #sidebar ul li ul li {
-
     color: #e8e8e8;
     padding-top: 5px;
   }
@@ -182,29 +181,14 @@
   <div class="sidebar-header">
     <h3>
       <div class="text">
-        <p style=" height: 62px;
-    vertical-align: -webkit-baseline-middle;
-    margin-left: -15px;
-    margin-right: -15px;
-    display: -webkit-box;
-    text-align: left;
-    padding: 5px;
-    box-shadow: 0px 1px 0px #3c3c3c;"><img class="img-responsive" style="height:47px;" src="..\images/logo\logo.png">
-        <div style="
-    margin: 0px;
-    position: absolute;
-    top: 15px;
-    left: 70px;
-">HFE</div>
+        <p style=" height: 62px;vertical-align: -webkit-baseline-middle;margin-left: -15px;margin-right: -15px;display: -webkit-box;text-align: left;
+          padding: 5px;box-shadow: 0px 1px 0px #3c3c3c;"><img class="img-responsive" style="height:47px;" src="..\images/logo\logo.png">
+          <div style=" margin: 0px;position: absolute;top: 15px;left: 70px;">HFE</div>
         </p>
-        <p style="text-decoration: none;
-    padding-right: 5px;
-    margin-top: 3px;
-    font-size: 11px;"><i class="fa fa-circle" style="color: #3c763d;display: inline-block;
-    font: normal normal normal 14px/1 FontAwesome;
-    font-size: inherit;
-    text-rendering: auto;
-    -webkit-font-smoothing: antialiased"></i> Online</p>
+        <p style="text-decoration: none;padding-right: 5px;margin-top: 3px;font-size: 11px;">
+          <i class="fa fa-circle" style="color: #3c763d;display: inline-block;font: normal normal normal 14px/1 FontAwesome;font-size: inherit;
+            text-rendering: auto;-webkit-font-smoothing: antialiased"></i> Online
+        </p>
       </div>
     </h3>
   </div>
@@ -243,9 +227,6 @@
           class="nav_text">Chats</span><span style="float: right;"><i class="fa fa-angle-right"></i></span></a></li>
 </nav>
 <script>
-  // $(document).ready(function () {
-  //     $('#top-nav').css('left', $('#sidebar').width() + 20 + 'px');
-  // });
   $(document).ready(function() {
     var path = window.location.href; // Returns full URL
     var page = path.split("/").pop(); // Returns only the file name

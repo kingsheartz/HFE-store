@@ -8,333 +8,332 @@ require "head.php";
     include "head1.php";
     ?>
     <script type="text/javascript">
-      $('li').removeClass('active');
-      $('#viewphp').addClass('active');
+    $('li').removeClass('active');
+    $('#viewphp').addClass('active');
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <style type="text/css">
-      #cat {
-        float: left;
-        height: 30px;
-      }
+    #cat {
+      float: left;
+      height: 30px;
+    }
 
-      #close {
-        position: relative;
-        float: right;
-        margin-right: 0px;
-        margin-bottom: -50px;
-        background: #FF0000;
-        color: white;
-        padding: 5px;
-        border-radius: 1px;
-        font-size: 24px;
-        cursor: pointer;
-        z-index: 1;
-      }
+    #close {
+      position: relative;
+      float: right;
+      margin-right: 0px;
+      margin-bottom: -50px;
+      background: #FF0000;
+      color: white;
+      padding: 5px;
+      border-radius: 1px;
+      font-size: 24px;
+      cursor: pointer;
+      z-index: 1;
+    }
 
-      .sel {
-        margin-bottom: 50px;
-        margin-top: 50px;
-      }
+    .sel {
+      margin-bottom: 50px;
+      margin-top: 50px;
+    }
 
-      #search-box {
-        width: 100%;
-        position: relative;
-        display: inline-block;
-        font-size: 14px;
-        margin-top: 30px;
-      }
+    #search-box {
+      width: 100%;
+      position: relative;
+      display: inline-block;
+      font-size: 14px;
+      margin-top: 30px;
+    }
 
-      #search-box .fa-search {
-        position: absolute;
-        left: 30px;
-        top: 8px;
-        color: #adadad;
-      }
+    #search-box .fa-search {
+      position: absolute;
+      left: 30px;
+      top: 8px;
+      color: #adadad;
+    }
 
-      #search-box input[type="text"] {
-        outline: none;
-        height: 32px;
-        padding: 5px 40px;
-        border: 1px solid #131212;
-        background: #0c0c0c91;
-        font-size: 14px;
-        border-radius: 5px;
-      }
+    #search-box input[type="text"] {
+      outline: none;
+      height: 32px;
+      padding: 5px 40px;
+      border: 1px solid #131212;
+      background: #0c0c0c91;
+      font-size: 14px;
+      border-radius: 5px;
+    }
 
-      #result {
-        position: relative;
-        top: 100%;
-        left: 0;
-        width: 100%;
-      }
+    #result {
+      position: relative;
+      top: 100%;
+      left: 0;
+      width: 100%;
+    }
 
-      #search-box input[type="text"],
-      #result {
-        width: 100%;
-        box-sizing: border-box;
-      }
+    #search-box input[type="text"],
+    #result {
+      width: 100%;
+      box-sizing: border-box;
+    }
 
-      /* Formatting result products */
-      .imgdis {
-        position: absolute;
-        left: 0;
-        margin-bottom: 20px;
-        height: auto;
-        max-height: 400px;
-        overflow: auto;
-        overflow-x: hidden;
-      }
+    /* Formatting result products */
+    .imgdis {
+      position: absolute;
+      left: 0;
+      margin-bottom: 20px;
+      height: auto;
+      max-height: 400px;
+      overflow: auto;
+      overflow-x: hidden;
+    }
 
-      .subbut button {
-        width: 45%;
-        height: 40px;
-        color: white;
-        font-size: 18px;
-        margin: 2%;
-        border: none;
-        background: #014550;
-        border-radius: 5px;
-      }
+    .subbut button {
+      width: 45%;
+      height: 40px;
+      color: white;
+      font-size: 18px;
+      margin: 2%;
+      border: none;
+      background: #014550;
+      border-radius: 5px;
+    }
 
-      .subbut {
-        margin-top: 20px;
-        width: 100%;
-      }
+    .subbut {
+      margin-top: 20px;
+      width: 100%;
+    }
 
-      .imgdis img {
-        margin: auto;
-        display: block;
-        background: white;
-        image-rendering: auto;
-        image-rendering: crisp-edges;
-        width: auto;
-        max-width: 100px;
-        height: auto;
-        max-height: 100px;
-        border: 1px solid #d2d2d2;
-        margin-bottom: 5px;
-        padding: 10px;
-        -webkit-box-shadow: inset 0 0 1px #000;
-      }
+    .imgdis img {
+      margin: auto;
+      display: block;
+      background: white;
+      image-rendering: auto;
+      image-rendering: crisp-edges;
+      width: auto;
+      max-width: 100px;
+      height: auto;
+      max-height: 100px;
+      border: 1px solid #d2d2d2;
+      margin-bottom: 5px;
+      padding: 10px;
+      -webkit-box-shadow: inset 0 0 1px #000;
+    }
 
-      .imgdis::-webkit-scrollbar {
-        width: 5px;
-        height: 6px;
-      }
+    .imgdis::-webkit-scrollbar {
+      width: 5px;
+      height: 6px;
+    }
 
-      .imgdis::-webkit-scrollbar-track {
-        -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
-        border-radius: 10px;
-      }
+    .imgdis::-webkit-scrollbar-track {
+      -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+      border-radius: 10px;
+    }
 
-      .imgdis::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        -webkit-box-shadow: inset 0 0 6px #000;
-      }
+    .imgdis::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px #000;
+    }
 
-      .float-value {
-        position: relative;
-      }
+    .float-value {
+      position: relative;
+    }
 
-      .float-value input.form-control {
-        height: 40px;
-      }
+    .float-value input.form-control {
+      height: 40px;
+    }
 
-      .float-value select.form-control {
-        height: 40px;
-        padding: 8px;
-      }
+    .float-value select.form-control {
+      height: 40px;
+      padding: 8px;
+    }
 
-      .float-value .form-control {
-        height: 40px;
-        padding: 12px;
-        border: 2px solid black;
-      }
+    .float-value .form-control {
+      height: 40px;
+      padding: 12px;
+      border: 2px solid black;
+    }
 
-      .float-value label {
-        position: absolute;
-        top: -10px;
-        background: white;
-        left: 10px;
-        font-weight: 700;
-        color: #ff0000;
-        padding-left: 12px;
-        padding-right: 12px;
-      }
+    .float-value label {
+      position: absolute;
+      top: -10px;
+      background: white;
+      left: 10px;
+      font-weight: 700;
+      color: #ff0000;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
 
-      .float-value span {
-        position: absolute;
-        top: -10px;
-        background: white;
-        left: 10px;
-        font-weight: 700;
-        color: #ff0000;
-        padding-left: 12px;
-        padding-right: 12px;
-      }
+    .float-value span {
+      position: absolute;
+      top: -10px;
+      background: white;
+      left: 10px;
+      font-weight: 700;
+      color: #ff0000;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
 
-      .form-group {
-        position: relative;
-        margin-top: 50px;
-      }
+    .form-group {
+      position: relative;
+      margin-top: 50px;
+    }
 
-      table tr {
-        padding-top: 12px;
-        padding-bottom: 12px;
-      }
+    table tr {
+      padding-top: 12px;
+      padding-bottom: 12px;
+    }
 
-      table {
-        margin-bottom: 20px;
-      }
+    table {
+      margin-bottom: 20px;
+    }
 
-      th,
-      th {
-        padding: 10px;
-      }
+    th,
+    th {
+      padding: 10px;
+    }
 
-      .form-group .floating-label {
-        position: absolute;
-        top: -10px;
-        background: white;
-        left: 10px;
-        font-weight: 700;
-        color: #ff9900;
-        padding-left: 12px;
-        padding-right: 12px;
-      }
+    .form-group .floating-label {
+      position: absolute;
+      top: -10px;
+      background: white;
+      left: 10px;
+      font-weight: 700;
+      color: #ff9900;
+      padding-left: 12px;
+      padding-right: 12px;
+    }
 
-      .form-control {
-        border: 2px solid black;
-      }
+    .form-control {
+      border: 2px solid black;
+    }
 
-      .difcat {
-        position: relative;
-        height: 380px;
-        color: white;
-        overflow: hidden;
-        border-radius: 5px;
-        margin: auto;
-        margin-top: 10px;
-        margin-bottom: 10px;
-        display: block;
-        background: transparent;
-        box-shadow: 1px 1px 3px rgb(98 98 98 / 10%);
-      }
+    .difcat {
+      position: relative;
+      height: 380px;
+      color: white;
+      overflow: hidden;
+      border-radius: 5px;
+      margin: auto;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      display: block;
+      background: transparent;
+      box-shadow: 1px 1px 3px rgb(98 98 98 / 10%);
+    }
 
 
-      .difrow {
-        height: 350px;
-        overflow: auto;
-        width: 76vw;
-        margin: auto;
-        display: block;
-        white-space: nowrap;
-        bottom: 0;
-      }
+    .difrow {
+      height: 350px;
+      overflow: auto;
+      width: 76vw;
+      margin: auto;
+      display: block;
+      white-space: nowrap;
+      bottom: 0;
+    }
 
-      .products {
-        display: inline-block;
-        text-align: center;
-        padding: 14px;
-        position: relative;
-        height: 250px;
-        overflow: hidden;
-        width: 250px;
-        background: white;
-        color: #000;
-        border-radius: 5px;
-      }
+    .products {
+      display: inline-block;
+      text-align: center;
+      padding: 14px;
+      position: relative;
+      height: 250px;
+      overflow: hidden;
+      width: 250px;
+      background: white;
+      color: #000;
+      border-radius: 5px;
+    }
 
-      .products img {
-        margin: auto;
-        display: block;
-        background: white;
-        image-rendering: auto;
-        image-rendering: crisp-edges;
-        width: auto;
-        max-width: 170px;
-        height: auto;
-        max-height: 200px;
-      }
+    .products img {
+      margin: auto;
+      display: block;
+      background: white;
+      image-rendering: auto;
+      image-rendering: crisp-edges;
+      width: auto;
+      max-width: 170px;
+      height: auto;
+      max-height: 200px;
+    }
 
-      .difhed {
-        border-bottom: 1px solid #2f2f2f;
-        width: 100%;
-        margin: 0;
-        height: auto;
-        font-size: 22px;
-        line-height: 32px;
-        display: inline-block;
-        font-weight: bolder;
-        text-transform: capitalize;
-        padding: 15px;
-        font-family: 'Times New Roman', Times, serif;
-        margin-bottom: 20px;
-        margin-top: 30px;
-      }
+    .difhed {
+      border-bottom: 1px solid #2f2f2f;
+      width: 100%;
+      margin: 0;
+      height: auto;
+      font-size: 22px;
+      line-height: 32px;
+      display: inline-block;
+      font-weight: bolder;
+      text-transform: capitalize;
+      padding: 15px;
+      font-family: 'Times New Roman', Times, serif;
+      margin-bottom: 20px;
+      margin-top: 30px;
+    }
 
-      .updation {
-        background: black !important;
-        color: white;
-        font-size: 16px;
-        padding: 5px 5px;
-        border-radius: 5px;
-        border: none;
-        margin-top: 5%;
-      }
+    .updation {
+      background: black !important;
+      color: white;
+      font-size: 16px;
+      padding: 5px 5px;
+      border-radius: 5px;
+      border: none;
+      margin-top: 5%;
+    }
 
-      .left-arrow {
-        position: absolute;
-        top: 60%;
-        right: 0;
-        z-index: 1;
-        border-radius: 50%;
-        width: 50px;
-        height: 50px;
-        font-size: 24px;
-        background: #4b4b4b;
-        border: 0px;
-      }
+    .left-arrow {
+      position: absolute;
+      top: 60%;
+      right: 0;
+      z-index: 1;
+      border-radius: 50%;
+      width: 50px;
+      height: 50px;
+      font-size: 24px;
+      background: #4b4b4b;
+      border: 0px;
+    }
 
-      .right-arrow {
-        position: absolute;
-        top: 60%;
-        left: 0;
-        z-index: 1;
-        height: 50px;
-        width: 50px;
-        font-size: 24px;
-        background: #4b4b4b;
+    .right-arrow {
+      position: absolute;
+      top: 60%;
+      left: 0;
+      z-index: 1;
+      height: 50px;
+      width: 50px;
+      font-size: 24px;
+      background: #4b4b4b;
 
-        border: 0px solid #d4d4d4;
-      }
+      border: 0px solid #d4d4d4;
+    }
 
-      .difrow::-webkit-scrollbar {
-        display: none;
-        width: 5px;
-        height: 4px;
-      }
+    .difrow::-webkit-scrollbar {
+      display: none;
+      width: 5px;
+      height: 4px;
+    }
 
-      .difrow::-webkit-scrollbar-thumb {
-        border-radius: 10px;
-        -webkit-box-shadow: inset 0 0 6px #A200FF;
-      }
+    .difrow::-webkit-scrollbar-thumb {
+      border-radius: 10px;
+      -webkit-box-shadow: inset 0 0 6px #A200FF;
+    }
 
-      .difhed button {
-        float: right;
-        font-weight: bold;
-        font-size: 16px;
-        margin-right: 16px;
-        padding: 2px;
-        width: 100px;
-        background: gray !important;
-        border: none;
-        color: white;
-        border-radius: 5px;
-      }
+    .difhed button {
+      float: right;
+      font-weight: bold;
+      font-size: 16px;
+      margin-right: 16px;
+      padding: 2px;
+      width: 100px;
+      background: gray !important;
+      border: none;
+      color: white;
+      border-radius: 5px;
+    }
     </style>
-
 
     <body>
       <div class="table1">
@@ -343,24 +342,24 @@ require "head.php";
           Products</h4>
         <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
         <script>
-          $(document).ready(function() {
-            $('#search-box input[type="text"]').on("keyup input", function() {
-              /* Get input value on change */
-              var inputVal = $(this).val();
-              var resultDropdown = $("#result");
-              if (inputVal.length) {
-                $.get("search.php", {
-                  term: inputVal
-                }).done(function(data) {
-                  // Display the returned data in browser
-                  resultDropdown.html(data);
-                });
-              } else {
-                resultDropdown.empty();
-              }
-            });
-            // Set search input value on click of result item
+        $(document).ready(function() {
+          $('#search-box input[type="text"]').on("keyup input", function() {
+            /* Get input value on change */
+            var inputVal = $(this).val();
+            var resultDropdown = $("#result");
+            if (inputVal.length) {
+              $.get("search.php", {
+                term: inputVal
+              }).done(function(data) {
+                // Display the returned data in browser
+                resultDropdown.html(data);
+              });
+            } else {
+              resultDropdown.empty();
+            }
           });
+          // Set search input value on click of result item
+        });
         </script>
         <div class="col-sm-12" id="search-box">
           <input type="text" class="col-sm-12" style="width: 100%" autocomplete="off" placeholder="Search here..." />
@@ -370,48 +369,53 @@ require "head.php";
       </div>
       <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
       <script type="text/javascript">
-        function moveleft(x) {
-          var y = $('#' + x).scrollLeft();
-          var width = $('#' + x).outerWidth()
-          var scrollWidth = $('#' + x)[0].scrollWidth;
-          if (scrollWidth - width === y) {
-            $('#' + x + '>.left-arrow').hide();
-            return;
-          }
-          $('#' + x).scrollLeft(y + 100);
+      function moveleft(x) {
+        var y = $('#' + x).scrollLeft();
+        var width = $('#' + x).outerWidth()
+        var scrollWidth = $('#' + x)[0].scrollWidth;
+        if (scrollWidth - width === y) {
+          $('#' + x + '>.left-arrow').hide();
+          return;
+        }
+        $('#' + x).scrollLeft(y + 100);
+        $('#' + x + '>.right-arrow').show();
+      }
+
+      function moveright(x) {
+        var y = $('#' + x).scrollLeft();
+        $('#' + x + '>.left-arrow').show();
+        if (y === 0) {
+          $('#' + x + '>.right-arrow').hide();
+        }
+        $('#' + x).scrollLeft(y - 100);
+      }
+
+      function movefr(x) {
+        var y = $('#' + x).scrollLeft();
+        var width = $('#' + x).outerWidth()
+        var scrollWidth = $('#' + x)[0].scrollWidth;
+        if (scrollWidth - width === y) {
+          $('#' + x + '>.left-arrow').hide();
+        } else if (y === 0) {
+          $('#' + x + '>.right-arrow').hide();
+        } else {
+          $('#' + x + '>.left-arrow').show();
           $('#' + x + '>.right-arrow').show();
         }
-
-        function moveright(x) {
-          var y = $('#' + x).scrollLeft();
-          $('#' + x + '>.left-arrow').show();
-          if (y === 0) {
-            $('#' + x + '>.right-arrow').hide();
-          }
-          $('#' + x).scrollLeft(y - 100);
-        }
-
-        function movefr(x) {
-          var y = $('#' + x).scrollLeft();
-          var width = $('#' + x).outerWidth()
-          var scrollWidth = $('#' + x)[0].scrollWidth;
-          if (scrollWidth - width === y) {
-            $('#' + x + '>.left-arrow').hide();
-          } else if (y === 0) {
-            $('#' + x + '>.right-arrow').hide();
-          } else {
-            $('#' + x + '>.left-arrow').show();
-            $('#' + x + '>.right-arrow').show();
-          }
-        }
+      }
       </script>
       <?php
       $id = $_SESSION['id'];
       require "pdo.php";
-      $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id
-JOIN product_details ON product_details.product_description_id=product_description.product_description_id where
-product_description.product_description_id IN (SELECT product_description_id FROM product_details where store_id=$id )
- GROUP BY product_description.product_id ORDER BY product_details.product_details_id DESC LIMIT 8";
+      $query = "SELECT * FROM product
+        JOIN product_description ON product.product_id=product_description.product_id
+        JOIN product_details ON product_details.product_description_id=product_description.product_description_id
+        where product_description.product_description_id
+        IN (
+          SELECT product_description_id FROM product_details
+          where store_id=$id
+        )
+        GROUP BY product_description.product_id ORDER BY product_details.product_details_id DESC LIMIT 8";
       $st = $pdo->query($query);
       $ct = 'ab';
       ?>
@@ -419,17 +423,18 @@ product_description.product_description_id IN (SELECT product_description_id FRO
         <span class="difhed">Recently Added Products
         </span>
         <div class="difrow" id="difrow<?= $ct ?>" onscroll="movefr('difrow<?= $ct ?>')">
-          <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')"><i
-              class="fas fa-chevron-right"></i></button>
-          <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;"><i
-              class="fas fa-chevron-left"></i></button>
+          <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')">
+            <i class="fas fa-chevron-right"></i>
+          </button>
+          <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;">
+            <i class="fas fa-chevron-left"></i>
+          </button>
           <?php
           while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-          ?>
+            ?>
             <div class="products">
-              <div style="display: flex;
-   justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
-                  align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
               </div>
               <div class="middle">
                 <form id="H<?= $row['product_description_id'] ?>" method="post" action="change.php"
@@ -443,86 +448,98 @@ product_description.product_description_id IN (SELECT product_description_id FRO
                   <input type="hidden" name="price" value="<?= $row['price'] ?>">
                   <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation"><i
                       class="fa fa-pencil-square-o" style="font-size: 24px;padding-right: 12px"
-                      aria-hidden="true"></i>Change</button>
+                      aria-hidden="true"></i>Change
+                  </button>
                 </form>
               </div>
               <div class="deupd"><?= $row['product_name'] ?><br>
               </div>
             </div>
-          <?php
-          }
-          echo '</div></div>';
-          $query11 = "SELECT * from  category";
-          $st11 = $pdo->query($query11);
-          while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
-            $ct = $row11['category_id'];
-          ?>
             <?php
-            $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ct and
-product_description.product_description_id IN (SELECT product_description_id FROM product_details where store_id=$id ) GROUP BY product_description.product_id";
-            $st = $pdo->query($query);
-            $product = $st->rowCount();
-            if ($product == 0) {
-              continue;
-            } else {
-            ?>
-              <div class="difcat ">
-                <span class="difhed"><?= $row11['category_name'] ?>
-                  <button onclick="location.href='viewproducts.php?category_id=<?= $ct ?>'">View All</button></span>
-                <div class="difrow" id="difrow<?= $ct ?>">
-                  <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')"><i
-                      class="fas fa-chevron-right"></i></button>
-                  <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;"><i
-                      class="fas fa-chevron-left"></i></button>
-                  <?php
-                  while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-                  ?>
-                    <div class="products">
-                      <div style="display: flex;
-  justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
-                          align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
-                      </div>
-                      <div class="middle">
-                        <form id="<?= $row['product_description_id'] ?>" method="post" action="change.php"
-                          name="<?= $row['product_description_id'] ?>">
-                          <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
-                          <input type="hidden" name="item_id" value="<?= $row['product_id'] ?>">
-                          <input type="hidden" name="im_url"
-                            value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
-                          <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
-                          <input type="hidden" name="description" value="<?= $row['description'] ?>">
-                          <input type="hidden" name="price" value="<?= $row['price'] ?>">
-                          <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation"><i
-                              class="fa fa-pencil-square-o" style="font-size: 24px;padding-right: 12px"
-                              aria-hidden="true"></i>Change</button>
-                        </form>
-                      </div>
-                      <div class="deupd"><?= $row['product_name'] ?><br>
-                      </div>
-                    </div>
+          }
+          ?>
+        </div>
+      </div>
+      <?php
+      $query11 = "SELECT * from  category";
+      $st11 = $pdo->query($query11);
+      while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
+        $ct = $row11['category_id'];
+        ?>
+        <?php
+        $query = "SELECT * FROM product
+          JOIN product_description ON product.product_id=product_description.product_id
+          where product.category_id=$ct and product_description.product_description_id IN (
+            SELECT product_description_id FROM product_details where store_id=$id
+          ) GROUP BY product_description.product_id";
+        $st = $pdo->query($query);
+        $product = $st->rowCount();
+        if ($product == 0) {
+          continue;
+        } else {
+          ?>
+          <div class="difcat ">
+            <span class="difhed"><?= $row11['category_name'] ?>
+              <button onclick="location.href='viewproducts.php?category_id=<?= $ct ?>'">View All</button>
+            </span>
+            <div class="difrow" id="difrow<?= $ct ?>">
+              <button class="left-arrow" onclick="moveleft('difrow<?= $ct ?>')">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <button class="right-arrow" onclick="moveright('difrow<?= $ct ?>')" style="display: none;">
+                <i class="fas fa-chevron-left"></i>
+              </button>
               <?php
-                  }
-                  echo '</div></div>';
-                }
-              }
-              ?>
-              <script type="text/javascript">
-                function showupda(x) {
-                  document.forms[x].submit();
-                }
-                if (window.history.replaceState) {
-                  window.history.replaceState(null, null, window.location.href);
-                }
-
-                function conca() {
-                  console.log('helo');
-                  if ($('#w1').val() != 0) {
-                    var v1 = $('#w1').val() + ' ' + $('#w2').val();
-                    $('#w3').val(v1);
-                  }
-                }
-              </script>
+              while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+                ?>
+                <div class="products">
+                  <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                    <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                  </div>
+                  <div class="middle">
+                    <form id="<?= $row['product_description_id'] ?>" method="post" action="change.php"
+                      name="<?= $row['product_description_id'] ?>">
+                      <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
+                      <input type="hidden" name="item_id" value="<?= $row['product_id'] ?>">
+                      <input type="hidden" name="im_url"
+                        value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                      <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
+                      <input type="hidden" name="description" value="<?= $row['description'] ?>">
+                      <input type="hidden" name="price" value="<?= $row['price'] ?>">
+                      <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation"><i
+                          class="fa fa-pencil-square-o" style="font-size: 24px;padding-right: 12px"
+                          aria-hidden="true"></i>Change</button>
+                    </form>
+                  </div>
+                  <div class="deupd"><?= $row['product_name'] ?><br>
+                  </div>
                 </div>
                 <?php
-                require "foot.php";
-                ?>
+              }
+              ?>
+            </div>
+          </div>
+          <?php
+        }
+      }
+      ?>
+      <script type="text/javascript">
+      function showupda(x) {
+        document.forms[x].submit();
+      }
+      if (window.history.replaceState) {
+        window.history.replaceState(null, null, window.location.href);
+      }
+
+      function conca() {
+        console.log('helo');
+        if ($('#w1').val() != 0) {
+          var v1 = $('#w1').val() + ' ' + $('#w2').val();
+          $('#w3').val(v1);
+        }
+      }
+      </script>
+    </div>
+    <?php
+    require "foot.php";
+    ?>
