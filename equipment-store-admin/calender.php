@@ -129,7 +129,6 @@ if (isset($_POST['newData'])) {
   $myfile = fopen("event.json", "w") or die("Unable to open file!");
   fwrite($myfile, $updatedData);
 }
-
 ?>
 <script type="text/javascript">
   var today = new Date();
@@ -278,13 +277,9 @@ if (isset($_POST['newData'])) {
 
   }));
 
-
-
   $("#show_calendar").on("click", "td.day", function() {
     $('.day').not('#current_day').css("background", "transparent");
-
     $(this).css("background", " -webkit-gradient(linear, left bottom, left top, color-stop(0, #59ab8d), color-stop(1, #449485))");
-
     newtt = $(this).text() + " " + $('caption').text();
     $.getJSON("event.json", function(data) {
       var flag = 0;

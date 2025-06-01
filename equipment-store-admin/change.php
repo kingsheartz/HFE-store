@@ -1049,10 +1049,8 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
       <div class="pr1" style="margin-top: 120px;">
         <div class="proupda ">
           <div class="newupdation">
-            <span style="
-    ">
-              <h4 style="
-    "> <?= $itna ?></h4>
+            <span>
+              <h4><?= $itna ?></h4>
             </span><br>
             <div class="row">
               <?php
@@ -1063,9 +1061,9 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
               if ($tr == 0) {
               ?>
                 <div class="alert alert-danger">item not yet added</div>
-                <button
-                  style="background: red;padding: 10px;color: white;border-radius: 5px;border:none;font-weight: bolder;"
-                  onclick="location.href='additem.php'">Go To Add Product</button>
+                <button style="background: red; padding: 10px; color: white; border-radius: 5px; border: none; font-weight: bolder;"
+                  onclick="location.href='additem.php'">Go To Add Product
+                </button>
                 <?php
               } else {
                 while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
@@ -1075,18 +1073,10 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                       <form id="<?= $row['product_description_id'] ?>" method="post"
                         name="<?= $row['product_description_id'] ?>">
                         <div class="prim col-sm-5">
-                          <div class="product" style="position: absolute;
-    left: 10px;
-    top: 55px;
-    width: 100px;
-    height: 80px;">
-                            <img style=" display: inline-block;
-    text-align: center;
-    padding: 14px;
-    position: relative;
-    height: 80px;
-    max-width: 100px;
-   " onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
+                          <div class="product" style="position: absolute; left: 10px; top: 55px; width: 100px; height: 80px;">
+                            <img style=" display: inline-block;text-align: center; padding: 14px;position: relative;
+                              height: 80px;max-width: 100px;"
+                              onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
                               src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           </div>
                           <div style="width: 100%;">
@@ -1096,23 +1086,19 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                           <div class="imscr" id="imsrc<?= $row['product_description_id'] ?>"
                             onscroll="movefr('imsrc<?= $row['product_description_id'] ?>')">
                             <button type="button" name="lfarr" class="left-arrow"
-                              onclick="moveleft('imsrc<?= $row['product_description_id'] ?>')"><i
-                                class="fas fa-chevron-right"></i></button>
+                              onclick="moveleft('imsrc<?= $row['product_description_id'] ?>')">
+                              <i class="fas fa-chevron-right"></i>
+                            </button>
                             <button type="button" name="rfarr" class="right-arrow"
-                              onclick="moveright('imsrc<?= $row['product_description_id'] ?>')" style="display: none;"><i
-                                class="fas fa-chevron-left"></i></button>
+                              onclick="moveright('imsrc<?= $row['product_description_id'] ?>')" style="display: none;">
+                              <i class="fas fa-chevron-left"></i>
+                            </button>
                             <?php
                             $t = $row['img_count'];
                             for ($i = 1; $i <= $t; $i++) {
                             ?>
                               <div class="product">
-                                <img style=" display: inline-block;
-    text-align: center;
-    padding: 14px;
-    position: relative;
-    height: 80px;
-    max-width: 100px;
-   " onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
+                                <img style="display: inline-block; text-align: center; padding: 14px; position: relative; height: 80px; max-width: 100px;" onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
                                   src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg">
                               </div>
                             <?php
@@ -1201,18 +1187,16 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                         </div>
                         <div class="col-sm-12 subb" style="">
                           <input type="hidden" name="check_id" value="<?= $row['product_details_id'] ?>">
-                          <button name="update_data" style="float: right;
-    background: green;
-    margin-left: 12px;
-    margin-right: 12px;
-" onclick="showupda(<?= $row['product_description_id'] ?>,1)">
+                          <button name="update_data" style="float: right; background: green; margin-left: 12px; margin-right: 12px;"
+                            onclick="showupda(<?= $row['product_description_id'] ?>,1)">
                             <i class="fas fa-pencil-square"
-                              style="margin-right: 20px;float: left;font-size: 24px"></i>Update</button>
-                          <button name="remove_data" style="float: right;
-    background: #fd0018;
-    margin-left: 12px;
-    margin-right: 12px;" onclick="showupda(<?= $row['product_description_id'] ?>,0)"><i class="fas fa-trash"
-                              style="margin-right: 20px;float: left;font-size: 24px"></i>Remove</button>
+                              style="margin-right: 20px; float: left; font-size: 24px"></i>Update
+                          </button>
+                          <button name="remove_data" style="float: right; background: #fd0018; margin-left: 12px; margin-right: 12px;"
+                            onclick="showupda(<?= $row['product_description_id'] ?>,0)">
+                            <i class="fas fa-trash"
+                            style="margin-right: 20px; float: left; font-size: 24px"></i>Remove
+                          </button>
                         </div>
                       </form>
                     </div>

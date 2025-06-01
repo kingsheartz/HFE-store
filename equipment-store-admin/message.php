@@ -39,7 +39,7 @@ require "head.php";
       );
       // Attempt insert query execution
       $sql = "INSERT INTO chats (uname,rname, msg, dt)
-    VALUES (:uname,:rname, :msg, :dt)";
+              VALUES (:uname,:rname, :msg, :dt)";
       $st = $pdo->prepare($sql);
       $st->execute($data);
       if ($st) {
@@ -391,8 +391,7 @@ require "head.php";
           <span class="icon-bar"></span>
         </button>
         <div class="connect" style="background: #000000;text-align: center;">
-          <span><i class="fa fa-user-circle-o
-"></i></span>
+          <span><i class="fa fa-user-circle-o"></i></span>
           <h6 style="color:white;">CONTACTS</h6>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar2">
@@ -406,7 +405,7 @@ require "head.php";
             $statement1 = $pdo->prepare($query1);
             $statement1->execute();
             $row1 = $statement1->fetch(PDO::FETCH_ASSOC);
-          ?>
+            ?>
             <div id="<?= $row['username'] ?>" class="connect" onclick="getfile('<?= $row['username'] ?>')">
               <span class="conimg"><i id="<?= $row['username'] ?><?= $cn ?>" class="fa fa-user-circle-o"></i> <span
                   class="uppernum3"><?= $row1['COUNT(*)'] ?></span></span>
@@ -487,43 +486,40 @@ require "head.php";
               $run = $pdo->query($query);
               $i = 0;
               $ct = 0;
-              while ($row = $run->fetch(PDO::FETCH_ASSOC)):
+              while ($row = $run->fetch(PDO::FETCH_ASSOC)){
                 $date = explode(' ', $row['dt']);
                 $date[0] = date("d-m-Y", strtotime($date[0]));
                 if ($date[0] != $ct) {
                   $ct = date("d-m-Y", strtotime($date[0]));
-              ?>
-                  <div class="clear-fix"></div><br><br>
-                  <div class="date"><?= $ct ?></div><br><br>
-                  <div class="clear-fix"></div><?php
-                                              }
-                                              if ($i == 0) {
-                                                $i = 5;
-                                                $first = $row;
-                                                ?>
+                  ?>
+                  <div class="clear-fix"></div>
+                  <br><br>
+                  <div class="date"><?= $ct ?></div>
+                  <br><br>
+                  <div class="clear-fix"></div>
+                  <?php
+                }
+                if ($i == 0) {
+                  $i = 5;
+                  $first = $row;
+                  ?>
                   <div id="triangle1" class="triangle1"></div>
                   <div id="message1" class="message1">
-                    <div style="color: white;
-    float: right;
-    padding: 0;
-    width: 100%;">
-                      <pre><?php echo trim($row['msg']); ?></pre>
+                    <div style="color: white;float: right; padding: 0;width: 100%;">
+                        <pre><?php echo trim($row['msg']); ?></pre>
                     </div>
                     <div class="spdat">
                       <i style="font-size:16px;margin-right:4px" class="fa fa-clock"></i><?php echo $date[1]; ?>
                     </div>
                   </div>
                   <br /><br />
-                  <?php
-                                              } else {
-                                                if ($row['uname'] != $first['uname']) {
+                <?php
+                } else {
+                  if ($row['uname'] != $first['uname']) {
                   ?>
                     <div id="triangle" class="triangle"></div>
                     <div id="message" class="message">
-                      <div style="color: white;
-    float: right;
-    padding: 0;
-    width: 100%;">
+                      <div style="color: white;float: right;padding: 0;width: 100%;">
                         <pre><?php echo trim($row['msg']); ?></pre>
                       </div>
                       <div class="spdat">
@@ -532,14 +528,11 @@ require "head.php";
                     </div>
                     <br /><br />
                   <?php
-                                                } else {
-                  ?>
+                  } else {
+                    ?>
                     <div id="triangle1" class="triangle1"></div>
                     <div id="message1" class="message1">
-                      <div style="color: white;
-    float: right;
-    padding: 0;
-    width: 100%;">
+                      <div style="color: white;float: right;padding: 0;width: 100%;">
                         <pre><?php echo trim($row['msg']); ?></pre>
                       </div>
                       <div class="spdat">
@@ -547,10 +540,10 @@ require "head.php";
                       </div>
                     </div>
                     <br /><br />
-              <?php
-                                                }
-                                              }
-                                            endwhile;
+                  <?php
+                  }
+                }
+              }
               ?>
             </div>
             <script type="text/javascript">

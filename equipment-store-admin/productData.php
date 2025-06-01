@@ -320,23 +320,14 @@ if (isset($_POST['item_description_id'])) {
   where item_description.item_description_id=$x";
   $st = $pdo->query($query);
   while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-?>
+    ?>
     <div class="col-sm-12">
       <div class="immodal">
         <form id="<?= $row['item_description_id'] ?>" method="post" name="<?= $row['item_description_id'] ?>">
           <div class="prim col-sm-5">
-            <div class="product" style="position: absolute;
-    left: 5px;
-    top: 35px;
-    width: 100px;
-    height: 100px;">
-              <img style=" display: inline-block;
-  text-align: center;
-  padding: 14px;
-  position: relative;
-    height: 100px;
-    max-width: 100px;
-   " onclick="$('#imr<?= $row['item_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg');"
+            <div class="product" style="position: absolute; left: 5px;top: 35px;width: 100px;height: 100px;">
+              <img style=" display: inline-block;text-align: center;padding: 14px;position: relative;height: 100px;max-width: 100px;"
+                onclick="$('#imr<?= $row['item_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg');"
                 src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
             </div>
             <div style="width: 100%;">
@@ -345,38 +336,24 @@ if (isset($_POST['item_description_id'])) {
             </div>
             <div class="imscr" id="imsrc<?= $row['item_description_id'] ?>"
               onscroll="movefr('imsrc<?= $row['item_description_id'] ?>')">
-              <button type="button" style=" position: absolute;
-   top: 75%;
-    right: 0;
-    z-index: 1;
-    height: 40px;
-    border-top-left-radius: 5px;
-    border-bottom-left-radius: 5px;
-    border: 1px solid #d4d4d4;" name="lfarr" class="left-arrow"
-                onclick="moveleft('imsrc<?= $row['item_description_id'] ?>')"><i class="fas fa-chevron-right"></i></button>
-              <button type="button" style=" position: absolute;
-   top: 75%;
-    left: 0;
-    z-index: 1;
-    height: 40px;
-    border-top-right-radius: 5px;
-    border-bottom-right-radius: 5px;
-    border: 1px solid #d4d4d4;" name="rfarr" class="right-arrow"
-                onclick="moveright('imsrc<?= $row['item_description_id'] ?>')" style="display: none;"><i
-                  class="fas fa-chevron-left"></i></button>
+              <button type="button" style=" position: absolute;top: 75%;right: 0; z-index: 1; height: 40px;border-top-left-radius: 5px; border-bottom-left-radius: 5px;
+                border: 1px solid #d4d4d4;" name="lfarr" class="left-arrow"
+                onclick="moveleft('imsrc<?= $row['item_description_id'] ?>')">
+                <i class="fas fa-chevron-right"></i>
+              </button>
+              <button type="button" style=" position: absolute; top: 75%; left: 0;z-index: 1; height: 40px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;
+                border: 1px solid #d4d4d4;" name="rfarr" class="right-arrow"
+                onclick="moveright('imsrc<?= $row['item_description_id'] ?>')" style="display: none;">
+                <i class="fas fa-chevron-left"></i>
+              </button>
               <?php
               $t = $row['img_count'];
               for ($i = 1; $i <= $t; $i++) {
-              ?>
+                ?>
                 <div class="product">
-                  <img style=" display: inline-block;
-  text-align: center;
-  padding: 14px;
-  position: relative;
-    height: 100px;
-    max-width: 150px;
-   " onclick="$('#imr<?= $row['item_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>_<?= $i ?>.jpg');"
-                    src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>_<?= $i ?>.jpg">
+                  <img style=" display: inline-block;text-align: center;padding: 14px; position: relative; height: 100px; max-width: 150px;"
+                    onclick="$('#imr<?= $row['item_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>_<?= $i ?>.jpg');"
+                    src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>_<?= $i ?>.jpg"/>
                 </div>
               <?php
               }
@@ -392,108 +369,108 @@ if (isset($_POST['item_description_id'])) {
                   $query1 = "SELECT * FROM size where size_id=" . $row['size'];
                   $st1 = $pdo->query($query1);
                   $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+                  ?>
                   <tr>
                     <th>Size</th>
                     <td> <?= $row1['size_name'] ?></td>
                   </tr>
-                <?php
+                  <?php
                 }
                 if ($row['color'] != 0) {
                   $query1 = "SELECT * FROM color where color_id=" . $row['color'];
                   $st1 = $pdo->query($query1);
                   $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+                  ?>
                   <tr>
                     <th>Color</th>
                     <td><?= $row['color'] ?></td>
                   </tr>
-                <?php
+                  <?php
                 }
                 if ($row['weight'] != 0) {
-                ?>
+                  ?>
                   <tr>
                     <th>Weight</th>
                     <td><?= $row['weight'] ?></td>
                   </tr>
-                <?php
+                  <?php
                 }
                 if ($row['flavour'] != 0) {
                   $query1 = "SELECT * FROM flavour where flavour_id=" . $row['flavour'];
                   $st1 = $pdo->query($query1);
                   $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+                  ?>
                   <tr>
                     <th>Flavour</th>
                     <td><?= $row1['flavour_name'] ?></td>
                   </tr>
-                <?php
+                  <?php
                 }
                 if ($row['processor'] != 0) {
                   $query1 = "SELECT * FROM processor where processor_id=" . $row['processor'];
                   $st1 = $pdo->query($query1);
                   $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+                  ?>
                   <tr>
                     <th>Processor</th>
                     <td><?= $row1['processor_name'] ?></td>
                   </tr>
-                <?php
+                  <?php
                 }
                 if ($row['display'] != 0) {
                   $query1 = "SELECT * FROM display where display_id=" . $row['display'];
                   $st1 = $pdo->query($query1);
                   $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+                  ?>
                   <tr>
                     <th>Display</th>
                     <td><?= $row1['display_name'] ?></td>
                   </tr>
-                <?php
+                  <?php
                 }
                 if ($row['battery'] != 0) {
                   $query1 = "SELECT * FROM battery where battery_id=" . $row['battery'];
                   $st1 = $pdo->query($query1);
                   $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+                  ?>
                   <tr>
                     <th>Battery</th>
                     <td><?= $row1['battery_name'] ?></td>
                   </tr>
-                <?php
+                  <?php
                 }
                 if ($row['internal_storage'] != 0) {
                   $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row['internal_storage'];
                   $st1 = $pdo->query($query1);
                   $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+                  ?>
                   <tr>
                     <th>Internal Storage</th>
                     <td><?= $row1['internal_storage_name'] ?></td>
                   </tr>
-                <?php
+                  <?php
                 }
                 if ($row['brand'] != 0) {
                   $query1 = "SELECT * FROM brand where brand_id=" . $row['brand'];
                   $st1 = $pdo->query($query1);
                   $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+                  ?>
                   <tr>
                     <th>Brand</th>
                     <td><?= $row1['brand_name'] ?></td>
                   </tr>
-                <?php
+                  <?php
                 }
                 if ($row['material'] != 0) {
                   $query1 = "SELECT * FROM material where material_id=" . $row['material'];
                   $st1 = $pdo->query($query1);
                   $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
+                  ?>
                   <tr>
                     <th>Material</th>
                     <td><?= $row1['material_name'] ?></td>
                   </tr>
-                <?php
+                  <?php
                 }
                 ?>
               </table>
@@ -503,23 +480,22 @@ if (isset($_POST['item_description_id'])) {
                 <?php
                 $cats = explode("\n", $row['description']);
                 foreach ($cats as $cat) {
-                ?>
+                  ?>
                   <li> <?= $cat ?></li>
-                <?php
+                  <?php
                 }
                 ?>
               </ul>
               <br><br>
               <div class="price">
-                Price <span style="
-    margin-left: 50px;
-    font-size: 24px;
-"><i class="fas fa-rupee"></i> <?= $row['price'] ?></span></div>
+                Price <span style="margin-left: 50px;font-size: 24px;"><i class="fas fa-rupee"></i> <?= $row['price'] ?></span>
+              </div>
             </div>
           </div>
+        </form>
       </div>
     </div>
-<?php
+    <?php
   }
 }
 ?>
