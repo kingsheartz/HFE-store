@@ -59,7 +59,7 @@
           <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Something went wrong.</h3>
           <p>
             The page you are looking for is unauthorized and you can't access this kind of pages.
-            Meanwhile, you may <a href="../../../../onestore.php">return to Home Page</a> or exit your browser.
+            Meanwhile, you may <a href="../../../../hfe.php">return to Home Page</a> or exit your browser.
           </p>
         </div>
       </div>

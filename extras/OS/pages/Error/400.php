@@ -1,4 +1,4 @@
-<!DOCTYPE html> 
+<!DOCTYPE html>
 <html>
 <head>
       <title>BAD REQUEST || ONESTORE</title>
@@ -6,7 +6,7 @@
 <link href="../../../../images/logo/favicon.png" rel="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
   <script src="../../../../js/jquery-1.11.1.min.js"></script>
-<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">  
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <!-- Google Font: Source Sans Pro -->
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
@@ -80,14 +80,14 @@
 ::-moz-selection {
   background-color: rgba(0,0,0,0.2);
 }
-  
+
 .four_zero_four_bg{
- 
+
  background-image: url(dribbble_1.gif);
     height: 400px;
     background-position: center;
  }
- 
+
 
 a {
   color: white;
@@ -309,13 +309,13 @@ a:hover {
 
     <img  id="image" src="../../../../images/logo/logost.svg">
 
-    
+
   </center>
   </div>
   <div class="row" style="width:100%;background-color: white;padding:0px;margin: 0px; ">
     <section class="page_404">
       <div class="container">
-        <div class="row">   
+        <div class="row">
           <div class="col-sm-12 ">
             <div class="col-sm-10 col-sm-offset-1  text-center">
               <div class="four_zero_four_bg">
@@ -326,7 +326,7 @@ a:hover {
       <div class="error-page">
         <div class="error-content">
           <h3><i class="fas fa-exclamation-triangle text-danger"></i> 400 Bad Request.</h3>
-<!--          
+<!--
           <br>
           <h5 style="text-align: left;">
             We could not find the page you were looking for.
@@ -432,7 +432,7 @@ a:hover {
 
         <li>e</li>
 
-        <li>h</li>        
+        <li>h</li>
 
         <li class="eight">r</li>
 
@@ -488,13 +488,13 @@ a:hover {
 
       <p>Unfortunately the page you were looking for is considered as Bad Request.</p>
 
-      <p>Please try again with another URL or Go to <a href="../../../../onestore.php" style="color:#007BFF;;font-weight: bold;">Home Page</a>or try to <a style="color:#007BFF;font-weight: bold;" href="../../../../login.php">Log in</a> .</p>
+      <p>Please try again with another URL or Go to <a href="../../../../hfe.php" style="color:#007BFF;;font-weight: bold;">Home Page</a>or try to <a style="color:#007BFF;font-weight: bold;" href="../../../../login.php">Log in</a> .</p>
 
     </div>
   </div>
 
   <br>
-  
+
   <script type="text/javascript">
     $(function () {
     var liWidth = $("li").css("width");

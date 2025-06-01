@@ -18,7 +18,7 @@ if(!isset($_SESSION['forgot_pass_email'])){
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
   <!-- Font Awesome -->
   <link rel="stylesheet" href="../../plugins/fontawesome-free/css/all.min.css">
-  <link href="../../../../css/font-awesome.css" rel="stylesheet">  
+  <link href="../../../../css/font-awesome.css" rel="stylesheet">
   <!-- SweetAlert2 -->
   <link rel="stylesheet" href="../../plugins/sweetalert2-theme-bootstrap-4/bootstrap-4.min.css">
   <!-- SweetAlert -->
@@ -35,11 +35,11 @@ if(!isset($_SESSION['forgot_pass_email'])){
 <div class="background_loader"></div>
 <div class="std_loader"></div>
 <!--RESPONSE AWAITING-->
-<div style="background-color: rgba(0,0,0,0.65); position: absolute;width: 100%;height: 100%;align-items: center;justify-content: center;display: flex;overflow-y: scroll;" >  
+<div style="background-color: rgba(0,0,0,0.65); position: absolute;width: 100%;height: 100%;align-items: center;justify-content: center;display: flex;overflow-y: scroll;" >
 <div class="login-box" style="display: inline-flex;">
   <div class="card card-outline card-primary">
     <div class="card-header text-center">
-      <a href="../../../../onestore.php" class="h1"><img src="../../../../images/logo/logost.svg" height="auto" width="auto " style="width: 80%;height: auto;" class="image-fluid mb-2"></a>
+      <a href="../../../../hfe.php" class="h1"><img src="../../../../images/logo/logost.svg" height="auto" width="auto " style="width: 80%;height: auto;" class="image-fluid mb-2"></a>
     </div>
     <div class="card-body">
       <p class="login-box-msg">Enter your OTP here.</p>
@@ -107,18 +107,18 @@ var x = setInterval(function() {
   if(minutes==1 && seconds==0){
   	distance=60;
   }
-  
+
   if(minutes!=0){
   // Output the result in an element with id="expiry"
   document.getElementById("expiry").innerHTML =minutes +"m "+ seconds + "s ";
-  }  
-  
+  }
+
   if(minutes==0){
   // Output the result in an element with id="expiry"
   document.getElementById("expiry").innerHTML =seconds + "s ";
   }
 
-  // If the count down is over, write some text 
+  // If the count down is over, write some text
   if (minutes==0 && seconds==0) {
     clearInterval(x);
     $('#expiry_caption').hide();
@@ -143,9 +143,9 @@ $.ajax({
     type: "post", //post data
     dataType: "json",   //datatype=json format
     timeout:18000,  //waiting time 3 sec
-    
+
     success: function(data){  //if logging in is success
-      
+
       if(data.status=='success'){
 
         $('.background_loader').hide();
@@ -159,11 +159,11 @@ $.ajax({
               dangerMode: true,
               })
         .then((willSubmit) => {
-          if (willSubmit) {  
+          if (willSubmit) {
             $(function () {
               location.href="OTP-v2.php"
             $('#emppass').hide();
-              
+
           });
             return false;
           }
@@ -173,7 +173,7 @@ $.ajax({
       });
       }
         else if(data.status=='admin'){
-          
+
           $('.background_loader').hide();
           $('.std_loader').hide();
 
@@ -184,7 +184,7 @@ $.ajax({
                 dangerMode: true,
                 })
             .then((willSubmit) => {
-                if (willSubmit) {  
+                if (willSubmit) {
           $('#emppass').hide();
                     location.href="OTP-v2.php";
                 }
@@ -195,7 +195,7 @@ $.ajax({
             }
 },
     error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-      if(textstatus==="timeout") {   
+      if(textstatus==="timeout") {
 
         $('.background_loader').hide();
         $('.std_loader').hide();
@@ -225,7 +225,7 @@ $.ajax({
       showConfirmButton: false,
       timer: 3000
     });
-</script>  
+</script>
 
 <script type="text/javascript">
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -237,7 +237,7 @@ if(isset($_GET['otp'])){
   $otp=$_GET['otp'];
 ?>
 document.getElementById('otp').value="<?=$otp?>";
-document.getElementById('otpbtn').click();  
+document.getElementById('otpbtn').click();
 <?php
 }
 ?>
@@ -271,25 +271,25 @@ if(isNaN(otp)){
     $('#emppass').html("Invalid OTP !!!");
     $('#emppass').show();
     document.getElementById("otp").focus();
-    return ;  
+    return ;
 }
 else{
 
-$('.load_btn').show(); 
+$('.load_btn').show();
 $('.real_btn').hide();
-  
+
 $.ajax({
     url: "../../../../functions.php", //passing page info
     data: {"otppass":1,"otp":otp},  //form data
     type: "post", //post data
     dataType: "json",   //datatype=json format
     timeout:18000,  //waiting time 3 sec
-    
+
     success: function(data){  //if logging in is success
-      
+
       if(data.status=='success'){
 
-        $('.load_btn').hide(); 
+        $('.load_btn').hide();
         $('.real_btn').show();
 
         swal({
@@ -300,7 +300,7 @@ $.ajax({
               dangerMode: true,
               })
         .then((willSubmit) => {
-          if (willSubmit) {  
+          if (willSubmit) {
             $(function () {
               location.href="recover-password-v2.php?otp="+data.otp+"";
             $('#emppass').hide();
@@ -314,7 +314,7 @@ $.ajax({
       }
         else if(data.status=='admin'){
 
-        $('.load_btn').hide(); 
+        $('.load_btn').hide();
         $('.real_btn').show();
 
             swal({
@@ -324,7 +324,7 @@ $.ajax({
                 dangerMode: true,
                 })
             .then((willSubmit) => {
-                if (willSubmit) {  
+                if (willSubmit) {
           $('#emppass').hide();
                      location.href="recover-password-v2.php?otp="+data.otp+"";
                 }
@@ -336,7 +336,7 @@ $.ajax({
 
     else if(data.status=='error'){
 
-        $('.load_btn').hide(); 
+        $('.load_btn').hide();
         $('.real_btn').show();
 
       swal({
@@ -356,7 +356,7 @@ $.ajax({
       }
     else if(data.status=='expired'){
 
-        $('.load_btn').hide(); 
+        $('.load_btn').hide();
         $('.real_btn').show();
 
             swal({
@@ -373,15 +373,15 @@ $.ajax({
                     //location.reload();
                 }
             });
-            } 
-              
+            }
+
     },
     error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-      if(textstatus==="timeout") {    
+      if(textstatus==="timeout") {
 
-        $('.load_btn').hide(); 
+        $('.load_btn').hide();
         $('.real_btn').show();
-                  
+
           swal({
                 title: "Oops!!!",
                 text: "server time out",

@@ -59,7 +59,7 @@
           <h3><i class="fas fa-exclamation-triangle" style="color:#F77A00"></i> Oops! Something went wrong.</h3>
           <p>
             No service available for the page you are looking for.
-            Meanwhile, you may <a href="../../../../onestore.php">return to Home Page</a> or exit your browser.
+            Meanwhile, you may <a href="../../../../hfe.php">return to Home Page</a> or exit your browser.
           </p>
         </div>
       </div>
