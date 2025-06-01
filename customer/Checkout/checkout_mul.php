@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['id'])) {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
 }
 
 require "../Main/header.php";
@@ -374,7 +374,7 @@ $pdt_cnt = $stmt->rowCount();
                   </li>
                   <hr>
                 </div><br>
-                <a href="../Main/onestore.php">
+                <a href="../Main/hfe.php">
                   <li id="bill_gap" class="shadow_b" style="padding:10px;background-color:#3399cc ">
                     <i class="glyphicon glyphicon-menu-left" style="color: white" aria-hidden="true"></i>
                     <span style="color: white">Continue Shopping</span>

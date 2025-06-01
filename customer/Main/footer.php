@@ -1465,7 +1465,7 @@ if (isset($product_description_id)) {
               })
               .then((willSubmit) => {
                 if (willSubmit.dismiss) {
-                  location.href = "../Main/onestore.php";
+                  location.href = "../Main/hfe.php";
                 } else if (willSubmit.isConfirmed) {
                   location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
                 }
@@ -1704,7 +1704,7 @@ if (isset($product_description_id)) {
             })
             .then((willSubmit) => {
               if (willSubmit) {
-                location.href = "../Main/onestore.php";
+                location.href = "../Main/hfe.php";
               } else {
                 return;
               }
@@ -2040,7 +2040,7 @@ if (isset($product_description_id)) {
           timeout: 18000, //waiting time 3 sec
           success: function(data) { //if logging in is success
             if (data.status == 'success') {
-              //location.href="../Main/onestore.php";
+              //location.href="../Main/hfe.php";
             } else if (data.status == 'admin') {
               location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
             } else if (data.status == 'error') {
@@ -2057,7 +2057,7 @@ if (isset($product_description_id)) {
                 dangerMode: true,
                 timer: 6000,
               });
-              location.href = "../Main/onestore.php";
+              location.href = "../Main/hfe.php";
               return;
             } else {
               return;

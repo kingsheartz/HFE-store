@@ -1,7 +1,7 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
 }
 require "../Main/header.php";
 $uid = $_SESSION['id'];
@@ -333,7 +333,7 @@ $pdt_cnt = $stmt->rowCount();
   <!-- //breadcrumbs -->
   <!--<div style="background-image: url(../../images/logo/check.jpg);width: 100%;height: 100%;" >-->
   <!-- checkout -->
-  <a href="../Main/onestore.php">
+  <a href="../Main/hfe.php">
     <button id="bill_gap" class="shadow_b" style="padding:10px;background-color:#3399cc ">
       <i class="glyphicon glyphicon-menu-left" style="color: white" aria-hidden="true"></i>
       <span style="color: white">Continue Shopping</span>

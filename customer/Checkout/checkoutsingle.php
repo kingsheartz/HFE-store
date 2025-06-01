@@ -1,13 +1,13 @@
 <?php
 session_start();
 if (!isset($_SESSION['id'])) {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
 }
 if (isset($_GET['store_id'], $_GET['item_description_id'])) {
   $store_id = $_GET['store_id'];
   $idid = $_GET['item_description_id'];
 } else {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
   return;
 }
 require "../Main/header.php";
@@ -525,7 +525,7 @@ $t_mrp = $mrprow['price'];
                   </li>
                 </div>
                 <br>
-                <a href="../Main/onestore.php">
+                <a href="../Main/hfe.php">
                   <li id="bill_gap" class="shadow_b" style="padding:10px;background-color:#3399cc ">
                     <i class="glyphicon glyphicon-menu-left" style="color: white" aria-hidden="true"></i>
                     <span style="color: white">Continue Shopping</span>

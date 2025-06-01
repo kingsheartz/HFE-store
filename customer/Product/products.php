@@ -1265,7 +1265,7 @@ if ($result_cnt == 0) {
   <div class="breadcrumbs">
     <div class="container" style="width:100%;">
       <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-        <li><a href="../Main/onestore.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
+        <li><a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
         <li class="active">Products</li>
       </ol>
     </div>
@@ -1279,7 +1279,7 @@ if ($result_cnt == 0) {
   <div class="breadcrumbs">
     <div class="container" style="width:100%">
       <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-        <li><a href="../Main/onestore.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+        <li><a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
         </li>
         <li class="active">Search results <span class='fa fa-search'></span></li>
       </ol>
@@ -1304,7 +1304,7 @@ if ($result_cnt == 0) {
 					</center>
 				</div>
 				<center style="margin-bottom:0px;margin-top: 50px;">
-					<h4>Can't find requested product ?<a href="../Main/onestore.php"> Try again!</a></h4>
+					<h4>Can't find requested product ?<a href="../Main/hfe.php"> Try again!</a></h4>
 				</center>
 				<?php
 			} else {

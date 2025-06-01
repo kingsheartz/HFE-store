@@ -24,7 +24,7 @@ require "../Main/header.php";
 <div class="breadcrumbs" style="background-color: #eaeded">
   <div class="container">
     <ol class="breadcrumb breadcrumb1" style="background-color: #eaeded">
-      <li><a href="../Main/onestore.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+      <li><a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
       </li>
       <li class="active" style="text-transform: capitalize;">Wish list of <?= $rowc2['first_name'] ?></li>
     </ol>

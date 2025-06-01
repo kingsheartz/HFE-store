@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['id'])) {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
 }
 
 require "../Main/header.php";
@@ -272,7 +272,7 @@ require "../Main/footer.php";
               })
               .then((willSubmit) => {
                 if (willSubmit.dismiss) {
-                  location.href = "../Main/onestore.php";
+                  location.href = "../Main/hfe.php";
                 } else if (willSubmit.isConfirmed) {
                   location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
                 }
@@ -288,7 +288,7 @@ require "../Main/footer.php";
               })
               .then((willSubmit) => {
                 if (willSubmit) {
-                  location.href = "../Main/onestore.php";
+                  location.href = "../Main/hfe.php";
                 } else {
                   return;
                 }

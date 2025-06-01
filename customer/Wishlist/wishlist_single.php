@@ -15,7 +15,7 @@ $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);
 <div class="breadcrumbs" style="background-color: #eaeded">
   <div class="container">
     <ol class="breadcrumb breadcrumb1" style="background-color: #eaeded">
-      <li><a href="../Main/onestore.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+      <li><a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
       </li>
       <li><a href="../Wishlist/wishlist.php"><span class="glyphicon glyphicon-file" aria-hidden="true"></span>Wish
           list</a></li>
@@ -852,7 +852,7 @@ $rowcount = $row_single_div['checksingle'];
             </div>
             <div class="col-md-4 small" id="small_screen" style="margin:0px;padding: 0px"></div>
             <center style="margin-bottom:0px;margin-top: 50px;">
-              <h4>Need more ?<a href="../Main/onestore.php"> Start adding!</a></h4>
+              <h4>Need more ?<a href="../Main/hfe.php"> Start adding!</a></h4>
             </center>
             <?php
           } else {
@@ -903,7 +903,7 @@ $rowcount = $row_single_div['checksingle'];
                   <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color:#c50505">
                     Your Wish
                     List is Empty</h2>
-                  <h4>No items in your wishlist.<a href="../Main/onestore.php">Start adding!</a></h4>
+                  <h4>No items in your wishlist.<a href="../Main/hfe.php">Start adding!</a></h4>
                 </center>
               </div>
               <div class="element_grid">

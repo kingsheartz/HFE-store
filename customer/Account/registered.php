@@ -2,7 +2,7 @@
 session_start();
 
 if (isset($_SESSION['id'])) {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
 }
 
 require "../Main/header.php";
@@ -869,7 +869,7 @@ require "../Main/header.php";
           </div>
           <div class="register-home">
             <a
-              href="../Main/onestore.php"
+              href="../Main/hfe.php"
               onmouseover="$(this).css('background-color','#0c66cc')"
               onmouseleave="$(this).css('background-color','#fe9126')"
               style="color: white; background-color: rgb(56 56 56); border-radius: 5px; font-size: 12px;">
@@ -1730,7 +1730,7 @@ if (isset($_GET['verified'])) {
                             })
                             .then((willSubmit2) => {
                               if (willSubmit2) {
-                                location.href = "../Main/onestore.php"
+                                location.href = "../Main/hfe.php"
                                 return false;
                               } else {
                                 return false;
@@ -2135,7 +2135,7 @@ if (isset($_GET['verified'])) {
                             })
                             .then((willSubmit2) => {
                               if (willSubmit2) {
-                                location.href = "../Main/onestore.php"
+                                location.href = "../Main/hfe.php"
                                 return false;
                               } else {
                                 return false;

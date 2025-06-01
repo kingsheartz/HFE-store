@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['id'])) {
-  header("location:../Main/onestore.php");
+  header("location:../Main/hfe.php");
 }
 
 require "../Main/header.php";
@@ -1029,7 +1029,7 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
         </div>
         <div class="register-home">
           <a
-            href="../Main/onestore.php"
+            href="../Main/hfe.php"
             onmouseover="$(this).css('background-color','#0c66cc')"
             onmouseleave="$(this).css('background-color','#fe9126')"
             style="color: white;background-color:#fe9126;">
@@ -1109,7 +1109,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       })
       .then((willSubmit) => {
         if (willSubmit) {
-          location.href = "../Main/onestore.php";
+          location.href = "../Main/hfe.php";
           return;
         } else {
           return;
@@ -2686,7 +2686,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
                           .then((willSubmit2) => {
                             if (willSubmit2) {
                               if (pass3 == 'no change') {
-                                location.href = "../Main/onestore.php"
+                                location.href = "../Main/hfe.php"
                                 return;
                               } else {
                                 location.href = "../Account/logout.php"

@@ -899,7 +899,7 @@ if (session_status() === PHP_SESSION_NONE) {
               <a href="#" style="float: left;margin-left:-10px;margin-right:5px;" id="sm_side_active">
                 <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
               </a>
-              <a href="../Main/onestore.php">
+              <a href="../Main/hfe.php">
                 <img src="../../images/logo/logo-horizontal.png" height="50px" style="width: 200px;height: auto;position: absolute;left: -40px;top: -45px;margin: 0px;right: 0px;">
               </a>
             </div>
@@ -1288,7 +1288,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </a>
               </li>
               <li id="homeactive" class="active">
-                <a href="../Main/onestore.php">
+                <a href="../Main/hfe.php">
                   <i class="fa fa-home fa-lg"></i> Home
                 </a>
               </li>

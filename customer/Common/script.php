@@ -536,7 +536,7 @@
               })
               .then((willSubmit) => {
                 if (willSubmit.dismiss) {
-                  location.href = "onestore.php";
+                  location.href = "hfe.php";
                 } else if (willSubmit.isConfirmed) {
                   location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
                 }
@@ -775,7 +775,7 @@
             })
             .then((willSubmit) => {
               if (willSubmit) {
-                location.href = "onestore.php";
+                location.href = "hfe.php";
               } else {
                 return;
               }
@@ -1126,7 +1126,7 @@
           timeout: 18000, //waiting time 3 sec
           success: function(data) { //if logging in is success
             if (data.status == 'success') {
-              //location.href="onestore.php";
+              //location.href="hfe.php";
             } else if (data.status == 'admin') {
               location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
             } else if (data.status == 'error') {
@@ -1143,7 +1143,7 @@
                 dangerMode: true,
                 timer: 6000,
               });
-              location.href = "onestore.php";
+              location.href = "hfe.php";
               return;
             } else {
               return;

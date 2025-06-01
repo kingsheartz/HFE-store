@@ -795,7 +795,7 @@ require "../Common/cookie.php";
               flex-direction: column;
               -webkit-box-align: center;
               -ms-flex-align: center;
-              align-products: center;
+              align-items: center;
               -webkit-box-pack: center;
               -ms-flex-pack: center;
               justify-content: center;
