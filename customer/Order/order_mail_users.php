@@ -1,7 +1,7 @@
 <?php
 require_once "../Common/pdo.php";
 $user_id = $_GET['id'];
-$placesql_u = "select* from users where user_id=:user_id";
+$placesql_u = "select* from customers where user_id=:user_id";
 $placestmt_u = $pdo->prepare($placesql_u);
 $placestmt_u->execute(array(
   ':user_id' => $user_id

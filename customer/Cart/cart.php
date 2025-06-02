@@ -864,7 +864,7 @@ function randomGen($min, $max, $quantity)
                                         $f = 0;
 
                                         while ($f < 3) {
-                                          if ($rowfeatures['f' . $f] != 0 && $rowfeatures['f' . $f] != '0') {
+                                          if (!is_null($rowfeatures['f' . $f]) && $rowfeatures['f' . $f] != 0 && $rowfeatures['f' . $f] != '0') {
                                             if ($features[$f] != 'weight') {
                                               $sqlfeature_name = "select " . $features[$f] . '_name from ' . $features[$f] . ' where ' . $features[$f] . '_id=' . (int) $rowfeatures['f' . $f];
                                               $stmtfeature_name = $pdo->query($sqlfeature_name);
