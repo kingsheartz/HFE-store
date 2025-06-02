@@ -635,37 +635,6 @@ require "../Common/cookie.php";
         }
       }
           ?>
-          <div class="promo-area">
-            <div class="zigzag-bottom"></div>
-            <div class="container">
-              <div class="row">
-                <div class="col-md-3 col-sm-6">
-                  <div class="single-promo promo1" onclick="location.href='../Main/terms&conditions.php?return=1'">
-                    <i class="fa fa-refresh"></i>
-                    <p>Return policy</p>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="single-promo promo2" onclick="location.href='../Main/terms&conditions.php?shipping=1'">
-                    <i class="fa fa-truck"></i>
-                    <p>Free shipping</p>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="single-promo promo3" onclick="location.href='../Main/terms&conditions.php?payment=1'">
-                    <i class="fa fa-lock"></i>
-                    <p>Secure payments</p>
-                  </div>
-                </div>
-                <div class="col-md-3 col-sm-6">
-                  <div class="single-promo promo4" onclick="location.href='../Product/allproducts.php'">
-                    <i class="fa fa-gift"></i>
-                    <p>New products</p>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End promo area -->
           <!-- end sweet section -->
           <style>
             .diro {
