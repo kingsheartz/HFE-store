@@ -10,7 +10,7 @@ if(!isset($_SESSION['forgot_pass_email'])){
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>OneStore | Verify OTP</title>
+  <title>HFE | Verify OTP</title>
   <!--favicon-->
   <link href="../../../../images/logo/favicon.png" rel="icon"/>
   <!--//favicon-->
@@ -138,7 +138,7 @@ $('.std_loader').show();
 var email="<?=$_SESSION['forgot_pass_email']?>";
 
 $.ajax({
-    url: "../../../../functions.php", //passing page info
+    url: "../../../../customer/Common/functions.php", //passing page info
     data: {"forgotlogin":1,"email":email},  //form data
     type: "post", //post data
     dataType: "json",   //datatype=json format
@@ -279,7 +279,7 @@ $('.load_btn').show();
 $('.real_btn').hide();
 
 $.ajax({
-    url: "../../../../functions.php", //passing page info
+    url: "../../../../customer/Common/functions.php", //passing page info
     data: {"otppass":1,"otp":otp},  //form data
     type: "post", //post data
     dataType: "json",   //datatype=json format
