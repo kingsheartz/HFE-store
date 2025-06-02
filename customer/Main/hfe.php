@@ -666,27 +666,6 @@ require "../Common/cookie.php";
               </div>
             </div>
           </div> <!-- End promo area -->
-          <div class="brands-area">
-            <div class="zigzag-bottom"></div>
-            <div class="container" style="width:100%">
-              <div class="row">
-                <div class="col-md-12">
-                  <div class="brand-wrapper">
-                    <div class="brand-list">
-                      <img style="height:130px;width:auto" src="../../images/brand/nokia.png" alt="">
-                      <img style="height:130px;width:auto" src="../../images/brand/canon.png" alt="">
-                      <img style="height:130px;width:auto" src="../../images/brand/samsung.png" alt="">
-                      <img style="height:130px;width:auto" src="../../images/brand/apple.png" onclick="location.href='../Product/diff_views.php?brand=Apple'" alt="Apple">
-                      <img style="height:130px;width:auto" src="../../images/brand/htc.png" alt="">
-                      <img style="height:130px;width:auto" src="../../images/brand/lg.png" alt="">
-                      <img style="height:130px;width:auto" src="../../images/brand/vivo.png" onclick="location.href='../Product/diff_views.php?brand=Vivo'" alt="Vivo">
-                      <img style="height:140px;width:auto" src="../../images/brand/oppo.png" onclick="location.href='../Product/diff_views.php?brand=Oppo'" alt="Oppo">
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div> <!-- End brands area -->
           <!-- end sweet section -->
           <style>
             .diro {
