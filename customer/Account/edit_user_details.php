@@ -13,7 +13,7 @@ if (isset($_SESSION['id'])) {
   $id = $_GET['id'];
 }
 
-$usersql = 'select* from users where user_id=' . $id;
+$usersql = 'select* from customers where user_id=' . $id;
 $userstmt = $pdo->query($usersql);
 $userrow = $userstmt->fetch(PDO::FETCH_ASSOC);
 $susersql = 'select* from user_delivery_details where type="permanent" and user_id=' . $id;

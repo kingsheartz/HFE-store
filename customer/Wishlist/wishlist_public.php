@@ -8,7 +8,7 @@ if (isset($_GET['wishlist_id'])) {
     ':wid' => $wishlist_id
   ));
   $rowc1 = $stmtc1->fetch(PDO::FETCH_ASSOC);
-  $sqlc2 = "select first_name from users where user_id=:uid";
+  $sqlc2 = "select first_name from customers where user_id=:uid";
   $stmtc2 = $pdo->prepare($sqlc2);
   $stmtc2->execute(array(
     ':uid' => $rowc1['user_id']
@@ -477,7 +477,7 @@ require "../Main/header.php";
                                                 $features = array('size', 'color', 'weight', 'flavour', 'processor', 'display', 'battery', 'Internal_storage', 'brand', 'material', 'price', 'quantity');
                                                 $f = 0;
                                                 while ($f < 10) {
-                                                  if ($rowfeatures['f' . $f] != 0 && $rowfeatures['f' . $f] != '0') {
+                                                  if (!is_null($rowfeatures['f' . $f]) && $rowfeatures['f' . $f] != 0 && $rowfeatures['f' . $f] != '0') {
                                                     if ($features[$f] != 'weight') {
                                                       $sqlfeature_name = "select " . $features[$f] . '_name from ' . $features[$f] . ' where ' . $features[$f] . '_id=' . (int) $rowfeatures['f' . $f];
                                                       $stmtfeature_name = $pdo->query($sqlfeature_name);

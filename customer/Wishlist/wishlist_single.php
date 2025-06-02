@@ -724,7 +724,7 @@ $rowcount = $row_single_div['checksingle'];
                                               $features = array('size', 'color', 'weight', 'flavour', 'processor', 'display', 'battery', 'Internal_storage', 'brand', 'material', 'price', 'quantity');
                                               $f = 0;
                                               while ($f < 10) {
-                                                if ($rowfeatures['f' . $f] != 0 && $rowfeatures['f' . $f] != '0') {
+                                                if (!is_null($rowfeatures['f' . $f]) && $rowfeatures['f' . $f] != 0 && $rowfeatures['f' . $f] != '0') {
                                                   if ($features[$f] != 'weight') {
                                                     $sqlfeature_name = "select " . $features[$f] . '_name from ' . $features[$f] . ' where ' . $features[$f] . '_id=' . (int) $rowfeatures['f' . $f];
                                                     $stmtfeature_name = $pdo->query($sqlfeature_name);
