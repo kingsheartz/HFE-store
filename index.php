@@ -265,15 +265,15 @@ $_COOKIE['animate'] = 0;
 
             success: function(data) { //if logging in is success
               if (data.admin == 'true' && data.user == 'true') {
-                location.href = "customer/Main/onestore.php";
+                location.href = "customer/Main/hfe.php";
               } else if (data.status == 'success') {
-                location.href = "customer/Main/onestore.php";
+                location.href = "customer/Main/hfe.php";
                 return
               } else if (data.admin == 'true') {
 
                 location.href = "store-admin/index.php?id=" + data.id + "";
               } else if (data.status == 'error') {
-                location.href = "customer/Main/onestore.php";
+                location.href = "customer/Main/hfe.php";
                 return;
               } else {
                 if (status === "error1") {
@@ -285,9 +285,9 @@ $_COOKIE['animate'] = 0;
                     dangerMode: true,
                     timer: 6000,
                   });
-                  location.href = "customer/Main/onestore.php";
+                  location.href = "customer/Main/hfe.php";
                 }
-                location.href = "customer/Main/onestore.php";
+                location.href = "customer/Main/hfe.php";
               }
             },
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
@@ -300,7 +300,7 @@ $_COOKIE['animate'] = 0;
                   dangerMode: true,
                   timer: 6000,
                 });
-                location.href = "customer/Main/onestore.php";
+                location.href = "customer/Main/hfe.php";
                 return;
               } else {
                 return;
@@ -308,7 +308,7 @@ $_COOKIE['animate'] = 0;
             }
           }); //closing ajax
         } else {
-          location.href = "customer/Main/onestore.php";
+          location.href = "customer/Main/hfe.php";
         }
       }, 4800);
     }
