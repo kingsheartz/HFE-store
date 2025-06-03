@@ -330,30 +330,30 @@ require "../Common/pdo.php";
     $chkpendrow = $chkpendstmt->fetch(PDO::FETCH_ASSOC);
     $sts = $chkpendrow['delivery_status'];
     if ($sts == 'pending') {
-      ?>
+    ?>
       <div class="check-pending">
         <div onclick="cancel();" onmouseover="$(this).css('cursor','pointer')"
           style="float:right;border:1px solid rgb(165, 164, 164);color:red;padding-left:10px;padding-right:10px;margin-top:10px;clear:both;border-radius: 3px;">
           <i class="fa fa-close"></i><span style="color: #000;"><b> Cancel this order</b></span>
         </div><br>
       </div>
-      <?php
+    <?php
     }
     ?>
     <br>
     <?php
     $query = "select user_delivery_details.first_name,user_delivery_details.last_name,user_delivery_details.phone,user_delivery_details.address,user_delivery_details.pincode,users.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.item_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store.store_name,item.price as mrp,item_description.item_description_id,category.category_id,sub_category.sub_category_id,item.item_name FROM new_orders
-      JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-      JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-      JOIN users ON users.user_id=user_delivery_details.user_id
-      JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
-      JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-      JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-      JOIN item ON item.item_id=item_description.item_id
-      JOIN category ON category.category_id=item.category_id
-      JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
-      JOIN store on store.store_id=product_details.store_id
-      WHERE users.user_id=:user_id and new_ordered_products.new_ordered_products_id=:nopid ";
+              JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
+              JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
+              JOIN users ON users.user_id=user_delivery_details.user_id
+              JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
+              JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
+              JOIN item_description ON product_details.item_description_id=item_description.item_description_id
+              JOIN item ON item.item_id=item_description.item_id
+              JOIN category ON category.category_id=item.category_id
+              JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+              JOIN store on store.store_id=product_details.store_id
+              WHERE users.user_id=:user_id and new_ordered_products.new_ordered_products_id=:nopid ";
     $statement = $pdo->prepare($query);
     $statement->execute(array(
       ':user_id' => $_SESSION['id'],
@@ -561,32 +561,32 @@ require "../Common/pdo.php";
                 <td class="cust_details sts-now">
                   <?php
                   if ($row['delivery_status'] == 'completed') {
-                    ?>
+                  ?>
                     <span
                       style="background-color: green;border-radius: 5px;color:white;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;
                       <i class="fa fa-check" style="color: orange;text-shadow: 1px 2px 3px grey"></i>
                       <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white">
                         completed</i>
                     </span>
-                    <?php
+                  <?php
                   } else if ($row['delivery_status'] == 'pending') {
-                    ?>
+                  ?>
                     <span
                       style="background-color: rgb(255, 123, 0);border-radius: 5px;color:white;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;
                       <i class="fa fa-clock-o" style="color: rgb(0, 0, 0);text-shadow: 1px 2px 3px grey"></i>
                       <i style="text-transform:capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white">
                         pending &nbsp;</i>
                     </span>
-                    <?php
+                  <?php
                   } else if ($row['delivery_status'] == 'cancelled') {
-                    ?>
+                  ?>
                     <span
                       style="background-color: rgb(255, 0, 0);border-radius: 5px;font-weight:bold;padding-bottom:3px;padding-right:5px">&nbsp;
                       <i class="fa fa-close" style="color: rgb(255, 255, 255);text-shadow: 1px 2px 3px grey"></i>
                       <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey;color:white">
                         cancelled</i>
                     </span>
-                    <?php
+                  <?php
                   }
                   ?>
                 </td>

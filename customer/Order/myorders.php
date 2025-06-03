@@ -285,7 +285,7 @@ require "../Common/pdo.php";
   }
 </style>
 <script>
-  $(document).ready(function (f) {
+  $(document).ready(function(f) {
     $.ajax({
       url: "../Common/functions.php", //passing page info
       data: {
@@ -295,7 +295,7 @@ require "../Common/pdo.php";
       type: "post", //post data
       dataType: "json", //datatype=json format
       timeout: 18000, //waiting time 3 sec
-      success: function (data) { //if logging in is success
+      success: function(data) { //if logging in is success
         if (data.status == "success") {
           document.getElementById("sm-cartcnt").innerHTML = "";
           document.getElementById("lg-cartcnt").innerHTML = "";
@@ -304,7 +304,7 @@ require "../Common/pdo.php";
           return;
         }
       },
-      error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+      error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           return;
         } else {
@@ -323,7 +323,7 @@ require "../Common/pdo.php";
       "filter": filter,
       'page_no': pageId,
       "id": <?= $_SESSION['id'] ?>
-    }).done(function (data) {
+    }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
       $('#content_order').append(data.output);
@@ -345,7 +345,7 @@ require "../Common/pdo.php";
       name: inputVal,
       'filter': filter,
       id: <?= $_SESSION['id'] ?>
-    }).done(function (data) {
+    }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
       $('#content_order').append(data.output);
@@ -366,7 +366,7 @@ require "../Common/pdo.php";
       'name': inputVal,
       'filter': filter,
       "id": <?= $_SESSION['id'] ?>
-    }).done(function (data) {
+    }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
       $('#content_order').append(data.output);
@@ -378,7 +378,7 @@ require "../Common/pdo.php";
     $('.std_text1').hide();
   }
   // Pagination code
-  $(document).on("click", ".pagination li a", function (e) {
+  $(document).on("click", ".pagination li a", function(e) {
     e.preventDefault();
     var pageId = $(this).attr("id");
     $('.background_loader').css('display', 'flex');
@@ -391,7 +391,7 @@ require "../Common/pdo.php";
       'filter': filter,
       'page_no': pageId,
       "id": <?= $_SESSION['id'] ?>
-    }).done(function (data) {
+    }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
       $('#content_order').append(data.output);
@@ -405,8 +405,8 @@ require "../Common/pdo.php";
 <div class="table1" style="padding:5px;">
   <?php
   $sql_order_cnt = "select new_orders_id ,new_orders.sub_total from new_orders
-JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id where user_delivery_details.user_id=" . $_SESSION['id'];
+										JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
+										JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id where user_delivery_details.user_id=" . $_SESSION['id'];
   $stmt_order_cnt = $pdo->prepare($sql_order_cnt);
   $stmt_order_cnt->execute();
   $order_cnt = $stmt_order_cnt->rowCount();
@@ -414,7 +414,7 @@ JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=ord
     echo '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;
       height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Orders Yet...</h2></center><br><br>';
   } else {
-    ?>
+  ?>
     <div class="container" style="padding: 0;margin:0;width:100%">
       <div class="row" style="padding: 0;margin:0;">
         <div class="col-sm-12 " style="padding: 0;margin:0;">
@@ -461,7 +461,7 @@ JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=ord
     </div>
     <div id="content_order">
     </div>
-    <?php
+  <?php
   }
   ?>
 </div>
