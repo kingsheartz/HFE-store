@@ -126,6 +126,7 @@ require "../Main/header.php";
     border-radius: 5px;
   }
 </style>
+
 <body>
   <div class="table1">
     <h4 style="margin-top: 10px;border-bottom:  1px solid#E3E3E3;padding:10px;"><i class="fas fa-boxes"
@@ -166,29 +167,29 @@ require "../Main/header.php";
   </script>
   <?php
   if (isset($_GET['topnew'])) {
-    ?>
+  ?>
     <h3 style="text-transform:capitalize;font-weight:bold;text-align:center">Top New</h3>
-    <?php
+  <?php
   }
   require "../Common/pdo.php";
   $query11 = "SELECT * from  category";
   $st11 = $pdo->query($query11);
   while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
     $ct = $row11['category_id'];
-    ?>
+  ?>
     <?php
     $query = "SELECT * FROM item
-      JOIN item_description ON item.item_id=item_description.item_id
-      where item.category_id=$ct and (item.added_date) in (
-        select max(added_date) as date from item
-      ) GROUP BY item_description.item_id
-      ORDER BY CAST(item.item_id AS UNSIGNED) DESC";
+							JOIN item_description ON item.item_id=item_description.item_id
+							where item.category_id=$ct and (item.added_date) in (
+								select max(added_date) as date from item
+							) GROUP BY item_description.item_id
+							ORDER BY CAST(item.item_id AS UNSIGNED) DESC";
     $st = $pdo->query($query);
     $product = $st->rowCount();
     if ($product == 0) {
       continue;
     } else {
-      ?>
+    ?>
       <div class="difcat ">
         <span class="difhed"><?= $row11['category_name'] ?>
           <button onclick="location.href='../Product/viewsubcat.php?category_id=<?= $ct ?>'">View All</button></span>
@@ -199,7 +200,7 @@ require "../Main/header.php";
               class="fas fa-chevron-right"></i></button>
           <?php
           while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-            ?>
+          ?>
             <div class="products-all-in-one">
               <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
                   align="middle"
@@ -216,12 +217,12 @@ require "../Main/header.php";
               <div class="deupd"><?= $item_name ?><br>
               </div>
             </div>
-            <?php
+          <?php
           }
           ?>
         </div>
       </div>
-      <?php
+  <?php
     }
   }
   ?>
@@ -241,7 +242,7 @@ require "../Main/header.php";
       }
     }
   </script>
-</div>
-<?php
-require "../Main/footer.php";
-?>
+  </div>
+  <?php
+  require "../Main/footer.php";
+  ?>

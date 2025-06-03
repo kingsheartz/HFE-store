@@ -71,17 +71,17 @@
         <ul class="info">
           <?php
           if (isset($_SESSION['name'])) {
-            ?>
+          ?>
             <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="cart.php">My Cart</a></li>
             <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="wishlist.php">Wishlist</a></li>
-            <?php
+          <?php
           }
           if (!isset($_SESSION['name'])) {
-            ?>
+          ?>
             <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.php">Login</a></li>
             <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.php">Create Account</a>
             </li>
-            <?php
+          <?php
           }
           ?>
           <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.php">FAQ</a></li>
@@ -548,7 +548,7 @@
                 <input type="hidden" value="" id="wishlist_idid_keeper" />
               </h4>
               <button class="wishlist_btn" style="height: 45px;width:100%;border-color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;
-color: white;border-radius:7px;outline: none;" onclick="wishlist_check_store_select()" class="element_cart"
+								color: white;border-radius:7px;outline: none;" onclick="wishlist_check_store_select()" class="element_cart"
                 type="button" data-dismiss="modal" data-toggle="modal" data-target="#wishlist_avail">
                 SELECT STORE <i class="fa fa-arrow-right"></i></i></button>
             </div>
@@ -572,7 +572,7 @@ color: white;border-radius:7px;outline: none;" onclick="wishlist_check_store_sel
 if (isset($_SESSION['id'])) {
   $result = $pdo->query("select * from wishlist where user_id=" . $_SESSION['id']);
   $status = 0;
-  ?>
+?>
   <div id="wishlist_avail" tabindex="-1" role="dialog" aria-labelledby="store_title"
     class="modal fade modal-xl hidescroll" style="height: 90%;">
     <div class="modal-dialog modal-xl" style="height: 90%;">
@@ -591,7 +591,7 @@ if (isset($_SESSION['id'])) {
               <?php
               $rows = $result->rowCount();
               if (!is_null($rows) && $rows > 0) {
-                ?>
+              ?>
                 <tr style="background-color: #22374e;color: white">
                   <th style="border: none;" class="view_avail_stores">Select</th>
                   <th style="border: none;" class="view_avail_stores">List Name </th>
@@ -605,7 +605,7 @@ if (isset($_SESSION['id'])) {
                   $stmt_wish1 = $pdo->prepare($sql_wish1);
                   $stmt_wish1->execute(array(':wish_id' => $row['wishlist_id']));
                   $row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
-                  ?>
+                ?>
                   <tr>
                     <td style="padding: 0px;margin: 0px;">
                       <button id="list_btn<?= $row['wishlist_id'] ?>"
@@ -616,7 +616,7 @@ if (isset($_SESSION['id'])) {
                     <td style="background-color: white" class="view_avail_stores"><?= $row['list_name'] ?></td>
                     <td style="background-color: white" class="view_avail_stores"><?= $row['privacy'] ?></td>
                     <!--<td id="Q<?= $store_id ?>"><? //=$row['quantity']
-                            ?></td>-->
+                                                    ?></td>-->
                     <td style="background-color: white" id="wish_cnt_<?= $row['wishlist_id'] ?>" class="view_avail_stores">
                       <?= $row_wish1['item_count'] ?></td>
                     <?php
@@ -625,7 +625,7 @@ if (isset($_SESSION['id'])) {
                     ?>
                     <td style="background-color: white" class="view_avail_stores"><?= $day ?></td>
                   </tr>
-                  <?php
+                <?php
                 }
                 $status = 1;
               }
@@ -637,7 +637,7 @@ if (isset($_SESSION['id'])) {
                   <h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
-                <?php
+              <?php
               }
               ?>
             </table>
@@ -654,7 +654,7 @@ if (isset($_SESSION['id'])) {
       </div>
     </div>
   </div>
-  <?php
+<?php
 }
 ?>
 <!-------------------------------------JAVA SCRIPT FUNCTIONS BEGIN------------------------------------------------------------->
@@ -752,7 +752,7 @@ if (isset($_SESSION['id'])) {
   var capson_warning = document.getElementsByClassName("capson_warning");
   var password_field = document.getElementsByClassName('password_fields');
   for (var i = 0; i < password_field.length; i++) {
-    password_field[i].addEventListener("keyup", function (event) {
+    password_field[i].addEventListener("keyup", function(event) {
       for (var j = 0; j < capson_warning.length; j++) {
         if (event.getModifierState("CapsLock")) {
           capson_warning[j].style.display = "block";
@@ -763,7 +763,7 @@ if (isset($_SESSION['id'])) {
     });
   }
   //////////////////////////////////////////////////////////////
-  $('.tab-pane').on('click', function () {
+  $('.tab-pane').on('click', function() {
     $('.tab-pane').css('border', '0px none');
     $('.tab-pane').css('border-bottom', '1px solid transparent');
     var elementtodisplay = $(this).find('.active');
@@ -803,11 +803,11 @@ if (isset($_SESSION['id'])) {
     $('#side_nav_bar_lock').css("z-index", "-9999999");
     //document.getElementById("main_all").style.marginLeft= "0";
   }
-  $('#side_nav_bar_lock').click(function () {
+  $('#side_nav_bar_lock').click(function() {
     closeNav();
   });
   ////////////////////////////////BREAK SIDE NAV EVENT/////////////////////////////////////////////////////////////////////////////////////////
-  $('#list_enda').click(function () {
+  $('#list_enda').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -821,7 +821,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_enda").css("display", "block");
   });
-  $('#list_endb').click(function () {
+  $('#list_endb').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
     $("#side_cat_list_endd").css("display", "none");
@@ -834,7 +834,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endb").css("display", "block");
   });
-  $('#list_endc').click(function () {
+  $('#list_endc').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endd").css("display", "none");
@@ -847,7 +847,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endc").css("display", "block");
   });
-  $('#list_endd').click(function () {
+  $('#list_endd').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -860,7 +860,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endd").css("display", "block");
   });
-  $('#list_ende').click(function () {
+  $('#list_ende').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -873,7 +873,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_ende").css("display", "block");
   });
-  $('#list_endf').click(function () {
+  $('#list_endf').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -886,7 +886,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endf").css("display", "block");
   });
-  $('#list_endg').click(function () {
+  $('#list_endg').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -899,7 +899,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endg").css("display", "block");
   });
-  $('#list_endh').click(function () {
+  $('#list_endh').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -912,7 +912,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endh").css("display", "block");
   });
-  $('#list_endi').click(function () {
+  $('#list_endi').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -925,7 +925,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endi").css("display", "block");
   });
-  $('#list_endj').click(function () {
+  $('#list_endj').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -942,7 +942,7 @@ if (isset($_SESSION['id'])) {
   var dropdown = document.getElementsByClassName("dropdown-btn");
   var i;
   for (i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function () {
+    dropdown[i].addEventListener("click", function() {
       this.classList.toggle("active");
       var dropdownContent = this.nextElementSibling;
       if (dropdownContent.style.display === "block") {
@@ -971,11 +971,11 @@ if (isset($_SESSION['id'])) {
 <!-------TESTING SIDE-NAV---------->
 <!-------TESTING NAV---------->
 <script type="text/javascript">
-  $(function () {
+  $(function() {
     var navMain = $(".navbar-collapse"); // avoid dependency on #id
     // "a:not([data-toggle])" - to avoid issues caused
     // when you have dropdown inside navbar
-    navMain.on("click", "a:not([data-toggle])", null, function () {
+    navMain.on("click", "a:not([data-toggle])", null, function() {
       navMain.collapse('hide');
     });
   });
@@ -993,8 +993,8 @@ if (isset($_SESSION['id'])) {
 <!--///////////////////////////////////////////////////////////////-->
 <script src="https://cdn.jsdelivr.net/gh/vast-engineering/jquery-popup-overlay@2/jquery.popupoverlay.min.js"></script>
 <script type="text/javascript">
-  jQuery.fn.putCursorAtEnd = function () {
-    return this.each(function () {
+  jQuery.fn.putCursorAtEnd = function() {
+    return this.each(function() {
       // Cache references
       var $el = $(this),
         el = this;
@@ -1007,7 +1007,7 @@ if (isset($_SESSION['id'])) {
         // Double the length because Opera is inconsistent about whether a carriage return is one character or two.
         var len = $el.val().length * 2;
         // Timeout seems to be required for Blink
-        setTimeout(function () {
+        setTimeout(function() {
           el.setSelectionRange(len, len);
         }, 1);
       } else {
@@ -1020,8 +1020,8 @@ if (isset($_SESSION['id'])) {
       this.scrollTop = 999999;
     });
   };
-  $(document).ready(function (e) {
-    $('.search-panel .dropdown-menu').find('a').click(function (e) {
+  $(document).ready(function(e) {
+    $('.search-panel .dropdown-menu').find('a').click(function(e) {
       e.preventDefault();
       var param = $(this).attr("href").replace("#", "");
       var concept = $(this).text();
@@ -1033,7 +1033,7 @@ if (isset($_SESSION['id'])) {
 
   function catlistview() {
     $('#display').hide();
-    document.onclick = function (div) {
+    document.onclick = function(div) {
       if (div.target.id !== 'search-panel' && div.target.id !== 'search_concept' && div.target.id !== 'srch_pan') {
         $("#category").hide();
       } else if (div.target.id == 'search-panel' || div.target.id == 'search_concept' || div.target.id == 'srch_pan') {
@@ -1048,8 +1048,8 @@ if (isset($_SESSION['id'])) {
     }
   }
   /*SMALL DIV*/
-  $(document).ready(function (f) {
-    $('.search-panel .dropdown-menu').find('a').click(function (f) {
+  $(document).ready(function(f) {
+    $('.search-panel .dropdown-menu').find('a').click(function(f) {
       f.preventDefault();
       var param = $(this).attr("href").replace("#", "");
       console.log(param)
@@ -1062,7 +1062,7 @@ if (isset($_SESSION['id'])) {
 
   function catlistview2() {
     $('#display2').hide();
-    document.onclick = function (div) {
+    document.onclick = function(div) {
       if (div.target.id !== 'search-panel2' && div.target.id !== 'search_concept2' && div.target.id !== 'srch_pan2') {
         $("#category2").hide();
       } else if (div.target.id == 'search-panel2' || div.target.id == 'search_concept2' || div.target.id == 'srch_pan2') {
@@ -1076,7 +1076,7 @@ if (isset($_SESSION['id'])) {
       }
     }
   }
-  document.onclick = function (div) {
+  document.onclick = function(div) {
     if (div.target.id !== 'search' && div.target.id !== 'search2') {
       $("#display").hide();
       $("#display2").hide();
@@ -1149,22 +1149,22 @@ if (isset($_SESSION['id'])) {
         type: "post", //post data
         dataType: "json", //datatype=json format
         timeout: 18000, //waiting time 3 sec
-        success: function (data) { //if logging in is success
+        success: function(data) { //if logging in is success
           if (data.admin == 'true' && data.user == 'true') {
             $('.real_btn').show();
             $('.load_btn').hide();
             Swal.fire({
-              title: "<span style='font-family-arial'>Log in as</span>",
-              text: "User (or) Store owner",
-              icon: "success",
-              showCancelButton: true,
-              showConfirmButton: true,
-              confirmButtonColor: 'red',
-              confirmButtonText: '<i class="fas fa-store"></i> Admin',
-              cancelButtonColor: 'green',
-              allowOutsideClick: false,
-              cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
-            })
+                title: "<span style='font-family-arial'>Log in as</span>",
+                text: "User (or) Store owner",
+                icon: "success",
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonColor: 'red',
+                confirmButtonText: '<i class="fas fa-store"></i> Admin',
+                cancelButtonColor: 'green',
+                allowOutsideClick: false,
+                cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
+              })
               .then((willSubmit) => {
                 if (willSubmit.dismiss) {
                   location.href = "hfe.php";
@@ -1177,12 +1177,12 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Success!!!",
-              text: "Admin privileges granted",
-              icon: "success",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Success!!!",
+                text: "Admin privileges granted",
+                icon: "success",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').hide();
@@ -1195,15 +1195,15 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Success!!!",
-              text: "Log in Success",
-              icon: "success",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Success!!!",
+                text: "Log in Success",
+                icon: "success",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
-                  $(function () {
+                  $(function() {
                     document.getElementById("pwd").value = "";
                     location.reload();
                     $('#emppass').hide();
@@ -1218,12 +1218,12 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Success!!!",
-              text: "Admin privileges granted",
-              icon: "success",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Success!!!",
+                text: "Admin privileges granted",
+                icon: "success",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').hide();
@@ -1236,12 +1236,12 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Oops!!!",
-              text: "Error logging in",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Oops!!!",
+                text: "Error logging in",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').html("Incorrect Password");
@@ -1253,12 +1253,12 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Oops!!!",
-              text: "You are not registered yet",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Oops!!!",
+                text: "You are not registered yet",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').html("You are not registered with us. Please sign up.");
@@ -1270,12 +1270,12 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Check your mailbox!!!",
-              text: "Pending email verification",
-              icon: "warning",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Check your mailbox!!!",
+                text: "Pending email verification",
+                icon: "warning",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').html("Verify your email");
@@ -1285,7 +1285,7 @@ if (isset($_SESSION['id'])) {
               });
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             $('.real_btn').show();
             $('.load_btn').hide();
@@ -1306,10 +1306,10 @@ if (isset($_SESSION['id'])) {
     }
   }
   //<?php
-  //    $fourRandomDigit = mt_rand(1000,9999);
-  //    echo $fourRandomDigit;
-  //
-  ?>
+    //    $fourRandomDigit = mt_rand(1000,9999);
+    //    echo $fourRandomDigit;
+    //
+    ?>
   /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 </script>
@@ -1360,7 +1360,7 @@ if (isset($_SESSION['id'])) {
     } else {
       pin = "https://api.postalpincode.in/pincode/" + postcode + "";
       var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function () {
+      xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           locate = JSON.parse(this.responseText);
           console.log(locate);
@@ -1394,16 +1394,16 @@ if (isset($_SESSION['id'])) {
       type: "post", //post data
       dataType: "json", //datatype=json format
       timeout: 30000, //waiting time 3 sec
-      success: function (data) { //if registration is success
+      success: function(data) { //if registration is success
         if (data.status == 'success') {
           //CODE TO REMOVE
           swal({
-            title: "Success!!!",
-            text: "Located Successfully",
-            icon: "success",
-            closeOnClickOutside: false,
-            dangerMode: true,
-          })
+              title: "Success!!!",
+              text: "Located Successfully",
+              icon: "success",
+              closeOnClickOutside: false,
+              dangerMode: true,
+            })
             .then((willSubmit) => {
               if (willSubmit) {
                 location.href = "hfe.php";
@@ -1414,12 +1414,12 @@ if (isset($_SESSION['id'])) {
           //CODE TO REMOVE
         } else if (data.status == 'error') {
           swal({
-            title: "Oops!!!",
-            text: "Couldn't locate your place",
-            icon: "error",
-            closeOnClickOutside: false,
-            dangerMode: true,
-          })
+              title: "Oops!!!",
+              text: "Couldn't locate your place",
+              icon: "error",
+              closeOnClickOutside: false,
+              dangerMode: true,
+            })
             .then((willSubmit) => {
               if (willSubmit) {
                 return;
@@ -1429,7 +1429,7 @@ if (isset($_SESSION['id'])) {
             });
         }
       },
-      error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+      error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
             title: "Oops!!!",
@@ -1495,7 +1495,7 @@ if (isset($_SESSION['id'])) {
     } else {
       pin = "https://api.postalpincode.in/pincode/" + regpin + "";
       var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function () {
+      xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           locate = JSON.parse(this.responseText);
           console.log(locate);
@@ -1543,16 +1543,16 @@ if (isset($_SESSION['id'])) {
       type: "post", //post data
       dataType: "json", //datatype=json format
       timeout: 30000, //waiting time 3 sec
-      success: function (data) { //if registration is success
+      success: function(data) { //if registration is success
         if (data.status == 'success') {
           //CODE TO REMOVE
           swal({
-            title: "Success!!!",
-            text: "Located Successfully",
-            icon: "success",
-            closeOnClickOutside: false,
-            dangerMode: true,
-          })
+              title: "Success!!!",
+              text: "Located Successfully",
+              icon: "success",
+              closeOnClickOutside: false,
+              dangerMode: true,
+            })
             .then((willSubmit) => {
               if (willSubmit) {
                 return;
@@ -1563,12 +1563,12 @@ if (isset($_SESSION['id'])) {
           //CODE TO REMOVE
         } else if (data.status == 'error') {
           swal({
-            title: "Oops!!!",
-            text: "Couldn't locate your place",
-            icon: "error",
-            closeOnClickOutside: false,
-            dangerMode: true,
-          })
+              title: "Oops!!!",
+              text: "Couldn't locate your place",
+              icon: "error",
+              closeOnClickOutside: false,
+              dangerMode: true,
+            })
             .then((willSubmit) => {
               if (willSubmit) {
                 return;
@@ -1578,7 +1578,7 @@ if (isset($_SESSION['id'])) {
             });
         }
       },
-      error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+      error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
             title: "Oops!!!",
@@ -1624,10 +1624,10 @@ if (isset($_SESSION['id'])) {
 <!-------------------------------------------------------------------- >
   <!-- Bootstrap JS form CDN -->
 <script type="text/javascript">
-  $('#myModal').on('show.bs.modal', function (event) {
+  $('#myModal').on('show.bs.modal', function(event) {
     $('#myModal').modal('handleUpdate');
   });
-  $('#myModal2').on('show.bs.modal', function (event) {
+  $('#myModal2').on('show.bs.modal', function(event) {
     $('myModal2').modal('handleUpdate');
   });
 </script>
@@ -1635,13 +1635,10 @@ if (isset($_SESSION['id'])) {
 <script src="../../js/minicart.min.js"></script>
 <!--// Mini Cart //-->
 <script>
-
   paypal.minicart.render({
-    action:
-      '#'
+    action: '#'
   });
-  if
-    (~window.location.search.indexOf('reset=true')) {
+  if (~window.location.search.indexOf('reset=true')) {
     paypal.minicart.reset();
   }
 </script>
@@ -1649,15 +1646,15 @@ if (isset($_SESSION['id'])) {
 <!-- main slider-banner -->
 <script type="text/javascript">
   //TO REMOVE PADDING AFTER CLOSING MODAL
-  $(".close").on("hidden", function () {
+  $(".close").on("hidden", function() {
     $('#strt').css('padding', '0px');
   });
-  window.addEventListener("click", function (e) {
+  window.addEventListener("click", function(e) {
     e.stopPropagation();
     $('body').css('padding-right', '-10px');
   });
   //TO REMOVE PADDING AFTER CLOSING MODAL
-  jQuery(document).ready(function () {
+  jQuery(document).ready(function() {
     jQuery('#demo1').skdslider({
       'delay': 5000,
       'animationSpeed': 2000,
@@ -1666,7 +1663,7 @@ if (isset($_SESSION['id'])) {
       'autoSlide': true,
       'animationType': 'fading'
     });
-    jQuery('#responsive').change(function () {
+    jQuery('#responsive').change(function() {
       $('#responsive_wrapper').width(jQuery(this).val());
     });
   });
@@ -1683,7 +1680,7 @@ if (isset($_SESSION['id'])) {
     location.href = "cart.php"
   }
   //AUTO LOG IN
-  $(document).ready(function () {
+  $(document).ready(function() {
     setTimeout(() => {
       const loader1 = document.querySelector(".loader1");
       const loader2 = document.querySelector(".loader2");
@@ -1711,7 +1708,7 @@ if (isset($_SESSION['id'])) {
     }
     <?php
     if (!isset($_SESSION['id'])) {
-      ?>
+    ?>
       var email = getCookie("OneStore_email");
       var pass = getCookie("OneStore_password");
       if (email != " " && pass != " ") {
@@ -1726,7 +1723,7 @@ if (isset($_SESSION['id'])) {
           type: "post", //post data
           dataType: "json", //datatype=json format
           timeout: 18000, //waiting time 3 sec
-          success: function (data) { //if logging in is success
+          success: function(data) { //if logging in is success
             if (data.status == 'success') {
               //location.href="hfe.php";
             } else if (data.status == 'admin') {
@@ -1735,7 +1732,7 @@ if (isset($_SESSION['id'])) {
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
                 title: "Oops!!!",
@@ -1753,10 +1750,10 @@ if (isset($_SESSION['id'])) {
           }
         }); //closing ajax
       }
-      <?php
+    <?php
     }
     if (isset($_SESSION['id']) && !isset($_SESSION['cart_count'])) {
-      ?>
+    ?>
       //CART COUNT
       $.ajax({
         url: "../Common/functions.php", //passing page info
@@ -1767,7 +1764,7 @@ if (isset($_SESSION['id'])) {
         type: "post", //post data
         dataType: "json", //datatype=json format
         timeout: 18000, //waiting time 3 sec
-        success: function (data) { //if logging in is success
+        success: function(data) { //if logging in is success
           if (data.status == "success") {
             document.getElementById("sm-cartcnt").innerHTML = "";
             document.getElementById("lg-cartcnt").innerHTML = "";
@@ -1776,7 +1773,7 @@ if (isset($_SESSION['id'])) {
             return;
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             return;
           } else {
@@ -1784,7 +1781,7 @@ if (isset($_SESSION['id'])) {
           }
         }
       }); //closing ajax
-      <?php
+    <?php
     }
     ?>
   });
@@ -1832,7 +1829,7 @@ if (isset($_SESSION['id'])) {
         dataType: "json",
         type: "post",
         timeout: 30000,
-        success: function (data) {
+        success: function(data) {
           if (data.status == 'success') {
             swal({
               title: "Added!!!",
@@ -1844,13 +1841,13 @@ if (isset($_SESSION['id'])) {
             });
           } else if (data.status == 'error') {
             swal({
-              title: "Oops!!!",
-              text: "Try agan later",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-              timer: 6000,
-            })
+                title: "Oops!!!",
+                text: "Try agan later",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+                timer: 6000,
+              })
               .then((willSubmit1) => {
                 if (willSubmit1) {
                   location.href = "login.php"
@@ -1861,13 +1858,13 @@ if (isset($_SESSION['id'])) {
               });
           } else if (data.status == 'error2') {
             swal({
-              title: "Not found!!!",
-              text: "Please log in",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-              timer: 6000,
-            })
+                title: "Not found!!!",
+                text: "Please log in",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+                timer: 6000,
+              })
               .then((willSubmit1) => {
                 if (willSubmit1) {
                   //location.href="login.php"
@@ -1878,7 +1875,7 @@ if (isset($_SESSION['id'])) {
               });
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
               title: "Oops!!!",
@@ -1899,7 +1896,7 @@ if (isset($_SESSION['id'])) {
   //Newsletter activation
   function hostReachable() {
     // Handle IE and more capable browsers
-    var xhr = new (window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
+    var xhr = new(window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
     // Open new request as a HEAD to the root hostname with a random param to bust the cache
     xhr.open("HEAD", "//" + window.location.hostname + "/?rand=" + Math.floor((1 + Math.random()) * 0x10000), false);
     // Issue request and handle response

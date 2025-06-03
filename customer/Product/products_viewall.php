@@ -105,51 +105,52 @@ require "../Main/header.php";
     if (isset($_GET['item'])) {
       $nm = ucwords($_GET['item']);
       $total_pages_sql = $pdo->query("select COUNT(*) from item
-        inner join item_description on item_description.item_id=item.item_id
-        inner join product_details on product_details.item_description_id=item_description.item_description_id
-        inner join category on category.category_id=item.category_id
-        inner join sub_category on category.category_id=sub_category.category_id
-        where item.item_name like \"%$nm%\" and sub_category.sub_category_id=item.sub_category_id");
+                                    inner join item_description on item_description.item_id=item.item_id
+                                    inner join product_details on product_details.item_description_id=item_description.item_description_id
+                                    inner join category on category.category_id=item.category_id
+                                    inner join sub_category on category.category_id=sub_category.category_id
+                                    where item.item_name like \"%$nm%\" and sub_category.sub_category_id=item.sub_category_id");
       $res = $pdo->query("select item.item_id,item.price as 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item
-        inner join item_description on item_description.item_id=item.item_id
-        inner join product_details on product_details.item_description_id=item_description.item_description_id
-        inner join category on category.category_id=item.category_id
-        inner join sub_category on category.category_id=sub_category.category_id
-        where item.item_name like \"%$nm%\" and sub_category.sub_category_id=item.sub_category_id
-        LIMIT $offset, $no_of_records_per_page");
+                        inner join item_description on item_description.item_id=item.item_id
+                        inner join product_details on product_details.item_description_id=item_description.item_description_id
+                        inner join category on category.category_id=item.category_id
+                        inner join sub_category on category.category_id=sub_category.category_id
+                        where item.item_name like \"%$nm%\" and sub_category.sub_category_id=item.sub_category_id
+                        LIMIT $offset, $no_of_records_per_page");
     } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
       $cat = $_GET['category_id'];
       $sub = $_GET['subcategory_id'];
       $total_pages_sql = $pdo->query("select COUNT(*) from item
-        inner join item_description on item_description.item_id=item.item_id
-        inner join product_details on product_details.item_description_id=item_description.item_description_id
-        inner join sub_category on sub_category.sub_category_id=item.sub_category_id
-        inner join category on category.category_id=sub_category.category_id
-        where sub_category.sub_category_id=item.sub_category_id and category.category_id='$cat' and sub_category.sub_category_id='$sub' ");
+                                    inner join item_description on item_description.item_id=item.item_id
+                                    inner join product_details on product_details.item_description_id=item_description.item_description_id
+                                    inner join sub_category on sub_category.sub_category_id=item.sub_category_id
+                                    inner join category on category.category_id=sub_category.category_id
+                                    where sub_category.sub_category_id=item.sub_category_id and category.category_id='$cat' and sub_category.sub_category_id='$sub' ");
       $res = $pdo->query("select store.store_name ,item.item_id,item.price as 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item
-        inner join item_description on item_description.item_id=item.item_id
-        inner join product_details on product_details.item_description_id=item_description.item_description_id
-        inner join store on product_details.store_id=store.store_id
-        inner join category on category.category_id=item.category_id
-        inner join sub_category on category.category_id= sub_category.category_id
-        where sub_category.sub_category_id=item.sub_category_id and category.category_id='$cat'
-        and sub_category.sub_category_id='$sub' LIMIT $offset, $no_of_records_per_page");
+                        inner join item_description on item_description.item_id=item.item_id
+                        inner join product_details on product_details.item_description_id=item_description.item_description_id
+                        inner join store on product_details.store_id=store.store_id
+                        inner join category on category.category_id=item.category_id
+                        inner join sub_category on category.category_id= sub_category.category_id
+                        where sub_category.sub_category_id=item.sub_category_id and category.category_id='$cat'
+                        and sub_category.sub_category_id='$sub' LIMIT $offset, $no_of_records_per_page");
     } else if (isset($_GET['category_id'])) {
       $cat = $_GET['category_id'];
       $total_pages_sql = $pdo->query("select COUNT(*),item.category_id from item
-        inner join item_description on item_description.item_id=item.item_id
-        inner join product_details on product_details.item_description_id=item_description.item_description_id
-        inner join category on category.category_id=item.category_id
-        inner join sub_category on category.category_id= sub_category.category_id
-        GROUP BY item.item_id HAVING item.category_id=$cat");
+                                    inner join item_description on item_description.item_id=item.item_id
+                                    inner join product_details on product_details.item_description_id=item_description.item_description_id
+                                    inner join category on category.category_id=item.category_id
+                                    inner join sub_category on category.category_id= sub_category.category_id
+                                    GROUP BY item.item_id HAVING item.category_id=$cat");
       $res = $pdo->query("select item.item_id,item.price as 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item
-        inner join item_description on item_description.item_id=item.item_id
-        inner join product_details on product_details.item_description_id=item_description.item_description_id
-        inner join category on category.category_id=item.category_id
-        inner join sub_category on category.category_id=sub_category.category_id
-        GROUP BY item.item_id HAVING item.category_id=$cat LIMIT $offset, $no_of_records_per_page");
+                        inner join item_description on item_description.item_id=item.item_id
+                        inner join product_details on product_details.item_description_id=item_description.item_description_id
+                        inner join category on category.category_id=item.category_id
+                        inner join sub_category on category.category_id=sub_category.category_id
+                        GROUP BY item.item_id HAVING item.category_id=$cat LIMIT $offset, $no_of_records_per_page");
     }
-    function addOrUpdateUrlParam($name, $value){
+    function addOrUpdateUrlParam($name, $value)
+    {
       $params = $_GET;
       unset($params[$name]);
       $params[$name] = $value;
@@ -169,7 +170,7 @@ require "../Main/header.php";
       class="agile_top_brands_grids">
       <?php
       if ($rcount < 1) {
-        ?>
+      ?>
         <div class="product-content-right">
           <center><img style="justify-content: center;" class="sidebar-title" src="../../images/logo/error-no-search.png">
             <h2 class="sidebar-title" style="text-align: center;color:#2d70ff;display: inline-flex;font-weight: 600;">No
@@ -180,10 +181,10 @@ require "../Main/header.php";
         <center style="margin-bottom:0px;margin-top: 50px;">
           <h4>Can't find requested product ?<a href="../Main/hfe.php"> Try again!</a></h4>
         </center>
-      <?php
+        <?php
       } else {
         while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
-          ?>
+        ?>
           <div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
             <div class="hover14 column ">
               <div class="agile_top_brand_left_grid height_set">
@@ -223,7 +224,7 @@ require "../Main/header.php";
               </div>
             </div>
           </div>
-          <?php
+      <?php
         }
       }
       ?>
@@ -235,18 +236,18 @@ require "../Main/header.php";
       <div class="clearfix"> </div>
       <?php
       if ($total_pages != 1) {
-        ?>
+      ?>
         <nav class="numbering">
           <ul class="pagination">
             <li class="<?php if ($pageno <= 1) {
-              echo 'disabled';
-            } ?>">
+                          echo 'disabled';
+                        } ?>">
               <a id="prev" href="<?php if ($pageno <= 1) {
-                echo '#';
-              } else {
-                $_GET['pageno'] = $pageno - 1;
-                echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
-              } ?>">Prev</a>
+                                    echo '#';
+                                  } else {
+                                    $_GET['pageno'] = $pageno - 1;
+                                    echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+                                  } ?>">Prev</a>
             </li>
             <?php
             $ends_count = 1;  //how many items at the ends (before and after [...])
@@ -254,11 +255,11 @@ require "../Main/header.php";
             $dots = false;
             for ($page = 1; $page <= $total_pages; $page++) {
               if ($page == $pageno) {
-                ?>
+            ?>
                 <li class="active">
                   <a href="<?php
-                  $_GET['pageno'] = $page;
-                  echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
+                            $_GET['pageno'] = $page;
+                            echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
                     <?= $page ?>
                   </a>
                 </li>
@@ -266,38 +267,38 @@ require "../Main/header.php";
                 $dots = true;
               } else {
                 if ($page <= $ends_count || ($pageno && $page >= $pageno - $middle_count && $page <= $pageno + $middle_count) || $page > $total_pages - $ends_count) {
-                  ?>
+                ?>
                   <li>
                     <a href=" <?php
-                    $_GET['pageno'] = $page;
-                    echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
+                              $_GET['pageno'] = $page;
+                              echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
                       <?= $page ?>
                     </a>
                   </li>
-                  <?php
+                <?php
                   $dots = true;
                 } elseif ($dots) {
-                  ?>
+                ?>
                   <li><a>&hellip;</a></li>
-                  <?php
+            <?php
                   $dots = false;
                 }
               }
             }
             ?>
             <li class="<?php if ($pageno >= $total_pages) {
-              echo 'disabled';
-            } ?>">
+                          echo 'disabled';
+                        } ?>">
               <a id="next" href="<?php if ($pageno >= $total_pages) {
-                echo '#';
-              } else {
-                $_GET['pageno'] = $pageno + 1;
-                echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
-              } ?>">Next</a>
+                                    echo '#';
+                                  } else {
+                                    $_GET['pageno'] = $pageno + 1;
+                                    echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+                                  } ?>">Next</a>
             </li>
           </ul>
         </nav>
-        <?php
+      <?php
       }
       ?>
     </div>
