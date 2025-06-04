@@ -65,7 +65,8 @@ if (typeof jQuery === "undefined") {
       bindType: $.support.transition.end,
       delegateType: $.support.transition.end,
       handle: function (e) {
-        if ($(e.target).is(this)) return e.handleObj.handler.apply(this, arguments);
+        if ($(e.target).is(this))
+          return e.handleObj.handler.apply(this, arguments);
       },
     };
   });
@@ -187,7 +188,8 @@ if (typeof jQuery === "undefined") {
         $parent.find(".active").removeClass("active");
         this.$element.addClass("active");
       } else if ($input.prop("type") == "checkbox") {
-        if ($input.prop("checked") !== this.$element.hasClass("active")) changed = false;
+        if ($input.prop("checked") !== this.$element.hasClass("active"))
+          changed = false;
         this.$element.toggleClass("active");
       }
       $input.prop("checked", this.$element.hasClass("active"));
@@ -225,7 +227,12 @@ if (typeof jQuery === "undefined") {
       var $btn = $(e.target);
       if (!$btn.hasClass("btn")) $btn = $btn.closest(".btn");
       Plugin.call($btn, "toggle");
-      if (!($(e.target).is('input[type="radio"]') || $(e.target).is('input[type="checkbox"]')))
+      if (
+        !(
+          $(e.target).is('input[type="radio"]') ||
+          $(e.target).is('input[type="checkbox"]')
+        )
+      )
         e.preventDefault();
     })
     .on(
@@ -258,7 +265,8 @@ if (typeof jQuery === "undefined") {
     this.interval = null;
     this.$active = null;
     this.$items = null;
-    this.options.keyboard && this.$element.on("keydown.bs.carousel", $.proxy(this.keydown, this));
+    this.options.keyboard &&
+      this.$element.on("keydown.bs.carousel", $.proxy(this.keydown, this));
     this.options.pause == "hover" &&
       !("ontouchstart" in document.documentElement) &&
       this.$element
@@ -292,7 +300,10 @@ if (typeof jQuery === "undefined") {
     this.interval && clearInterval(this.interval);
     this.options.interval &&
       !this.paused &&
-      (this.interval = setInterval($.proxy(this.next, this), this.options.interval));
+      (this.interval = setInterval(
+        $.proxy(this.next, this),
+        this.options.interval
+      ));
     return this;
   };
   Carousel.prototype.getItemIndex = function (item) {
@@ -311,7 +322,9 @@ if (typeof jQuery === "undefined") {
   };
   Carousel.prototype.to = function (pos) {
     var that = this;
-    var activeIndex = this.getItemIndex((this.$active = this.$element.find(".item.active")));
+    var activeIndex = this.getItemIndex(
+      (this.$active = this.$element.find(".item.active"))
+    );
     if (pos > this.$items.length - 1 || pos < 0) return;
     if (this.sliding)
       return this.$element.one("slid.bs.carousel", function () {
@@ -355,7 +368,9 @@ if (typeof jQuery === "undefined") {
     isCycling && this.pause();
     if (this.$indicators.length) {
       this.$indicators.find(".active").removeClass("active");
-      var $nextIndicator = $(this.$indicators.children()[this.getItemIndex($next)]);
+      var $nextIndicator = $(
+        this.$indicators.children()[this.getItemIndex($next)]
+      );
       $nextIndicator && $nextIndicator.addClass("active");
     }
     var slidEvent = $.Event("slid.bs.carousel", {
@@ -399,7 +414,8 @@ if (typeof jQuery === "undefined") {
         typeof option == "object" && option
       );
       var action = typeof option == "string" ? option : options.slide;
-      if (!data) $this.data("bs.carousel", (data = new Carousel(this, options)));
+      if (!data)
+        $this.data("bs.carousel", (data = new Carousel(this, options)));
       if (typeof option == "number") data.to(option);
       else if (action) data[action]();
       else if (options.interval) data.pause().cycle();
@@ -485,7 +501,9 @@ if (typeof jQuery === "undefined") {
   Collapse.prototype.show = function () {
     if (this.transitioning || this.$element.hasClass("in")) return;
     var activesData;
-    var actives = this.$parent && this.$parent.children(".panel").children(".in, .collapsing");
+    var actives =
+      this.$parent &&
+      this.$parent.children(".panel").children(".in, .collapsing");
     if (actives && actives.length) {
       activesData = actives.data("bs.collapse");
       if (activesData && activesData.transitioning) return;
@@ -506,7 +524,10 @@ if (typeof jQuery === "undefined") {
     this.$trigger.removeClass("collapsed").attr("aria-expanded", true);
     this.transitioning = 1;
     var complete = function () {
-      this.$element.removeClass("collapsing").addClass("collapse in")[dimension]("");
+      this.$element
+        .removeClass("collapsing")
+        .addClass("collapse in")
+        [dimension]("");
       this.transitioning = 0;
       this.$element.trigger("shown.bs.collapse");
     };
@@ -524,12 +545,18 @@ if (typeof jQuery === "undefined") {
     if (startEvent.isDefaultPrevented()) return;
     var dimension = this.dimension();
     this.$element[dimension](this.$element[dimension]())[0].offsetHeight;
-    this.$element.addClass("collapsing").removeClass("collapse in").attr("aria-expanded", false);
+    this.$element
+      .addClass("collapsing")
+      .removeClass("collapse in")
+      .attr("aria-expanded", false);
     this.$trigger.addClass("collapsed").attr("aria-expanded", false);
     this.transitioning = 1;
     var complete = function () {
       this.transitioning = 0;
-      this.$element.removeClass("collapsing").addClass("collapse").trigger("hidden.bs.collapse");
+      this.$element
+        .removeClass("collapsing")
+        .addClass("collapse")
+        .trigger("hidden.bs.collapse");
     };
     if (!$.support.transition) return complete.call(this);
     this.$element[dimension](0)
@@ -541,11 +568,16 @@ if (typeof jQuery === "undefined") {
   };
   Collapse.prototype.getParent = function () {
     return $(this.options.parent)
-      .find('[data-toggle="collapse"][data-parent="' + this.options.parent + '"]')
+      .find(
+        '[data-toggle="collapse"][data-parent="' + this.options.parent + '"]'
+      )
       .each(
         $.proxy(function (i, element) {
           var $element = $(element);
-          this.addAriaAndCollapsedClass(getTargetFromTrigger($element), $element);
+          this.addAriaAndCollapsedClass(
+            getTargetFromTrigger($element),
+            $element
+          );
         }, this)
       )
       .end();
@@ -574,8 +606,10 @@ if (typeof jQuery === "undefined") {
         $this.data(),
         typeof option == "object" && option
       );
-      if (!data && options.toggle && /show|hide/.test(option)) options.toggle = false;
-      if (!data) $this.data("bs.collapse", (data = new Collapse(this, options)));
+      if (!data && options.toggle && /show|hide/.test(option))
+        options.toggle = false;
+      if (!data)
+        $this.data("bs.collapse", (data = new Collapse(this, options)));
       if (typeof option == "string") data[option]();
     });
   }
@@ -590,14 +624,18 @@ if (typeof jQuery === "undefined") {
   };
   // COLLAPSE DATA-API
   // =================
-  $(document).on("click.bs.collapse.data-api", '[data-toggle="collapse"]', function (e) {
-    var $this = $(this);
-    if (!$this.attr("data-target")) e.preventDefault();
-    var $target = getTargetFromTrigger($this);
-    var data = $target.data("bs.collapse");
-    var option = data ? "toggle" : $this.data();
-    Plugin.call($target, option);
-  });
+  $(document).on(
+    "click.bs.collapse.data-api",
+    '[data-toggle="collapse"]',
+    function (e) {
+      var $this = $(this);
+      if (!$this.attr("data-target")) e.preventDefault();
+      var $target = getTargetFromTrigger($this);
+      var data = $target.data("bs.collapse");
+      var option = data ? "toggle" : $this.data();
+      Plugin.call($target, option);
+    }
+  );
 })(jQuery);
 /* ========================================================================
  * Bootstrap: dropdown.js v3.3.6
@@ -620,7 +658,10 @@ if (typeof jQuery === "undefined") {
     var selector = $this.attr("data-target");
     if (!selector) {
       selector = $this.attr("href");
-      selector = selector && /#[A-Za-z]/.test(selector) && selector.replace(/.*(?=#[^\s]*$)/, ""); // strip for ie7
+      selector =
+        selector &&
+        /#[A-Za-z]/.test(selector) &&
+        selector.replace(/.*(?=#[^\s]*$)/, ""); // strip for ie7
     }
     var $parent = selector && $(selector);
     return $parent && $parent.length ? $parent : $this.parent();
@@ -643,7 +684,9 @@ if (typeof jQuery === "undefined") {
       $parent.trigger((e = $.Event("hide.bs.dropdown", relatedTarget)));
       if (e.isDefaultPrevented()) return;
       $this.attr("aria-expanded", "false");
-      $parent.removeClass("open").trigger($.Event("hidden.bs.dropdown", relatedTarget));
+      $parent
+        .removeClass("open")
+        .trigger($.Event("hidden.bs.dropdown", relatedTarget));
     });
   }
   Dropdown.prototype.toggle = function (e) {
@@ -653,7 +696,10 @@ if (typeof jQuery === "undefined") {
     var isActive = $parent.hasClass("open");
     clearMenus();
     if (!isActive) {
-      if ("ontouchstart" in document.documentElement && !$parent.closest(".navbar-nav").length) {
+      if (
+        "ontouchstart" in document.documentElement &&
+        !$parent.closest(".navbar-nav").length
+      ) {
         // if mobile we use a backdrop because click events don't delegate
         $(document.createElement("div"))
           .addClass("dropdown-backdrop")
@@ -664,12 +710,18 @@ if (typeof jQuery === "undefined") {
       $parent.trigger((e = $.Event("show.bs.dropdown", relatedTarget)));
       if (e.isDefaultPrevented()) return;
       $this.trigger("focus").attr("aria-expanded", "true");
-      $parent.toggleClass("open").trigger($.Event("shown.bs.dropdown", relatedTarget));
+      $parent
+        .toggleClass("open")
+        .trigger($.Event("shown.bs.dropdown", relatedTarget));
     }
     return false;
   };
   Dropdown.prototype.keydown = function (e) {
-    if (!/(38|40|27|32)/.test(e.which) || /input|textarea/i.test(e.target.tagName)) return;
+    if (
+      !/(38|40|27|32)/.test(e.which) ||
+      /input|textarea/i.test(e.target.tagName)
+    )
+      return;
     var $this = $(this);
     e.preventDefault();
     e.stopPropagation();
@@ -717,7 +769,11 @@ if (typeof jQuery === "undefined") {
     })
     .on("click.bs.dropdown.data-api", toggle, Dropdown.prototype.toggle)
     .on("keydown.bs.dropdown.data-api", toggle, Dropdown.prototype.keydown)
-    .on("keydown.bs.dropdown.data-api", ".dropdown-menu", Dropdown.prototype.keydown);
+    .on(
+      "keydown.bs.dropdown.data-api",
+      ".dropdown-menu",
+      Dropdown.prototype.keydown
+    );
 })(jQuery);
 /* ========================================================================
  * Bootstrap: modal.js v3.3.6
@@ -771,7 +827,11 @@ if (typeof jQuery === "undefined") {
     this.$body.addClass("modal-open");
     this.escape();
     this.resize();
-    this.$element.on("click.dismiss.bs.modal", '[data-dismiss="modal"]', $.proxy(this.hide, this));
+    this.$element.on(
+      "click.dismiss.bs.modal",
+      '[data-dismiss="modal"]',
+      $.proxy(this.hide, this)
+    );
     this.$dialog.on("mousedown.dismiss.bs.modal", function () {
       that.$element.one("mouseup.dismiss.bs.modal", function (e) {
         if ($(e.target).is(that.$element)) that.ignoreBackdropClick = true;
@@ -808,7 +868,10 @@ if (typeof jQuery === "undefined") {
     this.escape();
     this.resize();
     $(document).off("focusin.bs.modal");
-    this.$element.removeClass("in").off("click.dismiss.bs.modal").off("mouseup.dismiss.bs.modal");
+    this.$element
+      .removeClass("in")
+      .off("click.dismiss.bs.modal")
+      .off("mouseup.dismiss.bs.modal");
     this.$dialog.off("mousedown.dismiss.bs.modal");
     $.support.transition && this.$element.hasClass("fade")
       ? this.$element
@@ -822,7 +885,10 @@ if (typeof jQuery === "undefined") {
       .on(
         "focusin.bs.modal",
         $.proxy(function (e) {
-          if (this.$element[0] !== e.target && !this.$element.has(e.target).length) {
+          if (
+            this.$element[0] !== e.target &&
+            !this.$element.has(e.target).length
+          ) {
             this.$element.trigger("focus");
           }
         }, this)
@@ -877,7 +943,9 @@ if (typeof jQuery === "undefined") {
             return;
           }
           if (e.target !== e.currentTarget) return;
-          this.options.backdrop == "static" ? this.$element[0].focus() : this.hide();
+          this.options.backdrop == "static"
+            ? this.$element[0].focus()
+            : this.hide();
         }, this)
       );
       if (doAnimate) this.$backdrop[0].offsetWidth; // force reflow
@@ -908,10 +976,17 @@ if (typeof jQuery === "undefined") {
     this.adjustDialog();
   };
   Modal.prototype.adjustDialog = function () {
-    var modalIsOverflowing = this.$element[0].scrollHeight > document.documentElement.clientHeight;
+    var modalIsOverflowing =
+      this.$element[0].scrollHeight > document.documentElement.clientHeight;
     this.$element.css({
-      paddingLeft: !this.bodyIsOverflowing && modalIsOverflowing ? this.scrollbarWidth : "",
-      paddingRight: this.bodyIsOverflowing && !modalIsOverflowing ? this.scrollbarWidth : "",
+      paddingLeft:
+        !this.bodyIsOverflowing && modalIsOverflowing
+          ? this.scrollbarWidth
+          : "",
+      paddingRight:
+        this.bodyIsOverflowing && !modalIsOverflowing
+          ? this.scrollbarWidth
+          : "",
     });
   };
   Modal.prototype.resetAdjustments = function () {
@@ -924,8 +999,10 @@ if (typeof jQuery === "undefined") {
     var fullWindowWidth = window.innerWidth;
     if (!fullWindowWidth) {
       // workaround for missing window.innerWidth in IE8
-      var documentElementRect = document.documentElement.getBoundingClientRect();
-      fullWindowWidth = documentElementRect.right - Math.abs(documentElementRect.left);
+      var documentElementRect =
+        document.documentElement.getBoundingClientRect();
+      fullWindowWidth =
+        documentElementRect.right - Math.abs(documentElementRect.left);
     }
     this.bodyIsOverflowing = document.body.clientWidth < fullWindowWidth;
     this.scrollbarWidth = this.measureScrollbar();
@@ -933,7 +1010,8 @@ if (typeof jQuery === "undefined") {
   Modal.prototype.setScrollbar = function () {
     var bodyPad = parseInt(this.$body.css("padding-right") || 0, 10);
     this.originalBodyPad = document.body.style.paddingRight || "";
-    if (this.bodyIsOverflowing) this.$body.css("padding-right", bodyPad + this.scrollbarWidth);
+    if (this.bodyIsOverflowing)
+      this.$body.css("padding-right", bodyPad + this.scrollbarWidth);
   };
   Modal.prototype.resetScrollbar = function () {
     this.$body.css("padding-right", this.originalBodyPad);
@@ -953,7 +1031,12 @@ if (typeof jQuery === "undefined") {
     return this.each(function () {
       var $this = $(this);
       var data = $this.data("bs.modal");
-      var options = $.extend({}, Modal.DEFAULTS, $this.data(), typeof option == "object" && option);
+      var options = $.extend(
+        {},
+        Modal.DEFAULTS,
+        $this.data(),
+        typeof option == "object" && option
+      );
       if (!data) $this.data("bs.modal", (data = new Modal(this, options)));
       if (typeof option == "string") data[option](_relatedTarget);
       else if (options.show) data.show(_relatedTarget);
@@ -970,22 +1053,33 @@ if (typeof jQuery === "undefined") {
   };
   // MODAL DATA-API
   // ==============
-  $(document).on("click.bs.modal.data-api", '[data-toggle="modal"]', function (e) {
-    var $this = $(this);
-    var href = $this.attr("href");
-    var $target = $($this.attr("data-target") || (href && href.replace(/.*(?=#[^\s]+$)/, ""))); // strip for ie7
-    var option = $target.data("bs.modal")
-      ? "toggle"
-      : $.extend({ remote: !/#/.test(href) && href }, $target.data(), $this.data());
-    if ($this.is("a")) e.preventDefault();
-    $target.one("show.bs.modal", function (showEvent) {
-      if (showEvent.isDefaultPrevented()) return; // only register focus restorer if modal will actually get shown
-      $target.one("hidden.bs.modal", function () {
-        $this.is(":visible") && $this.trigger("focus");
+  $(document).on(
+    "click.bs.modal.data-api",
+    '[data-toggle="modal"]',
+    function (e) {
+      var $this = $(this);
+      var href = $this.attr("href");
+      var $target = $(
+        $this.attr("data-target") ||
+          (href && href.replace(/.*(?=#[^\s]+$)/, ""))
+      ); // strip for ie7
+      var option = $target.data("bs.modal")
+        ? "toggle"
+        : $.extend(
+            { remote: !/#/.test(href) && href },
+            $target.data(),
+            $this.data()
+          );
+      if ($this.is("a")) e.preventDefault();
+      $target.one("show.bs.modal", function (showEvent) {
+        if (showEvent.isDefaultPrevented()) return; // only register focus restorer if modal will actually get shown
+        $target.one("hidden.bs.modal", function () {
+          $this.is(":visible") && $this.trigger("focus");
+        });
       });
-    });
-    Plugin.call($target, option, this);
-  });
+      Plugin.call($target, option, this);
+    }
+  );
 })(jQuery);
 /* ========================================================================
  * Bootstrap: tooltip.js v3.3.6
@@ -1040,7 +1134,10 @@ if (typeof jQuery === "undefined") {
           : this.options.viewport.selector || this.options.viewport
       );
     this.inState = { click: false, hover: false, focus: false };
-    if (this.$element[0] instanceof document.constructor && !this.options.selector) {
+    if (
+      this.$element[0] instanceof document.constructor &&
+      !this.options.selector
+    ) {
       throw new Error(
         "`selector` option must be specified when initializing " +
           this.type +
@@ -1051,7 +1148,11 @@ if (typeof jQuery === "undefined") {
     for (var i = triggers.length; i--; ) {
       var trigger = triggers[i];
       if (trigger == "click") {
-        this.$element.on("click." + this.type, this.options.selector, $.proxy(this.toggle, this));
+        this.$element.on(
+          "click." + this.type,
+          this.options.selector,
+          $.proxy(this.toggle, this)
+        );
       } else if (trigger != "manual") {
         var eventIn = trigger == "hover" ? "mouseenter" : "focusin";
         var eventOut = trigger == "hover" ? "mouseleave" : "focusout";
@@ -1068,7 +1169,10 @@ if (typeof jQuery === "undefined") {
       }
     }
     this.options.selector
-      ? (this._options = $.extend({}, this.options, { trigger: "manual", selector: "" }))
+      ? (this._options = $.extend({}, this.options, {
+          trigger: "manual",
+          selector: "",
+        }))
       : this.fixTitle();
   };
   Tooltip.prototype.getDefaults = function () {
@@ -1094,7 +1198,10 @@ if (typeof jQuery === "undefined") {
     return options;
   };
   Tooltip.prototype.enter = function (obj) {
-    var self = obj instanceof this.constructor ? obj : $(obj.currentTarget).data("bs." + this.type);
+    var self =
+      obj instanceof this.constructor
+        ? obj
+        : $(obj.currentTarget).data("bs." + this.type);
     if (!self) {
       self = new this.constructor(obj.currentTarget, this.getDelegateOptions());
       $(obj.currentTarget).data("bs." + this.type, self);
@@ -1120,7 +1227,10 @@ if (typeof jQuery === "undefined") {
     return false;
   };
   Tooltip.prototype.leave = function (obj) {
-    var self = obj instanceof this.constructor ? obj : $(obj.currentTarget).data("bs." + this.type);
+    var self =
+      obj instanceof this.constructor
+        ? obj
+        : $(obj.currentTarget).data("bs." + this.type);
     if (!self) {
       self = new this.constructor(obj.currentTarget, this.getDelegateOptions());
       $(obj.currentTarget).data("bs." + this.type, self);
@@ -1140,7 +1250,10 @@ if (typeof jQuery === "undefined") {
     var e = $.Event("show.bs." + this.type);
     if (this.hasContent() && this.enabled) {
       this.$element.trigger(e);
-      var inDom = $.contains(this.$element[0].ownerDocument.documentElement, this.$element[0]);
+      var inDom = $.contains(
+        this.$element[0].ownerDocument.documentElement,
+        this.$element[0]
+      );
       if (e.isDefaultPrevented() || !inDom) return;
       var that = this;
       var $tip = this.tip();
@@ -1172,18 +1285,25 @@ if (typeof jQuery === "undefined") {
         var orgPlacement = placement;
         var viewportDim = this.getPosition(this.$viewport);
         placement =
-          placement == "bottom" && pos.bottom + actualHeight > viewportDim.bottom
+          placement == "bottom" &&
+          pos.bottom + actualHeight > viewportDim.bottom
             ? "top"
             : placement == "top" && pos.top - actualHeight < viewportDim.top
             ? "bottom"
-            : placement == "right" && pos.right + actualWidth > viewportDim.width
+            : placement == "right" &&
+              pos.right + actualWidth > viewportDim.width
             ? "left"
             : placement == "left" && pos.left - actualWidth < viewportDim.left
             ? "right"
             : placement;
         $tip.removeClass(orgPlacement).addClass(placement);
       }
-      var calculatedOffset = this.getCalculatedOffset(placement, pos, actualWidth, actualHeight);
+      var calculatedOffset = this.getCalculatedOffset(
+        placement,
+        pos,
+        actualWidth,
+        actualHeight
+      );
       this.applyPlacement(calculatedOffset, placement);
       var complete = function () {
         var prevHoverState = that.hoverState;
@@ -1192,7 +1312,9 @@ if (typeof jQuery === "undefined") {
         if (prevHoverState == "out") that.leave(that);
       };
       $.support.transition && this.$tip.hasClass("fade")
-        ? $tip.one("bsTransitionEnd", complete).emulateTransitionEnd(Tooltip.TRANSITION_DURATION)
+        ? $tip
+            .one("bsTransitionEnd", complete)
+            .emulateTransitionEnd(Tooltip.TRANSITION_DURATION)
         : complete();
     }
   };
@@ -1232,7 +1354,12 @@ if (typeof jQuery === "undefined") {
     if (placement == "top" && actualHeight != height) {
       offset.top = offset.top + height - actualHeight;
     }
-    var delta = this.getViewportAdjustedDelta(placement, offset, actualWidth, actualHeight);
+    var delta = this.getViewportAdjustedDelta(
+      placement,
+      offset,
+      actualWidth,
+      actualHeight
+    );
     if (delta.left) offset.left += delta.left;
     else offset.top += delta.top;
     var isVertical = /top|bottom/.test(placement);
@@ -1260,14 +1387,18 @@ if (typeof jQuery === "undefined") {
     var e = $.Event("hide.bs." + this.type);
     function complete() {
       if (that.hoverState != "in") $tip.detach();
-      that.$element.removeAttr("aria-describedby").trigger("hidden.bs." + that.type);
+      that.$element
+        .removeAttr("aria-describedby")
+        .trigger("hidden.bs." + that.type);
       callback && callback();
     }
     this.$element.trigger(e);
     if (e.isDefaultPrevented()) return;
     $tip.removeClass("in");
     $.support.transition && $tip.hasClass("fade")
-      ? $tip.one("bsTransitionEnd", complete).emulateTransitionEnd(Tooltip.TRANSITION_DURATION)
+      ? $tip
+          .one("bsTransitionEnd", complete)
+          .emulateTransitionEnd(Tooltip.TRANSITION_DURATION)
       : complete();
     this.hoverState = null;
     return this;
@@ -1299,16 +1430,32 @@ if (typeof jQuery === "undefined") {
         ? document.documentElement.scrollTop || document.body.scrollTop
         : $element.scrollTop(),
     };
-    var outerDims = isBody ? { width: $(window).width(), height: $(window).height() } : null;
+    var outerDims = isBody
+      ? { width: $(window).width(), height: $(window).height() }
+      : null;
     return $.extend({}, elRect, scroll, outerDims, elOffset);
   };
-  Tooltip.prototype.getCalculatedOffset = function (placement, pos, actualWidth, actualHeight) {
+  Tooltip.prototype.getCalculatedOffset = function (
+    placement,
+    pos,
+    actualWidth,
+    actualHeight
+  ) {
     return placement == "bottom"
-      ? { top: pos.top + pos.height, left: pos.left + pos.width / 2 - actualWidth / 2 }
+      ? {
+          top: pos.top + pos.height,
+          left: pos.left + pos.width / 2 - actualWidth / 2,
+        }
       : placement == "top"
-      ? { top: pos.top - actualHeight, left: pos.left + pos.width / 2 - actualWidth / 2 }
+      ? {
+          top: pos.top - actualHeight,
+          left: pos.left + pos.width / 2 - actualWidth / 2,
+        }
       : placement == "left"
-      ? { top: pos.top + pos.height / 2 - actualHeight / 2, left: pos.left - actualWidth }
+      ? {
+          top: pos.top + pos.height / 2 - actualHeight / 2,
+          left: pos.left - actualWidth,
+        }
       : /* placement == 'right' */ {
           top: pos.top + pos.height / 2 - actualHeight / 2,
           left: pos.left + pos.width,
@@ -1322,17 +1469,23 @@ if (typeof jQuery === "undefined") {
   ) {
     var delta = { top: 0, left: 0 };
     if (!this.$viewport) return delta;
-    var viewportPadding = (this.options.viewport && this.options.viewport.padding) || 0;
+    var viewportPadding =
+      (this.options.viewport && this.options.viewport.padding) || 0;
     var viewportDimensions = this.getPosition(this.$viewport);
     if (/right|left/.test(placement)) {
       var topEdgeOffset = pos.top - viewportPadding - viewportDimensions.scroll;
-      var bottomEdgeOffset = pos.top + viewportPadding - viewportDimensions.scroll + actualHeight;
+      var bottomEdgeOffset =
+        pos.top + viewportPadding - viewportDimensions.scroll + actualHeight;
       if (topEdgeOffset < viewportDimensions.top) {
         // top overflow
         delta.top = viewportDimensions.top - topEdgeOffset;
-      } else if (bottomEdgeOffset > viewportDimensions.top + viewportDimensions.height) {
+      } else if (
+        bottomEdgeOffset >
+        viewportDimensions.top + viewportDimensions.height
+      ) {
         // bottom overflow
-        delta.top = viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
+        delta.top =
+          viewportDimensions.top + viewportDimensions.height - bottomEdgeOffset;
       }
     } else {
       var leftEdgeOffset = pos.left - viewportPadding;
@@ -1342,7 +1495,8 @@ if (typeof jQuery === "undefined") {
         delta.left = viewportDimensions.left - leftEdgeOffset;
       } else if (rightEdgeOffset > viewportDimensions.right) {
         // right overflow
-        delta.left = viewportDimensions.left + viewportDimensions.width - rightEdgeOffset;
+        delta.left =
+          viewportDimensions.left + viewportDimensions.width - rightEdgeOffset;
       }
     }
     return delta;
@@ -1366,7 +1520,8 @@ if (typeof jQuery === "undefined") {
       this.$tip = $(this.options.template);
       if (this.$tip.length != 1) {
         throw new Error(
-          this.type + " `template` option must consist of exactly 1 top-level element!"
+          this.type +
+            " `template` option must consist of exactly 1 top-level element!"
         );
       }
     }
@@ -1476,7 +1631,13 @@ if (typeof jQuery === "undefined") {
       .children()
       .detach()
       .end() // we use append for html objects to maintain js events
-      [this.options.html ? (typeof content == "string" ? "html" : "append") : "text"](content);
+      [
+        this.options.html
+          ? typeof content == "string"
+            ? "html"
+            : "append"
+          : "text"
+      ](content);
     $tip.removeClass("fade top bottom left right in");
     // IE8 doesn't accept hiding via the `:empty` pseudo selector, we have to do
     // this manually by checking the contents.
@@ -1549,7 +1710,10 @@ if (typeof jQuery === "undefined") {
   ScrollSpy.prototype.getScrollHeight = function () {
     return (
       this.$scrollElement[0].scrollHeight ||
-      Math.max(this.$body[0].scrollHeight, document.documentElement.scrollHeight)
+      Math.max(
+        this.$body[0].scrollHeight,
+        document.documentElement.scrollHeight
+      )
     );
   };
   ScrollSpy.prototype.refresh = function () {
@@ -1572,7 +1736,9 @@ if (typeof jQuery === "undefined") {
         return (
           ($href &&
             $href.length &&
-            $href.is(":visible") && [[$href[offsetMethod]().top + offsetBase, href]]) ||
+            $href.is(":visible") && [
+              [$href[offsetMethod]().top + offsetBase, href],
+            ]) ||
           null
         );
       })
@@ -1587,7 +1753,8 @@ if (typeof jQuery === "undefined") {
   ScrollSpy.prototype.process = function () {
     var scrollTop = this.$scrollElement.scrollTop() + this.options.offset;
     var scrollHeight = this.getScrollHeight();
-    var maxScroll = this.options.offset + scrollHeight - this.$scrollElement.height();
+    var maxScroll =
+      this.options.offset + scrollHeight - this.$scrollElement.height();
     var offsets = this.offsets;
     var targets = this.targets;
     var activeTarget = this.activeTarget;
@@ -1596,7 +1763,9 @@ if (typeof jQuery === "undefined") {
       this.refresh();
     }
     if (scrollTop >= maxScroll) {
-      return activeTarget != (i = targets[targets.length - 1]) && this.activate(i);
+      return (
+        activeTarget != (i = targets[targets.length - 1]) && this.activate(i)
+      );
     }
     if (activeTarget && scrollTop < offsets[0]) {
       this.activeTarget = null;
@@ -1613,7 +1782,14 @@ if (typeof jQuery === "undefined") {
     this.activeTarget = target;
     this.clear();
     var selector =
-      this.selector + '[data-target="' + target + '"],' + this.selector + '[href="' + target + '"]';
+      this.selector +
+      '[data-target="' +
+      target +
+      '"],' +
+      this.selector +
+      '[href="' +
+      target +
+      '"]';
     var active = $(selector).parents("li").addClass("active");
     if (active.parent(".dropdown-menu").length) {
       active = active.closest("li.dropdown").addClass("active");
@@ -1621,7 +1797,9 @@ if (typeof jQuery === "undefined") {
     active.trigger("activate.bs.scrollspy");
   };
   ScrollSpy.prototype.clear = function () {
-    $(this.selector).parentsUntil(this.options.target, ".active").removeClass("active");
+    $(this.selector)
+      .parentsUntil(this.options.target, ".active")
+      .removeClass("active");
   };
   // SCROLLSPY PLUGIN DEFINITION
   // ===========================
@@ -1630,7 +1808,8 @@ if (typeof jQuery === "undefined") {
       var $this = $(this);
       var data = $this.data("bs.scrollspy");
       var options = typeof option == "object" && option;
-      if (!data) $this.data("bs.scrollspy", (data = new ScrollSpy(this, options)));
+      if (!data)
+        $this.data("bs.scrollspy", (data = new ScrollSpy(this, options)));
       if (typeof option == "string") data[option]();
     });
   }
@@ -1688,7 +1867,8 @@ if (typeof jQuery === "undefined") {
     });
     $previous.trigger(hideEvent);
     $this.trigger(showEvent);
-    if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented()) return;
+    if (showEvent.isDefaultPrevented() || hideEvent.isDefaultPrevented())
+      return;
     var $target = $(selector);
     this.activate($this.closest("li"), $ul);
     this.activate($target, $target.parent(), function () {
@@ -1707,7 +1887,8 @@ if (typeof jQuery === "undefined") {
     var transition =
       callback &&
       $.support.transition &&
-      (($active.length && $active.hasClass("fade")) || !!container.find("> .fade").length);
+      (($active.length && $active.hasClass("fade")) ||
+        !!container.find("> .fade").length);
     function next() {
       $active
         .removeClass("active")
@@ -1716,7 +1897,10 @@ if (typeof jQuery === "undefined") {
         .end()
         .find('[data-toggle="tab"]')
         .attr("aria-expanded", false);
-      element.addClass("active").find('[data-toggle="tab"]').attr("aria-expanded", true);
+      element
+        .addClass("active")
+        .find('[data-toggle="tab"]')
+        .attr("aria-expanded", true);
       if (transition) {
         element[0].offsetWidth; // reflow for transition
         element.addClass("in");
@@ -1734,7 +1918,9 @@ if (typeof jQuery === "undefined") {
       callback && callback();
     }
     $active.length && transition
-      ? $active.one("bsTransitionEnd", next).emulateTransitionEnd(Tab.TRANSITION_DURATION)
+      ? $active
+          .one("bsTransitionEnd", next)
+          .emulateTransitionEnd(Tab.TRANSITION_DURATION)
       : next();
     $active.removeClass("in");
   };
@@ -1782,7 +1968,10 @@ if (typeof jQuery === "undefined") {
     this.options = $.extend({}, Affix.DEFAULTS, options);
     this.$target = $(this.options.target)
       .on("scroll.bs.affix.data-api", $.proxy(this.checkPosition, this))
-      .on("click.bs.affix.data-api", $.proxy(this.checkPositionWithEventLoop, this));
+      .on(
+        "click.bs.affix.data-api",
+        $.proxy(this.checkPositionWithEventLoop, this)
+      );
     this.$element = $(element);
     this.affixed = null;
     this.unpin = null;
@@ -1795,20 +1984,32 @@ if (typeof jQuery === "undefined") {
     offset: 0,
     target: window,
   };
-  Affix.prototype.getState = function (scrollHeight, height, offsetTop, offsetBottom) {
+  Affix.prototype.getState = function (
+    scrollHeight,
+    height,
+    offsetTop,
+    offsetBottom
+  ) {
     var scrollTop = this.$target.scrollTop();
     var position = this.$element.offset();
     var targetHeight = this.$target.height();
-    if (offsetTop != null && this.affixed == "top") return scrollTop < offsetTop ? "top" : false;
+    if (offsetTop != null && this.affixed == "top")
+      return scrollTop < offsetTop ? "top" : false;
     if (this.affixed == "bottom") {
-      if (offsetTop != null) return scrollTop + this.unpin <= position.top ? false : "bottom";
-      return scrollTop + targetHeight <= scrollHeight - offsetBottom ? false : "bottom";
+      if (offsetTop != null)
+        return scrollTop + this.unpin <= position.top ? false : "bottom";
+      return scrollTop + targetHeight <= scrollHeight - offsetBottom
+        ? false
+        : "bottom";
     }
     var initializing = this.affixed == null;
     var colliderTop = initializing ? scrollTop : position.top;
     var colliderHeight = initializing ? targetHeight : height;
     if (offsetTop != null && scrollTop <= offsetTop) return "top";
-    if (offsetBottom != null && colliderTop + colliderHeight >= scrollHeight - offsetBottom)
+    if (
+      offsetBottom != null &&
+      colliderTop + colliderHeight >= scrollHeight - offsetBottom
+    )
       return "bottom";
     return false;
   };
@@ -1828,10 +2029,14 @@ if (typeof jQuery === "undefined") {
     var offset = this.options.offset;
     var offsetTop = offset.top;
     var offsetBottom = offset.bottom;
-    var scrollHeight = Math.max($(document).height(), $(document.body).height());
+    var scrollHeight = Math.max(
+      $(document).height(),
+      $(document.body).height()
+    );
     if (typeof offset != "object") offsetBottom = offsetTop = offset;
     if (typeof offsetTop == "function") offsetTop = offset.top(this.$element);
-    if (typeof offsetBottom == "function") offsetBottom = offset.bottom(this.$element);
+    if (typeof offsetBottom == "function")
+      offsetBottom = offset.bottom(this.$element);
     var affix = this.getState(scrollHeight, height, offsetTop, offsetBottom);
     if (this.affixed != affix) {
       if (this.unpin != null) this.$element.css("top", "");
