@@ -4,22 +4,37 @@ require "../Main/map_pdt.php";
 require "../Common/pdo.php";
 if (isset($_GET['item'])) {
   $nm = strtolower($_GET['item']);
-  $res = $pdo->query("select category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
-										inner join product_description on product_description.product_id=product.product_id
-										inner join product_details on product_details.product_description_id=product_description.product_description_id
-										inner join store on product_details.store_id=store.store_id
-										inner join category on category.category_id=product.category_id
-										where  product.product_name like \"%$nm%\" GROUP BY product_description.product_description_id");
+  $res = $pdo->query(
+    "SELECT category.category_name,
+            product.product_id,
+            product_description.product_description_id,
+            product.product_name,
+            product.description,
+            product.category_id
+     FROM product
+     INNER JOIN product_description ON product_description.product_id = product.product_id
+     INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+     INNER JOIN store ON product_details.store_id = store.store_id
+     INNER JOIN category ON category.category_id = product.category_id
+     WHERE product.product_name LIKE \"%$nm%\"
+     GROUP BY product_description.product_description_id"
+  );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
   $name = $row2['product_name'];
   $cat_id = $row2['category_id'];
 } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
   $cat = $_GET['category_id'];
   $sub = $_GET['subcategory_id'];
-  $sql = "select category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
-          inner join product_description on product_description.product_id=product.product_id
-          inner join product_details on product_details.product_description_id=product_description.product_description_id
-          inner join category on category.category_id=product.category_id";
+  $sql = "SELECT category.category_name,
+                 product.product_id,
+                 product_description.product_description_id,
+                 product.product_name,
+                 product.description,
+                 product.category_id
+          FROM product
+          INNER JOIN product_description ON product_description.product_id = product.product_id
+          INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+          INNER JOIN category ON category.category_id = product.category_id";
   $res = $pdo->query($sql);
   if ($res) {
     $row2 = $res->fetch(PDO::FETCH_ASSOC);
@@ -27,11 +42,20 @@ if (isset($_GET['item'])) {
 } else if (isset($_GET['category_id'])) {
   $cat = $_GET['category_id'];
   try {
-    $res = $pdo->query("select category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
-											inner join product_description on product_description.product_id=product.product_id
-											inner join product_details on product_details.product_description_id=product_description.product_description_id
-											inner join category on category.category_id=product.category_id
-											where category.category_id=$cat GROUP BY product.product_id");
+    $res = $pdo->query(
+      "SELECT category.category_name,
+              product.product_id,
+              product_description.product_description_id,
+              product.product_name,
+              product.description,
+              product.category_id
+       FROM product
+       INNER JOIN product_description ON product_description.product_id = product.product_id
+       INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+       INNER JOIN category ON category.category_id = product.category_id
+       WHERE category.category_id = $cat
+       GROUP BY product.product_id"
+    );
     if ($res) {
       $row2 = $res->fetch(PDO::FETCH_ASSOC);
       if ($row2) {
@@ -1314,7 +1338,8 @@ if ($result_cnt == 0) {
         if ($result_cnt == 0) {
         ?>
           <div class="product-content-right">
-            <center><img style="justify-content: center;" class="sidebar-title"
+            <center>
+              <img style="justify-content: center;" class="sidebar-title"
                 src="../../images/logo/error-no-search.png">
               <h2 class="sidebar-title" style="text-align: center;color:#2d70ff;display: inline-flex;font-weight: 600;">No
                 result found</h2>
@@ -1393,7 +1418,8 @@ if ($result_cnt == 0) {
               <div class="filters" style="margin-right:0px;"> <button
                   style="display: block;border-color:#002b41;outline:#0c99cc;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;margin-bottom:0px;height:40px;border-radius:5px"
                   class="btn-pdt_pg btn-success" type="button" data-toggle="collapse" data-target="#mobile-filter"
-                  aria-expanded="false" aria-controls="mobile-filter"><span class="px-1 fas fa-list"></span><span
+                  aria-expanded="false" aria-controls="mobile-filter"><span class="px-1 fas fa-list"></span>
+                  <span
                     class="px-1 fas fa-filter fa-lg"></span></button>
               </div>
               <div style="clear: both;"></div>
@@ -1426,8 +1452,8 @@ if ($result_cnt == 0) {
                       aria-controls="cat-filter-mob" class="font-weight-bold side-nav-filters"
                       style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
                       onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
-                      Categories<i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i><i
-                        class="fa fa-angle-up cat-down"
+                      Categories<i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i>
+                      <i class="fa fa-angle-up cat-down"
                         style="float: right;display: none;padding-right:5px;border-bottom:none;"></i></h5>
 
                   </div>
@@ -1439,29 +1465,35 @@ if ($result_cnt == 0) {
 
                 if (isset($_GET['category_id']) || isset($_GET['subcategory_id']) || isset($_GET['item'])) {
                   if (isset($_GET['item'])) {
-                    $brandsql = "select brand.brand_name,brand.brand_id from product
-																inner join product_description on product_description.product_id=product.product_id
-																INNER JOIN brand ON product_description.brand=brand.brand_id
-																INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
-																inner join product_details on product_details.product_description_id=product_description.product_description_id
-																inner join store on product_details.store_id=store.store_id
-																inner join category on category.category_id=product.category_id
-																where product.product_name like '%" . $_GET['product'] . "%' GROUP BY brand.brand_name";
+                    $brandsql = "
+                      SELECT brand.brand_name,
+                            brand.brand_id
+                      FROM product
+                      INNER JOIN product_description ON product_description.product_id = product.product_id
+                      INNER JOIN brand ON product_description.brand = brand.brand_id
+                      INNER JOIN product_keys ON product_keys.product_description_id = product_description.product_description_id
+                      INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+                      INNER JOIN store ON product_details.store_id = store.store_id
+                      INNER JOIN category ON category.category_id = product.category_id
+                      WHERE product.product_name LIKE '%" . $_GET['item'] . "%'
+                      GROUP BY brand.brand_name";
                   } else if (isset($_GET['category_id']) || isset($_GET['subcategory_id'])) {
-                    if (isset($_GET['subcategory_id'])) {
-                      $brandval = $_GET['subcategory_id'];
-                    } else if (isset($_GET['category_id'])) {
+                    if (isset($_GET['category_id'])) {
                       $keeper = 'product.category_id';
                       $brandval = $_GET['category_id'];
                     }
-                    $brandsql = "select brand.brand_name,brand.brand_id from product
-																inner join product_description on product_description.product_id=product.product_id
-																INNER JOIN brand ON product_description.brand=brand.brand_id
-																INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
-																inner join product_details on product_details.product_description_id=product_description.product_description_id
-																inner join store on product_details.store_id=store.store_id
-																inner join category on category.category_id=product.category_id
-																where " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
+                    $brandsql = "
+                      SELECT brand.brand_nam  e,
+                            brand.brand_id
+                      FROM product
+                      INNER JOIN product_description ON product_description.product_id = product.product_id
+                      INNER JOIN brand ON product_description.brand = brand.brand_id
+                      INNER JOIN product_keys ON product_keys.product_description_id = product_description.product_description_id
+                      INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+                      INNER JOIN store ON product_details.store_id = store.store_id
+                      INNER JOIN category ON category.category_id = product.category_id
+                      WHERE " . $keeper . " IN (" . $brandval . ")
+                      GROUP BY brand.brand_name";
                   }
                   $brandstmt = $pdo->query($brandsql);
                   $brandcnt = $brandstmt->rowCount();
@@ -1470,10 +1502,11 @@ if ($result_cnt == 0) {
                     <div class="py-3 side-nav-filters-head">
                       <h5 data-toggle="collapse" data-target="#brand-filter-mob" aria-expanded="false"
                         aria-controls="brand-filter-mob" class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top,
+                               color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
                         onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
-                        Brands<i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i><i
-                          class="fa fa-angle-up brand-down" style="float: right;display: none;padding-right:5px"></i></h5>
+                        Brands<i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i>
+                        <i class="fa fa-angle-up brand-down" style="float: right;display: none;padding-right:5px"></i></h5>
                       <form class="brand collapse" id="brand-filter-mob" style="">
                         <?php
                         while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
@@ -1505,8 +1538,8 @@ if ($result_cnt == 0) {
                     aria-controls="rating-filter-mob" class="font-weight-bold side-nav-filters"
                     style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
                     onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
-                    Rating <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i><i
-                      class="fa fa-angle-up rating-down" style="float: right;display: none;padding-right:5px"></i></h5>
+                    Rating <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i>
+                    <i class="fa fa-angle-up rating-down" style="float: right;display: none;padding-right:5px"></i></h5>
                   <form class="rating collapse" id="rating-filter-mob" style="">
                     <div class="form-inline star-font align-items-center py-2"
                       onclick="sortandfilter('getstar-5','star')">
@@ -1590,8 +1623,8 @@ if ($result_cnt == 0) {
                     aria-controls="mob-pricing-filter" class="font-weight-bold side-nav-filters"
                     style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
                     onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
-                    Price <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i><i
-                      class="fa fa-angle-up pricing-down" style="float: right;display: none;padding-right:5px"></i></h5>
+                    Price <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i>
+                    <i class="fa fa-angle-up pricing-down" style="float: right;display: none;padding-right:5px"></i></h5>
                   <form class=" pricing collapse range-field my-5" id="mob-pricing-filter" style="margin:5px !important">
                     <div class="div-wrapper">
                       <label>
@@ -1681,8 +1714,8 @@ if ($result_cnt == 0) {
                         class="font-weight-bold side-nav-filters"
                         style="width: 100%;color:black;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #eee), color-stop(1, #fff)) !important;"
                         onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
-                        Categories<i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i><i
-                          class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px"></i></h5>
+                        Categories<i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i>
+                        <i class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px"></i></h5>
                       <ul id="cat-filter" class="list-group collapse" style="margin-bottom: 0px;">
                       </ul>
                     </div>
@@ -1694,27 +1727,35 @@ if ($result_cnt == 0) {
 
                   if (isset($_GET['category_id']) || isset($_GET['subcategory_id']) || isset($_GET['item'])) {
                     if (isset($_GET['item'])) {
-                      $brandsql = "select brand.brand_name,brand.brand_id from product
-																	inner join product_description on product_description.product_id=product.product_id
-																	INNER JOIN brand ON product_description.brand=brand.brand_id
-																	INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
-																	inner join product_details on product_details.product_description_id=product_description.product_description_id
-																	inner join store on product_details.store_id=store.store_id
-																	inner join category on category.category_id=product.category_id
-																	where product.product_name like '%" . $_GET['item'] . "%' GROUP BY brand.brand_name";
+                      $brandsql = "
+                        SELECT brand.brand_name,
+                              brand.brand_id
+                        FROM product
+                        INNER JOIN product_description ON product_description.product_id = product.product_id
+                        INNER JOIN brand ON product_description.brand = brand.brand_id
+                        INNER JOIN product_keys ON product_keys.product_description_id = product_description.product_description_id
+                        INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+                        INNER JOIN store ON product_details.store_id = store.store_id
+                        INNER JOIN category ON category.category_id = product.category_id
+                        WHERE product.product_name LIKE '%" . $_GET['item'] . "%'
+                        GROUP BY brand.brand_name";
                     } else if (isset($_GET['category_id']) || isset($_GET['subcategory_id'])) {
                       if (isset($_GET['category_id'])) {
                         $keeper = 'product.category_id';
                         $brandval = $_GET['category_id'];
                       }
-                      $brandsql = "select brand.brand_name,brand.brand_id from product
-																	inner join product_description on product_description.product_id=product.product_id
-																	INNER JOIN brand ON product_description.brand=brand.brand_id
-																	INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
-																	inner join product_details on product_details.product_description_id=product_description.product_description_id
-																	inner join store on product_details.store_id=store.store_id
-																	inner join category on category.category_id=product.category_id
-																	where " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
+                      $brandsql = "
+                        SELECT brand.brand_name,
+                              brand.brand_id
+                        FROM product
+                        INNER JOIN product_description ON product_description.product_id = product.product_id
+                        INNER JOIN brand ON product_description.brand = brand.brand_id
+                        INNER JOIN product_keys ON product_keys.product_description_id = product_description.product_description_id
+                        INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+                        INNER JOIN store ON product_details.store_id = store.store_id
+                        INNER JOIN category ON category.category_id = product.category_id
+                        WHERE " . $keeper . " IN (" . $brandval . ")
+                        GROUP BY brand.brand_name";
                     }
                     $brandstmt = $pdo->query($brandsql);
                     $brandcnt = $brandstmt->rowCount();

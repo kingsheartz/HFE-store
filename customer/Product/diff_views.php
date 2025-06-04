@@ -98,57 +98,89 @@ require "../Main/header.php";
     $no_of_records_per_page = 12;
     $offset = ($pageno - 1) * $no_of_records_per_page;
     if (isset($_GET['popular'])) {
-      $total_pages_sql = $pdo->query("select distinct(item_keys.item_description_id) from item_keys
-                                    inner join product_details on product_details.item_description_id=item_keys.item_description_id
-                                    GROUP BY item_keys.item_description_id
-                                    order by CAST(sum(item_keys.views) as UNSIGNED) DESC");
-      $viewstmt = $pdo->query("select distinct(item_keys.item_description_id) from item_keys
-                              inner join product_details on product_details.item_description_id=item_keys.item_description_id
-                              GROUP BY item_keys.item_description_id
-                              order by CAST(sum(item_keys.views) as UNSIGNED) DESC
-                              LIMIT $offset, $no_of_records_per_page");
+      $total_pages_sql = $pdo->query(
+        "SELECT DISTINCT(item_keys.item_description_id)
+         FROM item_keys
+         INNER JOIN product_details ON product_details.item_description_id = item_keys.item_description_id
+         GROUP BY item_keys.item_description_id
+         ORDER BY CAST(SUM(item_keys.views) AS UNSIGNED) DESC"
+      );
+      $viewstmt = $pdo->query(
+        "SELECT DISTINCT(item_keys.item_description_id)
+         FROM item_keys
+         INNER JOIN product_details ON product_details.item_description_id = item_keys.item_description_id
+         GROUP BY item_keys.item_description_id
+         ORDER BY CAST(SUM(item_keys.views) AS UNSIGNED) DESC
+         LIMIT $offset, $no_of_records_per_page"
+      );
     } else if (isset($_SESSION['id'], $_GET['recent'])) {
-      $total_pages_sql = $pdo->query("select views ,item_keys.item_description_id,sub_category.sub_category_id from item_keys
-                                    JOIN item_description ON item_keys.item_description_id=item_description.item_description_id
-                                    join item on item.item_id=item_description.item_id
-                                    join sub_category on item.sub_category_id=sub_category.sub_category_id
-                                    where user_id=" . $_SESSION['id'] . " GROUP BY item_description_id
-                                    ORDER BY CAST(item_keys.date_of_preview as UNSIGNED) DESC");
-      $viewstmt = $pdo->query("select views ,item_keys.item_description_id,sub_category.sub_category_id from item_keys
-                              JOIN item_description ON item_keys.item_description_id=item_description.item_description_id
-                              join item on item.item_id=item_description.item_id
-                              join sub_category on item.sub_category_id=sub_category.sub_category_id
-                              where user_id=" . $_SESSION['id'] . " GROUP BY item_description_id
-                              ORDER BY CAST(item_keys.date_of_preview as UNSIGNED) DESC
-                              LIMIT $offset, $no_of_records_per_page");
+      $total_pages_sql = $pdo->query(
+        "SELECT views, item_keys.item_description_id, sub_category.sub_category_id
+         FROM item_keys
+         INNER JOIN item_description ON item_keys.item_description_id = item_description.item_description_id
+         INNER JOIN item ON item.item_id = item_description.item_id
+         INNER JOIN sub_category ON item.sub_category_id = sub_category.sub_category_id
+         WHERE user_id = " . $_SESSION['id'] . "
+         GROUP BY item_description_id
+         ORDER BY CAST(item_keys.date_of_preview AS UNSIGNED) DESC"
+      );
+      $viewstmt = $pdo->query(
+        "SELECT views, item_keys.item_description_id, sub_category.sub_category_id
+         FROM item_keys
+         INNER JOIN item_description ON item_keys.item_description_id = item_description.item_description_id
+         INNER JOIN item ON item.item_id = item_description.item_id
+         INNER JOIN sub_category ON item.sub_category_id = sub_category.sub_category_id
+         WHERE user_id = " . $_SESSION['id'] . "
+         GROUP BY item_description_id
+         ORDER BY CAST(item_keys.date_of_preview AS UNSIGNED) DESC
+         LIMIT $offset, $no_of_records_per_page"
+      );
     } else if (isset($_SESSION['id'], $_GET['prev'])) {
-      $total_pages_sql = $pdo->query("select item_description_id from item_keys
-                                    WHERE rating=0 AND ordered_cnt>0 AND review= '0' and user_id=" . $_SESSION['id'] . "");
-      $viewstmt = $pdo->query("select item_description_id from item_keys
-                              WHERE rating=0 AND ordered_cnt>0 AND review= '0' and user_id=" . $_SESSION['id'] . "
-                              LIMIT $offset, $no_of_records_per_page");
+      $total_pages_sql = $pdo->query(
+        "SELECT item_description_id
+         FROM item_keys
+         WHERE rating = 0 AND ordered_cnt > 0 AND review = '0' AND user_id = " . $_SESSION['id']
+      );
+      $viewstmt = $pdo->query(
+        "SELECT item_description_id
+         FROM item_keys
+         WHERE rating = 0 AND ordered_cnt > 0 AND review = '0' AND user_id = " . $_SESSION['id'] . "
+         LIMIT $offset, $no_of_records_per_page"
+      );
     } else if (isset($_GET['topseller'])) {
-      $total_pages_sql = $pdo->query("select distinct(item_keys.item_description_id) from product_details
-                                    join item_keys on item_keys.item_description_id=product_details.item_description_id
-                                    GROUP BY item_description_id
-                                    order by CAST(sum(item_keys.ordered_cnt) as UNSIGNED) DESC");
-      $viewstmt = $pdo->query("select distinct(item_keys.item_description_id) from product_details
-                              join item_keys on item_keys.item_description_id=product_details.item_description_id
-                              GROUP BY item_description_id
-                              order by CAST(sum(item_keys.ordered_cnt) as UNSIGNED) DESC
-                              LIMIT $offset, $no_of_records_per_page");
+      $total_pages_sql = $pdo->query(
+        "SELECT DISTINCT(item_keys.item_description_id)
+         FROM product_details
+         INNER JOIN item_keys ON item_keys.item_description_id = product_details.item_description_id
+         GROUP BY item_description_id
+         ORDER BY CAST(SUM(item_keys.ordered_cnt) AS UNSIGNED) DESC"
+      );
+      $viewstmt = $pdo->query(
+        "SELECT DISTINCT(item_keys.item_description_id)
+         FROM product_details
+         INNER JOIN item_keys ON item_keys.item_description_id = product_details.item_description_id
+         GROUP BY item_description_id
+         ORDER BY CAST(SUM(item_keys.ordered_cnt) AS UNSIGNED) DESC
+         LIMIT $offset, $no_of_records_per_page"
+      );
     } else if (isset($_GET['brand'])) {
-      $total_pages_sql = $pdo->query("SELECT item_description.item_description_id FROM brand
-                                    JOIN item_description ON brand.brand_id=item_description.brand
-                                    JOIN product_details ON product_details.item_description_id=item_description.item_description_id
-                                    WHERE brand_name IN('" . $_GET['brand'] . "')
-                                    GROUP BY item_description.item_description_id");
-      $viewstmt = $pdo->query("SELECT item_description.item_description_id FROM brand
-                              JOIN item_description ON brand.brand_id=item_description.brand
-                              JOIN product_details ON product_details.item_description_id=item_description.item_description_id
-                              WHERE brand_name IN('" . $_GET['brand'] . "')
-                              GROUP BY item_description.item_description_id
-                              LIMIT $offset, $no_of_records_per_page");
+      $total_pages_sql = $pdo->query(
+        "SELECT item_description.item_description_id
+         FROM brand
+         INNER JOIN item_description ON brand.brand_id = item_description.brand
+         INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
+         WHERE brand_name IN ('" . $_GET['brand'] . "')
+         GROUP BY item_description.item_description_id"
+      );
+      $viewstmt = $pdo->query(
+        "SELECT item_description.item_description_id
+         FROM brand
+         INNER JOIN item_description ON brand.brand_id = item_description.brand
+         INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
+         WHERE brand_name IN ('" . $_GET['brand'] . "')
+         GROUP BY item_description.item_description_id
+         LIMIT $offset, $no_of_records_per_page"
+      );
     }
     function addOrUpdateUrlParam($name, $value)
     {
@@ -184,13 +216,24 @@ require "../Main/header.php";
       if ($empty_check == 1) {
       ?>
         <div class="product-content-right">
-          <center><img style="justify-content: center;" class="sidebar-title" src="../../images/logo/error-no-search.png">
-            <h2 class="sidebar-title" style="text-align: center;color:#2d70ff;display: inline-flex;font-weight: 600;">No
-              result found
+          <center>
+            <img
+              style="justify-content: center;"
+              class="sidebar-title"
+              src="../../images/logo/error-no-search.png">
+            <h2
+              class="sidebar-title"
+              style="text-align: center;
+                     color: #2d70ff;
+                     display: inline-flex;
+                     font-weight: 600;">
+              No result found
             </h2>
           </center>
         </div>
-        <center style="margin-bottom:0px;margin-top: 50px;">
+        <center
+          style="margin-bottom: 0px;
+                 margin-top: 50px;">
           <h4>Can't find requested product ?<a href="../Main/hfe.php"> Try again!</a></h4>
         </center>
         <?php
@@ -198,11 +241,15 @@ require "../Main/header.php";
         if (isset($_GET['popular'])) {
           while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
             $item_desc_id = $view['item_description_id'];
-            $res = $pdo->query('select item.item_id,item.price as \'mrp\',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item_description
-                              inner join product_details on product_details.item_description_id=item_description.item_description_id
-                              inner join item on item.item_id=item_description.item_id
-                              where item_description.item_description_id=' . $item_desc_id . '
-                              GROUP BY item_description.item_description_id');
+            $res = $pdo->query(
+              "SELECT item.item_id, item.price AS 'mrp', product_details.price, item_description.item_description_id,
+                      item.item_name, item.description, item.category_id, item.sub_category_id
+               FROM item_description
+               INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
+               INNER JOIN item ON item.item_id = item_description.item_id
+               WHERE item_description.item_description_id = $item_desc_id
+               GROUP BY item_description.item_description_id"
+            );
             $row = $res->fetch(PDO::FETCH_ASSOC);
         ?>
             <div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
@@ -212,13 +259,20 @@ require "../Main/header.php";
                     <figure>
                       <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;
-                            text-align: center;">
+                          <div
+                            style="display: flex;
+                                   justify-content: center;
+                                   height: 200px;
+                                   width: 100%;
+                                   background: white;
+                                   text-align: center;">
                             <a class="img-cont"
-                              href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
-                              <img title=" " alt=" "
-                                class="img_size"
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
+                               href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
+                              <img title=" "
+                                   alt=" "
+                                   class="img_size"
+                                   src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                            </a>
                           </div>
                           <?php
                           if (strlen($row['item_name']) >= 35) {
@@ -228,13 +282,21 @@ require "../Main/header.php";
                             $item_name = $row['item_name'];
                           }
                           ?>
-                          <p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden" class="name_size">
+                          <p
+                            style="margin: auto;
+                                   display: block;
+                                   margin: 0;
+                                   margin-top: 5px;
+                                   overflow: hidden"
+                            class="name_size">
                             <?= $item_name ?>
                           </p>
-                          <h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
-                            <?= $row['price'] ?> <span>&#8377;
-                              <?= $row['mrp'] ?>
-                            </span>
+                          <h4
+                            style="color: green;
+                                   margin: auto;
+                                   display: block;
+                                   margin: 0">
+                            &#8377; <?= $row['price'] ?> <span>&#8377; <?= $row['mrp'] ?></span>
                           </h4>
                         </div>
                       </div>
@@ -248,10 +310,13 @@ require "../Main/header.php";
         } else if (isset($_SESSION['id'], $_GET['recent'])) {
           while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
             $item_desc_id = $view['item_description_id'];
-            $res = $pdo->query('select * from item_description
-                              inner join item on item.item_id=item_description.item_id
-                              where item_description.item_description_id=' . $item_desc_id . '
-                              GROUP BY item_description.item_description_id');
+            $res = $pdo->query(
+              "SELECT *
+               FROM item_description
+               INNER JOIN item ON item.item_id = item_description.item_id
+               WHERE item_description.item_description_id = $item_desc_id
+               GROUP BY item_description.item_description_id"
+            );
             $row = $res->fetch(PDO::FETCH_ASSOC);
           ?>
             <div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
@@ -261,12 +326,20 @@ require "../Main/header.php";
                     <figure>
                       <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;
-                            text-align: center;"> <a class="img-cont"
-                              href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
-                              <img title=" " alt=" "
-                                class="img_size"
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
+                          <div
+                            style="display: flex;
+                                   justify-content: center;
+                                   height: 200px;
+                                   width: 100%;
+                                   background: white;
+                                   text-align: center;">
+                            <a class="img-cont"
+                               href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
+                              <img title=" "
+                                   alt=" "
+                                   class="img_size"
+                                   src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                            </a>
                           </div>
                           <?php
                           if (strlen($row['item_name']) >= 35) {
@@ -276,11 +349,21 @@ require "../Main/header.php";
                             $item_name = $row['item_name'];
                           }
                           ?>
-                          <p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden" class="name_size">
+                          <p
+                            style="margin: auto;
+                                   display: block;
+                                   margin: 0;
+                                   margin-top: 5px;
+                                   overflow: hidden"
+                            class="name_size">
                             <?= $item_name ?>
                           </p>
-                          <h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
-                            <?= $row['price'] ?>
+                          <h4
+                            style="color: green;
+                                   margin: auto;
+                                   display: block;
+                                   margin: 0">
+                            &#8377; <?= $row['price'] ?>
                           </h4>
                         </div>
                       </div>
@@ -293,11 +376,15 @@ require "../Main/header.php";
           }
         } else if (isset($_SESSION['id'], $_GET['prev'])) {
           while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
-            $res = $pdo->query("select * from item_description
-                              inner join item on item.item_id=item_description.item_id
-                              inner join category on category.category_id=item.category_id
-                              inner join sub_category on category.category_id=sub_category.category_id
-                              where item.sub_category_id=sub_category.sub_category_id and item_description_id=" . $view['item_description_id']);
+            $res = $pdo->query(
+              "SELECT *
+               FROM item_description
+               INNER JOIN item ON item.item_id = item_description.item_id
+               INNER JOIN category ON category.category_id = item.category_id
+               INNER JOIN sub_category ON category.category_id = sub_category.category_id
+               WHERE item.sub_category_id = sub_category.sub_category_id
+               AND item_description_id = " . $view['item_description_id']
+            );
             $row = $res->fetch(PDO::FETCH_ASSOC);
           ?>
             <div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
@@ -307,13 +394,20 @@ require "../Main/header.php";
                     <figure>
                       <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;
-                            text-align: center;">
+                          <div
+                            style="display: flex;
+                                   justify-content: center;
+                                   height: 200px;
+                                   width: 100%;
+                                   background: white;
+                                   text-align: center;">
                             <a class="img-cont"
-                              href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
-                              <img title=" " alt=" "
-                                class="img_size"
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
+                               href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
+                              <img title=" "
+                                   alt=" "
+                                   class="img_size"
+                                   src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                            </a>
                           </div>
                           <?php
                           if (strlen($row['item_name']) >= 35) {
@@ -323,11 +417,21 @@ require "../Main/header.php";
                             $item_name = $row['item_name'];
                           }
                           ?>
-                          <p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden" class="name_size">
+                          <p
+                            style="margin: auto;
+                                   display: block;
+                                   margin: 0;
+                                   margin-top: 5px;
+                                   overflow: hidden"
+                            class="name_size">
                             <?= $item_name ?>
                           </p>
-                          <h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
-                            <?= $row['price'] ?>
+                          <h4
+                            style="color: green;
+                                   margin: auto;
+                                   display: block;
+                                   margin: 0">
+                            &#8377; <?= $row['price'] ?>
                           </h4>
                         </div>
                       </div>
@@ -342,11 +446,15 @@ require "../Main/header.php";
         if (isset($_GET['topseller'])) {
           while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
             $item_desc_id = $view['item_description_id'];
-            $res = $pdo->query('select item.item_id,item.price as \'mrp\',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item_description
-                              inner join product_details on product_details.item_description_id=item_description.item_description_id
-                              inner join item on item.item_id=item_description.item_id
-                              where item_description.item_description_id=' . $item_desc_id . '
-                              GROUP BY item_description.item_description_id');
+            $res = $pdo->query(
+              "SELECT item.item_id, item.price AS 'mrp', product_details.price, item_description.item_description_id,
+                      item.item_name, item.description, item.category_id, item.sub_category_id
+               FROM item_description
+               INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
+               INNER JOIN item ON item.item_id = item_description.item_id
+               WHERE item_description.item_description_id = $item_desc_id
+               GROUP BY item_description.item_description_id"
+            );
             $row = $res->fetch(PDO::FETCH_ASSOC);
           ?>
             <div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
@@ -356,12 +464,20 @@ require "../Main/header.php";
                     <figure>
                       <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                          <div
+                            style="display: flex;
+                                   justify-content: center;
+                                   height: 200px;
+                                   width: 100%;
+                                   background: white;
+                                   text-align: center;">
                             <a class="img-cont"
-                              href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
-                              <img title=" " alt=" "
-                                class="img_size"
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
+                               href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
+                              <img title=" "
+                                   alt=" "
+                                   class="img_size"
+                                   src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                            </a>
                           </div>
                           <?php
                           if (strlen($row['item_name']) >= 35) {
@@ -371,13 +487,21 @@ require "../Main/header.php";
                             $item_name = $row['item_name'];
                           }
                           ?>
-                          <p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden" class="name_size">
+                          <p
+                            style="margin: auto;
+                                   display: block;
+                                   margin: 0;
+                                   margin-top: 5px;
+                                   overflow: hidden"
+                            class="name_size">
                             <?= $item_name ?>
                           </p>
-                          <h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
-                            <?= $row['price'] ?> <span>&#8377;
-                              <?= $row['mrp'] ?>
-                            </span>
+                          <h4
+                            style="color: green;
+                                   margin: auto;
+                                   display: block;
+                                   margin: 0">
+                            &#8377; <?= $row['price'] ?> <span>&#8377; <?= $row['mrp'] ?></span>
                           </h4>
                         </div>
                       </div>
@@ -392,11 +516,15 @@ require "../Main/header.php";
         if (isset($_GET['brand'])) {
           while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
             $item_desc_id = $view['item_description_id'];
-            $res = $pdo->query('select item.item_id,item.price as \'mrp\',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item_description
-                              inner join product_details on product_details.item_description_id=item_description.item_description_id
-                              inner join item on item.item_id=item_description.item_id
-                              where item_description.item_description_id=' . $item_desc_id . '
-                              GROUP BY item_description.item_description_id');
+            $res = $pdo->query(
+              "SELECT item.item_id, item.price AS 'mrp', product_details.price, item_description.item_description_id,
+                      item.item_name, item.description, item.category_id, item.sub_category_id
+               FROM item_description
+               INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
+               INNER JOIN item ON item.item_id = item_description.item_id
+               WHERE item_description.item_description_id = $item_desc_id
+               GROUP BY item_description.item_description_id"
+            );
             $row = $res->fetch(PDO::FETCH_ASSOC);
           ?>
             <div class="col-md-3 col-sm-4  col-xs-6 top_brand_left ">
@@ -406,11 +534,20 @@ require "../Main/header.php";
                     <figure>
                       <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;
-                            text-align: center;"> <a class="img-cont"
-                              href="../Product/single.php?id=<?= $row['item_description_id'] ?>"><img title=" " alt=" "
-                                class="img_size"
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"></a>
+                          <div
+                            style="display: flex;
+                                   justify-content: center;
+                                   height: 200px;
+                                   width: 100%;
+                                   background: white;
+                                   text-align: center;">
+                            <a class="img-cont"
+                               href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
+                              <img title=" "
+                                   alt=" "
+                                   class="img_size"
+                                   src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                            </a>
                           </div>
                           <?php
                           if (strlen($row['item_name']) >= 35) {
@@ -420,13 +557,21 @@ require "../Main/header.php";
                             $item_name = $row['item_name'];
                           }
                           ?>
-                          <p style="margin:auto;display:block;margin:0;margin-top:5px;overflow:hidden" class="name_size">
+                          <p
+                            style="margin: auto;
+                                   display: block;
+                                   margin: 0;
+                                   margin-top: 5px;
+                                   overflow: hidden"
+                            class="name_size">
                             <?= $item_name ?>
                           </p>
-                          <h4 style="color:green;margin:auto;display:block;margin:0">&#8377;
-                            <?= $row['price'] ?> <span>&#8377;
-                              <?= $row['mrp'] ?>
-                            </span>
+                          <h4
+                            style="color: green;
+                                   margin: auto;
+                                   display: block;
+                                   margin: 0">
+                            &#8377; <?= $row['price'] ?> <span>&#8377; <?= $row['mrp'] ?></span>
                           </h4>
                         </div>
                       </div>

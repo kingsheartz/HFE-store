@@ -3,18 +3,29 @@ require '../Main/header.php';
 require "../../db.php";
 $product_description_id = $_GET['id'];
 if (isset($_GET['id'], $_SESSION['id'])) {
-  $check = $pdo->query('select product_description_id from product_keys
-												where product_description_id=' . $_GET['id'] . ' and customer_id=' . $_SESSION['id']);
+  $check = $pdo->query(
+    "SELECT product_description_id
+    FROM product_keys
+    WHERE product_description_id = " . $_GET['id'] . "
+    AND customer_id = " . $_SESSION['id']
+  );
   if ($check->rowCount() > 0) {
-    $viewedsql = $pdo->prepare("update product_keys set views=views+1,date_of_preview=:dop
-																where product_description_id=" . $_GET['id']);
+    $viewedsql = $pdo->prepare(
+      "UPDATE product_keys
+      SET views = views + 1,
+          date_of_preview = :dop
+      WHERE product_description_id = " . $_GET['id']
+    );
     $date = date("Y\-m\-d");
     $viewedsql->execute(array(
       ':dop' => $date
     ));
   } else {
-    $viewedsql = $pdo->prepare("insert into product_keys (views,customer_id,product_description_id,date_of_preview)
-      													values (1,:uid,:idid,:dop)");
+    $viewedsql = $pdo->prepare(
+      "INSERT INTO product_keys
+       (views, customer_id, product_description_id, date_of_preview)
+       VALUES (1, :uid, :idid, :dop)"
+    );
     $date = date("Y\-m\-d");
     $viewedsql->execute(array(
       ':uid' => $_SESSION['id'],
@@ -23,8 +34,14 @@ if (isset($_GET['id'], $_SESSION['id'])) {
     ));
   }
 }
-$ratingstmt = $pdo->query("select avg(product_keys.rating) AS avgrate from product_keys
-  												where product_description_id=" . $_GET['id'] . " and rating>0 and ordered_cnt>0 and review!='0'");
+$ratingstmt = $pdo->query(
+  "SELECT AVG(product_keys.rating) AS avgrate
+   FROM product_keys
+   WHERE product_description_id = " . $_GET['id'] . "
+   AND rating > 0
+   AND ordered_cnt > 0
+   AND review != '0'"
+);
 $ratecount = $ratingstmt->rowCount();
 if ($ratecount != 0) {
   $ratingrow = $ratingstmt->fetch(PDO::FETCH_ASSOC);
@@ -34,15 +51,16 @@ if ($ratecount != 0) {
 }
 $n = 0;
 //CHANGE 1////////////////////////////////////////////////////////////////////////////////////////////////////////
-$sql = "select * from product
-				inner join product_description on product_description.product_id=product.product_id
-				inner join category on category.category_id=product.category_id and product_description.product_description_id=$product_description_id ";
+$sql = "SELECT * FROM product
+        INNER JOIN product_description ON product_description.product_id = product.product_id
+        INNER JOIN category ON category.category_id = product.category_id
+        AND product_description.product_description_id = $product_description_id";
 $stmt = $pdo->query($sql);
 $row2 = $stmt->fetch(PDO::FETCH_ASSOC);
 $cat_id = $row2['category_id'];
-$sql1 = "select price from product
-				inner join product_description on product_description.product_id=product.product_id
-				where product_description_id=:product_description_id ";
+$sql1 = "SELECT price FROM product
+         INNER JOIN product_description ON product_description.product_id = product.product_id
+         WHERE product_description_id = :product_description_id";
 $stmt1 = $pdo->prepare($sql1);
 $stmt1->execute(array(
   ':product_description_id' => $product_description_id
@@ -1177,52 +1195,101 @@ function randomGen($min, $max, $quantity)
     lastScrollTop = st;
   });
 </script>
-<div id="myresult" class="col-12 col-sm-6 img-zoom-result hidescroll"
-  style="display: none;z-index: 99;background-repeat: no-repeat;max-width: 100%px;background-color:white;"></div>
+<div
+  id="myresult"
+  class="col-12 col-sm-6 img-zoom-result hidescroll"
+  style="display: none;
+         z-index: 99;
+         background-repeat: no-repeat;
+         max-width: 100%px;
+         background-color: white;">
+</div>
+
 <div class="div-wrapper small-btn btn-cart" id="btn-mob" style="width:100%;">
-  <div id="atc-mob" type="button" name="submit" class="btn btn-primary btn-lg button btn-cart btn-flat"
-    data-toggle="modal" data-target="#avail_stores"
-    style="width: 100%;justify-content: flex-start;border-radius: 0px;border-color: #fff;">
+  <div
+    id="atc-mob"
+    type="button"
+    name="submit"
+    class="btn btn-primary btn-lg button btn-cart btn-flat"
+    data-toggle="modal"
+    data-target="#avail_stores"
+    style="width: 100%;
+           justify-content: flex-start;
+           border-radius: 0px;
+           border-color: #fff;">
     <i class="fas fa-cart-plus mr-2"></i>
     Add to Cart
   </div>
-  <div class="btn btn-default btn-lg btn-flat btn-buy button" id="btn-buy-mob" type="button" name="submit"
-    data-toggle="modal" data-target="#avail_stores_buy"
-    style="width: 100%;position: relative;float: left;justify-content: flex-start;border-radius: 0px;">
-    <div class="btn btn-default btn-lg btn-flat" type="button" name="submit" style="width: 25px;
-    height: 25px;
-    position: relative;
-    border: 0px;
-    justify-content: center;
-    border-radius: 50%;
-    padding: 4px;
-    margin-right: 20px;
-    background-color: transparent;">
-      <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;"
-        class="fas fa-flash mr-2"></i>
+  <div
+    class="btn btn-default btn-lg btn-flat btn-buy button"
+    id="btn-buy-mob"
+    type="button"
+    name="submit"
+    data-toggle="modal"
+    data-target="#avail_stores_buy"
+    style="width: 100%;
+           position: relative;
+           float: left;
+           justify-content: flex-start;
+           border-radius: 0px;">
+    <div
+      class="btn btn-default btn-lg btn-flat"
+      type="button"
+      name="submit"
+      style="width: 25px;
+             height: 25px;
+             position: relative;
+             border: 0px;
+             justify-content: center;
+             border-radius: 50%;
+             padding: 4px;
+             margin-right: 20px;
+             background-color: transparent;">
+      <i
+        style="color: orange;
+               display: flex;
+               align-items: center;
+               justify-content: center;
+               margin-left: 50%;"
+        class="fas fa-flash mr-2">
+      </i>
     </div>
     Buy Now
   </div>
 </div>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="overflow-x: hidden;width: 100%">
+<div
+  class="content-wrapper"
+  style="overflow-x: hidden;
+         width: 100%">
   <section class="content">
-    <!-- Default box -->
     <div class="card card-solid">
       <div class="card-body" style="margin-top: 0px;">
         <div class="row">
-          <div class="col-12 col-sm-6 fixed-pos">
+          <div
+            class="col-12 col-sm-6 fixed-pos"
+            style="padding-left: 15px;">
             <h3 class="d-inline-block d-sm-none"><?= $row2['product_name'] ?></h3>
             <!---------------------------------------------------------------------------------------------------------------->
             <!---------------------------------------------------------------------------------------------------------------->
             <!---------------------------------------------------------------------------------------------------------------->
-            <div class="fixed-pos-left-container" style="background-color:white">
-              <div class="fixed-pos-left" style="background-color:white">
+            <div
+              class="fixed-pos-left-container"
+              style="background-color: white">
+              <div
+                class="fixed-pos-left"
+                style="background-color: white">
                 <div class="abolute_div" style="margin:0;">
                   <div class="relative_div" style="margin:0;">
-                    <div class="row zoom-in-adjust" style="margin:0;width:100%;">
-                      <div class="col-md-12 div-wrapper product_contain_div"
-                        style="margin-top: 20px;padding-right:0px;height:430px;">
+                    <div
+                      class="row zoom-in-adjust"
+                      style="margin: 0;
+                             width: 100%;">
+                      <div
+                        class="col-md-12 div-wrapper product_contain_div"
+                        style="margin-top: 20px;
+                               padding-right: 0px;
+                               height: 430px;">
                         <?php
                         $img_cnt_sql = "select img_count from product_description where product_description_id=$product_description_id";
                         $img_cnt_stmt = $pdo->prepare($sql);
@@ -1433,8 +1500,8 @@ function randomGen($min, $max, $quantity)
                       -----------------------------------------------------------------------------------------------------------------------------------------------------------
                       ----------------------------------------------------------------------------------------------------------------------------------------------------------->
                           <?php
-                          $sqlfeatures_color = "select * from product_description
-                          											where product_description.product_id=:product_id";
+                          $sqlfeatures_color = "SELECT * FROM product_description
+                                                WHERE product_description.product_id = :product_id";
                           $stmtfeatures_color = $pdo->prepare($sqlfeatures_color);
                           $stmtfeatures_color->execute(array(
                             ':product_id' => $row2['product_id']
@@ -1444,8 +1511,8 @@ function randomGen($min, $max, $quantity)
                           if ($color_cnt > 0) {
                             echo "<hr>";
                           }
-                          $sqlfeatures_size = "select * from product_description
-                        											where product_description.product_id=:product_id";
+                          $sqlfeatures_size = "SELECT * FROM product_description
+                                               WHERE product_description.product_id = :product_id";
                           $stmtfeatures_size = $pdo->prepare($sqlfeatures_size);
                           $stmtfeatures_size->execute(array(
                             ':product_id' => $row2['product_id']
@@ -1462,7 +1529,9 @@ function randomGen($min, $max, $quantity)
                               <div class="btn-group btn-group-toggle" data-toggle="buttons"
                                 onclick="location.href='../Product/single.php?id=<?= $rowfeatures_size['product_description_id'] ?>'">
                                 <?php
-                                $sqlsize_name = 'select size_name from size where size_id=' . (int) $rowfeatures_size['size'];
+                                $sqlsize_name = "SELECT size_name
+                                                 FROM size
+                                                 WHERE size_id = " . (int) $rowfeatures_size['size'];
                                 $stmtsize_name = $pdo->query($sqlsize_name);
                                 while ($rowsize_name = $stmtsize_name->fetch(PDO::FETCH_ASSOC)) {;
                                   if ($rowsize_name['size_name'] == 'XL') {
@@ -1620,7 +1689,14 @@ function randomGen($min, $max, $quantity)
                 //-------------------------------------------------------------------------------------------------------------------
                 $myreview = 0;
                 if (isset($_SESSION['id'])) {
-                  $myreviewstmt = $pdo->query("select ordered_cnt,review,rating,date_of_review as date,customers.first_name,customers.last_name from product_keys join customers on customers.customer_id=product_keys.customer_id where product_description_id=" . $_GET['id'] . " and product_keys.customer_id=" . $_SESSION['id']);
+                  $myreviewstmt = $pdo->query(
+                    "SELECT ordered_cnt, review, rating, date_of_review as date,
+                            customers.first_name, customers.last_name
+                     FROM product_keys
+                     JOIN customers ON customers.customer_id = product_keys.customer_id
+                     WHERE product_description_id = " . $_GET['id'] . "
+                     AND product_keys.customer_id = " . $_SESSION['id']
+                  );
                   $myreviewcount = $myreviewstmt->rowCount();
                   echo "<h3 style='margin-top:20px;'>Customer Reviews" . $myreviewcount . "</h3>";
 
@@ -1693,7 +1769,14 @@ function randomGen($min, $max, $quantity)
                     //
                     //customer RATING & REVIEW
                     else {
-                      $checkbuysql = $pdo->query("select ordered_cnt,customers.first_name,customers.last_name from product_keys join customers on customers.customer_id=product_keys.customer_id where product_description_id=" . $_GET['id'] . " and product_keys.customer_id=" . $_SESSION['id'] . " and product_keys.ordered_cnt>0");
+                      $checkbuysql = $pdo->query(
+                        "SELECT ordered_cnt, customers.first_name, customers.last_name
+                         FROM product_keys
+                         JOIN customers ON customers.customer_id = product_keys.customer_id
+                         WHERE product_description_id = " . $_GET['id'] . "
+                         AND product_keys.customer_id = " . $_SESSION['id'] . "
+                         AND product_keys.ordered_cnt > 0"
+                      );
                       $checkbuycnt = $checkbuysql->rowCount();
                       if (is_null($checkbuycnt) == false && $checkbuycnt != 0) {
                         $checkbuy = $checkbuysql->fetch(PDO::FETCH_ASSOC);
@@ -2028,12 +2111,30 @@ function randomGen($min, $max, $quantity)
                 }
                 //PUBLIC REVIEW
                 if (isset($_SESSION['id'])) {
-                  $reviewstmt = $pdo->query("select product_keys.ordered_cnt,product_keys.review,rating,customers.first_name,customers.last_name,date_of_review
-																						as date from product_keys join customers on customers.customer_id=product_keys.customer_id
-																						where product_description_id=" . $_GET['id'] . " and product_keys.customer_id not in (" . $_SESSION['id'] . ") and rating>0 and review!='0' and product_keys.ordered_cnt>0 and review!='0' limit 5");
+                  $reviewstmt = $pdo->query(
+                    "SELECT product_keys.ordered_cnt, product_keys.review, rating,
+                            customers.first_name, customers.last_name, date_of_review as date
+                     FROM product_keys
+                     JOIN customers ON customers.customer_id = product_keys.customer_id
+                     WHERE product_description_id = " . $_GET['id'] . "
+                     AND product_keys.customer_id NOT IN (" . $_SESSION['id'] . ")
+                     AND rating > 0
+                     AND review != '0'
+                     AND product_keys.ordered_cnt > 0
+                     LIMIT 5"
+                  );
                 } else {
-                  $reviewstmt = $pdo->query("select product_keys.ordered_cnt,product_keys.review,rating,customers.first_name,customers.last_name,date_of_review as date from product_keys
-                    												join customers on customers.customer_id=product_keys.customer_id where product_description_id=" . $_GET['id'] . " and rating>0 and review!='0' and product_keys.ordered_cnt>0 and review!='0' limit 5");
+                  $reviewstmt = $pdo->query(
+                    "SELECT product_keys.ordered_cnt, product_keys.review, rating,
+                            customers.first_name, customers.last_name, date_of_review as date
+                     FROM product_keys
+                     JOIN customers ON customers.customer_id = product_keys.customer_id
+                     WHERE product_description_id = " . $_GET['id'] . "
+                     AND rating > 0
+                     AND review != '0'
+                     AND product_keys.ordered_cnt > 0
+                     LIMIT 5"
+                  );
                 }
                 $reviewcount = $reviewstmt->rowCount();
                 if ($reviewcount != 0) {
@@ -2245,15 +2346,27 @@ function randomGen($min, $max, $quantity)
                   }
                 </style>
                 <?php
-                $tot_ratingstarstmt = $pdo->query("select count(product_keys.rating) as totratingcnt from product_keys
-                  																where product_description_id=" . $_GET['id'] . " and rating>0 and ordered_cnt>0 and review!='0'");
+                $tot_ratingstarstmt = $pdo->query(
+                  "SELECT COUNT(product_keys.rating) as totratingcnt
+                   FROM product_keys
+                   WHERE product_description_id = " . $_GET['id'] . "
+                   AND rating > 0
+                   AND ordered_cnt > 0
+                   AND review != '0'"
+                );
                 $tot_ratestarcount = $tot_ratingstarstmt->rowCount();
                 if (is_null($tot_ratestarcount) == false && $tot_ratestarcount != 0) {
                   $tot_ratingstarrow = $tot_ratingstarstmt->fetch(PDO::FETCH_ASSOC);
                   $tot_ratingstar = $tot_ratingstarrow['totratingcnt'];
                   for ($i = 5; $i > 0; $i--) {
-                    $ratingstarstmt = $pdo->query("select count(product_keys.rating) as ratingcnt,rating from product_keys
-                      														where product_description_id=" . $_GET['id'] . " and rating=" . $i . " and ordered_cnt>0 and review!='0'");
+                    $ratingstarstmt = $pdo->query(
+                      "SELECT COUNT(product_keys.rating) as ratingcnt, rating
+                       FROM product_keys
+                       WHERE product_description_id = " . $_GET['id'] . "
+                       AND rating = " . $i . "
+                       AND ordered_cnt > 0
+                       AND review != '0'"
+                    );
                     $ratestarcount = $ratingstarstmt->rowCount();
                     if ($ratecount != 0) {
                       $ratingstarrow = $ratingstarstmt->fetch(PDO::FETCH_ASSOC);

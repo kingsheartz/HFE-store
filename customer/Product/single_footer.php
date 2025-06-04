@@ -757,39 +757,63 @@ if (isset($product_description_id)) {
 <!-- Detail about lists--><!--ADD TO WISHLIST-->
 <?php
 if (isset($product_description_id, $_SESSION['id'])) {
-  $result = $pdo->query("select * from wishlist where customer_id=" . $_SESSION['id']);
+  $result = $pdo->query(
+    "SELECT * FROM wishlist
+    WHERE customer_id = " . $_SESSION['id']
+  );
   $status = 0;
 ?>
-  <div id="avail_wishlist" tabindex="-1" role="dialog" aria-labelledby="store_title"
-    class="modal fade modal-xl hidescroll" style="height: 90%;">
-    <div class="modal-dialog modal-xl" style="height: 90%;">
-      <div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
-        <div class="modal-overlay" id="modal-overlay">
-          <div class="modal-header shadow_b"
-            style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white">
-            <button type="button" class="close" data-dismiss="modal"
-              style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
-            <h3 id="store_title" class="modal-title">Your Wishlists</h3>
-          </div>
+
+<div
+  id="avail_wishlist"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="store_title"
+  class="modal fade modal-xl hidescroll"
+  style="height: 90%;">
+  <div class="modal-dialog modal-xl" style="height: 90%;">
+    <div class="modal-content" style="height: 90%;">
+      <div class="modal-overlay" id="modal-overlay">
+        <div
+          class="modal-header shadow_b"
+          style="background: -webkit-gradient(linear, left bottom, left top,
+                                            color-stop(0, #002b41),
+                                            color-stop(1, #004f63)) !important;
+                 color: white">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            style="outline: none;
+                   background-color: white;
+                   opacity: unset;
+                   color: red;
+                   margin-top: 0px;
+                   font-size: 2.3em;
+                   border-radius: 5px;
+                   padding-left: 5px;
+                   padding-right: 5px;">&times;</button>
+          <h3 id="store_title" class="modal-title">Your Wishlists</h3>
         </div>
-        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
-          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
-            <table id="list_wishlist" cellspacing="50px" cellpadding="20px" width="100%" class="single_product_info"
-              border="5px" style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+      </div>
+      <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
+        <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
+          <table id="list_wishlist" cellspacing="50px" cellpadding="20px" width="100%" class="single_product_info"
+            border="5px" style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+            <?php
+            $rows = $result->rowCount();
+            if (!is_null($rows) && $rows > 0) {
+            ?>
+              <tr
+                style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white">
+                <th style="border: none;" class="view_avail_stores">Select</th>
+                <th style="border: none;" class="view_avail_stores">List Name </th>
+                <th style="border: none;" class="view_avail_stores">Privacy </th>
+                <th style="border: none;" class="view_avail_stores">item count </th>
+                <th style="border: none;" class="view_avail_stores">Created on </th>
+              </tr>
               <?php
-              $rows = $result->rowCount();
-              if (!is_null($rows) && $rows > 0) {
-              ?>
-                <tr
-                  style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white">
-                  <th style="border: none;" class="view_avail_stores">Select</th>
-                  <th style="border: none;" class="view_avail_stores">List Name </th>
-                  <th style="border: none;" class="view_avail_stores">Privacy </th>
-                  <th style="border: none;" class="view_avail_stores">item count </th>
-                  <th style="border: none;" class="view_avail_stores">Created on </th>
-                </tr>
-                <?php
-                while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
+              while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                   $sql_wish1 = 'select count(wishlist_id) as product_count FROM wishlist_products WHERE wishlist_id=:wish_id ';
                   $stmt_wish1 = $pdo->prepare($sql_wish1);
                   $stmt_wish1->execute(array(':wish_id' => $row['wishlist_id']));
@@ -801,43 +825,45 @@ if (isset($product_description_id, $_SESSION['id'])) {
                         style="height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none;display:unset; "
                         onclick="wishlist_check_list_select(<?= $row['wishlist_id'] ?>)">Add <i
                           class="fa fa-heart"></i></button>
-                    </td>
+                  </td>
                     <td style="background-color: white" class="view_avail_stores"><?= $row['list_name'] ?></td>
                     <td style="background-color: white" class="view_avail_stores"><?= $row['privacy'] ?></td>
                     <!--<td id="Q<?= $store_id ?>"><? //=$row['quantity']
                                                     ?></td>-->
-                    <td style="background-color: white" id="wish_cnt_<?= $row['wishlist_id'] ?>" class="view_avail_stores">
+                  <td style="background-color: white" id="wish_cnt_<?= $row['wishlist_id'] ?>" class="view_avail_stores">
                       <?= $row_wish1['product_count'] ?></td>
-                    <?php
-                    $dateofcreate = explode('-', $row['date']);
-                    $day = $dateofcreate[1] . "/" . $dateofcreate[2] . "/" . substr($dateofcreate[0], 2);
-                    ?>
+                  <?php
+                  $dateofcreate = explode('-', $row['date']);
+                  $day = $dateofcreate[1] . "/" . $dateofcreate[2] . "/" . substr($dateofcreate[0], 2);
+                  ?>
                     <td style="background-color: white" class="view_avail_stores"><?= $day ?></td>
-                  </tr>
-                <?php
-                }
-                $status = 1;
-              }
-              if ($status == 0) {
-                ?>
-                <br>
-                <div style="display:flex;justify-content:center;align-items:center">
-                  <img src="../../images/logo/wishlist1.png" style="max-height:150px;width:auto;clear:both">
-                  <h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No list found</h3>
-                </div>
-                <br>
+                </tr>
               <?php
               }
+              $status = 1;
+            }
+            if ($status == 0) {
               ?>
-            </table>
-          </div>
-          <div class="modal-footer" style="background-color: white">
-            <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
-              data-target="#avail_stores_wishlist"
-              style="outline: none;font-size: 1.2em;float:left;background-color:#22374e"><i style="color: #fff"
-                class="fa fa-arrow-left fa-lg"></i></button>
-            <button type="button" class="btn btn-default" data-dismiss="modal"
-              style="outline: none;font-size: 1.2em;">Close <i style="color: red" class="fa fa-times-circle"></i></button>
+              <br>
+              <div style="display:flex;justify-content:center;align-items:center">
+                <img src="../../images/logo/wishlist1.png" style="max-height:150px;width:auto;clear:both">
+                <h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No list found</h3>
+              </div>
+              <br>
+            <?php
+            }
+            ?>
+          </table>
+        </div>
+        <div class="modal-footer" style="background-color: white">
+          <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+            data-target="#avail_stores_wishlist"
+            style="outline: none;font-size: 1.2em;float:left;background-color:#22374e">
+            <i
+              style="color: #fff"
+              class="fa fa-arrow-left fa-lg"></i></button>
+          <button type="button" class="btn btn-default" data-dismiss="modal"
+            style="outline: none;font-size: 1.2em;">Close <i style="color: red" class="fa fa-times-circle"></i></button>
           </div>
         </div>
       </div>
