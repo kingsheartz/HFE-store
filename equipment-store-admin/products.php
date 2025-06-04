@@ -337,10 +337,11 @@ require "head.php";
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
     <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js' type='text/javascript'></script>
     <div class="table1">
-      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;"><i
-          class="fas fa-boxes" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i> Products</h4>
+      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;">
+        <i class="fas fa-boxes" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i> Products
+      </h4>
       <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-      <br><br>
+      <br /><br />
     </div>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.2/jquery.min.js"></script>
     <script type="text/javascript">
@@ -405,18 +406,18 @@ require "head.php";
     $st11 = $pdo->query($query11);
     while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
       $ct = $row11['category_id'];
-      ?>
+    ?>
       <?php
       $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id
-                where item.category_id=$ct and
+                WHERE item.category_id=$ct AND
                 item_description.item_description_id
-                IN (SELECT item_description_id FROM product_details where store_id=$id )";
+                IN (SELECT item_description_id FROM product_details WHERE store_id=$id )";
       $st = $pdo->query($query);
       $product = $st->rowCount();
       if ($product == 0) {
         continue;
       } else {
-        ?>
+      ?>
         <div class="difcat ">
           <span class="difhed"><?= $row11['category_name'] ?>
             <button onclick="location.href='viewnewitems.php?category_id=<?= $ct ?>'">View All</button>
@@ -430,22 +431,24 @@ require "head.php";
             </button>
             <?php
             while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-              ?>
+            ?>
               <div class="products">
                 <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
-                  <img data-toggle="modal" data-target="#exampleModal" onclick="appjos('<?= $row['item_description_id'] ?>' )"
+                  <img
+                    data-toggle="modal"
+                    data-target="#exampleModal"
+                    onclick="appjos('<?= $row['item_description_id'] ?>' )"
                     class="image" align="middle"
                     src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
                 </div>
-                <div class="deupd"><?= $row['item_name'] ?><br>
-                </div>
+                <div class="deupd"><?= $row['item_name'] ?><br /></div>
               </div>
-              <?php
+            <?php
             }
             ?>
           </div>
         </div>
-        <?php
+    <?php
       }
     }
     ?>
@@ -465,23 +468,22 @@ require "head.php";
         }
       }
     </script>
-    </div>
-    <div class="modal fade" id="exampleModal" role="dialog">
-      <div class="modal-dialog">
-        <!-- Modal content-->
-        <div class="modal-content">
-          <div class="modal-header">
-            <h2 class="modal-title">Product Info</h2>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-          </div>
-          <div class="modal-body">
-          </div>
-          <div class="modal-footer">
-            <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-          </div>
+  </div>
+  <div class="modal fade" id="exampleModal" role="dialog">
+    <div class="modal-dialog">
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <h2 class="modal-title">Product Info</h2>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+        </div>
+        <div class="modal-body"></div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
         </div>
       </div>
     </div>
-    <?php
-    require "foot.php";
-    ?>
+  </div>
+  <?php
+  require "foot.php";
+  ?>

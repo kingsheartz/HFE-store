@@ -46,7 +46,7 @@ require "head.php";
     $id = $_SESSION['id'];
     require "pdo.php";
     echo "<script>var id=$id</script>";
-    $stmt = $pdo->query("select sum(new_orders.sub_total)  FROM new_orders
+    $stmt = $pdo->query("SELECT sum(new_orders.sub_total)  FROM new_orders
                         JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
                         JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
                         JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
@@ -55,20 +55,23 @@ require "head.php";
                         JOIN product_description ON product_details.product_description_id=product_description.product_description_id
                         JOIN product ON product.product_id=product_description.product_id
                         JOIN category ON category.category_id=product.category_id
-                        JOIN store on store.store_id=product_details.store_id
-                        WHERE new_ordered_products.delivery_status='completed' and store.store_id=$id");
+                        JOIN store ON store.store_id=product_details.store_id
+                        WHERE new_ordered_products.delivery_status='completed' AND store.store_id=$id");
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     ?>
     <div class="table1">
-      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;"><i
-          class="fas fa-clipboard-check" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Selled
-        Products </h4>
+      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;">
+        <i
+          class="fas fa-clipboard-check"
+          style="font-size: 24px;padding-right: 12px"
+          aria-hidden="true"></i>Selled Products
+      </h4>
 
-      <br><br>
-      <div id="jsGrid"></div><br><br><br>
+      <br /><br />
+      <div id="jsGrid"></div><br /><br /><br />
       <a class="excelbt" href="javascript:void(0);" onclick="printPageArea('jsGrid')">Print to Excel</a>
       <a class="pdfbt" href="javascript:void(0);" onclick="printPage()">Print to PDF</a>
-      <br><br>
+      <br /><br />
     </div>
     <script>
       function tblpr() {
@@ -96,8 +99,7 @@ require "head.php";
                 <td align='center'>" + data[i].delivery_status + "</td>\
                 <td align='center'>" + data[i].total_amt + "</td></tr>";
         }
-        p += "<tr  style='border-top:1px solid;padding:30px'><th align='center' colspan='7'>All Total Rupees " + tot +
-          " only</th align='center'></table>";
+        p += "<tr  style='border-top:1px solid;padding:30px'><th align='center' colspan='7'>All Total Rupees " + tot + " only</th align='center'></table>";
         return p;
       }
       //Excel printing
