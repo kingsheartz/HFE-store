@@ -58,7 +58,8 @@ require "../Main/header.php";
 <div class="breadcrumbs">
   <div class="container">
     <ol class="breadcrumb breadcrumb1 animated wow slideInLeft" data-wow-delay=".5s">
-      <li><a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
+      <li>
+        <a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
       </li>
       <li class="active">Products</li>
     </ol>
@@ -74,8 +75,7 @@ require "../Main/header.php";
       if (isset($_GET['item'])) {
         $nm = ucwords($_GET['item']);
         $res1 = $pdo->query(
-          "SELECT * FROM item
-          WHERE item_name LIKE '%" . $nm . "%'"
+          "SELECT * FROM item WHERE item_name LIKE '%" . $nm . "%'"
         );
         $row = $res1->fetch(PDO::FETCH_ASSOC);
         $head = "Items related to '" . $nm . "'";
@@ -83,15 +83,13 @@ require "../Main/header.php";
         $cat = $_GET['category_id'];
         $sub = $_GET['subcategory_id'];
         $res1 = $pdo->query(
-          "SELECT * FROM sub_category
-          WHERE sub_category_id = " . $_GET['subcategory_id']
+          "SELECT * FROM sub_category WHERE sub_category_id = " . $_GET['subcategory_id']
         );
         $row = $res1->fetch(PDO::FETCH_ASSOC);
         $head = $row['sub_category_name'];
       } else if (isset($_GET['category_id'])) {
         $res1 = $pdo->query(
-          "SELECT * FROM category
-          WHERE category_id = " . $_GET['category_id']
+          "SELECT * FROM category WHERE category_id = " . $_GET['category_id']
         );
         $row = $res1->fetch(PDO::FETCH_ASSOC);
         $head = $row['category_name'];
@@ -124,13 +122,13 @@ require "../Main/header.php";
       );
       $res = $pdo->query(
         "SELECT item.item_id,
-               item.price AS 'mrp',
-               product_details.price,
-               item_description.item_description_id,
-               item.item_name,
-               item.description,
-               item.category_id,
-               item.sub_category_id
+                item.price AS 'mrp',
+                product_details.price,
+                item_description.item_description_id,
+                item.item_name,
+                item.description,
+                item.category_id,
+                item.sub_category_id
         FROM item
         INNER JOIN item_description ON item_description.item_id = item.item_id
         INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
@@ -155,14 +153,14 @@ require "../Main/header.php";
       );
       $res = $pdo->query(
         "SELECT store.store_name,
-               item.item_id,
-               item.price AS 'mrp',
-               product_details.price,
-               item_description.item_description_id,
-               item.item_name,
-               item.description,
-               item.category_id,
-               item.sub_category_id
+                item.item_id,
+                item.price AS 'mrp',
+                product_details.price,
+                item_description.item_description_id,
+                item.item_name,
+                item.description,
+                item.category_id,
+                item.sub_category_id
         FROM item
         INNER JOIN item_description ON item_description.item_id = item.item_id
         INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
@@ -187,13 +185,13 @@ require "../Main/header.php";
       );
       $res = $pdo->query(
         "SELECT item.item_id,
-               item.price AS 'mrp',
-               product_details.price,
-               item_description.item_description_id,
-               item.item_name,
-               item.description,
-               item.category_id,
-               item.sub_category_id
+                item.price AS 'mrp',
+                product_details.price,
+                item_description.item_description_id,
+                item.item_name,
+                item.description,
+                item.category_id,
+                item.sub_category_id
         FROM item
         INNER JOIN item_description ON item_description.item_id = item.item_id
         INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
@@ -235,9 +233,9 @@ require "../Main/header.php";
             <h2
               class="sidebar-title"
               style="text-align: center;
-                     color: #2d70ff;
-                     display: inline-flex;
-                     font-weight: 600;">
+                    color: #2d70ff;
+                    display: inline-flex;
+                    font-weight: 600;">
               No result found
             </h2>
           </center>
@@ -258,14 +256,12 @@ require "../Main/header.php";
                       <div class="snipcart-thumb">
                         <div
                           style="display: flex;
-                                 justify-content: center;
-                                 height: 200px;
-                                 width: 100%;
-                                 background: white;
-                                 text-align: center;">
-                          <a
-                            class="img-cont"
-                            href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
+                                justify-content: center;
+                                height: 200px;
+                                width: 100%;
+                                background: white;
+                                text-align: center;">
+                          <a class="img-cont" href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
                             <img
                               title=" "
                               alt=" "
@@ -281,20 +277,10 @@ require "../Main/header.php";
                           $item_name = $row['item_name'];
                         }
                         ?>
-                        <p
-                          style="margin: auto;
-                                 display: block;
-                                 margin: 0;
-                                 margin-top: 5px;
-                                 overflow: hidden"
-                          class="name_size">
+                        <p style="margin: auto;display: block;margin: 0;margin-top: 5px;overflow: hidden" class="name_size">
                           <?= $item_name ?>
                         </p>
-                        <h4
-                          style="color: green;
-                                 margin: auto;
-                                 display: block;
-                                 margin: 0">
+                        <h4 style="color: green; margin: auto;display: block;margin: 0">
                           &#8377; <?= $row['price'] ?>
                           <span>&#8377; <?= $row['mrp'] ?></span>
                         </h4>
@@ -320,15 +306,23 @@ require "../Main/header.php";
       ?>
         <nav class="numbering">
           <ul class="pagination">
-            <li class="<?php if ($pageno <= 1) {
-                          echo 'disabled';
-                        } ?>">
-              <a id="prev" href="<?php if ($pageno <= 1) {
-                                    echo '#';
-                                  } else {
-                                    $_GET['pageno'] = $pageno - 1;
-                                    echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
-                                  } ?>">Prev</a>
+            <li class="
+            <?php if ($pageno <= 1) {
+              echo 'disabled';
+            }
+            ?>
+            ">
+              <a id="prev" href="
+              <?php
+              if ($pageno <= 1) {
+                echo '#';
+              } else {
+                $_GET['pageno'] = $pageno - 1;
+                echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+              }
+              ?>
+              ">Prev
+              </a>
             </li>
             <?php
             $ends_count = 1;  //how many items at the ends (before and after [...])
@@ -338,9 +332,12 @@ require "../Main/header.php";
               if ($page == $pageno) {
             ?>
                 <li class="active">
-                  <a href="<?php
-                            $_GET['pageno'] = $page;
-                            echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
+                  <a href="
+                  <?php
+                  $_GET['pageno'] = $page;
+                  echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+                  ?>
+                  ">
                     <?= $page ?>
                   </a>
                 </li>
@@ -350,9 +347,12 @@ require "../Main/header.php";
                 if ($page <= $ends_count || ($pageno && $page >= $pageno - $middle_count && $page <= $pageno + $middle_count) || $page > $total_pages - $ends_count) {
                 ?>
                   <li>
-                    <a href=" <?php
-                              $_GET['pageno'] = $page;
-                              echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
+                    <a href="
+                    <?php
+                    $_GET['pageno'] = $page;
+                    echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+                    ?>
+                    ">
                       <?= $page ?>
                     </a>
                   </li>
@@ -367,15 +367,23 @@ require "../Main/header.php";
               }
             }
             ?>
-            <li class="<?php if ($pageno >= $total_pages) {
-                          echo 'disabled';
-                        } ?>">
-              <a id="next" href="<?php if ($pageno >= $total_pages) {
-                                    echo '#';
-                                  } else {
-                                    $_GET['pageno'] = $pageno + 1;
-                                    echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
-                                  } ?>">Next</a>
+            <li class="
+            <?php
+            if ($pageno >= $total_pages) {
+              echo 'disabled';
+            }
+            ?>
+            ">
+              <a id="next" href="
+              <?php if ($pageno >= $total_pages) {
+                echo '#';
+              } else {
+                $_GET['pageno'] = $pageno + 1;
+                echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+              }
+              ?>
+              ">Next
+              </a>
             </li>
           </ul>
         </nav>
