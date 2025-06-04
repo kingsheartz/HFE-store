@@ -16,7 +16,7 @@
   },
 
   "[css]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "aeschli.vscode-css-formatter"
   },
 
   "php-cs-fixer.onsave": false, // disable if not using it
