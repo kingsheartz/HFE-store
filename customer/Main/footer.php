@@ -42,6 +42,9 @@
     .modal-content {
       width: 100% !important;
     }
+    .footer-botm>.container>div{
+      width: 100%;
+    }
   }
 
   .footer-botm {
@@ -60,9 +63,9 @@
   .w3layouts-foot,
   .payment-w3ls {
     float: right;
-    position: absolute;
+    position: relative;
     right: 0px;
-    top: 30px;
+    top: 0px;
   }
 
 
@@ -70,7 +73,6 @@
   .col-sm-3.w3_footer_grid>h3 {
     right: 0px;
     float: right;
-    padding-left: 140px !important;
     font-size: 18px;
   }
 
@@ -93,9 +95,41 @@
     font-weight: normal;
   }
 
+  .info>li {
+    width: 130px;
+  }
+
   .w3_footer_grid>ul>li>.fa {
     float: right;
-    margin-right: 40px;
+  }
+
+  @media(max-width:767px){
+    .col-sm-3.w3_footer_grid{
+      height: 200px;
+      width: 50%;
+    }
+    .col-sm-3.w3_footer_grid>h3,
+    .col-sm-3.w3_footer_grid>ul{
+      padding-left: 30%;
+    }
+    .col-sm-3.w3_footer_grid>h3{
+      height: 30px;
+    }
+  }
+
+  @media(max-width:470px){
+    .col-sm-3.w3_footer_grid{
+      width: 100%;
+    }
+    .col-sm-3.w3_footer_grid>img{
+      width: 100%;
+    }
+    .col-sm-3.w3_footer_grid:nth-child(1) {
+      height: fit-content;
+    }
+    .footer-botm>.container>div{
+      display: block !important;
+    }
   }
 
   .footer .newsletter input {
@@ -130,7 +164,7 @@
   <link rel="stylesheet" href="../../css/font-awesome.min.css">
   <div class="footer-botm">
     <div class="container">
-      <div class="col-sm-8 w3_footer_grid">
+      <div class="col-lg-10 col-md-12 col-sm-12 w3_footer_grid" style="display: inline-flex;">
         <h3 class="title">Subscribe to newsettler</h3>
         <div class="newsletter">
           <p style="text-align: justify;">
@@ -143,7 +177,7 @@
           </form>
         </div>
       </div>
-      <div class="col-sm-4">
+      <div class="col-lg-2 col-md-12 col-sm-12">
         <div class="w3layouts-foot">
           <ul>
             <li><a href="https://www.facebook.com/falconsinfoworld/" target="_blank"
@@ -158,8 +192,8 @@
           </ul>
         </div>
       </div>
-      <div class="clearfix"> </div>
     </div>
+    <div class="clearfix"> </div>
   </div>
 
   <div class="container">
