@@ -111,28 +111,30 @@ if (session_status() === PHP_SESSION_NONE) {
 
     button.location_marker.popup2_open,
     .wishicon,
-    .carticon {
-      height: 50px !important;
-      margin: 0px !important;
-      width: 50px !important;
-      color: white;
-      background: transparent !important;
-      border: 0px;
-      padding: 5px;
-    }
+    .carticon, .location_marker {
+			height: 40px !important;
+			margin: 0px !important;
+			width: 40px !important;
+			color: white;
+			background: transparent !important;
+			border: 0px;
+			font-size: 16px !important;
+			padding: 5px !important;
+			padding-top: 15px !important;
+		}
 
     div#lg-cartcnt {
       position: absolute;
-      right: 5px;
-      top: 0px;
-      background: red;
-      height: 15px;
-      width: 20px;
-      padding: 2px;
-      border-radius: 10px;
-      text-align: center;
-      color: white;
-      font-size: 12px;
+    right: 5px;
+    top: 8px;
+    background: red;
+    height: 15px !important;
+    width: 15px;
+    padding: 0px;
+    border-radius: 10px;
+    text-align: center;
+    color: white;
+    font-size: 10px;
     }
 
     .navbar ul li {
@@ -144,6 +146,11 @@ if (session_status() === PHP_SESSION_NONE) {
       top: 0px;
       font-size: 14px !important;
       color: gray !important;
+			border: 0px;
+			margin-right: 0px !important;
+			margin-left: 0px !important;
+			margin-top: 0px !important;
+			margin-bottom: 0px !important;
     }
 
     .navbar-inverse {
@@ -153,9 +160,6 @@ if (session_status() === PHP_SESSION_NONE) {
       border-radius: 0px !important;
     }
 
-    button.w3view-cart {
-      background: transparent !important;
-    }
 
     .agileits_header {
       background-color: rgb(0 0 0) !important;
@@ -229,14 +233,6 @@ if (session_status() === PHP_SESSION_NONE) {
       font-size: 12px;
     }
 
-    li#lg_side_active {
-      margin-bottom: 10px;
-      border: 1px solid;
-      margin-right: 5px;
-      border-radius: 5px;
-      padding: 0px !important;
-      text-align: center;
-    }
 
     img.ri:empty {
       top: 50%;
@@ -365,8 +361,14 @@ if (session_status() === PHP_SESSION_NONE) {
     .navbar-inverse .navbar-nav>.active>a:focus,
     .navbar-inverse .navbar-nav>.active>a:hover {
       color: white !important;
-      background-color: #ffffff2b !important;
-      border-radius: 5px;
+			background-color: #ffffff2b !important;
+			border-radius: 5px;
+			margin-right: 0px !important;
+			margin-left: 0px !important;
+			margin-top: 0px !important;
+
+			padding-left: 10px !important;
+			padding-right: 10px !important;
     }
 
     .dropdown-menu li>span:hover {
@@ -395,43 +397,15 @@ if (session_status() === PHP_SESSION_NONE) {
         padding-top: 5px !important;
       }
 
-      #homeactive a {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-      }
-
-      #catactive>a {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-      }
-
-      #aboutactive a {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-      }
-
-      #contactactive a {
-        padding-left: 5px !important;
-        padding-right: 5px !important;
-      }
-
       .navbar {
         margin-bottom: -5px !important;
       }
 
-      .navbar-inverse .navbar-nav>.active>a,
-      .navbar-inverse .navbar-nav>.active>a:focus,
-      .navbar-inverse .navbar-nav>.active>a:hover {
-        /*border-bottom:4px solid #fe9126;*/
-        border-bottom: 4px solid #fe9126;
-        border-top: 4px solid #222;
-        margin-top: -4px;
-      }
     }
 
     @media(max-width: 767px) {
       .navbar-inverse {
-        background-color: #02171e;
+        background-color: #2c2c2c;
         border-top: 0px !important;
       }
 
@@ -439,28 +413,28 @@ if (session_status() === PHP_SESSION_NONE) {
       .navbar-inverse .navbar-nav>.active>a:focus,
       .navbar-inverse .navbar-nav>.active>a:hover {
         color: white !important;
-        background-color: #0c99cc !important;
+        background-color: rgb(63 63 63 / 41%) !important;
         border-bottom: 0px;
         border-bottom-right-radius: 0px;
         border-bottom-left-radius: 0px;
-        border-left: 5px white solid;
-        border-right: 5px white solid;
       }
 
       .navbar-inverse .navbar-nav li:hover {
-        background-color: #000 !important;
+        background-color:rgb(63 63 63 / 41%) !important;
         border-top-left-radius: 5px;
         border-bottom-left-radius: 5px;
         border-top-right-radius: 5px;
         border-bottom-right-radius: 5px;
-        border-left: 5px #0c99cc solid;
-        border-right: 5px #0c99cc solid;
         color: white !important;
       }
+			.navbar-inverse .navbar-nav li{
+				color: white !important;
+			}
     }
 
     ul.nav.navbar-nav.navbar-center {
       width: 100%;
+    	background: transparent !important;
     }
 
     @media (min-width: 992px) {
@@ -705,13 +679,22 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .usericon {
-      background-color: transparent !important;
-      border: 0px;
-      color: white;
-      position: absolute;
-      top: 14px;
-      left: -30px;
-    }
+			background-color: #0072d357 !important;
+			border: 0px;
+			color: white;
+			position: absolute;
+			top: 10px;
+			border-radius: 5px;
+			padding: 5px;
+			font-size: 12px;
+			width: max-content;
+			padding-left: 5px;
+			padding-right: 5px;
+			height: 30px !important;
+		}
+		.usericon>i{
+			font-size: 12px !important;
+		}
 
     .std_loader {
       border: 6px solid #f3f3f3;
@@ -747,31 +730,6 @@ if (session_status() === PHP_SESSION_NONE) {
       top: 10%;
     }
 
-    li.profilediv {
-      position: absolute !important;
-      right: 150px !important;
-      z-index: 9 !important;
-      margin: 0px !important;
-      height: 50px !important;
-      font-weight: 100 !important;
-      font-size: 14px !important;
-      color: gray !important;
-    }
-
-    li.locationdiv {
-      position: absolute !important;
-      right: 100px;
-    }
-
-    li.cartdiv {
-      position: absolute !important;
-      right: 50px;
-    }
-
-    li.wishdiv {
-      position: absolute !important;
-      right: 0px;
-    }
 
     .background_loader {
       margin: 0;
@@ -810,6 +768,151 @@ if (session_status() === PHP_SESSION_NONE) {
       }
     }
 
+		li.side-bar-collapsed {
+    	margin-top: 10px !important;
+		}
+		li.side-bar-collapsed>a>span {
+			border: 1px solid white;
+			padding: 5px;
+			font-size: 20px !important;
+			font-weight: 200;
+			border-radius: 5px;
+			margin-top: 30px !important;
+		}
+		#sm_top_ph_mail>i{
+			float: right;
+		}
+		#sm_top_ph_mail{
+			width: 100%;
+		}
+		.navbar-collapse.in {
+				overflow-y: visible;
+		}
+
+		div#mobile_menu {
+			width: 100% !important;
+			padding-right: 0px !important;
+			background-color: #050505;
+			padding-top: 0px;
+		}
+		li#lg_side_active>a>span {
+			margin-top: 3px;
+			border: 1px solid;
+			margin-left: -10px;
+			margin-right: 0px;
+			border-radius: 5px;
+			padding: 10px !important;
+			text-align: center;
+		}
+		@media (min-width:825px){
+			.srch {
+				float: left;
+				width: 100%;
+			}
+			#header-mock{
+				height: 100px;
+			}
+			div#lg_top_ph_mail{
+				width: 25rem !important;
+			}
+			.col-lg-2.col-md-2.col-sm-2.topli{
+				width: 15rem;
+			}
+
+			li.profilediv {
+				position: absolute !important;
+				right: 0px !important;
+				font-weight: 100 !important;
+				font-size: 14px !important;
+				color: gray !important;
+			}
+
+			li.locationdiv {
+				position: absolute !important;
+				right: 100px;
+			}
+
+			li.cartdiv {
+				position: absolute !important;
+				right: 50px;
+			}
+
+			li.wishdiv {
+				position: absolute !important;
+				right: 0px;
+			}
+			.usericon{
+				right: 150px !important;
+			}
+		}
+		@media (max-width:825px){
+			.srch{
+				margin-left: 10px !important;
+				margin-right: 10px !important;
+			}
+
+			.usericon {
+				right: 0px !important;
+				top: 20px !important;
+			}
+
+			#header-mock{
+				height: 200px;
+			}
+
+			div#lg_top_ph_mail{
+				width: 30rem !important;
+			}
+			.col-lg-2.col-md-2.col-sm-2.topli{
+				width: 15rem;
+			}
+
+		}
+
+		@media(max-width:767px){
+			div#lg_top_ph_mail{
+				width: 80rem !important;
+			}
+		}
+		@media(max-width:404px){
+			div#lg_top_ph_mail{
+				width: 70rem !important;
+			}
+		}
+
+		.header{
+			position: fixed;
+			width: 100%;
+			top: 0px;
+			z-index: 500;
+		}
+		.headimg, .navbar-inverse {
+			position: sticky !important;
+			width: 100% !important;
+			z-index: 100 !important;
+		}
+				@media (min-width: 768px) {
+			.navbar-nav>li>a {
+				padding-top: 10px;
+				padding-bottom: 10px;
+			}
+		}
+		#sm_category{
+			width: 100px !important;
+		}
+		.navbar.navbar-inverse.shadow_b {
+			height: 55px !important;
+			border: 0px !important;
+		}
+		.caticon{
+			width: 100px !important;
+			color: white;
+			padding: 5px;
+			margin-top: 13px;
+			background: #49494994 !important;
+			border-radius: 5px !important;
+			margin-left: 10px !important;
+		}
     /*****************************************************************************************************************************/
     /*****************************************************************************************************************************/
   </style>
@@ -888,588 +991,475 @@ if (session_status() === PHP_SESSION_NONE) {
   </div>
   <!--ANIMATION-->
   <!-- header -->
-  <div class="headimg" style="padding: 0px;margin: 0px;left: 0px;right: 0px;"><!--#1-->
-    <div class="container top"
-      style="width:100%;padding-top: 12px;margin: 0px;left: 0px;right: 0px;padding-bottom: 5px;">
-      <div style="height: 100% ;width: 100%;display: block;margin: 0px;left: 0px;right: 0px">
-        <div style="display: flex;">
-          <div class="col-lg-2 col-md-3 col-sm-3 topli " style="float: left;"
-            style="padding: 0px;margin: 0px;left: 0px;right: 0px">
-            <div class="logo_img" style="padding: 0px;margin: 0px;width: 100px;height: auto;">
-              <a href="#" style="float: left;margin-left:-10px;margin-right:5px;" id="sm_side_active">
-                <span style="font-size:30px;cursor:pointer" onclick="openNav()">&#9776;</span>
-              </a>
-              <a href="../Main/hfe.php">
-                <img src="../../images/logo/logo-horizontal.png" height="50px" style="width: 200px;height: auto;position: absolute;left: -40px;top: -45px;margin: 0px;right: 0px;">
-              </a>
-            </div>
-          </div>
-          <div class="col-lg-8 col-md-6 col-sm-6 search-set">
-            <!--krg-->
-            <div id="search-div" class=" srch bar-srch device-width-set" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
-              <div class=" search_bar bar-srch1">
-                <div class="container-fluid bar-srch1" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
-                  <div class="row bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
-                    <div class=" bar-srch" style="margin-left: 0px;width: 100%;">
-                      <div class="input-group bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
-                        <div class="input-group-btn search-panel" style="position: relative;height: 30px;background: #454545;color: white;border: 0px;">
-                          <button
-                            type="button"
-                            id="search-panel"
-                            class="btn btn-default dropdown-toggle"
-                            onclick="catlistview()"
-                            style="position: relative;height: 30px;background: #454545;color: white;border: 0px;">
-                            <span id="search_concept">All</span> <span class="caret" id="srch_pan"></span>
-                          </button>
-                          <ul
-                            id="category"
-                            class="dropdown-menu"
-                            name="cat2"
-                            role="menu"
-                            style="position: absolute;display: none;background-color: #CACACA !important">
-                            <li><a href="#0">All</a></li>
-                            <?php
-                            require "../../db.php";
-                            $sql = $pdo->query("select category_id,category_name from category");
-                            while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-                            ?>
-                              <li value="<?= $row['category_id'] ?>" style="border-color: white;">
-                                <a style='font-family:sans-serif' href="#<?= $row['category_id'] ?>"><?= $row['category_name'] ?></a>
-                              </li>
-                            <?php
-                            }
-                            ?>
-                          </ul>
-                        </div>
-                        <input type="hidden" name="search_param" value="0" id="search_param">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="search"
-                          onkeyup="searchele()"
-                          name="Search"
-                          placeholder="Search"
-                          style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;">
-                        <span class="input-group-btn">
-                          <button
-                            onclick="check()"
-                            onmouseover="$(this).css('background-color','#0c99cc')"
-                            onmouseleave="$(this).css('background-color','#fe9126')"
-                            style="color: white;background-color: #5a88ca;border: 0px;height: 30px;"
-                            class="btn btn-default search_btn" type="button">
-                            <span class="fa fa-search"></span>
-                          </button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="clear-fix"></div>
-                  <div id="display"></div>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div
-            style="color: white;float: right;padding-left: 5px;padding: 0px;"
-            class="col-lg-2 col-md-3 col-sm-3 topli"
-            id="lg_top_ph_mail">
-            <a href="tel:+918113990368" style="color:white;font-family:arial;padding: 0px;">
-              <i class="fa fa-phone" aria-hidden="true"></i> Ph: <span><i>+91 8113990368</i></span>
-            </a>
-            <br>
-            <i><span>Healthcare & Fitness Equipments</span></i>
-          </div>
-          <div style="color: white;float: right;" class="topli" id="sm_top_ph_mail">
-            <i class="fa fa-phone" aria-hidden="true"></i>
-            <br />
-            <i><span><i class="fa fa-envelope"></i></span></i>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class=" nav-bar shadow_b"><!--#2-->
-      <!-- //SMALL DIV -->
-      <div id="small-div"><!--#3-->
-        <div class="agileits_header"><!--#4-->
-          <div class="container head" style="padding: 0px;margin: 0px;left: 0px;right: 0px"><!--#5-->
-            <!--krg-->
-            <div id="search-div" class=" srch bar-srch device-width-set" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
-              <div class=" search_bar bar-srch1" style="padding: 0px;margin-left: 15px;margin-right: 15px;margin-top: 5px;margin-bottom: 5px;left: 0px;right: 0px">
-                <div class="container-fluid bar-srch1" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
-                  <div class="row bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
-                    <div class=" bar-srch" style="margin-left: 0px;width: 100%;">
-                      <div class="input-group bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
-                        <div
-                          id="v-small-div"
-                          class="input-group-btn search-panel"
-                          style="position: relative;height: 30px;background: #454545;color: white;border: 0px;">
-                          <button
-                            type="button"
-                            id="search-panel2"
-                            class="btn btn-default dropdown-toggle"
-                            onclick="catlistview2()"
-                            style="position: relative;height: 30px;background: #454545;color: white;border: 0px;">
-                            <span id="search_concept2">All</span> <span class="caret" id="srch_pan2"></span>
-                          </button>
-                          <ul
-                            id="category2"
-                            class="dropdown-menu"
-                            name="cat2"
-                            role="menu"
-                            style="position: absolute;z-index: 1;display: none;background-color: #CACACA !important; margin-bottom:10px;">
-                            <li><a href="#all">All</a></li>
-                            <?php
-                            require "../../db.php";
-                            $sql = $pdo->query("select category_id,category_name from category");
-                            while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
-                            ?>
-                              <li value="<?= $row['category_id'] ?>">
-                                <a style='font-family:sans-serif;border:1px white;' href="#<?= $row['category_id'] ?>">
-                                  <?= $row['category_name'] ?>
-                                </a>
-                              </li>
-                            <?php
-                            }
-                            ?>
-                          </ul>
-                        </div>
-                        <input type="hidden" name="search_param" value="0" id="search_param2">
-                        <input
-                          type="text"
-                          class="form-control"
-                          id="search2"
-                          autocomplete="off"
-                          onkeyup="searchele2()"
-                          name="Search"
-                          placeholder="Search"
-                          style="margin-top: 0px;">
-                        <span class="input-group-btn">
-                          <button
-                            onclick="check2()"
-                            onmouseover="$(this).css('background-color','#0c99cc')"
-                            onmouseleave="$(this).css('background-color','#fe9126')"
-                            style="color: white;background-color: #5a88ca;border: 0px;height: 30px; "
-                            class=" btn btn-default search_btn"
-                            type="button"><span class="fa fa-search"></span>
-                          </button>
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  <div class="clear-fix"></div>
-                  <div id="display2"></div>
-                </div>
-              </div>
-            </div>
-            <!--krg-->
-            <div class="option_segment"><!--#6-->
-              <div class="agile-login"><!--#7-->
-                <div>
-                  <ul class="phone_email topli"><!--SIDE OPEN NAV BAR-->
-                    <li style="float: left;">
-                      <form action="#" method="post" class="last">
-                        <button class="location_marker popup2_open" type="submit" name="submit" value="">
-                          <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
-                        </button>
-                        <span id="location">
-                          <?php if (isset($_SESSION['location'])) { ?>You<?php } else { ?>Location
-                        <?php } ?>
-                        </span>
-                      </form>
-                    </li>
-                    <li class="cartdiv">
-                      <form action="#" method="post" class="last">
-                        <div id="cart" class="btn-group btn-shopping-cart">
-                          <a href="..\Cart\cart.php">
-                            <div class="shopcart">
-                              <div
-                                id="sm-cartcnt"
-                                style="position: relative;margin-bottom: -10px;background-color: red;border-radius: 50px;width: 20px;height:20px;margin-left: 20px"
-                                class="crt-count">
-                                <?php
-                                if (isset($_SESSION['cart_count'])) {
-                                  echo $_SESSION['cart_count'];
-                                } else {
-                                  echo "0";
-                                }
-                                ?>
-                              </div>
-                              <input type="hidden" name="cmd" value="_cart">
-                              <input type="hidden" name="display" value="1">
-                              <button
-                                class="carticon"
-                                onclick="cartview()"
-                                type="button"
-                                name="submit"
-                                value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                              </button>
-                              <span style="bottom: 0px;display: flex;justify-content:center;font-weight: normal;">Cart</span>
-                            </div>
-                          </a>
-                        </div>
-                      </form>
-                    </li>
-                    <li class="wishdiv">
-                      <form action="#" method="post" class="last">
-                        <button class="wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
-                          <i class="fa fa-heart" aria-hidden="true"></i>
-                        </button>
-                        <span style="bottom: 0px;display: flex;justify-content:center;">Wishlist</span>
-                      </form>
-                    </li>
-                    <li style="float: left;" class="catdiv" id="sm_category">
-                      <form action="#" method="post" class="last">
-                        <button class="w3view-cart caticon popup1_open" type="button" name="submit" value="">
-                          <i class="fa fa-list-alt" aria-hidden="true"></i>
-                        </button>
-                        <span style="bottom: 0px;display: flex;justify-content:center;">Category</span>
-                      </form>
-                    </li>
-                    <?php
-                    if (isset($_SESSION['name'])) {
-                    ?>
-                      <a href="#">
-                        <li class="userdiv" style="float: right;">
-                          <form action="registered.php" method="post" class="last" onclick="openNav()">
-                            <button class="w3view-cart usericon " type="button" name="submit" value="">
-                              <i class="fa fa-user" aria-hidden="true"></i>
-                            </button>
-                            <span style="bottom: 0px;display: flex;justify-content:center;" id="location"><?= $_SESSION['name'] ?></span>
-                          </form>
-                        </li>
-                      </a>
-                    <?php
-                    } else {
-                    ?>
-                      <div style="float: right;margin-top: 40px;" id="menu_items_reglog">
-                        <li><a href="registered.php"> Create Account </a></li>
-                        <li style="margin-left: -20px;">
-                          <a href="#myModal" data-toggle="modal" data-dismiss="modal">Login</a>
-                        </li>
-                      </div>
-                    <?php
-                    }
-                    ?>
-                    <div id="userdetails" style="float: right;">
-                      <?php
-                      if (isset($_SESSION['name'])) {
-                      ?>
-                        <a href="#">
-                          <li class="userdiv" style="float: right;">
-                            <form action="registered.php" method="post" class="last" onclick="openNav()">
-                              <button class="w3view-cart usericon " type="button" name="submit" value="">
-                                <i class="fa fa-user" aria-hidden="true"></i>
-                              </button>
-                              <span style="bottom: 0px;display: flex;justify-content:center;" id="location">
-                                <?= $_SESSION['name'] ?>
-                              </span>
-                            </form>
-                          </li>
-                        </a>
-                    </div>
-                  <?php
-                      } else {
-                  ?>
-                    <a href="registered.php" id="sm_sign_up">
-                      <li class="userdiv" style="float: right;">
-                        <form action="registered.php" method="post" class="last">
-                          <button class="w3view-cart usericon " type="button" name="submit" value="">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                          </button>
-                          <span style="bottom: 0px;display: flex;justify-content:center;font-weight: normal;" id="location">
-                            Sign up
-                          </span>
-                        </form>
-                      </li>
-                    </a>
-                    <a href="#myModal" data-toggle="modal" data-dismiss="modal">
-                      <li class="logindiv" style="float: right;">
-                        <form action="login.php" method="post" class="last">
-                          <button class="w3view-cart loginicon " type="button" name="submit" value="">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
-                          </button>
-                          <span style="bottom: 0px;display: flex;justify-content:center;font-weight: normal;" id="location">
-                            Log in
-                          </span>
-                        </form>
-                      </li>
-                    </a>
-                </div>
-              <?php
-                      }
-              ?>
-              <div id="vsmall">
-                <div id="xsmall">
-                  <a href="#">
-                    <li class="logindiv" style="float: right;">
-                      <form action="#" method="post" class="last">
-                        <?php if (isset($_SESSION['name'])) { ?>
-                          <button class="w3view-cart loginicon" type="button" name="submit" value="" onclick="openNav()">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                          </button>
-                          <span style="bottom: 0px;display: flex;justify-content:center;" id="location">
-                            <?= $_SESSION['name'] ?>
-                          </span>
-                        <?php
-                        } else {
-                        ?>
-                          <button class="w3view-cart loginicon" type="button" name="submit" value="" onclick="location.href='login.php'">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
-                          </button>
-                          <span style="bottom: 0px;display: flex;justify-content:center;" id="location">Log in</span>
-                        <?php
-                        }
-                        ?>
-                      </form>
-                    </li>
-                  </a>
-                </div>
-                <div id=xxsmall>
-                  <a href="#">
-                    <li class="logindiv" style="float: right;">
-                      <form action="#" method="post" class="last">
-                        <?php if (isset($_SESSION['name'])) { ?>
-                          <button class="w3view-cart loginicon " type="button" name="submit" value="" onclick="openNav()">
-                            <i class="fa fa-user" aria-hidden="true"></i>
-                          </button>
-                          <span style="bottom: 0px;display: flex;justify-content:center;" id="location">
-                            <?php echo "You"; ?>
-                          </span>
-                        <?php
-                        } else {
-                        ?>
-                          <button class="w3view-cart loginicon " type="button" name="submit" value="" onclick="location.href='login.php'">
-                            <i class="fa fa-sign-in" aria-hidden="true"></i>
-                          </button>
-                          <span style="bottom: 0px;display: flex;justify-content:center;" id="location">
-                            Log in
-                          </span>
-                        <?php
-                        }
-                        ?>
-                      </form>
-                    </li>
-                  </a>
-                </div>
-              </div>
-              </ul>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div><!-- //close small div -->
-    </div>
-  </div>
-  <!-- //header -->
-  </div><!--DON'T KNOW WHEN IT STARTS
-</div>
-</div>-->
-  <!-- navigation -->
-  <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 10px;">
-    <div class="container-fluid">
-      <div class="row">
-        <div style="padding: 0px">
-          <div class="navbar-header">
-            <button
-              class="navbar-toggle"
-              data-target="#mobile_menu"
-              data-toggle="collapse"
-              onclick="myFun(this)">
-              <span class="icon-bar icon-bar1"></span>
-              <span class="icon-bar icon-bar2"></span>
-              <span class="icon-bar icon-bar3"></span>
-            </button>
-          </div>
-          <div class="navbar-collapse collapse" id="mobile_menu" style="margin-top: 0px">
-            <ul class="nav navbar-nav navbar-center">
-              <li id="lg_side_active">
-                <a href="#">
-                  <span onclick="openNav()">&#9776;</span>
-                </a>
-              </li>
-              <li id="homeactive" class="active">
-                <a href="../Main/hfe.php">
-                  <i class="fa fa-home fa-lg"></i> Home
-                </a>
-              </li>
-              <?php
-              if (isset($_SESSION['sid'])) {
-              ?>
-                <li id="shopactive">
-                  <a href="../../equipment-store-admin/index.php?id=<?= $_SESSION['sid'] ?>">
-                    <i class="fas fa-lg fa-store"></i> Store
-                  </a>
-                </li>
-              <?php
-              }
-              ?>
-              <li id="aboutactive">
-                <a href="../Main/about.php">
-                  <i class="fa fa-lg fa-info-circle"></i> About
-                </a>
-              </li>
-              <li id="contactactive">
-                <a href="../Main/contact.php">
-                  <i class="fa fa-lg fa-users"></i> Contact Us
-                </a>
-              </li>
 
-              <?php
-              if (isset($_SESSION['name'])) {
-              ?>
-                <li class="profilediv">
-                  <form action="registered.php" method="post" class="last" onclick="openNav()">
-                    <button class=" usericon " type="button" name="submit" value="">
-                      <i class="fa fa-user" aria-hidden="true"></i>
-                    </button>
-                  </form>
-                </li>
-              <?php
-              } else {
-              ?>
-                <li><a href="registered.php"> Create Account </a></li>
-                <li><a href="#myModal" data-toggle="modal" data-dismiss="modal"> Login </a></li>
-              <?php
-              }
-              ?>
-              <li>
-                <a href="#" class="dropdown-toggle" data-toggle="dropdown">
-                  <span class="glyphicon glyphicon-user"></span> Profile <span class="caret"></span>
-                </a>
-                <ul class="dropdown-menu" style="border:1px solid #337ab7;padding: 0px">
-                  <?php
-                  if (!isset($_SESSION['id'])) {
-                  ?>
-                    <a href="../Account/login.php">
-                      <li
-                        onmouseover="$(this).css('color','white')"
-                        onmouseleave="$(this).css('background-color','white')"
-                        style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
-                        <span class="fa fa-sign-in"></span>
-                        <span style="font-family: arial;font-weight: 700; "> Login </span>
-                      </li>
-                    </a>
-                    <hr style="margin:0;padding: 0">
-                    <a href="../Account/registered.php">
-                      <li
-                        onmouseover="$(this).css('color','white')"
-                        onmouseleave="$(this).css('background-color','white')"
-                        style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
-                        <span class="fa fa-user-plus"></span>
-                        <span style="font-family: arial;font-weight: 700; "> Sign Up </span>
-                      </li>
-                    </a>
-                  <?php
-                  } else if (isset($_SESSION['id'])) {
-                  ?>
-                    <a href="../Order/myorders.php">
-                      <li
-                        onmouseover="$(this).css('color','white')"
-                        onmouseleave="$(this).css('background-color','white')"
-                        style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
-                        <span class="fas fa-shopping-bag"></span>
-                        <span style="font-family: arial;font-weight: 700; "> My Orders</span>
-                      </li>
-                    </a>
-                    <hr style="margin:0;padding: 0">
-                    <a href="../Order/orderhistory.php">
-                      <li
-                        onmouseover="$(this).css('color','white')"
-                        onmouseleave="$(this).css('background-color','white')"
-                        style="padding-bottom: 8px;;padding-top: 8px;">&nbsp;
-                        <span class="fas fa-history"></span>
-                        <span style="font-family: arial;font-weight: 700; "> Order
-                          history</span>
-                      </li>
-                    </a>
-                    <hr style="margin:0;padding: 0">
-                    <a href="../Account/edit_user_details.php">
-                      <li
-                        onmouseover="$(this).css('color','white')"
-                        onmouseleave="$(this).css('background-color','white')"
-                        style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
-                        <span class="fas fa-user-cog"></span>
-                        <span style="font-family: arial;font-weight: 700; "> Change
-                          details</span>
-                      </li>
-                    </a>
-                    <hr style="margin:0;padding: 0">
-                    <a href="../Account/logout.php">
-                      <li
-                        onmouseover="$(this).css('color','white')"
-                        onmouseleave="$(this).css('background-color','white')"
-                        style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
-                        <span class="fas fa-power-off"></span>
-                        <span style="font-family: arial;font-weight: 700; "> Log out</span>
-                      </li>
-                    </a>
-                  <?php
-                  }
-                  ?>
-                </ul>
-              </li>
-              <li class="locationdiv">
-                <form action="#" method="post" class="last">
-                  <button class="location_marker popup2_open" type="submit" name="submit" value="">
-                    <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
-                  </button>
-                </form>
-              </li>
-              <li class="cartdiv">
-                <form action="#" method="post" class="last">
-                  <div id="cart" class="btn-group btn-shopping-cart">
-                    <a href="../Cart/cart.php">
-                      <div class="shopcart">
-                        <div id="lg-cartcnt" class="crt-count">
-                          <?php
-                          if (isset($_SESSION['cart_count'])) {
-                            echo $_SESSION['cart_count'];
-                          } else {
-                            echo "0";
-                          }
-                          ?>
-                        </div>
-                        <input type="hidden" name="cmd" value="_cart">
-                        <input type="hidden" name="display" value="1">
-                        <button class="carticon" type="button" onclick="cartview()" name="submit" value="">
-                          <i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
-                        </button>
-                      </div>
-                    </a>
-                  </div>
-                </form>
-              </li>
-              <li class="wishdiv">
-                <form action="#" method="post" class="last">
-                  <button class=" wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
-                    <i class="fa fa-heart" aria-hidden="true"></i>
-                  </button>
-                </form>
-              </li>
-            </ul>
-          </div>
-        </div>
+ 	<div class="header" id="org-header">
+		<div class="headimg" style="padding: 0px;margin: 0px;left: 0px;right: 0px;"><!--#1-->
+			<div class="container top"
+				style="width:100%;padding-top: 12px;margin: 0px;left: 0px;right: 0px;padding-bottom: 5px;">
+				<div style="height: 100% ;width: 100%;display: block;margin: 0px;left: 0px;right: 0px">
+					<div style="display: flex;">
+						<div class="col-lg-2 col-md-2 col-sm-2 topli " style="float: left;"
+							style="padding: 0px;margin: 0px;left: 0px;right: 0px">
+							<div class="logo_img" style="padding: 0px;margin: 0px;width: 100px;height: auto;">
+								<a href="../Main/hfe.php">
+									<img src="../../images/logo/logo-horizontal.png" height="50px" style="width: 200px;height: auto;position: absolute;left: -40px;top: -45px;margin: 0px;right: 0px;">
+								</a>
+							</div>
+						</div>
+						<div class="col-lg-9 col-md-9 col-sm-8 search-set">
+							<!--krg-->
+							<div id="search-div" class="specific-disp-none srch bar-srch device-width-set" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
+								<div class=" search_bar bar-srch1">
+									<div class="container-fluid bar-srch1" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
+										<div class="row bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
+											<div class=" bar-srch" style="margin-left: 0px;width: 100%;">
+												<div class="input-group bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
+													<div class="input-group-btn search-panel" style="position: relative;height: 30px;background: #454545;color: white;border: 0px;">
+														<button
+															type="button"
+															id="search-panel"
+															class="btn btn-default dropdown-toggle"
+															onclick="catlistview()"
+															style="position: relative;height: 30px;background: #454545;color: white;border: 0px;">
+															<span id="search_concept">All</span> <span class="caret" id="srch_pan"></span>
+														</button>
+														<ul
+															id="category"
+															class="dropdown-menu"
+															name="cat2"
+															role="menu"
+															style="position: absolute;display: none;background-color: #CACACA !important">
+															<li><a href="#0">All</a></li>
+															<?php
+															require "../../db.php";
+															$sql = $pdo->query("select category_id,category_name from category");
+															while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+															?>
+																<li value="<?= $row['category_id'] ?>" style="border-color: white;">
+																	<a style='font-family:sans-serif' href="#<?= $row['category_id'] ?>"><?= $row['category_name'] ?></a>
+																</li>
+															<?php
+															}
+															?>
+														</ul>
+													</div>
+													<input type="hidden" name="search_param" value="0" id="search_param">
+													<input
+														type="text"
+														class="form-control"
+														id="search"
+														onkeyup="searchele()"
+														name="Search"
+														placeholder="Search"
+														style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;">
+													<span class="input-group-btn">
+														<button
+															onclick="check()"
+															onmouseover="$(this).css('background-color','#0c99cc')"
+															onmouseleave="$(this).css('background-color','#fe9126')"
+															style="color: white;background-color: #5a88ca;border: 0px;height: 30px;"
+															class="btn btn-default search_btn" type="button">
+															<span class="fa fa-search"></span>
+														</button>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div class="clear-fix"></div>
+										<div id="display"></div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div
+							style="color: white;float: right;text-align: right;padding: 0px;"
+							class="col-lg-2 col-md-4 col-sm-4 topli"
+							id="lg_top_ph_mail">
+							<a href="tel:+918113990368" style="color:white;font-family:arial;padding: 0px;">
+								<i class="fa fa-phone" aria-hidden="true"></i> Ph: <span><i>+91 8113990368</i></span>
+							</a>
+							<br>
+							<i><span>Healthcare & Fitness Equipments</span></i>
+						</div>
+						<div style="color: white;float: right;" class="topli" id="sm_top_ph_mail">
+							<i class="fa fa-phone" aria-hidden="true"></i>
+							<br />
+							<i><span><i class="fa fa-envelope"></i></span></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class=" nav-bar shadow_b"><!--#2-->
+				<!-- //SMALL DIV -->
+				<div id="small-div"><!--#3-->
+					<div class="agileits_header"><!--#4-->
+						<div class="container head" style="padding: 0px;margin: 0px;left: 0px;right: 0px"><!--#5-->
+							<!--krg-->
+							<div id="search-div" class=" srch bar-srch device-width-set" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
+								<div class=" search_bar bar-srch1" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
+									<div class="container-fluid bar-srch1" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
+										<div class="row bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
+											<div class=" bar-srch" style="margin-left: 0px;width: 100%;">
+												<div class="input-group bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px">
+													<div
+														id="v-small-div"
+														class="input-group-btn search-panel"
+														style="position: relative;height: 30px;background: #454545;color: white;border: 0px;">
+														<button
+															type="button"
+															id="search-panel2"
+															class="btn btn-default dropdown-toggle"
+															onclick="catlistview2()"
+															style="position: relative;height: 30px;background: #454545;color: white;border: 0px;">
+															<span id="search_concept2">All</span> <span class="caret" id="srch_pan2"></span>
+														</button>
+														<ul
+															id="category2"
+															class="dropdown-menu"
+															name="cat2"
+															role="menu"
+															style="position: absolute;display: none;background-color: #CACACA !important">
+															<li><a href="#all">All</a></li>
+															<?php
+															require "../../db.php";
+															$sql = $pdo->query("select category_id,category_name from category");
+															while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
+															?>
+																<li value="<?= $row['category_id'] ?>">
+																	<a style='font-family:sans-serif;border:1px white;' href="#<?= $row['category_id'] ?>">
+																		<?= $row['category_name'] ?>
+																	</a>
+																</li>
+															<?php
+															}
+															?>
+														</ul>
+													</div>
+													<input type="hidden" name="search_param" value="0" id="search_param2">
+													<input
+														type="text"
+														class="form-control"
+														id="search2"
+														autocomplete="off"
+														onkeyup="searchele2()"
+														name="Search"
+														placeholder="Search"
+														style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;">
+													<span class="input-group-btn">
+														<button
+															onclick="check2()"
+															onmouseover="$(this).css('background-color','#0c99cc')"
+															onmouseleave="$(this).css('background-color','#fe9126')"
+															style="color: white;background-color: #5a88ca;border: 0px;height: 30px;"
+															class=" btn btn-default search_btn"
+															type="button"><span class="fa fa-search"></span>
+														</button>
+													</span>
+												</div>
+											</div>
+										</div>
+										<div class="clear-fix"></div>
+										<div id="display2"></div>
+									</div>
+								</div>
+							</div>
+							<!--krg-->
+							<div class="option_segment"><!--#6-->
+								<div class="agile-login"><!--#7-->
+									<div>
+										<ul class="phone_email topli"><!--SIDE OPEN NAV BAR-->
+											<li id="sm_category">
+												<form action="#" method="post" class="last">
+													<button class="w3view-cart caticon popup1_open" type="button" name="submit" value="">
+														<i class="fa fa-list-alt" aria-hidden="true"></i>
+														<span>Category</span>
+													</button>
+												</form>
+											</li>
+											<li class="side-bar-collapsed" style="	margin-left: 15px;">
+												<a href="#" style="float: left;    margin-top: 10px;" id="sm_side_active">
+													<span style="cursor:pointer" onclick="openNav()">&#9776;</span>
+												</a>
+											</li>
+											<li class="wishdiv">
+												<form action="#" method="post" class="last">
+													<button class="wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
+														<i class="fa fa-heart" aria-hidden="true"></i>
+													</button>
+												</form>
+											</li>
+											<li class="cartdiv">
+												<form action="#" method="post" class="last">
+													<div id="cart" class="btn-group btn-shopping-cart">
+														<a href="..\Cart\cart.php">
+															<div class="shopcart">
+																<div
+																	id="sm-cartcnt"
+																	style="position: absolute;margin-bottom: -10px;background-color: red;border-radius: 50px;width: 20px;height:20px;margin-left: 20px"
+																	class="crt-count">
+																	<?php
+																	if (isset($_SESSION['cart_count'])) {
+																		echo $_SESSION['cart_count'];
+																	} else {
+																		echo "0";
+																	}
+																	?>
+																</div>
+																<input type="hidden" name="cmd" value="_cart">
+																<input type="hidden" name="display" value="1">
+																<button
+																	class="carticon"
+																	onclick="cartview()"
+																	type="button"
+																	name="submit"
+																	value=""><i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+																</button>
+															</div>
+														</a>
+													</div>
+												</form>
+											</li>
+											<li class="locationdiv">
+												<form action="#" method="post" class="last">
+													<button class="location_marker popup2_open" type="submit" name="submit" value="">
+														<i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
+													</button>
+													<span id="location">
+														<?php if (isset($_SESSION['location'])) { ?>You<?php } ?>
+													</span>
+												</form>
+											</li>
+											<div id="userdetails" style="float: right;">
+												<?php
+												if (isset($_SESSION['name'])) {
+												?>
+													<a href="#">
+														<li class="userdiv" style="float: right;">
+															<form action="registered.php" method="post" class="last" onclick="openNav()">
+																<button class="w3view-cart usericon " type="button" name="submit" value="">
+																	<i class="fa fa-user" aria-hidden="true"></i>
+																	<span id="location"><?= $_SESSION['name'] ?></span>
+																</button>
+															</form>
+														</li>
+													</a>
+										<?php
+												}
+								?>
+									</div>
+								</ul>
+								</div>
+							</div>
+							</div>
+						</div>
+					</div><!-- //close small div -->
+				</div>
+		</div>
+		</div>
+		<!-- //header -->
+		<!--DON'T KNOW WHEN IT STARTS
+	</div>
+	</div>-->
+		<!-- navigation -->
+		<div class="navbar navbar-inverse shadow_b" style="margin-bottom: 10px;">
+			<div class="container-fluid">
+				<div class="row">
+					<div style="padding: 0px">
+						<div class="navbar-header">
+							<button
+								class="navbar-toggle"
+								data-target="#mobile_menu"
+								data-toggle="collapse"
+								onclick="myFun(this)">
+								<span class="icon-bar icon-bar1"></span>
+								<span class="icon-bar icon-bar2"></span>
+								<span class="icon-bar icon-bar3"></span>
+							</button>
+						</div>
+						<div class="navbar-collapse collapse" id="mobile_menu" style="margin-top: 0px">
+							<ul class="nav navbar-nav navbar-center">
+								<li id="lg_side_active">
+									<a href="#">
+										<span onclick="openNav()">&#9776;</span>
+									</a>
+								</li>
+								<li id="homeactive" class="active">
+									<a href="../Main/hfe.php">
+										<i class="fa fa-home fa-lg"></i> Home
+									</a>
+								</li>
+								<?php
+								if (isset($_SESSION['sid'])) {
+								?>
+									<li id="shopactive">
+										<a href="../../equipment-store-admin/index.php?id=<?= $_SESSION['sid'] ?>">
+											<i class="fas fa-lg fa-store"></i> Store
+										</a>
+									</li>
+								<?php
+								}
+								?>
+								<li id="aboutactive">
+									<a href="../Main/about.php">
+										<i class="fa fa-lg fa-info-circle"></i> About
+									</a>
+								</li>
+								<li id="contactactive">
+									<a href="../Main/contact.php">
+										<i class="fa fa-lg fa-users"></i> Contact Us
+									</a>
+								</li>
 
-        <div class="col-lg-2 col-md-3 col-sm-3 icon-set">
-          <div class="option_segment">
-            <div class="agile-login">
-              <div>
-                <ul class="phone_email topli"></ul>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-lg-2 col-md-3 col-sm-3" style="margin-top: -20px;padding-left: 0px;">
-          <!--krg-->
-          <div class="option_segment" style="margin-top: -20px">
-            <div class="agile-login">
-              <ul class="nav navbar-nav navbar-right navbar-center"></ul>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
+								<?php
+								if (isset($_SESSION['name'])) {
+								?>
+									<li class="profilediv">
+										<form action="registered.php" method="post" class="last" onclick="openNav()">
+											<button class=" usericon " type="button" name="submit" value="">
+												<i class="fa fa-user" aria-hidden="true"></i>
+												<span><?=$_SESSION['name']?></span>
+											</button>
+										</form>
+									</li>
+								<?php
+								} else {
+								?>
+									<li><a href="registered.php"> Create Account </a></li>
+									<li><a href="#myModal" data-toggle="modal" data-dismiss="modal"> Login </a></li>
+								<?php
+								}
+								?>
+								<li class="profile-popup">
+									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
+										<span class="glyphicon glyphicon-user"></span> Profile <span class="caret"></span>
+									</a>
+									<ul class="dropdown-menu" style="border:1px solid rgb(55, 55, 55);padding: 0px; background-color: #000 !important; color:white !important;">
+										<?php
+										if (!isset($_SESSION['id'])) {
+										?>
+											<a href="../Account/login.php">
+												<li
+													onmouseover="$(this).css('color','white')"
+													onmouseleave="$(this).css('background-color','black')"
+													style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+													<span class="fa fa-sign-in" style="color: white;"></span>
+													<span style="font-family: arial;font-weight: 700; "> Login </span>
+												</li>
+											</a>
+											<hr style="margin:0;padding: 0">
+											<a href="../Account/registered.php">
+												<li
+													onmouseover="$(this).css('color','white')"
+													onmouseleave="$(this).css('background-color','black')"
+													style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+													<span class="fa fa-user-plus" style="color: white;"></span>
+													<span style="font-family: arial;font-weight: 700; "> Sign Up </span>
+												</li>
+											</a>
+										<?php
+										} else if (isset($_SESSION['id'])) {
+										?>
+											<a href="../Order/myorders.php">
+												<li
+													onmouseover="$(this).css('color','white')"
+													onmouseleave="$(this).css('background-color','black')"
+													style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+													<span class="fas fa-shopping-bag" style="color: white;"></span>
+													<span style="font-family: arial;font-weight: 700; "> My Orders</span>
+												</li>
+											</a>
+											<hr style="margin:0;padding: 0">
+											<a href="../Order/orderhistory.php">
+												<li
+													onmouseover="$(this).css('color','white')"
+													onmouseleave="$(this).css('background-color','black')"
+													style="padding-bottom: 8px;;padding-top: 8px;">&nbsp;
+													<span class="fas fa-history" style="color: white;"></span>
+													<span style="font-family: arial;font-weight: 700; "> Order
+														history</span>
+												</li>
+											</a>
+											<hr style="margin:0;padding: 0">
+											<a href="../Account/edit_user_details.php">
+												<li
+													onmouseover="$(this).css('color','white')"
+													onmouseleave="$(this).css('background-color','black')"
+													style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+													<span class="fas fa-user-cog" style="color: white;"></span>
+													<span style="font-family: arial;font-weight: 700; "> Change
+														details</span>
+												</li>
+											</a>
+											<hr style="margin:0;padding: 0">
+											<a href="../Account/logout.php">
+												<li
+													onmouseover="$(this).css('color','white')"
+													onmouseleave="$(this).css('background-color','black')"
+													style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+													<span class="fas fa-power-off" style="color: white;"></span>
+													<span style="font-family: arial;font-weight: 700; "> Log out</span>
+												</li>
+											</a>
+										<?php
+										}
+										?>
+									</ul>
+								</li>
+								<li class="locationdiv">
+									<form action="#" method="post" class="last">
+										<button class="location_marker popup2_open" type="submit" name="submit" value="">
+											<i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
+										</button>
+									</form>
+								</li>
+								<li class="cartdiv">
+									<form action="#" method="post" class="last">
+										<div id="cart" class="btn-group btn-shopping-cart">
+											<a href="../Cart/cart.php">
+												<div class="shopcart">
+													<div id="lg-cartcnt" class="crt-count">
+														<?php
+														if (isset($_SESSION['cart_count'])) {
+															echo $_SESSION['cart_count'];
+														} else {
+															echo "0";
+														}
+														?>
+													</div>
+													<input type="hidden" name="cmd" value="_cart">
+													<input type="hidden" name="display" value="1">
+													<button class="carticon" type="button" onclick="cartview()" name="submit" value="">
+														<i class="fa fa-cart-arrow-down" aria-hidden="true"></i>
+													</button>
+												</div>
+											</a>
+										</div>
+									</form>
+								</li>
+								<li class="wishdiv">
+									<form action="#" method="post" class="last">
+										<button class=" wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
+											<i class="fa fa-heart" aria-hidden="true"></i>
+										</button>
+									</form>
+								</li>
+							</ul>
+						</div>
+					</div>
+					<div class="col-lg-2 col-md-3 col-sm-3" style="margin-top: -20px;padding-left: 0px;">
+						<!--krg-->
+						<div class="option_segment" style="margin-top: -20px">
+							<div class="agile-login">
+								<ul class="nav navbar-nav navbar-right navbar-center"></ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div id="header-mock"></div>
   <!--</nav>-->
   <!--CHOOSE CATEGORY-->
   <section id="popup1" style="width: fit-content;">
