@@ -4,11 +4,11 @@ Author URL: http://w3layouts.com
 License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
-html, body{ 
+html, body{
     font-size: 100%;
 	font-family: 'Open Sans', sans-serif;
 	background:#ffffff;
-    
+
 }
 ul li,ol li{
 	font-size:14px;
@@ -182,10 +182,7 @@ button.w3l_search {
     font-size: 34px;
     margin-top: 7px;
 }
-button.w3view-cart {
-    background: transparent;
-    border: none;
-}
+
 button.w3view-cart:focus{
 	outline:none;
 }
@@ -2753,7 +2750,9 @@ ul.faq {
 
 @media(max-width:767px ) and (min-width:668px ){
 .srch{
-    width: 70% !important;
+    width: 100% !important;
+		margin-left: 10px;
+		margin-right: 10px;
 }
 .w3l_search {
 
@@ -2841,8 +2840,8 @@ div.w3ls_logo_products_left h1{
     display: inline-block;
 }
 .srch{
-    float: right;
-    margin-top: 20px;
+    float: left;
+    width: 100%;
 }
 .w3l_search {
     width: 100%;
