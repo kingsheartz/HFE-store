@@ -674,6 +674,181 @@ function randomGen($min, $max, $quantity)
       width: 100% !important;
     }
   }
+  .difcat {
+    position: relative;
+    height: max-content;
+    margin: auto;
+    margin-top: 10px;
+    display: block;
+    background: transparent;
+  }
+
+  .difrow {
+    height: max-content;
+    overflow: auto;
+    width: 76vw;
+    margin: auto;
+    display: block;
+    white-space: nowrap;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .products-all-in-one img {
+    margin: auto;
+    display: block;
+    background: white;
+    image-rendering: auto;
+    image-rendering: crisp-edges;
+    width: auto;
+    max-width: 170px;
+    height: auto;
+    max-height: 180px;
+  }
+
+  .difhed {
+    background: black;
+    border-radius: 5px;
+    width: 100%;
+    margin: 0;
+    color: #a8a8a8;
+    margin-top: 50px;
+    font-size: 18px;
+    font-family: sans-serif;
+    font-weight: 600;
+    text-transform: capitalize;
+    padding: 20px;
+    box-shadow: 2px 1px 3px #656565;
+    margin-bottom: 20px;
+  }
+
+  .block-slider .bx-pager-item a {
+    width: 100%;
+    height: 50%;
+    background: #999;
+    display: block;
+    border-radius: 0;
+  }
+
+  .products-all-in-one {
+    border-radius: 5px;
+    display: inline-block;
+    overflow: hidden;
+    text-align: center;
+    border: 1px solid #d2d2d2;
+    padding: 0px;
+    padding-bottom: 0px;
+    position: relative;
+    height: 300px;
+    width: 250px;
+    background: white;
+    color: #000;
+    margin-right: 20px;
+  }
+
+  .left-arrow-btn-all {
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 30px;
+    z-index: 1;
+    height: 100px;
+    font-size: 24px;
+    border: none;
+    border-bottom-right-radius: 4px;
+    border-top-right-radius: 4px;
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+  }
+
+  button.right-arrow-btn-all,
+  button.left-arrow-btn-all {
+    height: 40px;
+    border-radius: 25px;
+    font-size: 12px;
+    width: 40px;
+    top: 50%;
+    color: white;
+    background-color: black !important;
+  }
+
+  .right-arrow-btn-all {
+    position: absolute;
+    top: 30%;
+    right: 0;
+    width: 30px;
+    z-index: 1;
+    height: 100px;
+    font-size: 24px;
+    color: rgb(114, 114, 114);
+    border: none;
+    border-bottom-right-radius: 6px;
+    border-top-right-radius: 6px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+  }
+
+  .difrow::-webkit-scrollbar {
+    width: 100%;
+    height: 4px;
+  }
+
+  .difrow::-webkit-scrollbar-thumb {
+    border-radius: 0px;
+    -webkit-box-shadow: inset 0 0 6px transparent;
+    box-shadow: inset 0 0 6px transparent;
+  }
+
+  .table1 {
+    margin-bottom: 0px;
+    max-height: max-content;
+    height: 60px;
+  }
+
+  .star-checked {
+    color: orange;
+  }
+
+  .stars-outer {
+    display: inline-block;
+    position: relative;
+    font-family: FontAwesome;
+    font-size: 20px;
+    letter-spacing: 5px;
+  }
+
+  .stars-outer::before {
+    content: "\f006 \f006 \f006 \f006 \f006";
+  }
+
+  .stars-inner {
+    position: absolute;
+    top: 0;
+    left: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    width: 0;
+  }
+
+  .stars-inner::before {
+    content: "\f005 \f005 \f005 \f005 \f005";
+    color: orange;
+  }
+
+  .difhed button {
+    float: right;
+    font-weight: 600;
+    font-size: 12px;
+    margin-right: 5px;
+    margin-top: 0px;
+    padding: 5px;
+    width: 100px;
+    background: #4a4a4a;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border: none;
+    color: white;
+    border-radius: 5px;
+  }
 </style>
 <script type="text/javascript">
   function getCookieset(cname) {
@@ -1010,8 +1185,6 @@ function randomGen($min, $max, $quantity)
           }
         }
       }); //closing ajax
-      //location.href="../Cart/cart.php?store="+id+"&product=<? //=$row['product_id']
-      ?>";
     }
   }
 
@@ -2379,7 +2552,8 @@ function randomGen($min, $max, $quantity)
   <?php
   $ran = $pdo->query("select * from product_description
               inner join product on product.product_id=product_description.product_id
-              inner join category on category.category_id=product.category_id");
+              inner join category on category.category_id=product.category_id
+              where product.category_id=".$cat_id);
   /*COLOR PICKER*/
   $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
   $bgcolor = array('orange', '#0c99cc', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
@@ -2397,34 +2571,29 @@ function randomGen($min, $max, $quantity)
   /*COLOR PICKER*/
   $product = $ran->rowCount();
   if ($product != 0) {
-    ?>
-    <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
-      style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;
-				padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;
-				border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
-      Explore <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
-      <span style="float: right;margin-right: 5px;margin-top: -4px;">
-        <button type="button"
-          style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;
-						background-color: <?= $bgcolor[$rancolor1] ?>;padding: 11px auto;font-size: 12px;"
-          name="proceed" class="checkout-button button alt wc-forward"><a
-            href="../Product/products_viewall.php?category_id=<?= $cat_id ?>" style="color:<?= $c2 ?>;">View
-            all</a></button>
-      </span>
-    </h4>
-    <div class="difcat " style="border-radius: 5px;">
-      <span class="difhed">
-      </span>
-      <div class="difrow hidescroll" id="difrow<?= $row['product_description_id'] ?>"
-        onscroll="scrolllisten('difrow<?= $row['product_description_id'] ?>');">
-        <button class="left-arrow-btn-all shadow_all_none"
-          onclick="moveleft('difrow<?= $row['product_description_id'] ?>')" style="display: none;"><i
-            class="fas fa-chevron-left"></i></button>
-        <button class="right-arrow-btn-all shadow_all_none"
-          onclick="moveright('difrow<?= $row['product_description_id'] ?>')"><i class="fas fa-chevron-right"></i></button>
-        <?php
+  ?>
+    <div class="difcat " style="border-radius: 5px;padding-bottom:3px">
+      <div class="difhed">
+          Explore
+          <button
+            type="button"
+            style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor1] ?>;padding: 11px auto;font-size: 12px;"
+            name="proceed"
+            class="checkout-button button alt wc-forward">
+            <a href="../Product/products_viewall.php?category_id=<?= $cat_id ?>" style="color:<?= $c2 ?>;">
+              View all
+            </a>
+          </button>
+      </div>
+      <div class="difrow hidescroll" id="difrow<?= json_decode(json_encode($row['product_description_id'] ?? null)) ?>" onscroll="scrolllisten('difrow<?= json_decode(json_encode($row['product_description_id'] ?? null)) ?>');">
+        <button class="left-arrow-btn-all shadow_all_none" onclick="moveleft('difrow<?= json_decode(json_encode($row['product_description_id'] ?? null)) ?>')" style="display: none;">
+          <i class="fas fa-chevron-left"></i>
+        </button>
+        <button class="right-arrow-btn-all shadow_all_none" onclick="moveright('difrow<?= json_decode(json_encode($row['product_description_id'] ?? null)) ?>')">
+          <i class="fas fa-chevron-right"></i>
+        </button>        <?php
         while ($row = $ran->fetch(PDO::FETCH_ASSOC)) {
-          ?>
+        ?>
           <div class="products-all-in-one" title="<?= $row['product_name'] ?>"
             onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
             <div
@@ -2467,29 +2636,21 @@ function randomGen($min, $max, $quantity)
         $isready = $ran->rowCount();
         if ($isready != 0 && is_null($isready) == false) {
           ?>
-          <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
-            style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;
-							padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;
-							margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;
-							padding-left: 10px; overflow: hidden;font-size: 18px;">
-            Explore <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
-            <span style="float: right;margin-right: 5px;margin-top: -4px;">
-              <button type="button"
-                style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor2] ?>;padding: 11px auto;font-size: 12px;"
-                name="proceed" class="checkout-button button alt wc-forward"><a href="../Product/diff_views.php?recent=1"
-                  style="color:<?= $c2 ?>;">View all</a></button>
-            </span>
-          </h4>
+					<div class="difhed">
+						Explore
+						<button type="button"
+							style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor2] ?>;padding: 11px auto;font-size: 12px;"
+							name="proceed" class="checkout-button button alt wc-forward"><a href="../Product/diff_views.php?recent=1"
+								style="color:<?= $c2 ?>;">View all</a></button>
+					</div>
           <div class="difcat " style="border-radius: 5px;">
-            <span class="difhed">
-            </span>
-            <div class="difrow hidescroll" id="difrow1<?= $row['product_description_id'] ?>"
-              onscroll="scrolllisten('difrow1<?= $row['product_description_id'] ?>');">
+            <div class="difrow hidescroll" id="difrow<?= json_decode(json_encode($row['product_description_id'] ?? null)) ?>"
+              onscroll="scrolllisten('difrow1<?= json_decode(json_encode($row['product_description_id'] ?? null)) ?>');">
               <button class="left-arrow-btn-all shadow_all_none"
-                onclick="moveleft('difrow1<?= $row['product_description_id'] ?>')" style="display: none;"><i
+                onclick="moveleft('difrow1<?= json_decode(json_encode($row['product_description_id'] ?? null)) ?>')" style="display: none;"><i
                   class="fas fa-chevron-left"></i></button>
               <button class="right-arrow-btn-all shadow_all_none"
-                onclick="moveright('difrow1<?= $row['product_description_id'] ?>')"><i
+                onclick="moveright('difrow1<?= json_decode(json_encode($row['product_description_id'] ?? null)) ?>')"><i
                   class="fas fa-chevron-right"></i></button>
               <?php
               while ($view = $ran->fetch(PDO::FETCH_ASSOC)) {
