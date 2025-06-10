@@ -162,6 +162,7 @@ require "head.php";
       }
 
       @media (max-width: 768px) {
+
         .col-sm-1,
         .col-sm-10,
         .col-sm-11,
@@ -661,9 +662,8 @@ require "head.php";
                 .fadeIn(1500, function() {
                   $("#message").append(
                     "<div class='alert alert-success'>Product Updated For Your Store\
-                        <button onclick='location.reload()' style='width: 200px;background: green;float: right;\
-                  margin - top: 15px;\
-                  margin - right: 12px; '>Refresh</button></div>"
+                      <button onclick='location.reload()' style='width: 200px;background: green;float: right;margin - top: 15px;margin - right: 12px;'>Refresh</button>\
+                    </div>"
                   );
                 });
             }
@@ -740,9 +740,8 @@ require "head.php";
               if ($tr == 0) {
               ?>
                 <div class="alert alert-danger">Product is already added
-                  <button style="background: red; border: none; color: white; height: 30px; padding: 5px;
-                   border-radius: 5px; width: 100px; display: block; margin: 20px;"
-                   onclick="location.href='additem.php'">Go Back
+                  <button style="background: red; border: none; color: white; height: 30px; padding: 5px;border-radius: 5px; width: 100px; display: block; margin: 20px;" onclick="location.href='additem.php'">
+                    Go Back
                   </button>
                 </div>
                 <?php
@@ -754,22 +753,26 @@ require "head.php";
                       <form id="<?= $row['product_description_id'] ?>" name="<?= $row['product_description_id'] ?>">
                         <div class="prim col-sm-5">
                           <div class="product" style="position: absolute; left: 10px; top: 55px; width: 100px; height: 80px;">
-                            <img style="display: inline-block; text-align: center; padding: 14px; position: relative;
-                              height: 80px; max-width: 100px;"
+                            <img
+                              style="display: inline-block; text-align: center; padding: 14px; position: relative;height: 80px; max-width: 100px;"
                               onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
                               src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           </div>
                           <div style="width: 100%;">
-                            <img id="imr<?= $row['product_description_id'] ?>"
-                              src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                            <img id="imr<?= $row['product_description_id'] ?>" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           </div>
-                          <div class="imscr" id="imsrc<?= $row['product_description_id'] ?>"
-                            onscroll="movefr('imsrc<?= $row['product_description_id'] ?>')">
-                            <button type="button" name="lfarr" class="left-arrow"
+                          <div class="imscr" id="imsrc<?= $row['product_description_id'] ?>" onscroll="movefr('imsrc<?= $row['product_description_id'] ?>')">
+                            <button
+                              type="button"
+                              name="lfarr"
+                              class="left-arrow"
                               onclick="moveleft('imsrc<?= $row['product_description_id'] ?>')">
                               <i class="fas fa-chevron-right"></i>
                             </button>
-                            <button type="button" name="rfarr" class="right-arrow"
+                            <button
+                              type="button"
+                              name="rfarr"
+                              class="right-arrow"
                               onclick="moveright('imsrc<?= $row['product_description_id'] ?>')"
                               style="display: none;">
                               <i class="fas fa-chevron-left"></i>
@@ -779,7 +782,9 @@ require "head.php";
                             for ($i = 1; $i <= $t; $i++) {
                             ?>
                               <div class="product">
-                                <img style="display: inline-block; text-align: center; padding: 14px; position: relative; height: 80px; max-width: 150px;" onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
+                                <img
+                                  style="display: inline-block; text-align: center; padding: 14px; position: relative; height: 80px; max-width: 150px;"
+                                  onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
                                   src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg">
                               </div>
                             <?php
@@ -798,8 +803,7 @@ require "head.php";
                               </tr>
                               <?php
                               if ($row['size'] != 0) {
-                                $query1 = "SELECT * FROM size
-                                  WHERE size_id = " . $row['size'];
+                                $query1 = "SELECT * FROM size WHERE size_id = " . $row['size'];
                                 $st1 = $pdo->query($query1);
                                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
                               ?>
@@ -818,8 +822,7 @@ require "head.php";
                               <?php
                               }
                               if ($row['brand'] != 0) {
-                                $query1 = "SELECT * FROM brand
-                                  WHERE brand_id = " . $row['brand'];
+                                $query1 = "SELECT * FROM brand WHERE brand_id = " . $row['brand'];
                                 $st1 = $pdo->query($query1);
                                 $row1 = $st1->fetch(PDO::FETCH_ASSOC);
                               ?>
@@ -835,15 +838,21 @@ require "head.php";
                           <div class="col-sm-12">
                             <div class="form-group">
                               <label class="floating-label">Price</label>
-                              <input type="number"
+                              <input
+                                type="number"
                                 onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                                name="price" required="" class="form-control"/>
+                                name="price"
+                                required=""
+                                class="form-control" />
                             </div>
                             <div class="form-group">
                               <label class="floating-label">Quantity</label>
-                              <input type="number"
+                              <input
+                                type="number"
                                 onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                                name="quantity" required="" class="form-control"/>
+                                name="quantity"
+                                required=""
+                                class="form-control" />
                             </div>
                             <div class="form-group">
                               <label class="floating-label">Order Preference</label>
@@ -858,16 +867,17 @@ require "head.php";
                         </div>
                         <div class="col-sm-12 subb" style="padding: 0; border-top: 1px solid gray;">
                           <input type="hidden" name="check_id" value="<?= $row['product_description_id'] ?>">
-                          <button name="update_data" style="width: 200px; background: green; float: right;
-                              margin-top: 15px; margin-right: 12px;" onclick="newup(<?= $row['product_description_id'] ?>,1)">
-                              <i class="fas fa-save"
-                              style="margin-right: 20px; float: left; font-size: 24px"></i>Add to Store
+                          <button
+                            name="update_data"
+                            style="width: 200px; background: green; float: right;margin-top: 15px; margin-right: 12px;"
+                            onclick="newup(<?= $row['product_description_id'] ?>,1)">
+                            <i class="fas fa-save" style="margin-right: 20px; float: left; font-size: 24px"></i>Add to Store
                           </button>
                         </div>
                       </form>
                     </div>
                   </div>
-                <?php
+              <?php
                 }
               }
               ?>

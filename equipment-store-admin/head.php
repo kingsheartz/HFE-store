@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-  <title>One Store</title>
+  <title>HFE Store</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
@@ -21,9 +21,9 @@
   <script src="../extras/OS/plugins/toastr/toastr.min.js"></script>
   <!-- Defining Toastr -->
   <!--JS GRID 1 KRG--><!--
-<link type="text/css" rel="stylesheet" href="js/jsgrid.min.css" />
-<link type="text/css" rel="stylesheet" href="js/jsgrid-theme.min.css" />
-<script type="text/javascript" srcF="js/jsgrid.min.js"></script>-->
+  <link type="text/css" rel="stylesheet" href="js/jsgrid.min.css" />
+  <link type="text/css" rel="stylesheet" href="js/jsgrid-theme.min.css" />
+  <script type="text/javascript" srcF="js/jsgrid.min.js"></script>-->
   <!--JS GRID 1 KRG-->
   <!--JS GRID 1 GDAS-->
   <!--JS GRID 1 GDAS-->
@@ -43,9 +43,9 @@
 <?php
 session_start();
 if (isset($_GET['id'])) {
-  $_SESSION['id'] = $_GET['id'];
-
   require "pdo.php";
+
+  $_SESSION['id'] = $_GET['id'];
   $nw = $_SESSION['id'];
   $qu = "SELECT username, store_id from store_admin where id=$nw";
   $st = $pdo->query($qu);
@@ -54,8 +54,7 @@ if (isset($_GET['id'])) {
   $_SESSION['username'] = $r['username'];
 }
 if (!isset($_SESSION['username'])) {
-  die("<div style='width: 100%;display: flex;flex-wrap: wrap;margin-right: -0.75rem;margin-left: -0.75rem;
-          justify-content:center;padding-top:50px;padding-bottom:50px'>
+  die("<div style='width: 100%;display: flex;flex-wrap: wrap;margin-right: -0.75rem;margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50px'>
         <a href='../login.php'><img class='img-responsive' src='images/logo/loginerr.png'></a>
       </div>");
 }

@@ -51,8 +51,9 @@
         <h3>Contact</h3>
         <ul class="address">
           <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Thrissur</li>
-          <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i><a
-              href="mailto:onestoreforallyourneeds@gmail.com">onestore</a></li>
+          <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+            <a href="mailto:onestoreforallyourneeds@gmail.com">onestore</a>
+          </li>
           <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+91 8113990368</li>
         </ul>
       </div>
@@ -62,8 +63,7 @@
           <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.php">About Us</a></li>
           <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contact.php">Contact Us</a></li>
           <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="terms&conditions.php">T&C</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="privacy.php">Privacy Policy</a>
-          </li>
+          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="privacy.php">Privacy Policy</a></li>
         </ul>
       </div>
       <div class="col-md-3 col-sm-6 w3_footer_grid">
@@ -71,17 +71,17 @@
         <ul class="info">
           <?php
           if (isset($_SESSION['name'])) {
-            ?>
+          ?>
             <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="cart.php">My Cart</a></li>
             <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="wishlist.php">Wishlist</a></li>
-            <?php
+          <?php
           }
           if (!isset($_SESSION['name'])) {
-            ?>
+          ?>
             <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.php">Login</a></li>
             <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.php">Create Account</a>
             </li>
-            <?php
+          <?php
           }
           ?>
           <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.php">FAQ</a></li>
@@ -104,8 +104,14 @@
   </div>
   <div class="footer-copy">
     <div class="container">
-      <p>© 2020 OneStore. All rights reserved | <a id="me" onmouseover="$('#me').css('color','#0c99cc')"
-          onmouseleave="$('#me').css('color','#fe9126')" href="www.one-store.com">KinGsHearTz</a></p>
+      <p>© 2020 OneStore. All rights reserved |
+        <a
+          id="me"
+          onmouseover="$('#me').css('color','#0c99cc')"
+          onmouseleave="$('#me').css('color','#fe9126')"
+          href="www.one-store.com">KinGsHearTz
+        </a>
+      </p>
     </div>
   </div>
 </div>
@@ -114,14 +120,31 @@
   <div class="container">
     <div class="w3layouts-foot">
       <ul>
-        <li><a href="https://www.facebook.com/falconsinfoworld/" target="_blank" class="w3_agile_facebook"><i
-              class="fa fa-facebook" aria-hidden="true"></i></a></li>
-        <li><a href="https://www.instagram.com/_k_i_n_g_s_h_e_a_r_t_z/" target="_blank" class="w3_agile_instagram"><i
-              class="fa fa-instagram" aria-hidden="true"></i></a></li>
-        <li><a href="https://twitter.com/GovindA20531879" target="_blank" class="w3_agile_twitter"><i
-              class="fa fa-twitter" aria-hidden="true"></i></a></li>
-        <li><a href="#" data-toggle="modal" data-target="#myModal_share_apk" onclick="copyapklink()"
-            class="w3_agile_android" style=><i class="fa fa-android" aria-hidden="true"></i></a></li>
+        <li>
+          <a href="https://www.facebook.com/falconsinfoworld/" target="_blank" class="w3_agile_facebook">
+            <i class="fa fa-facebook" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://www.instagram.com/_k_i_n_g_s_h_e_a_r_t_z/" target="_blank" class="w3_agile_instagram">
+            <i class="fa fa-instagram" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a href="https://twitter.com/GovindA20531879" target="_blank" class="w3_agile_twitter">
+            <i class="fa fa-twitter" aria-hidden="true"></i>
+          </a>
+        </li>
+        <li>
+          <a
+            href="#"
+            data-toggle="modal"
+            data-target="#myModal_share_apk"
+            onclick="copyapklink()"
+            class="w3_agile_android">
+            <i class="fa fa-android" aria-hidden="true"></i>
+          </a>
+        </li>
       </ul>
     </div>
     <div class="payment-w3ls">
@@ -144,8 +167,7 @@
   <div class="modal-dialog modal-m" style="background-color: white;border-radius: 7px;">
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header item_share_header"
-        style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004114), color-stop(1, #309700)) !important;">
+      <div class="modal-header item_share_header" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004114), color-stop(1, #309700)) !important;">
         <button type="button" class="close" data-dismiss="modal" onclick="$('.yw').click();">&times;</button>
         <h4 class="modal-title">
           <span class="fa fa-info-circle fa-lg" style="color: #fff;"></span>
@@ -154,8 +176,7 @@
       </div>
       <div class="modal-body">
         <center>
-          <div
-            style="background-color: rgba(255,255,255);padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid #018a2a;height:100px;">
+          <div style="background-color: rgba(255,255,255);padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid #018a2a;height:100px;">
             <img src="../../images/logo/logofullfill.png" style="max-width: 80px;height:70px;">
           </div>
         </center>
@@ -173,14 +194,25 @@
               <td>
                 <div class="input-group bar-srch"
                   style="padding: 0px;margin: 0px;left: 0px;right: 0px;margin-bottom: 0px;">
-                  <input readonly="true" type="text" class="" id="input_apk_link" placeholder="URL to share"
+                  <input
+                    readonly="true"
+                    type="text"
+                    class=""
+                    id="input_apk_link"
+                    placeholder="URL to share"
                     value="http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_high.apk"
-                    name="" required=" "
+                    name=""
+                    required=" "
                     style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline-color: #e59700;">
                   <span id="" class="input-group-btn">
-                    <button id="copy_wl" onclick="apkclipboard()"
+                    <button
+                      id="copy_wl"
+                      onclick="apkclipboard()"
                       style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004114), color-stop(1, #309700)) !important;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"
-                      class="btn btn-default search_btn" type="button"><span class="fas fa-copy"></span></button>
+                      class="btn btn-default search_btn"
+                      type="button">
+                      <span class="fas fa-copy"></span>
+                    </button>
                   </span>
                 </div>
               </td>
@@ -198,8 +230,7 @@
               <td>
                 <table style="width: 100%;">
                   <tr style="overflow-x: scroll;">
-                    <td class="social-share whatsapp_apk" style="text-align: left;">
-                    </td>
+                    <td class="social-share whatsapp_apk" style="text-align: left;"></td>
                   </tr>
                 </table>
               </td>
@@ -216,7 +247,8 @@
                 <table style="width: 100%;">
                   <tr style="overflow-x: scroll;">
                     <td class="social-share " style="text-align: left;">
-                      <div onclick="$('.apk').removeClass('selected');$(this).addClass('selected');copyapklink(1)"
+                      <div
+                        onclick="$('.apk').removeClass('selected');$(this).addClass('selected');copyapklink(1)"
                         class="apk"
                         style="margin-left:20px;width: 30px;height: 30px;background-color: #1da1f2;border-radius:3px;display: flex;align-items: center;justify-content: center;">
                         <i class="fa fa-mobile fa-lg" style="color: white;"></i>
@@ -224,7 +256,8 @@
                       <p><i class="fa fa-arrow-up" style="color:#348f00"></i> Android 9</p>
                     </td>
                     <td class="social-share " style="text-align: left;">
-                      <div onclick="$('.apk').removeClass('selected');$(this).addClass('selected');copyapklink(2)"
+                      <div
+                        onclick="$('.apk').removeClass('selected');$(this).addClass('selected');copyapklink(2)"
                         class="apk"
                         style="margin-left:20px;width: 30px;height: 30px;background-color: #0077af;border-radius:3px;display: flex;align-items: center;justify-content: center;">
                         <i class="fa fa-mobile fa-lg" style="color: white;"></i>
@@ -232,7 +265,9 @@
                       <p><i class="fa fa-arrow-up" style="color:#348f00"></i> Android 6.1</p>
                     </td>
                     <td class="social-share" style="text-align: center;">
-                      <div class="downloadapk" onclick="downloadapk()"
+                      <div
+                        class="downloadapk"
+                        onclick="downloadapk()"
                         style="margin:auto;width: max-content;height: 30px;background-color: #ff6600;border-radius:3px;display: flex;align-items: center;justify-content: center;padding-left:20px;padding-right:20px">
                         <i class="fa fa-download fa-lg" style="color: white;"> Download</i>
                       </div>
@@ -312,60 +347,80 @@
 <!---------------------------------------------LOG IN--FORM--------------------------------------------------------------------------------->
 <!------------------------------------------------------------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------------------------------------------------------------>
-<div class="modal fade" id="myModal" role="dialog"
-  style="width: 100%; height:100% ;background-color: rgba(0,0,0,.80) !important;">
+<div class="modal fade" id="myModal" role="dialog" style="width: 100%; height:100% ;background-color: rgba(0,0,0,.80) !important;">
   <div class="modal-dialog" style="width: 70%;height: 70%;">
     <!-- Modal content-->
     <div class="modal-content" style="width: 70%;height:70%;background-color:white;">
       <div class="modal-header" style="padding: 0px;min-height: 0px;border:0px;">
-        <button type="button"
+        <button
+          type="button"
           style="font-size: 2.2em;margin-right: -20px;margin-top: -20px;opacity: unset;outline: none;color: white"
-          class="close" data-dismiss="modal"><img src="../../images/close.png" alt="close"></button>
+          class="close"
+          data-dismiss="modal">
+          <img src="../../images/close.png" alt="close">
+        </button>
       </div>
       <div class="modal-body" style="padding:0px;height: 100%;">
         <div class="col-md-12">
           <div class="col-md-12" style="padding: 0px;height: 100%;background-color: white">
             <form name="signin_form" id="signin_form">
               <div class="col-md-12" style="padding: 0px;height: 100%;background-color: white">
-                <div class="col-md-6 hidden-xs no-padding" style="padding:0px;height: 70%"><img class="img-responsive"
-                    style="padding: 0px;padding-top: 0px;height: 400px;position: relative;"
-                    src="../../images/logo/store.jpg">
+                <div class="col-md-6 hidden-xs no-padding" style="padding:0px;height: 70%">
+                  <img class="img-responsive" style="padding: 0px;padding-top: 0px;height: 400px;position: relative;" src="../../images/logo/store.jpg">
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <br>
-                    <img src="../../images/logo/logost.svg" height="50px"><i
-                      style="font-size: 1.6em;font-weight: bolder;font-family: sans-serif;font-style: normal;">
-                      Log in</i><br>
-                    <p id="emppass" style="color: red;position: relative;top: 45px;display: none;">
-                    </p><br><br>
-                    <input type="email" class="form-control md-brdr" id="mobile" name="mobile" placeholder="Email ID"
+                    <img src="../../images/logo/logost.svg" height="50px">
+                    <i style="font-size: 1.6em;font-weight: bolder;font-family: sans-serif;font-style: normal;">
+                      Log in
+                    </i>
+                    <br>
+                    <p id="emppass" style="color: red;position: relative;top: 45px;display: none;"></p><br><br>
+                    <input
+                      type="email"
+                      class="form-control md-brdr"
+                      id="mobile"
+                      name="mobile"
+                      placeholder="Email ID"
                       required>
                     <input type="hidden" id="valchg">
                   </div>
-                  <p class="capson_warning" style="display: none;float:left;color: #d9534f"><i
-                      class="fa fa-warning"></i> &nbsp;WARNING! Caps lock is ON.</p>
+                  <p class="capson_warning" style="display: none;float:left;color: #d9534f">
+                    <i class="fa fa-warning"></i> &nbsp;WARNING! Caps lock is ON.
+                  </p>
                   <div id="passdiv" style="display: block;background-color: white">
                     <div class="form-group">
-                      <input type="password" class="form-control  md-brdr password_fields"
+                      <input
+                        type="password"
+                        class="form-control  md-brdr password_fields"
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                        required=" " placeholder="Enter  Password" name="password" id="pwd" required>
+                        required=" "
+                        placeholder="Enter  Password"
+                        name="password"
+                        id="pwd"
+                        required>
                     </div>
                   </div>
                   <div class="col-md-12">
                     <a href="#" data-toggle="modal" data-dismiss="modal" style="color: black">
-                      <button type="button" onclick="forgottenpass()"
-                        style="background-color: transparent;border: none;" class="frgt-pswrd">Forgot Password?</button>
+                      <button
+                        type="button"
+                        onclick="forgottenpass()"
+                        style="background-color: transparent;border: none;"
+                        class="frgt-pswrd">
+                        Forgot Password?
+                      </button>
                     </a>
                     <br><br><br>
-                    <button onclick="signin()" type="button"
-                      class="btn btn-primary btn-full mgbtm15 real_btn">LOGIN</button>
-                    <button type="button" style="display:none" class="btn btn-primary btn-full mgbtm15 load_btn"><i
-                        class="fa fa-refresh fa-spin"></i> LOGIN</button>
-                    <a href="registered.php"> <button type="button" class="btn btn-danger btn-full mgbtm15"
-                        onclick="signup()">Sign
-                        Up</button></a><br><br>
+                    <button onclick="signin()" type="button" class="btn btn-primary btn-full mgbtm15 real_btn">LOGIN</button>
+                    <button type="button" style="display:none" class="btn btn-primary btn-full mgbtm15 load_btn">
+                      <i class="fa fa-refresh fa-spin"></i> LOGIN
+                    </button>
+                    <a href="registered.php">
+                      <button type="button" class="btn btn-danger btn-full mgbtm15" onclick="signup()">Sign Up</button>
+                    </a><br><br>
                     <!--<a href="registered.php" data-toggle="modal" data-dismiss="modal"> <button type="button" class="btn btn-danger btn-full mgbtm15" onclick="signup()" data-dismiss="modal">Sign Up</button></a>-->
                   </div>
                 </div>
@@ -383,37 +438,48 @@
    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////----->
 <!-- Detail about shops--><!--ADD TO CART-->
-<div id="avail_stores" tabindex="-1" role="dialog" aria-labelledby="store_title" class="modal modal-xl hidescroll"
+<div
+  id="avail_stores"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="store_title"
+  class="modal modal-xl hidescroll"
   style="height: 90%;position:fixed">
   <div class="modal-dialog modal-xl" style="height: 90%;">
     <div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
       <div class="modal-overlay" id="modal-overlay">
-        <div class="modal-header shadow_b"
-          style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;color: white">
-          <button type="button" class="close" data-dismiss="modal"
-            style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
+        <div class="modal-header shadow_b" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;color: white">
+          <button type="button" class="close" data-dismiss="modal" style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
           <h3 id="store_title" class="modal-title">Available Stores</h3>
         </div>
       </div>
       <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
-        <div class="model-body" id="multi_store_listing"
-          style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
-          <table id="store" cellspacing="50px" cellpadding="20px" width="100%" class="single_product_info" border="5px"
+        <div class="model-body" id="multi_store_listing" style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
+          <table
+            id="store"
+            cellspacing="50px"
+            cellpadding="20px"
+            width="100%"
+            class="single_product_info" border="5px"
             style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
             <tbody>
-              <tr
-                style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
+              <tr style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
                 <td colspan="9">
-                  <button type="button" onclick="sortTable(3)"
+                  <button
+                    type="button"
+                    onclick="sortTable(3)"
                     style="float: left;color: white;background-color: #F08200;border-radius: 5px;border:#ffffff"
-                    name="button">Sort by Distance</button>
-                  <button type="button" onclick="sortTable(2)"
+                    name="button">Sort by Distance
+                  </button>
+                  <button
+                    type="button"
+                    onclick="sortTable(2)"
                     style="float: left;color: white;background-color: #F08200;margin-left:3px;border-radius: 5px;border:#ffffff"
-                    name="button">Sort by Price</button>
+                    name="button">Sort by Price
+                  </button>
                 </td>
               </tr>
-              <tr
-                style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white">
+              <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white">
                 <th style="border: none;text-align:center" class="view_avail_stores">Select</th>
                 <th style="border: none;text-align:center" class="view_avail_stores">Store Name </th>
                 <th style="border: none;text-align:center" class="view_avail_stores">Price </th>
@@ -430,41 +496,48 @@
               </div>
             </tbody>
           </table>
-          <div class="m-sing" id="per"
-            style="background-color: #f2f2f2;color:black;padding-top: 7px;padding-bottom: 7px;;">
+          <div class="m-sing" id="per" style="background-color: #f2f2f2;color:black;padding-top: 7px;padding-bottom: 7px;;">
             <div class="px-3">
               <h4 class="m-sing">
-                <span
-                  style='font-family: arial;color:#07C103;font-weight: bold;text-decoration: none;font-size:15px'>You
-                  Save &#8377; <span id="save"
-                    style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px"></span>
-                  (<span style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px"
-                    id="off"></span>%)</span>
+                <span style='font-family: arial;color:#07C103;font-weight: bold;text-decoration: none;font-size:15px'>
+                  You Save &#8377;
+                  <span id="save" style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px"></span>
+                  (<span style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px" id="off"></span>%)
+                </span>
                 <br><br>
                 <ul id="item_detailed_features" style="padding-left:10px;margin:0;">
-                  <li style="font-weight:normal;font-size: 14px;">Item remaing : <span
-                      style="text-decoration: none;font-weight:normal;font-family:arial" id="dis_qnty"></span> only</li>
-                  <li style="font-weight: normal;font-size: 14px;">Availability : <span
-                      style="text-decoration: none;font-weight:normal;" id="dis_avail"></span>
+                  <li style="font-weight:normal;font-size: 14px;">Item remaing :
+                    <span style="text-decoration: none;font-weight:normal;font-family:arial" id="dis_qnty"></span> only
                   </li>
-                  <li style="font-weight:normal;font-size: 14px;">Status : <span
-                      style="text-decoration: none;font-weight:normal;" id="dis_sts"></span></li>
-                  <li style="font-weight:normal;font-size: 14px;">Address : <span
-                      style="text-decoration: none;font-weight:normal;" id="dis_add"></span></li>
+                  <li style="font-weight: normal;font-size: 14px;">Availability :
+                    <span style="text-decoration: none;font-weight:normal;" id="dis_avail"></span>
+                  </li>
+                  <li style="font-weight:normal;font-size: 14px;">Status :
+                    <span style="text-decoration: none;font-weight:normal;" id="dis_sts"></span>
+                  </li>
+                  <li style="font-weight:normal;font-size: 14px;">Address :
+                    <span style="text-decoration: none;font-weight:normal;" id="dis_add"></span>
+                  </li>
                   <div id="addfeature"></div>
                 </ul>
                 <input type="hidden" value="" id="idid_keeper" />
               </h4>
               <button
                 style="height: 45px;width:100%;border-color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white;border-radius:7px;outline: none; "
-                onclick="check_store_select()"><i class="fa fa-cart-plus"></i>&nbsp;ADD TO CART</button>
+                onclick="check_store_select()">
+                <i class="fa fa-cart-plus"></i>&nbsp;ADD TO CART
+              </button>
             </div>
           </div>
         </div>
-        <div class="modal-footer"
-          style=" background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;">
-          <button type="button" class="btn btn-default" data-dismiss="modal"
-            style="outline: none;font-size: 1.2em;">Close <i style="color: red" class="fa fa-times-circle"></i></button>
+        <div class="modal-footer" style=" background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;">
+          <button
+            type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            style="outline: none;font-size: 1.2em;">Close
+            <i style="color: red" class="fa fa-times-circle"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -475,36 +548,54 @@
 <!--------------------------------------------------------------------------------------------------------------------------------->
 <!--------------------------------------------------------------------------------------------------------------------------------->
 <!-- Detail about shops--><!--ADD TO WISHLIST-->
-<div id="avail_stores_wishlist" tabindex="-1" role="dialog" aria-labelledby="store_title"
-  class="modal fade modal-xl hidescroll" style="height: 90%;">
+<div
+  id="avail_stores_wishlist"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="store_title"
+  class="modal fade modal-xl hidescroll"
+  style="height: 90%;">
   <div class="modal-dialog modal-xl" style="height: 90%;">
     <div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
       <div class="modal-overlay" id="modal-overlay">
-        <div class="modal-header shadow_b"
-          style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;color: white">
-          <button type="button" class="close" data-dismiss="modal"
-            style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
+        <div class="modal-header shadow_b" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;color: white">
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;
+          </button>
           <h3 id="store_title" class="modal-title">Available Stores</h3>
         </div>
       </div>
       <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
         <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
-          <table id="wishlist_store" cellspacing="50px" cellpadding="20px" width="100%" class="single_product_info"
-            border="5px" style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+          <table
+            id="wishlist_store"
+            cellspacing="50px"
+            cellpadding="20px"
+            width="100%"
+            class="single_product_info"
+            border="5px"
+            style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
             <tbody>
-              <tr
-                style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
+              <tr style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
                 <td colspan="9">
-                  <button type="button" onclick="sortTable(3)"
+                  <button
+                    type="button"
+                    onclick="sortTable(3)"
                     style="float: left;color: white;background-color: #F08200;border-radius: 5px;border:#ffffff"
-                    name="button">Sort by Distance</button>
-                  <button type="button" onclick="sortTable(2)"
+                    name="button">Sort by Distance
+                  </button>
+                  <button
+                    type="button"
+                    onclick="sortTable(2)"
                     style="float: left;color: white;background-color: #F08200;margin-left:3px;border-radius: 5px;border:#ffffff"
-                    name="button">Sort by Price</button>
+                    name="button">Sort by Price
+                  </button>
                 </td>
               </tr>
-              <tr
-                style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white">
+              <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white">
                 <th style="border: none;text-align:center" class="view_avail_stores">Select</th>
                 <th style="border: none;text-align:center" class="view_avail_stores">Store Name </th>
                 <th style="border: none;text-align:center" class="view_avail_stores">Price </th>
@@ -521,43 +612,53 @@
               </div>
             </tbody>
           </table>
-          <div class="m-sing" id="per2"
-            style="background-color: #f2f2f2;color:black;padding-top: 7px;padding-bottom: 7px;;">
+          <div class="m-sing" id="per2" style="background-color: #f2f2f2;color:black;padding-top: 7px;padding-bottom: 7px;;">
             <div class="px-3">
               <h4 class="m-sing">
-                <span
-                  style='font-family: arial;color:#07C103;font-weight: bold;text-decoration: none;font-size:15px'>You
-                  Save &#8377; <span id="save2"
-                    style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px"></span>
-                  (<span style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px"
-                    id="off2"></span>%)</span>
+                <span style='font-family: arial;color:#07C103;font-weight: bold;text-decoration: none;font-size:15px'>
+                  You Save &#8377;
+                  <span id="save2" style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px"></span>
+                  (<span style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px" id="off2"></span>%)
+                </span>
                 <br><br>
                 <ul id="wishlist_item_detailed_features" style="padding-left:10px">
-                  <li style="font-weight:normal;font-size: 14px;">Item remaing : <span
-                      style="text-decoration: none;font-weight:normal;font-family:arial" id="dis_qnty2"></span> only
+                  <li style="font-weight:normal;font-size: 14px;">Item remaing :
+                    <span style="text-decoration: none;font-weight:normal;font-family:arial" id="dis_qnty2"></span> only
                   </li>
-                  <li style="font-weight: normal;font-size: 14px;">Availability : <span
-                      style="text-decoration: none;font-weight:normal;" id="dis_avail2"></span>
+                  <li style="font-weight: normal;font-size: 14px;">Availability :
+                    <span style="text-decoration: none;font-weight:normal;" id="dis_avail2"></span>
                   </li>
-                  <li style="font-weight:normal;font-size: 14px;">Status : <span
-                      style="text-decoration: none;font-weight:normal;" id="dis_sts2"></span></li>
-                  <li style="font-weight:normal;font-size: 14px;">Address : <span
-                      style="text-decoration: none;font-weight:normal;" id="dis_add2"></span></li>
+                  <li style="font-weight:normal;font-size: 14px;">Status :
+                    <span style="text-decoration: none;font-weight:normal;" id="dis_sts2"></span>
+                  </li>
+                  <li style="font-weight:normal;font-size: 14px;">Address :
+                    <span style="text-decoration: none;font-weight:normal;" id="dis_add2"></span>
+                  </li>
                   <div id="wishaddfeature"></div>
                 </ul>
                 <input type="hidden" value="" id="wishlist_idid_keeper" />
               </h4>
-              <button class="wishlist_btn" style="height: 45px;width:100%;border-color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;
-color: white;border-radius:7px;outline: none;" onclick="wishlist_check_store_select()" class="element_cart"
-                type="button" data-dismiss="modal" data-toggle="modal" data-target="#wishlist_avail">
-                SELECT STORE <i class="fa fa-arrow-right"></i></i></button>
+              <button
+                class="wishlist_btn"
+                style="height: 45px;width:100%;border-color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important; color: white;border-radius:7px;outline: none;"
+                onclick="wishlist_check_store_select()"
+                class="element_cart"
+                type="button"
+                data-dismiss="modal"
+                data-toggle="modal"
+                data-target="#wishlist_avail">
+                SELECT STORE <i class="fa fa-arrow-right"></i>
+              </button>
             </div>
           </div>
         </div>
-        <div class="modal-footer"
-          style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;">
-          <button type="button" class="btn btn-default" data-dismiss="modal"
-            style="outline: none;font-size: 1.2em;">Close <i style="color: red" class="fa fa-times-circle"></i></button>
+        <div class="modal-footer" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;">
+          <button
+            type="button"
+            class="btn btn-default"
+            data-dismiss="modal"
+            style="outline: none;font-size: 1.2em;">Close <i style="color: red" class="fa fa-times-circle"></i>
+          </button>
         </div>
       </div>
     </div>
@@ -572,26 +673,40 @@ color: white;border-radius:7px;outline: none;" onclick="wishlist_check_store_sel
 if (isset($_SESSION['id'])) {
   $result = $pdo->query("select * from wishlist where user_id=" . $_SESSION['id']);
   $status = 0;
-  ?>
-  <div id="wishlist_avail" tabindex="-1" role="dialog" aria-labelledby="store_title"
-    class="modal fade modal-xl hidescroll" style="height: 90%;">
+?>
+  <div
+    id="wishlist_avail"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="store_title"
+    class="modal fade modal-xl hidescroll"
+    style="height: 90%;">
     <div class="modal-dialog modal-xl" style="height: 90%;">
       <div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
         <div class="modal-overlay" id="modal-overlay">
           <div class="modal-header shadow_b" style="background-color: #337ab7;color: white">
-            <button type="button" class="close" data-dismiss="modal"
+            <button
+              type="button"
+              class="close"
+              data-dismiss="modal"
               style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
             <h3 id="store_title" class="modal-title">Your Wishlists</h3>
           </div>
         </div>
         <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
           <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
-            <table id="list_wishlist" cellspacing="50px" cellpadding="20px" width="100%" class="single_product_info"
-              border="5px" style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+            <table
+              id="list_wishlist"
+              cellspacing="50px"
+              cellpadding="20px"
+              width="100%"
+              class="single_product_info"
+              border="5px"
+              style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
               <?php
               $rows = $result->rowCount();
               if (!is_null($rows) && $rows > 0) {
-                ?>
+              ?>
                 <tr style="background-color: #22374e;color: white">
                   <th style="border: none;" class="view_avail_stores">Select</th>
                   <th style="border: none;" class="view_avail_stores">List Name </th>
@@ -605,27 +720,32 @@ if (isset($_SESSION['id'])) {
                   $stmt_wish1 = $pdo->prepare($sql_wish1);
                   $stmt_wish1->execute(array(':wish_id' => $row['wishlist_id']));
                   $row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
-                  ?>
+                ?>
                   <tr>
                     <td style="padding: 0px;margin: 0px;">
-                      <button id="list_btn<?= $row['wishlist_id'] ?>"
+                      <button
+                        id="list_btn<?= $row['wishlist_id'] ?>"
                         style="height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none;display:unset; "
-                        onclick="wishlist_check_list_select(<?= $row['wishlist_id'] ?>)">Add <i
-                          class="fa fa-heart"></i></button>
+                        onclick="wishlist_check_list_select(<?= $row['wishlist_id'] ?>)">
+                        Add <i class="fa fa-heart"></i>
+                      </button>
                     </td>
-                    <td style="background-color: white" class="view_avail_stores"><?= $row['list_name'] ?></td>
-                    <td style="background-color: white" class="view_avail_stores"><?= $row['privacy'] ?></td>
-                    <!--<td id="Q<?= $store_id ?>"><? //=$row['quantity']
-                            ?></td>-->
+                    <td style="background-color: white" class="view_avail_stores">
+                      <?= $row['list_name'] ?>
+                    </td>
+                    <td style="background-color: white" class="view_avail_stores">
+                      <?= $row['privacy'] ?>
+                    </td>
                     <td style="background-color: white" id="wish_cnt_<?= $row['wishlist_id'] ?>" class="view_avail_stores">
-                      <?= $row_wish1['item_count'] ?></td>
+                      <?= $row_wish1['item_count'] ?>
+                    </td>
                     <?php
                     $dateofcreate = explode('-', $row['date']);
                     $day = $dateofcreate[1] . "/" . $dateofcreate[2] . "/" . substr($dateofcreate[0], 2);
                     ?>
                     <td style="background-color: white" class="view_avail_stores"><?= $day ?></td>
                   </tr>
-                  <?php
+                <?php
                 }
                 $status = 1;
               }
@@ -637,24 +757,34 @@ if (isset($_SESSION['id'])) {
                   <h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
-                <?php
+              <?php
               }
               ?>
             </table>
           </div>
           <div class="modal-footer" style="background-color: white">
-            <button type="button" class="btn btn-default" data-dismiss="modal" data-toggle="modal"
+            <button
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              data-toggle="modal"
               data-target="#avail_stores_wishlist"
-              style="outline: none;font-size: 1.2em;float:left;background-color:#22374e"><i style="color: #fff"
-                class="fa fa-arrow-left fa-lg"></i></button>
-            <button type="button" class="btn btn-default" data-dismiss="modal"
-              style="outline: none;font-size: 1.2em;">Close <i style="color: red" class="fa fa-times-circle"></i></button>
+              style="outline: none;font-size: 1.2em;float:left;background-color:#22374e">
+              <i style="color: #fff" class="fa fa-arrow-left fa-lg"></i>
+            </button>
+            <button
+              type="button"
+              class="btn btn-default"
+              data-dismiss="modal"
+              style="outline: none;font-size: 1.2em;">
+              Close <i style="color: red" class="fa fa-times-circle"></i>
+            </button>
           </div>
         </div>
       </div>
     </div>
   </div>
-  <?php
+<?php
 }
 ?>
 <!-------------------------------------JAVA SCRIPT FUNCTIONS BEGIN------------------------------------------------------------->
@@ -752,7 +882,7 @@ if (isset($_SESSION['id'])) {
   var capson_warning = document.getElementsByClassName("capson_warning");
   var password_field = document.getElementsByClassName('password_fields');
   for (var i = 0; i < password_field.length; i++) {
-    password_field[i].addEventListener("keyup", function (event) {
+    password_field[i].addEventListener("keyup", function(event) {
       for (var j = 0; j < capson_warning.length; j++) {
         if (event.getModifierState("CapsLock")) {
           capson_warning[j].style.display = "block";
@@ -763,7 +893,7 @@ if (isset($_SESSION['id'])) {
     });
   }
   //////////////////////////////////////////////////////////////
-  $('.tab-pane').on('click', function () {
+  $('.tab-pane').on('click', function() {
     $('.tab-pane').css('border', '0px none');
     $('.tab-pane').css('border-bottom', '1px solid transparent');
     var elementtodisplay = $(this).find('.active');
@@ -803,11 +933,11 @@ if (isset($_SESSION['id'])) {
     $('#side_nav_bar_lock').css("z-index", "-9999999");
     //document.getElementById("main_all").style.marginLeft= "0";
   }
-  $('#side_nav_bar_lock').click(function () {
+  $('#side_nav_bar_lock').click(function() {
     closeNav();
   });
   ////////////////////////////////BREAK SIDE NAV EVENT/////////////////////////////////////////////////////////////////////////////////////////
-  $('#list_enda').click(function () {
+  $('#list_enda').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -821,7 +951,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_enda").css("display", "block");
   });
-  $('#list_endb').click(function () {
+  $('#list_endb').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
     $("#side_cat_list_endd").css("display", "none");
@@ -834,7 +964,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endb").css("display", "block");
   });
-  $('#list_endc').click(function () {
+  $('#list_endc').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endd").css("display", "none");
@@ -847,7 +977,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endc").css("display", "block");
   });
-  $('#list_endd').click(function () {
+  $('#list_endd').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -860,7 +990,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endd").css("display", "block");
   });
-  $('#list_ende').click(function () {
+  $('#list_ende').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -873,7 +1003,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_ende").css("display", "block");
   });
-  $('#list_endf').click(function () {
+  $('#list_endf').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -886,7 +1016,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endf").css("display", "block");
   });
-  $('#list_endg').click(function () {
+  $('#list_endg').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -899,7 +1029,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endg").css("display", "block");
   });
-  $('#list_endh').click(function () {
+  $('#list_endh').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -912,7 +1042,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endh").css("display", "block");
   });
-  $('#list_endi').click(function () {
+  $('#list_endi').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -925,7 +1055,7 @@ if (isset($_SESSION['id'])) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endi").css("display", "block");
   });
-  $('#list_endj').click(function () {
+  $('#list_endj').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
     $("#side_cat_list_endc").css("display", "none");
@@ -942,7 +1072,7 @@ if (isset($_SESSION['id'])) {
   var dropdown = document.getElementsByClassName("dropdown-btn");
   var i;
   for (i = 0; i < dropdown.length; i++) {
-    dropdown[i].addEventListener("click", function () {
+    dropdown[i].addEventListener("click", function() {
       this.classList.toggle("active");
       var dropdownContent = this.nextElementSibling;
       if (dropdownContent.style.display === "block") {
@@ -969,13 +1099,13 @@ if (isset($_SESSION['id'])) {
   }
 </script>
 <!-------TESTING SIDE-NAV---------->
-<!-------TESTING NAV---------->
+<!-------TESTING NAV--------------->
 <script type="text/javascript">
-  $(function () {
+  $(function() {
     var navMain = $(".navbar-collapse"); // avoid dependency on #id
     // "a:not([data-toggle])" - to avoid issues caused
     // when you have dropdown inside navbar
-    navMain.on("click", "a:not([data-toggle])", null, function () {
+    navMain.on("click", "a:not([data-toggle])", null, function() {
       navMain.collapse('hide');
     });
   });
@@ -988,13 +1118,13 @@ if (isset($_SESSION['id'])) {
 <!-- added script for new template -->
 <!-- Latest jQuery form server -->
 <!------------------------------------------------------------>
-<!--/////////////////////START-303///END-833/////////////////////////////////////////-->
-<!----------THIS IS FROM HEADER ------------------->
-<!--///////////////////////////////////////////////////////////////-->
+<!--|||||||||||||||||||||START-303|||END-833||||||||||||||||-->
+<!----------THIS IS FROM HEADER ------------------------------>
+<!--||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
 <script src="https://cdn.jsdelivr.net/gh/vast-engineering/jquery-popup-overlay@2/jquery.popupoverlay.min.js"></script>
 <script type="text/javascript">
-  jQuery.fn.putCursorAtEnd = function () {
-    return this.each(function () {
+  jQuery.fn.putCursorAtEnd = function() {
+    return this.each(function() {
       // Cache references
       var $el = $(this),
         el = this;
@@ -1007,7 +1137,7 @@ if (isset($_SESSION['id'])) {
         // Double the length because Opera is inconsistent about whether a carriage return is one character or two.
         var len = $el.val().length * 2;
         // Timeout seems to be required for Blink
-        setTimeout(function () {
+        setTimeout(function() {
           el.setSelectionRange(len, len);
         }, 1);
       } else {
@@ -1020,8 +1150,8 @@ if (isset($_SESSION['id'])) {
       this.scrollTop = 999999;
     });
   };
-  $(document).ready(function (e) {
-    $('.search-panel .dropdown-menu').find('a').click(function (e) {
+  $(document).ready(function(e) {
+    $('.search-panel .dropdown-menu').find('a').click(function(e) {
       e.preventDefault();
       var param = $(this).attr("href").replace("#", "");
       var concept = $(this).text();
@@ -1033,7 +1163,7 @@ if (isset($_SESSION['id'])) {
 
   function catlistview() {
     $('#display').hide();
-    document.onclick = function (div) {
+    document.onclick = function(div) {
       if (div.target.id !== 'search-panel' && div.target.id !== 'search_concept' && div.target.id !== 'srch_pan') {
         $("#category").hide();
       } else if (div.target.id == 'search-panel' || div.target.id == 'search_concept' || div.target.id == 'srch_pan') {
@@ -1048,8 +1178,8 @@ if (isset($_SESSION['id'])) {
     }
   }
   /*SMALL DIV*/
-  $(document).ready(function (f) {
-    $('.search-panel .dropdown-menu').find('a').click(function (f) {
+  $(document).ready(function(f) {
+    $('.search-panel .dropdown-menu').find('a').click(function(f) {
       f.preventDefault();
       var param = $(this).attr("href").replace("#", "");
       console.log(param)
@@ -1062,7 +1192,7 @@ if (isset($_SESSION['id'])) {
 
   function catlistview2() {
     $('#display2').hide();
-    document.onclick = function (div) {
+    document.onclick = function(div) {
       if (div.target.id !== 'search-panel2' && div.target.id !== 'search_concept2' && div.target.id !== 'srch_pan2') {
         $("#category2").hide();
       } else if (div.target.id == 'search-panel2' || div.target.id == 'search_concept2' || div.target.id == 'srch_pan2') {
@@ -1076,14 +1206,14 @@ if (isset($_SESSION['id'])) {
       }
     }
   }
-  document.onclick = function (div) {
+  document.onclick = function(div) {
     if (div.target.id !== 'search' && div.target.id !== 'search2') {
       $("#display").hide();
       $("#display2").hide();
     }
   }
-  /*/////////////////////////////////MODAL SIGN IN//////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+  /*|||||||||||||||||||||||||||||||||MODAL SIGN IN|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
+  /*|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||*/
   function signup() {
     location.href = "registered.php";
     return;
@@ -1149,22 +1279,22 @@ if (isset($_SESSION['id'])) {
         type: "post", //post data
         dataType: "json", //datatype=json format
         timeout: 18000, //waiting time 3 sec
-        success: function (data) { //if logging in is success
+        success: function(data) { //if logging in is success
           if (data.admin == 'true' && data.user == 'true') {
             $('.real_btn').show();
             $('.load_btn').hide();
             Swal.fire({
-              title: "<span style='font-family-arial'>Log in as</span>",
-              text: "User (or) Store owner",
-              icon: "success",
-              showCancelButton: true,
-              showConfirmButton: true,
-              confirmButtonColor: 'red',
-              confirmButtonText: '<i class="fas fa-store"></i> Admin',
-              cancelButtonColor: 'green',
-              allowOutsideClick: false,
-              cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
-            })
+                title: "<span style='font-family-arial'>Log in as</span>",
+                text: "User (or) Store owner",
+                icon: "success",
+                showCancelButton: true,
+                showConfirmButton: true,
+                confirmButtonColor: 'red',
+                confirmButtonText: '<i class="fas fa-store"></i> Admin',
+                cancelButtonColor: 'green',
+                allowOutsideClick: false,
+                cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
+              })
               .then((willSubmit) => {
                 if (willSubmit.dismiss) {
                   location.href = "hfe.php";
@@ -1177,12 +1307,12 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Success!!!",
-              text: "Admin privileges granted",
-              icon: "success",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Success!!!",
+                text: "Admin privileges granted",
+                icon: "success",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').hide();
@@ -1195,15 +1325,15 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Success!!!",
-              text: "Log in Success",
-              icon: "success",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Success!!!",
+                text: "Log in Success",
+                icon: "success",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
-                  $(function () {
+                  $(function() {
                     document.getElementById("pwd").value = "";
                     location.reload();
                     $('#emppass').hide();
@@ -1218,12 +1348,12 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Success!!!",
-              text: "Admin privileges granted",
-              icon: "success",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Success!!!",
+                text: "Admin privileges granted",
+                icon: "success",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').hide();
@@ -1236,12 +1366,12 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Oops!!!",
-              text: "Error logging in",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Oops!!!",
+                text: "Error logging in",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').html("Incorrect Password");
@@ -1253,12 +1383,12 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Oops!!!",
-              text: "You are not registered yet",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Oops!!!",
+                text: "You are not registered yet",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').html("You are not registered with us. Please sign up.");
@@ -1270,12 +1400,12 @@ if (isset($_SESSION['id'])) {
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-              title: "Check your mailbox!!!",
-              text: "Pending email verification",
-              icon: "warning",
-              closeOnClickOutside: false,
-              dangerMode: true,
-            })
+                title: "Check your mailbox!!!",
+                text: "Pending email verification",
+                icon: "warning",
+                closeOnClickOutside: false,
+                dangerMode: true,
+              })
               .then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').html("Verify your email");
@@ -1285,7 +1415,7 @@ if (isset($_SESSION['id'])) {
               });
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             $('.real_btn').show();
             $('.load_btn').hide();
@@ -1305,13 +1435,6 @@ if (isset($_SESSION['id'])) {
       }); //closing ajax
     }
   }
-  //<?php
-  //    $fourRandomDigit = mt_rand(1000,9999);
-  //    echo $fourRandomDigit;
-  //
-  ?>
-  /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
 </script>
 <!-- //navigation -->
 <!-- navigation -->
@@ -1360,7 +1483,7 @@ if (isset($_SESSION['id'])) {
     } else {
       pin = "https://api.postalpincode.in/pincode/" + postcode + "";
       var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function () {
+      xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           locate = JSON.parse(this.responseText);
           console.log(locate);
@@ -1394,16 +1517,16 @@ if (isset($_SESSION['id'])) {
       type: "post", //post data
       dataType: "json", //datatype=json format
       timeout: 30000, //waiting time 3 sec
-      success: function (data) { //if registration is success
+      success: function(data) { //if registration is success
         if (data.status == 'success') {
           //CODE TO REMOVE
           swal({
-            title: "Success!!!",
-            text: "Located Successfully",
-            icon: "success",
-            closeOnClickOutside: false,
-            dangerMode: true,
-          })
+              title: "Success!!!",
+              text: "Located Successfully",
+              icon: "success",
+              closeOnClickOutside: false,
+              dangerMode: true,
+            })
             .then((willSubmit) => {
               if (willSubmit) {
                 location.href = "hfe.php";
@@ -1414,12 +1537,12 @@ if (isset($_SESSION['id'])) {
           //CODE TO REMOVE
         } else if (data.status == 'error') {
           swal({
-            title: "Oops!!!",
-            text: "Couldn't locate your place",
-            icon: "error",
-            closeOnClickOutside: false,
-            dangerMode: true,
-          })
+              title: "Oops!!!",
+              text: "Couldn't locate your place",
+              icon: "error",
+              closeOnClickOutside: false,
+              dangerMode: true,
+            })
             .then((willSubmit) => {
               if (willSubmit) {
                 return;
@@ -1429,7 +1552,7 @@ if (isset($_SESSION['id'])) {
             });
         }
       },
-      error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+      error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
             title: "Oops!!!",
@@ -1495,7 +1618,7 @@ if (isset($_SESSION['id'])) {
     } else {
       pin = "https://api.postalpincode.in/pincode/" + regpin + "";
       var xmlhttp = new XMLHttpRequest();
-      xmlhttp.onreadystatechange = function () {
+      xmlhttp.onreadystatechange = function() {
         if (this.readyState == 4 && this.status == 200) {
           locate = JSON.parse(this.responseText);
           console.log(locate);
@@ -1543,16 +1666,16 @@ if (isset($_SESSION['id'])) {
       type: "post", //post data
       dataType: "json", //datatype=json format
       timeout: 30000, //waiting time 3 sec
-      success: function (data) { //if registration is success
+      success: function(data) { //if registration is success
         if (data.status == 'success') {
           //CODE TO REMOVE
           swal({
-            title: "Success!!!",
-            text: "Located Successfully",
-            icon: "success",
-            closeOnClickOutside: false,
-            dangerMode: true,
-          })
+              title: "Success!!!",
+              text: "Located Successfully",
+              icon: "success",
+              closeOnClickOutside: false,
+              dangerMode: true,
+            })
             .then((willSubmit) => {
               if (willSubmit) {
                 return;
@@ -1563,12 +1686,12 @@ if (isset($_SESSION['id'])) {
           //CODE TO REMOVE
         } else if (data.status == 'error') {
           swal({
-            title: "Oops!!!",
-            text: "Couldn't locate your place",
-            icon: "error",
-            closeOnClickOutside: false,
-            dangerMode: true,
-          })
+              title: "Oops!!!",
+              text: "Couldn't locate your place",
+              icon: "error",
+              closeOnClickOutside: false,
+              dangerMode: true,
+            })
             .then((willSubmit) => {
               if (willSubmit) {
                 return;
@@ -1578,7 +1701,7 @@ if (isset($_SESSION['id'])) {
             });
         }
       },
-      error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+      error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
             title: "Oops!!!",
@@ -1604,30 +1727,30 @@ if (isset($_SESSION['id'])) {
     $("#popup2_wrapper").hide();
     /*find latitude and longitude with postal code and postoffice*/
     /*
-       var address=document.getElementById('po_list').value;
-       var post="https://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+address+"";
-       var xmlhttp = new XMLHttpRequest();
-       xmlhttp.onreadystatechange = function() {
-           if (this.readyState == 4 && this.status == 200) {
-           locate = JSON.parse(this.responseText);
-         }
-       };
-       xmlhttp.open("GET", post , true);
-       xmlhttp.send();
+      var address=document.getElementById('po_list').value;
+      var post="https://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+address+"";
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+          locate = JSON.parse(this.responseText);
+        }
+      };
+      xmlhttp.open("GET", post , true);
+      xmlhttp.send();
      */
     /*working*/
   }
 </script>
 <!--//////////////////////END-833///START-303/////////////////////////////////////-->
-<!----------THIS IS FROM HEADER ------------------->
-<!--///////////////////////////////////////////////////////////////-->
-<!-------------------------------------------------------------------- >
-  <!-- Bootstrap JS form CDN -->
+<!-------------------THIS IS FROM HEADER ------------------------------------------->
+<!--//////////////////////////////////////////////////////////////////////////////-->
+<!--------------------------------------------------------------------------------->
+<!-- Bootstrap JS form CDN -->
 <script type="text/javascript">
-  $('#myModal').on('show.bs.modal', function (event) {
+  $('#myModal').on('show.bs.modal', function(event) {
     $('#myModal').modal('handleUpdate');
   });
-  $('#myModal2').on('show.bs.modal', function (event) {
+  $('#myModal2').on('show.bs.modal', function(event) {
     $('myModal2').modal('handleUpdate');
   });
 </script>
@@ -1635,13 +1758,10 @@ if (isset($_SESSION['id'])) {
 <script src="../../js/minicart.min.js"></script>
 <!--// Mini Cart //-->
 <script>
-
   paypal.minicart.render({
-    action:
-      '#'
+    action: '#'
   });
-  if
-    (~window.location.search.indexOf('reset=true')) {
+  if (~window.location.search.indexOf('reset=true')) {
     paypal.minicart.reset();
   }
 </script>
@@ -1649,15 +1769,15 @@ if (isset($_SESSION['id'])) {
 <!-- main slider-banner -->
 <script type="text/javascript">
   //TO REMOVE PADDING AFTER CLOSING MODAL
-  $(".close").on("hidden", function () {
+  $(".close").on("hidden", function() {
     $('#strt').css('padding', '0px');
   });
-  window.addEventListener("click", function (e) {
+  window.addEventListener("click", function(e) {
     e.stopPropagation();
     $('body').css('padding-right', '-10px');
   });
   //TO REMOVE PADDING AFTER CLOSING MODAL
-  jQuery(document).ready(function () {
+  jQuery(document).ready(function() {
     jQuery('#demo1').skdslider({
       'delay': 5000,
       'animationSpeed': 2000,
@@ -1666,7 +1786,7 @@ if (isset($_SESSION['id'])) {
       'autoSlide': true,
       'animationType': 'fading'
     });
-    jQuery('#responsive').change(function () {
+    jQuery('#responsive').change(function() {
       $('#responsive_wrapper').width(jQuery(this).val());
     });
   });
@@ -1683,7 +1803,7 @@ if (isset($_SESSION['id'])) {
     location.href = "cart.php"
   }
   //AUTO LOG IN
-  $(document).ready(function () {
+  $(document).ready(function() {
     setTimeout(() => {
       const loader1 = document.querySelector(".loader1");
       const loader2 = document.querySelector(".loader2");
@@ -1711,7 +1831,7 @@ if (isset($_SESSION['id'])) {
     }
     <?php
     if (!isset($_SESSION['id'])) {
-      ?>
+    ?>
       var email = getCookie("OneStore_email");
       var pass = getCookie("OneStore_password");
       if (email != " " && pass != " ") {
@@ -1726,7 +1846,7 @@ if (isset($_SESSION['id'])) {
           type: "post", //post data
           dataType: "json", //datatype=json format
           timeout: 18000, //waiting time 3 sec
-          success: function (data) { //if logging in is success
+          success: function(data) { //if logging in is success
             if (data.status == 'success') {
               //location.href="hfe.php";
             } else if (data.status == 'admin') {
@@ -1735,7 +1855,7 @@ if (isset($_SESSION['id'])) {
               return;
             }
           },
-          error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
                 title: "Oops!!!",
@@ -1753,10 +1873,10 @@ if (isset($_SESSION['id'])) {
           }
         }); //closing ajax
       }
-      <?php
+    <?php
     }
     if (isset($_SESSION['id']) && !isset($_SESSION['cart_count'])) {
-      ?>
+    ?>
       //CART COUNT
       $.ajax({
         url: "../Common/functions.php", //passing page info
@@ -1767,7 +1887,7 @@ if (isset($_SESSION['id'])) {
         type: "post", //post data
         dataType: "json", //datatype=json format
         timeout: 18000, //waiting time 3 sec
-        success: function (data) { //if logging in is success
+        success: function(data) { //if logging in is success
           if (data.status == "success") {
             document.getElementById("sm-cartcnt").innerHTML = "";
             document.getElementById("lg-cartcnt").innerHTML = "";
@@ -1776,7 +1896,7 @@ if (isset($_SESSION['id'])) {
             return;
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             return;
           } else {
@@ -1784,7 +1904,7 @@ if (isset($_SESSION['id'])) {
           }
         }
       }); //closing ajax
-      <?php
+    <?php
     }
     ?>
   });
@@ -1832,7 +1952,7 @@ if (isset($_SESSION['id'])) {
         dataType: "json",
         type: "post",
         timeout: 30000,
-        success: function (data) {
+        success: function(data) {
           if (data.status == 'success') {
             swal({
               title: "Added!!!",
@@ -1844,13 +1964,13 @@ if (isset($_SESSION['id'])) {
             });
           } else if (data.status == 'error') {
             swal({
-              title: "Oops!!!",
-              text: "Try agan later",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-              timer: 6000,
-            })
+                title: "Oops!!!",
+                text: "Try agan later",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+                timer: 6000,
+              })
               .then((willSubmit1) => {
                 if (willSubmit1) {
                   location.href = "login.php"
@@ -1861,13 +1981,13 @@ if (isset($_SESSION['id'])) {
               });
           } else if (data.status == 'error2') {
             swal({
-              title: "Not found!!!",
-              text: "Please log in",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-              timer: 6000,
-            })
+                title: "Not found!!!",
+                text: "Please log in",
+                icon: "error",
+                closeOnClickOutside: false,
+                dangerMode: true,
+                timer: 6000,
+              })
               .then((willSubmit1) => {
                 if (willSubmit1) {
                   //location.href="login.php"
@@ -1878,7 +1998,7 @@ if (isset($_SESSION['id'])) {
               });
           }
         },
-        error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
+        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
               title: "Oops!!!",
@@ -1899,7 +2019,7 @@ if (isset($_SESSION['id'])) {
   //Newsletter activation
   function hostReachable() {
     // Handle IE and more capable browsers
-    var xhr = new (window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
+    var xhr = new(window.ActiveXObject || XMLHttpRequest)("Microsoft.XMLHTTP");
     // Open new request as a HEAD to the root hostname with a random param to bust the cache
     xhr.open("HEAD", "//" + window.location.hostname + "/?rand=" + Math.floor((1 + Math.random()) * 0x10000), false);
     // Issue request and handle response

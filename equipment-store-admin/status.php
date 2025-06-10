@@ -311,9 +311,11 @@ require "head.php";
       }
     </script>
     <div class="col-sm-12" style="background: #5d5d5d78;margin-top: 100px;">
-      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;"><i
-          class="fas fa-user-edit" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Update
-        Status
+      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;">
+        <i
+          class="fas fa-user-edit"
+          style="font-size: 24px;padding-right: 12px"
+          aria-hidden="true"></i>Update Status
       </h4>
       <div id="imgf">
         <?php
@@ -331,23 +333,48 @@ require "head.php";
         </div>
         <div class="form-group" class="store-opening-hours" id="store-opening-hours">
           <div class="input-class store-opening-hours">
-            <input type="text" title="opening hour" name="hours" id="opening_hours"
-              style="background-color: #fff;border-color: #fff" class="form-control store-opening-hours"
-              placeholder="Opening hours" autocomplete="false" required="" readonly=""
-              onfocus="$('.hadiv').css('display','block');if(this.value==''){this.value='12:00AM to 11:59PM';$('#in1').val('12');$('#in2').val('00');$('#in4').val('11');$('#in5').val('59')}"/>
+            <input
+              type="text"
+              title="opening hour"
+              name="hours"
+              id="opening_hours"
+              style="background-color: #fff;border-color: #fff"
+              class="form-control store-opening-hours"
+              placeholder="Opening hours"
+              autocomplete="false"
+              required=""
+              readonly=""
+              onfocus="$('.hadiv').css('display','block');if(this.value==''){this.value='12:00AM to 11:59PM';$('#in1').val('12');$('#in2').val('00');$('#in4').val('11');$('#in5').val('59')}" />
             <!--select boxes for hours-->
-            <div class="hadiv store-opening-hours" id="hadiv"
-              style="display: none;margin-top: 12px;padding-left: 5px;width: 100% "
+            <div
+              class="hadiv store-opening-hours"
+              id="hadiv"
+              style="display: none;margin-top: 12px;padding-left: 5px;width: 100%"
               focusout="this.hide();$('#opening_hours').show()">
               <div class="hrdiv store-opening-hours" style="width: auto;">
                 <i class="fa fa-clock-o" class="form-control1" style="position: relative;margin-top: 2px;"></i>
-                <input type="number" onblur="validtime()" class="form-control1" id="in1" placeholder="HH" name=""
-                  min="1" max="12" style="padding: 0;margin: 0;text-align: center;">
+                <input
+                  type="number"
+                  onblur="validtime()"
+                  class="form-control1"
+                  id="in1"
+                  placeholder="HH"
+                  name=""
+                  min="1"
+                  max="12"
+                  style="padding: 0;margin: 0;text-align: center;">
                 <span class="dot" style="margin-top: 6px;font-weight: bolder;padding: 2px;">:</span>
-                <input type="number" onblur="validtime()" class="form-control1" id="in2" placeholder="MM" name=""
-                  min="00" max="59" style="padding: 0;margin: 0;text-align: center;">
-                <select id="in3" class="form-control1"
-                  style="padding: 0;margin: 0;text-align: center;background-color: #1e2629;border-color: #1e2629;box-shadow: none;border-bottom-color: orange;margin-left: 10px;outline: none;color:white;font-weight: bolder;max-width: 28px;">
+                <input
+                  type="number"
+                  onblur="validtime()"
+                  class="form-control1"
+                  id="in2"
+                  placeholder="MM"
+                  name=""
+                  min="00"
+                  max="59"
+                  style="padding: 0;margin: 0;text-align: center;">
+                <select id="in3" class="form-control1" style="padding: 0;margin: 0;text-align: center;background-color: #1e2629;border-color: #1e2629;box-shadow: none;border-bottom-color: orange;margin-left: 10px;outline: none;color:white;font-weight: bolder;max-width: 28px;">
                   <option value="AM" selected="">AM</option>
                   <option value="PM">PM</option>
                 </select>
@@ -355,22 +382,42 @@ require "head.php";
               <div class="dot" style="width: 5%;text-align: center;">to</div>
               <div class="hrdiv" style="width: auto;padding-bottom: 10px;">
                 <i class="fa fa-clock-o" class="form-control1" style="position: relative;margin-top: 2px;"></i>
-                <input type="number" onblur="validtime()" id="in4" class="form-control1" placeholder="HH" name=""
-                  min="1" max="12" style="padding: 0;margin: 0;text-align: center;">
+                <input
+                  type="number"
+                  onblur="validtime()"
+                  id="in4"
+                  class="form-control1"
+                  placeholder="HH"
+                  name=""
+                  min="1"
+                  max="12"
+                  style="padding: 0;margin: 0;text-align: center;">
                 <span class="dot" style="margin-top: 6px;font-weight: bolder;padding: 2px;">:</span>
-                <input type="number" onblur="validtime()" id="in5" class="form-control1" placeholder="MM" name=""
-                  min="00" max="59" style="padding: 0;margin: 0;text-align: center;">
-                <select id="in6" class="form-control1"
+                <input
+                  type="number"
+                  onblur="validtime()"
+                  id="in5"
+                  class="form-control1"
+                  placeholder="MM"
+                  name=""
+                  min="00"
+                  max="59"
+                  style="padding: 0;margin: 0;text-align: center;">
+                <select
+                  id="in6"
+                  class="form-control1"
                   style="padding: 0;margin: 0;text-align: center;background-color: #1e2629;border-color: #1e2629;box-shadow: none;border-bottom-color: orange;margin-left: 10px;outline: none;color:white;font-weight: bolder;max-width: 28px;">
-                  <option value="AM" style="">AM</option>
+                  <option value="AM">AM</option>
                   <option value="PM" selected="">PM</option>
                 </select>
               </div>
-              <button onclick="conca();" onmouseover="$(this).css('background-color','#4f994f')"
+              <button
+                onclick="conca();"
+                onmouseover="$(this).css('background-color','#4f994f')"
                 onmouseleave="$(this).css('background-color','#1c4e67')"
-                style="color: white;background-color:#1c4e67;outline: none;margin-top: 0px;padding: 0px;padding-left: 2px;padding-right:2px;max-width: 30px;
-                position: absolute;border:2px solid white"
-                class="form-control1" type="button">
+                style="color: white;background-color:#1c4e67;outline: none;margin-top: 0px;padding: 0px;padding-left: 2px;padding-right:2px;max-width: 30px;position: absolute;border:2px solid white"
+                class="form-control1"
+                type="button">
                 <span class="fa fa-check"></span>
               </button>
             </div>
@@ -386,15 +433,16 @@ require "head.php";
             $('#previ').attr("src", "images/close.jpg");
           }
         </script>
-        <button style="width: 100%;margin-left: 0;padding: 5px;background: #1c4e67 !important;border: none;border-radius: 5px;color: white;"
+        <button
+          style="width: 100%;margin-left: 0;padding: 5px;background: #1c4e67 !important;border: none;border-radius: 5px;color: white;"
           onclick="showupda()">Change
         </button>
-        <br><br><br>
+        <br /><br /><br />
       </form>
       <?php
       require "foot.php";
       ?>
     </div>
   </div>
-</div>
+  </div>
 </body>

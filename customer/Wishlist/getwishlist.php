@@ -6,10 +6,10 @@ if (isset($_REQUEST["name"])) {
   );
   if (strlen($_GET['name']) == 0) {
     $query = 'select users.first_name,wishlist.list_name,wishlist.wishlist_id,wishlist.date FROM wishlist
-      INNER JOIN wishlist_items ON wishlist.wishlist_id=wishlist_items.wishlist_id
-      inner join users on wishlist.user_id=users.user_id
-      WHERE privacy="public"
-      group by wishlist.wishlist_id';
+              INNER JOIN wishlist_items ON wishlist.wishlist_id=wishlist_items.wishlist_id
+              inner join users on wishlist.user_id=users.user_id
+              WHERE privacy="public"
+              group by wishlist.wishlist_id';
     $statement = $pdo->prepare($query);
     $statement->execute();
     if ($statement->rowCount() > 0) {
@@ -18,7 +18,7 @@ if (isset($_REQUEST["name"])) {
         $stmt_wish2 = $pdo->prepare($sql_wish2);
         $stmt_wish2->execute(array(':wish_id' => $row['wishlist_id']));
         $row_wish2 = $stmt_wish2->fetch(PDO::FETCH_ASSOC);
-        ?>
+?>
         <tr class="wltr" onclick="location.href='../Wishlist/wishlist_public.php?wishlist_id=<?= $row['wishlist_id'] ?>'">
           <?php
           if (strlen($row['first_name']) < 12) {
@@ -47,7 +47,7 @@ if (isset($_REQUEST["name"])) {
             <h4><?= $row['date'] ?></h4>
           </td>
         </tr>
-        <?php
+      <?php
       }
     } else {
       ?>
@@ -58,11 +58,11 @@ if (isset($_REQUEST["name"])) {
     }
   } else {
     $query = 'select users.first_name,wishlist.list_name,wishlist.wishlist_id,wishlist.date FROM wishlist
-      INNER JOIN wishlist_items ON wishlist.wishlist_id=wishlist_items.wishlist_id
-      inner join users on wishlist.user_id=users.user_id
-      WHERE privacy="public" AND (wishlist.list_name
-      LIKE :name OR users.email LIKE :name)
-      group by wishlist.wishlist_id';
+              INNER JOIN wishlist_items ON wishlist.wishlist_id=wishlist_items.wishlist_id
+              inner join users on wishlist.user_id=users.user_id
+              WHERE privacy="public" AND (wishlist.list_name
+              LIKE :name OR users.email LIKE :name)
+              group by wishlist.wishlist_id';
     $statement = $pdo->prepare($query);
     $statement->execute($data);
     if ($statement->rowCount() > 0) {
@@ -71,7 +71,7 @@ if (isset($_REQUEST["name"])) {
         $stmt_wish2 = $pdo->prepare($sql_wish2);
         $stmt_wish2->execute(array(':wish_id' => $row['wishlist_id']));
         $row_wish2 = $stmt_wish2->fetch(PDO::FETCH_ASSOC);
-        ?>
+      ?>
         <tr class="wltr" onclick="location.href='../Wishlist/wishlist_public.php?wishlist_id=<?= $row['wishlist_id'] ?>'">
           <?php
           if (strlen($row['first_name']) < 12) {
@@ -100,14 +100,14 @@ if (isset($_REQUEST["name"])) {
             <h4><?= $row['date'] ?></h4>
           </td>
         </tr>
-        <?php
+      <?php
       }
     } else {
       ?>
       <tr class="wltr">
         <td style="padding:10px" colspan="4">No Matches Found</td>
       </tr>
-      <?php
+<?php
     }
   }
 }

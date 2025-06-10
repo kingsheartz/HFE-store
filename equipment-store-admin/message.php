@@ -38,8 +38,7 @@ require "head.php";
         ':dt' => $ts
       );
       // Attempt insert query execution
-      $sql = "INSERT INTO chats (uname,rname, msg, dt)
-              VALUES (:uname,:rname, :msg, :dt)";
+      $sql = "INSERT INTO chats (uname,rname, msg, dt) VALUES (:uname,:rname, :msg, :dt)";
       $st = $pdo->prepare($sql);
       $st->execute($data);
       if ($st) {
@@ -405,10 +404,10 @@ require "head.php";
             $statement1 = $pdo->prepare($query1);
             $statement1->execute();
             $row1 = $statement1->fetch(PDO::FETCH_ASSOC);
-            ?>
+          ?>
             <div id="<?= $row['username'] ?>" class="connect" onclick="getfile('<?= $row['username'] ?>')">
-              <span class="conimg"><i id="<?= $row['username'] ?><?= $cn ?>" class="fa fa-user-circle-o"></i> <span
-                  class="uppernum3"><?= $row1['COUNT(*)'] ?></span></span>
+              <span class="conimg"><i id="<?= $row['username'] ?><?= $cn ?>" class="fa fa-user-circle-o"></i>
+                <span class="uppernum3"><?= $row1['COUNT(*)'] ?></span></span>
               <h6>
                 <?= $row['username'] ?>
               </h6>
@@ -486,34 +485,34 @@ require "head.php";
               $run = $pdo->query($query);
               $i = 0;
               $ct = 0;
-              while ($row = $run->fetch(PDO::FETCH_ASSOC)){
+              while ($row = $run->fetch(PDO::FETCH_ASSOC)) {
                 $date = explode(' ', $row['dt']);
                 $date[0] = date("d-m-Y", strtotime($date[0]));
                 if ($date[0] != $ct) {
                   $ct = date("d-m-Y", strtotime($date[0]));
-                  ?>
+              ?>
                   <div class="clear-fix"></div>
                   <br><br>
                   <div class="date"><?= $ct ?></div>
                   <br><br>
                   <div class="clear-fix"></div>
-                  <?php
+                <?php
                 }
                 if ($i == 0) {
                   $i = 5;
                   $first = $row;
-                  ?>
+                ?>
                   <div id="triangle1" class="triangle1"></div>
                   <div id="message1" class="message1">
                     <div style="color: white;float: right; padding: 0;width: 100%;">
-                        <pre><?php echo trim($row['msg']); ?></pre>
+                      <pre><?php echo trim($row['msg']); ?></pre>
                     </div>
                     <div class="spdat">
                       <i style="font-size:16px;margin-right:4px" class="fa fa-clock"></i><?php echo $date[1]; ?>
                     </div>
                   </div>
                   <br /><br />
-                <?php
+                  <?php
                 } else {
                   if ($row['uname'] != $first['uname']) {
                   ?>
@@ -529,7 +528,7 @@ require "head.php";
                     <br /><br />
                   <?php
                   } else {
-                    ?>
+                  ?>
                     <div id="triangle1" class="triangle1"></div>
                     <div id="message1" class="message1">
                       <div style="color: white;float: right;padding: 0;width: 100%;">
@@ -540,7 +539,7 @@ require "head.php";
                       </div>
                     </div>
                     <br /><br />
-                  <?php
+              <?php
                   }
                 }
               }
@@ -591,10 +590,17 @@ require "head.php";
               }
             </script>
             <footer>
-              <textarea class="col-sm-12" id="textarea" style="white-space: pre-line" wrap="hard" name="msg"
-                onChange={handleChange} onkeyup="change()"></textarea>
+              <textarea
+                class="col-sm-12"
+                id="textarea"
+                style="white-space: pre-line"
+                wrap="hard"
+                name="msg"
+                onChange={handleChange}
+                onkeyup="change()"></textarea>
               <button id="myBtn" disabled name="submit" type="submit">
-                <i class="fa fa-arrow-right"></i></button>
+                <i class="fa fa-arrow-right"></i>
+              </button>
             </footer>
           </form>
         </main>

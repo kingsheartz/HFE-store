@@ -115,7 +115,7 @@ require "head.php";
         border: 1px solid #d2d2d2;
         margin-bottom: 5px;
         padding: 10px;
-        -webkit-box-shadow: inset 0 0 1px #000;
+        --webkit-box-shadow: inset 0 0 1px #000;
       }
 
       .imgdis::-webkit-scrollbar {
@@ -406,10 +406,10 @@ require "head.php";
     $id = $_SESSION['id'];
     require "pdo.php";
     $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id
-                where product_description.product_description_id NOT IN
-                (SELECT product_description_id FROM product_details where store_id=$id )
-                GROUP BY product_description.product_id
-                ORDER BY product_description.product_description_id DESC LIMIT 8";
+              where product_description.product_description_id NOT IN
+              (SELECT product_description_id FROM product_details where store_id=$id )
+              GROUP BY product_description.product_id
+              ORDER BY product_description.product_description_id DESC LIMIT 8";
     $st = $pdo->query($query);
     $ct = 'ab';
     ?>
@@ -426,28 +426,26 @@ require "head.php";
         while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
         ?>
           <div class="products">
-            <div style="display: flex;
-justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
-                align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+            <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+              <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
             </div>
             <div class="middle">
-              <form id="C<?= $row['product_description_id'] ?>" method="post" action="addsub.php"
+              <form
+                id="C<?= $row['product_description_id'] ?>"
+                method="post"
+                action="addsub.php"
                 name="<?= $row['product_description_id'] ?>">
                 <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
                 <input type="hidden" name="item_id" value="<?= $row['product_id'] ?>">
-                <input type="hidden" name="im_url"
-                  value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                <input type="hidden" name="im_url" value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                 <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
                 <input type="hidden" name="description" value="<?= $row['description'] ?>">
                 <input type="hidden" name="price" value="<?= $row['price'] ?>">
-                <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation"><i
-                    class="fab fa-buffer" style="font-size: 24px;padding-right: 12px"
-                    aria-hidden="true"></i>Add</button>
+                <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation">
+                  <i class="fab fa-buffer" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Add</button>
               </form>
             </div>
-            <div class="deupd"><?= $row['product_name'] ?>
-            <br>
-            </div>
+            <div class="deupd"><?= $row['product_name'] ?><br /></div>
           </div>
         <?php
         }
@@ -461,10 +459,8 @@ justify-content: center;height: 200px;width:100%;background: white;text-align: c
       $ct = $row11['category_id'];
     ?>
       <?php
-      $query = "SELECT * FROM product
-                JOIN product_description ON product.product_id=product_description.product_id
-                where product.category_id=$ct and
-                product_description.product_description_id NOT IN
+      $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id
+                WHERE product.category_id=$ct AND product_description.product_description_id NOT IN
                 (SELECT product_description_id FROM product_details where store_id=$id )
                 GROUP BY product_description.product_id";
       $st = $pdo->query($query);
@@ -488,34 +484,34 @@ justify-content: center;height: 200px;width:100%;background: white;text-align: c
             while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
             ?>
               <div class="products">
-                <div style="display: flex;justify-content: center;height: 200px;width:100%;
-                    background: white;text-align: center;">
-                    <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                  <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                 </div>
                 <div class="middle">
-                  <form id="<?= $row['product_description_id'] ?>" method="post" action="addsub.php"
+                  <form
+                    id="<?= $row['product_description_id'] ?>"
+                    method="post"
+                    action="addsub.php"
                     name="<?= $row['product_description_id'] ?>">
                     <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
                     <input type="hidden" name="item_id" value="<?= $row['product_id'] ?>">
-                    <input type="hidden" name="im_url"
-                      value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                    <input type="hidden" name="im_url" value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                     <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
                     <input type="hidden" name="description" value="<?= $row['description'] ?>">
                     <input type="hidden" name="price" value="<?= $row['price'] ?>">
                     <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation">
-                      <i class="fab fa-buffer" style="font-size: 24px;padding-right: 12px"
-                        aria-hidden="true"></i>Add</button>
+                      <i class="fab fa-buffer" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Add
+                    </button>
                   </form>
                 </div>
-                <div class="deupd"><?= $row['product_name'] ?><br>
-                </div>
+                <div class="deupd"><?= $row['product_name'] ?><br /></div>
               </div>
-        <?php
+            <?php
             }
             ?>
           </div>
         </div>
-        <?php
+    <?php
       }
     }
     ?>

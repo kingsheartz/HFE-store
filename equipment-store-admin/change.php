@@ -942,9 +942,7 @@ require "head.php";
           ':quantity' => $quantity,
           ':pref' => $pref
         );
-        $query1 = "UPDATE product_details SET
-price=:price,
-quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
+        $query1 = "UPDATE product_details SET price=:price,quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
         $statement = $pdo->prepare($query1);
         $statement->execute($data);
       }
@@ -1035,8 +1033,11 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
     </script>
     <?php
     if (
-      isset($_POST['pr_id']) || isset($_POST['im_url']) || isset($_POST['name']) ||
-      isset($_POST['price']) || isset($_POST['description'])
+      isset($_POST['pr_id']) ||
+      isset($_POST['im_url']) ||
+      isset($_POST['name']) ||
+      isset($_POST['price']) ||
+      isset($_POST['description'])
     ) {
       require 'pdo.php';
       $pr = $_POST['pr_id'];
@@ -1061,7 +1062,8 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
               if ($tr == 0) {
               ?>
                 <div class="alert alert-danger">item not yet added</div>
-                <button style="background: red; padding: 10px; color: white; border-radius: 5px; border: none; font-weight: bolder;"
+                <button
+                  style="background: red; padding: 10px; color: white; border-radius: 5px; border: none; font-weight: bolder;"
                   onclick="location.href='additem.php'">Go To Add Product
                 </button>
                 <?php
@@ -1070,27 +1072,31 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                 ?>
                   <div class="col-sm-12">
                     <div class="imgdis">
-                      <form id="<?= $row['product_description_id'] ?>" method="post"
-                        name="<?= $row['product_description_id'] ?>">
+                      <form id="<?= $row['product_description_id'] ?>" method="post" name="<?= $row['product_description_id'] ?>">
                         <div class="prim col-sm-5">
                           <div class="product" style="position: absolute; left: 10px; top: 55px; width: 100px; height: 80px;">
-                            <img style=" display: inline-block;text-align: center; padding: 14px;position: relative;
-                              height: 80px;max-width: 100px;"
+                            <img
+                              style=" display: inline-block;text-align: center; padding: 14px;position: relative;height: 80px;max-width: 100px;"
                               onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
                               src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           </div>
                           <div style="width: 100%;">
-                            <img id="imr<?= $row['product_description_id'] ?>"
-                              src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                            <img id="imr<?= $row['product_description_id'] ?>" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           </div>
-                          <div class="imscr" id="imsrc<?= $row['product_description_id'] ?>"
-                            onscroll="movefr('imsrc<?= $row['product_description_id'] ?>')">
-                            <button type="button" name="lfarr" class="left-arrow"
+                          <div class="imscr" id="imsrc<?= $row['product_description_id'] ?>" onscroll="movefr('imsrc<?= $row['product_description_id'] ?>')">
+                            <button
+                              type="button"
+                              name="lfarr"
+                              class="left-arrow"
                               onclick="moveleft('imsrc<?= $row['product_description_id'] ?>')">
                               <i class="fas fa-chevron-right"></i>
                             </button>
-                            <button type="button" name="rfarr" class="right-arrow"
-                              onclick="moveright('imsrc<?= $row['product_description_id'] ?>')" style="display: none;">
+                            <button
+                              type="button"
+                              name="rfarr"
+                              class="right-arrow"
+                              onclick="moveright('imsrc<?= $row['product_description_id'] ?>')"
+                              style="display: none;">
                               <i class="fas fa-chevron-left"></i>
                             </button>
                             <?php
@@ -1098,7 +1104,9 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                             for ($i = 1; $i <= $t; $i++) {
                             ?>
                               <div class="product">
-                                <img style="display: inline-block; text-align: center; padding: 14px; position: relative; height: 80px; max-width: 100px;" onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
+                                <img
+                                  style="display: inline-block; text-align: center; padding: 14px; position: relative; height: 80px; max-width: 100px;"
+                                  onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
                                   src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg">
                               </div>
                             <?php
@@ -1148,15 +1156,23 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                           <div class="col-sm-12">
                             <div class="form-group">
                               <label class="floating-label">Price</label>
-                              <input type="number" name="price"
+                              <input
+                                type="number"
+                                name="price"
                                 onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                                value="<?= $row['price'] ?>" required="" class="form-control">
+                                value="<?= $row['price'] ?>"
+                                required=""
+                                class="form-control">
                             </div>
                             <div class="form-group">
                               <label class="floating-label">Quantity</label>
-                              <input type="number" name="quantity"
+                              <input
+                                type="number"
+                                name="quantity"
                                 onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                                required="" value="<?= $row['quantity'] ?>" class="form-control">
+                                required=""
+                                value="<?= $row['quantity'] ?>"
+                                class="form-control">
                             </div>
                             <div class="form-group">
                               <label class="floating-label">Order Preference</label>
@@ -1185,17 +1201,19 @@ quantity=:quantity,order_preference=:pref WHERE product_details_id=$it_id";
                             </div>
                           </div>
                         </div>
-                        <div class="col-sm-12 subb" style="">
+                        <div class="col-sm-12 subb">
                           <input type="hidden" name="check_id" value="<?= $row['product_details_id'] ?>">
-                          <button name="update_data" style="float: right; background: green; margin-left: 12px; margin-right: 12px;"
+                          <button
+                            name="update_data"
+                            style="float: right; background: green; margin-left: 12px; margin-right: 12px;"
                             onclick="showupda(<?= $row['product_description_id'] ?>,1)">
-                            <i class="fas fa-pencil-square"
-                              style="margin-right: 20px; float: left; font-size: 24px"></i>Update
+                            <i class="fas fa-pencil-square" style="margin-right: 20px; float: left; font-size: 24px"></i>Update
                           </button>
-                          <button name="remove_data" style="float: right; background: #fd0018; margin-left: 12px; margin-right: 12px;"
+                          <button
+                            name="remove_data"
+                            style="float: right; background: #fd0018; margin-left: 12px; margin-right: 12px;"
                             onclick="showupda(<?= $row['product_description_id'] ?>,0)">
-                            <i class="fas fa-trash"
-                            style="margin-right: 20px; float: left; font-size: 24px"></i>Remove
+                            <i class="fas fa-trash" style="margin-right: 20px; float: left; font-size: 24px"></i>Remove
                           </button>
                         </div>
                       </form>

@@ -243,12 +243,14 @@ if (isset($_POST['newData'])) {
 </script>
 <div class="cont">
   <button id="prev"><i class="fas fa-chevron-left"></i><i class="fas fa-chevron-left"></i></button>
-  <div id="show_calendar">&nbsp;</div><button id="nextbt"><i class="fas fa-chevron-right"></i><i
-      class="fas fa-chevron-right"></i></button>
+  <div id="show_calendar">&nbsp;</div>
+  <button id="nextbt">
+    <i class="fas fa-chevron-right"></i>
+    <i class="fas fa-chevron-right"></i>
+  </button>
   <div id="current_month">&nbsp;</div>
 </div>
 <div id="event"></div>
-</div>
 <script>
   document.addEventListener("load", $.getJSON("event.json", function(data) {
     var flag = 0;
@@ -362,7 +364,12 @@ if (isset($_POST['newData'])) {
     });
   }
 </script>
-<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+<div
+  class="modal fade"
+  id="exampleModal"
+  tabindex="-1"
+  role="dialog"
+  aria-labelledby="exampleModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">

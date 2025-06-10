@@ -67,8 +67,10 @@ require "head.php";
               </div>
             </div>
             <div class="new-text">
-              <a href="categories.php" class="text-under"> <span>Details</span><span><i
-                    class="fa fa-arrow-right"></i></span></a>
+              <a href="categories.php" class="text-under">
+                <span>Details</span>
+                <span><i class="fa fa-arrow-right"></i></span>
+              </a>
             </div>
           </div>
         </div>
@@ -84,8 +86,10 @@ require "head.php";
               </div>
             </div>
             <div class="new-text">
-              <a href="products.php" class="text-under"> <span>Details</span><span><i
-                    class="fa fa-arrow-right"></i></span></a>
+              <a href="products.php" class="text-under">
+                <span>Details</span>
+                <span><i class="fa fa-arrow-right"></i></span>
+              </a>
             </div>
           </div>
         </div>
@@ -101,8 +105,10 @@ require "head.php";
               </div>
             </div>
             <div class="new-text">
-              <a href="new_item.php" class="text-under"><span>Details</span><span><i
-                    class="fa fa-arrow-right"></i></span></a>
+              <a href="new_item.php" class="text-under">
+                <span>Details</span>
+                <span><i class="fa fa-arrow-right"></i></span>
+              </a>
             </div>
           </div>
         </div>
@@ -139,7 +145,7 @@ require "head.php";
           </h4>
           <div id="piechart" style="width: 100%;overflow-x: hidden;justify-content:center;display:flex;"></div>
         </div>
-        <br><br><br>
+        <br /><br /><br />
         <div class="row" style="margin-bottom: 70px;">
           <div class="panel-group col-sm-4">
             <div class="panel panel-default">
@@ -252,7 +258,8 @@ require "head.php";
               <div id="collapse2" class="panel-collapse collapse in">
                 <ul class="list-group">
                   <?php
-                  $stmt = $pdo->query("select * from product
+                  $stmt = $pdo->query(
+                    "SELECT * from product
                     join product_description on product_description.product_id=product.product_id
                     where product.added_date in (select max(added_date) as date from product) LIMIT 2"
                   );

@@ -70,7 +70,7 @@ require "../Main/header.php";
     z-index: 1;
     height: 100px;
     font-size: 24px;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #f1f1f1), color-stop(1, #fff)) !important;
+    background: --webkit-gradient(linear, left bottom, left top, color-stop(0, #f1f1f1), color-stop(1, #fff)) !important;
     color: rgb(114, 114, 114);
     border: none;
     border-bottom-right-radius: 4px;
@@ -87,7 +87,7 @@ require "../Main/header.php";
     z-index: 1;
     height: 100px;
     font-size: 24px;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #f1f1f1), color-stop(1, #fff)) !important;
+    background: --webkit-gradient(linear, left bottom, left top, color-stop(0, #f1f1f1), color-stop(1, #fff)) !important;
     color: rgb(114, 114, 114);
     border: none;
     border-bottom-right-radius: 6px;
@@ -119,17 +119,23 @@ require "../Main/header.php";
     margin-right: 16px;
     padding: 2px;
     width: 100px;
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #3197ff), color-stop(1, #2196f3)) !important;
+    background: --webkit-gradient(linear, left bottom, left top, color-stop(0, #3197ff), color-stop(1, #2196f3)) !important;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     border: none;
     color: white;
     border-radius: 5px;
   }
 </style>
+
 <body>
   <div class="table1">
-    <h4 style="margin-top: 10px;border-bottom:  1px solid#E3E3E3;padding:10px;"><i class="fas fa-boxes"
-        style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Latest Products</h4>
+    <h4 style="margin-top: 10px;border-bottom:  1px solid#E3E3E3;padding:10px;">
+      <i
+        class="fas fa-boxes"
+        style="font-size: 24px;padding-right: 12px"
+        aria-hidden="true">
+      </i>Latest Products
+    </h4>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <br><br>
   </div>
@@ -166,45 +172,53 @@ require "../Main/header.php";
   </script>
   <?php
   if (isset($_GET['topnew'])) {
-    ?>
+  ?>
     <h3 style="text-transform:capitalize;font-weight:bold;text-align:center">Top New</h3>
-    <?php
+  <?php
   }
   require "../Common/pdo.php";
   $query11 = "SELECT * from  category";
   $st11 = $pdo->query($query11);
   while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
     $ct = $row11['category_id'];
-    ?>
+  ?>
     <?php
     $query = "SELECT * FROM item
-      JOIN item_description ON item.item_id=item_description.item_id
-      where item.category_id=$ct and (item.added_date) in (
-        select max(added_date) as date from item
-      ) GROUP BY item_description.item_id
-      ORDER BY CAST(item.item_id AS UNSIGNED) DESC";
+							JOIN item_description ON item.item_id=item_description.item_id
+							where item.category_id=$ct and (item.added_date) in (
+								select max(added_date) as date from item
+							) GROUP BY item_description.item_id
+							ORDER BY CAST(item.item_id AS UNSIGNED) DESC";
     $st = $pdo->query($query);
     $product = $st->rowCount();
     if ($product == 0) {
       continue;
     } else {
-      ?>
-      <div class="difcat ">
+    ?>
+      <div class="difcat">
         <span class="difhed"><?= $row11['category_name'] ?>
-          <button onclick="location.href='../Product/viewsubcat.php?category_id=<?= $ct ?>'">View All</button></span>
+          <button onclick="location.href='../Product/viewsubcat.php?category_id=<?= $ct ?>'">
+            View All
+          </button>
+        </span>
         <div class="difrow" id="difrow<?= $ct ?>" onscroll="scrolllisten('difrow<?= $ct ?>');">
-          <button class="left-arrow-btn-all shadow_all_none" onclick="moveleft('difrow<?= $ct ?>')"
-            style="display: none;"><i class="fas fa-chevron-left"></i></button>
-          <button class="right-arrow-btn-all shadow_all_none" onclick="moveright('difrow<?= $ct ?>')"><i
-              class="fas fa-chevron-right"></i></button>
+          <button class="left-arrow-btn-all shadow_all_none" onclick="moveleft('difrow<?= $ct ?>')" style="display: none;">
+            <i class="fas fa-chevron-left"></i>
+          </button>
+          <button class="right-arrow-btn-all shadow_all_none" onclick="moveright('difrow<?= $ct ?>')">
+            <i class="fas fa-chevron-right"></i>
+          </button>
           <?php
           while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-            ?>
+          ?>
             <div class="products-all-in-one">
-              <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;"><img class="image"
+              <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                <img
+                  class="image"
                   align="middle"
                   src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"
-                  onclick="location.href='../Product/single.php?id=<?= $row['item_description_id'] ?>'"></div>
+                  onclick="location.href='../Product/single.php?id=<?= $row['item_description_id'] ?>'">
+              </div>
               <?php
               if (strlen($row['item_name']) >= 25) {
                 $item = $row['item_name'];
@@ -213,15 +227,14 @@ require "../Main/header.php";
                 $item_name = $row['item_name'];
               }
               ?>
-              <div class="deupd"><?= $item_name ?><br>
-              </div>
+              <div class="deupd"><?= $item_name ?><br /></div>
             </div>
-            <?php
+          <?php
           }
           ?>
         </div>
       </div>
-      <?php
+  <?php
     }
   }
   ?>
@@ -241,7 +254,7 @@ require "../Main/header.php";
       }
     }
   </script>
-</div>
-<?php
-require "../Main/footer.php";
-?>
+  </div>
+  <?php
+  require "../Main/footer.php";
+  ?>
