@@ -666,7 +666,7 @@ pre code {
 }
 
 @media (min-width: 576px) {
- 
+
   .order-sm-first {
     -ms-flex-order: -1;
     order: -1;
@@ -766,8 +766,8 @@ pre code {
 }
 
 @media (min-width: 768px) {
-  
-  
+
+
   .order-md-first {
     -ms-flex-order: -1;
     order: -1;
@@ -10237,7 +10237,7 @@ body.sidebar-collapse:not(.sidebar-mini-md):not(.sidebar-mini) .main-header::bef
 }
 
 @media (min-width: 768px) {
-  
+
   body:not(.sidebar-mini-md) .main-footer,
   body:not(.sidebar-mini-md) .main-header {
     transition: margin-left 0.3s ease-in-out;
@@ -32168,17 +32168,17 @@ a.text-muted:hover {
 }
 }
 @media(max-width: 567px){
-  #popup2{ 
+  #popup2{
     width: 100%;
   }
 }
 @media(max-width: 767px) and (min-width: 568){
-  #popup2{ 
+  #popup2{
     width: 80%;
   }
 }
 @media(min-width: 768px){
-  #popup2{ 
+  #popup2{
     width: 30%;
   }
 }
@@ -32235,11 +32235,10 @@ body.modal-close{
 .navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
   color:white !important;
   background-color: #222 !important;
-  border-bottom:4px solid #fe9126;
   border-bottom-right-radius: 5px;
   border-bottom-left-radius: 5px;
   padding-bottom: 10px;
- }  
+ }
 
 .dropdown-menu li>span:hover{
   color: white;
@@ -32257,37 +32256,16 @@ body.modal-close{
   color: white !important;
   border-bottom-left-radius: 3px ;
   border-top-left-radius: 3px;
- } 
+ }
 @media(min-width: 767px) and (max-width:1081px) {
 .navbar-center{
   padding-top: 5px !important;
 }
-#homeactive a{
-  padding-left: 5px !important;
-  padding-right: 5px !important;
-}
-#catactive>a{
-  padding-left: 5px !important;
-  padding-right: 5px !important;
-}
-#aboutactive a{
-  padding-left: 5px !important;
-  padding-right: 5px !important;
-}
-#contactactive a{
-  padding-left: 5px !important;
-  padding-right: 5px !important;
-}
+
 
 .navbar{
   margin-bottom: -5px !important;
 }
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
-  /*border-bottom:4px solid #fe9126;*/
-  border-bottom:4px solid #fe9126;
-  border-top:4px solid #222;
-  margin-top: -4px;
- } 
 }
 
 @media(max-width: 767px){
@@ -32295,15 +32273,7 @@ body.modal-close{
   background-color: #02171e ;
   border-top: 0px !important;
 }
-.navbar-inverse .navbar-nav>.active>a, .navbar-inverse .navbar-nav>.active>a:focus, .navbar-inverse .navbar-nav>.active>a:hover{
-  color:white !important;
-  background-color: #0c99cc !important;
-  border-bottom:0px;
-  border-bottom-right-radius: 0px;
-  border-bottom-left-radius: 0px;
-  border-left: 5px white solid;
-  border-right: 5px white solid;
- }
+
  .navbar-inverse .navbar-nav li:hover{
   background-color: #000 !important;
   border-top-left-radius: 5px;
@@ -32320,7 +32290,7 @@ body.modal-close{
   color: #0c99cc;
 }
 #catactive i{
-  color: #fff;  
+  color: #fff;
 }
 #catactive i:hover{
   color: #0c99cc;
@@ -32341,7 +32311,7 @@ body.modal-close{
   color: #fff;
 }
 .glyphicon-user:hover{
-  color:#0c99cc;  
+  color:#0c99cc;
 }
 }
 .active i{
@@ -32485,7 +32455,7 @@ body.modal-close{
   color: white !important;
   border-bottom-left-radius: 3px ;
   border-top-left-radius: 3px;
- } 
+ }
 
 .side_drop_li_main{
   background-color: #02171e ;
@@ -32536,7 +32506,7 @@ body.modal-close{
 }
 
 .dropdown-btn {
-  
+
   text-decoration: none;
   font-size: 15px;
   display: block;
