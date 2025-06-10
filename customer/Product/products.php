@@ -158,7 +158,7 @@ if (isset($_GET['item'])) {
         url: "../Common/functions.php", //passing page info
         data: {
           "cart": 1,
-          "item_description_id": item_description_id,
+          "product_description_id": item_description_id,
           "store_id": id
         }, //form data
         type: "post", //post data

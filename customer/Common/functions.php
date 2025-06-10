@@ -2062,22 +2062,22 @@ if (isset($_POST['location_access'])) {
 //-----------------------------------------------------------------------------------------------------------
 //price
 if (isset($_POST['price'])) {
-  if (isset($_POST['price'], $_POST['item_description_id'], $_POST['store_id'])) {
+  if (isset($_POST['price'], $_POST['product_description_id'], $_POST['store_id'])) {
     $sql = "select * from product_details
-            inner join item_description on item_description.item_description_id=product_details.item_description_id
+            inner join product_description on product_description.product_description_id=product_details.product_description_id
             inner join store on store.store_id=product_details.store_id
-            where product_details.item_description_id=:item_description_id and product_details.store_id=:store_id";
+            where product_details.product_description_id=:product_description_id and product_details.store_id=:store_id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-      ':item_description_id' => $_POST['item_description_id'],
+      ':product_description_id' => $_POST['product_description_id'],
       'store_id' => $_POST['store_id']
     ));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $response["price"] = $row['price'];
-    $sql1 = "select price from item inner join item_description on item_description.item_id=item.item_id  where item_description_id=:item_description_id ";
+    $sql1 = "select price from product inner join product_description on product_description.product_id=product.product_id  where product_description_id=:product_description_id ";
     $stmt1 = $pdo->prepare($sql1);
     $stmt1->execute(array(
-      ':item_description_id' => $_POST['item_description_id']
+      ':product_description_id' => $_POST['product_description_id']
     ));
     $row1 = $stmt1->fetch(PDO::FETCH_ASSOC);
     $mrp = $row1['price'];
@@ -2096,34 +2096,34 @@ if (isset($_POST['price'])) {
 //-----------------------------------------------------------------------------------------------------------
 //CART ENTRY && UPDATE
 if (isset($_POST['cart'])) {
-  if (isset($_POST['cart'], $_POST['item_description_id'], $_POST['store_id'], $_SESSION['name'])) {
+  if (isset($_POST['cart'], $_POST['product_description_id'], $_POST['store_id'], $_SESSION['name'])) {
     $id = $_SESSION['id'];
     //checking if is it available
     $sql = "select * from product_details
-            inner join item_description on item_description.item_description_id=product_details.item_description_id
-            where item_description.item_description_id=:item_description_id and store_id=:store_id";
+            inner join product_description on product_description.product_description_id=product_details.product_description_id
+            where product_description.product_description_id=:product_description_id and store_id=:store_id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-      ':item_description_id' => $_POST['item_description_id'],
+      ':product_description_id' => $_POST['product_description_id'],
       'store_id' => $_POST['store_id']
     ));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $qnty = $row['quantity'];
     if ($qnty != 0) {
-      $sql3 = "select * from cart where item_description_id=:item_description_id and store_id=:store_id and customer_id=:customer_id";
+      $sql3 = "select * from cart where product_description_id=:product_description_id and store_id=:store_id and customer_id=:customer_id";
       $stmt3 = $pdo->prepare($sql3);
       $stmt3->execute(array(
-        ':item_description_id' => $_POST['item_description_id'],
+        ':product_description_id' => $_POST['product_description_id'],
         'store_id' => $_POST['store_id'],
         ':customer_id' => $id
       ));
       $row3 = $stmt3->fetch(PDO::FETCH_ASSOC);
       $sqlp = "select price from product_details
-              inner join item_description on item_description.item_description_id=product_details.item_description_id
-              where item_description.item_description_id=:item_description_id and store_id=:store_id";
+              inner join product_description on product_description.product_description_id=product_details.product_description_id
+              where product_description.product_description_id=:product_description_id and store_id=:store_id";
       $stmtp = $pdo->prepare($sqlp);
       $stmtp->execute(array(
-        ':item_description_id' => $_POST['item_description_id'],
+        ':product_description_id' => $_POST['product_description_id'],
         'store_id' => $_POST['store_id']
       ));
       $rowp = $stmtp->fetch(PDO::FETCH_ASSOC);
@@ -2136,40 +2136,40 @@ if (isset($_POST['cart'])) {
       $date = date("Y\-m\-d");
       $time = date("H:i:s");
       if ($row3) {
-        $sql2 = "update cart set quantity=quantity+1,total_amt=total_amt+:price,date_of_order=:date,time_of_order=:time where item_description_id=:item_description_id and store_id=:store_id and customer_id=:customer_id";
+        $sql2 = "update cart set quantity=quantity+1,total_amt=total_amt+:price,date_of_order=:date,time_of_order=:time where product_description_id=:product_description_id and store_id=:store_id and customer_id=:customer_id";
         $stmt2 = $pdo->prepare($sql2);
         $stmt2->execute(array(
           ':customer_id' => $id,
           ':price' => $price,
           ':date' => $date,
           ':time' => $time,
-          ':item_description_id' => $_POST['item_description_id'],
+          ':product_description_id' => $_POST['product_description_id'],
           'store_id' => $_POST['store_id']
         ));
       } else {
-        $sql1 = "insert into cart (customer_id,item_description_id,store_id,quantity,date_of_order,time_of_order,total_amt,order_type) values (:customer_id,:item_description_id,:store_id,quantity+1,:date,:time,:total,'booking')";
+        $sql1 = "insert into cart (customer_id,product_description_id,store_id,quantity,date_of_order,time_of_order,total_amt,order_type) values (:customer_id,:product_description_id,:store_id,quantity+1,:date,:time,:total,'booking')";
         $stmt1 = $pdo->prepare($sql1);
         $stmt1->execute(array(
           ':customer_id' => $id,
           ':total' => $price,
           ':date' => $date,
           ':time' => $time,
-          ':item_description_id' => $_POST['item_description_id'],
+          ':product_description_id' => $_POST['product_description_id'],
           'store_id' => $_POST['store_id']
         ));
       }
-      $sql2 = "update product_details set quantity=quantity-1 where item_description_id=:item_description_id and store_id=:store_id";
+      $sql2 = "update product_details set quantity=quantity-1 where product_description_id=:product_description_id and store_id=:store_id";
       $stmt2 = $pdo->prepare($sql2);
       $stmt2->execute(array(
-        ':item_description_id' => $_POST['item_description_id'],
+        ':product_description_id' => $_POST['product_description_id'],
         'store_id' => $_POST['store_id']
       ));
       $response['status'] = "success";
     } else {
-      $sql2 = "update product_details set availability='no' where item_description_id=:item_description_id and store_id=:store_id";
+      $sql2 = "update product_details set availability='no' where product_description_id=:product_description_id and store_id=:store_id";
       $stmt2 = $pdo->prepare($sql2);
       $stmt2->execute(array(
-        ':item_description_id' => $_POST['item_description_id'],
+        ':product_description_id' => $_POST['product_description_id'],
         'store_id' => $_POST['store_id']
       ));
       $response['status'] = "error1";
@@ -4802,33 +4802,35 @@ function wishlist_item_count($wish_id)
 }
 //-----------------WISHLIST COUNT ITEM-------------------------------------------------------------------------------------
 //-----------------BUY NOW ITEM------------------------------------------------------------------------------------------
-if (isset($_POST['buynow_item'])) {
+if (isset($_POST['buynow_product'])) {
   if (isset($_SESSION['id'])) {
+		$id = $_SESSION['id'];
     //checking if is it available
     $sql = "select * from product_details
-            inner join item_description on item_description.item_description_id=product_details.item_description_id
-            where item_description.item_description_id=:item_description_id and store_id=:store_id";
+            inner join product_description on product_description.product_description_id=product_details.product_description_id
+            where product_description.product_description_id=:product_description_id and store_id=:store_id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-      ':item_description_id' => $_POST['item_description_id'],
+      ':product_description_id' => $_POST['product_description_id'],
       ':store_id' => $_POST['store_id']
     ));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $qnty = $row['quantity'];
     if ($qnty != 0) {
-      $sql = "select customer_id from customers where customer_id=" . $_SESSION['id'];
+      $sql = "select customer_id from customers where customer_id=" . $id;
       $stmt = $pdo->query($sql);
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       if ($row) {
         $response['status'] = "success";
+				$_SESSION['id'] = $id;
       } else {
         $response['status'] = "error2";
       }
     } else {
-      $sql2 = "update product_details set availability='no' where item_description_id=:item_description_id and store_id=:store_id";
+      $sql2 = "update product_details set availability='no' where product_description_id=:product_description_id and store_id=:store_id";
       $stmt2 = $pdo->prepare($sql2);
       $stmt2->execute(array(
-        ':item_description_id' => $_POST['item_description_id'],
+        ':product_description_id' => $_POST['product_description_id'],
         ':store_id' => $_POST['store_id']
       ));
       $response['status'] = "error";
