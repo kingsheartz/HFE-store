@@ -1982,8 +1982,7 @@ function randomGen($min, $max, $quantity)
                                 onfocus="dis_add();"
                                 onblur="dis_add()"
                                 id="reviewinput"
-                                placeholder="">
-                              </textarea>
+                                placeholder=""></textarea>
                               <span
                                 onclick="dis_add()"
                                 id="dis_add"

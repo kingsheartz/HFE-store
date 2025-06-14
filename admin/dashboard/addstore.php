@@ -465,8 +465,7 @@ if (!empty($_SESSION['_contact_form_success'])) {
                     class="form-control"
                     placeholder="Address"
                     style="border-color:#66afe9"
-                    required="">
-                  </textarea>
+                    required=""></textarea>
                   <i class="fa fa-address-card " style="color: #777"></i>
                 </div>
               </div>

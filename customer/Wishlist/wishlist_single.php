@@ -471,8 +471,7 @@ $rowcount = $row_single_div['checksingle'];
                     id="wishlist_description_input"
                     style="width: 100%;border-radius: 5px;outline-color: #e59700"
                     placeholder="Describe your wishlist"
-                    readonly><?= $update_setting_row['wishlist_description'] ?>
-                  </textarea>
+                    readonly><?= $update_setting_row['wishlist_description'] ?></textarea>
                   <span
                     onclick="dis_add()"
                     id="dis_add"

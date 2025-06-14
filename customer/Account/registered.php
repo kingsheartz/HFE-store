@@ -517,9 +517,10 @@ require "../Main/header.php";
                   <textarea
                     rows="4"
                     oninput="$(this).removeClass('invalid')"
-                    title="Minimal character count is 10" required="" id="address"
-                    class="validate">
-                  </textarea>
+                    title="Minimal character count is 10"
+                    required=""
+                    id="address"
+                    class="validate"></textarea>
                   <label class="form-label" for="address">Address</label>
                   <span class="glyphicon glyphicon-home glyphicon-sm" style="position: absolute;right: 0;top: 0;padding: 4px;"></span>
                 </div>
@@ -776,8 +777,7 @@ require "../Main/header.php";
                       id="shipping_address_1"
                       name="shipping_address_1"
                       class="input-text validate"
-                      required="">
-                    </textarea>
+                      required=""></textarea>
                   </p>
                   <p
                     id="shipping_postcode_field"
