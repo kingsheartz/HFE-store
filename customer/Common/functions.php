@@ -3808,7 +3808,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p style="margin-bottom:13px;margin-top:20px"> <a href="" style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#15c;text-decoration:none!important;word-spacing:0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; '. $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
+                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Total: &#8377; ' . $store_array[$l]['product_total_amt'][$m] . '</p>';
@@ -4325,7 +4325,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                       <p
                                         style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                       >
-                                        Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; '. $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
+                                        Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
                                       </p>
                                       <p
                                         style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
@@ -4807,7 +4807,7 @@ function wishlist_item_count($wish_id)
 //-----------------BUY NOW ITEM------------------------------------------------------------------------------------------
 if (isset($_POST['buynow_product'])) {
   if (isset($_SESSION['id'])) {
-		$id = $_SESSION['id'];
+    $id = $_SESSION['id'];
     //checking if is it available
     $sql = "select * from product_details
             inner join product_description on product_description.product_description_id=product_details.product_description_id
@@ -4825,7 +4825,7 @@ if (isset($_POST['buynow_product'])) {
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       if ($row) {
         $response['status'] = "success";
-				$_SESSION['id'] = $id;
+        $_SESSION['id'] = $id;
       } else {
         $response['status'] = "error2";
       }
@@ -5330,7 +5330,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p style="margin-bottom:13px;margin-top:20px"> <a href="" style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#15c;text-decoration:none!important;word-spacing:0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; '. $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
+                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Total: &#8377; ' . $store_array[$l]['product_total_amt'][$m] . '</p>';
@@ -5647,7 +5647,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                             <tr>
                                               <td valign="top" align="left">
                                                 <p style="margin-bottom:13px;margin-top:20px"> <a href="" style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#15c;text-decoration:none!important;word-spacing:0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
-                                                <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; '. $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
+                                                <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
                                                 <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
                                                 <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
                                                 <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Total: &#8377; ' . (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '</p>';
@@ -9409,7 +9409,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                     <p
                                       style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                     >
-                                      Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; '. $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
+                                      Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
                                     </p>
                                     <p
                                       style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
@@ -10022,7 +10022,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                               <p
                                                 style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                               >
-                                                Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; '. $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
+                                                Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
                                               </p>
                                               <p
                                                 style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
