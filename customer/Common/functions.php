@@ -3594,7 +3594,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
   for ($j = 0; $j < $i; $j++) {
     $k = 0;
     $order_id;
-    $placesql_i = "select id.product_description_id,ca.cart_id,it.category_id,it.sub_category_id,it.product_id,it.product_name,it.description,it.price as mrp,pd.price,ca.quantity,ca.order_type,ca.total_amt from cart ca
+    $placesql_i = "select id.product_description_id,ca.cart_id,it.category_id,it.product_id,it.product_name,it.description,it.price as mrp,pd.price,ca.quantity,ca.order_type,ca.total_amt from cart ca
                   inner join product_details pd on ca.product_description_id=pd.product_description_id
                   inner join product_description id on id.product_description_id=pd.product_description_id
                   inner join store st on st.store_id=ca.store_id
@@ -3628,7 +3628,6 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
       }
       ////////////ADD AS ORDERED////////////
       $store_array[$j]['product_category_id'][$k] = $placerow_i['category_id'];
-      $store_array[$j]['product_sub_category_id'][$k] = $placerow_i['sub_category_id'];
       $store_array[$j]['product_description_id'][$k] = $placerow_i['product_description_id'];
       $store_array[$j]['product_name'][$k] = $placerow_i['product_name'];
       $store_array[$j]['product_description'][$k] = $placerow_i['description'];
@@ -3795,7 +3794,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                             <table width="120" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-bottom: 15px;">
                               <tbody>
                                 <tr>
-                                  <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_sub_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
+                                  <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -4255,7 +4254,6 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
     for ($m = 0; $m < $store_cnt[$l]; $m++) {
       $store_array[$l]['product_description_id'][$m];
       $store_array[$l]['product_category_id'][$m];
-      $store_array[$l]['product_sub_category_id'][$m];
       $store_array[$l]['product_name'][$m];
       $store_array[$l]['product_description'][$m];
       $store_array[$l]['product_price'][$m];
@@ -4294,7 +4292,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                       >
                                         <img
                                           border="0"
-                                          src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_sub_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
+                                          src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
                                           alt="' . $store_array[$l]['product_name'][$m] . '"
                                           style="border:none;max-width:125px;max-height:125px;margin-top:20px"
                                           class="CToWUd"
@@ -4992,7 +4990,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
   for ($j = 0; $j < $i; $j++) {
     $k = 0;
     $order_id;
-    $placesql_i = "select id.product_description_id,it.category_id,it.sub_category_id,it.product_id,it.product_name,it.description,it.price as mrp,pd.price from  product_details pd
+    $placesql_i = "select id.product_description_id,it.category_id,it.product_id,it.product_name,it.description,it.price as mrp,pd.price from  product_details pd
                   inner join product_description id on id.product_description_id=pd.product_description_id
                   inner join store st on st.store_id=pd.store_id
                   inner join product it on it.product_id=id.product_id
@@ -5005,7 +5003,6 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
     ));
     while ($placerow_i = $placestmt_i->fetch(PDO::FETCH_ASSOC)) {
       $store_array[$j]['product_category_id'][$k] = $placerow_i['category_id'];
-      $store_array[$j]['product_sub_category_id'][$k] = $placerow_i['sub_category_id'];
       $store_array[$j]['product_description_id'][$k] = $placerow_i['product_description_id'];
       $store_array[$j]['product_name'][$k] = $placerow_i['product_name'];
       $store_array[$j]['product_description'][$k] = $placerow_i['description'];
@@ -5319,7 +5316,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                             <table width="120" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-bottom: 15px;">
                               <tbody>
                                 <tr>
-                                  <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_sub_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
+                                  <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -5622,7 +5619,6 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
     for ($m = 0; $m < $store_cnt[$l]; $m++) {
       $store_array[$l]['product_description_id'][$m];
       $store_array[$l]['product_category_id'][$m];
-      $store_array[$l]['product_sub_category_id'][$m];
       $store_array[$l]['product_name'][$m];
       $store_array[$l]['product_description'][$m];
       $store_array[$l]['product_price'][$m];
@@ -5637,7 +5633,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                         <table width="120" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-bottom: 15px;">
                                           <tbody>
                                             <tr>
-                                              <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_sub_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
+                                              <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
                                             </tr>
                                           </tbody>
                                         </table>
@@ -6030,7 +6026,7 @@ if (isset($_POST['filter_cat_a'])) {
   $maxprice = $_POST['max-price'];
   $sort = $_POST['sort'];
   if ($sort == 'default') {
-    $sort = "CAST(product.sub_category_id AS UNSIGNED) ASC";
+    $sort = "CAST(product.category_id AS UNSIGNED) ASC";
   } else if ($sort == 'high') {
     $sort = "CAST(product_details.price AS UNSIGNED) DESC";
   } else if ($sort == 'low') {
@@ -6085,162 +6081,146 @@ if (isset($_POST['filter_cat_a'])) {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $sqlcat != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlcat != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlcat != "" && $_POST['sort'] == 'view') {
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING  order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $sqlcat != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views , store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views , store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $sqlcat != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id  having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id  having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlcat != "" && $sqlbrand != "") {
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlcat != "") {
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING  order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   }
   //echo $sql.PHP_EOL;
@@ -6266,7 +6246,7 @@ if (isset($_POST['filter_cat_a'])) {
           <div class='flip-box'>
             <div class='flip-box-inner' >
               <div class='flip-box-front'>
-                <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='../../images/" . $row['category_id'] . "/" . $row['sub_category_id'] . "/" . $row['product_description_id'] . ".jpg'>
+                <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='../../images/" . $row['category_id'] . "/" . $row['product_description_id'] . ".jpg'>
                   <div class='card-body'>
                     <!--NAME--><br>
                     <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -6306,7 +6286,7 @@ if (isset($_POST['filter_cat_a'])) {
                       </div>
                     </div>
                     <div class='flip-box-back'>
-                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] . "/" . $row['sub_category_id'] . "/" . $row['item_description_id'] . ".jpg'>
+                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] .  "/" . $row['item_description_id'] . ".jpg'>
                         <div class='card-body'>
                           <!--NAME-->
                           <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -6368,162 +6348,146 @@ if (isset($_POST['filter_cat_a'])) {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING   round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlcat != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 AND product_keys.rating!=0  GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 AND product_keys.rating!=0  GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0  GROUP BY product.product_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . "  AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlcat != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlcat != "" && $_POST['sort'] == 'view') {
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id order by ' . $sort;
   } else if ($sqlstar != "" && $sqlcat != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views , store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views , store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlcat != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id  having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id  having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlcat != "" && $sqlbrand != "") {
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlcat != "") {
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id order by ' . $sort;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort;
   }
   //echo $sql.PHP_EOL;
@@ -6596,7 +6560,7 @@ if (isset($_POST['filter_cat_b'])) {
   $maxprice = $_POST['max-price'];
   $sort = $_POST['sort'];
   if ($sort == 'default') {
-    $sort = "CAST(product.sub_category_id AS UNSIGNED) ASC";
+    $sort = "CAST(product.category_id AS UNSIGNED) ASC";
   } else if ($sort == 'high') {
     $sort = "CAST(product_details.price AS UNSIGNED) DESC";
   } else if ($sort == 'low') {
@@ -6651,162 +6615,146 @@ if (isset($_POST['filter_cat_b'])) {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING   round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlcat != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlcat != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlcat != "" && $_POST['sort'] == 'view') {
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id order by ' . $sort;
   } else if ($sqlstar != "" && $sqlcat != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views , store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views , store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlcat != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id  having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id  having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlcat != "" && $sqlbrand != "") {
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlcat != "") {
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id order by ' . $sort;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort;
   }
   //echo $sql.PHP_EOL;
@@ -6832,7 +6780,6 @@ if (isset($_POST['filter_cat_b'])) {
                 JOIN product_description ON product_details.product_description_id=product_description.product_description_id
                 JOIN product ON product.product_id=product_description.product_id
                 JOIN category ON category.category_id=product.category_id
-                JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
                 JOIN store on store.store_id=product_details.store_id
                 where product_description.product_description_id=:idid";
       $statement = $pdo->prepare($query);
@@ -6848,7 +6795,7 @@ if (isset($_POST['filter_cat_b'])) {
               <tr>
                 <td>
                   <div style="height: 150px;width: 100%">
-                    <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['product_description_id'] . '.jpg">
+                    <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="../../images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
                   </div>
                 </td>
               </tr>
@@ -6959,21 +6906,17 @@ if (isset($_POST['filter_cat_b'])) {
                       </tr>';
       }
       $product_det = $pdo->query(
-        "select category.category_name,sub_category.sub_category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+        "select category.category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
         inner join product_description on product_description.product_id=product.product_id
         inner join product_details on product_details.product_description_id=product_description.product_description_id
         inner join store on product_details.store_id=store.store_id
         inner join category on category.category_id=product.category_id
-        inner join sub_category on category.category_id= sub_category.category_id
-        where category.category_id=" . $_POST['category'] . " and product_description.product_description_id=" . $row['product_description_id'] . " and sub_category.sub_category_id=product.sub_category_id"
+        where category.category_id=" . $_POST['category'] . " and product_description.product_description_id=" . $row['product_description_id'] . " and "
       );
       $product_det_row = $product_det->fetch(PDO::FETCH_ASSOC);
       $dynamic_content .= '
                   <tr class=" dw"><th class="cust_header2"><li>Category</li></th>
                     <td class="cust_details">' . $product_det_row['category_name'] . '</td>
-                  </tr>
-                  <tr class=" dw"><th class="cust_header2"><li>Sub Category</li></th>
-                    <td class="cust_details">' . $product_det_row['sub_category_name'] . '</td>
                   </tr>
                   <tr class=" dw"><th class="cust_header2"><li>Seller</li></th>
                     <td class="cust_details">' . $product_det_row['store_name'] . '</td>
@@ -7007,162 +6950,146 @@ if (isset($_POST['filter_cat_b'])) {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING   round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlcat != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views, store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlcat != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlcat != "" && $_POST['sort'] == 'view') {
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id order by ' . $sort;
   } else if ($sqlstar != "" && $sqlcat != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views , store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views , store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlcat != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' AND product_keys.rating!=0 GROUP BY product.product_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product.product_id  having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id  having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlcat != "" && $sqlbrand != "") {
     $sqlcat = rtrim($sqlcat . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlcat != "") {
     $sqlcat = rtrim($sqlcat . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING product.sub_category_id IN (' . $sqlcat . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' GROUP BY product.product_id HAVING order by ' . $sort;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') GROUP BY product.product_id order by ' . $sort;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select product_keys.views,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
             where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort;
   }
   //echo $sql.PHP_EOL;
@@ -7248,7 +7175,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
   $maxprice = $_POST['max-price'];
   $sort = $_POST['sort'];
   if ($sort == 'default') {
-    $sort = "CAST(product.sub_category_id AS UNSIGNED) ASC";
+    $sort = "CAST(product.category_id AS UNSIGNED) ASC";
   } else if ($sort == 'high') {
     $sort = "CAST(product_details.price AS UNSIGNED) DESC";
   } else if ($sort == 'low') {
@@ -7299,81 +7226,73 @@ if (isset($_POST['filter_sub_cat_a'])) {
   if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (' . $_POST['sub_category'] . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") and round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having product.sub_category_id IN(' . $_POST['sub_category'] . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (' . $_POST['sub_category'] . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") and round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') group by product_description.product_description_id having product.sub_category_id IN(' . $_POST['sub_category'] . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') group by product_description.product_description_id having order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id HAVING  order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   }
   //echo $sql.PHP_EOL;
   $res = $pdo->query($sql);
@@ -7397,7 +7316,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
             <div class='flip-box'>
               <div class='flip-box-inner' >
                 <div class='flip-box-front'>
-                  <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='../../images/" . $row['category_id'] . "/" . $row['sub_category_id'] . "/" . $row['product_description_id'] . ".jpg'>
+                  <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                     <div class='card-body'>
                       <!--NAME--><br>
                       <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -7438,7 +7357,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
                       </div>
                     </div>
                     <div class='flip-box-back'>
-                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] . "/" . $row['sub_category_id'] . "/" . $row['product_description_id'] . ".jpg'>
+                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                         <div class='card-body'>
                           <!--NAME-->
                           <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -7500,81 +7419,73 @@ if (isset($_POST['filter_sub_cat_a'])) {
   if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (' . $_POST['sub_category'] . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") and round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having product.sub_category_id IN(' . $_POST['sub_category'] . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having order by ' . $sort;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (' . $_POST['sub_category'] . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") and round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id having product.sub_category_id IN(' . $_POST['sub_category'] . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id having order by ' . $sort;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") order by " . $sort;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  order by " . $sort;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") order by " . $sort;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id HAVING  order by " . $sort;
   }
   //echo $sql.PHP_EOL;
   /*
@@ -7641,7 +7552,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
   $maxprice = $_POST['max-price'];
   $sort = $_POST['sort'];
   if ($sort == 'default') {
-    $sort = "CAST(product.sub_category_id AS UNSIGNED) ASC";
+    $sort = "CAST(product.category_id AS UNSIGNED) ASC";
   } else if ($sort == 'high') {
     $sort = "CAST(product_details.price AS UNSIGNED) DESC";
   } else if ($sort == 'low') {
@@ -7695,81 +7606,73 @@ if (isset($_POST['filter_sub_cat_b'])) {
   if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (' . $_POST['sub_category'] . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") and round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having product.sub_category_id IN(' . $_POST['sub_category'] . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (' . $_POST['sub_category'] . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") and round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id having product.sub_category_id IN(' . $_POST['sub_category'] . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id having order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id HAVING  order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   }
   //echo $sql.PHP_EOL;
   $res = $pdo->query($sql);
@@ -7794,7 +7697,6 @@ if (isset($_POST['filter_sub_cat_b'])) {
       JOIN product_description ON product_details.product_description_id=product_description.product_description_id
       JOIN product ON product.product_id=product_description.product_id
       JOIN category ON category.category_id=product.category_id
-      JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
       JOIN store on store.store_id=product_details.store_id
       where product_description.product_description_id=:idid";
       $statement = $pdo->prepare($query);
@@ -7810,7 +7712,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
               <tr>
                   <td>
                       <div style="height: 150px;width: 100%">
-                          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['product_description_id'] . '.jpg">
+                          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="../../images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
                       </div>
                   </td>
               </tr>
@@ -7925,21 +7827,17 @@ if (isset($_POST['filter_sub_cat_b'])) {
                   </tr>';
       }
       $product_det = $pdo->query(
-        "select category.category_name,sub_category.sub_category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+        "select category.category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
         inner join product_description on product_description.product_id=product.product_id
         inner join product_details on product_details.product_description_id=product_description.product_description_id
         inner join store on product_details.store_id=store.store_id
         inner join category on category.category_id=product.category_id
-        inner join sub_category on category.category_id= sub_category.category_id
-        where category.category_id=" . $_POST['category'] . " and product_description.product_description_id=" . $row['product_description_id'] . " and sub_category.sub_category_id=product.sub_category_id"
+        where category.category_id=" . $_POST['category'] . " and product_description.product_description_id=" . $row['product_description_id'] . " and "
       );
       $product_det_row = $product_det->fetch(PDO::FETCH_ASSOC);
       $dynamic_content .= '
                   <tr class=" dw"><th class="cust_header2"><li>Category</th>
                     <td class="cust_details">' . $product_det_row['category_name'] . '</li></td>
-                  </tr>
-                  <tr class=" dw"><th class="cust_header2"><li>Sub Category</th>
-                    <td class="cust_details">' . $product_det_row['sub_category_name'] . '</li></td>
                   </tr>
                   <tr class=" dw"><th class="cust_header2"><li>Seller</th>
                     <td class="cust_details">' . $product_det_row['store_name'] . '</li></td>
@@ -7972,81 +7870,73 @@ if (isset($_POST['filter_sub_cat_b'])) {
   if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (' . $_POST['sub_category'] . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") and round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id, round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having product.sub_category_id IN(' . $_POST['sub_category'] . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having order by ' . $sort;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (' . $_POST['sub_category'] . ') and round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") and round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id having product.sub_category_id IN(' . $_POST['sub_category'] . ') order by ' . $sort;
+            where category.category_id=' . $_POST['category'] . ' AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id having order by ' . $sort;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") order by " . $sort;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id HAVING  order by " . $sort;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id HAVING product.sub_category_id IN (" . $_POST['sub_category'] . ") order by " . $sort;
+            where category.category_id=" . $_POST['category'] . " AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id HAVING  order by " . $sort;
   }
   //echo $sql.PHP_EOL;
   /*
@@ -8134,7 +8024,7 @@ if (isset($_POST['filter_item_a'])) {
   $maxprice = $_POST['max-price'];
   $sort = $_POST['sort'];
   if ($sort == 'default') {
-    $sort = "CAST(product.sub_category_id AS UNSIGNED) ASC";
+    $sort = "CAST(product.category_id AS UNSIGNED) ASC";
   } else if ($sort == 'high') {
     $sort = "CAST(product_details.price AS UNSIGNED) DESC";
   } else if ($sort == 'low') {
@@ -8185,81 +8075,73 @@ if (isset($_POST['filter_item_a'])) {
   if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where product.product_name like "%' . $_POST['product'] . '%" and  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like "%' . $_POST['product'] . '%" and   AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where product.product_name like "%' . $_POST['product'] . '%" and  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like "%' . $_POST['product'] . '%" and   AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select store.store_id,store.store_name ,product_keys.views,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product_keys.views,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   }
   //echo $sql.PHP_EOL;
   $res = $pdo->query($sql);
@@ -8284,7 +8166,7 @@ if (isset($_POST['filter_item_a'])) {
           <div class='flip-box'>
             <div class='flip-box-inner' >
               <div class='flip-box-front'>
-                <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='../../images/" . $row['category_id'] . "/" . $row['sub_category_id'] . "/" . $row['product_description_id'] . ".jpg'>
+                <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                   <div class='card-body'>
                     <!--NAME--><br>
                     <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -8324,7 +8206,7 @@ if (isset($_POST['filter_item_a'])) {
                       </div>
                     </div>
                     <div class='flip-box-back'>
-                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] . "/" . $row['sub_category_id'] . "/" . $row['product_description_id'] . ".jpg'>
+                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                           <div class='card-body'>
                             <!--NAME-->
                             <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -8385,81 +8267,73 @@ if (isset($_POST['filter_item_a'])) {
   if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where product.product_name like "%' . $_POST['product'] . '%" and  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort;
+            where  product.product_name like "%' . $_POST['product'] . '%" and   AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where product.product_name like "%' . $_POST['product'] . '%" and  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort;
+            where  product.product_name like "%' . $_POST['product'] . '%" and   AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select store.store_id,store.store_name ,product_keys.views,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product_keys.views,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort;
+            where product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort;
   }
   //echo $sql.PHP_EOL;
   /*
@@ -8547,7 +8421,7 @@ if (isset($_POST['filter_item_b'])) {
   $maxprice = $_POST['max-price'];
   $sort = $_POST['sort'];
   if ($sort == 'default') {
-    $sort = "CAST(product.sub_category_id AS UNSIGNED) ASC";
+    $sort = "CAST(product.category_id AS UNSIGNED) ASC";
   } else if ($sort == 'high') {
     $sort = "CAST(product_details.price AS UNSIGNED) DESC";
   } else if ($sort == 'low') {
@@ -8601,81 +8475,73 @@ if (isset($_POST['filter_item_b'])) {
   if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where product.product_name like "%' . $_POST['product'] . '%" and  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like "%' . $_POST['product'] . '%" and   AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where product.product_name like "%' . $_POST['product'] . '%" and  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like "%' . $_POST['product'] . '%" and   AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select store.store_id,store.store_name ,product_keys.views,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product_keys.views,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   }
   //echo $sql.PHP_EOL;
   $res = $pdo->query($sql);
@@ -8700,7 +8566,6 @@ if (isset($_POST['filter_item_b'])) {
                 JOIN product_description ON product_details.product_description_id=product_description.product_description_id
                 JOIN product ON product.product_id=product_description.product_id
                 JOIN category ON category.category_id=product.category_id
-                JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
                 JOIN store on store.store_id=product_details.store_id
                 where product_description.product_description_id=:idid";
       $statement = $pdo->prepare($query);
@@ -8715,7 +8580,7 @@ if (isset($_POST['filter_item_b'])) {
     <tr>
       <td>
         <div style="height: 150px;width: 100%">
-          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['product_description_id'] . '.jpg">
+          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="../../images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
         </div>
       </td>
     </tr>
@@ -8816,20 +8681,16 @@ if (isset($_POST['filter_item_b'])) {
     </tr>';
       }
       $product_det = $pdo->query(
-        "select category.category_name,sub_category.sub_category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+        "select category.category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
         inner join product_description on product_description.product_id=product.product_id
         inner join product_details on product_details.product_description_id=product_description.product_description_id
         inner join store on product_details.store_id=store.store_id
         inner join category on category.category_id=product.category_id
-        inner join sub_category on category.category_id= sub_category.category_id
-        where category.category_id=" . $row['category_id'] . " and product_description.product_description_id=" . $row['product_description_id'] . " and sub_category.sub_category_id=product.sub_category_id"
+        where category.category_id=" . $row['category_id'] . " and product_description.product_description_id=" . $row['product_description_id'] . " and "
       );
       $product_det_row = $product_det->fetch(PDO::FETCH_ASSOC);
       $dynamic_content .= '<tr class=" dw"><th class="cust_header2"><li>Category</th>
       <td class="cust_details">' . $product_det_row['category_name'] . '</li></td>
-    </tr>
-    <tr class=" dw"><th class="cust_header2"><li>Sub Category</th>
-      <td class="cust_details">' . $product_det_row['sub_category_name'] . '</li></td>
     </tr>
     <tr class=" dw"><th class="cust_header2"><li>Seller</th>
       <td class="cust_details">' . $product_det_row['store_name'] . '</li></td>
@@ -8859,81 +8720,73 @@ if (isset($_POST['filter_item_b'])) {
   if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where product.product_name like "%' . $_POST['product'] . '%" and  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "" && $_POST['sort'] == 'view') {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlbrand != "" && $_POST['sort'] == 'view') {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort;
+            where  product.product_name like "%' . $_POST['product'] . '%" and   AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort;
   } else if ($sqlstar != "" && $sqlbrand != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
+            where product.product_name like "%' . $_POST['product'] . '%" and  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and product_description.brand IN(' . $sqlbrand . ') AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (' . $sqlstar . ') order by ' . $sort;
   } else if ($sqlstar != "") {
     $sqlstar = rtrim($sqlstar . ',', ",");
-    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,round(avg(product_keys.rating),0) AS avgrate,product_keys.views,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " AND product_keys.rating!=0 GROUP BY product_description.product_description_id having round(avg(product_keys.rating),0) in (" . $sqlstar . ") order by " . $sort;
   } else if ($sqlbrand != "") {
     $sqlbrand = rtrim($sqlbrand . ',', ",");
-    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = 'select store.store_id,store.store_name ,product.product_id,product.price as \'mrp\',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like "%' . $_POST['product'] . '%" and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort;
+            where  product.product_name like "%' . $_POST['product'] . '%" and   AND product_details.price BETWEEN ' . $minprice . ' AND ' . $maxprice . ' and  product_description.brand IN(' . $sqlbrand . ') GROUP BY product_description.product_description_id order by ' . $sort;
   } else if ($_POST['sort'] == 'view') {
-    $sql = "select store.store_id,store.store_name ,product_keys.views,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product_keys.views,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   } else {
-    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,product.sub_category_id from product
+    $sql = "select store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
             inner join product_description on product_description.product_id=product.product_id
             inner join product_details on product_details.product_description_id=product_description.product_description_id
             inner join store on product_details.store_id=store.store_id
             inner join category on category.category_id=product.category_id
-            inner join sub_category on category.category_id= sub_category.category_id
-            where  product.product_name like '%" . $_POST['product'] . "%' and sub_category.sub_category_id=product.sub_category_id  AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort;
+            where  product.product_name like '%" . $_POST['product'] . "%' and   AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id order by " . $sort;
   }
   //echo $sql.PHP_EOL;
   /*
@@ -9341,7 +9194,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
   for ($j = 0; $j < $i; $j++) {
     $k = 0;
     $order_id;
-    $placesql_i = "select id.product_description_id,ca.cart_id,it.category_id,it.sub_category_id,it.product_id,it.product_name,it.description,it.price as mrp,pd.price,ca.quantity,ca.order_type,ca.total_amt from cart ca
+    $placesql_i = "select id.product_description_id,ca.cart_id,it.category_id,it.product_id,it.product_name,it.description,it.price as mrp,pd.price,ca.quantity,ca.order_type,ca.total_amt from cart ca
                   join cart_temp ct on ct.cart_id=ca.cart_id
                   inner join product_details pd on ca.product_description_id=pd.product_description_id
                   inner join product_description id on id.product_description_id=pd.product_description_id
@@ -9376,7 +9229,6 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
       }
       ////////////ADD AS ORDERED////////////
       $store_array[$j]['product_category_id'][$k] = $placerow_i['category_id'];
-      $store_array[$j]['product_sub_category_id'][$k] = $placerow_i['sub_category_id'];
       $store_array[$j]['product_description_id'][$k] = $placerow_i['product_description_id'];
       $store_array[$j]['product_name'][$k] = $placerow_i['product_name'];
       $store_array[$j]['product_description'][$k] = $placerow_i['description'];
@@ -9730,7 +9582,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                     >
                                       <img
                                         border="0"
-                                        src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_sub_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
+                                        src="../../images/' . $store_array[$l]['product_category_id'][$m] .  '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
                                         alt="' . $store_array[$l]['product_name'][$m] . '"
                                         style="border:none;max-width:125px;max-height:125px;margin-top:20px"
                                         class="CToWUd"
@@ -10299,7 +10151,6 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
     for ($m = 0; $m < $store_cnt[$l]; $m++) {
       $store_array[$l]['product_description_id'][$m];
       $store_array[$l]['product_category_id'][$m];
-      $store_array[$l]['product_sub_category_id'][$m];
       $store_array[$l]['product_name'][$m];
       $store_array[$l]['product_description'][$m];
       $store_array[$l]['product_price'][$m];
@@ -10338,7 +10189,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                               >
                                                 <img
                                                   border="0"
-                                                  src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_sub_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
+                                                  src="../../images/' . $store_array[$l]['product_category_id'][$m] .  '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
                                                   alt="' . $store_array[$l]['product_name'][$m] . '"
                                                   style="border:none;max-width:125px;max-height:125px;margin-top:20px"
                                                   class="CToWUd"
@@ -10635,7 +10486,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
 //CANCEL PRODUCT
 if (isset($_POST['cancel_product'])) {
   $nopid = $_POST['nopid'];
-  $query = "select customers.first_name as fn,customers.last_name as ln,customer_delivery_details.customer_id,customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.product_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store_admin.email as storemail,store_admin.username,store.store_id,store.store_name,store.opening_hours,store.status,store_admin.phone,product.price as mrp,product_description.product_description_id,category.category_id,sub_category.sub_category_id,product.product_name FROM new_orders
+  $query = "select customers.first_name as fn,customers.last_name as ln,customer_delivery_details.customer_id,customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.product_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store_admin.email as storemail,store_admin.username,store.store_id,store.store_name,store.opening_hours,store.status,store_admin.phone,product.price as mrp,product_description.product_description_id,category.category_id,product.product_name FROM new_orders
             JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
             JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
             JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
@@ -10644,7 +10495,6 @@ if (isset($_POST['cancel_product'])) {
             JOIN product_description ON product_details.product_description_id=product_description.product_description_id
             JOIN product ON product.product_id=product_description.product_id
             JOIN category ON category.category_id=product.category_id
-            JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
             JOIN store on store.store_id=product_details.store_id
             JOIN store_admin on store.store_id=store_admin.store_id
             WHERE customers.customer_id=:customer_id and new_ordered_products.new_ordered_products_id=:nopid ";
@@ -10999,7 +10849,7 @@ if (isset($_POST['cancel_product'])) {
                                     >
                                       <img
                                         border="0"
-                                        src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['product_description_id'] . '.jpg"
+                                        src="../../images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg"
                                         alt="' . $row['product_name'] . '"
                                         style="border:none;max-width:125px;max-height:125px;margin-top:20px"
                                         class="CToWUd"
@@ -11588,7 +11438,7 @@ if (isset($_POST['cancel_product'])) {
                                     >
                                       <img
                                         border="0"
-                                        src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $idid . '.jpg"
+                                        src="../../images/' . $row['category_id'] .  '/' . $idid . '.jpg"
                                         alt="' . $row['product_name'] . '"
                                         style="border:none;max-width:125px;max-height:125px;margin-top:20px"
                                         class="CToWUd"
