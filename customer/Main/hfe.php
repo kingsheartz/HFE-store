@@ -555,17 +555,17 @@ require "../Common/cookie.php";
         <div class="container">
           <div class="col-md-6 ban-bottom3">
             <div class="ban-top">
-              <img src="../../images/p2.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6&subcategory_id=30'" />
+              <img src="../../images/p2.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6'" />
             </div>
             <div class="ban-img">
               <div class=" ban-bottom1">
                 <div class="ban-top">
-                  <img src="../../images/p1.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=4&subcategory_id=20'" />
+                  <img src="../../images/p1.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=4'" />
                 </div>
               </div>
               <div class="ban-bottom2">
                 <div class="ban-top">
-                  <img src="../../images/p3.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6&subcategory_id=28'" />
+                  <img src="../../images/p3.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6'" />
                 </div>
               </div>
               <div class="clearfix"></div>
@@ -573,7 +573,7 @@ require "../Common/cookie.php";
           </div>
           <div class="col-md-6 ban-bottom">
             <div class="ban-top">
-              <img src="../../images/p4.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6&subcategory_id=27'" />
+              <img src="../../images/p4.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6'" />
             </div>
           </div>
           <div class="clearfix"></div>
@@ -620,7 +620,6 @@ require "../Common/cookie.php";
               </span>
             </h4>
             <div class="difcat " style="border-radius: 5px;">
-              <span class="difhed"></span>
               <div class="difrow hidescroll" id="difrow<?= $prerow['product_description_id'] ?>" onscroll="scrolllisten('difrow<?= $prerow['product_description_id'] ?>');">
                 <button class="left-arrow-btn-all shadow_all_none" onclick="moveleft('difrow<?= $prerow['product_description_id'] ?>')" style="display: none;">
                   <i class="fas fa-chevron-left"></i>
@@ -628,6 +627,38 @@ require "../Common/cookie.php";
                 <button class="right-arrow-btn-all shadow_all_none" onclick="moveright('difrow<?= $prerow['product_description_id'] ?>')">
                   <i class="fas fa-chevron-right"></i>
                 </button>
+                <?php
+                while ($prerow = $prest->fetch(PDO::FETCH_ASSOC)) {
+                  $ran = $pdo->query(
+                    "select * from product_description
+                      inner join product on product.product_id=product_description.product_id
+                      inner join category on category.category_id=product.category_id
+                      where product.category_id=category.category_id and product_description_id=" . $prerow['product_description_id']
+                  );
+                  $row = $ran->fetch(PDO::FETCH_ASSOC);
+                ?>
+                  <div class="products-all-in-one" title="<?= $row['product_name'] ?>"
+                    onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
+                    <div
+                      style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                      <img class="image" align="middle"
+                        src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                    </div>
+                    <?php
+                    if (strlen($row['product_name']) >= 22) {
+                      $product = $row['product_name'];
+                      $product_name = substr($product, 0, 25) . "...";
+                    } else {
+                      $product_name = $row['product_name'];
+                    }
+                    ?>
+                    <div class="deupd"><?= $product_name ?><br>
+                    </div>
+                  </div>
+                <?php
+                }
+                echo '</div></div>';
+                ?>
                 <div class="clearfix"> </div>
               </div>
               <!-- //new -->

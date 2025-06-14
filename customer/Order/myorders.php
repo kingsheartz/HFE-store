@@ -404,7 +404,7 @@ require "../Common/pdo.php";
 </script>
 <div class="table1" style="padding:5px;">
   <?php
-  $sql_order_cnt = "select new_orders_id ,new_orders.sub_total from new_orders
+  $sql_order_cnt = "SELECT new_orders_id ,new_orders.sub_total FROM new_orders
 										JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
 										JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id where customer_delivery_details.customer_id=" . $_SESSION['id'];
   $stmt_order_cnt = $pdo->prepare($sql_order_cnt);
