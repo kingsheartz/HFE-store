@@ -342,21 +342,21 @@ require "../Common/pdo.php";
     ?>
     <br>
     <?php
-    $query = "select user_delivery_details.first_name,user_delivery_details.last_name,user_delivery_details.phone,user_delivery_details.address,user_delivery_details.pincode,users.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.item_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store.store_name,item.price as mrp,item_description.item_description_id,category.category_id,sub_category.sub_category_id,item.item_name FROM new_orders
+    $query = "select customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.item_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store.store_name,product.price as mrp,product_description.product_description_id,category.category_id,sub_category.sub_category_id,product.product_name FROM new_orders
               JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-              JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-              JOIN users ON users.user_id=user_delivery_details.user_id
+              JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+              JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
               JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
               JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-              JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-              JOIN item ON item.item_id=item_description.item_id
-              JOIN category ON category.category_id=item.category_id
-              JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+              JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+              JOIN product ON product.product_id=product_description.product_id
+              JOIN category ON category.category_id=product.category_id
+              JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
               JOIN store on store.store_id=product_details.store_id
-              WHERE users.user_id=:user_id and new_ordered_products.new_ordered_products_id=:nopid ";
+              WHERE customers.customer_id=:customer_id and new_ordered_products.new_ordered_products_id=:nopid ";
     $statement = $pdo->prepare($query);
     $statement->execute(array(
-      ':user_id' => $_SESSION['id'],
+      ':customer_id' => $_SESSION['id'],
       ':nopid' => $nopid
     ));
     $flag = 0;
@@ -366,10 +366,10 @@ require "../Common/pdo.php";
         <br>
       <?php
       }
-      $itm_nm = substr($row['item_name'], 0, 63) . "...";
+      $itm_nm = substr($row['product_name'], 0, 63) . "...";
       ?>
       <div class="order-single" style="margin:0;padding:0;">
-        <div class="col-sm-4" onclick="location.href='../Product/single.php?id=<?= $row['item_description_id'] ?>'">
+        <div class="col-sm-4" onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
           <table>
             <tr>
               <th class="tablhde"> Product </th>
@@ -380,7 +380,7 @@ require "../Common/pdo.php";
                 <div style="height: 150px;width: 100%"> <img
                     style="height:auto;max-width: 100%;width:auto;max-height: 150px;display: block;margin: auto "
                     class="img-responsive"
-                    src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                    src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                 </div>
                 <div style="width: 100%;text-align: center;color: #333;font-weight:bold;font-size:15px;"><?= $itm_nm ?>
                 </div>

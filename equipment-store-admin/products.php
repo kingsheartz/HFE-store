@@ -388,7 +388,7 @@ require "head.php";
           url: 'productData.php',
           type: 'post',
           data: {
-            item_description_id: itid
+            product_description_id: itid
           },
           success: function(response) {
             // Add response in Modal body
@@ -408,10 +408,10 @@ require "head.php";
       $ct = $row11['category_id'];
     ?>
       <?php
-      $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id
-                WHERE item.category_id=$ct AND
-                item_description.item_description_id
-                IN (SELECT item_description_id FROM product_details WHERE store_id=$id )";
+      $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id
+                WHERE product.category_id=$ct AND
+                product_description.product_description_id
+                IN (SELECT product_description_id FROM product_details WHERE store_id=$id )";
       $st = $pdo->query($query);
       $product = $st->rowCount();
       if ($product == 0) {
@@ -437,11 +437,11 @@ require "head.php";
                   <img
                     data-toggle="modal"
                     data-target="#exampleModal"
-                    onclick="appjos('<?= $row['item_description_id'] ?>' )"
+                    onclick="appjos('<?= $row['product_description_id'] ?>' )"
                     class="image" align="middle"
-                    src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                    src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                 </div>
-                <div class="deupd"><?= $row['item_name'] ?><br /></div>
+                <div class="deupd"><?= $row['product_name'] ?><br /></div>
               </div>
             <?php
             }

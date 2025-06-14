@@ -406,7 +406,7 @@ require "../Common/pdo.php";
   <?php
   $sql_order_cnt = "select new_orders_id ,new_orders.sub_total from new_orders
 										JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-										JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id where user_delivery_details.user_id=" . $_SESSION['id'];
+										JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id where customer_delivery_details.customer_id=" . $_SESSION['id'];
   $stmt_order_cnt = $pdo->prepare($sql_order_cnt);
   $stmt_order_cnt->execute();
   $order_cnt = $stmt_order_cnt->rowCount();

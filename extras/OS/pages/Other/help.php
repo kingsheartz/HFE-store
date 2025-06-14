@@ -243,11 +243,11 @@ $pdf->Output('example_001.pdf', 'I');
 
     <div class="mySlides-single">
       <div class="numbertext-single"><?=$img_cnt_flag?> / <?=$img_cnt_row['img_count']+1?></div>
-      <img src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['item_description_id']?>.jpg" style="max-height: 300px">
+      <img src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['product_description_id']?>.jpg" style="max-height: 300px">
     </div>
 
 <?php
-$img_cnt_sql="select img_count from item_description where item_description_id=$item_description_id";
+$img_cnt_sql="select img_count from product_description where product_description_id=$product_description_id";
 $img_cnt_stmt=$pdo->prepare($sql);
 $img_cnt_stmt->execute();
 $img_cnt_row=$img_cnt_stmt->fetch(PDO::FETCH_ASSOC);
@@ -258,7 +258,7 @@ while($img_cnt_flag<=$img_cnt_row['img_count']){
 
     <div class="mySlides-single">
       <div class="numbertext-single"><?=$img_cnt_flag?> / <?=$img_cnt_row['img_count']+1?></div>
-      <img src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['item_description_id']?>_<?=$img_cnt_flag?>.jpg" style="max-height: 300px">
+      <img src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['product_description_id']?>_<?=$img_cnt_flag?>.jpg" style="max-height: 300px">
     </div>
 
 <?php
@@ -275,11 +275,11 @@ $img_cnt_flag++;
     </div>
 
     <div class="column-single">
-      <img class="demo-single cursor-single" src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['item_description_id']?>.jpg" style="height: 160px" onclick="currentSlide(1)" alt="Nature and sunrise">
+      <img class="demo-single cursor-single" src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['product_description_id']?>.jpg" style="height: 160px" onclick="currentSlide(1)" alt="Nature and sunrise">
     </div>
 
 <?php
-$img_cnt_sql="select img_count from item_description where item_description_id=$item_description_id";
+$img_cnt_sql="select img_count from product_description where product_description_id=$product_description_id";
 $img_cnt_stmt=$pdo->prepare($sql);
 $img_cnt_stmt->execute();
 $img_cnt_row=$img_cnt_stmt->fetch(PDO::FETCH_ASSOC);
@@ -289,7 +289,7 @@ while($img_cnt_flag<=$img_cnt_row['img_count']){
 ?>
 
     <div class="column-single">
-      <img class="demo-single cursor-single" src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['item_description_id']?>_<?=$img_cnt_flag?>.jpg" style="height: 160px" onclick="currentSlide(2)" alt="Snow">
+      <img class="demo-single cursor-single" src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['product_description_id']?>_<?=$img_cnt_flag?>.jpg" style="height: 160px" onclick="currentSlide(2)" alt="Snow">
     </div>
 
 <?php
@@ -506,12 +506,12 @@ $('#background_loader').hide();
 $('#std_loader').hide();
 
 $starsql="select avg(item_keys.rating) AS avgrate FROM item_keys
-JOIN item_description on item_keys.item_description_id=item_description.item_description_id
-JOIN product_details on product_details.item_description_id = item_description.item_description_id
+JOIN product_description on item_keys.product_description_id=product_description.product_description_id
+JOIN product_details on product_details.product_description_id = product_description.product_description_id
 JOIN store ON store.store_id=product_details.store_id
 WHERE store.store_id=product_details.store_id
-AND product_details.item_description_id=item_description.item_description_id
-and item_description.item_description_id=".$row['item_description_id']."
+AND product_details.product_description_id=product_description.product_description_id
+and product_description.product_description_id=".$row['product_description_id']."
 GROUP BY item_keys.store_id HAVING item_keys.store_id IN (".$row['store_id'].")";
 $startstmt=$pdo->query($starsql);
 $starrow=$startstmt->fetch(PDO::FETCH_ASSOC);

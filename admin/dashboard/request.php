@@ -127,7 +127,7 @@ include "header.php";
             },
           },
           fields: [{
-              name: "item_details_id",
+              name: "product_details_id",
               title: "Id",
               type: "text",
               width: 50,
@@ -135,7 +135,7 @@ include "header.php";
               validate: "required"
             },
             {
-              name: "item_description_id",
+              name: "product_description_id",
               title: "description_id",
               type: "text",
               width: 100,
@@ -143,7 +143,7 @@ include "header.php";
               validate: "required"
             },
             {
-              name: "item_name",
+              name: "product_name",
               title: "Product",
               type: "text",
               width: 150,
