@@ -1,44 +1,27 @@
 <?php
 require "../Main/header.php";
-require "../Common/pdo.php";
+require "../../db.php";
 if (isset($_GET['item'])) {
   $nm = strtolower($_GET['item']);
   $res = $pdo->query(
-    "select category.category_name,item.item_id,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id,sub_category.sub_category_name from item
-		INNER JOIN item_description ON item_description.item_id=item.item_id
-		INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
-		INNER JOIN category ON category.category_id=item.category_id
-		INNER JOIN sub_category ON category.category_id= sub_category.category_id
-		where item.item_name like \"%$nm%\" and sub_category.sub_category_id=item.sub_category_id"
+    "select category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_ide from product
+		INNER JOIN product_description ON product_description.product_id=product.product_id
+		INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
+		INNER JOIN category ON category.category_id=product.category_id
+		where product.product_name like \"%$nm%\" "
   );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
-  $name = $row2['item_name'];
+  $name = $row2['product_name'];
   $cat_id = $row2['category_id'];
-  $subcat_id = $row2['sub_category_id'];
-} else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-  $cat = $_GET['category_id'];
-  $sub = $_GET['subcategory_id'];
-  $sql = "select category.category_name,item.item_id,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id,sub_category.sub_category_name from item
-          INNER JOIN item_description ON item_description.item_id=item.item_id
-          INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
-          INNER JOIN category ON category.category_id=item.category_id
-          INNER JOIN sub_category ON category.category_id= sub_category.category_id
-          where category.category_id=$cat and sub_category.sub_category_id=$sub GROUP BY item.item_id ORDER BY item.sub_category_id";
-  $res = $pdo->query($sql);
-  $row2 = $res->fetch(PDO::FETCH_ASSOC);
-  $name = $row2['sub_category_name'];
-  $cat_id = $row2['category_id'];
-  $subcat_id = $row2['sub_category_id'];
 } else if (isset($_GET['category_id'])) {
   $cat = $_GET['category_id'];
   $res = $pdo->query(
-    "select category.category_name,store.store_id,store.store_name ,item.item_id,item.price as 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item
-    INNER JOIN item_description ON item_description.item_id=item.item_id
-    INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
+    "select category.category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
+    INNER JOIN product_description ON product_description.product_id=product.product_id
+    INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
     INNER JOIN store ON product_details.store_id=store.store_id
-    INNER JOIN category ON category.category_id=item.category_id
-    INNER JOIN sub_category ON category.category_id= sub_category.category_id
-    where category.category_id=$cat GROUP BY item.item_id ORDER BY item.sub_category_id"
+    INNER JOIN category ON category.category_id=product.category_id
+    where category.category_id=$cat GROUP BY product.product_id "
   );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
   $name = $row2['category_name'];
@@ -58,10 +41,6 @@ if (isset($_GET['item'])) {
     ?>
       location.href = '../Product/products_limited.php?item=<?= $_GET['item'] ?>';
     <?php
-    } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-    ?>
-      location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>';
-    <?php
     } else if (isset($_GET['category_id'])) {
     ?>
       location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?>';
@@ -76,10 +55,6 @@ if (isset($_GET['item'])) {
       if (isset($_GET['item'])) {
       ?>
         location.href = '../Product/products_limited.php?item=<?= $_GET['item'] ?>';
-      <?php
-      } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-      ?>
-        location.href = '../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>';
       <?php
       } else if (isset($_GET['category_id'])) {
       ?>
@@ -625,322 +600,6 @@ if (isset($_GET['item'])) {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-  ?>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    var filter = [];
-    var page_id = 1;
-    // Pagination code
-    $(document).on("click", ".pagination li a", function(e) {
-      e.preventDefault();
-      var pageId = $(this).attr("id");
-      if ($('#mobile-filter').css("display") == "none") {
-        var maxprice = document.getElementById('max-price').value;
-        var minprice = document.getElementById('min-price').value;
-        var sort = document.getElementById('sortall').value;
-        document.getElementById('mobsortall').value = sort;
-        document.getElementById('mob-max-price').value = maxprice;
-        document.getElementById('mob-min-price').value = minprice;
-      } else if ($('#mobile-filter').css("display") == "block") {
-        var maxprice = document.getElementById('mob-max-price').value;
-        var minprice = document.getElementById('mob-min-price').value;
-        var sort = document.getElementById('mobsortall').value;
-        document.getElementById('sortall').value = sort;
-        document.getElementById('max-price').value = maxprice;
-        document.getElementById('min-price').value = minprice;
-      }
-      $(".table-data").empty();
-      $("#dynamic-paging").empty();
-      $('.background_loader').css('display', 'flex');
-      $('.std_text2').css('display', 'flex');
-      $.ajax({
-        url: "../Common/functions.php", //passing page info
-        data: {
-          "filter_sub_cat_b": 1,
-          "key": filter,
-          "min-price": minprice,
-          "max-price": maxprice,
-          "page_no": pageId,
-          "sort": sort,
-          "category": <?= $_GET['category_id'] ?>,
-          "sub_category": <?= $_GET['subcategory_id'] ?>
-        }, //form data
-        type: "post", //post data
-        dataType: "json", //datatype=json format
-        timeout: 30000, //waiting time 30 sec
-        success: function(data) { //if registration is success
-          if (data.status == 'success') {
-            $("#table-data").html(data.content).show();
-            $("#dynamic-paging").html(data.output).show();
-            $('.background_loader').hide();
-            $('.std_text2').hide();
-            return;
-          }
-        },
-        error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-          $('.background_loader').hide();
-          $('.std_text2').hide();
-          if (textstatus === "timeout") {
-            swal({
-              title: "Oops!!!",
-              text: "server time out",
-              icon: "error",
-              closeOnClickOutside: false,
-              dangerMode: true,
-              timer: 6000,
-            });
-            location.reload();
-            return;
-          } else {
-            return;
-          }
-        }
-      }); //closing ajax
-    });
-
-    function sortandfilter(val, type) {
-      if ($('#mobile-filter').css("display") == "none") {
-        var maxprice = document.getElementById('max-price').value;
-        var minprice = document.getElementById('min-price').value;
-        var sort = document.getElementById('sortall').value;
-        document.getElementById('mobsortall').value = sort;
-        document.getElementById('mob-max-price').value = maxprice;
-        document.getElementById('mob-min-price').value = minprice;
-      } else if ($('#mobile-filter').css("display") == "block") {
-        var maxprice = document.getElementById('mob-max-price').value;
-        var minprice = document.getElementById('mob-min-price').value;
-        var sort = document.getElementById('mobsortall').value;
-        document.getElementById('sortall').value = sort;
-        document.getElementById('max-price').value = maxprice;
-        document.getElementById('min-price').value = minprice;
-      }
-      var filter_tag_cnt = 0;
-      var type = type; //TYPE category || brand ||rating
-      if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html(); //INNER HTML
-      }
-      if (type == 'star') {
-        var cont = $('#' + val).val();
-      }
-      //alert(type+" is "+cont)
-      if ($('#' + val).prop('checked') == false) {
-        $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', true); //check radio
-        $('#mob' + val).prop('disabled', true); //disabling radio
-        $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', true); //check radio
-        $('#' + val).prop('disabled', true); //disabling radio
-        $('.filter-container').show(); //FILTER DIV UNHIDE
-        var newtag = $('#filter-tag').clone().appendTo('.filter-container-child'); //COPY THE DEFAULT TAG DESIGN #FILTER 1 & CREATE NEW
-        newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)+(sub_category_id || brand_id) "
-        if (type == 'brand' || type == 'category') {
-          var tag_content = "<label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" id=\"filter-tag-name\" class=\"filter-tag-name" + type + "-" + val + " \" style=\"padding-left:0px !important;\" >" + cont + "</label><label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" style=\"padding-left:10px !important;\" id=\"filter-tag-close\" class=\"filter-tag-close  filter-tag-close" + type + "-" + val + "\"><span class=\"close\" >&times;</span></label>"; //CONTENT INSIDE THE DIV
-          $('.filter-tag-' + type + "-" + val).html(tag_content).show(); //APPENDING INNERHTML TO TAG & DISPLAY
-        }
-        if (type == 'star') {
-          var tag_content = "<label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" id=\"filter-tag-name\" class=\"filter-tag-name" + type + "-" + val + " \" style=\"padding-left:0px !important;\" >" + cont + "</label><label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" style=\"padding-left:2px !important;\" id=\"filter-tag-close\" class=\"filter-tag-close  filter-tag-close" + type + "-" + val + "\"><span style='padding-right:4px;color:#333' class='fa fa-star'></span><span class=\"close\" >&times;</span></label>"; //CONTENT INSIDE THE DIV
-          $('.filter-tag-' + type + "-" + val).html(tag_content).show(); //APPENDING INNERHTML TO TAG & DISPLAY
-        }
-        filter.push({
-          type: type + "-" + val + "-" + cont
-        });
-        console.log(filter)
-        $(".table-data").empty();
-        $("#dynamic-paging").empty();
-        $('.background_loader').css('display', 'flex');
-        $('.std_text2').css('display', 'flex');
-        $.ajax({
-          url: "../Common/functions.php", //passing page info
-          data: {
-            "filter_sub_cat_b": 1,
-            "key": filter,
-            "min-price": minprice,
-            "max-price": maxprice,
-            "sort": sort,
-            "category": <?= $_GET['category_id'] ?>,
-            "sub_category": <?= $_GET['subcategory_id'] ?>
-          }, //form data
-          type: "post", //post data
-          dataType: "json", //datatype=json format
-          timeout: 30000, //waiting time 30 sec
-          success: function(data) { //if registration is success
-            if (data.status == 'success') {
-              $("#table-data").html(data.content).show();
-              $("#dynamic-paging").html(data.output).show();
-              $('.background_loader').hide();
-              $('.std_text2').hide();
-              return;
-            }
-          },
-          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-            $('.background_loader').hide();
-            $('.std_text2').hide();
-            if (textstatus === "timeout") {
-              swal({
-                title: "Oops!!!",
-                text: "server time out",
-                icon: "error",
-                closeOnClickOutside: false,
-                dangerMode: true,
-                timer: 6000,
-              });
-              return;
-            } else {
-              return;
-            }
-          }
-        }); //closing ajax
-      } else {
-        $(".table-data").empty();
-        $("#dynamic-paging").empty();
-        $('.background_loader').css('display', 'flex');
-        $('.std_text2').css('display', 'flex');
-        $.ajax({
-          url: "../Common/functions.php", //passing page info
-          data: {
-            "filter_sub_cat_b": 1,
-            "key": filter,
-            "min-price": minprice,
-            "max-price": maxprice,
-            "sort": sort,
-            "category": <?= $_GET['category_id'] ?>,
-            "sub_category": <?= $_GET['subcategory_id'] ?>
-          }, //form data
-          type: "post", //post data
-          dataType: "json", //datatype=json format
-          timeout: 30000, //waiting time 30 sec
-          success: function(data) { //if registration is success
-            if (data.status == 'success') {
-              $("#table-data").html(data.content).show();
-              $("#dynamic-paging").html(data.output).show();
-              $('.background_loader').hide();
-              $('.std_text2').hide();
-              return;
-            }
-          },
-          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-            $('.background_loader').hide();
-            $('.std_text2').hide();
-            if (textstatus === "timeout") {
-              swal({
-                title: "Oops!!!",
-                text: "server time out",
-                icon: "error",
-                closeOnClickOutside: false,
-                dangerMode: true,
-                timer: 6000,
-              });
-              return;
-            } else {
-              return;
-            }
-          }
-        }); //closing ajax
-      }
-    }
-
-    function removesortandfilter(val, type) {
-      if ($('#mobile-filter').css("display") == "none") {
-        var maxprice = document.getElementById('max-price').value;
-        var minprice = document.getElementById('min-price').value;
-        var sort = document.getElementById('sortall').value;
-        document.getElementById('mobsortall').value = sort;
-        document.getElementById('mob-max-price').value = maxprice;
-        document.getElementById('mob-min-price').value = minprice;
-      } else if ($('#mobile-filter').css("display") == "block") {
-        var maxprice = document.getElementById('mob-max-price').value;
-        var minprice = document.getElementById('mob-min-price').value;
-        var sort = document.getElementById('mobsortall').value;
-        document.getElementById('sortall').value = sort;
-        document.getElementById('max-price').value = maxprice;
-        document.getElementById('min-price').value = minprice;
-      }
-      var filter_tag_cnt = 0;
-      var type = type; //TYPE category || brand ||rating
-      if (type == 'brand' || type == 'category') {
-        var cont = $('.val-' + val).html(); //INNER HTML
-      }
-      if (type == 'star') {
-        var cont = $('#' + val).val();
-      }
-      $(".filter-tag-" + type + "-" + val).remove();
-      if ($('#' + val).prop('checked') == true) {
-        $('#mob' + val).prop('disabled', false); //enabling radio
-        $('#mob' + val).prop('checked', false); //check radio
-        $('#mob' + val).prop('disabled', true); //disabling radio
-        $('#' + val).prop('disabled', false); //enabling radio
-        $('#' + val).prop('checked', false); //check radio
-        $('#' + val).prop('disabled', true); //disabling radio
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        //REMOVING THE TAGS WITH VALUE OF THE KEY
-        console.log('Before removing object from an array -> ' + JSON.stringify(filter));
-        var removeIndex = filter.map(function(item) {
-          return item.type;
-        }).indexOf(type + "-" + val + "-" + cont)
-        console.log(removeIndex)
-        filter.splice(removeIndex, 1);
-        console.log('After removing object from an array -> ' + JSON.stringify(filter));
-        //REMOVING THE TAGS WITH VALUE OF THE KEY
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        console.log(filter)
-        $(".table-data").empty();
-        $("#dynamic-paging").empty();
-        $('.background_loader').css('display', 'flex');
-        $('.std_text2').css('display', 'flex');
-        $.ajax({
-          url: "../Common/functions.php", //passing page info
-          data: {
-            "filter_sub_cat_b": 1,
-            "key": filter,
-            "min-price": minprice,
-            "max-price": maxprice,
-            "sort": sort,
-            "category": <?= $_GET['category_id'] ?>,
-            "sub_category": <?= $_GET['subcategory_id'] ?>
-          }, //form data
-          type: "post", //post data
-          dataType: "json", //datatype=json format
-          timeout: 30000, //waiting time 30 sec
-          success: function(data) { //if registration is success
-            if (data.status == 'success') {
-              $("#table-data").html(data.content).show();
-              $("#dynamic-paging").html(data.output).show();
-              $('.background_loader').hide();
-              $('.std_text2').hide();
-              return;
-            }
-          },
-          error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-            $('.background_loader').hide();
-            $('.std_text2').hide();
-            if (textstatus === "timeout") {
-              swal({
-                title: "Oops!!!",
-                text: "server time out",
-                icon: "error",
-                closeOnClickOutside: false,
-                dangerMode: true,
-                timer: 6000,
-              });
-              return;
-            } else {
-              return;
-            }
-          }
-        }); //closing ajax
-      }
-    }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  <?php
-  }
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   else if (isset($_GET['category_id'])) {
@@ -1337,13 +996,6 @@ if ($result_cnt == 0) {
                     <span class="px-md-2 px-1">Grid view</span>
                   </span>
                 <?php
-                } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-                ?>
-                  <span class="btn-pdt_pg gridview" onclick="location.href='../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?> & subcategory_id=<?= $_GET['subcategory_id'] ?>'"> &nbsp;
-                    <span class="fas fa-th px-md-2 px-1"></span>
-                    <span class="px-md-2 px-1">Grid view</span>
-                  </span>
-                <?php
                 } else if (isset($_GET['category_id'])) {
                 ?>
                   <span class="btn-pdt_pg gridview" onclick="location.href='../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?>'"> &nbsp;
@@ -1418,7 +1070,7 @@ if ($result_cnt == 0) {
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                if (isset($_GET['category_id']) && !isset($_GET['subcategory_id'])) {
+                if (isset($_GET['category_id'])) {
                 ?>
                   <div class="py-3 side-nav-filters-head">
                     <h5
@@ -1434,38 +1086,6 @@ if ($result_cnt == 0) {
                       <i class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px;border-bottom:none;"></i>
                     </h5>
                     <ul id="cat-filter-mob" class="list-group collapse" style="margin-bottom: 0px;">
-                      <?php
-                      $getcat = "select sub_category_name,sub_category_id from sub_category where category_id=" . $_GET['category_id'];
-                      $getcat_stmt = $pdo->query($getcat);
-                      while ($getcat_row = $getcat_stmt->fetch(PDO::FETCH_ASSOC)) {
-                        $getsubcatqnty = "SELECT count(item_description.item_description_id) as qntycnt  from item
-                                          INNER JOIN item_description ON item_description.item_id=item.item_id
-                                          INNER JOIN product_details  ON product_details.item_description_id=item_description.item_description_id
-                                          INNER JOIN store ON product_details.store_id=store.store_id
-                                          INNER JOIN category ON category.category_id=item.category_id
-                                          INNER JOIN sub_category ON item.sub_category_id= sub_category.sub_category_id
-                                          where category.category_id=(" . $_GET['category_id'] . ") AND sub_category.sub_category_id IN (" . $getcat_row['sub_category_id'] . ")
-                                          GROUP BY item.item_id AND item.sub_category_id IN (" . $getcat_row['sub_category_id'] . ")";
-                        $getsubcatqnty_stmt = $pdo->query($getsubcatqnty);
-                        $getsubcatqnty_row = $getsubcatqnty_stmt->fetch(PDO::FETCH_ASSOC);
-                        if ($getsubcatqnty_row == false) {
-                          $getsubcatqnty_row['qntycnt'] = 0;
-                        }
-                      ?>
-                        <li
-                          onclick="sortandfilter('getcat-<?= $getcat_row['sub_category_id'] ?>','category')"
-                          class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category cat-font  getcat-<?= $getcat_row['sub_category_id'] ?>"
-                          style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
-                          <label class="options" style="display:flex;justify-content:center;align-items:center;margin-top:3px;">
-                            <span class="val-getcat-<?= $getcat_row['sub_category_id'] ?>"><?= $getcat_row['sub_category_name'] ?></span>
-                            <input value="<?= $getcat_row['sub_category_name'] ?>" id="mobgetcat-<?= $getcat_row['sub_category_id'] ?>" type="radio" disabled name="mob-radio-getcat-<?= $getcat_row['sub_category_id'] ?>">
-                            <span class="checkmark"></span>
-                          </label>
-                          <span class="badge badge-primary badge-pill"><?= $getsubcatqnty_row['qntycnt'] ?></span>
-                        </li>
-                      <?php
-                      }
-                      ?>
                     </ul>
                   </div>
                   <?php
@@ -1474,33 +1094,28 @@ if ($result_cnt == 0) {
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-                if (isset($_GET['category_id']) || isset($_GET['subcategory_id']) || isset($_GET['item'])) {
+                if (isset($_GET['category_id'])  || isset($_GET['item'])) {
                   if (isset($_GET['item'])) {
-                    $brandsql = "SELECT brand.brand_name,brand.brand_id FROM item
-                                INNER JOIN item_description ON item_description.item_id=item.item_id
-                                INNER JOIN brand ON item_description.brand=brand.brand_id
-                                INNER JOIN item_keys ON item_keys.item_description_id=item_description.item_description_id
-                                INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
+                    $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
+                                INNER JOIN product_description ON product_description.product_id=product.product_id
+                                INNER JOIN brand ON product_description.brand=brand.brand_id
+                                INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
+                                INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
                                 INNER JOIN store ON product_details.store_id=store.store_id
-                                INNER JOIN category ON category.category_id=item.category_id
-                                INNER JOIN sub_category ON category.category_id= sub_category.category_id
-                                WHERE item.item_name LIKE '%" . $_GET['item'] . "%' GROUP BY brand.brand_name";
-                  } else if (isset($_GET['category_id']) || isset($_GET['subcategory_id'])) {
-                    if (isset($_GET['subcategory_id'])) {
-                      $keeper = 'item.sub_category_id';
-                      $brandval = $_GET['subcategory_id'];
-                    } else if (isset($_GET['category_id'])) {
-                      $keeper = 'item.category_id';
+                                INNER JOIN category ON category.category_id=product.category_id
+                                WHERE product.product_name LIKE '%" . $_GET['item'] . "%' GROUP BY brand.brand_name";
+                  } else if (isset($_GET['category_id'])) {
+                    if (isset($_GET['category_id'])) {
+                      $keeper = 'product.category_id';
                       $brandval = $_GET['category_id'];
                     }
-                    $brandsql = "SELECT brand.brand_name,brand.brand_id FROM item
-                                INNER JOIN item_description ON item_description.item_id=item.item_id
-                                INNER JOIN brand ON item_description.brand=brand.brand_id
-                                INNER JOIN item_keys ON item_keys.item_description_id=item_description.item_description_id
-                                INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
+                    $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
+                                INNER JOIN product_description ON product_description.product_id=product.product_id
+                                INNER JOIN brand ON product_description.brand=brand.brand_id
+                                INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
+                                INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
                                 INNER JOIN store ON product_details.store_id=store.store_id
-                                INNER JOIN category ON category.category_id=item.category_id
-                                INNER JOIN sub_category ON category.category_id= sub_category.category_id
+                                INNER JOIN category ON category.category_id=product.category_id
                                 WHERE " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
                   }
                   $brandstmt = $pdo->query($brandsql);
@@ -1625,8 +1240,8 @@ if ($result_cnt == 0) {
                 <?php
                 $pricesql = $pdo->query(
                   "SELECT product_details.price FROM product_details
-                  JOIN item_description ON item_description.item_description_id=product_details.item_description_id
-                  JOIN item ON item_description.item_id=item.item_id
+                  JOIN product_description ON product_description.product_description_id=product_details.product_description_id
+                  JOIN product ON product_description.product_id=product.product_id
                   WHERE category_id=$cat_id"
                 );
                 $pricecnt = 0;
@@ -1737,7 +1352,7 @@ if ($result_cnt == 0) {
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  if (isset($_GET['category_id']) && !isset($_GET['subcategory_id'])) {
+                  if (isset($_GET['category_id'])) {
                   ?>
                     <div class="py-3 side-nav-filters-head">
                       <h5
@@ -1753,43 +1368,6 @@ if ($result_cnt == 0) {
                         <i class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px"></i>
                       </h5>
                       <ul id="cat-filter" class="list-group collapse" style="margin-bottom: 0px;">
-                        <?php
-                        $getcat = "select sub_category_name,sub_category_id from sub_category where category_id=" . $_GET['category_id'];
-                        $getcat_stmt = $pdo->query($getcat);
-                        while ($getcat_row = $getcat_stmt->fetch(PDO::FETCH_ASSOC)) {
-                          $getsubcatqnty = "SELECT count(item_description.item_description_id) AS qntycnt FROM item
-                                            INNER JOIN item_description ON item_description.item_id=item.item_id
-                                            INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
-                                            INNER JOIN store ON product_details.store_id=store.store_id
-                                            INNER JOIN category ON category.category_id=item.category_id
-                                            INNER JOIN sub_category ON item.sub_category_id= sub_category.sub_category_id
-                                            where category.category_id=(" . $_GET['category_id'] . ") AND sub_category.sub_category_id IN (" . $getcat_row['sub_category_id'] . ")
-                                            GROUP BY item.item_id AND item.sub_category_id IN (" . $getcat_row['sub_category_id'] . ")";
-                          $getsubcatqnty_stmt = $pdo->query($getsubcatqnty);
-                          $getsubcatqnty_row = $getsubcatqnty_stmt->fetch(PDO::FETCH_ASSOC);
-                          if ($getsubcatqnty_row == false) {
-                            $getsubcatqnty_row['qntycnt'] = 0;
-                          }
-                        ?>
-                          <li
-                            onclick="sortandfilter('getcat-<?= $getcat_row['sub_category_id'] ?>','category')"
-                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category cat-font  getcat-<?= $getcat_row['sub_category_id'] ?>"
-                            style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
-                            <label style="display:flex;justify-content:center;align-items:center;margin-top:3px;" class="options">
-                              <span class="val-getcat-<?= $getcat_row['sub_category_id'] ?>"><?= $getcat_row['sub_category_name'] ?></span>
-                              <input
-                                value="<?= $getcat_row['sub_category_name'] ?>"
-                                id="getcat-<?= $getcat_row['sub_category_id'] ?>"
-                                type="radio"
-                                disabled
-                                name="radio-getcat-<?= $getcat_row['sub_category_id'] ?>">
-                              <span class="checkmark"></span>
-                            </label>
-                            <span class="badge badge-primary badge-pill"><?= $getsubcatqnty_row['qntycnt'] ?></span>
-                          </li>
-                        <?php
-                        }
-                        ?>
                       </ul>
                     </div>
                     <?php
@@ -1797,33 +1375,28 @@ if ($result_cnt == 0) {
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  if (isset($_GET['category_id']) || isset($_GET['subcategory_id']) || isset($_GET['item'])) {
+                  if (isset($_GET['category_id']) || isset($_GET['item'])) {
                     if (isset($_GET['item'])) {
-                      $brandsql = "SELECT brand.brand_name,brand.brand_id FROM item
-                                  INNER JOIN item_description ON item_description.item_id=item.item_id
-                                  INNER JOIN brand ON item_description.brand=brand.brand_id
-                                  INNER JOIN item_keys ON item_keys.item_description_id=item_description.item_description_id
-                                  INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
+                      $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
+                                  INNER JOIN product_description ON product_description.product_id=product.product_id
+                                  INNER JOIN brand ON product_description.brand=brand.brand_id
+                                  INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
+                                  INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
                                   INNER JOIN store ON product_details.store_id=store.store_id
-                                  INNER JOIN category ON category.category_id=item.category_id
-                                  INNER JOIN sub_category ON category.category_id= sub_category.category_id
-                                  WHERE item.item_name LIKE '%" . $_GET['item'] . "%' GROUP BY brand.brand_name";
-                    } else if (isset($_GET['category_id']) || isset($_GET['subcategory_id'])) {
-                      if (isset($_GET['subcategory_id'])) {
-                        $keeper = 'item.sub_category_id';
-                        $brandval = $_GET['subcategory_id'];
-                      } else if (isset($_GET['category_id'])) {
-                        $keeper = 'item.category_id';
+                                  INNER JOIN category ON category.category_id=product.category_id
+                                  WHERE product.product_name LIKE '%" . $_GET['item'] . "%' GROUP BY brand.brand_name";
+                    } else if (isset($_GET['category_id']) ) {
+                      if (isset($_GET['category_id'])) {
+                        $keeper = 'product.category_id';
                         $brandval = $_GET['category_id'];
                       }
-                      $brandsql = "SELECT brand.brand_name,brand.brand_id FROM item
-                                  INNER JOIN item_description ON item_description.item_id=item.item_id
-                                  INNER JOIN brand ON item_description.brand=brand.brand_id
-                                  INNER JOIN item_keys ON item_keys.item_description_id=item_description.item_description_id
-                                  INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
+                      $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
+                                  INNER JOIN product_description ON product_description.product_id=product.product_id
+                                  INNER JOIN brand ON product_description.brand=brand.brand_id
+                                  INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
+                                  INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
                                   INNER JOIN store ON product_details.store_id=store.store_id
-                                  INNER JOIN category ON category.category_id=item.category_id
-                                  INNER JOIN sub_category ON category.category_id= sub_category.category_id
+                                  INNER JOIN category ON category.category_id=product.category_id
                                   WHERE " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
                     }
                     $brandstmt = $pdo->query($brandsql);
@@ -2029,36 +1602,22 @@ if ($result_cnt == 0) {
                     if (isset($_GET['item'])) {
                       $nm = $_GET['item'];
                       $res = $pdo->query(
-                        "SELECT store.store_name ,item.item_id,item.price AS 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item
-                        INNER JOIN item_description ON item_description.item_id=item.item_id
-                        INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
+                        "SELECT store.store_name ,product.product_id,product.price AS 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
+                        INNER JOIN product_description ON product_description.product_id=product.product_id
+                        INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
                         INNER JOIN store ON product_details.store_id=store.store_id
-                        INNER JOIN category ON category.category_id=item.category_id
-                        INNER JOIN sub_category ON category.category_id= sub_category.category_id
-                        WHERE item.item_name LIKE \"%$nm%\" AND sub_category.sub_category_id=item.sub_category_id"
+                        INNER JOIN category ON category.category_id=product.category_id
+                        WHERE product.product_name LIKE \"%$nm%\" "
                       );
-                    } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-                      $cat = $_GET['category_id'];
-                      $sub = $_GET['subcategory_id'];
-                      $res = $pdo->query(
-                        "SELECT store.store_name ,item.item_id,item.price AS 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id from item
-                        INNER JOIN item_description ON item_description.item_id=item.item_id
-                        INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
-                        INNER JOIN store ON product_details.store_id=store.store_id
-                        INNER JOIN category ON category.category_id=item.category_id
-                        INNER JOIN sub_category ON category.category_id= sub_category.category_id
-                        WHERE category.category_id=$cat AND sub_category.sub_category_id=$sub GROUP BY item.item_id ORDER BY item.sub_category_id"
-                      );
-                    } else if (isset($_GET['category_id'])) {
+                    }else if (isset($_GET['category_id'])) {
                       $cat = $_GET['category_id'];
                       $res = $pdo->query(
-                        "SELECT store.store_name ,item.item_id,item.price AS 'mrp',product_details.price,item_description.item_description_id,item.item_name,item.description,item.category_id,item.sub_category_id,category.category_name,sub_category.sub_category_name,store.store_name from item
-                        INNER JOIN item_description ON item_description.item_id=item.item_id
-                        INNER JOIN product_details ON product_details.item_description_id=item_description.item_description_id
+                        "SELECT store.store_name ,product.product_id,product.price AS 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,store.store_name from product
+                        INNER JOIN product_description ON product_description.product_id=product.product_id
+                        INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
                         INNER JOIN store ON product_details.store_id=store.store_id
-                        INNER JOIN category ON category.category_id=item.category_id
-                        INNER JOIN sub_category ON category.category_id= sub_category.category_id
-                        WHERE category.category_id=$cat GROUP BY item.item_id ORDER BY item.sub_category_id"
+                        INNER JOIN category ON category.category_id=product.category_id
+                        WHERE category.category_id=$cat GROUP BY product.product_id "
                       );
                     }
                     ?>
@@ -2072,11 +1631,11 @@ if ($result_cnt == 0) {
                         <!---ALL CONTENTS ARE LOADED HERE--->
                         <?php
                         while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
-                          if (strlen($row['item_name']) >= 35) {
-                            $item = $row['item_name'];
+                          if (strlen($row['product_name']) >= 35) {
+                            $item = $row['product_name'];
                             $item_name = substr($item, 0, 35) . "...";
                           } else {
-                            $item_name = $row['item_name'];
+                            $item_name = $row['product_name'];
                           }
                           if (strlen($row['description']) >= 65) {
                             $description = substr($row['description'], 65);
@@ -2088,21 +1647,20 @@ if ($result_cnt == 0) {
                         ?>
                           <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">
                             <?php
-                            $query = "SELECT store.store_name, category.category_name,sub_category.sub_category_name,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material FROM product_details
-                                      JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-                                      JOIN item ON item.item_id=item_description.item_id
-                                      JOIN category ON category.category_id=item.category_id
-                                      JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+                            $query = "SELECT store.store_name, category.category_name,size,weight,brand FROM product_details
+                                      JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+                                      JOIN product ON product.product_id=product_description.product_id
+                                      JOIN category ON category.category_id=product.category_id
                                       JOIN store ON store.store_id=product_details.store_id
-                                      WHERE item_description.item_description_id=:idid";
+                                      WHERE product_description.product_description_id=:idid";
                             $statement = $pdo->prepare($query);
                             $statement->execute(array(
-                              ':idid' => $row['item_description_id']
+                              ':idid' => $row['product_description_id']
                             ));
                             $row_feature = $statement->fetch(PDO::FETCH_ASSOC);
                             ?>
                             <div class="order-single" style="margin:0;padding:0;background-color:#fff;width:100%;height:100%;border-bottom: 1px solid #666;">
-                              <div class="col-sm-3 col-xs-3" style="background-color:#fff" onclick="location.href='../Product/single.php?id=<?= $row['item_description_id'] ?>'">
+                              <div class="col-sm-3 col-xs-3" style="background-color:#fff" onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
                                 <table>
                                   <tr style="padding-bottom:30px;"></tr>
                                   <tr>
@@ -2111,7 +1669,7 @@ if ($result_cnt == 0) {
                                         <img
                                           style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block; margin: auto;padding-top:30px "
                                           class="img-responsive"
-                                          src="../../images/<?= $row['category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                                          src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                                       </div>
                                     </td>
                                   </tr>
@@ -2122,7 +1680,7 @@ if ($result_cnt == 0) {
                                   <tr>
                                     <td>
                                       <div style="width: 100%;text-align: center;color: #000;font-weight:bold;font-size:20px;padding-top:30px">
-                                        <?= $row['item_name'] ?>
+                                        <?= $row['product_name'] ?>
                                       </div>
                                     </td>
                                   </tr>
@@ -2151,21 +1709,6 @@ if ($result_cnt == 0) {
                                         </tr>
                                       <?php
                                       }
-                                      if ($row_feature['color'] != 0) {
-                                        $query1 = "SELECT * FROM color where color_id=" . $row_feature['color'];
-                                        $st1 = $pdo->query($query1);
-                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                      ?>
-                                        <tr class=" dw">
-                                          <th class="cust_header2">
-                                            <li>Color</li>
-                                          </th>
-                                          <td class="cust_details">
-                                            <div style="height:16px;width:16px;border:.5px solid #999;background-color:<?= $row1['color_name'] ?>"></div>
-                                          </td>
-                                        </tr>
-                                      <?php
-                                      }
                                       if ($row_feature['weight'] != 0) {
                                       ?>
                                         <tr class=" dw">
@@ -2174,81 +1717,6 @@ if ($result_cnt == 0) {
                                           </th>
                                           <td class="cust_details">
                                             <?= $row_feature['weight'] ?>
-                                          </td>
-                                        </tr>
-                                      <?php
-                                      }
-                                      if ($row_feature['flavour'] != 0) {
-                                        $query1 = "SELECT * FROM flavour where flavour_id=" . $row_feature['flavour'];
-                                        $st1 = $pdo->query($query1);
-                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                      ?>
-                                        <tr class=" dw">
-                                          <th class="cust_header2">
-                                            <li>Flavour</li>
-                                          </th>
-                                          <td class="cust_details">
-                                            <?= $row1['flavour_name'] ?>
-                                          </td>
-                                        </tr>
-                                      <?php
-                                      }
-                                      if ($row_feature['processor'] != 0) {
-                                        $query1 = "SELECT * FROM processor where processor_id=" . $row_feature['processor'];
-                                        $st1 = $pdo->query($query1);
-                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                      ?>
-                                        <tr class=" dw">
-                                          <th class="cust_header2">
-                                            <li>Processor</li>
-                                          </th>
-                                          <td class="cust_details">
-                                            <?= $row1['processor_name'] ?>
-                                          </td>
-                                        </tr>
-                                      <?php
-                                      }
-                                      if ($row_feature['display'] != 0) {
-                                        $query1 = "SELECT * FROM display where display_id=" . $row_feature['display'];
-                                        $st1 = $pdo->query($query1);
-                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                      ?>
-                                        <tr class=" dw">
-                                          <th class="cust_header2">
-                                            <li>Display</li>
-                                          </th>
-                                          <td class="cust_details">
-                                            <?= $row1['display_name'] ?>
-                                          </td>
-                                        </tr>
-                                      <?php
-                                      }
-                                      if ($row_feature['battery'] != 0) {
-                                        $query1 = "SELECT * FROM battery where battery_id=" . $row_feature['battery'];
-                                        $st1 = $pdo->query($query1);
-                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                      ?>
-                                        <tr class=" dw">
-                                          <th class="cust_header2">
-                                            <li>Battery</li>
-                                          </th>
-                                          <td class="cust_details">
-                                            <?= $row1['battery_name'] ?>
-                                          </td>
-                                        </tr>
-                                      <?php
-                                      }
-                                      if ($row_feature['internal_storage'] != 0) {
-                                        $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row_feature['internal_storage'];
-                                        $st1 = $pdo->query($query1);
-                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                      ?>
-                                        <tr class=" dw">
-                                          <th class="cust_header2">
-                                            <li>Internal Storage</li>
-                                          </th>
-                                          <td class="cust_details">
-                                            <?= $row1['internal_storage_name'] ?>
                                           </td>
                                         </tr>
                                       <?php
@@ -2268,21 +1736,6 @@ if ($result_cnt == 0) {
                                         </tr>
                                       <?php
                                       }
-                                      if ($row_feature['material'] != 0) {
-                                        $query1 = "SELECT * FROM material where material_id=" . $row_feature['material'];
-                                        $st1 = $pdo->query($query1);
-                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                      ?>
-                                        <tr class=" dw">
-                                          <th class="cust_header2">
-                                            <li>Material</li>
-                                          </th>
-                                          <td class="cust_details">
-                                            <?= $row1['material_name'] ?>
-                                          </td>
-                                        </tr>
-                                      <?php
-                                      }
                                       ?>
                                       <tr class=" dw">
                                         <th class="cust_header2">
@@ -2290,15 +1743,6 @@ if ($result_cnt == 0) {
                                         </th>
                                         <td class="cust_details">
                                           <?= $row_feature['category_name'] ?>
-                                          </li>
-                                        </td>
-                                      </tr>
-                                      <tr class=" dw">
-                                        <th class="cust_header2">
-                                          <li>Sub Category
-                                        </th>
-                                        <td class="cust_details">
-                                          <?= $row_feature['sub_category_name'] ?>
                                           </li>
                                         </td>
                                       </tr>
