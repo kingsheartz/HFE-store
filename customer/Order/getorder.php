@@ -23,40 +23,40 @@ if (isset($_REQUEST["name"])) {
   if (strlen($_GET['name']) > 0 && $_GET['filter'] == 'all') {
     $sql_order_cnt = "select new_orders.new_orders_id ,new_orders.sub_total from new_orders
 											JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-											JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-											JOIN users ON users.user_id=user_delivery_details.user_id
+											JOIN product_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+											JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 											JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 											JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-											JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-											JOIN item ON item.item_id=item_description.item_id
-											JOIN category ON category.category_id=item.category_id
-											JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+											JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+											JOIN product ON product.product_id=product_description.product_id
+											JOIN category ON category.category_id=product.category_id
+											JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 											JOIN store on store.store_id=product_details.store_id
-											WHERE users.user_id=:user_id and new_ordered_products.product_details_id=product_details.product_details_id and
-											product_details.item_description_id=item_description.item_description_id and item.item_id=item_description.item_id and
-											(item.item_name like :name or user_delivery_details.first_name like :name)
+											WHERE customers.customer_id=:customer_id and new_ordered_products.product_details_id=product_details.product_details_id and
+											product_details.product_description_id=product_description.product_description_id and product.product_id=product_description.product_id and
+											(product.product_name like :name or customer_delivery_details.first_name like :name)
 											group by new_orders.new_orders_id order by CAST(new_orders.new_orders_id as UNSIGNED) DESC LIMIT " . $offset . "," . $limit;
     $stmt_order_cnt = $pdo->prepare($sql_order_cnt);
     $stmt_order_cnt->execute(array(
-      ':user_id' => $_GET['id'],
+      ':customer_id' => $_GET['id'],
       ':name' => "%" . $_GET['name'] . "%"
     ));
     while ($row_order_cnt = $stmt_order_cnt->fetch(PDO::FETCH_ASSOC)) {
-      $query1 = "select user_delivery_details.first_name,user_delivery_details.last_name,user_delivery_details.phone,user_delivery_details.address,user_delivery_details.pincode,users.email,new_orders.new_orders_id  FROM new_orders
+      $query1 = "select customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id  FROM new_orders
 								JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-								JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-								JOIN users ON users.user_id=user_delivery_details.user_id
+								JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+								JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 								JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 								JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-								JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-								JOIN item ON item.item_id=item_description.item_id
-								JOIN category ON category.category_id=item.category_id
-								JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+								JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+								JOIN product ON product.product_id=product_description.product_id
+								JOIN category ON category.category_id=product.category_id
+								JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 								JOIN store on store.store_id=product_details.store_id
-								WHERE users.user_id=:user_id and new_ordered_products.product_details_id=product_details.product_details_id and product_details.item_description_id=item_description.item_description_id and item.item_id=item_description.item_id and (item.item_name like :name or user_delivery_details.first_name like :name) order by new_orders.new_orders_id";
+								WHERE customers.customer_id=:customer_id and new_ordered_products.product_details_id=product_details.product_details_id and product_details.product_description_id=product_description.product_description_id and product.product_id=product_description.product_id and (product.product_name like :name or customer_delivery_details.first_name like :name) order by new_orders.new_orders_id";
       $statement1 = $pdo->prepare($query1);
       $statement1->execute(array(
-        ':user_id' => $_GET['id'],
+        ':customer_id' => $_GET['id'],
         ':new_orders_id' => $row_order_cnt['new_orders_id'],
         ':name' => "%" . $_GET['name'] . "%"
       ));
@@ -91,21 +91,21 @@ if (isset($_REQUEST["name"])) {
             <div style="background-color:#eee;height:20px;"></div>';
         $query = "select *  FROM new_orders
 									JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-									JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-									JOIN users ON users.user_id=user_delivery_details.user_id
+									JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+									JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 									JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 									JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-									JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-									JOIN item ON item.item_id=item_description.item_id
-									JOIN category ON category.category_id=item.category_id
-									JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+									JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+									JOIN product ON product.product_id=product_description.product_id
+									JOIN category ON category.category_id=product.category_id
+									JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 									JOIN store on store.store_id=product_details.store_id
-									WHERE users.user_id=:user_id and new_orders.new_orders_id=:new_orders_id and new_ordered_products.product_details_id=product_details.product_details_id and
-									product_details.item_description_id=item_description.item_description_id and item.item_id=item_description.item_id and
-									(item.item_name like :name or user_delivery_details.first_name like :name) order by new_orders.new_orders_id";
+									WHERE customers.customer_id=:customer_id and new_orders.new_orders_id=:new_orders_id and new_ordered_products.product_details_id=product_details.product_details_id and
+									product_details.product_description_id=product_description.product_description_id and product.product_id=product_description.product_id and
+									(product.product_name like :name or customer_delivery_details.first_name like :name) order by new_orders.new_orders_id";
         $statement = $pdo->prepare($query);
         $statement->execute(array(
-          ':user_id' => $_GET['id'],
+          ':customer_id' => $_GET['id'],
           ':new_orders_id' => $row_order_cnt['new_orders_id'],
           ':name' => "%" . $_GET['name'] . "%"
         ));
@@ -117,21 +117,21 @@ if (isset($_REQUEST["name"])) {
           $result_con .= '
           <div class="order-single" style="margin:0;padding:0;"
             onclick="location.href=\'../Order/ordersingle.php?nopid=' . $row['new_ordered_products_id'] . '\'">
-            <div class="col-sm-2 col-xs-2" onclick="location.href=\'../Product/single.php?id=' . $row['item_description_id'] . '\'">
+            <div class="col-sm-2 col-xs-2" onclick="location.href=\'../Product/single.php?id=' . $row['product_description_id'] . '\'">
               <table>
                 <tr style="padding-bottom:30px;"></tr>
                 <tr>
                 <td>
                   <div style="width: 100%;height:100%;">
                     <img style="height:auto;max-width: 100%;width:auto;max-height: 120px;display: block;margin: auto;" class="img-responsive img_my_ord"
-                      src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['item_description_id'] . '.jpg">
+                      src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['product_description_id'] . '.jpg">
                   </div>
                 </td>
                 </tr>
               </table>
             </div>
             <div class="col-sm-10 col-xs-10" style="padding:10px;">
-              <div style="width: 100%;text-align: center;color: #888;font-weight:bold;font-size:18px;text-align:left">' . $row['item_name'] . '</div>
+              <div style="width: 100%;text-align: center;color: #888;font-weight:bold;font-size:18px;text-align:left">' . $row['product_name'] . '</div>
               <div class="col-sm-4 large-size">
                 <table>
                   <tr style="padding-bottom:30px;"></tr>
@@ -333,38 +333,38 @@ if (isset($_REQUEST["name"])) {
   else if (strlen($_GET['name']) > 0 && $_GET['filter'] != 'all') {
     $sql_order_cnt = "select new_orders.new_orders_id ,new_orders.sub_total from new_orders
 											JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-											JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-											JOIN users ON users.user_id=user_delivery_details.user_id
+											JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+											JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 											JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 											JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-											JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-											JOIN item ON item.item_id=item_description.item_id
-											JOIN category ON category.category_id=item.category_id
-											JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+											JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+											JOIN product ON product.product_id=product_description.product_id
+											JOIN category ON category.category_id=product.category_id
+											JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 											JOIN store on store.store_id=product_details.store_id
-											WHERE users.user_id=:user_id and new_ordered_products.product_details_id=product_details.product_details_id and product_details.item_description_id=item_description.item_description_id and item.item_id=item_description.item_id and (item.item_name like :name or user_delivery_details.first_name like :name) and new_ordered_products.delivery_status=:filter group by new_orders.new_orders_id order by CAST(new_orders.new_orders_id as UNSIGNED) DESC  LIMIT " . $offset . "," . $limit;
+											WHERE customers.customer_id=:customer_id and new_ordered_products.product_details_id=product_details.product_details_id and product_details.product_description_id=product_description.product_description_id and product.product_id=product_description.product_id and (product.product_name like :name or customer_delivery_details.first_name like :name) and new_ordered_products.delivery_status=:filter group by new_orders.new_orders_id order by CAST(new_orders.new_orders_id as UNSIGNED) DESC  LIMIT " . $offset . "," . $limit;
     $stmt_order_cnt = $pdo->prepare($sql_order_cnt);
     $stmt_order_cnt->execute(array(
-      ':user_id' => $_GET['id'],
+      ':customer_id' => $_GET['id'],
       ':name' => "%" . $_GET['name'] . "%",
       ':filter' => $_GET['filter']
     ));
     while ($row_order_cnt = $stmt_order_cnt->fetch(PDO::FETCH_ASSOC)) {
-      $query1 = "select user_delivery_details.first_name,user_delivery_details.last_name,user_delivery_details.phone,user_delivery_details.address,user_delivery_details.pincode,users.email,new_orders.new_orders_id  FROM new_orders
+      $query1 = "select customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id  FROM new_orders
 								JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-								JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-								JOIN users ON users.user_id=user_delivery_details.user_id
+								JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+								JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 								JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 								JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-								JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-								JOIN item ON item.item_id=item_description.item_id
-								JOIN category ON category.category_id=item.category_id
-								JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+								JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+								JOIN product ON product.product_id=product_description.product_id
+								JOIN category ON category.category_id=product.category_id
+								JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 								JOIN store on store.store_id=product_details.store_id
-								WHERE users.user_id=:user_id and new_orders.new_orders_id=:new_orders_id and new_ordered_products.product_details_id=product_details.product_details_id and product_details.item_description_id=item_description.item_description_id and item.item_id=item_description.item_id and (item.item_name like :name or user_delivery_details.first_name like :name) and new_ordered_products.delivery_status=:filter order by new_orders.new_orders_id";
+								WHERE customers.customer_id=:customer_id and new_orders.new_orders_id=:new_orders_id and new_ordered_products.product_details_id=product_details.product_details_id and product_details.product_description_id=product_description.product_description_id and product.product_id=product_description.product_id and (product.product_name like :name or customer_delivery_details.first_name like :name) and new_ordered_products.delivery_status=:filter order by new_orders.new_orders_id";
       $statement1 = $pdo->prepare($query1);
       $statement1->execute(array(
-        ':user_id' => $_GET['id'],
+        ':customer_id' => $_GET['id'],
         ':new_orders_id' => $row_order_cnt['new_orders_id'],
         ':name' => "%" . $_GET['name'] . "%",
         ':filter' => $_GET['filter']
@@ -399,19 +399,19 @@ if (isset($_REQUEST["name"])) {
           <div style="background-color:#eee;height:20px;"></div>';
         $query = "select *  FROM new_orders
 									JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-									JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-									JOIN users ON users.user_id=user_delivery_details.user_id
+									JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+									JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 									JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 									JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-									JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-									JOIN item ON item.item_id=item_description.item_id
-									JOIN category ON category.category_id=item.category_id
-									JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+									JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+									JOIN product ON product.product_id=product_description.product_id
+									JOIN category ON category.category_id=product.category_id
+									JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 									JOIN store on store.store_id=product_details.store_id
-									WHERE users.user_id=:user_id and new_orders.new_orders_id=:new_orders_id and new_ordered_products.product_details_id=product_details.product_details_id and product_details.item_description_id=item_description.item_description_id and item.item_id=item_description.item_id and (item.item_name like :name or user_delivery_details.first_name like :name) and new_ordered_products.delivery_status=:filter order by new_orders.new_orders_id";
+									WHERE customers.customer_id=:customer_id and new_orders.new_orders_id=:new_orders_id and new_ordered_products.product_details_id=product_details.product_details_id and product_details.product_description_id=product_description.product_description_id and product.product_id=product_description.product_id and (product.product_name like :name or customer_delivery_details.first_name like :name) and new_ordered_products.delivery_status=:filter order by new_orders.new_orders_id";
         $statement = $pdo->prepare($query);
         $statement->execute(array(
-          ':user_id' => $_GET['id'],
+          ':customer_id' => $_GET['id'],
           ':new_orders_id' => $row_order_cnt['new_orders_id'],
           ':name' => "%" . $_GET['name'] . "%",
           ':filter' => $_GET['filter']
@@ -422,16 +422,16 @@ if (isset($_REQUEST["name"])) {
             $result_con .= ' <hr class="make_div">';
           }
           $result_con .= '<div class="order-single" style="margin:0;padding:0;" onclick="location.href=\'../Order/ordersingle.php?nopid=' . $row['new_ordered_products_id'] . '\'">
-            <div class="col-sm-2 col-xs-2" onclick="location.href=\'../Product/single.php?id=' . $row['item_description_id'] . '\'">
+            <div class="col-sm-2 col-xs-2" onclick="location.href=\'../Product/single.php?id=' . $row['product_description_id'] . '\'">
               <table>
                 <tr style="padding-bottom:30px;"></tr>
-                <tr> <td><div style="width: 100%;height:100%;"> <img style="height:auto;max-width: 100%;width:auto;max-height: 120px;display: block;margin: auto;" class="img-responsive img_my_ord" src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['item_description_id'] . '.jpg"> </div>
+                <tr> <td><div style="width: 100%;height:100%;"> <img style="height:auto;max-width: 100%;width:auto;max-height: 120px;display: block;margin: auto;" class="img-responsive img_my_ord" src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['product_description_id'] . '.jpg"> </div>
                 </td>
                 </tr>
               </table>
             </div>
             <div class="col-sm-10 col-xs-10" style="padding:10px;">
-              <div style="width: 100%;text-align: center;color: #888;font-weight:bold;font-size:18px;text-align:left">' . $row['item_name'] . '</div>
+              <div style="width: 100%;text-align: center;color: #888;font-weight:bold;font-size:18px;text-align:left">' . $row['product_name'] . '</div>
             <div class="col-sm-4 large-size">
             <table>
               <tr style="padding-bottom:30px;"></tr>
@@ -629,25 +629,25 @@ if (isset($_REQUEST["name"])) {
   if (strlen($_GET['name']) == 0 && $_GET['filter'] == "all") {
     $sql_order_cnt = "select new_orders_id ,new_orders.sub_total from new_orders
 											JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-											JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id where user_delivery_details.user_id=" . $_GET['id'] . " order by CAST(new_orders.new_orders_id as UNSIGNED) DESC  LIMIT " . $offset . "," . $limit;
+											JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id where customer_delivery_details.customer_id=" . $_GET['id'] . " order by CAST(new_orders.new_orders_id as UNSIGNED) DESC  LIMIT " . $offset . "," . $limit;
     $stmt_order_cnt = $pdo->prepare($sql_order_cnt);
     $stmt_order_cnt->execute();
     while ($row_order_cnt = $stmt_order_cnt->fetch(PDO::FETCH_ASSOC)) {
-      $query1 = "select user_delivery_details.first_name,user_delivery_details.last_name,user_delivery_details.phone,user_delivery_details.address,user_delivery_details.pincode,users.email,new_orders.new_orders_id  FROM new_orders
+      $query1 = "select customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id  FROM new_orders
 								JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-								JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-								JOIN users ON users.user_id=user_delivery_details.user_id
+								JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+								JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 								JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 								JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-								JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-								JOIN item ON item.item_id=item_description.item_id
-								JOIN category ON category.category_id=item.category_id
-								JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+								JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+								JOIN product ON product.product_id=product_description.product_id
+								JOIN category ON category.category_id=product.category_id
+								JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 								JOIN store on store.store_id=product_details.store_id
-								WHERE users.user_id=:user_id and new_orders.new_orders_id=:new_orders_id";
+								WHERE customers.customer_id=:customer_id and new_orders.new_orders_id=:new_orders_id";
       $statement1 = $pdo->prepare($query1);
       $statement1->execute(array(
-        ':user_id' => $_GET['id'],
+        ':customer_id' => $_GET['id'],
         ':new_orders_id' => $row_order_cnt['new_orders_id']
       ));
       $row2 = $statement1->fetch(PDO::FETCH_ASSOC);
@@ -679,19 +679,19 @@ if (isset($_REQUEST["name"])) {
           <div style="background-color:#eee;height:20px;"></div>';
         $query = "select *  FROM new_orders
 									JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-									JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-									JOIN users ON users.user_id=user_delivery_details.user_id
+									JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+									JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 									JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 									JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-									JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-									JOIN item ON item.item_id=item_description.item_id
-									JOIN category ON category.category_id=item.category_id
-									JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+									JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+									JOIN product ON product.product_id=product_description.product_id
+									JOIN category ON category.category_id=product.category_id
+									JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 									JOIN store on store.store_id=product_details.store_id
-									WHERE users.user_id=:user_id and new_orders.new_orders_id=:new_orders_id";
+									WHERE customers.customer_id=:customer_id and new_orders.new_orders_id=:new_orders_id";
         $statement = $pdo->prepare($query);
         $statement->execute(array(
-          ':user_id' => $_GET['id'],
+          ':customer_id' => $_GET['id'],
           ':new_orders_id' => $row_order_cnt['new_orders_id']
         ));
         $flag = 0;
@@ -700,16 +700,16 @@ if (isset($_REQUEST["name"])) {
             $result_con .= ' <hr class="make_div">';
           }
           $result_con .= '<div class="order-single" style="margin:0;padding:0;" onclick="location.href=\'../Order/ordersingle.php?nopid=' . $row['new_ordered_products_id'] . '\'">
-          <div class="col-sm-2 col-xs-2" onclick="location.href=\'../Product/single.php?id=' . $row['item_description_id'] . '\'">
+          <div class="col-sm-2 col-xs-2" onclick="location.href=\'../Product/single.php?id=' . $row['product_description_id'] . '\'">
             <table>
               <tr style="padding-bottom:30px;"></tr>
-              <tr> <td><div style="width: 100%;height:100%;"> <img style="height:auto;max-width: 100%;width:auto;max-height: 120px;display: block;margin: auto;" class="img-responsive img_my_ord" src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['item_description_id'] . '.jpg"> </div>
+              <tr> <td><div style="width: 100%;height:100%;"> <img style="height:auto;max-width: 100%;width:auto;max-height: 120px;display: block;margin: auto;" class="img-responsive img_my_ord" src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['product_description_id'] . '.jpg"> </div>
               </td>
               </tr>
             </table>
           </div>
           <div class="col-sm-10 col-xs-10" style="padding:10px;">
-            <div style="width: 100%;text-align: center;color: #888;font-weight:bold;font-size:18px;text-align:left">' . $row['item_name'] . '</div>
+            <div style="width: 100%;text-align: center;color: #888;font-weight:bold;font-size:18px;text-align:left">' . $row['product_name'] . '</div>
           <div class="col-sm-4 large-size">
           <table>
             <tr style="padding-bottom:30px;"></tr>
@@ -907,37 +907,37 @@ if (isset($_REQUEST["name"])) {
   if (strlen($_GET['name']) == 0 && $_GET['filter'] != "all") {
     $sql_order_cnt = "select new_orders.new_orders_id ,new_orders.sub_total from new_orders
 											JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-											JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-											JOIN users ON users.user_id=user_delivery_details.user_id
+											JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+											JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 											JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 											JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-											JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-											JOIN item ON item.item_id=item_description.item_id
-											JOIN category ON category.category_id=item.category_id
-											JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+											JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+											JOIN product ON product.product_id=product_description.product_id
+											JOIN category ON category.category_id=product.category_id
+											JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 											JOIN store on store.store_id=product_details.store_id
-											WHERE users.user_id=:user_id and new_ordered_products.delivery_status=:filter order by CAST(new_orders.new_orders_id as UNSIGNED) DESC  LIMIT " . $offset . "," . $limit;
+											WHERE customers.customer_id=:customer_id and new_ordered_products.delivery_status=:filter order by CAST(new_orders.new_orders_id as UNSIGNED) DESC  LIMIT " . $offset . "," . $limit;
     $stmt_order_cnt = $pdo->prepare($sql_order_cnt);
     $stmt_order_cnt->execute(array(
-      ':user_id' => $_GET['id'],
+      ':customer_id' => $_GET['id'],
       ':filter' => $_GET['filter']
     ));
     while ($row_order_cnt = $stmt_order_cnt->fetch(PDO::FETCH_ASSOC)) {
-      $query1 = "select user_delivery_details.first_name,user_delivery_details.last_name,user_delivery_details.phone,user_delivery_details.address,user_delivery_details.pincode,users.email,new_orders.new_orders_id  FROM new_orders
+      $query1 = "select customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id  FROM new_orders
 								JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-								JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-								JOIN users ON users.user_id=user_delivery_details.user_id
+								JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+								JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 								JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 								JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-								JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-								JOIN item ON item.item_id=item_description.item_id
-								JOIN category ON category.category_id=item.category_id
-								JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+								JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+								JOIN product ON product.product_id=product_description.product_id
+								JOIN category ON category.category_id=product.category_id
+								JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 								JOIN store on store.store_id=product_details.store_id
-								WHERE users.user_id=:user_id and new_ordered_products.delivery_status=:filter and new_orders.new_orders_id=:new_orders_id order by new_orders.order_date";
+								WHERE customers.customer_id=:customer_id and new_ordered_products.delivery_status=:filter and new_orders.new_orders_id=:new_orders_id order by new_orders.order_date";
       $statement1 = $pdo->prepare($query1);
       $statement1->execute(array(
-        ':user_id' => $_GET['id'],
+        ':customer_id' => $_GET['id'],
         ':filter' => $_GET['filter'],
         ':new_orders_id' => $row_order_cnt['new_orders_id']
       ));
@@ -970,19 +970,19 @@ if (isset($_REQUEST["name"])) {
           <div style="background-color:#eee;height:20px;"></div>';
         $query = "select *  FROM new_orders
 									JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-									JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-									JOIN users ON users.user_id=user_delivery_details.user_id
+									JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+									JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 									JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 									JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-									JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-									JOIN item ON item.item_id=item_description.item_id
-									JOIN category ON category.category_id=item.category_id
-									JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+									JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+									JOIN product ON product.product_id=product_description.product_id
+									JOIN category ON category.category_id=product.category_id
+									JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 									JOIN store on store.store_id=product_details.store_id
-									WHERE users.user_id=:user_id and new_ordered_products.delivery_status=:filter and new_orders.new_orders_id=:new_orders_id order by new_orders.order_date";
+									WHERE customers.customer_id=:customer_id and new_ordered_products.delivery_status=:filter and new_orders.new_orders_id=:new_orders_id order by new_orders.order_date";
         $statement = $pdo->prepare($query);
         $statement->execute(array(
-          ':user_id' => $_GET['id'],
+          ':customer_id' => $_GET['id'],
           ':filter' => $_GET['filter'],
           ':new_orders_id' => $row_order_cnt['new_orders_id']
         ));
@@ -992,16 +992,16 @@ if (isset($_REQUEST["name"])) {
             $result_con .= ' <hr class="make_div">';
           }
           $result_con .= '<div class="order-single" style="margin:0;padding:0;" onclick="location.href=\'../Order/ordersingle.php?nopid=' . $row['new_ordered_products_id'] . '\'">
-            <div class="col-sm-2 col-xs-2" onclick="location.href=\'../Product/single.php?id=' . $row['item_description_id'] . '\'">
+            <div class="col-sm-2 col-xs-2" onclick="location.href=\'../Product/single.php?id=' . $row['product_description_id'] . '\'">
               <table>
                 <tr style="padding-bottom:30px;"></tr>
-                <tr> <td><div style="width: 100%;height:100%;"> <img style="height:auto;max-width: 100%;width:auto;max-height: 120px;display: block;margin: auto;" class="img-responsive img_my_ord" src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['item_description_id'] . '.jpg"> </div>
+                <tr> <td><div style="width: 100%;height:100%;"> <img style="height:auto;max-width: 100%;width:auto;max-height: 120px;display: block;margin: auto;" class="img-responsive img_my_ord" src="../../images/' . $row['category_id'] . '/' . $row['sub_category_id'] . '/' . $row['product_description_id'] . '.jpg"> </div>
                 </td>
                 </tr>
               </table>
             </div>
             <div class="col-sm-10 col-xs-10" style="padding:10px;">
-              <div style="width: 100%;text-align: center;color: #888;font-weight:bold;font-size:18px;text-align:left">' . $row['item_name'] . '</div>
+              <div style="width: 100%;text-align: center;color: #888;font-weight:bold;font-size:18px;text-align:left">' . $row['product_name'] . '</div>
             <div class="col-sm-4 large-size">
             <table>
               <tr style="padding-bottom:30px;"></tr>
@@ -1195,62 +1195,62 @@ if (isset($_REQUEST["name"])) {
   if (strlen($_GET['name']) > 0 && $_GET['filter'] == 'all') {
     $sqlcnt = "select new_orders.new_orders_id ,new_orders.sub_total from new_orders
 							JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-							JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-							JOIN users ON users.user_id=user_delivery_details.user_id
+							JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+							JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 							JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 							JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-							JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-							JOIN item ON item.item_id=item_description.item_id
-							JOIN category ON category.category_id=item.category_id
-							JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+							JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+							JOIN product ON product.product_id=product_description.product_id
+							JOIN category ON category.category_id=product.category_id
+							JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 							JOIN store on store.store_id=product_details.store_id
-							WHERE users.user_id=:user_id and new_ordered_products.product_details_id=product_details.product_details_id and product_details.item_description_id=item_description.item_description_id and item.item_id=item_description.item_id and (item.item_name like :name or user_delivery_details.first_name like :name) group by new_orders.new_orders_id";
+							WHERE customers.customer_id=:customer_id and new_ordered_products.product_details_id=product_details.product_details_id and product_details.product_description_id=product_description.product_description_id and product.product_id=product_description.product_id and (product.product_name like :name or customer_delivery_details.first_name like :name) group by new_orders.new_orders_id";
     $records = $pdo->prepare($sqlcnt);
     $records->execute(array(
-      ':user_id' => $_GET['id'],
+      ':customer_id' => $_GET['id'],
       ':name' => "%" . $_GET['name'] . "%"
     ));
   } else if (strlen($_GET['name']) > 0 && $_GET['filter'] != 'all') {
     $sqlcnt = "select new_orders.new_orders_id ,new_orders.sub_total from new_orders
 							JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-							JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-							JOIN users ON users.user_id=user_delivery_details.user_id
+							JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+							JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 							JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 							JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-							JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-							JOIN item ON item.item_id=item_description.item_id
-							JOIN category ON category.category_id=item.category_id
-							JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+							JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+							JOIN product ON product.product_id=product_description.product_id
+							JOIN category ON category.category_id=product.category_id
+							JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 							JOIN store on store.store_id=product_details.store_id
-							WHERE users.user_id=:user_id and (item.item_name like :name or user_delivery_details.first_name like :name) and new_ordered_products.delivery_status=:filter group by new_orders.new_orders_id";
+							WHERE customers.customer_id=:customer_id and (product.product_name like :name or customer_delivery_details.first_name like :name) and new_ordered_products.delivery_status=:filter group by new_orders.new_orders_id";
     $records = $pdo->prepare($sqlcnt);
     $records->execute(array(
-      ':user_id' => $_GET['id'],
+      ':customer_id' => $_GET['id'],
       ':name' => "%" . $_GET['name'] . "%",
       ':filter' => $_GET['filter']
     ));
   } else if (strlen($_GET['name']) == 0 && $_GET['filter'] != 'all') {
     $sqlcnt = "select new_orders.new_orders_id ,new_orders.sub_total from new_orders
 							JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-							JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id
-							JOIN users ON users.user_id=user_delivery_details.user_id
+							JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
+							JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
 							JOIN new_ordered_products ON new_ordered_products.new_orders_id=new_orders.new_orders_id
 							JOIN product_details ON new_ordered_products.product_details_id=product_details.product_details_id
-							JOIN item_description ON product_details.item_description_id=item_description.item_description_id
-							JOIN item ON item.item_id=item_description.item_id
-							JOIN category ON category.category_id=item.category_id
-							JOIN sub_category ON sub_category.sub_category_id=item.sub_category_id
+							JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+							JOIN product ON product.product_id=product_description.product_id
+							JOIN category ON category.category_id=product.category_id
+							JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 							JOIN store on store.store_id=product_details.store_id
-      WHERE users.user_id=:user_id and new_ordered_products.delivery_status=:filter order by new_orders.order_date ";
+      WHERE customers.customer_id=:customer_id and new_ordered_products.delivery_status=:filter order by new_orders.order_date ";
     $records = $pdo->prepare($sqlcnt);
     $records->execute(array(
-      ':user_id' => $_GET['id'],
+      ':customer_id' => $_GET['id'],
       ':filter' => $_GET['filter']
     ));
   } else if (strlen($_GET['name']) == 0 && $_GET['filter'] == "all") {
     $sqlcnt = "select new_orders_id ,new_orders.sub_total from new_orders
 							JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-							JOIN user_delivery_details ON user_delivery_details.user_delivery_details_id=order_delivery_details.user_delivery_details_id where user_delivery_details.user_id=" . $_GET['id'];
+							JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id where customer_delivery_details.customer_id=" . $_GET['id'];
     $records = $pdo->query($sqlcnt);
   }
   $totalRecords = $records->rowCount();

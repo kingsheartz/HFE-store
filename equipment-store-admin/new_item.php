@@ -386,11 +386,11 @@ require "head.php";
         $ct = $row11['category_id'];
       ?>
         <?php
-        $query = "SELECT * FROM item
-                  JOIN item_description ON item.item_id=item_description.item_id
-                  where item.category_id=$ct and (item.added_date) in (
-                    select max(added_date) as date from item
-                  ) GROUP BY item_description.item_id";
+        $query = "SELECT * FROM product
+                  JOIN product_description ON product.product_id=product_description.product_id
+                  where product.category_id=$ct and (product.added_date) in (
+                    select max(added_date) as date from product
+                  ) GROUP BY product_description.product_id";
         $st = $pdo->query($query);
         $product = $st->rowCount();
         if ($product == 0) {
@@ -413,9 +413,9 @@ require "head.php";
               ?>
                 <div class="products">
                   <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
-                    <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                    <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                   </div>
-                  <div class="deupd"><?= $row['item_name'] ?><br /></div>
+                  <div class="deupd"><?= $row['product_name'] ?><br /></div>
                 </div>
               <?php
               }

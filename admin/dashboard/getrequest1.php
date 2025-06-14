@@ -6,9 +6,9 @@ $method = $_SERVER['REQUEST_METHOD'];
 if ($method == 'GET') {
   // Check if the required parameters are set in the GET request
   $data = array(
-    ':product_details_id' => "%" . $_GET['item_details_id'] . "%",
-    ':product_description_id' => "%" . $_GET['item_description_id'] . "%",
-    ':product_name' => "%" . $_GET['item_name'] . "%",
+    ':product_details_id' => "%" . $_GET['product_details_id'] . "%",
+    ':product_description_id' => "%" . $_GET['product_description_id'] . "%",
+    ':product_name' => "%" . $_GET['product_name'] . "%",
     ':store_name' => "%" . $_GET['store_name'] . "%",
     ':permission' => "%" . $_GET['permission'] . "%"
   );
@@ -20,9 +20,9 @@ if ($method == 'GET') {
 
   foreach ($result as $row) {
     $output[] = array(
-      'item_details_id' => $row['product_details_id'],
-      'item_description_id' => $row['product_description_id'],
-      'item_name' => $row['product_name'],
+      'product_details_id' => $row['product_details_id'],
+      'product_description_id' => $row['product_description_id'],
+      'product_name' => $row['product_name'],
       'store_name' => $row['store_name'],
       'permission' => $row['permission']
 
@@ -35,7 +35,7 @@ if (isset($_POST['type'])) {
   if ($_POST['type'] == "update") { //EDITED LINE
     parse_str(file_get_contents("php://input"), $_POST);
     $data = array(
-      ':product_details_id' => $_POST['item_details_id'],
+      ':product_details_id' => $_POST['product_details_id'],
       ':permission' => $_POST['permission']
     );
     echo json_encode($_POST['type']);

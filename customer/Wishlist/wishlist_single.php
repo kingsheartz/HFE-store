@@ -615,7 +615,7 @@ $rowcount = $row_single_div['checksingle'];
                   <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;width: 100%">
                     <?php
                     $id = $_SESSION['id'];
-                    $sql1 = "select * from wishlist_items where wishlist_id=:wid order by item_description_id";
+                    $sql1 = "select * from wishlist_items where wishlist_id=:wid order by product_description_id";
                     $stmt1 = $pdo->prepare($sql1);
                     $stmt1->execute(array(
                       ':wid' => $wishlist_id
@@ -628,21 +628,21 @@ $rowcount = $row_single_div['checksingle'];
                     $item_cnt = 0;
                     while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
                       $wishlist_items_id = $row1['wishlist_items_id'];
-                      $item_description_id = $row1['item_description_id'];
+                      $product_description_id = $row1['product_description_id'];
                       $store_id = $row1['store_id'];
                       $n = 0;
-                      $sql2 = "select * from item inner join category on category.category_id=item.category_id
+                      $sql2 = "select * from product inner join category on category.category_id=product.category_id
 															inner join sub_category on category.category_id=sub_category.category_id
-															inner join item_description on item_description.item_id=item.item_id
-															inner join product_details on item_description.item_description_id=product_details.item_description_id
+															inner join product_description on product_description.product_id=product.product_id
+															inner join product_details on product_description.product_description_id=product_details.product_description_id
 															inner join store on store.store_id=product_details.store_id
-															where item.sub_category_id=sub_category.sub_category_id and item_description.item_description_id=:item_description_id and product_details.store_id=:store_id order by item_description.item_description_id";
+															where product.sub_category_id=sub_category.sub_category_id and product_description.product_description_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
                       $stmt2 = $pdo->prepare($sql2);
                       $stmt2->execute(array(
-                        ':item_description_id' => $item_description_id,
+                        ':product_description_id' => $product_description_id,
                         ':store_id' => $store_id
                       ));
-                      $mrpsql = "select item.price from item inner join item_description on item_description.item_id=item.item_id where item_description.item_description_id=$item_description_id";
+                      $mrpsql = "select product.price from product inner join product_description on product_description.product_id=product.product_id where product_description.product_description_id=$product_description_id";
                       $mrpstmt = $pdo->query($mrpsql);
                       $mrprow = $mrpstmt->fetch(PDO::FETCH_ASSOC);
                       $t_mrp = $mrprow['price'];
@@ -670,16 +670,16 @@ $rowcount = $row_single_div['checksingle'];
                                       <p style="margin:0px;margin-bottom: 20px;font-size:17px;">
                                       <div style="margin-left: 0px;background-color: #02171e;padding-left: 15px;padding-right:15px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
                                         <?php
-                                        if (strlen($row2['item_name']) >= 50) {
-                                          $item_name = substr($row2['item_name'], 0, 50);
-                                          $item_name2 = $item_name . "...";
+                                        if (strlen($row2['product_name']) >= 50) {
+                                          $product_name = substr($row2['product_name'], 0, 50);
+                                          $product_name2 = $product_name . "...";
                                         } else {
-                                          $item_name2 = $row2['item_name'];
+                                          $product_name2 = $row2['product_name'];
                                         }
                                         ?>
                                         <a href="#" style="color: white;font-weight: normal;text-align:justify;font-size:17px;">
                                           <i class="fa fa-product-hunt"></i>
-                                          <?= $item_name2 ?>
+                                          <?= $product_name2 ?>
                                         </a>
                                       </div>
                                       </p>
@@ -692,39 +692,39 @@ $rowcount = $row_single_div['checksingle'];
                                               <div class="product_img div-wrapper" style="padding: 0px; margin-top: 7px;margin-left: 15px;grid-gap: 10px;">
                                                 <input
                                                   style="display:none"
-                                                  id="check_s<?= $store_id . "i" . $item_description_id ?>" type="checkbox"
+                                                  id="check_s<?= $store_id . "i" . $product_description_id ?>" type="checkbox"
                                                   name="select_item">
                                                 <p class="product-thumbnail" style="text-align:right;">
-                                                  <a href="../Product/single.php?id=<?= $row2['item_description_id'] ?>">
+                                                  <a href="../Product/single.php?id=<?= $row2['product_description_id'] ?>">
                                                     <img
                                                       style="max-width:180px;max-height:180px;"
-                                                      alt="<?= $row2['item_name'] ?>"
+                                                      alt="<?= $row2['product_name'] ?>"
                                                       class="shop_thumbnail"
-                                                      src="../../images/<?= $row2['category_id'] ?>/<?= $row2['sub_category_id'] ?>/<?= $row2['item_description_id'] ?>.jpg">
+                                                      src="../../images/<?= $row2['category_id'] ?>/<?= $row2['sub_category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg">
                                                   </a>
                                                 </p>
                                               </div>
                                             </div>
                                           </div>
                                         </div>
-                                        <div class="tbl_wi<?= $wishlist_items_id ?> item_description_td col-md-7 product-img" style="padding:0;">
+                                        <div class="tbl_wi<?= $wishlist_items_id ?> product_description_td col-md-7 product-img" style="padding:0;">
                                           <div class=" full-size-cart-store-div" style="padding: 0px;margin-left: 20px;width: 200px;">
                                             <p style="z-index: 1;text-align:left;margin-top: 15px;">
                                               <span style='font-family: arial;color:#006904;font-weight: bold;text-decoration: none;font-size: 12px'>
                                                 You Save &#8377;
-                                                <span id="save_s<?= $store_id . "i" . $item_description_id ?>" style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px">
+                                                <span id="save_s<?= $store_id . "i" . $product_description_id ?>" style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px">
                                                   <?= $save ?>
                                                 </span>
                                                 (<span
                                                   style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"
-                                                  id="off_s<?= $store_id . "i" . $item_description_id ?>">
+                                                  id="off_s<?= $store_id . "i" . $product_description_id ?>">
                                                   <?= $off ?>
                                                 </span>%)
                                               </span>
                                             </p>
                                             <p class="product-price" style="z-index: 1;text-align:left;margin-top: 10px;;font-weight: bold;font-size: 2vw">
                                               <span class="amount">&#8377;
-                                                <span id="total_s<?= $store_id . "i" . $item_description_id ?>">
+                                                <span id="total_s<?= $store_id . "i" . $product_description_id ?>">
                                                   <?= $total ?>
                                                 </span>
                                                 <i style="color: #303030" class="fa fa-tags">&nbsp;
@@ -732,7 +732,7 @@ $rowcount = $row_single_div['checksingle'];
                                                 </i>
                                                 <del
                                                   style="color: #999;font-weight:normal;font-size: 13px;"
-                                                  id="mrp_s<?= $store_id . "i" . $item_description_id ?>"
+                                                  id="mrp_s<?= $store_id . "i" . $product_description_id ?>"
                                                   style="text-decoration:none;">
                                                   <?= (int) $t_mrp * (int) $row1['quantity'] ?>
                                                 </del>
@@ -757,11 +757,11 @@ $rowcount = $row_single_div['checksingle'];
                                               </p>
                                               <?php
                                               $sqlfeatures = "select * from product_details
-                                                              inner join item_description on item_description.item_description_id=product_details.item_description_id
-                                                              where item_description.item_description_id=:item_description_id and store_id=:store_id";
+                                                              inner join product_description on product_description.product_description_id=product_details.product_description_id
+                                                              where product_description.product_description_id=:product_description_id and store_id=:store_id";
                                               $stmtfeatures = $pdo->prepare($sqlfeatures);
                                               $stmtfeatures->execute(array(
-                                                ':item_description_id' => $item_description_id,
+                                                ':product_description_id' => $product_description_id,
                                                 'store_id' => $row2['store_id']
                                               ));
                                               $rowfeatures = $stmtfeatures->fetch(PDO::FETCH_ASSOC);
@@ -826,7 +826,7 @@ $rowcount = $row_single_div['checksingle'];
                                             <p class="product-subtotal" style="bottom: 0px;margin-left: 15px;float: left;font-weight: bold;">
                                               Price
                                               <span class="amount">&#8377;
-                                                <span id="price_s<?= $store_id . "i" . $item_description_id ?>"><?= $row2['price'] ?></span>
+                                                <span id="price_s<?= $store_id . "i" . $product_description_id ?>"><?= $row2['price'] ?></span>
                                                 <span>/-</span>
                                                 (1 Qty) |
                                               </span>
@@ -845,7 +845,7 @@ $rowcount = $row_single_div['checksingle'];
                                           <div style="padding: 0px;width: 100%" class="col-md-6 ">
                                             <button
                                               type="button"
-                                              onclick="updatecart(<?= $item_description_id ?>,<?= $store_id ?>)"
+                                              onclick="updatecart(<?= $product_description_id ?>,<?= $store_id ?>)"
                                               title="Add to wish list"
                                               style="width: 100%;height: 40px;background-color: #f6f6f6;border: 0px solid #999;outline: none;font-weight: bold;-webkit-box-shadow: inset -1px 1px 15px 3px #bbb;box-shadow: inset -1px 1px 15px 3px #ccc;">
                                               <i class="fa fa trash"></i> Add to Cart <i style="color: red" class="fa fa-shopping-cart fa-lg"></i>
@@ -977,20 +977,20 @@ $rowcount = $row_single_div['checksingle'];
                   <div class="scrollmenu bl_item_scroll  <?= $color[$rancolor1] ?>" style="background-color: #fff">
                     <?php
                     $row = $pdo->query(
-                      "select item_description.item_description_id,item.item_id,item.item_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from item
-                      inner join item_description on item_description.item_id=item.item_id
-                      inner join category on category.category_id=item.category_id
+                      "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from product
+                      inner join product_description on product_description.product_id=product.product_id
+                      inner join category on category.category_id=product.category_id
                       inner join sub_category on category.category_id=sub_category.category_id
-                      where  sub_category.category_id=$cat_id1 and sub_category.sub_category_id=$sub_cat_id1 and item.sub_category_id=$sub_cat_id1 "
+                      where  sub_category.category_id=$cat_id1 and sub_category.sub_category_id=$sub_cat_id1 and product.sub_category_id=$sub_cat_id1 "
                     );
                     while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                      <a href="../Product/single.php?id=<?= $row1['item_description_id'] ?>">
+                      <a href="../Product/single.php?id=<?= $row1['product_description_id'] ?>">
                         <img
-                          title="<?= $row1['item_name'] ?>"
-                          alt=" <?= $row1['item_name'] ?>"
+                          title="<?= $row1['product_name'] ?>"
+                          alt=" <?= $row1['product_name'] ?>"
                           class="new_size"
-                          src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['item_description_id'] ?>.jpg">
+                          src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg">
                       </a>
                     <?php
                     }
@@ -1017,20 +1017,20 @@ $rowcount = $row_single_div['checksingle'];
                   <div class="scrollmenu mui_item_scroll <?= $color[$rancolor2] ?>" style="background-color: #fff">
                     <?php
                     $row = $pdo->query(
-                      "select item_description.item_description_id,item.item_id,item.item_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from item
-                      inner join item_description on item_description.item_id=item.item_id
-                      inner join category on category.category_id=item.category_id
+                      "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from product
+                      inner join product_description on product_description.product_id=product.product_id
+                      inner join category on category.category_id=product.category_id
                       inner join sub_category on category.category_id=sub_category.category_id
-                      where  sub_category.category_id=$cat_id2 and sub_category.sub_category_id=$sub_cat_id2 and item.sub_category_id=$sub_cat_id2"
+                      where  sub_category.category_id=$cat_id2 and sub_category.sub_category_id=$sub_cat_id2 and product.sub_category_id=$sub_cat_id2"
                     );
                     while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
                     ?>
-                      <a href="../Product/single.php?id=<?= $row1['item_description_id'] ?>">
+                      <a href="../Product/single.php?id=<?= $row1['product_description_id'] ?>">
                         <img
-                          title="<?= $row1['item_name'] ?> "
-                          alt=" <?= $row1['item_name'] ?>"
+                          title="<?= $row1['product_name'] ?> "
+                          alt=" <?= $row1['product_name'] ?>"
                           class="new_size"
-                          src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['item_description_id'] ?>.jpg">
+                          src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg">
                       </a>
                     <?php
                     }
@@ -1322,10 +1322,10 @@ require "../Main/footer.php";
   ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //UPDATEALL CART
   function updatecart(idid, sid) {
-    var item_description_id = idid;
+    var product_description_id = idid;
     var store_id = sid;
     $n = 0;
-    var total_amt = document.getElementById('total_s' + store_id + "i" + item_description_id + '').innerHTML;
+    var total_amt = document.getElementById('total_s' + store_id + "i" + product_description_id + '').innerHTML;
     //1=booking;2=cash_on_delivery
     var order_type = 'booked';
     var id = <?= $id ?>;
@@ -1333,7 +1333,7 @@ require "../Main/footer.php";
       url: "../Common/functions.php", //passing page info
       data: {
         "update_user_cart": 1,
-        "product_description_id": item_description_id,
+        "product_description_id": product_description_id,
         "store_id": store_id,
         "quantity": 1,
         "total_amt": total_amt,
@@ -1387,7 +1387,7 @@ require "../Main/footer.php";
   function updateall_cart() {
     <?php
     if (isset($id)) {
-      $sql1 = "select * from wishlist_items where wishlist_id=:wid order by item_description_id";
+      $sql1 = "select * from wishlist_items where wishlist_id=:wid order by product_description_id";
       $stmt1 = $pdo->prepare($sql1);
       $stmt1->execute(array(
         ':wid' => $wishlist_id
@@ -1398,34 +1398,34 @@ require "../Main/footer.php";
       }
     }
     while ($row1 = $stmt1->fetch(PDO::FETCH_ASSOC)) {
-      $item_description_id = $row1['item_description_id'];
+      $product_description_id = $row1['product_description_id'];
       $store_id = $row1['store_id'];
       $n = 0;
-      $sql2 = "select * from item inner join category on category.category_id=item.category_id
+      $sql2 = "select * from product inner join category on category.category_id=product.category_id
 							inner join sub_category on category.category_id=sub_category.category_id
-							inner join item_description on item_description.item_id=item.item_id
-							inner join product_details on item_description.item_description_id=product_details.item_description_id
+							inner join product_description on product_description.product_id=product.product_id
+							inner join product_details on product_description.product_description_id=product_details.product_description_id
 							inner join store on store.store_id=product_details.store_id
-							where item.sub_category_id=sub_category.sub_category_id and item.item_id=:item_description_id and product_details.store_id=:store_id order by item_description.item_description_id";
+							where product.sub_category_id=sub_category.sub_category_id and product.product_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
       $stmt2 = $pdo->prepare($sql2);
       $stmt2->execute(array(
-        ':item_description_id' => $item_description_id,
+        ':product_description_id' => $product_description_id,
         ':store_id' => $store_id
       ));
       while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
         $subcat = $row2['sub_category_name'];
     ?>
-        var total_amt = document.getElementById('total_s' + '<?= $store_id . "i" . $item_description_id ?>').innerHTML;
+        var total_amt = document.getElementById('total_s' + '<?= $store_id . "i" . $product_description_id ?>').innerHTML;
         //1=booking;2=cash_on_delivery
         var order_type = 'booked';
         var id = <?= $id ?>;
-        var item_description_id = <?= $item_description_id ?>;
+        var product_description_id = <?= $product_description_id ?>;
         var store_id = <?= $store_id ?>;
         $.ajax({
           url: "../Common/functions.php", //passing page info
           data: {
             "update_user_cart": 1,
-            "product_description_id": item_description_id,
+            "product_description_id": product_description_id,
             "store_id": store_id,
             "quantity": 1,
             "total_amt": total_amt,
@@ -1567,114 +1567,114 @@ require "../Main/footer.php";
       });
   }
   //SELECT BOX OPERATION
-  function select_item_option(store_id, item_description_id, tmrp) {
+  function select_item_option(store_id, product_description_id, tmrp) {
     var store_id = store_id;
-    var item_description_id = item_description_id;
+    var product_description_id = product_description_id;
     var mrp = tmrp;
-    old_value = $('#sel_s' + store_id + 'i' + item_description_id + ' :selected').val();
+    old_value = $('#sel_s' + store_id + 'i' + product_description_id + ' :selected').val();
     if (old_value == '0') { //your specific condition
-      remove_item(store_id, item_id);
-      document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = document.getElementById('sel_opt_s' + store_id + 'i' + item_description_id).value;
+      remove_item(store_id, product_id);
+      document.getElementById('sel_s' + store_id + 'i' + product_description_id).value = document.getElementById('sel_opt_s' + store_id + 'i' + product_description_id).value;
       return;
     } else if (old_value == '10') {
-      $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
-      $('#qnty_s' + store_id + 'i' + item_description_id + '').show();
-      $('#btn_s' + store_id + 'i' + item_description_id + '').hide();
+      $('#sel_s' + store_id + 'i' + product_description_id + '').hide();
+      $('#qnty_s' + store_id + 'i' + product_description_id + '').show();
+      $('#btn_s' + store_id + 'i' + product_description_id + '').hide();
     } else {
-      total(store_id, item_description_id, mrp);
+      total(store_id, product_description_id, mrp);
     }
   }
   selected = "<?= $row1['quantity'] ?>"
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  function sub_item_all(store_id, item_id, tmrp) {
+  function sub_item_all(store_id, product_id, tmrp) {
     var store_id = store_id;
-    var item_description_id = item_description_id;
+    var product_description_id = product_description_id;
     var mrp = tmrp;
-    if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) != 1) {
+    if (parseInt($('#btn_s' + store_id + 'i' + product_description_id).html()) != 1) {
       var sub = 0;
-      sub = parseInt(document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML);
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = sub - 1;
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = sub - 1;
-      if ($('#btn_s' + store_id + 'i' + item_description_id).val() != 10) {
-        document.getElementById('btn_s' + store_id + 'i' + item_description_id).value = sub - 1;
+      sub = parseInt(document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML);
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = sub - 1;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value = sub - 1;
+      if ($('#btn_s' + store_id + 'i' + product_description_id).val() != 10) {
+        document.getElementById('btn_s' + store_id + 'i' + product_description_id).value = sub - 1;
       }
-      if ($('#btn_s' + store_id + 'i' + item_description_id).val() > 10) {
-        select_item_option(store_id, item_description_id, mrp);
+      if ($('#btn_s' + store_id + 'i' + product_description_id).val() > 10) {
+        select_item_option(store_id, product_description_id, mrp);
       }
-    } else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) == 1) {
-      remove_item(store_id, item_description_id);
+    } else if (parseInt($('#btn_s' + store_id + 'i' + product_description_id).html()) == 1) {
+      remove_item(store_id, product_description_id);
     }
-    total(store_id, item_description_id, mrp);
+    total(store_id, product_description_id, mrp);
   }
 
-  function add_item_all(store_id, item_id, tmrp) {
+  function add_item_all(store_id, product_id, tmrp) {
     var store_id = store_id;
-    var item_description_id = item_description_id;
+    var product_description_id = product_description_id;
     var mrp = tmrp;
-    if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) != 0) {
-      add = parseInt(document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML);
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = add + 1;
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = add + 1;
-      if ($('#btn_s' + store_id + 'i' + item_description_id).val() != 10) {
-        document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = add + 1;
+    if (parseInt($('#btn_s' + store_id + 'i' + product_description_id).html()) != 0) {
+      add = parseInt(document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML);
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = add + 1;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value = add + 1;
+      if ($('#btn_s' + store_id + 'i' + product_description_id).val() != 10) {
+        document.getElementById('sel_s' + store_id + 'i' + product_description_id).value = add + 1;
       }
-      if ($('#btn_s' + store_id + 'i' + item_description_id).val() > 10) {
-        select_item_option(store_id, item_description_id, mrp);
+      if ($('#btn_s' + store_id + 'i' + product_description_id).val() > 10) {
+        select_item_option(store_id, product_description_id, mrp);
       }
-    } else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) > 9) {
-      select_item_option(store_id, item_description_id, tmrp)
+    } else if (parseInt($('#btn_s' + store_id + 'i' + product_description_id).html()) > 9) {
+      select_item_option(store_id, product_description_id, tmrp)
     }
-    total(store_id, item_description_id, mrp);
+    total(store_id, product_description_id, mrp);
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //PRICE AND CART SETTINGS
   $(document).ready(function() {});
 
-  function total(store_id, item_description_id, tmrp) {
+  function total(store_id, product_description_id, tmrp) {
     var store_id = store_id;
-    var item_description_id = item_description_id;
+    var product_description_id = product_description_id;
     var t_mrp = tmrp;
     var mrp = tmrp;
-    if ($('#qnty_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
-      var qnty = parseInt(document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value);
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-    } else if ($('#sel_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
-      var qnty = document.getElementById('sel_s' + store_id + 'i' + item_description_id).value;
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-    } else if ($('#btn_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
-      var qnty = document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML;
+    if ($('#qnty_s' + store_id + 'i' + product_description_id).css('display') != 'none') {
+      var qnty = parseInt(document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value);
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = qnty;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).innerHTML = qnty;
+    } else if ($('#sel_s' + store_id + 'i' + product_description_id).css('display') != 'none') {
+      var qnty = document.getElementById('sel_s' + store_id + 'i' + product_description_id).value;
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = qnty;
+    } else if ($('#btn_s' + store_id + 'i' + product_description_id).css('display') != 'none') {
+      var qnty = document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML;
       if (qnty == 0) {
-        remove_item(store_id, item_description_id);
+        remove_item(store_id, product_description_id);
       }
     }
     if (qnty < 10) {
-      $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
-      $('#qnty_s' + store_id + 'i' + item_description_id + '').hide();
-      $('#btn_s' + store_id + 'i' + item_description_id + '').show();
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-      $('#sel_s' + store_id + 'i' + item_description_id + ' option').filter(function() {
+      $('#sel_s' + store_id + 'i' + product_description_id + '').hide();
+      $('#qnty_s' + store_id + 'i' + product_description_id + '').hide();
+      $('#btn_s' + store_id + 'i' + product_description_id + '').show();
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = qnty;
+      $('#sel_s' + store_id + 'i' + product_description_id + ' option').filter(function() {
         return ($(this).text() == qnty);
       }).prop('selected', true);
     }
     if (qnty >= 10) {
-      $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
-      $('#btn_s' + store_id + 'i' + item_description_id + '').hide();
-      $('#qnty_s' + store_id + 'i' + item_description_id + '').show();
+      $('#sel_s' + store_id + 'i' + product_description_id + '').hide();
+      $('#btn_s' + store_id + 'i' + product_description_id + '').hide();
+      $('#qnty_s' + store_id + 'i' + product_description_id + '').show();
     }
     if (qnty < 0) {
       qnty = qnty * -1;
     } else {
       qnty = qnty;
     }
-    var price = document.getElementById('price_s' + store_id + 'i' + item_description_id).innerHTML;
+    var price = document.getElementById('price_s' + store_id + 'i' + product_description_id).innerHTML;
     $.ajax({
       url: "../Common/functions.php", //passing page info
       data: {
         "check_quantity": 1,
-        "product_description_id": item_description_id,
+        "product_description_id": product_description_id,
         "store_id": store_id,
         "quantity": qnty
       }, //form data
@@ -1685,27 +1685,27 @@ require "../Main/footer.php";
         if (data.status == 'avail') {
           return;
         } else if (data.status == 'notavail') {
-          document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
-          document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
-          document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = data.max_qnty;
+          document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value = data.max_qnty;
+          document.getElementById('sel_s' + store_id + 'i' + product_description_id).value = data.max_qnty;
+          document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = data.max_qnty;
           if (data.max_qnty >= 10) {
-            document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = 9;
+            document.getElementById('sel_s' + store_id + 'i' + product_description_id).value = 9;
           } else if (data.max_qnty < 10) {
-            document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
-            $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
-            $('#qnty_s' + store_id + 'i' + item_description_id + '').hide();
-            $('#btn_s' + store_id + 'i' + item_description_id + '').show();
+            document.getElementById('sel_s' + store_id + 'i' + product_description_id).value = data.max_qnty;
+            $('#sel_s' + store_id + 'i' + product_description_id + '').hide();
+            $('#qnty_s' + store_id + 'i' + product_description_id + '').hide();
+            $('#btn_s' + store_id + 'i' + product_description_id + '').show();
           }
           var t_amnt = price * data.max_qnty;
           t_mrp = mrp * data.max_qnty;
-          document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = "";
-          document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = t_amnt;
-          document.getElementById('mrp_s' + store_id + 'i' + item_description_id).innerHTML = "";
-          document.getElementById('mrp_s' + store_id + 'i' + item_description_id).innerHTML = t_mrp;
+          document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = "";
+          document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = t_amnt;
+          document.getElementById('mrp_s' + store_id + 'i' + product_description_id).innerHTML = "";
+          document.getElementById('mrp_s' + store_id + 'i' + product_description_id).innerHTML = t_mrp;
           var save = t_mrp - t_amnt;
           var off = Math.round((save * 100) / t_amnt);
-          document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
-          document.getElementById('off_s' + store_id + 'i' + item_description_id).innerHTML = off;
+          document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
+          document.getElementById('off_s' + store_id + 'i' + product_description_id).innerHTML = off;
           swal({
               title: "Out of Stock!!!",
               text: "Choose another store !!!",
@@ -1742,34 +1742,34 @@ require "../Main/footer.php";
     if (qnty > 0) {
       var total = price * qnty;
       var t_mrp = t_mrp * qnty;
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = "";
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = total;
-      document.getElementById('mrp_s' + store_id + 'i' + item_description_id).innerHTML = t_mrp;
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = "";
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = total;
+      document.getElementById('mrp_s' + store_id + 'i' + product_description_id).innerHTML = t_mrp;
       var save = t_mrp - total;
       var off = Math.round((save * 100) / total);
-      document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
-      document.getElementById('off_s' + store_id + 'i' + item_description_id).innerHTML = off;
+      document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
+      document.getElementById('off_s' + store_id + 'i' + product_description_id).innerHTML = off;
     } else if (qnty == 0) {
       var total = price * 1;
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = 1;
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = "";
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = total;
-      document.getElementById('mrp_s' + store_id + 'i' + item_description_id).innerHTML = t_mrp;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value = 1;
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = "";
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = total;
+      document.getElementById('mrp_s' + store_id + 'i' + product_description_id).innerHTML = t_mrp;
       var save = t_mrp - total;
       var off = Math.round((save * 100) / total);
-      document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
-      document.getElementById('off_s' + store_id + 'i' + item_description_id).innerHTML = off;
+      document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
+      document.getElementById('off_s' + store_id + 'i' + product_description_id).innerHTML = off;
     } else if (qnty < 0) {
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = qnty * -1;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value = qnty * -1;
       var total = price * qnty * -1;
       var t_mrp = t_mrp * qnty * -1;
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = "";
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = total;
-      document.getElementById('mrp_s' + store_id + 'i' + item_description_id).innerHTML = t_mrp;
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = "";
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = total;
+      document.getElementById('mrp_s' + store_id + 'i' + product_description_id).innerHTML = t_mrp;
       var save = t_mrp - total;
       var off = Math.round((save * 100) / total);
-      document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
-      document.getElementById('off_s' + store_id + 'i' + item_description_id).innerHTML = off;
+      document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
+      document.getElementById('off_s' + store_id + 'i' + product_description_id).innerHTML = off;
     }
   }
   //PRICE AND CART SETTINGS

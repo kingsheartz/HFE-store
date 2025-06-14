@@ -745,7 +745,7 @@ function randomGen($min, $max, $quantity)
     <div class="row" style="margin: 0px;">
       <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%">
         <script>
-          console.log("saasaDDFFWR<?php echo $_SESSION['id']; ?>");
+          console.log("Session ID:: <?php echo $_SESSION['id']; ?>");
         </script>
         <?php
         if (isset($_SESSION['id'])) {

@@ -12,7 +12,7 @@ require "pdo.php";
 try {
   if (isset($_REQUEST["term"])) {
     // create prepared statement
-    $sql = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id JOIN category ON category.category_id=item.category_id  WHERE item.item_name LIKE :term OR category.category_name LIKE :term GROUP BY item.item_id";
+    $sql = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id JOIN category ON category.category_id=product.category_id  WHERE product.product_name LIKE :term OR category.category_name LIKE :term GROUP BY product.product_id";
     $stmt = $pdo->prepare($sql);
     $term = $_REQUEST["term"] . '%';
     // bind parameters to statement
@@ -32,9 +32,9 @@ try {
       ?>
           <div class="products" style="width: 320px">
             <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
-              <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+              <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
             </div>
-            <div class="deupd"><?= $row['item_name'] ?><br>
+            <div class="deupd"><?= $row['product_name'] ?><br>
             </div>
           </div>
           <?php

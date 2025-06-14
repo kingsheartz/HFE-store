@@ -183,12 +183,12 @@ require "../Main/header.php";
     $ct = $row11['category_id'];
   ?>
     <?php
-    $query = "SELECT * FROM item
-							JOIN item_description ON item.item_id=item_description.item_id
-							where item.category_id=$ct and (item.added_date) in (
-								select max(added_date) as date from item
-							) GROUP BY item_description.item_id
-							ORDER BY CAST(item.item_id AS UNSIGNED) DESC";
+    $query = "SELECT * FROM product
+							JOIN product_description ON product.product_id=product_description.product_id
+							where product.category_id=$ct and (product.added_date) in (
+								select max(added_date) as date from product
+							) GROUP BY product_description.product_id
+							ORDER BY CAST(product.product_id AS UNSIGNED) DESC";
     $st = $pdo->query($query);
     $product = $st->rowCount();
     if ($product == 0) {
@@ -216,18 +216,18 @@ require "../Main/header.php";
                 <img
                   class="image"
                   align="middle"
-                  src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg"
-                  onclick="location.href='../Product/single.php?id=<?= $row['item_description_id'] ?>'">
+                  src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg"
+                  onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
               </div>
               <?php
-              if (strlen($row['item_name']) >= 25) {
-                $item = $row['item_name'];
-                $item_name = substr($item, 0, 20) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+              if (strlen($row['product_name']) >= 25) {
+                $product = $row['product_name'];
+                $product_name = substr($product, 0, 20) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
               } else {
-                $item_name = $row['item_name'];
+                $product_name = $row['product_name'];
               }
               ?>
-              <div class="deupd"><?= $item_name ?><br /></div>
+              <div class="deupd"><?= $product_name ?><br /></div>
             </div>
           <?php
           }

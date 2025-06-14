@@ -314,32 +314,32 @@
 </style>
 <?php
 require "pdo.php";
-if (isset($_POST['item_description_id'])) {
-  $x = $_POST['item_description_id'];
-  $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id WHERE item_description.item_description_id=$x";
+if (isset($_POST['product_description_id'])) {
+  $x = $_POST['product_description_id'];
+  $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id WHERE product_description.product_description_id=$x";
   $st = $pdo->query($query);
   while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
 ?>
     <div class="col-sm-12">
       <div class="immodal">
-        <form id="<?= $row['item_description_id'] ?>" method="post" name="<?= $row['item_description_id'] ?>">
+        <form id="<?= $row['product_description_id'] ?>" method="post" name="<?= $row['product_description_id'] ?>">
           <div class="prim col-sm-5">
             <div class="product" style="position: absolute; left: 5px;top: 35px;width: 100px;height: 100px;">
               <img
                 style=" display: inline-block;text-align: center;padding: 14px;position: relative;height: 100px;max-width: 100px;"
-                onclick="$('#imr<?= $row['item_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg');"
-                src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
+                src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
             </div>
             <div style="width: 100%;">
-              <img id="imr<?= $row['item_description_id'] ?>" src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+              <img id="imr<?= $row['product_description_id'] ?>" src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
             </div>
-            <div class="imscr" id="imsrc<?= $row['item_description_id'] ?>" onscroll="movefr('imsrc<?= $row['item_description_id'] ?>')">
+            <div class="imscr" id="imsrc<?= $row['product_description_id'] ?>" onscroll="movefr('imsrc<?= $row['product_description_id'] ?>')">
               <button
                 type="button"
                 style=" position: absolute;top: 75%;right: 0; z-index: 1; height: 40px;border-top-left-radius: 5px; border-bottom-left-radius: 5px;border: 1px solid #d4d4d4;"
                 name="lfarr"
                 class="left-arrow"
-                onclick="moveleft('imsrc<?= $row['item_description_id'] ?>')">
+                onclick="moveleft('imsrc<?= $row['product_description_id'] ?>')">
                 <i class="fas fa-chevron-right"></i>
               </button>
               <button
@@ -347,7 +347,7 @@ if (isset($_POST['item_description_id'])) {
                 style=" position: absolute; top: 75%; left: 0;z-index: 1; height: 40px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border: 1px solid #d4d4d4;"
                 name="rfarr"
                 class="right-arrow"
-                onclick="moveright('imsrc<?= $row['item_description_id'] ?>')" style="display: none;">
+                onclick="moveright('imsrc<?= $row['product_description_id'] ?>')" style="display: none;">
                 <i class="fas fa-chevron-left"></i>
               </button>
               <?php
@@ -357,8 +357,8 @@ if (isset($_POST['item_description_id'])) {
                 <div class="product">
                   <img
                     style=" display: inline-block;text-align: center;padding: 14px; position: relative; height: 100px; max-width: 150px;"
-                    onclick="$('#imr<?= $row['item_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>_<?= $i ?>.jpg');"
-                    src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>_<?= $i ?>.jpg" />
+                    onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
+                    src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg" />
                 </div>
               <?php
               }
@@ -366,7 +366,7 @@ if (isset($_POST['item_description_id'])) {
             </div>
           </div>
           <div class="imdeta col-sm-7">
-            <h1><?= $row['item_name'] ?></h1>
+            <h1><?= $row['product_name'] ?></h1>
             <div class="col-sm-12">
               <table>
                 <?php

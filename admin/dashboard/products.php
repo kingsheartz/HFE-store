@@ -396,7 +396,7 @@ include "header.php";
           url: 'productData.php',
           type: 'post',
           data: {
-            item_description_id: itid
+            product_description_id: itid
           },
           success: function(response) {
             // Add response in Modal body
@@ -416,7 +416,7 @@ include "header.php";
       $ct = $row11['category_id'];
     ?>
       <?php
-      $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id where item.category_id=$ct";
+      $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ct";
       $st = $pdo->query($query);
       $product = $st->rowCount();
       if ($product == 0) {
@@ -443,12 +443,12 @@ include "header.php";
                   <img
                     data-toggle="modal"
                     data-target="#exampleModal"
-                    onclick="appjos('<?= $row['item_description_id'] ?>' )"
+                    onclick="appjos('<?= $row['product_description_id'] ?>' )"
                     class="image"
                     align="middle"
-                    src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                    src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                 </div>
-                <div class="deupd"><?= $row['item_name'] ?><br></div>
+                <div class="deupd"><?= $row['product_name'] ?><br></div>
               </div>
         <?php
             }
@@ -463,7 +463,7 @@ include "header.php";
           $ct = $row11['sub_category_id'];
         ?>
           <?php
-          $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id where item.sub_category_id=$ct";
+          $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.sub_category_id=$ct";
           $st = $pdo->query($query);
           $product = $st->rowCount();
           ?>
@@ -484,11 +484,11 @@ include "header.php";
                     <img
                       data-toggle="modal"
                       data-target="#exampleModal"
-                      onclick="appjos('<?= $row['item_description_id'] ?>' )"
+                      onclick="appjos('<?= $row['product_description_id'] ?>' )"
                       class="image" align="middle"
-                      src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                      src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                   </div>
-                  <div class="deupd"><?= $row['item_name'] ?><br></div>
+                  <div class="deupd"><?= $row['product_name'] ?><br></div>
                 </div>
             <?php
               }

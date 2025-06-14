@@ -3,40 +3,38 @@ session_start();
 if (!isset($_SESSION['id'])) {
   header("location:../Main/hfe.php");
 }
-if (isset($_GET['store_id'], $_GET['item_description_id'])) {
+if (isset($_GET['store_id'], $_GET['product_description_id'])) {
   $store_id = $_GET['store_id'];
-  $idid = $_GET['item_description_id'];
+  $idid = $_GET['product_description_id'];
 } else {
   header("location:../Main/hfe.php");
   return;
 }
 require "../Main/header.php";
 $uid = $_SESSION['id'];
-$sql = "select category.category_id,sub_category.sub_category_id,item_description.item_description_id,store.store_id,item.item_name,product_details.price from product_details
-        inner join item_description on item_description.item_description_id=product_details.item_description_id
-        inner join item on item_description.item_id=item.item_id
-        inner join category on category.category_id=item.category_id
-        inner join sub_category on category.category_id=sub_category.category_id
+$sql = "select category.category_id,product_description.product_description_id,store.store_id,product.product_name,product_details.price from product_details
+        inner join product_description on product_description.product_description_id=product_details.product_description_id
+        inner join product on product_description.product_id=product.product_id
+        inner join category on category.category_id=product.category_id
         inner join store on store.store_id=product_details.store_id
-        where item.sub_category_id=sub_category.sub_category_id and store.store_id=:store_id and item_description.item_description_id=:idid";
+        where product.category_id=category.category_id and store.store_id=:store_id and product_description.product_description_id=:idid";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(array(
   ":store_id" => $store_id,
   ":idid" => $idid
 ));
 $pdt_cnt = $stmt->rowCount();
-$sql2 = "select * from item inner join category on category.category_id=item.category_id
-        inner join sub_category on category.category_id=sub_category.category_id
-        inner join item_description on item_description.item_id=item.item_id
-        inner join product_details on item_description.item_description_id=product_details.item_description_id
+$sql2 = "select * from product inner join category on category.category_id=product.category_id
+        inner join product_description on product_description.product_id=product.product_id
+        inner join product_details on product_description.product_description_id=product_details.product_description_id
         inner join store on store.store_id=product_details.store_id
-        where item.sub_category_id=sub_category.sub_category_id and item.item_id=:item_description_id and product_details.store_id=:store_id order by item_description.item_description_id";
+        where product.category_id=category.category_id and product.product_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
 $stmt2 = $pdo->prepare($sql2);
 $stmt2->execute(array(
-  ':item_description_id' => $idid,
+  ':product_description_id' => $idid,
   ':store_id' => $store_id
 ));
-$mrpsql = "select item.price from item inner join item_description on item_description.item_id=item.item_id where item_description.item_description_id=$idid";
+$mrpsql = "select product.price from product inner join product_description on product_description.product_id=product.product_id where product_description.product_description_id=$idid";
 $mrpstmt = $pdo->query($mrpsql);
 $mrprow = $mrpstmt->fetch(PDO::FETCH_ASSOC);
 $t_mrp = $mrprow['price'];
@@ -323,8 +321,8 @@ $t_mrp = $mrprow['price'];
                 <tr class="rem1">
                   <td class="invert slno"><?= $ai ?></td>
                   <td class="invert-image">
-                    <a href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
-                      <img src="../../images\<?= $row['category_id'] ?>\<?= $row['sub_category_id'] ?>\<?= $row['item_description_id'] ?>.jpg" alt=" " class="img-responsive" />
+                    <a href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
+                      <img src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg" alt=" " class="img-responsive" />
                     </a>
                     <div style="margin-bottom: 10px; "></div>
                     <div class="div-wrapper" style="text-align: center;padding: 0px;margin:auto;height: 25px;width: 130px;grid-gap: 0px;display: flex;justify-content: center;">
@@ -393,7 +391,7 @@ $t_mrp = $mrprow['price'];
                       <ul style="list-style: none;">
                         <li>
                           <h4 style="text-align: left;">
-                            <?= $row['item_name'] ?>
+                            <?= $row['product_name'] ?>
                           </h4>
                         </li>
                         <li style="text-align: left;">
@@ -416,7 +414,7 @@ $t_mrp = $mrprow['price'];
                               style="outline: none;border:none;background-color:#006904;color: white;padding: 5px;border-radius: 3px;padding-top: 5px;padding-bottom: 5px;align-items: flex-start;justify-content: flex-start;display: flex; "
                               id="order_s<?= $store_id . "i" . $idid ?>">
                               <?php
-                              $preordsql = $pdo->query("select order_preference from product_details where store_id=" . $store_id . " and item_description_id=" . $idid);
+                              $preordsql = $pdo->query("select order_preference from product_details where store_id=" . $store_id . " and product_description_id=" . $idid);
                               $preord = $preordsql->fetch(PDO::FETCH_ASSOC);
                               if ($preord['order_preference'] == 1) {
                               ?>
@@ -469,11 +467,11 @@ $t_mrp = $mrprow['price'];
                   $service_chrg = 0;
                   $base = 0;
                   $uid = $_SESSION['id'];
-                  $sql = "select  i.item_id,id.item_description_id,i.item_name,pd.price,i.price as mrp ,st.store_id from  product_details pd
-                          inner join item_description id on id.item_description_id=pd.item_description_id
-                          inner join item i on i.item_id=id.item_id
+                  $sql = "select p.product_id,id.product_description_id,p.product_name,pd.price,p.price as mrp ,st.store_id from product_details pd
+                          inner join product_description id on id.product_description_id=pd.product_description_id
+                          inner join product p on p.product_id=id.product_id
                           INNER JOIN store st ON st.store_id=pd.store_id
-                          where st.store_id=:store_id AND id.item_description_id=:idid";
+                          where st.store_id=:store_id AND id.product_description_id=:idid";
                   $stmt = $pdo->prepare($sql);
                   $stmt->execute(array(
                     ":store_id" => $store_id,
@@ -482,7 +480,7 @@ $t_mrp = $mrprow['price'];
                   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   ?>
                     <li style="color: #333">
-                      <?= $row['item_name'] ?> <i>-</i> <span>&#8377; <span id="mrp_s<?= $store_id . "i" . $idid ?>">
+                      <?= $row['product_name'] ?> <i>-</i> <span>&#8377; <span id="mrp_s<?= $store_id . "i" . $idid ?>">
                           <?= $row['mrp'] ?>
                         </span></span>
                     </li>
@@ -788,112 +786,112 @@ require "../Main/footer.php";
     }
   };
   //SELECT BOX OPERATION
-  function select_item_option(store_id, item_description_id, tmrp) {
+  function select_item_option(store_id, product_description_id, tmrp) {
     var store_id = store_id;
-    var item_description_id = item_description_id;
+    var product_description_id = product_description_id;
     var mrp = tmrp;
-    old_value = $('#sel_s' + store_id + 'i' + item_description_id + ' :selected').val();
+    old_value = $('#sel_s' + store_id + 'i' + product_description_id + ' :selected').val();
     if (old_value == '10') {
-      $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
-      $('#qnty_s' + store_id + 'i' + item_description_id + '').show();
-      $('#btn_s' + store_id + 'i' + item_description_id + '').hide();
+      $('#sel_s' + store_id + 'i' + product_description_id + '').hide();
+      $('#qnty_s' + store_id + 'i' + product_description_id + '').show();
+      $('#btn_s' + store_id + 'i' + product_description_id + '').hide();
     } else {
-      total(store_id, item_description_id, mrp);
+      total(store_id, product_description_id, mrp);
     }
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  function sub_item_all(store_id, item_description_id, tmrp) {
+  function sub_item_all(store_id, product_description_id, tmrp) {
     var store_id = store_id;
-    var item_description_id = item_description_id;
+    var product_description_id = product_description_id;
     var mrp = tmrp;
-    if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) != 1) {
+    if (parseInt($('#btn_s' + store_id + 'i' + product_description_id).html()) != 1) {
       var sub = 0;
-      sub = parseInt(document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML);
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = sub - 1;
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = sub - 1;
-      if ($('#btn_s' + store_id + 'i' + item_description_id).val() != 10) {
-        document.getElementById('btn_s' + store_id + 'i' + item_description_id).value = sub - 1;
+      sub = parseInt(document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML);
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = sub - 1;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value = sub - 1;
+      if ($('#btn_s' + store_id + 'i' + product_description_id).val() != 10) {
+        document.getElementById('btn_s' + store_id + 'i' + product_description_id).value = sub - 1;
       }
-      if ($('#btn_s' + store_id + 'i' + item_description_id).val() > 10) {
-        select_item_option(store_id, item_description_id, mrp);
+      if ($('#btn_s' + store_id + 'i' + product_description_id).val() > 10) {
+        select_item_option(store_id, product_description_id, mrp);
       }
-    } else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) == 1) {
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = 1;
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).innerHTML = 1;
+    } else if (parseInt($('#btn_s' + store_id + 'i' + product_description_id).html()) == 1) {
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = 1;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).innerHTML = 1;
     }
-    total(store_id, item_description_id, mrp);
+    total(store_id, product_description_id, mrp);
   }
 
-  function add_item_all(store_id, item_description_id, tmrp) {
+  function add_item_all(store_id, product_description_id, tmrp) {
     var store_id = store_id;
-    var item_description_id = item_description_id;
+    var product_description_id = product_description_id;
     var mrp = tmrp;
-    if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) != 0) {
-      add = parseInt(document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML);
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = add + 1;
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = add + 1;
-      if ($('#btn_s' + store_id + 'i' + item_description_id).val() != 10) {
-        document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = add + 1;
+    if (parseInt($('#btn_s' + store_id + 'i' + product_description_id).html()) != 0) {
+      add = parseInt(document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML);
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = add + 1;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value = add + 1;
+      if ($('#btn_s' + store_id + 'i' + product_description_id).val() != 10) {
+        document.getElementById('sel_s' + store_id + 'i' + product_description_id).value = add + 1;
       }
-      if ($('#btn_s' + store_id + 'i' + item_description_id).val() > 10) {
-        select_item_option(store_id, item_description_id, mrp);
+      if ($('#btn_s' + store_id + 'i' + product_description_id).val() > 10) {
+        select_item_option(store_id, product_description_id, mrp);
       }
-    } else if (parseInt($('#btn_s' + store_id + 'i' + item_description_id).html()) > 9) {
-      select_item_option(store_id, item_description_id, tmrp)
+    } else if (parseInt($('#btn_s' + store_id + 'i' + product_description_id).html()) > 9) {
+      select_item_option(store_id, product_description_id, tmrp)
     }
-    total(store_id, item_description_id, mrp);
+    total(store_id, product_description_id, mrp);
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  function total(store_id, item_description_id, tmrp) {
+  function total(store_id, product_description_id, tmrp) {
     var store_id = store_id;
-    var item_description_id = item_description_id;
+    var product_description_id = product_description_id;
     var t_mrp = tmrp;
     var mrp = tmrp;
-    if ($('#qnty_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
-      var qnty = parseInt(document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value);
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-    } else if ($('#sel_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
-      var qnty = document.getElementById('sel_s' + store_id + 'i' + item_description_id).value;
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-    } else if ($('#btn_s' + store_id + 'i' + item_description_id).css('display') != 'none') {
-      var qnty = document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML;
+    if ($('#qnty_s' + store_id + 'i' + product_description_id).css('display') != 'none') {
+      var qnty = parseInt(document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value);
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = qnty;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).innerHTML = qnty;
+    } else if ($('#sel_s' + store_id + 'i' + product_description_id).css('display') != 'none') {
+      var qnty = document.getElementById('sel_s' + store_id + 'i' + product_description_id).value;
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = qnty;
+    } else if ($('#btn_s' + store_id + 'i' + product_description_id).css('display') != 'none') {
+      var qnty = document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML;
       if (qnty == 0) {
-        document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = 1;
-        document.getElementById('qnty_s' + store_id + 'i' + item_description_id).innerHTML = 1;
+        document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = 1;
+        document.getElementById('qnty_s' + store_id + 'i' + product_description_id).innerHTML = 1;
       }
     }
     if (qnty < 10) {
-      $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
-      $('#qnty_s' + store_id + 'i' + item_description_id + '').hide();
-      $('#btn_s' + store_id + 'i' + item_description_id + '').show();
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = qnty;
-      $('#sel_s' + store_id + 'i' + item_description_id + ' option').filter(function() {
+      $('#sel_s' + store_id + 'i' + product_description_id + '').hide();
+      $('#qnty_s' + store_id + 'i' + product_description_id + '').hide();
+      $('#btn_s' + store_id + 'i' + product_description_id + '').show();
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = qnty;
+      $('#sel_s' + store_id + 'i' + product_description_id + ' option').filter(function() {
         return ($(this).text() == qnty);
       }).prop('selected', true);
     }
     if (qnty >= 10) {
-      $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
-      $('#btn_s' + store_id + 'i' + item_description_id + '').hide();
-      $('#qnty_s' + store_id + 'i' + item_description_id + '').show();
+      $('#sel_s' + store_id + 'i' + product_description_id + '').hide();
+      $('#btn_s' + store_id + 'i' + product_description_id + '').hide();
+      $('#qnty_s' + store_id + 'i' + product_description_id + '').show();
     }
     if (qnty < 0) {
       qnty = qnty * -1;
     }
     if (qnty == 0) {
-      document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = 1;
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).innerHTML = 1;
+      document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = 1;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).innerHTML = 1;
     } else {
       qnty = qnty;
     }
-    var price = document.getElementById('price_s' + store_id + 'i' + item_description_id).innerHTML;
+    var price = document.getElementById('price_s' + store_id + 'i' + product_description_id).innerHTML;
     $.ajax({
       url: "../Common/functions.php", //passing page info
       data: {
         "check_quantity": 1,
-        "product_description_id": item_description_id,
+        "product_description_id": product_description_id,
         "store_id": store_id,
         "quantity": qnty
       }, //form data
@@ -904,26 +902,26 @@ require "../Main/footer.php";
         if (data.status == 'avail') {
           return;
         } else if (data.status == 'notavail') {
-          document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
-          document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
-          document.getElementById('btn_s' + store_id + 'i' + item_description_id).innerHTML = data.max_qnty;
+          document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value = data.max_qnty;
+          document.getElementById('sel_s' + store_id + 'i' + product_description_id).value = data.max_qnty;
+          document.getElementById('btn_s' + store_id + 'i' + product_description_id).innerHTML = data.max_qnty;
           if (data.max_qnty >= 10) {
-            document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = 9;
+            document.getElementById('sel_s' + store_id + 'i' + product_description_id).value = 9;
           } else if (data.max_qnty < 10) {
-            document.getElementById('sel_s' + store_id + 'i' + item_description_id).value = data.max_qnty;
-            $('#sel_s' + store_id + 'i' + item_description_id + '').hide();
-            $('#qnty_s' + store_id + 'i' + item_description_id + '').hide();
-            $('#btn_s' + store_id + 'i' + item_description_id + '').show();
+            document.getElementById('sel_s' + store_id + 'i' + product_description_id).value = data.max_qnty;
+            $('#sel_s' + store_id + 'i' + product_description_id + '').hide();
+            $('#qnty_s' + store_id + 'i' + product_description_id + '').hide();
+            $('#btn_s' + store_id + 'i' + product_description_id + '').show();
           }
           var t_amnt = price * data.max_qnty;
           t_mrp = mrp * data.max_qnty;
-          document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = "";
-          document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = t_amnt;
-          document.getElementById('mrp_s' + store_id + 'i' + item_description_id).innerHTML = "";
-          document.getElementById('mrp_s' + store_id + 'i' + item_description_id).innerHTML = t_mrp;
+          document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = "";
+          document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = t_amnt;
+          document.getElementById('mrp_s' + store_id + 'i' + product_description_id).innerHTML = "";
+          document.getElementById('mrp_s' + store_id + 'i' + product_description_id).innerHTML = t_mrp;
           var save = t_mrp - t_amnt;
           var off = Math.round((save * 100) / t_amnt);
-          document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
+          document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
           swal({
               title: "Out of Stock!!!",
               text: "Choose another store !!!",
@@ -960,31 +958,31 @@ require "../Main/footer.php";
     if (qnty > 0) {
       var total = price * qnty;
       var t_mrp = t_mrp * qnty;
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = "";
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = total;
-      document.getElementById('mrp_s' + store_id + 'i' + item_description_id).innerHTML = t_mrp;
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = "";
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = total;
+      document.getElementById('mrp_s' + store_id + 'i' + product_description_id).innerHTML = t_mrp;
       var save = t_mrp - total;
       var off = Math.round((save * 100) / total);
-      document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
+      document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
     } else if (qnty == 0) {
       var total = price * 1;
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = 1;
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = "";
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = total;
-      document.getElementById('mrp_s' + store_id + 'i' + item_description_id).innerHTML = t_mrp;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value = 1;
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = "";
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = total;
+      document.getElementById('mrp_s' + store_id + 'i' + product_description_id).innerHTML = t_mrp;
       var save = t_mrp - total;
       var off = Math.round((save * 100) / total);
-      document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
+      document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
     } else if (qnty < 0) {
-      document.getElementById('qnty_s' + store_id + 'i' + item_description_id).value = qnty * -1;
+      document.getElementById('qnty_s' + store_id + 'i' + product_description_id).value = qnty * -1;
       var total = price * qnty * -1;
       var t_mrp = t_mrp * qnty * -1;
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = "";
-      document.getElementById('total_s' + store_id + 'i' + item_description_id).innerHTML = total;
-      document.getElementById('mrp_s' + store_id + 'i' + item_description_id).innerHTML = t_mrp;
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = "";
+      document.getElementById('total_s' + store_id + 'i' + product_description_id).innerHTML = total;
+      document.getElementById('mrp_s' + store_id + 'i' + product_description_id).innerHTML = t_mrp;
       var save = t_mrp - total;
       var off = Math.round((save * 100) / total);
-      document.getElementById('save_s' + store_id + 'i' + item_description_id).innerHTML = save;
+      document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
     }
   }
   //PRICE AND CART SETTINGS
