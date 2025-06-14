@@ -248,8 +248,8 @@ $_COOKIE['animate'] = 0;
         loader.className += " hidden";
 
 
-        var email = getCookie("OneStore_email");
-        var pass = getCookie("OneStore_password");
+        var email = getCookie("HFE_email");
+        var pass = getCookie("HFE_password");
         if (email != " " && pass != " ") {
           //$("#strt").hide();
           $.ajax({
@@ -308,6 +308,7 @@ $_COOKIE['animate'] = 0;
             }
           }); //closing ajax
         } else {
+          console.log('loading main page')
           location.href = "customer/Main/hfe.php";
         }
       }, 4800);
