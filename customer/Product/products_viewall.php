@@ -79,14 +79,6 @@ require "../Main/header.php";
         );
         $row = $res1->fetch(PDO::FETCH_ASSOC);
         $head = "Items related to '" . $nm . "'";
-      } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-        $cat = $_GET['category_id'];
-        $sub = $_GET['subcategory_id'];
-        $res1 = $pdo->query(
-          "SELECT * FROM sub_category WHERE sub_category_id = " . $_GET['subcategory_id']
-        );
-        $row = $res1->fetch(PDO::FETCH_ASSOC);
-        $head = $row['sub_category_name'];
       } else if (isset($_GET['category_id'])) {
         $res1 = $pdo->query(
           "SELECT * FROM category WHERE category_id = " . $_GET['category_id']
@@ -116,9 +108,8 @@ require "../Main/header.php";
         INNER JOIN product_description ON product_description.product_id = product.product_id
         INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
         INNER JOIN category ON category.category_id = product.category_id
-        INNER JOIN sub_category ON category.category_id = sub_category.category_id
         WHERE product.product_name LIKE \"%$nm%\"
-        AND sub_category.sub_category_id = product.sub_category_id"
+        AND category.category_id = product.category_id"
       );
       $res = $pdo->query(
         "SELECT product.product_id,
@@ -128,48 +119,12 @@ require "../Main/header.php";
                 product.product_name,
                 product.description,
                 product.category_id,
-                product.sub_category_id
         FROM product
         INNER JOIN product_description ON product_description.product_id = product.product_id
         INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
         INNER JOIN category ON category.category_id = product.category_id
-        INNER JOIN sub_category ON category.category_id = sub_category.category_id
         WHERE product.product_name LIKE \"%$nm%\"
-        AND sub_category.sub_category_id = product.sub_category_id
-        LIMIT $offset, $no_of_records_per_page"
-      );
-    } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
-      $cat = $_GET['category_id'];
-      $sub = $_GET['subcategory_id'];
-      $total_pages_sql = $pdo->query(
-        "SELECT COUNT(*) FROM product
-        INNER JOIN product_description ON product_description.product_id = product.product_id
-        INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
-        INNER JOIN sub_category ON sub_category.sub_category_id = product.sub_category_id
-        INNER JOIN category ON category.category_id = sub_category.category_id
-        WHERE sub_category.sub_category_id = product.sub_category_id
-        AND category.category_id = '$cat'
-        AND sub_category.sub_category_id = '$sub'"
-      );
-      $res = $pdo->query(
-        "SELECT store.store_name,
-                product.product_id,
-                product.price AS 'mrp',
-                product_details.price,
-                product_description.product_description_id,
-                product.product_name,
-                product.description,
-                product.category_id,
-                product.sub_category_id
-        FROM product
-        INNER JOIN product_description ON product_description.product_id = product.product_id
-        INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
-        INNER JOIN store ON product_details.store_id = store.store_id
-        INNER JOIN category ON category.category_id = product.category_id
-        INNER JOIN sub_category ON category.category_id = sub_category.category_id
-        WHERE sub_category.sub_category_id = product.sub_category_id
-        AND category.category_id = '$cat'
-        AND sub_category.sub_category_id = '$sub'
+        AND category.category_id = product.category_id
         LIMIT $offset, $no_of_records_per_page"
       );
     } else if (isset($_GET['category_id'])) {
@@ -179,7 +134,6 @@ require "../Main/header.php";
         INNER JOIN product_description ON product_description.product_id = product.product_id
         INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
         INNER JOIN category ON category.category_id = product.category_id
-        INNER JOIN sub_category ON category.category_id = sub_category.category_id
         GROUP BY product.product_id
         HAVING product.category_id = $cat"
       );
@@ -191,12 +145,10 @@ require "../Main/header.php";
                 product.product_name,
                 product.description,
                 product.category_id,
-                product.sub_category_id
         FROM product
         INNER JOIN product_description ON product_description.product_id = product.product_id
         INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
         INNER JOIN category ON category.category_id = product.category_id
-        INNER JOIN sub_category ON category.category_id = sub_category.category_id
         GROUP BY product.product_id
         HAVING product.category_id = $cat
         LIMIT $offset, $no_of_records_per_page"
@@ -209,7 +161,7 @@ require "../Main/header.php";
       $params[$name] = $value;
       return basename($_SERVER['PHP_SELF']) . '?' . http_build_query($params);
     }
-    if (isset($_GET['category_id']) && !isset($_GET['subcategory_id'])) {
+    if (isset($_GET['category_id'])) {
       $total_rows = $total_pages_sql->rowCount();
     } else {
       $row = $total_pages_sql->fetch(PDO::FETCH_ASSOC);

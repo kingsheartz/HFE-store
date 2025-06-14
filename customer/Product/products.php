@@ -4,7 +4,7 @@ require "../../db.php";
 if (isset($_GET['item'])) {
   $nm = strtolower($_GET['item']);
   $res = $pdo->query(
-    "select category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_ide from product
+    "SELECT category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_ide from product
 		INNER JOIN product_description ON product_description.product_id=product.product_id
 		INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
 		INNER JOIN category ON category.category_id=product.category_id
@@ -16,7 +16,7 @@ if (isset($_GET['item'])) {
 } else if (isset($_GET['category_id'])) {
   $cat = $_GET['category_id'];
   $res = $pdo->query(
-    "select category.category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
+    "SELECT category.category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
     INNER JOIN product_description ON product_description.product_id=product.product_id
     INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
     INNER JOIN store ON product_details.store_id=store.store_id
@@ -390,7 +390,7 @@ if (isset($_GET['item'])) {
         $('#' + val).prop('disabled', true); //disabling radio
         $('.filter-container').show(); //FILTER DIV UNHIDE
         var newtag = $('#filter-tag').clone().appendTo('.filter-container-child'); //COPY THE DEFAULT TAG DESIGN #FILTER 1 & CREATE NEW
-        newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)+(sub_category_id || brand_id) "
+        newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)"
         if (type == 'brand' || type == 'category') {
           var tag_content = "<label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" id=\"filter-tag-name\" class=\"filter-tag-name" + type + "-" + val + " \" style=\"padding-left:0px !important;\" >" + cont + "</label><label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" style=\"padding-left:10px !important;\" id=\"filter-tag-close\" class=\"filter-tag-close  filter-tag-close" + type + "-" + val + "\"><span class=\"close\" >&times;</span></label>"; //CONTENT INSIDE THE DIV
           $('.filter-tag-' + type + "-" + val).html(tag_content).show(); //APPENDING INNERHTML TO TAG & DISPLAY
@@ -709,7 +709,7 @@ if (isset($_GET['item'])) {
         $('#' + val).prop('disabled', true); //disabling radio
         $('.filter-container').show(); //FILTER DIV UNHIDE
         var newtag = $('#filter-tag').clone().appendTo('.filter-container-child'); //COPY THE DEFAULT TAG DESIGN #FILTER 1 & CREATE NEW
-        newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)+(sub_category_id || brand_id) "
+        newtag.addClass('filter-tag-' + type + "-" + val); //ADDING CLASS WITH NAME AS " filter-tag-name-+'type_name'+get(cat || brand)"
         if (type == 'brand' || type == 'category') {
           var tag_content = "<label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" id=\"filter-tag-name\" class=\"filter-tag-name" + type + "-" + val + " \" style=\"padding-left:0px !important;\" >" + cont + "</label><label onclick=\"removesortandfilter(\'" + val + "\',\'" + type + "\')\" style=\"padding-left:10px !important;\" id=\"filter-tag-close\" class=\"filter-tag-close  filter-tag-close" + type + "-" + val + "\"><span class=\"close\" >&times;</span></label>"; //CONTENT INSIDE THE DIV
           $('.filter-tag-' + type + "-" + val).html(tag_content).show(); //APPENDING INNERHTML TO TAG & DISPLAY
