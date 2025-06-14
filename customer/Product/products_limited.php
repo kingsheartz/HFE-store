@@ -2049,7 +2049,7 @@ if ($result_cnt == 0) {
           url: "../Common/functions.php", //passing page info
           data: {
             "storefinder": 1,
-            "item_description_id": idid
+            "product_description_id": idid
           }, //form data
           type: "post", //post data
           dataType: "json", //datatype=json format
@@ -2096,7 +2096,7 @@ if ($result_cnt == 0) {
           url: "../Common/functions.php", //passing page info
           data: {
             "wishlist_storefinder": 1,
-            "item_description_id": idid
+            "product_description_id": idid
           }, //form data
           type: "post", //post data
           dataType: "json", //datatype=json format
@@ -2152,7 +2152,7 @@ if ($result_cnt == 0) {
             url: "../Common/functions.php", //passing page info
             data: {
               "pricefinder": 1,
-              "item_description_id": idid,
+              "product_description_id": idid,
               "store_id": store_id
             }, //form data
             type: "post", //post data
@@ -2219,7 +2219,7 @@ if ($result_cnt == 0) {
             url: "../Common/functions.php", //passing page info
             data: {
               "wishlist_pricefinder": 1,
-              "item_description_id": idid,
+              "product_description_id": idid,
               "store_id": store_id
             }, //form data
             type: "post", //post data
@@ -2300,7 +2300,7 @@ if ($result_cnt == 0) {
             url: "../Common/functions.php", //passing page info
             data: {
               "addtowishlist": 1,
-              "item_description_id": item_description_id,
+              "product_description_id": item_description_id,
               "store_id": id
             }, //form data
             type: "post", //post data

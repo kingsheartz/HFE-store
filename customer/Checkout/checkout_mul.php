@@ -676,7 +676,7 @@ require "../Main/footer.php";
       var data = {
         "placeorder_mul": 1,
         "user": 1,
-        "user_id": uid,
+        "customer_id": uid,
         "order_notes": order_notes,
         "pdt_cnt": pdt_cnt,
         "total_amt": total_amt
@@ -841,7 +841,7 @@ require "../Main/footer.php";
         var data = {
           "placeorder_mul": 1,
           "user": 2,
-          "user_id": uid,
+          "customer_id": uid,
           "shipping_first_name": shipping_first_name,
           "shipping_last_name": shipping_last_name,
           "shipping_ph_no": shipping_ph_no,
