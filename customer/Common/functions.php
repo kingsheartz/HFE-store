@@ -8843,7 +8843,7 @@ if (isset($_POST['filter_item_b'])) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //ADD USER RATING
-if (isset($_POST['userrated']) && $_POST['userrated'] == 1) {
+if (isset($_POST['customerrated']) && $_POST['customerrated'] == 1) {
   $rating = $_POST['rating'];
   $review = $_POST['review'];
   $idid = $_POST['product_description_id'];
@@ -8907,7 +8907,7 @@ if (isset($_POST['userrated']) && $_POST['userrated'] == 1) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //EDIT USER RATING
-if (isset($_POST['edituserrated']) && $_POST['edituserrated'] == 1) {
+if (isset($_POST['editcustomerrated']) && $_POST['editcustomerrated'] == 1) {
   $idid = $_POST['product_description_id'];
   $customer_id = $_POST['customer_id'];
   $checkbuysql = $pdo->query("select rating,review from product_keys where product_description_id=" . $idid . " and customer_id=" . $customer_id);
@@ -8956,7 +8956,7 @@ if (isset($_POST['edituserrated']) && $_POST['edituserrated'] == 1) {
 ////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //CANCEL USER RATING
-if (isset($_POST['canceluserrated']) && $_POST['canceluserrated'] == 1) {
+if (isset($_POST['cancelcustomerrated']) && $_POST['cancelcustomerrated'] == 1) {
   $idid = $_POST['product_description_id'];
   $customer_id = $_POST['customer_id'];
   /*COLOR PICKER*/
