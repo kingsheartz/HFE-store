@@ -6291,7 +6291,7 @@ if (isset($_POST['filter_cat_a'])) {
                       </div>
                     </div>
                     <div class='flip-box-back'>
-                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] .  "/" . $row['item_description_id'] . ".jpg'>
+                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                         <div class='card-body'>
                           <!--NAME-->
                           <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -6330,7 +6330,7 @@ if (isset($_POST['filter_cat_a'])) {
                             </div>
                           </div>
                           <!--ADD TO CART-->
-                          <div class='btn btn-primary btn-lg ' onclick='storefinder(" . $row['item_description_id'] . ")'  type='button' name='submit' data-toggle='modal' data-target='#avail_stores' style='width: 96%;border-radius: 4px;bottom:5px;left:5px;position: absolute;padding: 3px 12px;'>
+                          <div class='btn btn-primary btn-lg ' onclick='storefinder(" . $row['product_description_id'] . ")'  type='button' name='submit' data-toggle='modal' data-target='#avail_stores' style='width: 96%;border-radius: 4px;bottom:5px;left:5px;position: absolute;padding: 3px 12px;'>
                             <i class='fas fa-plus mr-2'></i> Add to Cart
                           </div>
                           <!--CART ICON-->
@@ -6781,7 +6781,7 @@ if (isset($_POST['filter_cat_b'])) {
       }
       $discount = $row['mrp'] - $row['price'];
       $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">';
-      $query = "select size,color,weight,flavour,processor,display,battery,internal_storage,brand,material FROM product_details
+      $query = "select size,weight,brand FROM product_details
                 JOIN product_description ON product_details.product_description_id=product_description.product_description_id
                 JOIN product ON product.product_id=product_description.product_id
                 JOIN category ON category.category_id=product.category_id
@@ -6824,73 +6824,6 @@ if (isset($_POST['filter_cat_b'])) {
                         <td class="cust_details"> ' . $row1['size_name'] . '</td>
                       </tr>';
       }
-      if ($row_feature['color'] != 0) {
-        $query1 = "SELECT * FROM color where color_id=" . $row_feature['color'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                      <tr class=" dw">
-                        <th class="cust_header2"><li>Color</li></th>
-                        <td class="cust_details"><div style="height:16px;width:16px;border:.5px solid #999;background-color:' . $row1['color_name'] . '"></div></td>
-                      </tr>';
-      }
-      if ($row_feature['weight'] != 0) {
-        $dynamic_content .= '
-                      <tr class=" dw">
-                        <th class="cust_header2"><li>Weight</li></th>
-                        <td class="cust_details">' . $row_feature['weight'] . '</td>
-                      </tr>';
-      }
-      if ($row_feature['flavour'] != 0) {
-        $query1 = "SELECT * FROM flavour where flavour_id=" . $row_feature['flavour'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                      <tr class=" dw">
-                        <th class="cust_header2"><li>Flavour</li></th>
-                        <td class="cust_details">' . $row1['flavour_name'] . '</td>
-                      </tr>';
-      }
-      if ($row_feature['processor'] != 0) {
-        $query1 = "SELECT * FROM processor where processor_id=" . $row_feature['processor'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                    <tr class=" dw">
-                      <th class="cust_header2"><li>Processor</li></th>
-                      <td class="cust_details">' . $row1['processor_name'] . '</td>
-                    </tr>';
-      }
-      if ($row_feature['display'] != 0) {
-        $query1 = "SELECT * FROM display where display_id=" . $row_feature['display'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                      <tr class=" dw">
-                        <th class="cust_header2"><li>Display</li></th>
-                        <td class="cust_details">' . $row1['display_name'] . '</td>
-                      </tr>';
-      }
-      if ($row_feature['battery'] != 0) {
-        $query1 = "SELECT * FROM battery where battery_id=" . $row_feature['battery'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                      <tr class=" dw">
-                        <th class="cust_header2"><li>Battery</li></th>
-                        <td class="cust_details">' . $row1['battery_name'] . '</td>
-                      </tr>';
-      }
-      if ($row_feature['internal_storage'] != 0) {
-        $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row_feature['internal_storage'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                      <tr class=" dw">
-                        <th class="cust_header2"><li>Internal Storage</li></th>
-                        <td class="cust_details">' . $row1['internal_storage_name'] . '</td>
-                      </tr>';
-      }
       if ($row_feature['brand'] != 0) {
         $query1 = "SELECT * FROM brand where brand_id=" . $row_feature['brand'];
         $st1 = $pdo->query($query1);
@@ -6901,15 +6834,7 @@ if (isset($_POST['filter_cat_b'])) {
                         <td class="cust_details">' . $row1['brand_name'] . '</td>
                       </tr>';
       }
-      if ($row_feature['material'] != 0) {
-        $query1 = "SELECT * FROM material where material_id=" . $row_feature['material'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                      <tr class=" dw"><th class="cust_header2"><li>Material</li></th>
-                        <td class="cust_details">' . $row1['material_name'] . '</td>
-                      </tr>';
-      }
+
       $product_det = $pdo->query(
         "select category.category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
         inner join product_description on product_description.product_id=product.product_id
@@ -7698,7 +7623,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
       }
       $discount = $row['mrp'] - $row['price'];
       $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">';
-      $query = "select size,color,weight,flavour,processor,display,battery,internal_storage,brand,material FROM product_details
+      $query = "select size,weight,brand FROM product_details
       JOIN product_description ON product_details.product_description_id=product_description.product_description_id
       JOIN product ON product.product_id=product_description.product_id
       JOIN category ON category.category_id=product.category_id
@@ -7745,71 +7670,11 @@ if (isset($_POST['filter_sub_cat_b'])) {
                     <td class="cust_details"> ' . $row1['size_name'] . '</td>
                   </tr>';
       }
-      if ($row_feature['color'] != 0) {
-        $query1 = "SELECT * FROM color where color_id=" . $row_feature['color'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                  <tr class=" dw">
-                    <th class="cust_header2"><li>Color</li></th>
-                    <td class="cust_details"><div style="height:16px;width:16px;border:.5px solid #999;background-color:' . $row1['color_name'] . '"></div></td>
-                  </tr>';
-      }
       if ($row_feature['weight'] != 0) {
         $dynamic_content .= '
                   <tr class=" dw">
                     <th class="cust_header2"><li>Weight</li></th>
                     <td class="cust_details">' . $row_feature['weight'] . '</td>
-                  </tr>';
-      }
-      if ($row_feature['flavour'] != 0) {
-        $query1 = "SELECT * FROM flavour where flavour_id=" . $row_feature['flavour'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                  <tr class=" dw">
-                    <th class="cust_header2"><li>Flavour</li></th>
-                    <td class="cust_details">' . $row1['flavour_name'] . '</td>
-                  </tr>';
-      }
-      if ($row_feature['processor'] != 0) {
-        $query1 = "SELECT * FROM processor where processor_id=" . $row_feature['processor'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                  <tr class=" dw">
-                    <th class="cust_header2"><li>Processor</li></th>
-                    <td class="cust_details">' . $row1['processor_name'] . '</td>
-                  </tr>';
-      }
-      if ($row_feature['display'] != 0) {
-        $query1 = "SELECT * FROM display where display_id=" . $row_feature['display'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                  <tr class=" dw">
-                    <th class="cust_header2"><li>Display</li></th>
-                    <td class="cust_details">' . $row1['display_name'] . '</td>
-                  </tr>';
-      }
-      if ($row_feature['battery'] != 0) {
-        $query1 = "SELECT * FROM battery where battery_id=" . $row_feature['battery'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                  <tr class=" dw">
-                    <th class="cust_header2"><li>Battery</li></th>
-                    <td class="cust_details">' . $row1['battery_name'] . '</td>
-                  </tr>';
-      }
-      if ($row_feature['internal_storage'] != 0) {
-        $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row_feature['internal_storage'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                  <tr class=" dw">
-                    <th class="cust_header2"><li>Internal Storage</li></th>
-                    <td class="cust_details">' . $row1['internal_storage_name'] . '</td>
                   </tr>';
       }
       if ($row_feature['brand'] != 0) {
@@ -7820,15 +7685,6 @@ if (isset($_POST['filter_sub_cat_b'])) {
                   <tr class=" dw">
                     <th class="cust_header2"><li>Brand</li></th>
                     <td class="cust_details">' . $row1['brand_name'] . '</td>
-                  </tr>';
-      }
-      if ($row_feature['material'] != 0) {
-        $query1 = "SELECT * FROM material where material_id=" . $row_feature['material'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '
-                  <tr class=" dw"><th class="cust_header2"><li>Material</li></th>
-                    <td class="cust_details">' . $row1['material_name'] . '</td>
                   </tr>';
       }
       $product_det = $pdo->query(
@@ -8567,7 +8423,7 @@ if (isset($_POST['filter_item_b'])) {
       }
       $discount = $row['mrp'] - $row['price'];
       $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">';
-      $query = "select size,color,weight,flavour,processor,display,battery,internal_storage,brand,material FROM product_details
+      $query = "select size,weight,brand FROM product_details
                 JOIN product_description ON product_details.product_description_id=product_description.product_description_id
                 JOIN product ON product.product_id=product_description.product_id
                 JOIN category ON category.category_id=product.category_id
@@ -8608,64 +8464,10 @@ if (isset($_POST['filter_item_b'])) {
     <td class="cust_details"> ' . $row1['size_name'] . '</td>
     </tr>';
       }
-      if ($row_feature['color'] != 0) {
-        $query1 = "SELECT * FROM color where color_id=" . $row_feature['color'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '<tr class=" dw">
-      <th class="cust_header2"><li>Color</li></th>
-      <td class="cust_details"><div style="height:16px;width:16px;border:.5px solid #999;background-color:' . $row1['color_name'] . '"></div></td>
-    </tr>';
-      }
       if ($row_feature['weight'] != 0) {
         $dynamic_content .= '<tr class=" dw">
       <th class="cust_header2"><li>Weight</li></th>
       <td class="cust_details">' . $row_feature['weight'] . '</td>
-    </tr>';
-      }
-      if ($row_feature['flavour'] != 0) {
-        $query1 = "SELECT * FROM flavour where flavour_id=" . $row_feature['flavour'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '<tr class=" dw">
-      <th class="cust_header2"><li>Flavour</li></th>
-      <td class="cust_details">' . $row1['flavour_name'] . '</td>
-    </tr>';
-      }
-      if ($row_feature['processor'] != 0) {
-        $query1 = "SELECT * FROM processor where processor_id=" . $row_feature['processor'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '<tr class=" dw">
-      <th class="cust_header2"><li>Processor</li></th>
-      <td class="cust_details">' . $row1['processor_name'] . '</td>
-    </tr>';
-      }
-      if ($row_feature['display'] != 0) {
-        $query1 = "SELECT * FROM display where display_id=" . $row_feature['display'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '<tr class=" dw">
-      <th class="cust_header2"><li>Display</li></th>
-      <td class="cust_details">' . $row1['display_name'] . '</td>
-    </tr>';
-      }
-      if ($row_feature['battery'] != 0) {
-        $query1 = "SELECT * FROM battery where battery_id=" . $row_feature['battery'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '<tr class=" dw">
-      <th class="cust_header2"><li>Battery</li></th>
-      <td class="cust_details">' . $row1['battery_name'] . '</td>
-    </tr>';
-      }
-      if ($row_feature['internal_storage'] != 0) {
-        $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row_feature['internal_storage'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '<tr class=" dw">
-      <th class="cust_header2"><li>Internal Storage</li></th>
-      <td class="cust_details">' . $row1['internal_storage_name'] . '</td>
     </tr>';
       }
       if ($row_feature['brand'] != 0) {
@@ -8675,14 +8477,6 @@ if (isset($_POST['filter_item_b'])) {
         $dynamic_content .= '<tr class=" dw">
       <th class="cust_header2"><li>Brand</li></th>
       <td class="cust_details">' . $row1['brand_name'] . '</td>
-    </tr>';
-      }
-      if ($row_feature['material'] != 0) {
-        $query1 = "SELECT * FROM material where material_id=" . $row_feature['material'];
-        $st1 = $pdo->query($query1);
-        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '<tr class=" dw"><th class="cust_header2"><li>Material</li></th>
-      <td class="cust_details">' . $row1['material_name'] . '</td>
     </tr>';
       }
       $product_det = $pdo->query(

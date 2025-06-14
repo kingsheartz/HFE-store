@@ -174,7 +174,7 @@ div.text-muted {
 }
 
 #sidebar {
-    
+
     float: left
 }
 
@@ -330,7 +330,7 @@ h6 {
         visibility: visible;
         color: white;
         margin-top: 10px;
-        float: right;   
+        float: right;
         outline: none;
         border-radius: 3px;
     }
@@ -355,7 +355,7 @@ h6 {
 }
 
 @media(max-width:635px) {
-    
+
     .no_margin{
       margin-top: 0px !important;
     }
@@ -422,7 +422,7 @@ h6 {
     .content {
         clear: both;
     }
-     
+
 }
 
  div.container{
@@ -460,9 +460,6 @@ h6 {
     margin:0 !important;
     padding-left: 20px !important;
 }
-.row{
-    padding:5px ;
-}
 .filter-ticket{
     background-color: #e8e8e8 !important;
 }
@@ -475,7 +472,7 @@ h6 {
 
 .flip-box-inner {
   height:310px;
-  width:100%;  
+  width:100%;
   text-align: center;
   transition: transform 0.8s;
   transform-style: preserve-3d;
