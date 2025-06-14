@@ -66,7 +66,7 @@ require "header.php";
       } else {
         $cat = $_GET['category'];
         $sub = $_GET['subcategory'];
-        $res = $pdo->query("select * from item where category='$cat' and sub_category='$sub'");
+        $res = $pdo->query("select * from item where category='$cat'");
       }
 
       ?>
@@ -90,7 +90,7 @@ require "header.php";
                   <figure>
                     <div class="snipcart-item block">
                       <div class="snipcart-thumb">
-                        <a href="single.php?id=<?= $row['item_id'] ?>"><img title=" " alt=" " class="img_size" src="images/<?= $row['category'] ?>/<?= $row['sub_category'] ?>/<?= $row['item_id'] ?>.jpg"></a>
+                        <a href="single.php?id=<?= $row['item_id'] ?>"><img title=" " alt=" " class="img_size" src="images/<?= $row['category'] ?>/<?= $row['item_id'] ?>.jpg"></a>
                         <p class="name_size"><?= $row['item_name'] ?></p>
                         <h4>$35.99 <span>$55.00</span></h4>
                       </div>

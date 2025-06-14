@@ -91,13 +91,13 @@ include "header.php";
         <div class="products col-sm-4">
           <div
             style="display: flex; justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
-            <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+            <img class="image" align="middle" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
           </div>
           <div class="middle">
             <form id="<?= $row['product_description_id'] ?>" method="post" action="change.php" name="<?= $row['product_description_id'] ?>">
               <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
               <input type="hidden" name="product_id" value="<?= $row['product_id'] ?>">
-              <input type="hidden" name="im_url" value="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              <input type="hidden" name="im_url" value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
               <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
               <input type="hidden" name="description" value="<?= $row['description'] ?>">
               <input type="hidden" name="price" value="<?= $row['price'] ?>">
@@ -109,7 +109,7 @@ include "header.php";
               name="1<?= $row['product_description_id'] ?>">
               <input type="hidden" name="uppr_id" value="<?= $row['product_description_id'] ?>">
               <input type="hidden" name="upitem_id" value="<?= $row['product_id'] ?>">
-              <input type="hidden" name="upim_url" value="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              <input type="hidden" name="upim_url" value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
               <input type="hidden" name="upname" value="<?= $row['product_name'] ?>">
               <input type="hidden" name="updescription" value="<?= $row['description'] ?>">
               <input type="hidden" name="upprice" value="<?= $row['price'] ?>">

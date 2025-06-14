@@ -91,8 +91,6 @@ function searchele() {
             '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
             item[i].category_id +
             "/" +
-            item[i].sub_category_id +
-            "/" +
             item[i].item_description_id +
             '.jpg" style="max-width:80px;height:30px">' +
             item[i].item_name +
@@ -112,8 +110,6 @@ function searchele() {
             html +=
               '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
               item[i].category_id +
-              "/" +
-              item[i].sub_category_id +
               "/" +
               item[i].item_description_id +
               '.jpg" style="max-width:80px;height:30px">' +
@@ -151,8 +147,6 @@ function searchele2() {
           '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
           item[i].category_id +
           "/" +
-          item[i].sub_category_id +
-          "/" +
           item[i].item_description_id +
           '.jpg" style="max-width:80px;height:30px">' +
           item[i].item_name +
@@ -170,8 +164,6 @@ function searchele2() {
           html +=
             '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
             item[i].category_id +
-            "/" +
-            item[i].sub_category_id +
             "/" +
             item[i].item_description_id +
             '.jpg" style="max-width:80px;height:30px">' +

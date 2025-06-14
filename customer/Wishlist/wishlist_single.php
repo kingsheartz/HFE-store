@@ -632,11 +632,10 @@ $rowcount = $row_single_div['checksingle'];
                       $store_id = $row1['store_id'];
                       $n = 0;
                       $sql2 = "select * from product inner join category on category.category_id=product.category_id
-															inner join sub_category on category.category_id=sub_category.category_id
 															inner join product_description on product_description.product_id=product.product_id
 															inner join product_details on product_description.product_description_id=product_details.product_description_id
 															inner join store on store.store_id=product_details.store_id
-															where product.sub_category_id=sub_category.sub_category_id and product_description.product_description_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
+															where product.category_id=category.category_id and product_description.product_description_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
                       $stmt2 = $pdo->prepare($sql2);
                       $stmt2->execute(array(
                         ':product_description_id' => $product_description_id,
@@ -650,7 +649,7 @@ $rowcount = $row_single_div['checksingle'];
                         $total = $row2['price'] * $row1['quantity'];
                         $save = ($t_mrp * $row1['quantity']) - $total;
                         $off = round(($save * 100) / $total);
-                        $subcat = $row2['sub_category_name'];
+                        $cat = $row2['category_name'];
                         if ($flag == 2) {
                           $flag == 0;
                         }
@@ -700,7 +699,7 @@ $rowcount = $row_single_div['checksingle'];
                                                       style="max-width:180px;max-height:180px;"
                                                       alt="<?= $row2['product_name'] ?>"
                                                       class="shop_thumbnail"
-                                                      src="../../images/<?= $row2['category_id'] ?>/<?= $row2['sub_category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg">
+                                                      src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg">
                                                   </a>
                                                 </p>
                                               </div>
@@ -923,30 +922,28 @@ $rowcount = $row_single_div['checksingle'];
               $c2 = "black";
             }
             /*COLOR PICKER*/
-            $cntsql = "select count(sub_category_id) as sub_cnt from sub_category";
+            $cntsql = "select count(category_id) as cat_cnt from category";
             $cntstmt = $pdo->query($cntsql);
             $cntrow = $cntstmt->fetch(PDO::FETCH_ASSOC);
-            $sub_cnt = $cntrow['sub_cnt'];
+            $cat_cnt = $cntrow['cat_cnt'];
             do {
-              $rand_sub_id1 = randomGen('1', $sub_cnt, (int) $sub_cnt);
-              $rand_sub_id1_rand1 = array_rand($rand_sub_id1, 1);
-              $rand_sub_id1 = $rand_sub_id1[$rand_sub_id1_rand1];
-              $rand_sub_id2 = randomGen('1', $sub_cnt, (int) $sub_cnt);
-              $rand_sub_id2_rand2 = array_rand($rand_sub_id2, 1);
-              $rand_sub_id2 = $rand_sub_id2[$rand_sub_id2_rand2];
-            } while ($rand_sub_id1 == $rand_sub_id2);
-            $catsql1 = "select* from sub_category where sub_category_id=" . (int) $rand_sub_id1;
+              $rand_cat_id1 = randomGen('1', $cat_cnt, (int) $cat_cnt);
+              $rand_cat_id1_rand1 = array_rand($rand_cat_id1, 1);
+              $rand_cat_id1 = $rand_cat_id1[$rand_cat_id1_rand1];
+              $rand_cat_id2 = randomGen('1', $cat_cnt, (int) $cat_cnt);
+              $rand_cat_id2_rand2 = array_rand($rand_cat_id2, 1);
+              $rand_cat_id2 = $rand_cat_id2[$rand_cat_id2_rand2];
+            } while ($rand_cat_id1 == $rand_cat_id2);
+            $catsql1 = "select* from category where category_id=" . (int) $rand_cat_id1;
             $catstmt1 = $pdo->query($catsql1);
-            $sub_catrow1 = $catstmt1->fetch(PDO::FETCH_ASSOC);
-            $catsql2 = "select* from sub_category where sub_category_id=" . (int) $rand_sub_id2;
+            $catrow1 = $catstmt1->fetch(PDO::FETCH_ASSOC);
+            $catsql2 = "select* from category where category_id=" . (int) $rand_cat_id2;
             $catstmt2 = $pdo->query($catsql2);
-            $sub_catrow2 = $catstmt2->fetch(PDO::FETCH_ASSOC);
-            $cat_id1 = $sub_catrow1['category_id'];
-            $sub_cat_id1 = $sub_catrow1['sub_category_id'];
-            $sub_cat_name1 = $sub_catrow1['sub_category_name'];
-            $cat_id2 = $sub_catrow2['category_id'];
-            $sub_cat_id2 = $sub_catrow2['sub_category_id'];
-            $sub_cat_name2 = $sub_catrow2['sub_category_name'];
+            $catrow2 = $catstmt2->fetch(PDO::FETCH_ASSOC);
+            $cat_id1 = $catrow1['category_id'];
+            $cat_name1 = $catrow1['category_name'];
+            $cat_id2 = $catrow2['category_id'];
+            $cat_name2 = $catrow2['category_name'];
           ?>
             <div class="row emp_cart">
               <div class="product-content-right">
@@ -962,7 +959,7 @@ $rowcount = $row_single_div['checksingle'];
               <div class="element_grid">
                 <div class="shadow_b">
                   <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat" style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
-                    <?= $sub_cat_name1 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
+                    <?= $cat_name1 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
                     <span style="float: right;margin-right: 5px;margin-top: -4px;">
                       <button
                         type="button"
@@ -977,11 +974,10 @@ $rowcount = $row_single_div['checksingle'];
                   <div class="scrollmenu bl_item_scroll  <?= $color[$rancolor1] ?>" style="background-color: #fff">
                     <?php
                     $row = $pdo->query(
-                      "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from product
+                      "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
                       inner join product_description on product_description.product_id=product.product_id
                       inner join category on category.category_id=product.category_id
-                      inner join sub_category on category.category_id=sub_category.category_id
-                      where  sub_category.category_id=$cat_id1 and sub_category.sub_category_id=$sub_cat_id1 and product.sub_category_id=$sub_cat_id1 "
+                      where category.category_id=$cat_id1 and product.category_id=$cat_id1 "
                     );
                     while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
                     ?>
@@ -990,7 +986,7 @@ $rowcount = $row_single_div['checksingle'];
                           title="<?= $row1['product_name'] ?>"
                           alt=" <?= $row1['product_name'] ?>"
                           class="new_size"
-                          src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg">
+                          src="../../images/<?= $row1['category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg">
                       </a>
                     <?php
                     }
@@ -1002,7 +998,7 @@ $rowcount = $row_single_div['checksingle'];
                   <h4
                     class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
                     style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
-                    <?= $sub_cat_name2 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
+                    <?= $cat_name2 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
                     <span style="float: right;margin-right: 5px;margin-top: -4px;">
                       <button
                         type="button"
@@ -1017,11 +1013,10 @@ $rowcount = $row_single_div['checksingle'];
                   <div class="scrollmenu mui_item_scroll <?= $color[$rancolor2] ?>" style="background-color: #fff">
                     <?php
                     $row = $pdo->query(
-                      "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from product
+                      "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
                       inner join product_description on product_description.product_id=product.product_id
                       inner join category on category.category_id=product.category_id
-                      inner join sub_category on category.category_id=sub_category.category_id
-                      where  sub_category.category_id=$cat_id2 and sub_category.sub_category_id=$sub_cat_id2 and product.sub_category_id=$sub_cat_id2"
+                      where  category.category_id=$cat_id2 and product.category_id=$cat_id2"
                     );
                     while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
                     ?>
@@ -1030,7 +1025,7 @@ $rowcount = $row_single_div['checksingle'];
                           title="<?= $row1['product_name'] ?> "
                           alt=" <?= $row1['product_name'] ?>"
                           class="new_size"
-                          src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg">
+                          src="../../images/<?= $row1['category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg">
                       </a>
                     <?php
                     }
@@ -1402,18 +1397,17 @@ require "../Main/footer.php";
       $store_id = $row1['store_id'];
       $n = 0;
       $sql2 = "select * from product inner join category on category.category_id=product.category_id
-							inner join sub_category on category.category_id=sub_category.category_id
 							inner join product_description on product_description.product_id=product.product_id
 							inner join product_details on product_description.product_description_id=product_details.product_description_id
 							inner join store on store.store_id=product_details.store_id
-							where product.sub_category_id=sub_category.sub_category_id and product.product_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
+							where product.category_id=category.category_id and product.product_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
       $stmt2 = $pdo->prepare($sql2);
       $stmt2->execute(array(
         ':product_description_id' => $product_description_id,
         ':store_id' => $store_id
       ));
       while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
-        $subcat = $row2['sub_category_name'];
+        $cat = $row2['category_name'];
     ?>
         var total_amt = document.getElementById('total_s' + '<?= $store_id . "i" . $product_description_id ?>').innerHTML;
         //1=booking;2=cash_on_delivery

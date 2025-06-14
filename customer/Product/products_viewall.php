@@ -266,7 +266,7 @@ require "../Main/header.php";
                               title=" "
                               alt=" "
                               class="img_size"
-                              src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                              src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           </a>
                         </div>
                         <?php

@@ -39,7 +39,7 @@ try {
               <img
                 class="image"
                 align="middle"
-                src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
             </div>
             <div class="deupd"><?= $row['product_name'] ?><br /></div>
           </div>

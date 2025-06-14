@@ -2111,7 +2111,7 @@ if ($result_cnt == 0) {
                                         <img
                                           style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block; margin: auto;padding-top:30px "
                                           class="img-responsive"
-                                          src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                                          src="../../images/<?= $row['category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
                                       </div>
                                     </td>
                                   </tr>

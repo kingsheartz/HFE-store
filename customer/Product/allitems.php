@@ -216,7 +216,7 @@ require "../Main/header.php";
                 <img
                   class="image"
                   align="middle"
-                  src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg"
+                  src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg"
                   onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
               </div>
               <?php
