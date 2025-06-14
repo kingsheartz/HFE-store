@@ -39,12 +39,10 @@ $neworder = $pdo->query(
   JOIN store on store.store_id=product_details.store_id
   WHERE new_ordered_products.delivery_status='pending'"
 );
-$newproduct = $pdo->query("select  count(product_id) as newproducts
-from product where (added_date) in (
-    select max(added_date) as date
-    from product
-
-)");
+$newproduct = $pdo->query(
+  "select  count(product_id) as newproducts from product 
+  where (added_date) in (select max(added_date) as date from product)"
+);
 $rows = array();
 $nu = $customer->fetch(PDO::FETCH_ASSOC);
 $rows[] = $nu;

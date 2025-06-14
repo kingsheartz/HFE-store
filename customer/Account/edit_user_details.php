@@ -13,10 +13,10 @@ if (isset($_SESSION['id'])) {
   $id = $_GET['id'];
 }
 
-$usersql = 'select* from customers where user_id=' . $id;
+$usersql = 'select* from customers where customer_id=' . $id;
 $userstmt = $pdo->query($usersql);
 $userrow = $userstmt->fetch(PDO::FETCH_ASSOC);
-$susersql = 'select* from user_delivery_details where type="permanent" and user_id=' . $id;
+$susersql = 'select* from customer_delivery_details where type="permanent" and customer_id=' . $id;
 $suserstmt = $pdo->query($susersql);
 $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -151,8 +151,8 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
                 <i style="text-transform: capitalize;font-size: 12px;color: black;text-shadow: 1px 2px 3px grey">pending &nbsp;</i>
               </span>
             </h5>
-            <div id="error_dis" style="display: none;margin-bottom: 50px;">
-              <p id="nameerror" style="color: red;font-weight: bolder;margin-top:-5px;float:left;padding-bottom:0px;margin-bottom: 0px;text-shadow: 2px 3px 4px grey">
+            <div id="error_dis" style="display: none;margin-bottom: 50px;overflow: hidden;">
+              <p id="nameerror" style="color: red;font-weight: bolder;margin-top:-5px;float:left;padding-bottom:0px;margin-bottom: 0px;text-shadow: 2px 3px 4px grey;margin-top: 5px">
               </p>
             </div>
             <form name="user_details_update_form" style="margin-top: 45px;">
@@ -279,7 +279,7 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
                   onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
                   maxlength="10"
                   pattern="^(\d{0}|\d{10})$"
-                  title="Phone Number Format (9876543210)- 10 digits">
+                  title="Phone Number Format (9876543210)- 10 digits" />
                 <label class="form-label" for="phone">Phone</label>
                 <span id="dis_ph" class="input-group-btn">
                   <button
@@ -418,9 +418,7 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
                   onkeyup="changed_details()"
                   id="address"
                   placeholder=""
-                  readonly>
-                  <?= $userrow['address'] ?>
-                </textarea>
+                  readonly><?= $userrow['address'] ?></textarea>
                 <label class="form-label" for="address">Address</label>
                 <span
                   onclick="dis_add()"
@@ -469,9 +467,9 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
                 <i style="text-transform: capitalize;font-size: 12px;color: black;text-shadow: 1px 2px 3px grey"> pending &nbsp;</i>
               </span>
             </h6>
-            <div id="error_dis2" style="display: none;margin-bottom: 50px;">
+            <div id="error_dis2" style="display: none;margin-bottom: 50px;overflow: hidden;">
               <p id="nameerror2"
-                style="color: red;font-weight: bolder;margin-top:-5px;float:left;padding-bottom:0px;margin-bottom: 0px;text-shadow: 2px 3px 4px grey">
+                style="color: red;font-weight: bolder;margin-top:-5px;float:left;padding-bottom:0px;margin-bottom: 0px;text-shadow: 2px 3px 4px grey;margin-top: 5px">
               </p>
             </div>
             <div class="input-group bar-srch input-field" style="padding: 0px;margin: 0px;left: 0px;right: 0px;margin-bottom: 25px;margin-top: 45px;">
@@ -1207,20 +1205,20 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     var shipping_ph_no2 = document.getElementById("shipping_ph_no2").value;
     var shipping_address_1 = document.getElementById("shipping_address_1").value;
     var shipping_postcode = document.getElementById("shipping_postcode").value;
-    var oldfirst_name = '<?= $userrow['first_name'] ?>';
-    var oldlast_name = '<?= $userrow['last_name'] ?>';
-    var oldphone = '<?= $userrow['phone'] ?>';
-    var oldaddress = '<?= $userrow['address'] ?>';
-    var oldemail = '<?= $userrow['email'] ?>';
+    var oldfirst_name = '<?= json_encode($userrow['first_name'] ?? null); ?>';
+    var oldlast_name = '<?= json_encode($userrow['last_name'] ?? null); ?>';
+    var oldphone = '<?= json_encode($userrow['phone'] ?? null); ?>';
+    var oldaddress = '<?= json_encode($userrow['address'] ?? null); ?>';
+    var oldemail = '<?= json_encode($userrow['email'] ?? null); ?>';
     var oldpass3 = 'abcdefghijklmnopqrstuvwxyz';
-    var oldregpin = '<?= $userrow['pincode'] ?>';
-    var oldloc = '<?= $userrow['location'] ?>';
-    var oldshipping_first_name = '<?= $suserrow['first_name'] ?>';
-    var oldshipping_last_name = '<?= $suserrow['last_name'] ?>';
-    var oldshipping_ph_no = '<?= $suserrow['phone'] ?>';
-    var oldshipping_ph_no2 = '<?= $suserrow['alternative_phone'] ?>';
-    var oldshipping_address_1 = '<?= $suserrow['address'] ?>';
-    var oldshipping_postcode = '<?= $suserrow['pincode'] ?>    ';
+    var oldregpin = '<?= json_encode($userrow['pincode'] ?? null); ?>';
+    var oldloc = '<?= json_encode($userrow['location'] ?? null); ?>';
+    var oldshipping_first_name = '<?= json_encode($suserrow['first_name'] ?? null); ?>';
+    var oldshipping_last_name = '<?= json_encode($suserrow['last_name'] ?? null); ?>';
+    var oldshipping_ph_no = '<?= json_encode($suserrow['phone'] ?? null); ?>';
+    var oldshipping_ph_no2 = '<?= json_encode($suserrow['alternative_phone'] ?? null); ?>';
+    var oldshipping_address_1 = '<?= json_encode($suserrow['address'] ?? null); ?>';
+    var oldshipping_postcode = '<?= json_encode($suserrow['pincode'] ?? null); ?>';
     //sfn--------------------------------------------------------------------------------------------------------------------------------------
     if ($('#dis_sfn').css('display') == 'none') {
       if (shipping_first_name != oldshipping_first_name) {
@@ -1362,20 +1360,20 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     var shipping_ph_no2 = document.getElementById("shipping_ph_no2").value;
     var shipping_address_1 = document.getElementById("shipping_address_1").value;
     var shipping_postcode = document.getElementById("shipping_postcode").value;
-    var oldfirst_name = '<?= $userrow['first_name'] ?>';
-    var oldlast_name = '<?= $userrow['last_name'] ?>';
-    var oldphone = '<?= $userrow['phone'] ?>';
-    var oldaddress = '<?= $userrow['address'] ?>';
-    var oldemail = '<?= $userrow['email'] ?>';
+    var oldfirst_name = '<?= json_encode($userrow['first_name'] ?? null); ?>';
+    var oldlast_name = '<?= json_encode($userrow['last_name'] ?? null); ?>';
+    var oldphone = '<?= json_encode($userrow['phone'] ?? null); ?>';
+    var oldaddress = '<?= json_encode($userrow['address'] ?? null); ?>';
+    var oldemail = '<?= json_encode($userrow['email'] ?? null); ?>';
     var oldpass3 = 'abcdefghijklmnopqrstuvwxyz';
-    var oldregpin = '<?= $userrow['pincode'] ?>';
-    var oldloc = '<?= $userrow['location'] ?>';
-    var oldshipping_first_name = '<?= $suserrow['first_name'] ?>';
-    var oldshipping_last_name = '<?= $suserrow['last_name'] ?>';
-    var oldshipping_ph_no = '<?= $suserrow['phone'] ?>';
-    var oldshipping_ph_no2 = '<?= $suserrow['alternative_phone'] ?>';
-    var oldshipping_address_1 = '<?= $suserrow['address'] ?>';
-    var oldshipping_postcode = '<?= $suserrow['pincode'] ?>';
+    var oldregpin = '<?= json_encode($userrow['pincode'] ?? null); ?>';
+    var oldloc = '<?= json_encode($userrow['location'] ?? null); ?>';
+    var oldshipping_first_name = '<?= json_encode($suserrow['first_name'] ?? null); ?>';
+    var oldshipping_last_name = '<?= json_encode($suserrow['last_name'] ?? null); ?>';
+    var oldshipping_ph_no = '<?= json_encode($suserrow['phone'] ?? null); ?>';
+    var oldshipping_ph_no2 = '<?= json_encode($suserrow['alternative_phone'] ?? null); ?>';
+    var oldshipping_address_1 = '<?= json_encode($suserrow['address'] ?? null); ?>';
+    var oldshipping_postcode = '<?= json_encode($suserrow['pincode'] ?? null); ?>';
     if ((first_name != oldfirst_name) || (last_name != oldlast_name) || (phone != oldphone) || (address != oldaddress) || (regpin != oldregpin) || (loc != oldloc)) {
       $('#succeeded').hide();
       $('#pending').show();
@@ -1413,7 +1411,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //SHIPPING FIRST_NAME
   function dis_sfn() {
     var shipping_first_name = document.getElementById("shipping_first_name").value;
-    var oldshipping_first_name = '<?= $suserrow['first_name'] ?>';
+    var oldshipping_first_name = '<?= json_encode($suserrow['first_name'] ?? null); ?>';
     if ($('#hide_sfn').css('display') == 'none') {
       if (shipping_first_name == oldshipping_first_name) {
         $('#dis_sfn').hide();
@@ -1440,7 +1438,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_sfn() {
     var shipping_first_name = document.getElementById("shipping_first_name").value;
-    var oldshipping_first_name = '<?= $suserrow['first_name'] ?>';
+    var oldshipping_first_name = '<?= json_encode($suserrow['first_name'] ?? null); ?>';
     if (($('#hide_sfn').css('display') != 'none') && ($('#hide_sfn1').css('display') != 'none')) {
       $('#dis_sfn').show();
       $('#hide_sfn').hide();
@@ -1457,7 +1455,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //SHIPPING LAST_NAME
   function dis_sln() {
     var shipping_last_name = document.getElementById("shipping_last_name").value;
-    var oldshipping_last_name = '<?= $suserrow['last_name'] ?>';
+    var oldshipping_last_name = '<?= json_encode($suserrow['last_name'] ?? null); ?>';
     if ($('#hide_sln').css('display') == 'none') {
       if (shipping_last_name == oldshipping_last_name) {
         $('#dis_sln').hide();
@@ -1484,7 +1482,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_sln() {
     var shipping_last_name = document.getElementById("shipping_last_name").value;
-    var oldshipping_last_name = '<?= $suserrow['last_name'] ?>';
+    var oldshipping_last_name = '<?= json_encode($suserrow['last_name'] ?? null); ?>';
     if (($('#hide_sln').css('display') != 'none') && ($('#hide_sln1').css('display') != 'none')) {
       $('#dis_sln').show();
       $('#hide_sln').hide();
@@ -1501,7 +1499,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //SHIPPING PH1
   function dis_sph() {
     var shipping_ph_no = document.getElementById("shipping_ph_no").value;
-    var oldshipping_ph_no = '<?= $suserrow['phone'] ?>';
+    var oldshipping_ph_no = '<?= json_encode($suserrow['phone'] ?? null); ?>';
     if ($('#hide_sph').css('display') == 'none') {
       if (shipping_ph_no == oldshipping_ph_no) {
         $('#dis_sph').hide();
@@ -1528,7 +1526,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_sph() {
     var shipping_ph_no = document.getElementById("shipping_ph_no").value;
-    var oldshipping_ph_no = '<?= $suserrow['phone'] ?>';
+    var oldshipping_ph_no = '<?= json_encode($suserrow['phone'] ?? null); ?>';
     if (($('#hide_sph').css('display') != 'none') && ($('#hide_sph1').css('display') != 'none')) {
       $('#dis_sph').show();
       $('#hide_sph').hide();
@@ -1545,7 +1543,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //SHIPPING PH2
   function dis_s2ph() {
     var shipping_ph_no2 = document.getElementById("shipping_ph_no2").value;
-    var oldshipping_ph_no2 = '<?= $suserrow['phone'] ?>';
+    var oldshipping_ph_no2 = '<?= json_encode($suserrow['phone'] ?? null); ?>';
     if ($('#hide_s2ph').css('display') == 'none') {
       if (shipping_ph_no2 == oldshipping_ph_no2) {
         $('#dis_s2ph').hide();
@@ -1572,7 +1570,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_s2ph() {
     var shipping_ph_no2 = document.getElementById("shipping_ph_no2").value;
-    var oldshipping_ph_no2 = '<?= $suserrow['phone'] ?>';
+    var oldshipping_ph_no2 = '<?= json_encode($suserrow['phone'] ?? null); ?>';
     if (($('#hide_s2ph').css('display') != 'none') && ($('#hide_s2ph1').css('display') != 'none')) {
       $('#dis_s2ph').show();
       $('#hide_s2ph').hide();
@@ -1589,7 +1587,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //SHIPPING PH2
   function dis_s2ph() {
     var shipping_ph_no2 = document.getElementById("shipping_ph_no2").value;
-    var oldshipping_ph_no2 = '<?= $suserrow['alternative_phone'] ?>';
+    var oldshipping_ph_no2 = '<?= json_encode($suserrow['alternative_phone'] ?? null); ?>';
     if ($('#hide_s2ph').css('display') == 'none') {
       if (shipping_ph_no2 == oldshipping_ph_no2) {
         $('#dis_s2ph').hide();
@@ -1616,7 +1614,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_s2ph() {
     var shipping_ph_no2 = document.getElementById("shipping_ph_no2").value;
-    var oldshipping_ph_no2 = '<?= $suserrow['alternative_phone'] ?>';
+    var oldshipping_ph_no2 = '<?= json_encode($suserrow['alternative_phone'] ?? null); ?>';
     if (($('#hide_s2ph').css('display') != 'none') && ($('#hide_s2ph1').css('display') != 'none')) {
       $('#dis_s2ph').show();
       $('#hide_s2ph').hide();
@@ -1633,7 +1631,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //SHIPPING ADDRESS
   function dis_sadd() {
     var oldshipping_address_1 = document.getElementById("shipping_address_1").value;
-    var oldshipping_address_1 = '<?= $suserrow['address'] ?>';
+    var oldshipping_address_1 = '<?= json_encode($suserrow['address'] ?? null); ?>';
     if ($('#hide_sadd').css('display') == 'none') {
       if (oldshipping_address_1 == oldshipping_address_1) {
         $('#dis_sadd').hide();
@@ -1660,7 +1658,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_sadd() {
     var oldshipping_address_1 = document.getElementById("shipping_address_1").value;
-    var oldshipping_address_1 = '<?= $suserrow['address'] ?>';
+    var oldshipping_address_1 = '<?= json_encode($suserrow['address'] ?? null); ?>';
     if (($('#hide_sadd').css('display') != 'none') && ($('#hide_sadd1').css('display') != 'none')) {
       $('#dis_sadd').show();
       $('#hide_sadd').hide();
@@ -1677,7 +1675,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //SHIPPING ADDRESS
   function dis_spin() {
     var oldshipping_postcode = document.getElementById("shipping_postcode").value;
-    var oldshipping_postcode = '<?= $suserrow['pincode'] ?>';
+    var oldshipping_postcode = '<?= json_encode($suserrow['pincode'] ?? null); ?>';
     if ($('#hide_spin').css('display') == 'none') {
       if (oldshipping_postcode == oldshipping_postcode) {
         $('#dis_spin').hide();
@@ -1704,7 +1702,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_spin() {
     var oldshipping_postcode = document.getElementById("shipping_postcode").value;
-    var oldshipping_postcode = '<?= $suserrow['pincode'] ?>';
+    var oldshipping_postcode = '<?= json_encode($suserrow['pincode'] ?? null); ?>';
     if (($('#hide_spin').css('display') != 'none') && ($('#hide_spin1').css('display') != 'none')) {
       $('#dis_spin').show();
       $('#hide_spin').hide();
@@ -1721,7 +1719,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //FIRST_NAME
   function dis_fn() {
     var first_name = document.getElementById("first_name").value;
-    var oldfirst_name = '<?= $userrow['first_name'] ?>';
+    var oldfirst_name = '<?= json_encode($userrow['first_name'] ?? null); ?>';
     if ($('#hide_fn').css('display') == 'none') {
       if (first_name == oldfirst_name) {
         $('#dis_fn').hide();
@@ -1748,7 +1746,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_fn() {
     var first_name = document.getElementById("first_name").value;
-    var oldfirst_name = '<?= $userrow['first_name'] ?>';
+    var oldfirst_name = '<?= json_encode($userrow['first_name'] ?? null); ?>';
     if (($('#hide_fn').css('display') != 'none') && ($('#hide_fn1').css('display') != 'none')) {
       $('#dis_fn').show();
       $('#hide_fn').hide();
@@ -1765,7 +1763,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //LAST_NAME
   function dis_ln() {
     var last_name = document.getElementById("last_name").value;
-    var oldlast_name = '<?= $userrow['last_name'] ?>';
+    var oldlast_name = '<?= json_encode($userrow['last_name'] ?? null); ?>';
     if ($('#hide_ln').css('display') == 'none') {
       if (last_name == oldlast_name) {
         $('#dis_ln').hide();
@@ -1792,7 +1790,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_ln() {
     var last_name = document.getElementById("last_name").value;
-    var oldlast_name = '<?= $userrow['last_name'] ?>';
+    var oldlast_name = '<?= json_encode($userrow['last_name'] ?? null); ?>';
     if (($('#hide_ln').css('display') != 'none') && ($('#hide_ln1').css('display') != 'none')) {
       $('#dis_ln').show();
       $('#hide_ln').hide();
@@ -1809,7 +1807,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //PHONE
   function dis_ph() {
     var phone = document.getElementById("phone").value;
-    var oldphone = '<?= $userrow['phone'] ?>';
+    var oldphone = '<?= json_encode($userrow['phone'] ?? null); ?>';
     if ($('#hide_ph').css('display') == 'none') {
       if (phone == oldphone) {
         $('#dis_ph').hide();
@@ -1836,7 +1834,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_ph() {
     var phone = document.getElementById("phone").value;
-    var oldphone = '<?= $userrow['phone'] ?>';
+    var oldphone = '<?= json_encode($userrow['phone'] ?? null); ?>';
     if (($('#hide_ph').css('display') != 'none') && ($('#hide_ph1').css('display') != 'none')) {
       $('#dis_ph').show();
       $('#hide_ph').hide();
@@ -1866,8 +1864,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   }
 
   function reset_pin() {
-    var oldregpin = '<?= $userrow['pincode'] ?>';
-    var oldloc = '<?= $userrow['location'] ?>';
+    var oldregpin = '<?= json_encode($userrow['pincode'] ?? null); ?>';
+    var oldloc = '<?= json_encode($userrow['location'] ?? null); ?>';
     $('#dis_pin').show();
     $('#hide_pin').hide();
     $('#hide_pin1').hide();
@@ -1893,7 +1891,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //ADDRESS
   function dis_add() {
     var address = document.getElementById("address").value;
-    var oldaddress = '<?= $userrow['address'] ?>';
+    var oldaddress = '<?= json_encode($userrow['address'] ?? null); ?>';
     if ($('#hide_add').css('display') == 'none') {
       if (address == oldaddress) {
         $('#dis_add').hide();
@@ -1920,7 +1918,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_add() {
     var address = document.getElementById("address").value;
-    var oldaddress = '<?= $userrow['address'] ?>';
+    var oldaddress = '<?= json_encode($userrow['address'] ?? null); ?>';
     if (($('#hide_add').css('display') != 'none') && ($('#hide_add1').css('display') != 'none')) {
       $('#dis_add').show();
       $('#hide_add').hide();
@@ -1937,7 +1935,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
   //EMAIL
   function dis_mail() {
     var email = document.getElementById("email").value;
-    var oldemail = '<?= $userrow['email'] ?>';
+    var oldemail = '<?= json_encode($userrow['email'] ?? null); ?>';
     if ($('#hide_mail').css('display') == 'none') {
       if (email == oldemail) {
         $('#dis_mail').hide();
@@ -1960,7 +1958,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
 
   function reset_mail() {
     var email = document.getElementById("email").value;
-    var oldemail = '<?= $userrow['email'] ?>';
+    var oldemail = '<?= json_encode($userrow['email'] ?? null); ?>';
     if (($('#hide_mail').css('display') != 'none') && ($('#hide_mail1').css('display') != 'none')) {
       $('#dis_mail').show();
       $('#hide_mail').hide();
@@ -2613,7 +2611,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
           if (willSubmit.dismiss) {
             $('.load_btn').show();
             $('.real_btn').hide();
-            
+
             var lat = long = 0;
             ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
             //////////////////////////////////////////////////////////////////////////////////////////////////////////////////

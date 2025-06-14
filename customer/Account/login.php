@@ -362,6 +362,7 @@ require "../Main/footer.php";
             });
             return;
           } else {
+            console.log("Error occured while logging in....", textstatus);
             return;
           }
         }

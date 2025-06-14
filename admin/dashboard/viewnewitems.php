@@ -118,7 +118,7 @@ include "header.php";
           url: 'productData.php',
           type: 'post',
           data: {
-            item_description_id: itid
+            product_description_id: itid
           },
           success: function(response) {
             // Add response in Modal body
@@ -139,7 +139,7 @@ include "header.php";
     require "pdo.php";
     $results_per_page = 12;
     //find the total number of results stored in the database
-    $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id where item.category_id=$ctid";
+    $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ctid";
     $result = $pdo->query($query);
     $number_of_result = $result->rowCount();
     //determine the total number of pages available
@@ -165,17 +165,17 @@ where category_id=$ctid ";
       <?php
       //display the link of the pages in URL
 
-      $query = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id where item.category_id=$ctid LIMIT " . $page_first_result . "," . $results_per_page;
+      $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ctid LIMIT " . $page_first_result . "," . $results_per_page;
       $st = $pdo->query($query);
       while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
       ?>
         <div class="products col-sm-4">
           <div style="display: flex; justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
             <img class="image" data-toggle="modal" data-target="#exampleModal"
-              onclick="appjos('<?= $row['item_description_id'] ?>' )" align="middle"
-              src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+              onclick="appjos('<?= $row['product_description_id'] ?>' )" align="middle"
+              src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
           </div>
-          <div class="deupd"><?= $row['item_name'] ?><br>
+          <div class="deupd"><?= $row['product_name'] ?><br>
           </div>
         </div>
       <?php

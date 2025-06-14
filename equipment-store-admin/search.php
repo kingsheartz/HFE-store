@@ -12,10 +12,10 @@ require "pdo.php";
 try {
   if (isset($_REQUEST["term"])) {
     // create prepared statement
-    $sql = "SELECT * FROM item JOIN item_description ON item.item_id=item_description.item_id
-            JOIN category ON category.category_id=item.category_id
-            WHERE item.item_name LIKE :term OR category.category_name
-            LIKE :term GROUP BY item.item_id";
+    $sql = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id
+            JOIN category ON category.category_id=product.category_id
+            WHERE product.product_name LIKE :term OR category.category_name
+            LIKE :term GROUP BY product.product_id";
     $stmt = $pdo->prepare($sql);
     $term = $_REQUEST["term"] . '%';
     // bind parameters to statement
@@ -38,26 +38,26 @@ try {
               <img
                 class="image"
                 align="middle"
-                src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
             </div>
             <div class="middle">
               <form
-                id="<?= $row['item_description_id'] ?>"
+                id="<?= $row['product_description_id'] ?>"
                 method="post"
                 action="change.php"
-                name="<?= $row['item_description_id'] ?>">
-                <input type="hidden" name="pr_id" value="<?= $row['item_description_id'] ?>">
-                <input type="hidden" name="item_id" value="<?= $row['item_id'] ?>">
-                <input type="hidden" name="im_url" value="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
-                <input type="hidden" name="name" value="<?= $row['item_name'] ?>">
+                name="<?= $row['product_description_id'] ?>">
+                <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
+                <input type="hidden" name="product_id" value="<?= $row['product_id'] ?>">
+                <input type="hidden" name="im_url" value="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
                 <input type="hidden" name="description" value="<?= $row['description'] ?>">
                 <input type="hidden" name="price" value="<?= $row['price'] ?>">
-                <button onclick="showupda(<?= $row['item_description_id'] ?>)" class="updation">
+                <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation">
                   <i class="fa fa-pencil-square-o" style="font-size: 24px;padding-right: 12px" aria-hidden="true"></i>Change
                 </button>
               </form>
             </div>
-            <div class="deupd"><?= $row['item_name'] ?><br /></div>
+            <div class="deupd"><?= $row['product_name'] ?><br /></div>
           </div>
           <?php
           if ($cn >= 3) {

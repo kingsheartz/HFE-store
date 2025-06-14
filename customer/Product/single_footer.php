@@ -2670,8 +2670,8 @@ if (isset($product_description_id)) {
     <?php
     if (!isset($_SESSION['id'])) {
     ?>
-      var email = getCookie("OneStore_email");
-      var pass = getCookie("OneStore_password");
+      var email = getCookie("HFE_email");
+      var pass = getCookie("HFE_password");
       if (email != " " && pass != " ") {
         //$("#strt").hide();
         $.ajax({

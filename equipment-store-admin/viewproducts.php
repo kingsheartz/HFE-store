@@ -60,10 +60,10 @@ require "head.php";
     require "pdo.php";
     $results_per_page = 12;
     //find the total number of results stored in the database
-    $query = "SELECT * FROM item
-              JOIN item_description ON item.item_id=item_description.item_id
-              where item.category_id=$ctid
-              GROUP BY item_description.item_id";
+    $query = "SELECT * FROM product
+              JOIN product_description ON product.product_id=product_description.product_id
+              where product.category_id=$ctid
+              GROUP BY product_description.product_id";
     $result = $pdo->query($query);
     $number_of_result = $result->rowCount();
     //determine the total number of pages available
@@ -88,10 +88,10 @@ require "head.php";
       <?php
       //display the link of the pages in URL
 
-      $query = "SELECT * FROM item
-                JOIN item_description ON item.item_id=item_description.item_id
-                where item.category_id=$ctid
-                GROUP BY item_description.item_id
+      $query = "SELECT * FROM product
+                JOIN product_description ON product.product_id=product_description.product_id
+                where product.category_id=$ctid
+                GROUP BY product_description.product_id
                 LIMIT " . $page_first_result . "," . $results_per_page;
       $st = $pdo->query($query);
       while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
@@ -101,21 +101,21 @@ require "head.php";
             <img
               class="image"
               align="middle"
-              src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+              src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
           </div>
           <div class="middle">
             <form
-              id="<?= $row['item_description_id'] ?>"
+              id="<?= $row['product_description_id'] ?>"
               method="post"
               action="change.php"
-              name="<?= $row['item_description_id'] ?>">
-              <input type="hidden" name="pr_id" value="<?= $row['item_description_id'] ?>">
-              <input type="hidden" name="item_id" value="<?= $row['item_id'] ?>">
-              <input type="hidden" name="im_url" value="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
-              <input type="hidden" name="name" value="<?= $row['item_name'] ?>">
+              name="<?= $row['product_description_id'] ?>">
+              <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
+              <input type="hidden" name="item_id" value="<?= $row['product_id'] ?>">
+              <input type="hidden" name="im_url" value="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
               <input type="hidden" name="description" value="<?= $row['description'] ?>">
               <input type="hidden" name="price" value="<?= $row['price'] ?>">
-              <button onclick="showupda(<?= $row['item_description_id'] ?>)" class="updation">
+              <button onclick="showupda(<?= $row['product_description_id'] ?>)" class="updation">
                 <i
                   class="fa fa-pencil-square-o"
                   style="font-size: 24px;padding-right: 12px"
@@ -124,7 +124,7 @@ require "head.php";
               </button>
             </form>
           </div>
-          <div class="deupd"><?= $row['item_name'] ?><br /></div>
+          <div class="deupd"><?= $row['product_name'] ?><br /></div>
         </div>
       <?php
       }

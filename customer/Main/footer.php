@@ -158,7 +158,7 @@
   }
 </style>
 <script>
-  console.log("dghwgfey")
+  console.log("footer")
 </script>
 <div class="footer">
   <link rel="stylesheet" href="../../css/font-awesome.min.css">
@@ -2058,8 +2058,8 @@ if (isset($product_description_id)) {
     <?php
     if (isset($_SESSION['id']) && !isset($_SESSION['cart_count'])) {
     ?>
-      var email = getCookie("OneStore_email");
-      var pass = getCookie("OneStore_password");
+      var email = getCookie("HFE_email");
+      var pass = getCookie("HFE_password");
       if (email != " " && pass != " ") {
         //$("#strt").hide();
         $.ajax({

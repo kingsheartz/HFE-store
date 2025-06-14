@@ -1982,8 +1982,7 @@ function randomGen($min, $max, $quantity)
                                 onfocus="dis_add();"
                                 onblur="dis_add()"
                                 id="reviewinput"
-                                placeholder="">
-                              </textarea>
+                                placeholder=""></textarea>
                               <span
                                 onclick="dis_add()"
                                 id="dis_add"
@@ -2054,7 +2053,7 @@ function randomGen($min, $max, $quantity)
                       $.ajax({
                         url: "../Common/functions.php", //passing page info
                         data: {
-                          "editcustomerrated": 1,
+                          "edit_customer_rated": 1,
                           "product_description_id": product_description_id,
                           "customer_id": customer_id
                         }, //form data
@@ -2115,7 +2114,7 @@ function randomGen($min, $max, $quantity)
                         $.ajax({
                           url: "../Common/functions.php", //passing page info
                           data: {
-                            "customerrated": 1,
+                            "customer_rated": 1,
                             "product_description_id": product_description_id,
                             "customer_id": customer_id,
                             "rating": noofstars,
@@ -2171,7 +2170,7 @@ function randomGen($min, $max, $quantity)
                       $.ajax({
                         url: "../Common/functions.php", //passing page info
                         data: {
-                          "cancelcustomerrated": 1,
+                          "cancel_customer_rated": 1,
                           "product_description_id": product_description_id,
                           "customer_id": customer_id
                         }, //form data

@@ -1848,9 +1848,9 @@ if (isset($_POST['login'])) {
     $sql2 = "select id,username,password,activation_code,email from store_admin where email='$email' and activation_code = 'activated'";
     $stmt2 = $pdo->query($sql2);
     $row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
-    $osemail = "OneStore_email";
-    $ospass = "OneStore_password";
-    log_message("login::" . "Login Attempt:: Customer:" . json_encode($row['email']) . ", Store Admin: " . json_encode($row2['email']));
+    $hfeEmail = "HFE_email";
+    $hfePass = "HFE_password";
+    log_message("login::" . "Login Attempt:: Customer:" . json_encode($row) . ", Store Admin: " . json_encode($row2));
     if ($row && $row2) {
       if (($row2['activation_code'] != 'activated') && ($row['activation_code'] != 'activated')) {
         $_SESSION['errorlogin'] = "Check and verify your email";
@@ -1864,19 +1864,19 @@ if (isset($_POST['login'])) {
             $_SESSION['sid'] = $row2['id'];
             $_SESSION['name'] = $row['first_name'];
             $_SESSION['id'] = $row['customer_id'];
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
-            } else if (!isset($_COOKIE[$osemail])) {
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
-            } else if (isset($_COOKIE[$osemail]) != $_POST['email']) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            } else if (!isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            } else if (isset($_COOKIE[$hfeEmail]) != $_POST['email']) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
             }
             $response['admin'] = "true";
             $response['user'] = "true";
@@ -1884,18 +1884,18 @@ if (isset($_POST['login'])) {
           } else {
             // store-user admin check 1
             $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
             }
             $response['status'] = "error";
           }
         } else {
           // store-user admin check 2
           $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
         }
@@ -1910,14 +1910,14 @@ if (isset($_POST['login'])) {
           if ($emailcasecheck == 0) {
             $_SESSION['sname'] = $row2['username'];
             $_SESSION['sid'] = $row2['id'];
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
-            } else if (!isset($_COOKIE[$osemail])) {
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            } else if (!isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
             }
             $response['admin'] = "true";
             $response['id'] = $row2['id'];
@@ -1925,15 +1925,16 @@ if (isset($_POST['login'])) {
         } else {
           // Store user admin check
           $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
         }
       }
     } else if ($row) {
       if ($row['activation_code'] != 'activated') {
+        log_message("login:: Need Activation " . $row['first_name']);
         $_SESSION['errorlogin'] = "Check and verify your email";
         $response['status'] = "error1";
       } else {
@@ -1942,27 +1943,29 @@ if (isset($_POST['login'])) {
           if ($emailcasecheck == 0) {
             $_SESSION['name'] = $row['first_name'];
             $_SESSION['id'] = $row['customer_id'];
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
-            } else if (!isset($_COOKIE['OneStore_email'])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            } else if (!isset($_COOKIE['HFE_email'])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
             }
             $response['user'] = "true";
             $response['status'] = "success";
+            log_message("login:: Success " . $row['first_name'] . " Response: " . json_encode($response));
           } else {
             // Customer admin check
             $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
             }
             $response['status'] = "error";
+            log_message("login:: Invalid credential: Customer/ Admin => " . $row['first_name'] . " Response: " . json_encode($response));
           }
         } else {
           $_SESSION['errorlogin'] = "Incorrect Password";
@@ -1971,6 +1974,7 @@ if (isset($_POST['login'])) {
             setcookie($pass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
+          log_message("login:: Invalid credential: Customer => " . $row['first_name'] . " Response: " . json_encode($response));
         }
       }
     } else {
@@ -1978,6 +1982,7 @@ if (isset($_POST['login'])) {
       $response['status'] = "errornotfound";
     }
     header('Content-type: application/json');
+    log_message("login:: " . "Response: " . json_encode($response));
     echo json_encode($response);
   }
 }
@@ -1985,8 +1990,8 @@ if (isset($_POST['login'])) {
 //Auto login check
 if (isset($_POST['userexists'])) {
   if (isset($_POST['email']) && isset($_POST['password'])) {
-    $osemail = "OneStore_email";
-    $ospass = "OneStore_password";
+    $hfeEmail = "HFE_email";
+    $hfePass = "HFE_password";
     $email = htmlentities($_POST['email']);
     $password = htmlentities($_POST['password']);
     $sql = "select customer_id,first_name,password,email from customers where email='$email' and password='$password' and activation_code='activated'";
@@ -2003,16 +2008,16 @@ if (isset($_POST['userexists'])) {
           $_SESSION['name'] = $row['first_name'];
           $_SESSION['id'] = $row['customer_id'];
         } else {
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
             return;
           }
         }
       }
-      if (isset($_COOKIE[$osemail])) {
-        setcookie($osemail, NULL, time() - 3600, "/");
-        setcookie($ospass, NULL, time() - 3600, "/");
+      if (isset($_COOKIE[$hfeEmail])) {
+        setcookie($hfeEmail, NULL, time() - 3600, "/");
+        setcookie($hfePass, NULL, time() - 3600, "/");
         return;
       }
     }
@@ -2027,16 +2032,16 @@ if (isset($_POST['userexists'])) {
             $_SESSION['sname'] = $row2['username'];
             $_SESSION['sid'] = $row2['id'];
           } else {
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
             }
             $response['status'] = "error";
           }
         } else {
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
         }
@@ -2596,8 +2601,8 @@ function cntcart($uid)
 if (isset($_POST['adlogin'])) {
   if (isset($_POST['email']) && isset($_POST['password'])) {
     $remember = $_POST['remember'];
-    $osemail = "OneStore_email";
-    $ospass = "OneStore_password";
+    $hfeEmail = "HFE_email";
+    $hfePass = "HFE_password";
     $email = htmlentities($_POST['email']);
     $password = htmlentities($_POST['password']);
     $sql = "select customer_id,first_name,password,email,activation_code from customers where email='$email'";
@@ -2627,18 +2632,18 @@ if (isset($_POST['adlogin'])) {
             $_SESSION['name'] = $row['first_name'];
             $_SESSION['id'] = $row['customer_id'];
 
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
 
               if ($remember == 1) {
-                setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-                setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
               }
-            } else if (!isset($_COOKIE[$osemail])) {
+            } else if (!isset($_COOKIE[$hfeEmail])) {
               if ($remember == 1) {
-                setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-                setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
               }
             }
 
@@ -2649,9 +2654,9 @@ if (isset($_POST['adlogin'])) {
         } else {
           $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
 
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
         }
@@ -2667,18 +2672,18 @@ if (isset($_POST['adlogin'])) {
         if ($emailcasecheck == 0) {
           $_SESSION['sname'] = $row2['username'];
           $_SESSION['sid'] = $row2['id'];
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
             if ($remember == 1) {
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
             }
           }
-          if (!isset($_COOKIE[$osemail])) {
+          if (!isset($_COOKIE[$hfeEmail])) {
             if ($remember == 1) {
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
             }
           }
           $response['status'] = "admin";
@@ -2686,9 +2691,9 @@ if (isset($_POST['adlogin'])) {
         }
       } else {
         $_SESSION['error'] = "Incorrect Email ID or Password";
-        if (isset($_COOKIE[$osemail])) {
-          setcookie($osemail, NULL, time() - 3600, "/");
-          setcookie($ospass, NULL, time() - 3600, "/");
+        if (isset($_COOKIE[$hfeEmail])) {
+          setcookie($hfeEmail, NULL, time() - 3600, "/");
+          setcookie($hfePass, NULL, time() - 3600, "/");
         }
         $response['status'] = "error";
       }
@@ -2702,43 +2707,43 @@ if (isset($_POST['adlogin'])) {
           if ($emailcasecheck == 0) {
             $_SESSION['name'] = $row['first_name'];
             $_SESSION['id'] = $row['customer_id'];
-            $email = "OneStore_email";
-            $pass = "OneStore_password";
+            $email = "HFE_email";
+            $pass = "HFE_password";
             if ($remember == 1) {
-              if (isset($_COOKIE[$osemail])) {
-                setcookie($osemail, NULL, time() - 3600, "/");
-                setcookie($ospass, NULL, time() - 3600, "/");
+              if (isset($_COOKIE[$hfeEmail])) {
+                setcookie($hfeEmail, NULL, time() - 3600, "/");
+                setcookie($hfePass, NULL, time() - 3600, "/");
                 if ($remember == 1) {
-                  setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-                  setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                  setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                  setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
                 }
-              } else if (!isset($_COOKIE[$osemail]) || $_COOKIE[$osemail] != $_POST['email']) {
-                setcookie($osemail, NULL, time() - 3600, "/");
-                setcookie($ospass, NULL, time() - 3600, "/");
+              } else if (!isset($_COOKIE[$hfeEmail]) || $_COOKIE[$hfeEmail] != $_POST['email']) {
+                setcookie($hfeEmail, NULL, time() - 3600, "/");
+                setcookie($hfePass, NULL, time() - 3600, "/");
                 if ($remember == 1) {
-                  setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-                  setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                  setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                  setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
                 }
               }
               $response['status'] = "success";
             } else if ($remember == 0) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
               $response['status'] = "success";
             }
           } else {
             $_SESSION['error'] = "Incorrect Email ID or Password";
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
             }
             $response['status'] = "error";
           }
         } else {
           $_SESSION['error'] = "Incorrect Password";
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
         }
@@ -2776,8 +2781,8 @@ if (isset($_POST['forgotlogin'])) {
         if ($emailcasecheck == 0) {
           $_SESSION['name'] = $row['first_name'];
           $_SESSION['id'] = $row['customer_id'];
-          $email = "OneStore_email";
-          $pass = "OneStore_password";
+          $email = "HFE_email";
+          $pass = "HFE_password";
           if (isset($_COOKIE[$email])) {
             setcookie($email, NULL, time() - 3600, "/");
             setcookie($pass, NULL, time() - 3600, "/");
@@ -3077,8 +3082,8 @@ if (isset($_POST['forgotlogin'])) {
     else if ($row2) {
       $emailcasecheck = strcmp($row2['email'], $_POST['email']);
       if ($emailcasecheck == 0) {
-        $email = "OneStore_email";
-        $pass = "OneStore_password";
+        $email = "HFE_email";
+        $pass = "HFE_password";
         if (isset($_COOKIE[$email])) {
           setcookie($email, NULL, time() - 3600, "/");
           setcookie($pass, NULL, time() - 3600, "/");
@@ -3449,8 +3454,8 @@ if (isset($_POST['recoverlogin'])) {
     if ($row4['activation_code'] != "activated") {
       $response['status'] = "error1";
     } else {
-      if (isStoreAdminAndUser($row4['email'], 'user')) {
-        $sql2 = "update user set password='$password',password_reset=1 where email=:email";
+      if (isStoreAdminAndUser($row4['email'], 'customer')) {
+        $sql2 = "update customer set password='$password',password_reset=1 where email=:email";
         $stmt2 = $pdo->prepare($sql2);
         $stmt2->execute([':email' => $row4['email']]);
       }
@@ -3561,13 +3566,13 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
   $stmt_cart->execute(array(':customer_id' => $_SESSION['id']));
   while ($row_cart = $stmt_cart->fetch(PDO::FETCH_ASSOC)) {
     //INSERT INTO NEW ORDERED PRODUCTS
-    $sql = "insert into new_ordered_products (new_orders_id,product_details_id,order_type,product_quantity,total_amt,delivery_status)values(:noid,:pdid,:order_type,:product_quantity,:total_amt,'pending')";
+    $sql = "insert into new_ordered_products (new_orders_id,product_details_id,order_type,item_quantity,total_amt,delivery_status)values(:noid,:pdid,:order_type,:item_quantity,:total_amt,'pending')";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
       ':noid' => $noid,
       ':pdid' => $row_cart['product_details_id'],
       ':order_type' => $row_cart['order_type'],
-      ':product_quantity' => $row_cart['quantity'],
+      ':item_quantity' => $row_cart['quantity'],
       ':total_amt' => $row_cart['total_amt']
     ));
   }
@@ -3633,7 +3638,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
       $store_array[$j]['product_description'][$k] = $placerow_i['description'];
       $store_array[$j]['product_mrp'][$k] = $placerow_i['mrp'];
       $store_array[$j]['product_price'][$k] = $placerow_i['price'];
-      $store_array[$j]['product_quantity'][$k] = $placerow_i['quantity'];
+      $store_array[$j]['item_quantity'][$k] = $placerow_i['quantity'];
       $store_array[$j]['product_ordertype'][$k] = $placerow_i['order_type'];
       $store_array[$j]['product_total_amt'][$k] = $placerow_i['total_amt'];
       $total_bill += $placerow_i['total_amt'];
@@ -3804,7 +3809,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                   <td valign="top" align="left">
                                     <p style="margin-bottom:13px;margin-top:20px"> <a href="" style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#15c;text-decoration:none!important;word-spacing:0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; '. $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['product_quantity'][$m] . '</p>
+                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Total: &#8377; ' . $store_array[$l]['product_total_amt'][$m] . '</p>';
       $store_total += $store_array[$l]['product_total_amt'][$m];
@@ -4110,7 +4115,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                         <span style="display:inline-block;width:167px;color:#212121">Total amount</span>';
 
     for ($m = 0; $m < $store_cnt[$l]; $m++) {
-      $store_total += (int) $store_array[$l]['product_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
+      $store_total += (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
     }
 
     $message2 .=  '
@@ -4257,7 +4262,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
       $store_array[$l]['product_name'][$m];
       $store_array[$l]['product_description'][$m];
       $store_array[$l]['product_price'][$m];
-      $store_array[$l]['product_quantity'][$m];
+      $store_array[$l]['item_quantity'][$m];
       $store_array[$l]['product_ordertype'][$m];
       $store_array[$l]['product_total_amt'][$m];
 
@@ -4325,7 +4330,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                       <p
                                         style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                       >
-                                        Qty: ' . $store_array[$l]['product_quantity'][$m] . '
+                                        Qty: ' . $store_array[$l]['item_quantity'][$m] . '
                                       </p>
                                       <p
                                         style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
@@ -4335,9 +4340,9 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                       <p
                                         style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                       >
-                                        Total: &#8377; ' . (int) $store_array[$l]['product_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '
+                                        Total: &#8377; ' . (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '
                                       </p>';
-      $store_total += (int) $store_array[$l]['product_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
+      $store_total += (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
       $message2 .= '
                                     </td>
                                   </tr>
@@ -4673,7 +4678,7 @@ if (isset($_POST['update_list'])) {
 if (isset($_POST['addtowishlist'])) {
   if (isset($_SESSION['id'])) {
     $_SESSION['wishlist_store_id'] = $_POST['store_id'];
-    $_SESSION['wishlist_item_description_id'] = $_POST['product_description_id'];
+    $_SESSION['wishlist_product_description_id'] = $_POST['product_description_id'];
     $response['status'] = 'success';
   } else {
     $response['status'] = 'error';
@@ -4684,7 +4689,7 @@ if (isset($_POST['addtowishlist'])) {
 //-----------------------------------------------------------------------------------------------------------
 //WISHLIST ID FETCH AND ENTER INTO DB
 if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
-  if (isset($_SESSION['wishlist_item_description_id'], $_SESSION['wishlist_store_id'])) {
+  if (isset($_SESSION['wishlist_product_description_id'], $_SESSION['wishlist_store_id'])) {
     $id = $_SESSION['id'];
     //checking if is it available
     $sql = "select * from product_details
@@ -4692,7 +4697,7 @@ if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
             where product_description.product_description_id=:product_description_id and store_id=:store_id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-      ':product_description_id' => $_SESSION['wishlist_item_description_id'],
+      ':product_description_id' => $_SESSION['wishlist_product_description_id'],
       'store_id' => $_SESSION['wishlist_store_id']
     ));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -4700,7 +4705,7 @@ if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
     $sql3 = "select * from wishlist_items inner join wishlist on wishlist.wishlist_id=wishlist_items.wishlist_id where wishlist_items.product_description_id=:product_description_id and wishlist_items.store_id=:store_id and wishlist.customer_id=:customer_id and wishlist.wishlist_id = :wishlist_id";
     $stmt3 = $pdo->prepare($sql3);
     $stmt3->execute(array(
-      ':product_description_id' => $_SESSION['wishlist_item_description_id'],
+      ':product_description_id' => $_SESSION['wishlist_product_description_id'],
       'store_id' => $_SESSION['wishlist_store_id'],
       ':customer_id' => $id,
       ':wishlist_id' => $_POST['wishlist_id']
@@ -4709,7 +4714,7 @@ if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
     $sqlp = "select price from product_details where product_description_id=:product_description_id and store_id=:store_id";
     $stmtp = $pdo->prepare($sqlp);
     $stmtp->execute(array(
-      ':product_description_id' => $_SESSION['wishlist_item_description_id'],
+      ':product_description_id' => $_SESSION['wishlist_product_description_id'],
       'store_id' => $_SESSION['wishlist_store_id']
     ));
     $rowp = $stmtp->fetch(PDO::FETCH_ASSOC);
@@ -4729,7 +4734,7 @@ if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
         ':price' => $price,
         ':date' => $date,
         ':time' => $time,
-        ':product_description_id' => $_SESSION['wishlist_item_description_id'],
+        ':product_description_id' => $_SESSION['wishlist_product_description_id'],
         'store_id' => $_SESSION['wishlist_store_id'],
         ':wishlist_id' => $_POST['wishlist_id']
       ));
@@ -4742,7 +4747,7 @@ if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
         ':total' => $price,
         ':date' => $date,
         ':time' => $time,
-        ':product_description_id' => $_SESSION['wishlist_item_description_id'],
+        ':product_description_id' => $_SESSION['wishlist_product_description_id'],
         'store_id' => $_SESSION['wishlist_store_id']
       ));
       $response['status'] = "success";
@@ -4951,13 +4956,13 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
   $stmt_cart->execute(array(':idid' => $_POST['idid'], ':store_id' => $_POST['store_id']));
   while ($row_cart = $stmt_cart->fetch(PDO::FETCH_ASSOC)) {
     $pdid = $row_cart['product_details_id'];
-    $sql = "insert into new_ordered_products (new_orders_id,product_details_id,order_type,product_quantity,total_amt,delivery_status)values(:noid,:pdid,:order_type,:product_quantity,:total_amt,'pending')";
+    $sql = "insert into new_ordered_products (new_orders_id,product_details_id,order_type,item_quantity,total_amt,delivery_status)values(:noid,:pdid,:order_type,:item_quantity,:total_amt,'pending')";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
       ':noid' => $noid,
       ':pdid' => $row_cart['product_details_id'],
       ':order_type' => $_POST['order_type'],
-      ':product_quantity' => $_POST['pdt_cnt'],
+      ':item_quantity' => $_POST['pdt_cnt'],
       ':total_amt' => $_POST['total_amt']
     ));
     $pdcnt = $_POST['pdt_cnt'];
@@ -5008,7 +5013,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
       $store_array[$j]['product_description'][$k] = $placerow_i['description'];
       $store_array[$j]['product_mrp'][$k] = $placerow_i['mrp'];
       $store_array[$j]['product_price'][$k] = $placerow_i['price'];
-      $store_array[$j]['product_quantity'][$k] = $_POST['pdt_cnt'];
+      $store_array[$j]['item_quantity'][$k] = $_POST['pdt_cnt'];
       $store_array[$j]['product_ordertype'][$k] = $_POST['order_type'];
       $store_array[$j]['product_total_amt'][$k] = $_POST['total_amt'];
       $total_bill += $_POST['total_amt'];
@@ -5326,7 +5331,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                   <td valign="top" align="left">
                                     <p style="margin-bottom:13px;margin-top:20px"> <a href="" style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#15c;text-decoration:none!important;word-spacing:0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; '. $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['product_quantity'][$m] . '</p>
+                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
                                     <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Total: &#8377; ' . $store_array[$l]['product_total_amt'][$m] . '</p>';
       $store_total += $store_array[$l]['product_total_amt'][$m];
@@ -5622,7 +5627,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
       $store_array[$l]['product_name'][$m];
       $store_array[$l]['product_description'][$m];
       $store_array[$l]['product_price'][$m];
-      $store_array[$l]['product_quantity'][$m];
+      $store_array[$l]['item_quantity'][$m];
       $store_array[$l]['product_ordertype'][$m];
       $store_array[$l]['product_total_amt'][$m];
       $message2 .= '
@@ -5643,10 +5648,10 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                               <td valign="top" align="left">
                                                 <p style="margin-bottom:13px;margin-top:20px"> <a href="" style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#15c;text-decoration:none!important;word-spacing:0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
                                                 <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; '. $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
-                                                <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['product_quantity'][$m] . '</p>
+                                                <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
                                                 <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
-                                                <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Total: &#8377; ' . (int) $store_array[$l]['product_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '</p>';
-      $store_total += (int) $store_array[$l]['product_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
+                                                <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Total: &#8377; ' . (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '</p>';
+      $store_total += (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
       $message2 .= '</td>
                                           </tr>
                                         </tbody>
@@ -6286,7 +6291,7 @@ if (isset($_POST['filter_cat_a'])) {
                       </div>
                     </div>
                     <div class='flip-box-back'>
-                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] .  "/" . $row['item_description_id'] . ".jpg'>
+                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                         <div class='card-body'>
                           <!--NAME-->
                           <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -6325,7 +6330,7 @@ if (isset($_POST['filter_cat_a'])) {
                             </div>
                           </div>
                           <!--ADD TO CART-->
-                          <div class='btn btn-primary btn-lg ' onclick='storefinder(" . $row['item_description_id'] . ")'  type='button' name='submit' data-toggle='modal' data-target='#avail_stores' style='width: 96%;border-radius: 4px;bottom:5px;left:5px;position: absolute;padding: 3px 12px;'>
+                          <div class='btn btn-primary btn-lg ' onclick='storefinder(" . $row['product_description_id'] . ")'  type='button' name='submit' data-toggle='modal' data-target='#avail_stores' style='width: 96%;border-radius: 4px;bottom:5px;left:5px;position: absolute;padding: 3px 12px;'>
                             <i class='fas fa-plus mr-2'></i> Add to Cart
                           </div>
                           <!--CART ICON-->
@@ -7405,7 +7410,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
                     <i style='color: #D70000;display: flex;align-items: center;justify-content: center;margin-left: 50%;' class='fas fa-cart-plus mr-2 fa-lg mr-2'></i>
                   </div>
                   <!--WISH LIST-->
-                  <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' onclick='wishlist_storefinder(" . $row['item_description_id'] . ")' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 38px;height:38px;position: absolute;top: 10px;right: 10px;justify-content: center;border-radius: 50%;background-color:#bbb ;'>
+                  <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' onclick='wishlist_storefinder(" . $row['product_description_id'] . ")' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 38px;height:38px;position: absolute;top: 10px;right: 10px;justify-content: center;border-radius: 50%;background-color:#bbb ;'>
                     <i style='color:#fff ;display: flex;align-items: center;justify-content: center;margin-left: 50%;' class='fas fa-heart mr-2'></i>
                   </div>
                 </div>
@@ -8843,7 +8848,7 @@ if (isset($_POST['filter_item_b'])) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //ADD USER RATING
-if (isset($_POST['customerrated']) && $_POST['customerrated'] == 1) {
+if (isset($_POST['customer_rated']) && $_POST['customer_rated'] == 1) {
   $rating = $_POST['rating'];
   $review = $_POST['review'];
   $idid = $_POST['product_description_id'];
@@ -8907,7 +8912,7 @@ if (isset($_POST['customerrated']) && $_POST['customerrated'] == 1) {
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //EDIT USER RATING
-if (isset($_POST['editcustomerrated']) && $_POST['editcustomerrated'] == 1) {
+if (isset($_POST['edit_customer_rated']) && $_POST['edit_customer_rated'] == 1) {
   $idid = $_POST['product_description_id'];
   $customer_id = $_POST['customer_id'];
   $checkbuysql = $pdo->query("select rating,review from product_keys where product_description_id=" . $idid . " and customer_id=" . $customer_id);
@@ -8956,7 +8961,7 @@ if (isset($_POST['editcustomerrated']) && $_POST['editcustomerrated'] == 1) {
 ////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //CANCEL USER RATING
-if (isset($_POST['cancelcustomerrated']) && $_POST['cancelcustomerrated'] == 1) {
+if (isset($_POST['cancel_customer_rated']) && $_POST['cancel_customer_rated'] == 1) {
   $idid = $_POST['product_description_id'];
   $customer_id = $_POST['customer_id'];
   /*COLOR PICKER*/
@@ -9157,13 +9162,13 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
   $stmt_cart = $pdo->prepare($sql);
   $stmt_cart->execute(array(':customer_id' => $_SESSION['id']));
   while ($row_cart = $stmt_cart->fetch(PDO::FETCH_ASSOC)) {
-    $sql = "insert into new_ordered_products (new_orders_id,product_details_id,order_type,product_quantity,total_amt,delivery_status)values(:noid,:pdid,:order_type,:product_quantity,:total_amt,'pending')";
+    $sql = "insert into new_ordered_products (new_orders_id,product_details_id,order_type,item_quantity,total_amt,delivery_status)values(:noid,:pdid,:order_type,:item_quantity,:total_amt,'pending')";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
       ':noid' => $noid,
       ':pdid' => $row_cart['product_details_id'],
       ':order_type' => $row_cart['order_type'],
-      ':product_quantity' => $row_cart['quantity'],
+      ':item_quantity' => $row_cart['quantity'],
       ':total_amt' => $row_cart['total_amt']
     ));
   }
@@ -9234,7 +9239,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
       $store_array[$j]['product_description'][$k] = $placerow_i['description'];
       $store_array[$j]['product_mrp'][$k] = $placerow_i['mrp'];
       $store_array[$j]['product_price'][$k] = $placerow_i['price'];
-      $store_array[$j]['product_quantity'][$k] = $placerow_i['quantity'];
+      $store_array[$j]['item_quantity'][$k] = $placerow_i['quantity'];
       $store_array[$j]['product_ordertype'][$k] = $placerow_i['order_type'];
       $store_array[$j]['product_total_amt'][$k] = $placerow_i['total_amt'];
       $total_bill += $placerow_i['total_amt'];
@@ -9615,7 +9620,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                     <p
                                       style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                     >
-                                      Qty: ' . $store_array[$l]['product_quantity'][$m] . '
+                                      Qty: ' . $store_array[$l]['item_quantity'][$m] . '
                                     </p>
                                     <p
                                       style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
@@ -10017,7 +10022,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                         <span style="display:inline-block;width:167px;color:#212121">Total amount</span>';
 
     for ($m = 0; $m < $store_cnt[$l]; $m++) {
-      $store_total += (int) $store_array[$l]['product_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
+      $store_total += (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
     }
 
     $message2 .=  '
@@ -10154,7 +10159,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
       $store_array[$l]['product_name'][$m];
       $store_array[$l]['product_description'][$m];
       $store_array[$l]['product_price'][$m];
-      $store_array[$l]['product_quantity'][$m];
+      $store_array[$l]['item_quantity'][$m];
       $store_array[$l]['product_ordertype'][$m];
       $store_array[$l]['product_total_amt'][$m];
 
@@ -10228,7 +10233,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                               <p
                                                 style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                               >
-                                                Qty: ' . $store_array[$l]['product_quantity'][$m] . '
+                                                Qty: ' . $store_array[$l]['item_quantity'][$m] . '
                                               </p>
                                               <p
                                                 style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
@@ -10238,10 +10243,10 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                               <p
                                                 style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                               >
-                                                Total: &#8377; ' . (int) $store_array[$l]['product_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '
+                                                Total: &#8377; ' . (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '
                                               </p>';
 
-      $store_total += (int) $store_array[$l]['product_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
+      $store_total += (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
 
       $message2 .= '
                                             </td>
@@ -10486,7 +10491,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
 //CANCEL PRODUCT
 if (isset($_POST['cancel_product'])) {
   $nopid = $_POST['nopid'];
-  $query = "select customers.first_name as fn,customers.last_name as ln,customer_delivery_details.customer_id,customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.product_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store_admin.email as storemail,store_admin.username,store.store_id,store.store_name,store.opening_hours,store.status,store_admin.phone,product.price as mrp,product_description.product_description_id,category.category_id,product.product_name FROM new_orders
+  $query = "select customers.first_name as fn,customers.last_name as ln,customer_delivery_details.customer_id,customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.item_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store_admin.email as storemail,store_admin.username,store.store_id,store.store_name,store.opening_hours,store.status,store_admin.phone,product.price as mrp,product_description.product_description_id,category.category_id,product.product_name FROM new_orders
             JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
             JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
             JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
@@ -10504,7 +10509,7 @@ if (isset($_POST['cancel_product'])) {
     ':nopid' => $nopid
   ));
   $row = $statement->fetch(PDO::FETCH_ASSOC);
-  $product_qnty = $row['product_quantity'];
+  $product_qnty = $row['item_quantity'];
   $product_tot_amt = $row['total_amt'];
   $prev_order_tot_amt = $row['sub_total'];
   $new_order_tot_amt = $prev_order_tot_amt - $product_tot_amt;
@@ -10882,7 +10887,7 @@ if (isset($_POST['cancel_product'])) {
                                     <p
                                       style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                     >
-                                      Qty: ' . $row['product_quantity'] . '
+                                      Qty: ' . $row['item_quantity'] . '
                                     </p>
                                     <p
                                       style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
@@ -11471,7 +11476,7 @@ if (isset($_POST['cancel_product'])) {
                                     <p
                                       style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                     >
-                                      Qty: ' . $row['product_quantity'] . '
+                                      Qty: ' . $row['item_quantity'] . '
                                     </p>
                                     <p
                                       style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
@@ -11481,7 +11486,7 @@ if (isset($_POST['cancel_product'])) {
                                     <p
                                       style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
                                     >
-                                      Total: &#8377; ' . (int) $row['product_quantity'] * (int) $row['price'] . '
+                                      Total: &#8377; ' . (int) $row['item_quantity'] * (int) $row['price'] . '
                                     </p>
                                     ';
   $message2 .= '

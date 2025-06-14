@@ -49,7 +49,7 @@ require "../Main/header.php";
 
   a.img-cont {
     display: flex;
-    justify: center;
+    justify-content: center;
     align-items: center;
     margin: auto;
   }
@@ -72,10 +72,10 @@ require "../Main/header.php";
     <div class="card-header">
       <?php
       require "../Common/pdo.php";
-      if (isset($_GET['item'])) {
-        $nm = ucwords($_GET['item']);
+      if (isset($_GET['product'])) {
+        $nm = ucwords($_GET['product']);
         $res1 = $pdo->query(
-          "SELECT * FROM item WHERE item_name LIKE '%" . $nm . "%'"
+          "SELECT * FROM product WHERE product_name LIKE '%" . $nm . "%'"
         );
         $row = $res1->fetch(PDO::FETCH_ASSOC);
         $head = "Items related to '" . $nm . "'";
@@ -109,65 +109,65 @@ require "../Main/header.php";
     }
     $no_of_records_per_page = 12;
     $offset = ($pageno - 1) * $no_of_records_per_page;
-    if (isset($_GET['item'])) {
-      $nm = ucwords($_GET['item']);
+    if (isset($_GET['product'])) {
+      $nm = ucwords($_GET['product']);
       $total_pages_sql = $pdo->query(
-        "SELECT COUNT(*) FROM item
-        INNER JOIN item_description ON item_description.item_id = item.item_id
-        INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
-        INNER JOIN category ON category.category_id = item.category_id
+        "SELECT COUNT(*) FROM product
+        INNER JOIN product_description ON product_description.product_id = product.product_id
+        INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+        INNER JOIN category ON category.category_id = product.category_id
         INNER JOIN sub_category ON category.category_id = sub_category.category_id
-        WHERE item.item_name LIKE \"%$nm%\"
-        AND sub_category.sub_category_id = item.sub_category_id"
+        WHERE product.product_name LIKE \"%$nm%\"
+        AND sub_category.sub_category_id = product.sub_category_id"
       );
       $res = $pdo->query(
-        "SELECT item.item_id,
-                item.price AS 'mrp',
+        "SELECT product.product_id,
+                product.price AS 'mrp',
                 product_details.price,
-                item_description.item_description_id,
-                item.item_name,
-                item.description,
-                item.category_id,
-                item.sub_category_id
-        FROM item
-        INNER JOIN item_description ON item_description.item_id = item.item_id
-        INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
-        INNER JOIN category ON category.category_id = item.category_id
+                product_description.product_description_id,
+                product.product_name,
+                product.description,
+                product.category_id,
+                product.sub_category_id
+        FROM product
+        INNER JOIN product_description ON product_description.product_id = product.product_id
+        INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+        INNER JOIN category ON category.category_id = product.category_id
         INNER JOIN sub_category ON category.category_id = sub_category.category_id
-        WHERE item.item_name LIKE \"%$nm%\"
-        AND sub_category.sub_category_id = item.sub_category_id
+        WHERE product.product_name LIKE \"%$nm%\"
+        AND sub_category.sub_category_id = product.sub_category_id
         LIMIT $offset, $no_of_records_per_page"
       );
     } else if (isset($_GET['category_id']) && isset($_GET['subcategory_id'])) {
       $cat = $_GET['category_id'];
       $sub = $_GET['subcategory_id'];
       $total_pages_sql = $pdo->query(
-        "SELECT COUNT(*) FROM item
-        INNER JOIN item_description ON item_description.item_id = item.item_id
-        INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
-        INNER JOIN sub_category ON sub_category.sub_category_id = item.sub_category_id
+        "SELECT COUNT(*) FROM product
+        INNER JOIN product_description ON product_description.product_id = product.product_id
+        INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+        INNER JOIN sub_category ON sub_category.sub_category_id = product.sub_category_id
         INNER JOIN category ON category.category_id = sub_category.category_id
-        WHERE sub_category.sub_category_id = item.sub_category_id
+        WHERE sub_category.sub_category_id = product.sub_category_id
         AND category.category_id = '$cat'
         AND sub_category.sub_category_id = '$sub'"
       );
       $res = $pdo->query(
         "SELECT store.store_name,
-                item.item_id,
-                item.price AS 'mrp',
+                product.product_id,
+                product.price AS 'mrp',
                 product_details.price,
-                item_description.item_description_id,
-                item.item_name,
-                item.description,
-                item.category_id,
-                item.sub_category_id
-        FROM item
-        INNER JOIN item_description ON item_description.item_id = item.item_id
-        INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
+                product_description.product_description_id,
+                product.product_name,
+                product.description,
+                product.category_id,
+                product.sub_category_id
+        FROM product
+        INNER JOIN product_description ON product_description.product_id = product.product_id
+        INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
         INNER JOIN store ON product_details.store_id = store.store_id
-        INNER JOIN category ON category.category_id = item.category_id
+        INNER JOIN category ON category.category_id = product.category_id
         INNER JOIN sub_category ON category.category_id = sub_category.category_id
-        WHERE sub_category.sub_category_id = item.sub_category_id
+        WHERE sub_category.sub_category_id = product.sub_category_id
         AND category.category_id = '$cat'
         AND sub_category.sub_category_id = '$sub'
         LIMIT $offset, $no_of_records_per_page"
@@ -175,30 +175,30 @@ require "../Main/header.php";
     } else if (isset($_GET['category_id'])) {
       $cat = $_GET['category_id'];
       $total_pages_sql = $pdo->query(
-        "SELECT COUNT(*), item.category_id FROM item
-        INNER JOIN item_description ON item_description.item_id = item.item_id
-        INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
-        INNER JOIN category ON category.category_id = item.category_id
+        "SELECT COUNT(*), product.category_id FROM product
+        INNER JOIN product_description ON product_description.product_id = product.product_id
+        INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+        INNER JOIN category ON category.category_id = product.category_id
         INNER JOIN sub_category ON category.category_id = sub_category.category_id
-        GROUP BY item.item_id
-        HAVING item.category_id = $cat"
+        GROUP BY product.product_id
+        HAVING product.category_id = $cat"
       );
       $res = $pdo->query(
-        "SELECT item.item_id,
-                item.price AS 'mrp',
+        "SELECT product.product_id,
+                product.price AS 'mrp',
                 product_details.price,
-                item_description.item_description_id,
-                item.item_name,
-                item.description,
-                item.category_id,
-                item.sub_category_id
-        FROM item
-        INNER JOIN item_description ON item_description.item_id = item.item_id
-        INNER JOIN product_details ON product_details.item_description_id = item_description.item_description_id
-        INNER JOIN category ON category.category_id = item.category_id
+                product_description.product_description_id,
+                product.product_name,
+                product.description,
+                product.category_id,
+                product.sub_category_id
+        FROM product
+        INNER JOIN product_description ON product_description.product_id = product.product_id
+        INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
+        INNER JOIN category ON category.category_id = product.category_id
         INNER JOIN sub_category ON category.category_id = sub_category.category_id
-        GROUP BY item.item_id
-        HAVING item.category_id = $cat
+        GROUP BY product.product_id
+        HAVING product.category_id = $cat
         LIMIT $offset, $no_of_records_per_page"
       );
     }
@@ -261,24 +261,24 @@ require "../Main/header.php";
                                 width: 100%;
                                 background: white;
                                 text-align: center;">
-                          <a class="img-cont" href="../Product/single.php?id=<?= $row['item_description_id'] ?>">
+                          <a class="img-cont" href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
                             <img
                               title=" "
                               alt=" "
                               class="img_size"
-                              src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['item_description_id'] ?>.jpg">
+                              src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           </a>
                         </div>
                         <?php
-                        if (strlen($row['item_name']) >= 35) {
-                          $item = $row['item_name'];
-                          $item_name = substr($item, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+                        if (strlen($row['product_name']) >= 35) {
+                          $product = $row['product_name'];
+                          $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
                         } else {
-                          $item_name = $row['item_name'];
+                          $product_name = $row['product_name'];
                         }
                         ?>
                         <p style="margin: auto;display: block;margin: 0;margin-top: 5px;overflow: hidden" class="name_size">
-                          <?= $item_name ?>
+                          <?= $product_name ?>
                         </p>
                         <h4 style="color: green; margin: auto;display: block;margin: 0">
                           &#8377; <?= $row['price'] ?>
