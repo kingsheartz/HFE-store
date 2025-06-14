@@ -1620,10 +1620,12 @@ if ($result_cnt == 0) {
                   </form>
                 </div>
                 <?php
-                $pricesql = $pdo->query("SELECT product_details.price FROM product_details
-																				JOIN product_description ON product_description.product_description_id=product_details.product_description_id
-																				JOIN product ON product_description.product_id=product.product_id
-																				WHERE category_id=$cat_id");
+                $pricesql = $pdo->query(
+                  "SELECT product_details.price FROM product_details
+                  JOIN product_description ON product_description.product_description_id=product_details.product_description_id
+                  JOIN product ON product_description.product_id=product.product_id
+                  WHERE category_id=$cat_id"
+                );
                 $pricecnt = 0;
                 while ($pricerow = $pricesql->fetch(PDO::FETCH_ASSOC)) {
                   $pricearray[$pricecnt] = $pricerow['price'];

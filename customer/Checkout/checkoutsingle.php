@@ -342,7 +342,7 @@ $t_mrp = $mrprow['price'];
                           id="btn_s<?= $store_id . "i" . $idid ?>"
                           type="button"
                           style="width: 100%;width: 30px;height: 25px;font-weight: bold;font-size: 14px;background-color: white;outline: none;border-color:#02171e;padding: 0"
-                          onclick="$(this).hide(); if ($(this).html()<10) { $('#sel_s<?= $store_id . `i` . $idid ?>').show(); } else { $('#qnty_s<?= $store_id . `i` . $idid ?>').show(); }"> 1
+                          onclick="$(this).hide(); if ($(this).html()<10) { $('#sel_s<?= $store_id . 'i' . $idid ?>').show(); } else { $('#qnty_s<?= $store_id . 'i' . $idid ?>').show(); }"> 1
                         </button>
                         <select
                           id="sel_s<?= $store_id . "i" . $idid ?>"
