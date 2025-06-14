@@ -42,115 +42,227 @@
     .modal-content {
       width: 100% !important;
     }
+    .footer-botm>.container>div{
+      width: 100%;
+    }
+  }
+
+  .footer-botm {
+    background: transparent;
+    padding: 16px 0;
+  }
+
+  .container {
+    width: 100%;
+  }
+
+  .col-sm-8.w3_footer_grid {
+    display: inline-flex;
+  }
+
+  .w3layouts-foot,
+  .payment-w3ls {
+    float: right;
+    position: relative;
+    right: 0px;
+    top: 0px;
+  }
+
+
+  .col-sm-3.w3_footer_grid>ul,
+  .col-sm-3.w3_footer_grid>h3 {
+    right: 0px;
+    float: right;
+    font-size: 18px;
+  }
+
+  .col-sm-3.w3_footer_grid {
+    display: grid;
+  }
+
+  .w3_footer_grid ul.address li i {
+    color: #8b8b8b;
+    padding: .5em;
+    margin-right: 1em;
+    border: 0px;
+  }
+
+  .w3_footer_grid ul li {
+    list-style-type: none;
+    margin-bottom: 1em;
+    color: #afafaf;
+    font-size: 12px;
+    font-weight: normal;
+  }
+
+  .info>li {
+    width: 130px;
+  }
+
+  .w3_footer_grid>ul>li>.fa {
+    float: right;
+  }
+
+  @media(max-width:767px){
+    .col-sm-3.w3_footer_grid{
+      height: 200px;
+      width: 50%;
+    }
+    .col-sm-3.w3_footer_grid>h3,
+    .col-sm-3.w3_footer_grid>ul{
+      padding-left: 30%;
+    }
+    .col-sm-3.w3_footer_grid>h3{
+      height: 30px;
+    }
+  }
+
+  @media(max-width:470px){
+    .col-sm-3.w3_footer_grid{
+      width: 100%;
+    }
+    .col-sm-3.w3_footer_grid>img{
+      width: 100%;
+    }
+    .col-sm-3.w3_footer_grid:nth-child(1) {
+      height: fit-content;
+    }
+    .footer-botm>.container>div{
+      display: block !important;
+    }
+  }
+
+  .footer .newsletter input {
+    width: 100%;
+    height: 35px;
+    color: white;
+    background: #727272;
+    padding: 0 15px;
+    border: 0px;
+    border-radius: 4px;
+  }
+
+  .footer .newsletter .btn {
+    position: absolute;
+    width: 80px;
+    height: 35px;
+    top: 0;
+    right: 0;
+    padding: 0 15px;
+    border: none;
+    background: #2e2e2e;
+    color: #ffffff;
+    font-size: 14px;
+    border: 0px;
+    border-radius: 0 4px 4px 0;
   }
 </style>
 <div class="footer">
+  <link rel="stylesheet" href="../../css/font-awesome.min.css">
+  <div class="footer-botm">
+    <div class="container">
+      <div class="col-lg-10 col-md-12 col-sm-12 w3_footer_grid" style="display: inline-flex;">
+        <h3 class="title">Subscribe to newsettler</h3>
+        <div class="newsletter">
+          <p style="text-align: justify;">
+            Send your email to us.
+          </p>
+          <form method="post" name="sendmail" action="#">
+            <input name="cntemail" id="nlmail" class="form-control" type="email"
+              placeholder="Your email here">
+            <button type="button" class="btn" onclick="nlcheckmail()">Submit</button>
+          </form>
+        </div>
+      </div>
+      <div class="col-lg-2 col-md-12 col-sm-12">
+        <div class="w3layouts-foot">
+          <ul>
+            <li><a href="https://www.facebook.com/falconsinfoworld/" target="_blank"
+                class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+            <li><a href="https://www.instagram.com/_k_i_n_g_s_h_e_a_r_t_z/" target="_blank"
+                class="w3_agile_instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+            <li><a href="https://twitter.com/GovindA20531879" target="_blank" class="w3_agile_twitter"><i
+                  class="fa fa-twitter" aria-hidden="true"></i></a></li>
+            <li><a href="#" data-toggle="modal" data-target="#myModal_share_apk" onclick="copyapklink()"
+                class="w3_agile_android" style=><i class="fa fa-android" aria-hidden="true"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <div class="clearfix"> </div>
+  </div>
+
   <div class="container">
     <div class="w3_footer_grids">
-      <div class="col-md-3 col-sm-6 w3_footer_grid">
+      <div class="col-sm-3 w3_footer_grid">
+        <img src="../../images/logo/logo.png" alt=" " class="img-responsive">
+      </div>
+      <div class="col-sm-3 w3_footer_grid">
         <h3>Contact</h3>
         <ul class="address">
-          <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Thrissur</li>
-          <li><i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
-            <a href="mailto:onestoreforallyourneeds@gmail.com">onestore</a>
+          <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Trivandrum</li>
+          <li>
+            <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
+            <a href="mailto:onestoreforallyourneeds@gmail.com">HFE</a>
           </li>
           <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+91 8113990368</li>
         </ul>
       </div>
-      <div class="col-md-3 col-sm-6 w3_footer_grid">
+      <div class="col-sm-3 w3_footer_grid">
         <h3>Information</h3>
         <ul class="info">
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="about.php">About Us</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="contact.php">Contact Us</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="terms&conditions.php">T&C</a></li>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="privacy.php">Privacy Policy</a></li>
+          <li>
+            <a href="../Main/about.php">About Us</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </li>
+          <li>
+            <a href="../Main/contact.php">Contact Us</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </li>
+          <li>
+            <a href="../Main/terms&conditions.php">T&C</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </li>
+          <li>
+            <a href="../Main/privacy.php">Privacy Policy</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </li>
         </ul>
       </div>
-      <div class="col-md-3 col-sm-6 w3_footer_grid">
+      <div class="col-sm-3 w3_footer_grid">
         <h3>Profile</h3>
         <ul class="info">
           <?php
           if (isset($_SESSION['name'])) {
           ?>
-            <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="cart.php">My Cart</a></li>
-            <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="wishlist.php">Wishlist</a></li>
+            <li>
+              <a href="../Cart/cart.php">My Cart</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </li>
+            <li>
+              <a href="../Wishlist/wishlist.php">Wishlist</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </li>
           <?php
           }
           if (!isset($_SESSION['name'])) {
           ?>
-            <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="login.php">Login</a></li>
-            <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="registered.php">Create Account</a>
+            <li>
+              <a href="../Account/login.php">Login</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
+            </li>
+            <li>
+              <a href="../Account/registered.php">Create Account</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
             </li>
           <?php
           }
           ?>
-          <li><i class="fa fa-arrow-right" aria-hidden="true"></i><a href="faq.php">FAQ</a></li>
+          <li>
+            <a href="../Main/faq.php">FAQ</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
+          </li>
         </ul>
-      </div>
-      <div class="col-md-3 col-sm-6 w3_footer_grid">
-        <h3 class="title">Newsletter</h3>
-        <div class="newsletter">
-          <p style="text-align: justify;">
-            Send your email to us, so that we can let you know about our latest updates.
-          </p>
-          <form method="post" name="sendmail" action="#">
-            <input name="cntemail" id="nlmail" class="form-control" type="email" placeholder="Your email here">
-            <button type="button" class="btn" onclick="nlcheckmail()">Submit</button>
-          </form>
-        </div>
       </div>
       <div class="clearfix"> </div>
     </div>
   </div>
   <div class="footer-copy">
     <div class="container">
-      <p>© 2020 OneStore. All rights reserved |
-        <a
-          id="me"
-          onmouseover="$('#me').css('color','#0c99cc')"
-          onmouseleave="$('#me').css('color','#fe9126')"
-          href="www.one-store.com">KinGsHearTz
-        </a>
-      </p>
+      <p>© 2025 HFE. All rights reserved | <a id="me" onmouseover="$('#me').css('color','#0c99cc')" onmouseleave="$('#me').css('color','#fe9126')" href="www.one-store.com">Govind</a></p>
     </div>
-  </div>
-</div>
-<link rel="stylesheet" href="../../css/font-awesome.min.css">
-<div class="footer-botm">
-  <div class="container">
-    <div class="w3layouts-foot">
-      <ul>
-        <li>
-          <a href="https://www.facebook.com/falconsinfoworld/" target="_blank" class="w3_agile_facebook">
-            <i class="fa fa-facebook" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://www.instagram.com/_k_i_n_g_s_h_e_a_r_t_z/" target="_blank" class="w3_agile_instagram">
-            <i class="fa fa-instagram" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a href="https://twitter.com/GovindA20531879" target="_blank" class="w3_agile_twitter">
-            <i class="fa fa-twitter" aria-hidden="true"></i>
-          </a>
-        </li>
-        <li>
-          <a
-            href="#"
-            data-toggle="modal"
-            data-target="#myModal_share_apk"
-            onclick="copyapklink()"
-            class="w3_agile_android">
-            <i class="fa fa-android" aria-hidden="true"></i>
-          </a>
-        </li>
-      </ul>
-    </div>
-    <div class="payment-w3ls">
-      <img src="../../images/card.png" alt=" " class="img-responsive">
-    </div>
-    <div class="clearfix"> </div>
   </div>
 </div>
 <!-- //footer -->
@@ -192,25 +304,19 @@
             </tr>
             <tr>
               <td>
-                <div class="input-group bar-srch"
-                  style="padding: 0px;margin: 0px;left: 0px;right: 0px;margin-bottom: 0px;">
+                <div class="input-group bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px;margin-bottom: 0px;">
                   <input
                     readonly="true"
                     type="text"
                     class=""
                     id="input_apk_link"
                     placeholder="URL to share"
-                    value="http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_high.apk"
+                    value="../../extras/APK/RELEASE/OneStore_version_high.apk"
                     name=""
                     required=" "
                     style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline-color: #e59700;">
                   <span id="" class="input-group-btn">
-                    <button
-                      id="copy_wl"
-                      onclick="apkclipboard()"
-                      style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004114), color-stop(1, #309700)) !important;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"
-                      class="btn btn-default search_btn"
-                      type="button">
+                    <button onclick="apkclipboard()" style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004114), color-stop(1, #309700)) !important;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;border-bottom-right-radius: 3px;border-top-right-radius: 3px;" class="btn btn-default search_btn" type="button">
                       <span class="fas fa-copy"></span>
                     </button>
                   </span>
@@ -329,11 +435,11 @@
 
   function copyapklink(n) {
     if (n == 1) {
-      var link = "http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_high.apk";
+      var link = "../../extras/APK/RELEASE/OneStore_version_high.apk";
     } else if (n == 2) {
-      var link = "http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_low.apk";
+      var link = "../../extras/APK/RELEASE/OneStore_version_low.apk";
     } else {
-      var link = "http://localhost:81/One-Store-Renewed/onestore-website/extras/APK/RELEASE/OneStore_version_low.apk";
+      var link = "../../extras/APK/RELEASE/OneStore_version_low.apk";
     }
     $('#input_apk_link').val(link);
     ///////////WHATSAPP///////////
@@ -372,22 +478,17 @@
                   <div class="form-group">
                     <br>
                     <img src="../../images/logo/logost.svg" height="50px">
-                    <i style="font-size: 1.6em;font-weight: bolder;font-family: sans-serif;font-style: normal;">
+                    <i style="font-size: 1.6em;font-weight: 800;font-family: 'Open Sans', sans-serif;font-style: normal;">
                       Log in
-                    </i>
-                    <br>
-                    <p id="emppass" style="color: red;position: relative;top: 45px;display: none;"></p><br><br>
-                    <input
-                      type="email"
-                      class="form-control md-brdr"
-                      id="mobile"
-                      name="mobile"
-                      placeholder="Email ID"
-                      required>
+                    </i><br>
+                    <p id="emppass" style="color: red;position: relative;top: 45px;display: none;">
+                    </p><br><br>
+                    <input type="email" class="form-control md-brdr" id="mobile" name="mobile" placeholder="Email ID" required>
                     <input type="hidden" id="valchg">
                   </div>
-                  <p class="capson_warning" style="display: none;float:left;color: #d9534f">
-                    <i class="fa fa-warning"></i> &nbsp;WARNING! Caps lock is ON.
+                  <p class="capson_warning" style="display: none;color: #d9534f">
+                    <i class="fa fa-warning"></i>
+                    &nbsp;WARNING! Caps lock is ON.
                   </p>
                   <div id="passdiv" style="display: block;background-color: white">
                     <div class="form-group">
@@ -396,7 +497,6 @@
                         class="form-control  md-brdr password_fields"
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                        required=" "
                         placeholder="Enter  Password"
                         name="password"
                         id="pwd"
@@ -409,25 +509,22 @@
                         type="button"
                         onclick="forgottenpass()"
                         style="background-color: transparent;border: none;"
-                        class="frgt-pswrd">
-                        Forgot Password?
+                        class="frgt-pswrd">Forgot Password?
                       </button>
                     </a>
                     <br><br><br>
                     <button onclick="signin()" type="button" class="btn btn-primary btn-full mgbtm15 real_btn">LOGIN</button>
                     <button type="button" style="display:none" class="btn btn-primary btn-full mgbtm15 load_btn">
-                      <i class="fa fa-refresh fa-spin"></i> LOGIN
-                    </button>
-                    <a href="registered.php">
+                      <i class="fa fa-refresh fa-spin"></i> LOGIN</button>
+                    <a href="../Account/registered.php">
                       <button type="button" class="btn btn-danger btn-full mgbtm15" onclick="signup()">Sign Up</button>
                     </a><br><br>
-                    <!--<a href="registered.php" data-toggle="modal" data-dismiss="modal"> <button type="button" class="btn btn-danger btn-full mgbtm15" onclick="signup()" data-dismiss="modal">Sign Up</button></a>-->
+                    <!--<a href="../Account/registered.php" data-toggle="modal" data-dismiss="modal"> <button type="button" class="btn btn-danger btn-full mgbtm15" onclick="signup()" data-dismiss="modal">Sign Up</button></a>-->
                   </div>
                 </div>
               </div>
             </form>
-            <div class="pop-btm-fx">
-            </div>
+            <div class="pop-btm-fx"></div>
           </div>
         </div>
       </div>
@@ -671,7 +768,7 @@
 <!-- Detail about lists--><!--ADD TO WISHLIST-->
 <?php
 if (isset($_SESSION['id'])) {
-  $result = $pdo->query("select * from wishlist where user_id=" . $_SESSION['id']);
+  $result = $pdo->query("select * from wishlist where customer_id=" . $_SESSION['id']);
   $status = 0;
 ?>
   <div
