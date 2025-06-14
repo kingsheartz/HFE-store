@@ -1848,9 +1848,9 @@ if (isset($_POST['login'])) {
     $sql2 = "select id,username,password,activation_code,email from store_admin where email='$email' and activation_code = 'activated'";
     $stmt2 = $pdo->query($sql2);
     $row2 = $stmt2->fetch(PDO::FETCH_ASSOC);
-    $osemail = "OneStore_email";
-    $ospass = "OneStore_password";
-    log_message("login::" . "Login Attempt:: Customer:" . json_encode($row['email']) . ", Store Admin: " . json_encode($row2['email']));
+    $hfeEmail = "HFE_email";
+    $hfePass = "HFE_password";
+    log_message("login::" . "Login Attempt:: Customer:" . json_encode($row) . ", Store Admin: " . json_encode($row2));
     if ($row && $row2) {
       if (($row2['activation_code'] != 'activated') && ($row['activation_code'] != 'activated')) {
         $_SESSION['errorlogin'] = "Check and verify your email";
@@ -1864,19 +1864,19 @@ if (isset($_POST['login'])) {
             $_SESSION['sid'] = $row2['id'];
             $_SESSION['name'] = $row['first_name'];
             $_SESSION['id'] = $row['customer_id'];
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
-            } else if (!isset($_COOKIE[$osemail])) {
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
-            } else if (isset($_COOKIE[$osemail]) != $_POST['email']) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            } else if (!isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            } else if (isset($_COOKIE[$hfeEmail]) != $_POST['email']) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
             }
             $response['admin'] = "true";
             $response['user'] = "true";
@@ -1884,18 +1884,18 @@ if (isset($_POST['login'])) {
           } else {
             // store-user admin check 1
             $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
             }
             $response['status'] = "error";
           }
         } else {
           // store-user admin check 2
           $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
         }
@@ -1910,14 +1910,14 @@ if (isset($_POST['login'])) {
           if ($emailcasecheck == 0) {
             $_SESSION['sname'] = $row2['username'];
             $_SESSION['sid'] = $row2['id'];
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
-            } else if (!isset($_COOKIE[$osemail])) {
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            } else if (!isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
             }
             $response['admin'] = "true";
             $response['id'] = $row2['id'];
@@ -1925,15 +1925,16 @@ if (isset($_POST['login'])) {
         } else {
           // Store user admin check
           $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
         }
       }
     } else if ($row) {
       if ($row['activation_code'] != 'activated') {
+        log_message("login:: Need Activation " . $row['first_name']);
         $_SESSION['errorlogin'] = "Check and verify your email";
         $response['status'] = "error1";
       } else {
@@ -1942,27 +1943,29 @@ if (isset($_POST['login'])) {
           if ($emailcasecheck == 0) {
             $_SESSION['name'] = $row['first_name'];
             $_SESSION['id'] = $row['customer_id'];
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
-            } else if (!isset($_COOKIE['OneStore_email'])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+            } else if (!isset($_COOKIE['HFE_email'])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
             }
             $response['user'] = "true";
             $response['status'] = "success";
+            log_message("login:: Success " . $row['first_name'] . " Response: " . json_encode($response));
           } else {
             // Customer admin check
             $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
             }
             $response['status'] = "error";
+            log_message("login:: Invalid credential: Customer/ Admin => " . $row['first_name'] . " Response: " . json_encode($response));
           }
         } else {
           $_SESSION['errorlogin'] = "Incorrect Password";
@@ -1971,6 +1974,7 @@ if (isset($_POST['login'])) {
             setcookie($pass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
+          log_message("login:: Invalid credential: Customer => " . $row['first_name'] . " Response: " . json_encode($response));
         }
       }
     } else {
@@ -1978,6 +1982,7 @@ if (isset($_POST['login'])) {
       $response['status'] = "errornotfound";
     }
     header('Content-type: application/json');
+    log_message("login:: " . "Response: " . json_encode($response));
     echo json_encode($response);
   }
 }
@@ -1985,8 +1990,8 @@ if (isset($_POST['login'])) {
 //Auto login check
 if (isset($_POST['userexists'])) {
   if (isset($_POST['email']) && isset($_POST['password'])) {
-    $osemail = "OneStore_email";
-    $ospass = "OneStore_password";
+    $hfeEmail = "HFE_email";
+    $hfePass = "HFE_password";
     $email = htmlentities($_POST['email']);
     $password = htmlentities($_POST['password']);
     $sql = "select customer_id,first_name,password,email from customers where email='$email' and password='$password' and activation_code='activated'";
@@ -2003,16 +2008,16 @@ if (isset($_POST['userexists'])) {
           $_SESSION['name'] = $row['first_name'];
           $_SESSION['id'] = $row['customer_id'];
         } else {
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
             return;
           }
         }
       }
-      if (isset($_COOKIE[$osemail])) {
-        setcookie($osemail, NULL, time() - 3600, "/");
-        setcookie($ospass, NULL, time() - 3600, "/");
+      if (isset($_COOKIE[$hfeEmail])) {
+        setcookie($hfeEmail, NULL, time() - 3600, "/");
+        setcookie($hfePass, NULL, time() - 3600, "/");
         return;
       }
     }
@@ -2027,16 +2032,16 @@ if (isset($_POST['userexists'])) {
             $_SESSION['sname'] = $row2['username'];
             $_SESSION['sid'] = $row2['id'];
           } else {
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
             }
             $response['status'] = "error";
           }
         } else {
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
         }
@@ -2596,8 +2601,8 @@ function cntcart($uid)
 if (isset($_POST['adlogin'])) {
   if (isset($_POST['email']) && isset($_POST['password'])) {
     $remember = $_POST['remember'];
-    $osemail = "OneStore_email";
-    $ospass = "OneStore_password";
+    $hfeEmail = "HFE_email";
+    $hfePass = "HFE_password";
     $email = htmlentities($_POST['email']);
     $password = htmlentities($_POST['password']);
     $sql = "select customer_id,first_name,password,email,activation_code from customers where email='$email'";
@@ -2627,18 +2632,18 @@ if (isset($_POST['adlogin'])) {
             $_SESSION['name'] = $row['first_name'];
             $_SESSION['id'] = $row['customer_id'];
 
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
 
               if ($remember == 1) {
-                setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-                setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
               }
-            } else if (!isset($_COOKIE[$osemail])) {
+            } else if (!isset($_COOKIE[$hfeEmail])) {
               if ($remember == 1) {
-                setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-                setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
               }
             }
 
@@ -2649,9 +2654,9 @@ if (isset($_POST['adlogin'])) {
         } else {
           $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
 
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
         }
@@ -2667,18 +2672,18 @@ if (isset($_POST['adlogin'])) {
         if ($emailcasecheck == 0) {
           $_SESSION['sname'] = $row2['username'];
           $_SESSION['sid'] = $row2['id'];
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
             if ($remember == 1) {
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
             }
           }
-          if (!isset($_COOKIE[$osemail])) {
+          if (!isset($_COOKIE[$hfeEmail])) {
             if ($remember == 1) {
-              setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-              setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+              setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
             }
           }
           $response['status'] = "admin";
@@ -2686,9 +2691,9 @@ if (isset($_POST['adlogin'])) {
         }
       } else {
         $_SESSION['error'] = "Incorrect Email ID or Password";
-        if (isset($_COOKIE[$osemail])) {
-          setcookie($osemail, NULL, time() - 3600, "/");
-          setcookie($ospass, NULL, time() - 3600, "/");
+        if (isset($_COOKIE[$hfeEmail])) {
+          setcookie($hfeEmail, NULL, time() - 3600, "/");
+          setcookie($hfePass, NULL, time() - 3600, "/");
         }
         $response['status'] = "error";
       }
@@ -2702,43 +2707,43 @@ if (isset($_POST['adlogin'])) {
           if ($emailcasecheck == 0) {
             $_SESSION['name'] = $row['first_name'];
             $_SESSION['id'] = $row['customer_id'];
-            $email = "OneStore_email";
-            $pass = "OneStore_password";
+            $email = "HFE_email";
+            $pass = "HFE_password";
             if ($remember == 1) {
-              if (isset($_COOKIE[$osemail])) {
-                setcookie($osemail, NULL, time() - 3600, "/");
-                setcookie($ospass, NULL, time() - 3600, "/");
+              if (isset($_COOKIE[$hfeEmail])) {
+                setcookie($hfeEmail, NULL, time() - 3600, "/");
+                setcookie($hfePass, NULL, time() - 3600, "/");
                 if ($remember == 1) {
-                  setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-                  setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                  setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                  setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
                 }
-              } else if (!isset($_COOKIE[$osemail]) || $_COOKIE[$osemail] != $_POST['email']) {
-                setcookie($osemail, NULL, time() - 3600, "/");
-                setcookie($ospass, NULL, time() - 3600, "/");
+              } else if (!isset($_COOKIE[$hfeEmail]) || $_COOKIE[$hfeEmail] != $_POST['email']) {
+                setcookie($hfeEmail, NULL, time() - 3600, "/");
+                setcookie($hfePass, NULL, time() - 3600, "/");
                 if ($remember == 1) {
-                  setcookie($osemail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
-                  setcookie($ospass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                  setcookie($hfeEmail, $_POST['email'], time() + (2 * 30 * 24 * 60 * 60), "/");
+                  setcookie($hfePass, $_POST['password'], time() + (2 * 30 * 24 * 60 * 60), "/");
                 }
               }
               $response['status'] = "success";
             } else if ($remember == 0) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
               $response['status'] = "success";
             }
           } else {
             $_SESSION['error'] = "Incorrect Email ID or Password";
-            if (isset($_COOKIE[$osemail])) {
-              setcookie($osemail, NULL, time() - 3600, "/");
-              setcookie($ospass, NULL, time() - 3600, "/");
+            if (isset($_COOKIE[$hfeEmail])) {
+              setcookie($hfeEmail, NULL, time() - 3600, "/");
+              setcookie($hfePass, NULL, time() - 3600, "/");
             }
             $response['status'] = "error";
           }
         } else {
           $_SESSION['error'] = "Incorrect Password";
-          if (isset($_COOKIE[$osemail])) {
-            setcookie($osemail, NULL, time() - 3600, "/");
-            setcookie($ospass, NULL, time() - 3600, "/");
+          if (isset($_COOKIE[$hfeEmail])) {
+            setcookie($hfeEmail, NULL, time() - 3600, "/");
+            setcookie($hfePass, NULL, time() - 3600, "/");
           }
           $response['status'] = "error";
         }
@@ -2776,8 +2781,8 @@ if (isset($_POST['forgotlogin'])) {
         if ($emailcasecheck == 0) {
           $_SESSION['name'] = $row['first_name'];
           $_SESSION['id'] = $row['customer_id'];
-          $email = "OneStore_email";
-          $pass = "OneStore_password";
+          $email = "HFE_email";
+          $pass = "HFE_password";
           if (isset($_COOKIE[$email])) {
             setcookie($email, NULL, time() - 3600, "/");
             setcookie($pass, NULL, time() - 3600, "/");
@@ -3077,8 +3082,8 @@ if (isset($_POST['forgotlogin'])) {
     else if ($row2) {
       $emailcasecheck = strcmp($row2['email'], $_POST['email']);
       if ($emailcasecheck == 0) {
-        $email = "OneStore_email";
-        $pass = "OneStore_password";
+        $email = "HFE_email";
+        $pass = "HFE_password";
         if (isset($_COOKIE[$email])) {
           setcookie($email, NULL, time() - 3600, "/");
           setcookie($pass, NULL, time() - 3600, "/");

@@ -158,7 +158,7 @@
   }
 </style>
 <script>
-  console.log("dghwgfey")
+  console.log("footer")
 </script>
 <div class="footer">
   <link rel="stylesheet" href="../../css/font-awesome.min.css">
