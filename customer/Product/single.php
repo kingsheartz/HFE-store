@@ -3301,7 +3301,7 @@ function randomGen($min, $max, $quantity)
                               return;
                             }
                           });
-                      } else if (data.status == 'error1') {
+                      } else if (data.status == 'error1' || data.status == 'error2') {
                         swal({
                             title: "Required!!!",
                             text: "You need to create an Account",
