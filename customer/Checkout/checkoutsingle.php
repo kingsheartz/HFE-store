@@ -895,7 +895,7 @@ require "../Main/footer.php";
       url: "../Common/functions.php", //passing page info
       data: {
         "check_quantity": 1,
-        "item_description_id": item_description_id,
+        "product_description_id": item_description_id,
         "store_id": store_id,
         "quantity": qnty
       }, //form data
@@ -1031,7 +1031,7 @@ require "../Main/footer.php";
       var data = {
         "buynow_placeorder": 1,
         "user": 1,
-        "user_id": uid,
+        "customer_id": uid,
         "order_notes": order_notes,
         "pdt_cnt": quantity,
         "total_amt": total_amt,
@@ -1204,7 +1204,7 @@ require "../Main/footer.php";
         var data = {
           "buynow_placeorder": 1,
           "user": 2,
-          "user_id": uid,
+          "customer_id": uid,
           "shipping_first_name": shipping_first_name,
           "shipping_last_name": shipping_last_name,
           "shipping_ph_no": shipping_ph_no,

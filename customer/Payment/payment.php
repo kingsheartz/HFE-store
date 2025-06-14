@@ -55,7 +55,7 @@ $store_id = $_POST['store_id'] ?? 'nill';
             data_used = {
                 "buynow_placeorder": 1,
                 "user": <?= $user ?>,
-                "user_id": <?= $user_id ?>,
+                "customer_id": <?= $user_id ?>,
                 "shipping_first_name": '<?= $shipping_first_name ?>',
                 "shipping_last_name": '<?= $shipping_last_name ?>',
                 "shipping_ph_no": '<?= $shipping_ph_no ?>',
@@ -73,7 +73,7 @@ $store_id = $_POST['store_id'] ?? 'nill';
         data_used = {
             "buynow_placeorder": 1,
             "user": <?= $user ?>,
-            "user_id": <?= $user_id ?>,
+            "customer_id": <?= $user_id ?>,
             "order_notes": <?= $order_notes ?>,
             "pdt_cnt": <?= $pdt_cnt ?>,
             "total_amt": <?= $total_amt ?>,
@@ -85,7 +85,7 @@ $store_id = $_POST['store_id'] ?? 'nill';
         console.log("placeorder")
         if ('<?= $shipping_first_name ?>' != 'nill') {
             data_used = {
-                "placeorder": 1,
+                "customer_id": 1,
                 "user": <?= $user ?>,
                 "user_id": <?= $user_id ?>,
                 "shipping_first_name": '<?= $shipping_first_name ?>',
@@ -100,7 +100,7 @@ $store_id = $_POST['store_id'] ?? 'nill';
             };
         }
         data_used = {
-            "placeorder": 1,
+            "customer_id": 1,
             "user": <?= $user ?>,
             "user_id": <?= $user_id ?>,
             "order_notes": <?= $order_notes ?>,
