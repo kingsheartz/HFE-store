@@ -928,7 +928,7 @@ require "../Main/footer.php";
       url: "../Common/functions.php", //passing page info
       data: {
         "update_user_cart": 1,
-        "item_description_id": item_description_id,
+        "product_description_id": item_description_id,
         "store_id": store_id,
         "quantity": quantity,
         "total_amt": total_amt,
@@ -1029,7 +1029,7 @@ require "../Main/footer.php";
           url: "../Common/functions.php", //passing page info
           data: {
             "update_user_cart": 1,
-            "item_description_id": item_description_id,
+            "product_description_id": item_description_id,
             "store_id": store_id,
             "quantity": quantity,
             "total_amt": total_amt,
@@ -1190,7 +1190,7 @@ require "../Main/footer.php";
       url: "../Common/functions.php", //passing page info
       data: {
         "check_quantity": 1,
-        "item_description_id": item_description_id,
+        "product_description_id": item_description_id,
         "store_id": store_id,
         "quantity": qnty
       }, //form data
