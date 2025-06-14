@@ -411,8 +411,10 @@ require "../Common/pdo.php";
   $stmt_order_cnt->execute();
   $order_cnt = $stmt_order_cnt->rowCount();
   if ($order_cnt == 0) {
-    echo '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;
-      height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Orders Yet...</h2></center><br><br>';
+    echo '<center>
+            <img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" >
+            <h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Orders Yet...</h2>
+          </center><br/ ><br/ >';
   } else {
   ?>
     <div class="container" style="padding: 0;margin:0;width:100%">
@@ -420,20 +422,35 @@ require "../Common/pdo.php";
         <div class="col-sm-12 " style="padding: 0;margin:0;">
           <div class="col-sm-6 col-xs-7 ord_srch">
             <div class="input-group bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px;margin-bottom: 0px;">
-              <input type="text" class="" id="order_search" placeholder="Search" value="" name="" required=" "
+              <input
+                type="text"
+                class=""
+                id="order_search"
+                placeholder="Search"
+                value=""
+                name=""
+                required=" "
                 style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline: none;">
               <span id="" class="input-group-btn">
-                <button id="ord_srch" onclick="dispsrch()"
-                  style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;
-                    padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"
-                  class="btn btn-default search_btn" type="button"><span class="fa fa-search"></span></button>
+                <button
+                  id="ord_srch"
+                  onclick="dispsrch()"
+                  style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"
+                  class="btn btn-default search_btn"
+                  type="button">
+                  <span class="fa fa-search"></span>
+                </button>
               </span>
             </div>
           </div>
           <div class="col-sm-2 col-xs-1 "></div>
           <div class="col-sm-4 col-xs-4 ord_filt">
             <div class="input-group bar-srch" style="padding: 0px;margin: 0px;left: 0px;right: 0px;margin-bottom: 0px;">
-              <select name="ord_filt" class="locmark" id="ord_filt" required=" "
+              <select
+                name="ord_filt"
+                class="locmark"
+                id="ord_filt"
+                required=" "
                 style="width: 100%;height: 40px;margin: 0px;z-index: 0;border-radius: 3px;border:1px solid #DBDBDB;border-top-right-radius: 0px;border-bottom-right-radius: 0px;">
                 <option value="all" selected>ALL</option>
                 <option value="completed">COMPLETED</option>
@@ -441,11 +458,15 @@ require "../Common/pdo.php";
                 <option value="cancelled">CANCELLED</option>
               </select>
               <span id="hide_filt" class="input-group-btn">
-                <button onclick="disfilter()" onmouseover="$(this).css('background-color','#4f994f')"
+                <button
+                  onclick="disfilter()"
+                  onmouseover="$(this).css('background-color','#4f994f')"
                   onmouseleave="$(this).css('background-color','#07C103')"
                   style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #029400), color-stop(1, #026400)) !important;padding-top:10px;padding-bottom: 10px;outline: none;"
-                  class="btn btn-default search_btn popuptext pin" type="button"><span
-                    class="fas fa-filter"></span></button>
+                  class="btn btn-default search_btn popuptext pin"
+                  type="button">
+                  <span class="fas fa-filter"></span>
+                </button>
               </span>
             </div>
           </div>
@@ -454,9 +475,11 @@ require "../Common/pdo.php";
     </div>
     <div class="order" style="border-bottom-left-radius:0px;border-bottom-right-radius:0px;margin-top: 10px;">
       <div class="orhead" style="background-color: #ffffff;">
-        <h2 class="sidebar-title-a"
+        <h2
+          class="sidebar-title-a"
           style="border-left: 5px solid #00869e;border-top-left-radius: 10px;text-align: left;padding-bottom: 24px;padding-top: 20px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:#00869e;border-bottom-left-radius:0px ">
-          My Orders <i style="color: #ffc400" class="fa fa-shopping-bag"></i></h2>
+          My Orders <i style="color: #ffc400" class="fa fa-shopping-bag"></i>
+        </h2>
       </div>
     </div>
     <div id="content_order">
