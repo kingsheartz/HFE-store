@@ -2,13 +2,13 @@
 require "../Common/pdo.php";
 if (isset($_GET['wishlist_id'])) {
   $wishlist_id = $_GET['wishlist_id'];
-  $sqlc1 = "select customer_id from wishlist where wishlist_id=:wid";
+  $sqlc1 = "SELECT customer_id from wishlist WHERE wishlist_id=:wid";
   $stmtc1 = $pdo->prepare($sqlc1);
   $stmtc1->execute(array(
     ':wid' => $wishlist_id
   ));
   $rowc1 = $stmtc1->fetch(PDO::FETCH_ASSOC);
-  $sqlc2 = "select first_name from customers where customer_id=:uid";
+  $sqlc2 = "SELECT first_name from customers WHERE customer_id=:uid";
   $stmtc2 = $pdo->prepare($sqlc2);
   $stmtc2->execute(array(
     ':uid' => $rowc1['customer_id']
@@ -284,7 +284,7 @@ require "../Main/header.php";
         if (isset($_SESSION['id'])) {
           $id = $_SESSION['id'];
         }
-        $sqlc = "select * from wishlist_items where wishlist_id=:wid";
+        $sqlc = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid";
         $stmtc = $pdo->prepare($sqlc);
         $stmtc->execute(array(
           ':wid' => $wishlist_id
@@ -313,7 +313,7 @@ require "../Main/header.php";
                   <table class="shop_table cart" border="0px" style="background-color:#ffffff;margin: 0px;margin-top: -20px">
                     <tr>
                       <?php
-                      $sql1 = "select * from wishlist_items where wishlist_id=:wid order by product_description_id";
+                      $sql1 = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid order by product_description_id";
                       $stmt1 = $pdo->prepare($sql1);
                       $stmt1->execute(array(
                         ':wid' => $wishlist_id
@@ -327,18 +327,17 @@ require "../Main/header.php";
                         $product_description_id = $row1['product_description_id'];
                         $store_id = $row1['store_id'];
                         $n = 0;
-                        $sql2 = "select * from product inner join category on category.category_id=product.category_id
-                                inner join sub_category on category.category_id=sub_category.category_id
-                                inner join product_description on product_description.product_id=product.product_id
-                                inner join product_details on product_description.product_description_id=product_details.product_description_id
-                                inner join store on store.store_id=product_details.store_id
-                                where product.sub_category_id=sub_category.sub_category_id and product_description.product_description_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
+                        $sql2 = "SELECT * FROM product INNER JOIN category ON category.category_id=product.category_id
+                                INNER JOIN product_description ON product_description.product_id=product.product_id
+                                INNER JOIN product_details ON product_description.product_description_id=product_details.product_description_id
+                                INNER JOIN store ON store.store_id=product_details.store_id
+                                WHERE product.category_id=category.category_id AND product_description.product_description_id=:product_description_id AND product_details.store_id=:store_id order by product_description.product_description_id";
                         $stmt2 = $pdo->prepare($sql2);
                         $stmt2->execute(array(
                           ':product_description_id' => $product_description_id,
                           ':store_id' => $store_id
                         ));
-                        $mrpsql = "select price from product where product_id=$product_description_id";
+                        $mrpsql = "SELECT price from product WHERE product_id=$product_description_id";
                         $mrpstmt = $pdo->query($mrpsql);
                         $mrprow = $mrpstmt->fetch(PDO::FETCH_ASSOC);
                         $t_mrp = $mrprow['price'];
@@ -346,7 +345,6 @@ require "../Main/header.php";
                           $total = $row2['price'] * $row1['quantity'];
                           $save = ($t_mrp * $row1['quantity']) - $total;
                           $off = round(($save * 100) / $total);
-                          $subcat = $row2['sub_category_name'];
                       ?>
                           <table style="width: 100%;margin-top: 0px;margin-right: -10px;" class="tbl_s<?= $store_id . "i" . $product_description_id ?>">
                             <table style="font-weight: bold;width: 100%;" class="tbl_s<?= $store_id . "i" . $product_description_id ?>">
@@ -384,7 +382,7 @@ require "../Main/header.php";
                                                       style="max-width:180px;max-height:180px;"
                                                       alt="<?= $row2['product_name'] ?>"
                                                       class="shop_thumbnail"
-                                                      src="../../images/<?= $row2['category_id'] ?>/<?= $row2['sub_category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg">
+                                                      src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg">
                                                   </a>
                                                 </p>
                                               </div>
@@ -462,9 +460,9 @@ require "../Main/header.php";
                                                     data-a-hires="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px-2x._CB485942108_.png">
                                                 </p>
                                                 <?php
-                                                $sqlfeatures = "select * from product_details
-                                                                inner join product_description on product_description.product_description_id=product_details.product_description_id
-                                                                where product_description.product_description_id=:product_description_id and store_id=:store_id";
+                                                $sqlfeatures = "SELECT * FROM product_details
+                                                                INNER JOIN product_description ON product_description.product_description_id=product_details.product_description_id
+                                                                WHERE product_description.product_description_id=:product_description_id AND store_id=:store_id";
                                                 $stmtfeatures = $pdo->prepare($sqlfeatures);
                                                 $stmtfeatures->execute(array(
                                                   ':product_description_id' => $product_description_id,
@@ -486,7 +484,7 @@ require "../Main/header.php";
                                                 while ($f < 10) {
                                                   if (!is_null($rowfeatures['f' . $f]) && $rowfeatures['f' . $f] != 0 && $rowfeatures['f' . $f] != '0') {
                                                     if ($features[$f] != 'weight') {
-                                                      $sqlfeature_name = "select " . $features[$f] . '_name from ' . $features[$f] . ' where ' . $features[$f] . '_id=' . (int) $rowfeatures['f' . $f];
+                                                      $sqlfeature_name = "SELECT " . $features[$f] . '_name from ' . $features[$f] . ' WHERE ' . $features[$f] . '_id=' . (int) $rowfeatures['f' . $f];
                                                       $stmtfeature_name = $pdo->query($sqlfeature_name);
                                                       $rowfeature_name = $stmtfeature_name->fetch(PDO::FETCH_ASSOC);
                                                     }
@@ -770,30 +768,28 @@ require "../Main/header.php";
             $c2 = "black";
           }
           /*COLOR PICKER*/
-          $cntsql = "select count(sub_category_id) as sub_cnt from sub_category";
+          $cntsql = "SELECT count(category_id) as cat_cnt from category";
           $cntstmt = $pdo->query($cntsql);
           $cntrow = $cntstmt->fetch(PDO::FETCH_ASSOC);
-          $sub_cnt = $cntrow['sub_cnt'];
+          $cat_cnt = $cntrow['cat_cnt'];
           do {
-            $rand_sub_id1 = randomGen('1', $sub_cnt, (int) $sub_cnt);
-            $rand_sub_id1_rand1 = array_rand($rand_sub_id1, 1);
-            $rand_sub_id1 = $rand_sub_id1[$rand_sub_id1_rand1];
-            $rand_sub_id2 = randomGen('1', $sub_cnt, (int) $sub_cnt);
-            $rand_sub_id2_rand2 = array_rand($rand_sub_id2, 1);
-            $rand_sub_id2 = $rand_sub_id2[$rand_sub_id2_rand2];
-          } while ($rand_sub_id1 == $rand_sub_id2);
-          $catsql1 = "select* from sub_category where sub_category_id=" . (int) $rand_sub_id1;
+            $rand_cat_id1 = randomGen('1', $cat_cnt, (int) $cat_cnt);
+            $rand_cat_id1_rand1 = array_rand($rand_cat_id1, 1);
+            $rand_cat_id1 = $rand_cat_id1[$rand_cat_id1_rand1];
+            $rand_cat_id2 = randomGen('1', $cat_cnt, (int) $cat_cnt);
+            $rand_cat_id2_rand2 = array_rand($rand_cat_id2, 1);
+            $rand_cat_id2 = $rand_cat_id2[$rand_cat_id2_rand2];
+          } while ($rand_cat_id1 == $rand_cat_id2);
+          $catsql1 = "SELECT* FROM category WHERE category_id=" . (int) $rand_cat_id1;
           $catstmt1 = $pdo->query($catsql1);
-          $sub_catrow1 = $catstmt1->fetch(PDO::FETCH_ASSOC);
-          $catsql2 = "select* from sub_category where sub_category_id=" . (int) $rand_sub_id2;
+          $catrow1 = $catstmt1->fetch(PDO::FETCH_ASSOC);
+          $catsql2 = "SELECT* FROM category WHERE category_id=" . (int) $rand_cat_id2;
           $catstmt2 = $pdo->query($catsql2);
-          $sub_catrow2 = $catstmt2->fetch(PDO::FETCH_ASSOC);
-          $cat_id1 = $sub_catrow1['category_id'];
-          $sub_cat_id1 = $sub_catrow1['sub_category_id'];
-          $sub_cat_name1 = $sub_catrow1['sub_category_name'];
-          $cat_id2 = $sub_catrow2['category_id'];
-          $sub_cat_id2 = $sub_catrow2['sub_category_id'];
-          $sub_cat_name2 = $sub_catrow2['sub_category_name'];
+          $catrow2 = $catstmt2->fetch(PDO::FETCH_ASSOC);
+          $cat_id1 = $catrow1['category_id'];
+          $cat_name1 = $catrow1['category_name'];
+          $cat_id2 = $catrow2['category_id'];
+          $cat_name2 = $catrow2['category_name'];
     ?>
       <div class="row emp_cart">
         <div class="product-content-right">
@@ -808,7 +804,7 @@ require "../Main/header.php";
             <h4
               class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
               style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
-              <?= $sub_cat_name1 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
+              <?= $cat_name1 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
               <span style="float: right;margin-right: 5px;margin-top: -4px;">
                 <button
                   type="button"
@@ -823,17 +819,16 @@ require "../Main/header.php";
             <div class="scrollmenu bl_item_scroll  <?= $color[$rancolor1] ?>" style="background-color: #fff">
               <?php
               $row = $pdo->query(
-                "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from product
-                inner join product_description on product_description.product_id=product.product_id
-                inner join category on category.category_id=product.category_id
-                inner join sub_category on category.category_id=sub_category.category_id
-                where  sub_category.category_id=$cat_id1 and sub_category.sub_category_id=$sub_cat_id1 and product.sub_category_id=$sub_cat_id1 "
+                "SELECT product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id FROM product
+                INNER JOIN product_description ON product_description.product_id=product.product_id
+                INNER JOIN category ON category.category_id=product.category_id
+                WHERE  category.category_id=$cat_id1 AND product.category_id=$cat_id1 "
               );
               while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
               ?>
                 <a href="../Product/single.php?id=<?= $row1['product_description_id'] ?>"><img
                     title="<?= $row1['product_name'] ?> " alt=" <?= $row1['product_name'] ?>" class="new_size"
-                    src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg"></a>
+                    src="../../images/<?= $row1['category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg"></a>
               <?php
               }
               ?>
@@ -842,7 +837,7 @@ require "../Main/header.php";
           <br>
           <div class="shadow_b">
             <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat" style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
-              <?= $sub_cat_name2 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
+              <?= $cat_name2 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
               <span style="float: right;margin-right: 5px;margin-top: -4px;">
                 <button
                   type="button"
@@ -857,11 +852,10 @@ require "../Main/header.php";
             <div class="scrollmenu mui_item_scroll <?= $color[$rancolor2] ?> " style="background-color: #fff">
               <?php
               $row = $pdo->query(
-                "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id,sub_category.sub_category_id,sub_category.sub_category_name from product
-                inner join product_description on product_description.product_id=product.product_id
-                inner join category on category.category_id=product.category_id
-                inner join sub_category on category.category_id=sub_category.category_id
-                where  sub_category.category_id=$cat_id2 and sub_category.sub_category_id=$sub_cat_id2 and product.sub_category_id=$sub_cat_id2"
+                "SELECT product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
+                INNER JOIN product_description ON product_description.product_id=product.product_id
+                INNER JOIN category ON category.category_id=product.category_id
+                WHERE  category.category_id=$cat_id2 AND category.category_id=$cat_id2 AND product.category_id=$cat_id2"
               );
               while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
               ?>
@@ -870,7 +864,7 @@ require "../Main/header.php";
                     title="<?= $row1['product_name'] ?> "
                     alt=" <?= $row1['product_name'] ?>"
                     class="new_size"
-                    src="../../images/<?= $row1['category_id'] ?>/<?= $row1['sub_category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg">
+                    src="../../images/<?= $row1['category_id'] ?>/<?= $row1['product_description_id'] ?>.jpg">
                 </a>
               <?php
               }
@@ -893,12 +887,11 @@ require "../Main/header.php";
                 <?php
                 $it_id = 1;
                 $n = 0;
-                $sql5 = "select * from product
-                        inner join category on category.category_id=product.category_id
-                        inner join sub_category on category.category_id=sub_category.category_id
-                        inner join product_description on product.product_id=product_description.product_id
-                        inner join product_details on product_details.product_description_id=product_description.product_description_id
-                        where product.sub_category_id=sub_category.sub_category_id and product.product_id=$it_id ";
+                $sql5 = "SELECT * FROM product
+                        INNER JOIN category ON category.category_id=product.category_id
+                        INNER JOIN product_description ON product.product_id=product_description.product_id
+                        INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
+                        WHERE product.category_id=category.category_id AND product.product_id=$it_id ";
                 //Generate Dynamic Loading
                 function randomGen($min, $max, $quantity)
                 {
@@ -909,27 +902,25 @@ require "../Main/header.php";
                 //Generate Dynamic Loading
                 $stmt5 = $pdo->query($sql5);
                 $row5 = $stmt5->fetch(PDO::FETCH_ASSOC);
-                $subcat = $row5['sub_category_name'];
+                $cat = $row5['category_name'];
                 $r1 = $pdo->query(
-                  "select MIN(product_description_id) from product_description
-                  inner join product on product.product_id=product_description.product_id
-                  inner join category on category.category_id=product.category_id
-                  inner join sub_category on category.category_id=sub_category.category_id
-                  where product.sub_category_id=sub_category.sub_category_id and sub_category.sub_category_name= '$subcat'"
+                  "SELECT MIN(product_description_id) from product_description
+                  INNER JOIN product ON product.product_id=product_description.product_id
+                  INNER JOIN category ON category.category_id=product.category_id
+                  WHERE product.category_id=category.category_id AND category.category_name= '$cat'"
                 );
                 $id1 = $r1->fetch(PDO::FETCH_ASSOC);
                 $r2 = $pdo->query(
-                  "select MAX(product_description_id) from product_description
-                  inner join product on product.product_id=product_description.product_id
-                  inner join category on category.category_id=product.category_id
-                  inner join sub_category on category.category_id=sub_category.category_id
-                  where product.sub_category_id=sub_category.sub_category_id and sub_category.sub_category_name= '$subcat' "
+                  "SELECT MAX(product_description_id) from product_description
+                  INNER JOIN product ON product.product_id=product_description.product_id
+                  INNER JOIN category ON category.category_id=product.category_id
+                  WHERE product.category_id=category.category_id AND category.category_name= '$cat' "
                 );
                 $id2 = $r2->fetch(PDO::FETCH_ASSOC);
                 $cn = 0;
                 $ran = randomGen($id1['MIN(product_description_id)'], $id2['MAX(product_description_id)'], (int) $id2['MAX(product_description_id)'] - (int) $id1['MIN(product_description_id)']);
                 while ($cn != 3) {
-                  $r = $pdo->query("select * from product inner join product_description on product.product_id=product_description.product_id where product_description_id= $ran[$cn]");
+                  $r = $pdo->query("SELECT * FROM product INNER JOIN product_description ON product.product_id=product_description.product_id WHERE product_description_id= $ran[$cn]");
                   $rw = $r->fetch(PDO::FETCH_ASSOC);
                 ?>
                   <div class="col-md-3 top_brand_left-1">
@@ -948,7 +939,7 @@ require "../Main/header.php";
                                     alt=" "
                                     style="height: 100px;"
                                     class="new_size"
-                                    src="../../images/<?= $rw['category_id'] ?>/<?= $rw['sub_category_id'] ?>/<?= $rw['product_description_id'] ?>.jpg">
+                                    src="../../images/<?= $rw['category_id'] ?>/<?= $rw['product_description_id'] ?>.jpg">
                                 </a>
                                 <p style="height: 70px;"><?= $rw['product_name'] ?></p>
                                 <div class="stars">
@@ -1080,7 +1071,7 @@ require "../Main/footer.php";
   function updateall_cart() {
     <?php
     if (isset($id)) {
-      $sql1 = "select * from wishlist_items where wishlist_id=:wid order by product_description_id";
+      $sql1 = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid order by product_description_id";
       $stmt1 = $pdo->prepare($sql1);
       $stmt1->execute(array(
         ':wid' => $wishlist_id
@@ -1094,19 +1085,18 @@ require "../Main/footer.php";
       $product_description_id = $row1['product_description_id'];
       $store_id = $row1['store_id'];
       $n = 0;
-      $sql2 = "select * from product inner join category on category.category_id=product.category_id
-        inner join sub_category on category.category_id=sub_category.category_id
-        inner join product_description on product_description.product_id=product.product_id
-        inner join product_details on product_description.product_description_id=product_details.product_description_id
-        inner join store on store.store_id=product_details.store_id
-        where product.sub_category_id=sub_category.sub_category_id and product_description.product_description_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
+      $sql2 = "SELECT * FROM product INNER JOIN category ON category.category_id=product.category_id
+        INNER JOIN product_description ON product_description.product_id=product.product_id
+        INNER JOIN product_details ON product_description.product_description_id=product_details.product_description_id
+        INNER JOIN store ON store.store_id=product_details.store_id
+        WHERE product.category_id=category.category_id AND product_description.product_description_id=:product_description_id AND product_details.store_id=:store_id order by product_description.product_description_id";
       $stmt2 = $pdo->prepare($sql2);
       $stmt2->execute(array(
         ':product_description_id' => $product_description_id,
         ':store_id' => $store_id
       ));
       while ($row2 = $stmt2->fetch(PDO::FETCH_ASSOC)) {
-        $subcat = $row2['sub_category_name'];
+        $cat = $row2['category_name'];
     ?>
         var total_amt = document.getElementById('total_s' + '<?= $store_id . "i" . $product_description_id ?>').innerHTML;
         if ($('#qnty_s<?= $store_id . "i" . $product_description_id ?>').css('display') != 'none') {

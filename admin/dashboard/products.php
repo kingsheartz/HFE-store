@@ -446,7 +446,7 @@ include "header.php";
                     onclick="appjos('<?= $row['product_description_id'] ?>' )"
                     class="image"
                     align="middle"
-                    src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                    src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                 </div>
                 <div class="deupd"><?= $row['product_name'] ?><br></div>
               </div>
@@ -457,18 +457,18 @@ include "header.php";
         }
         ?>
         <?php
-        $query11 = "SELECT * from  sub_category";
+        $query11 = "SELECT * from  category";
         $st11 = $pdo->query($query11);
         while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
-          $ct = $row11['sub_category_id'];
+          $ct = $row11['category_id'];
         ?>
           <?php
-          $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.sub_category_id=$ct";
+          $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ct";
           $st = $pdo->query($query);
           $product = $st->rowCount();
           ?>
           <div class="difcat ">
-            <span class="difhed3"><?= $row11['sub_category_name'] ?></span>
+            <span class="difhed3"><?= $row11['category_name'] ?></span>
             <div class="difrow" id="2difrow<?= $ct ?>" onscroll="movefr('2difrow<?= $ct ?>')">
               <button class="left-arrow" onclick="moveleft('2difrow<?= $ct ?>')">
                 <i class="fas fa-chevron-right"></i>
@@ -486,7 +486,7 @@ include "header.php";
                       data-target="#exampleModal"
                       onclick="appjos('<?= $row['product_description_id'] ?>' )"
                       class="image" align="middle"
-                      src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                      src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                   </div>
                   <div class="deupd"><?= $row['product_name'] ?><br></div>
                 </div>

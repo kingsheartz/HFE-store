@@ -20,7 +20,6 @@ if ($method == 'GET') {
 	JOIN product_description ON product_details.product_description_id=product_description.product_description_id
 	JOIN product ON product.product_id=product_description.product_id
 	JOIN category ON category.category_id=product.category_id
-	JOIN sub_category ON sub_category.sub_category_id=product.sub_category_id
 	JOIN store on store.store_id=product_details.store_id
     WHERE new_ordered_products.delivery_status='pending'
       AND product.product_name LIKE :product_name

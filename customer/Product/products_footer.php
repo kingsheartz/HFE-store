@@ -162,7 +162,7 @@
   <div class="footer-botm">
     <div class="container">
       <div class="col-lg-10 col-md-12 col-sm-12 w3_footer_grid" style="display: inline-flex;">
-        <h3 class="title">Subscribe to newsettler</h3>
+        <h3 class="title">Subscribe to newsletter</h3>
         <div class="newsletter">
           <p style="text-align: justify;">
             Send your email to us.

@@ -271,7 +271,7 @@ $_COOKIE['animate'] = 0;
                 return
               } else if (data.admin == 'true') {
 
-                location.href = "store-admin/index.php?id=" + data.id + "";
+                location.href = "equipment-store-admin/index.php?id=" + data.id + "";
               } else if (data.status == 'error') {
                 location.href = "customer/Main/hfe.php";
                 return;

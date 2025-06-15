@@ -35,7 +35,7 @@ while ($placerow_s = $placestmt_s->fetch(PDO::FETCH_ASSOC)) {
 for ($j = 0; $j < $i; $j++) {
 
   $k = 0;
-  $placesql_i = "select ca.cart_id,it.category_id,it.sub_category_id,it.product_id,it.product_name,it.description,pd.price,ca.quantity,ca.order_type,ca.total_amt from cart ca inner join product_details pd on ca.store_id=pd.store_id inner join store st on st.store_id=ca.store_id inner join product it on it.product_id=ca.product_id where pd.product_id=ca.product_id and ca.customer_id=:customer_id and st.store_id=:store_id GROUP BY ca.product_id";
+  $placesql_i = "select ca.cart_id,it.category_id,it.product_id,it.product_name,it.description,pd.price,ca.quantity,ca.order_type,ca.total_amt from cart ca inner join product_details pd on ca.store_id=pd.store_id inner join store st on st.store_id=ca.store_id inner join product it on it.product_id=ca.product_id where pd.product_id=ca.product_id and ca.customer_id=:customer_id and st.store_id=:store_id GROUP BY ca.product_id";
   $placestmt_i = $pdo->prepare($placesql_i);
   $placestmt_i->execute(array(
     ':customer_id' => $customer_id,
@@ -44,7 +44,6 @@ for ($j = 0; $j < $i; $j++) {
   while ($placerow_i = $placestmt_i->fetch(PDO::FETCH_ASSOC)) {
 
     $store_array[$j]['product_category_id'][$k] = $placerow_i['category_id'];
-    $store_array[$j]['product_sub_category_id'][$k] = $placerow_i['sub_category_id'];
     $store_array[$j]['product_id'][$k] = $placerow_i['product_id'];
     $store_array[$j]['product_name'][$k] = $placerow_i['product_name'];
     $store_array[$j]['product_description'][$k] = $placerow_i['description'];
@@ -197,7 +196,7 @@ for ($l = 0; $l < $i; $l++) {
                               <tr>
                                 <td valign="top" align="left">
                                   <p style="padding-left:15px;margin-bottom:10px"> <a
-                                      href="http://localhost:81/One-Store-Renewed/onestore-website/user/Orders/yourorders.php?id=<?= $customer_id ?>"
+                                      href="http://localhost:81/One-Store-Renewed/onestore-website/customer/Orders/yourorders.php?id=<?= $customer_id ?>"
                                       style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
                                       rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button"
                                         style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">View
@@ -257,7 +256,6 @@ for ($l = 0; $l < $i; $l++) {
                 for ($m = 0; $m < $store_cnt[$l]; $m++) {
                   $store_array[$l]['product_id'][$m];
                   $store_array[$l]['product_category_id'][$m];
-                  $store_array[$l]['product_sub_category_id'][$m];
                   $store_array[$l]['product_name'][$m];
                   $store_array[$l]['product_description'][$m];
                   $store_array[$l]['product_price'][$m];
@@ -272,7 +270,7 @@ for ($l = 0; $l < $i; $l++) {
                           <table width="120" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-bottom: 15px;">
                             <tbody>
                               <tr>
-                                <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="single.php?id=' . $store_array[$l]['product_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_sub_category_id'][$m] . '/' . $store_array[$l]['product_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
+                                <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="single.php?id=' . $store_array[$l]['product_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
                               </tr>
                             </tbody>
                           </table>

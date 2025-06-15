@@ -101,7 +101,7 @@ require "head.php";
             <img
               class="image"
               align="middle"
-              src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
           </div>
           <div class="middle">
             <form
@@ -111,7 +111,7 @@ require "head.php";
               name="<?= $row['product_description_id'] ?>">
               <input type="hidden" name="pr_id" value="<?= $row['product_description_id'] ?>">
               <input type="hidden" name="item_id" value="<?= $row['product_id'] ?>">
-              <input type="hidden" name="im_url" value="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              <input type="hidden" name="im_url" value="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
               <input type="hidden" name="name" value="<?= $row['product_name'] ?>">
               <input type="hidden" name="description" value="<?= $row['description'] ?>">
               <input type="hidden" name="price" value="<?= $row['price'] ?>">

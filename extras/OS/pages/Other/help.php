@@ -95,36 +95,34 @@ while($i < $filecount){
 
 //////////////////////find and list any subcategory////////////////////////
 
-$cntsql="select count(sub_category_id) as sub_cnt from sub_category";
+$cntsql="select count(category_id) as cat_cnt from category";
 $cntstmt=$pdo->query($cntsql);
 $cntrow=$cntstmt->fetch(PDO::FETCH_ASSOC);
-$sub_cnt=$cntrow['sub_cnt'];
+$cat_cnt=$cntrow['cat_cnt'];
 
 do{
-$rand_sub_id1=randomGenerate('1',$sub_cnt,(int)$sub_cnt);
-$rand_sub_id1_rand1=array_rand($rand_sub_id1,1);
-$rand_sub_id1=$rand_sub_id1[$rand_sub_id1_rand1];
+$rand_cat_id1=randomGenerate('1',$cat_cnt,(int)$cat_cnt);
+$rand_cat_id1_rand1=array_rand($rand_cat_id1,1);
+$rand_cat_id1=$rand_cat_id1[$rand_cat_id1_rand1];
 
-$rand_sub_id2=randomGenerate('1',$sub_cnt,(int)$sub_cnt);
-$rand_sub_id2_rand2=array_rand($rand_sub_id2,1);
-$rand_sub_id2=$rand_sub_id2[$rand_sub_id2_rand2];
+$rand_cat_id2=randomGenerate('1',$cat_cnt,(int)$cat_cnt);
+$rand_cat_id2_rand2=array_rand($rand_cat_id2,1);
+$rand_cat_id2=$rand_cat_id2[$rand_cat_id2_rand2];
 }
-while ($rand_sub_id1==$rand_sub_id2);
+while ($rand_cat_id1==$rand_cat_id2);
 
-$catsql1="select* from sub_category where sub_category_id=".(int)$rand_sub_id1;
+$catsql1="select* from category where category_id=".(int)$rand_cat_id1;
 $catstmt1=$pdo->query($catsql1);
-$sub_catrow1=$catstmt1->fetch(PDO::FETCH_ASSOC);
+$catrow1=$catstmt1->fetch(PDO::FETCH_ASSOC);
 
-$catsql2="select* from sub_category where sub_category_id=".(int)$rand_sub_id2;
+$catsql2="select* from category where category_id=".(int)$rand_cat_id2;
 $catstmt2=$pdo->query($catsql2);
-$sub_catrow2=$catstmt2->fetch(PDO::FETCH_ASSOC);
+$catrow2=$catstmt2->fetch(PDO::FETCH_ASSOC);
 
-$cat_id1=$sub_catrow1['category_id'];
-$sub_cat_id1=$sub_catrow1['sub_category_id'];
-$sub_cat_name1=$sub_catrow1['sub_category_name'];
-$cat_id2=$sub_catrow2['category_id'];
-$sub_cat_id2=$sub_catrow2['sub_category_id'];
-$sub_cat_name2=$sub_catrow2['sub_category_name'];
+$cat_id1=$catrow1['category_id'];
+$cat_name1=$catrow1['category_name'];
+$cat_id2=$catrow2['category_id'];
+$cat_name2=$catrow2['category_name'];
 
 //////////////////////find and list any subcategory////////////////////////
 
@@ -243,7 +241,7 @@ $pdf->Output('example_001.pdf', 'I');
 
     <div class="mySlides-single">
       <div class="numbertext-single"><?=$img_cnt_flag?> / <?=$img_cnt_row['img_count']+1?></div>
-      <img src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['product_description_id']?>.jpg" style="max-height: 300px">
+      <img src="images/<?=$row2['category_id']?>/<?=$row2['product_description_id']?>.jpg" style="max-height: 300px">
     </div>
 
 <?php
@@ -258,7 +256,7 @@ while($img_cnt_flag<=$img_cnt_row['img_count']){
 
     <div class="mySlides-single">
       <div class="numbertext-single"><?=$img_cnt_flag?> / <?=$img_cnt_row['img_count']+1?></div>
-      <img src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['product_description_id']?>_<?=$img_cnt_flag?>.jpg" style="max-height: 300px">
+      <img src="images/<?=$row2['category_id']?>/<?=$row2['product_description_id']?>_<?=$img_cnt_flag?>.jpg" style="max-height: 300px">
     </div>
 
 <?php
@@ -275,7 +273,7 @@ $img_cnt_flag++;
     </div>
 
     <div class="column-single">
-      <img class="demo-single cursor-single" src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['product_description_id']?>.jpg" style="height: 160px" onclick="currentSlide(1)" alt="Nature and sunrise">
+      <img class="demo-single cursor-single" src="images/<?=$row2['category_id']?>/<?=$row2['product_description_id']?>.jpg" style="height: 160px" onclick="currentSlide(1)" alt="Nature and sunrise">
     </div>
 
 <?php
@@ -289,7 +287,7 @@ while($img_cnt_flag<=$img_cnt_row['img_count']){
 ?>
 
     <div class="column-single">
-      <img class="demo-single cursor-single" src="images/<?=$row2['category_id']?>/<?=$row2['sub_category_id']?>/<?=$row2['product_description_id']?>_<?=$img_cnt_flag?>.jpg" style="height: 160px" onclick="currentSlide(2)" alt="Snow">
+      <img class="demo-single cursor-single" src="images/<?=$row2['category_id']?>/<?=$row2['product_description_id']?>_<?=$img_cnt_flag?>.jpg" style="height: 160px" onclick="currentSlide(2)" alt="Snow">
     </div>
 
 <?php
@@ -566,7 +564,7 @@ function addorremove(checkbox){
 
   $.ajax({
         url: "functions.php", //passing page info
-        data: {"filter_sub_cat_a":1,"key":filter,"min-price":minprice,"max-price":maxprice,"sort":sort,"category":<?=$_GET['category_id']?>,"sub_category":<?=$_GET['subcategory_id']?>},  //form data
+        data: {"filter_sub_cat_a":1,"key":filter,"min-price":minprice,"max-price":maxprice,"sort":sort,"category":<?=$_GET['category_id']?>},  //form data
         type: "post",   //post data
         dataType: "json",   //datatype=json format
         timeout:30000,   //waiting time 30 sec
@@ -598,7 +596,7 @@ function addorremove(checkbox){
   }); //closing ajax
 
 if($sort=='default'){
-  $sort="CAST(item.sub_category_id AS UNSIGNED) ASC";
+  $sort="CAST(item.category_id AS UNSIGNED) ASC";
 }
 else if($sort=='high'){
   $sort="CAST(product_details.price AS UNSIGNED) DESC";

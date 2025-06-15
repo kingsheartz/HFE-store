@@ -517,7 +517,6 @@ if (!empty($_SESSION['_contact_form_success'])) {
                           </td>
                         </tr>
                         <input type="hidden" name="cat" value="<?= $row['category_id'] ?>">
-                        <input type="hidden" name="sub" value="<?= $row['sub_category_id'] ?>">
                         <input type="hidden" name="desc_id" value="<?= $row['product_description_id'] ?>">
                         <div class="col-sm-12" style="position: absolute;bottom: 0;">
                           <button

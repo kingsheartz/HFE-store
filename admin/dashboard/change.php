@@ -1188,7 +1188,7 @@ include "header.php";
                             <div class="product">
                               <img
                                 style="display: inline-block;text-align: center;padding: 14px;position: relative;height: 80px;max-width: 100px;"
-                                onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
+                                onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
                                 src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg">
                             </div>
                           <?php

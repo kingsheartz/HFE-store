@@ -115,21 +115,17 @@ require "../Main/header.php";
       );
     } else if (isset($_SESSION['id'], $_GET['recent'])) {
       $total_pages_sql = $pdo->query(
-        "SELECT views, product_keys.product_description_id, sub_category.sub_category_id
-        FROM product_keys
+        "SELECT views, product_keys.product_description_id FROM product_keys
         INNER JOIN product_description ON product_keys.product_description_id = product_description.product_description_id
         INNER JOIN product ON product.product_id = product_description.product_id
-        INNER JOIN sub_category ON product.sub_category_id = sub_category.sub_category_id
         WHERE customer_id = " . $_SESSION['id'] . "
         GROUP BY product_description_id
         ORDER BY CAST(product_keys.date_of_preview AS UNSIGNED) DESC"
       );
       $viewstmt = $pdo->query(
-        "SELECT views, product_keys.product_description_id, sub_category.sub_category_id
-        FROM product_keys
+        "SELECT views, product_keys.product_description_id FROM product_keys
         INNER JOIN product_description ON product_keys.product_description_id = product_description.product_description_id
         INNER JOIN product ON product.product_id = product_description.product_id
-        INNER JOIN sub_category ON product.sub_category_id = sub_category.sub_category_id
         WHERE customer_id = " . $_SESSION['id'] . "
         GROUP BY product_description_id
         ORDER BY CAST(product_keys.date_of_preview AS UNSIGNED) DESC
@@ -237,7 +233,7 @@ require "../Main/header.php";
           while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
             $product_desc_id = $view['product_description_id'];
             $res = $pdo->query(
-              "SELECT product.product_id, product.price AS 'mrp', product_details.price, product_description.product_description_id, product.product_name, product.description, product.category_id, product.sub_category_id FROM product_description
+              "SELECT product.product_id, product.price AS 'mrp', product_details.price, product_description.product_description_id, product.product_name, product.description, product.category_id FROM product_description
               INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
               INNER JOIN product ON product.product_id = product_description.product_id
               WHERE product_description.product_description_id = $product_desc_id
@@ -257,7 +253,7 @@ require "../Main/header.php";
                               <img title=" "
                                 alt=" "
                                 class="img_size"
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                                src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                             </a>
                           </div>
                           <?php
@@ -312,7 +308,7 @@ require "../Main/header.php";
                                 title=" "
                                 alt=" "
                                 class="img_size"
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg"></a>
+                                src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg"></a>
                           </div>
                           <?php
                           if (strlen($row['product_name']) >= 35) {
@@ -344,8 +340,7 @@ require "../Main/header.php";
               FROM product_description
               INNER JOIN product ON product.product_id = product_description.product_id
               INNER JOIN category ON category.category_id = product.category_id
-              INNER JOIN sub_category ON category.category_id = sub_category.category_id
-              WHERE product.sub_category_id = sub_category.sub_category_id
+              WHERE product.category_id = category.category_id
               AND product_description_id = " . $view['product_description_id']
             );
             $row = $res->fetch(PDO::FETCH_ASSOC);
@@ -362,7 +357,7 @@ require "../Main/header.php";
                               <img title=" "
                                 alt=" "
                                 class="img_size"
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                                src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                             </a>
                           </div>
                           <?php
@@ -394,7 +389,7 @@ require "../Main/header.php";
           while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
             $product_desc_id = $view['product_description_id'];
             $res = $pdo->query(
-              "SELECT product.product_id, product.price AS 'mrp', product_details.price, product_description.product_description_id, product.product_name, product.description, product.category_id, product.sub_category_id FROM product_description
+              "SELECT product.product_id, product.price AS 'mrp', product_details.price, product_description.product_description_id, product.product_name, product.description, product.category_id FROM product_description
               INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
               INNER JOIN product ON product.product_id = product_description.product_id
               WHERE product_description.product_description_id = $product_desc_id
@@ -414,7 +409,7 @@ require "../Main/header.php";
                               <img title=" "
                                 alt=" "
                                 class="img_size"
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                                src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                             </a>
                           </div>
                           <?php
@@ -450,7 +445,7 @@ require "../Main/header.php";
           while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
             $product_desc_id = $view['product_description_id'];
             $res = $pdo->query(
-              "SELECT product.product_id, product.price AS 'mrp', product_details.price, product_description.product_description_id, product.product_name, product.description, product.category_id, product.sub_category_id FROM product_description
+              "SELECT product.product_id, product.price AS 'mrp', product_details.price, product_description.product_description_id, product.product_name, product.description, product.category_id FROM product_description
               INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id
               INNER JOIN product ON product.product_id = product_description.product_id
               WHERE product_description.product_description_id = $product_desc_id
@@ -471,7 +466,7 @@ require "../Main/header.php";
                                 title=" "
                                 alt=" "
                                 class="img_size"
-                                src="../../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg"></a>
+                                src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg"></a>
                           </div>
                           <?php
                           if (strlen($row['product_name']) >= 35) {

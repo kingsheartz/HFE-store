@@ -173,7 +173,7 @@ where category_id=$ctid ";
           <div style="display: flex; justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
             <img class="image" data-toggle="modal" data-target="#exampleModal"
               onclick="appjos('<?= $row['product_description_id'] ?>' )" align="middle"
-              src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
           </div>
           <div class="deupd"><?= $row['product_name'] ?><br>
           </div>

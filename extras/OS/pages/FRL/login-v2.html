@@ -208,7 +208,7 @@
                 if (willSubmit.dismiss) {
                   location.href = "../../../../index.php";
                 } else if (willSubmit.isConfirmed) {
-                  location.href = "../../../../store-admin/index.php?id=" + data.id + "";
+                  location.href = "../../../../equipment-store-admin/index.php?id=" + data.id + "";
                 }
               });
               return;
@@ -242,7 +242,7 @@
               }).then((willSubmit) => {
                 if (willSubmit) {
                   $('#emppass').hide();
-                  location.href = "../../../../store-admin/index.php?id=" + data.id + "";
+                  location.href = "../../../../equipment-store-admin/index.php?id=" + data.id + "";
                 }
                 else {
                   return;

@@ -338,11 +338,11 @@ if (isset($_POST['product_description_id'])) {
             <div class="product" style="position: absolute;left: 5px;top: 35px;width: 100px;height: 100px;">
               <img
                 style=" display: inline-block;text-align: center;padding: 14px;position: relative;height: 100px;max-width: 100px;"
-                onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
-                src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg');"
+                src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
             </div>
             <div style="width: 100%;">
-              <img id="imr<?= $row['product_description_id'] ?>" src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+              <img id="imr<?= $row['product_description_id'] ?>" src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
             </div>
             <div class="imscr" id="imsrc<?= $row['product_description_id'] ?>" onscroll="movefr('imsrc<?= $row['product_description_id'] ?>')">
               <button
@@ -369,8 +369,8 @@ if (isset($_POST['product_description_id'])) {
                 <div class="product">
                   <img
                     style=" display: inline-block;text-align: center;padding: 14px;position: relative;height: 100px;max-width: 100px;"
-                    onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
-                    src="../images/<?= $row['category_id'] ?>/<?= $row['sub_category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg">
+                    onclick="$('#imr<?= $row['product_description_id'] ?>').attr('src', '../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg');"
+                    src="../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>_<?= $i ?>.jpg">
                 </div>
               <?php
               }

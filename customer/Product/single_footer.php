@@ -164,7 +164,7 @@
   <div class="footer-botm">
     <div class="container">
       <div class="col-sm-8 w3_footer_grid">
-        <h3 class="title">Subscribe to newsettler</h3>
+        <h3 class="title">Subscribe to newsletter</h3>
         <div class="newsletter">
           <p style="text-align: justify;">
             Send your email to us.
@@ -1569,7 +1569,7 @@ if (isset($product_description_id)) {
     ///////////WHATSAPP///////////
     $('.whatsapp').html('');
     var wa_content = '<div style="margin:auto;width: 30px;height: 30px;background-color: darkgreen;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" data-action="share/whatsapp/share" \
-    href="https://api.whatsapp.com/send?text=See this product :- http://localhost:81/One-Store-Renewed/onestore-website/user/Product/single.php?id=' + code[1] + '"><i class="fa fa-whatsapp fa-lg" style="color: white;"></i></a></div><p>Whatsapp</p>';
+    href="https://api.whatsapp.com/send?text=See this product :- http://localhost:81/One-Store-Renewed/onestore-website/customer/Product/single.php?id=' + code[1] + '"><i class="fa fa-whatsapp fa-lg" style="color: white;"></i></a></div><p>Whatsapp</p>';
     $('.whatsapp').html(wa_content);
   }
 

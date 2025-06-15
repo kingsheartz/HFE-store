@@ -8,15 +8,14 @@ if (!isset($_SESSION['id'])) {
 require "../Main/header.php";
 
 $uid = $_SESSION['id'];
-$sql = "select category.category_id,sub_category.sub_category_id,product_description.product_description_id,cart.quantity,cart.store_id,product.product_name,product_details.price from cart
-        inner join cart_temp on cart_temp.cart_id=cart.cart_id
-        inner join product_description on cart.product_description_id=product_description.product_description_id
-        inner join product on product_description.product_id=product.product_id
-        inner join category on category.category_id=product.category_id
-        inner join sub_category on category.category_id=sub_category.category_id
-        inner join product_details on product_description.product_description_id=product_details.product_description_id
-        inner join store on store.store_id=product_details.store_id
-        where product.sub_category_id=sub_category.sub_category_id and cart_temp.customer_id=:customer and cart_temp.cart_id=cart.cart_id and product_details.store_id=cart.store_id and product_details.product_description_id=cart.product_description_id GROUP BY cart.store_id,cart.product_description_id order by cart.product_description_id";
+$sql = "SELECT category.category_id,product_description.product_description_id,cart.quantity,cart.store_id,product.product_name,product_details.price FROM cart
+        INNER JOIN cart_temp ON cart_temp.cart_id=cart.cart_id
+        INNER JOIN product_description ON cart.product_description_id=product_description.product_description_id
+        INNER JOIN product ON product_description.product_id=product.product_id
+        INNER JOIN category ON category.category_id=product.category_id
+        INNER JOIN product_details ON product_description.product_description_id=product_details.product_description_id
+        INNER JOIN store ON store.store_id=product_details.store_id
+        WHERE cart_temp.customer_id=:customer AND cart_temp.cart_id=cart.cart_id AND product_details.store_id=cart.store_id AND product_details.product_description_id=cart.product_description_id GROUP BY cart.store_id,cart.product_description_id ORDER BY cart.product_description_id";
 $stmt = $pdo->prepare($sql);
 $stmt->execute(array(
   ":customer" => $uid
@@ -293,7 +292,7 @@ $pdt_cnt = $stmt->rowCount();
                   <td class="invert slno"><?= $ai ?></td>
                   <td class="invert-image">
                     <a href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
-                      <img src="../../images\<?= $row['category_id'] ?>\<?= $row['sub_category_id'] ?>\<?= $row['product_description_id'] ?>.jpg" alt=" " class="img-responsive" />
+                      <img src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg" alt=" " class="img-responsive" />
                     </a>
                   </td>
                   <td class="invert">
