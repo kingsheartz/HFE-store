@@ -342,7 +342,7 @@ require "../Common/pdo.php";
     ?>
     <br>
     <?php
-    $query = "select customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.item_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store.store_name,product.price as mrp,product_description.product_description_id,category.category_id,product.product_name FROM new_orders
+    $query = "SELECT customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,weight,brand,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.item_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store.store_name,product.price as mrp,product_description.product_description_id,category.category_id,product.product_name FROM new_orders
               JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
               JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
               JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
@@ -406,81 +406,11 @@ require "../Common/pdo.php";
                 </tr>
               <?php
               }
-              if ($row['color'] != 0) {
-                $query1 = "SELECT * FROM color where color_id=" . $row['color'];
-                $st1 = $pdo->query($query1);
-                $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-              ?>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">Color</th>
-                  <td class="cust_details">
-                    <div
-                      style="height:16px;width:16px;border-radius:50%;border:.5px solid #999;background-color:<?= $row1['color_name'] ?>">
-                    </div>
-                  </td>
-                </tr>
-              <?php
-              }
               if ($row['weight'] != 0) {
               ?>
                 <tr class="div-wrapper dw">
                   <th class="cust_header2">Weight</th>
                   <td class="cust_details"><?= $row['weight'] ?></td>
-                </tr>
-              <?php
-              }
-              if ($row['flavour'] != 0) {
-                $query1 = "SELECT * FROM flavour where flavour_id=" . $row['flavour'];
-                $st1 = $pdo->query($query1);
-                $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-              ?>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">Flavour</th>
-                  <td class="cust_details"><?= $row1['flavour_name'] ?></td>
-                </tr>
-              <?php
-              }
-              if ($row['processor'] != 0) {
-                $query1 = "SELECT * FROM processor where processor_id=" . $row['processor'];
-                $st1 = $pdo->query($query1);
-                $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-              ?>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">Processor</th>
-                  <td class="cust_details"><?= $row1['processor_name'] ?></td>
-                </tr>
-              <?php
-              }
-              if ($row['display'] != 0) {
-                $query1 = "SELECT * FROM display where display_id=" . $row['display'];
-                $st1 = $pdo->query($query1);
-                $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-              ?>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">Display</th>
-                  <td class="cust_details"><?= $row1['display_name'] ?></td>
-                </tr>
-              <?php
-              }
-              if ($row['battery'] != 0) {
-                $query1 = "SELECT * FROM battery where battery_id=" . $row['battery'];
-                $st1 = $pdo->query($query1);
-                $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-              ?>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">Battery</th>
-                  <td class="cust_details"><?= $row1['battery_name'] ?></td>
-                </tr>
-              <?php
-              }
-              if ($row['internal_storage'] != 0) {
-                $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row['internal_storage'];
-                $st1 = $pdo->query($query1);
-                $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-              ?>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">Internal Storage</th>
-                  <td class="cust_details"><?= $row1['internal_storage_name'] ?></td>
                 </tr>
               <?php
               }
@@ -495,39 +425,30 @@ require "../Common/pdo.php";
                 </tr>
               <?php
               }
-              if ($row['material'] != 0) {
-                $query1 = "SELECT * FROM material where material_id=" . $row['material'];
-                $st1 = $pdo->query($query1);
-                $row1 = $st1->fetch(PDO::FETCH_ASSOC);
               ?>
-                <tr class="div-wrapper dw">
-                  <th class="cust_header2">Material</th>
-                  <td class="cust_details"><?= $row1['material_name'] ?></td>
-                </tr <?php
-                    }
-                      ?> </table>
-                <table>
-                  <tr>
-                    <th class="tablhde" colspan="2"> Price details </th>
-                  </tr>
-                  <tr style="padding-bottom:30px;"></tr>
-                  <tr class="div-wrapper dw">
-                    <th class="cust_header2">MRP</th>
-                    <td class="cust_details"><del><i class='fa fa-rupee-sign'></i> <?= $row['mrp'] ?></del></td>
-                  </tr>
-                  <tr class="div-wrapper dw">
-                    <th class="cust_header2">Selling Price</th>
-                    <td class="cust_details"><span><i class='fa fa-rupee-sign'></i> <?= $row['price'] ?></span></td>
-                  </tr>
-                  <tr class="div-wrapper dw">
-                    <th class="cust_header2">Item Quantity</th>
-                    <td class="cust_details"><?= $row['item_quantity'] ?></td>
-                  </tr>
-                  <tr class="div-wrapper dw">
-                    <th class="cust_header2">Total</th>
-                    <td class="cust_details"><b><i class='fa fa-rupee-sign'></i> <?= $row['total_amt'] ?></b></td>
-                  </tr>
-                </table>
+            </table>
+            <table>
+              <tr>
+                <th class="tablhde" colspan="2"> Price details </th>
+              </tr>
+              <tr style="padding-bottom:30px;"></tr>
+              <tr class="div-wrapper dw">
+                <th class="cust_header2">MRP</th>
+                <td class="cust_details"><del><i class='fa fa-rupee-sign'></i> <?= $row['mrp'] ?></del></td>
+              </tr>
+              <tr class="div-wrapper dw">
+                <th class="cust_header2">Selling Price</th>
+                <td class="cust_details"><span><i class='fa fa-rupee-sign'></i> <?= $row['price'] ?></span></td>
+              </tr>
+              <tr class="div-wrapper dw">
+                <th class="cust_header2">Item Quantity</th>
+                <td class="cust_details"><?= $row['item_quantity'] ?></td>
+              </tr>
+              <tr class="div-wrapper dw">
+                <th class="cust_header2">Total</th>
+                <td class="cust_details"><b><i class='fa fa-rupee-sign'></i> <?= $row['total_amt'] ?></b></td>
+              </tr>
+            </table>
           </div>
           <div class="col-sm-6">
             <table>

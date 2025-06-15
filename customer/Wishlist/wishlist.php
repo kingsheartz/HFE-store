@@ -860,7 +860,7 @@ require "../Main/header.php";
     $('#input_link').val(link);
     var code = link.split("=");
     $('.facebook').html('');
-    var fb_content = '<div class="fb-share-button"  data-href="' + link + '" data-layout="button_count" data-size="small" style="margin:auto;width: 30px;height: 30px;background-color: #395693;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fone-store.ml%2F/user/Wishlist/wishlist.php%3Fsharelink%3D' + code[1] + '&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fa fa-facebook fa-lg" style="color: white;"></i></a></div><p>Facebook</p>';
+    var fb_content = '<div class="fb-share-button"  data-href="' + link + '" data-layout="button_count" data-size="small" style="margin:auto;width: 30px;height: 30px;background-color: #395693;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fone-store.ml%2F/customer/Wishlist/wishlist.php%3Fsharelink%3D' + code[1] + '&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fa fa-facebook fa-lg" style="color: white;"></i></a></div><p>Facebook</p>';
     $('.facebook').html(fb_content);
     "wishlist_share.php?sharelink=62_60c9b30ccaa8a&amp;fbclid=IwAR310ESZCEPJ8uFUub--H6gnJ3FkFRjgzz1duPK3NVdARhV2f8VD1GWtpX0"
     $('#myModal_share_wishlist').modal('show');

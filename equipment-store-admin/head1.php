@@ -315,7 +315,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="../user/Account/logout.php">
+            <a class="nav-link" href="../customer/Account/logout.php">
               <i class="fa fa-power-off"></i>Log Out
             </a>
           </li>

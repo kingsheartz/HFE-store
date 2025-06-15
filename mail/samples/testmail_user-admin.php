@@ -190,7 +190,7 @@ for ($j = 0; $j < $i; $j++) {
                               <td valign="top" align="left">
                                 <p style="padding-left:15px;margin-bottom:10px">
                                   <a
-                                    href="http://localhost:81/One-Store-Renewed/onestore-website/user/Order/yourorders.php?id=<?= $customer_id ?>"
+                                    href="http://localhost:81/One-Store-Renewed/onestore-website/customer/Order/yourorders.php?id=<?= $customer_id ?>"
                                     style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
                                     rel="noreferrer"
                                     target="_blank"
