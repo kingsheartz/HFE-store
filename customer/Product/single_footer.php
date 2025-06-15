@@ -164,7 +164,7 @@
   <div class="footer-botm">
     <div class="container">
       <div class="col-sm-8 w3_footer_grid">
-        <h3 class="title">Subscribe to newsettler</h3>
+        <h3 class="title">Subscribe to newsletter</h3>
         <div class="newsletter">
           <p style="text-align: justify;">
             Send your email to us.
