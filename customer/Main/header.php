@@ -1078,8 +1078,6 @@ if (session_status() === PHP_SESSION_NONE) {
 							<a href="tel:+918113990368" style="color:white;font-family:arial;padding: 0px;">
 								<i class="fa fa-phone" aria-hidden="true"></i> Ph: <span><i>+91 8113990368</i></span>
 							</a>
-							<br>
-							<i><span>Healthcare & Fitness Equipments</span></i>
 						</div>
 						<div style="color: white;float: right;" class="topli" id="sm_top_ph_mail">
 							<i class="fa fa-phone" aria-hidden="true"></i>
@@ -1284,29 +1282,29 @@ if (session_status() === PHP_SESSION_NONE) {
 									</a>
 								</li>
 								<li id="homeactive" class="active">
-									<a href="../Main/hfe.php">
-										<i class="fa fa-home fa-lg"></i> Home
+									<a href="../Main/hfe.php" style="display:flex;align-items:center;justify-content:center;">
+										<i class="fa fa-home fa-lg" style="font-size:20px;"></i> &nbsp; Home
 									</a>
 								</li>
 								<?php
 								if (isset($_SESSION['sid'])) {
 								?>
 									<li id="shopactive">
-										<a href="../../equipment-store-admin/index.php?id=<?= $_SESSION['sid'] ?>">
-											<i class="fas fa-lg fa-store"></i> Store
+										<a href="../../equipment-store-admin/index.php?id=<?= $_SESSION['sid'] ?>" style="display:flex;align-items:center;justify-content:center;">
+											<i class="fas fa-lg fa-store" style="font-size:16px;"></i> &nbsp; Store
 										</a>
 									</li>
 								<?php
 								}
 								?>
 								<li id="aboutactive">
-									<a href="../Main/about.php">
-										<i class="fa fa-lg fa-info-circle"></i> About
+									<a href="../Main/about.php"  style="display:flex;align-items:center;justify-content:center;">
+										<i class="fa fa-lg fa-info-circle" style="font-size:18px;"></i> &nbsp; About
 									</a>
 								</li>
 								<li id="contactactive">
-									<a href="../Main/contact.php">
-										<i class="fa fa-lg fa-users"></i> Contact Us
+									<a href="../Main/contact.php" style="display:flex;align-items:center;justify-content:center;">
+										<i class="fa fa-lg fa-users" style="font-size:16px;"></i> &nbsp; Contact Us
 									</a>
 								</li>
 
@@ -1331,7 +1329,7 @@ if (session_status() === PHP_SESSION_NONE) {
 								?>
 								<li class="profile-popup">
 									<a href="#" class="dropdown-toggle" data-toggle="dropdown">
-										<span class="glyphicon glyphicon-user"></span> Profile <span class="caret"></span>
+										<span class="glyphicon glyphicon-user" style="font-size:16px;"></span> Profile <span class="caret"></span>
 									</a>
 									<ul class="dropdown-menu" style="border:1px solid rgb(55, 55, 55);padding: 0px; background-color: #000 !important; color:white !important;">
 										<?php
