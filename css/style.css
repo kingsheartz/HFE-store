@@ -898,6 +898,12 @@ i.fa.fa-arrow-right {
 .footer-copy p a:hover {
     color: #999;
 }
+.w3layouts-foot ul {
+		margin-top: 25px;
+		padding: 0;
+		list-style: none;
+		text-align: center;
+}
 .w3layouts-foot ul li {
     display: inline-block;
 }
@@ -4397,14 +4403,14 @@ div.scrollmenu a {
     border-bottom-color: #0c99cc;
     border-width: 2px;
     outline: none;
-    background-color: white !important;
+    background-color: rgb(0, 0, 0) !important;
 }
 .locbtn {
     width: 15%;
     height: 30px;
     border: none;
     outline: none;
-    background-color: white !important;
+    background-color: rgb(0, 0, 0) !important;
 }
 /*popup*/
 .location_marker {

@@ -34,17 +34,20 @@ require "../Common/cookie.php";
   p.cap_body {
     width: 400px;
     text-align: justify;
+    color: #ccc;
   }
 
   .block-slider .caption-group .primary {
-    color: #555;
-    font-size: 20px;
+    color: #ddd;
+
   }
 
-  .block-slider .caption-group {
-    position: absolute;
-    top: 26%;
-    right: 12%;
+  .block-slider .caption-group .primary strong {
+    color: #5A88CA !important;
+  }
+
+  .block-slider .cap_head {
+    color: #eee !important;
   }
 
   .cat-img {
@@ -194,10 +197,10 @@ require "../Common/cookie.php";
     });
   });
 </script>
-<div class="slider-area" style="background-color: white;padding-top: 10px;margin-top: 30px;">
+<div class="slider-area" style="background-color: white;padding-top: 10px;margin-top: 10px;">
   <!-- Slider -->
   <div class="block-slider block-slider4">
-    <ul class="" id="bxslider-home4" style="height: 400px;">
+    <ul class="" id="bxslider-home4" style="height: 400px;background-color: rgba(0,0,0,0.95);">
       <?php
       $slider = array(
         "Power /Precision /Performance //Built for serious runners, this treadmill delivers smooth, quiet operation and advanced tracking features.",
@@ -216,7 +219,15 @@ require "../Common/cookie.php";
           <div class="row captions">
             <div class="col-md-12 ">
               <img src="../../images/slider/h4-slide<?= $i + 1 ?>.png" alt="Slide">
-              <div class="caption-group">
+              <div class="caption-group" style="
+								background: linear-gradient(135deg, rgba(0,0,0,0.75), rgba(30,30,30,0.65));
+								backdrop-filter: blur(6px);
+								padding: 24px;
+								border-radius: 12px;
+								border: 1px solid rgba(255,255,255,0.1);
+								box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+								color: #fff;
+							">
                 <div class="cap_dyn">
                   <p class="cap_head">
                     <?= $split[0] ?> <span class="primary"><?= $split[1] ?> <strong><?= $split[2] ?></strong></span>
@@ -236,7 +247,14 @@ require "../Common/cookie.php";
   </div><br>
 </div>
 <!-- ./Slider -->
-<div style="background-color: #e0e0e0;padding-left: 7px;padding-right: 7px;">
+<div style="
+  background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(35,35,35,0.85));
+  color: #f1f1f1;
+  padding: 24px 28px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255,255,255,0.05);
+">
   <br>
   <!-- //top-header and slider -->
   <!-- top-brands -->

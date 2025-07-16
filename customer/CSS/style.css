@@ -174,7 +174,7 @@ h6 {
 .block-slider .caption-group {
   position: absolute;
   top: 26%;
-  right: 16%;
+  right: 8%;
 }
 .block-slider .caption-group .title {
   margin: 0;
@@ -1301,4 +1301,9 @@ div.cart-collaterals ul.products li.product:hover .add_to_cart_button {
   .fruit_section .fruit_container {
     margin-bottom: 50px !important;
   }
+}
+.profile-popup ul a li {
+	display: flex;
+	align-items: center;
+	gap: 5px;
 }
