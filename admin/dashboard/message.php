@@ -51,7 +51,6 @@ include "header.php";
     ?>
     <style>
       #chat-cont {
-        height: 500px;
         background: white;
         margin: 0 auto;
         font-size: 0;
@@ -61,7 +60,7 @@ include "header.php";
 
       main {
         width: 100%;
-        height: 500px;
+        height: 100%;
         display: inline-block;
         font-size: 15px;
         vertical-align: top;
@@ -180,18 +179,9 @@ include "header.php";
       }
 
       main footer {
-        height: 100px;
+        height: 85px;
         padding: 20px 30px 10px 20px;
         background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #360c88), color-stop(1, #6f0c79)) !important;
-      }
-
-      main footer textarea {
-        outline: none;
-        float: left;
-        height: 50px;
-        border-radius: 100px;
-        padding-right: 100px;
-        white-space: pre-wrap;
       }
 
       #myBtn {
@@ -378,6 +368,28 @@ include "header.php";
       .dark .date {
         background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #000000), color-stop(1, #000000)) !important;
       }
+
+      .textarea-container {
+        max-width: 500px;
+        margin: auto;
+      }
+
+      main footer textarea {
+        outline: none;
+        float: left;
+        border-radius: 50px;
+        white-space: pre-wrap;
+        width: calc(100% - 50px) !important;
+        height: 45px;
+        min-height: 40px;
+        max-height: 180px;
+        /* Optional: to limit growth */
+        resize: none;
+        padding: 10px;
+        padding-right: 100px;
+        line-height: 1.4;
+        overflow-y: auto;
+      }
     </style>
     <div id="chat">
       <div class="newhed">New Chats</div>
@@ -479,7 +491,7 @@ include "header.php";
               return false;
             }
           </script>
-          <form id="myform" method="POST">
+          <form id="myform" method="POST" style="overflow-y: scroll;">
             <div class="inner_div" id="chathist">
               <?php
               if (isset($_SESSION['name'])) {
@@ -596,7 +608,7 @@ include "header.php";
                 window.history.replaceState(null, null, window.location.href);
               }
             </script>
-            <footer>
+            <footer id="footer">
               <textarea
                 class="col-sm-12"
                 id="textarea"
@@ -617,6 +629,15 @@ include "header.php";
     require 'foot.php';
     ?>
     <script>
+			const textarea = document.getElementById("textarea");
+      const footer = document.getElementById("footer");
+
+      textarea.addEventListener("input", function() {
+        this.style.height = "auto"; // Reset height
+        this.style.height = Math.min(this.scrollHeight - 20, 160) + "px"; // Set new height
+				footer.style.height = ((this.scrollHeight > 165) ? 205 : Math.max(this.scrollHeight + 20, 85)) + "px";
+      });
+
       $(".inner-switch").on("click", function() {
         if ($("#chat").hasClass("dark")) {
           $("#chat").removeClass("dark");
