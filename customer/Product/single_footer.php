@@ -275,8 +275,8 @@
       <p>© 2025 HFE. All rights reserved |
         <a
           id="me"
-          onmouseover="$('#me').css('color','#0c99cc')"
-          onmouseleave="$('#me').css('color','#fe9126')"
+          onmouseover="$('#me').css('color','#4f8a40')"
+          onmouseleave="$('#me').css('color','#4f8a40')"
           href="www.one-store.com">Govind</a>
       </p>
     </div>

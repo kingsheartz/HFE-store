@@ -133,7 +133,7 @@ $pdt_cnt = $stmt->rowCount();
     }
 
     .place_order.nav-maker {
-      background-color: #fe9126;
+      background-color: #4f8a40;
       color: white;
       outline: none;
       border: 0px;
@@ -156,7 +156,7 @@ $pdt_cnt = $stmt->rowCount();
         right: 10px;
         width: 100% !important;
         z-index: 1 !important;
-        background-color: #fe9126;
+        background-color: #4f8a40;
         color: white;
         outline: none;
         border: 0px;

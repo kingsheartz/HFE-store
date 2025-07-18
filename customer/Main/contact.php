@@ -141,9 +141,9 @@ require "header.php"
                 <textarea name="Message" style="color: white" id="input-27" placeholder="Your message here..." required=""></textarea>
                 <input
                   class="button"
-                  style="background-color: #fe9126"
-                  onmouseover="$('.button').css('background-color','#0c99cc')"
-                  onmouseleave="$('.button').css('background-color','#fe9126')"
+                  style="background-color: #4f8a40"
+                  onmouseover="$('.button').css('background-color','#4f8a40')"
+                  onmouseleave="$('.button').css('background-color','#4f8a40')"
                   type="button"
                   onclick="feedback()"
                   value="Submit">

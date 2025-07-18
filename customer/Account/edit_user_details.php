@@ -139,7 +139,7 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
         <h2 style="color: white;" class="account-head-active account-head acc_details">ACCOUNT DETAILS</h2>
         <h2 style="color: white;" class="account-head changeep">Change Email / Password</h2>
         <h2 style="color: white;" class="account-head del_add">Delivery Address</h2>
-        <div class="login-form-grids" style="border-top: 10px solid #fe9126;border-radius: 5px;width: 100%">
+        <div class="login-form-grids" style="border-top: 10px solid #4f8a40;border-radius: 5px;width: 100%">
           <div class="account-details pi account-details-active">
             <h5><i class="fa fa-info-circle fa-lg"></i>&nbsp;profile information
               <span id='succeeded' style="float: right;background-color: green;border-radius: 5px;color:white">&nbsp;
@@ -354,8 +354,8 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
                       <button
                         onclick="user_update_locate()"
                         onmouseover="$(this).css('background-color','#ee8126')"
-                        onmouseleave="$(this).css('background-color','#fe9126')"
-                        style="color: white;background-color:#fe9126;padding-top:10px;padding-bottom: 10px;outline: none;"
+                        onmouseleave="$(this).css('background-color','#4f8a40')"
+                        style="color: white;background-color:#4f8a40;padding-top:10px;padding-bottom: 10px;outline: none;"
                         class="btn btn-default search_btn"
                         type="button">
                         <span class="fa fa-search"></span>
@@ -1029,8 +1029,8 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
           <a
             href="../Main/hfe.php"
             onmouseover="$(this).css('background-color','#0c66cc')"
-            onmouseleave="$(this).css('background-color','#fe9126')"
-            style="color: white;background-color:#fe9126;">
+            onmouseleave="$(this).css('background-color','#4f8a40')"
+            style="color: white;background-color:#4f8a40;">
             Home
           </a>
         </div>

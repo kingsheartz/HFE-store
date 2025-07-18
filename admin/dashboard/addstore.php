@@ -560,7 +560,7 @@ if (!empty($_SESSION['_contact_form_success'])) {
               </div>
 
               <center>
-                <button title="Add store" class="btn btn-primary btn-block" style="background-color: #0c99cc;width: 75%;">Add Store</button>
+                <button title="Add store" class="btn btn-primary btn-block" style="background-color: #4f8a40;width: 75%;">Add Store</button>
               </center>
             </form>
           </div>
