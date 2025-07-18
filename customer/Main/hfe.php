@@ -9,7 +9,7 @@ require "../Common/cookie.php";
   }
 
   body {
-    background: #8080807a;
+    background: #000000;
   }
 
   .block-slider img {
@@ -77,8 +77,7 @@ require "../Common/cookie.php";
   .deupd {
     height: -webkit-fill-available;
     text-overflow: ellipsis;
-    margin-top: 10px;
-    padding-top: 20px;
+    padding-top: 25px;
     border-top: 1px solid #e8e8e8;
   }
 </style>
@@ -197,7 +196,7 @@ require "../Common/cookie.php";
     });
   });
 </script>
-<div class="slider-area" style="background-color: white;margin-top: 10px;">
+<div class="slider-area" style="background-color: black;margin-top: 10px;">
   <!-- Slider -->
   <div class="block-slider block-slider4">
     <ul class="" id="bxslider-home4" style="height: 400px;background-color: rgba(0,0,0,0.95);">
@@ -349,14 +348,14 @@ require "../Common/cookie.php";
       display: inline-block;
       overflow: hidden;
       text-align: center;
-      border: 1px solid #d2d2d2;
+      border: 1px solid #a8a8a8;
       padding: 0px;
       padding-bottom: 0px;
       position: relative;
-      height: 300px;
+      height: 275px;
       width: 250px;
-      background: white;
-      color: #000;
+      background: #000;
+      color: #a8a8a8;
       margin-right: 20px;
     }
 
@@ -566,8 +565,6 @@ require "../Common/cookie.php";
           }
         }
       </script>
-      <hr class="make_div">
-      <hr class="make_div">
       <!--banner-bottom-->
       <div class="ban-bottom-w3l">
         <div class="container">
@@ -818,10 +815,6 @@ require "../Common/cookie.php";
                 ;
               }
             }
-          </style>
-          <hr class="make_div">
-          <hr class="make_div">
-          <style>
             .fa-star.active {
               color: orange;
             }
