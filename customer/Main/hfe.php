@@ -9,7 +9,7 @@ require "../Common/cookie.php";
   }
 
   body {
-    background: #000000;
+    background: #8080807a;
   }
 
   .block-slider img {
@@ -196,10 +196,10 @@ require "../Common/cookie.php";
     });
   });
 </script>
-<div class="slider-area" style="background-color: black;margin-top: 10px;">
+<div class="slider-area" style="background-color: white;margin-top: 10px;">
   <!-- Slider -->
   <div class="block-slider block-slider4">
-    <ul class="" id="bxslider-home4" style="height: 400px;background-color: rgba(0,0,0,0.95);">
+    <ul class="" id="bxslider-home4" style="height: 400px;background-color: rgba(255, 255, 255, 0.95);">
       <?php
       $slider = array(
         "Power /Precision /Performance //Built for serious runners, this treadmill delivers smooth, quiet operation and advanced tracking features.",
@@ -246,14 +246,7 @@ require "../Common/cookie.php";
   </div><br>
 </div>
 <!-- ./Slider -->
-<div style="
-  background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(35,35,35,0.85));
-  color: #f1f1f1;
-  padding: 24px 28px;
-  border-radius: 14px;
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
-  border: 1px solid rgba(255,255,255,0.05);
-">
+<div>
   <br>
   <!-- //top-header and slider -->
   <!-- top-brands -->
@@ -348,14 +341,14 @@ require "../Common/cookie.php";
       display: inline-block;
       overflow: hidden;
       text-align: center;
-      border: 1px solid #a8a8a8;
+      border: 1px solid #d2d2d2;
       padding: 0px;
       padding-bottom: 0px;
       position: relative;
       height: 275px;
       width: 250px;
-      background: #000;
-      color: #a8a8a8;
+      background: white;
+      color: #000;
       margin-right: 20px;
     }
 
@@ -815,6 +808,7 @@ require "../Common/cookie.php";
                 ;
               }
             }
+
             .fa-star.active {
               color: orange;
             }

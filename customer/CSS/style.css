@@ -155,7 +155,7 @@ h6 {
 .block-slider .bx-pager-item {
   width: 15px;
   height: 15px;
-  background: #000000;
+  background: #fff;
   font-size: 0;
   display: inline-block;
   border-radius: 50%;

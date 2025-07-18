@@ -1289,7 +1289,7 @@ if (session_status() === PHP_SESSION_NONE) {
 	</div>
 	</div>-->
     <!-- navigation -->
-    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 10px;background-color: #050505; border: 0px !important;">
+    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 10px;">
       <div class="container-fluid">
         <div class="row">
           <div style="padding: 0px">
