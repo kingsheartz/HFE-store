@@ -303,13 +303,13 @@ require "../Main/header.php";
         <div class="your_wishlist_large">
           <?php
           if (isset($_SESSION['id'])) {
-            $sql_check = 'select count(wishlist_id) as cnt from wishlist where user_id=:user_id';
+            $sql_check = 'select count(wishlist_id) as cnt from wishlist where customer_id=:customer_id';
             $stmt_check = $pdo->prepare($sql_check);
-            $stmt_check->execute(array(':user_id' => $_SESSION['id']));
+            $stmt_check->execute(array(':customer_id' => $_SESSION['id']));
             $row_check = $stmt_check->fetch(PDO::FETCH_ASSOC);
-            $sql_wish = 'select * FROM wishlist WHERE user_id=:user_id';
+            $sql_wish = 'select * FROM wishlist WHERE customer_id=:customer_id';
             $stmt_wish = $pdo->prepare($sql_wish);
-            $stmt_wish->execute(array(':user_id' => $_SESSION['id']));
+            $stmt_wish->execute(array(':customer_id' => $_SESSION['id']));
             if ($row_check['cnt'] > 0) {
           ?>
               <div class="container" style="margin-top: 50px;">
@@ -413,13 +413,13 @@ require "../Main/header.php";
         <!--YOUR WISHLIST SMALL-->
         <div class="your_wishlist_small" style="display: none;">
           <?php
-          $sql_check = 'select count(wishlist_id) as cnt from wishlist where user_id=:user_id';
+          $sql_check = 'select count(wishlist_id) as cnt from wishlist where customer_id=:customer_id';
           $stmt_check = $pdo->prepare($sql_check);
-          $stmt_check->execute(array(':user_id' => $_SESSION['id']));
+          $stmt_check->execute(array(':customer_id' => $_SESSION['id']));
           $row_check = $stmt_check->fetch(PDO::FETCH_ASSOC);
-          $sql_wish = 'select * FROM wishlist WHERE user_id=:user_id';
+          $sql_wish = 'select * FROM wishlist WHERE customer_id=:customer_id';
           $stmt_wish = $pdo->prepare($sql_wish);
-          $stmt_wish->execute(array(':user_id' => $_SESSION['id']));
+          $stmt_wish->execute(array(':customer_id' => $_SESSION['id']));
           if ($row_check['cnt'] > 0) {
           ?>
             <div class="container" style="margin-top: 50px;">
@@ -547,7 +547,7 @@ require "../Main/header.php";
         $stmt_check1 = $pdo->prepare($sql_check1);
         $stmt_check1->execute();
         $row_check1 = $stmt_check1->fetch(PDO::FETCH_ASSOC);
-        $sql_wish1 = 'select users.first_name,wishlist.list_name,wishlist.wishlist_id,wishlist.date FROM wishlist INNER JOIN wishlist_items ON wishlist.wishlist_id=wishlist_items.wishlist_id inner join users on wishlist.user_id=users.user_id WHERE privacy="public" group by wishlist.wishlist_id';
+        $sql_wish1 = 'select users.first_name,wishlist.list_name,wishlist.wishlist_id,wishlist.date FROM wishlist INNER JOIN wishlist_items ON wishlist.wishlist_id=wishlist_items.wishlist_id inner join users on wishlist.customer_id=users.customer_id WHERE privacy="public" group by wishlist.wishlist_id';
         $stmt_wish1 = $pdo->prepare($sql_wish1);
         $stmt_wish1->execute();
         if ($row_check1['cnt'] > 0) {
