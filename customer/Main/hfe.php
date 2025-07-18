@@ -43,7 +43,7 @@ require "../Common/cookie.php";
   }
 
   .block-slider .caption-group .primary strong {
-    color: #5A88CA !important;
+    color: #4f8a40 !important;
   }
 
   .block-slider .cap_head {

@@ -50,7 +50,7 @@ require "../Main/header.php";
   input[type="submit"],
   button[type=submit],
   input[type="button"] {
-    background: none repeat scroll 0 0 #5a88ca;
+    background: none repeat scroll 0 0 #4f8a40;
     border: medium none;
     color: #fff;
     padding: 11px 20px;
@@ -84,7 +84,7 @@ require "../Main/header.php";
   }
 
   table.shop_table th {
-    background: none repeat scroll 0 0 #5a88ca;
+    background: none repeat scroll 0 0 #4f8a40;
     color: #ffffff;
     font-size: 15px;
     text-transform: uppercase;
@@ -113,7 +113,7 @@ require "../Main/header.php";
   }
 
   .cart-collaterals h2 {
-    color: #5a88ca;
+    color: #4f8a40;
     font-size: 25px;
     margin-bottom: 25px;
     text-transform: uppercase;
@@ -150,7 +150,7 @@ require "../Main/header.php";
   }
 
   div.cart-collaterals ul.products li.product .onsale {
-    background: none repeat scroll 0 0 #5a88ca;
+    background: none repeat scroll 0 0 #4f8a40;
     color: #fff;
     padding: 5px 10px;
     position: absolute;
@@ -171,7 +171,7 @@ require "../Main/header.php";
   }
 
   div.cart-collaterals ul.products li.product .price ins {
-    color: #5a88ca;
+    color: #4f8a40;
     font-weight: 700;
     margin-left: 10px;
     text-decoration: none;
@@ -264,7 +264,7 @@ require "../Main/header.php";
     }
 
     #proceed {
-      background: none repeat scroll 0 0 #5a88ca;
+      background: none repeat scroll 0 0 #4f8a40;
       border: medium none;
       color: #fff;
       padding: 0px 8px;

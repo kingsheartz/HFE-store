@@ -4414,7 +4414,7 @@ div.scrollmenu a {
 }
 /*popup*/
 .location_marker {
-    background-color: #5a88ca !important;
+    background-color: #4f8a40 !important;
 }
 .carticon {
     background-color: #fe9126 !important;
@@ -5336,10 +5336,10 @@ hr.make_divc {
     }
 }
 #category,#category2{
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004f63), color-stop(1, #002b41)) !important;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #000000), color-stop(1, #292929)) !important;
 }
 #category li a:hover,#category2 li a:hover,#category li a:focus,#category2 li a:focus{
-    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0575ad), color-stop(1, #002933)) !important;
+    background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #161616), color-stop(1, #3e3e3e)) !important;
 }
 #category li a,#category2 li a{
     color:white !important;
