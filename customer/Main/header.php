@@ -916,7 +916,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
     .headimg,
     .navbar-inverse {
-      position: sticky !important;
       width: 100% !important;
       z-index: 100 !important;
     }
@@ -1036,7 +1035,7 @@ if (session_status() === PHP_SESSION_NONE) {
               style="padding: 0px;margin: 0px;left: 0px;right: 0px">
               <div class="logo_img" style="padding: 0px;margin: 0px;width: 100px;height: auto;">
                 <a href="../Main/hfe.php">
-                  <img src="../../images/logo/logo-horizontal.png" height="50px" style="width: 200px;height: auto;position: absolute;left: -40px;top: -45px;margin: 0px;right: 0px;">
+                  <img src="../../images/logo/logo-horizontal.png" style="width: 120px;height: auto;position: absolute;left: 0px;top: 0px;margin: 0px;right: 0px;">
                 </a>
               </div>
             </div>
@@ -1091,7 +1090,7 @@ if (session_status() === PHP_SESSION_NONE) {
                               onclick="check()"
                               onmouseover="$(this).css('background-color','#0c99cc')"
                               onmouseleave="$(this).css('background-color','#fe9126')"
-                              style="color: white;background-color: #5a88ca;border: 0px;height: 30px;"
+                              style="color: white;background-color: #4f8a40;border: 0px;height: 30px;"
                               class="btn btn-default search_btn" type="button">
                               <span class="fa fa-search"></span>
                             </button>
@@ -1187,7 +1186,7 @@ if (session_status() === PHP_SESSION_NONE) {
                               onclick="check2()"
                               onmouseover="$(this).css('background-color','#0c99cc')"
                               onmouseleave="$(this).css('background-color','#fe9126')"
-                              style="color: white;background-color: #5a88ca;border: 0px;height: 30px;"
+                              style="color: white;background-color: #4f8a40;border: 0px;height: 30px;"
                               class=" btn btn-default search_btn"
                               type="button"><span class="fa fa-search"></span>
                             </button>

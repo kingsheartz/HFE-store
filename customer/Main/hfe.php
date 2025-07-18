@@ -197,7 +197,7 @@ require "../Common/cookie.php";
     });
   });
 </script>
-<div class="slider-area" style="background-color: white;padding-top: 10px;margin-top: 10px;">
+<div class="slider-area" style="background-color: white;margin-top: 10px;">
   <!-- Slider -->
   <div class="block-slider block-slider4">
     <ul class="" id="bxslider-home4" style="height: 400px;background-color: rgba(0,0,0,0.95);">
