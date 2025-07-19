@@ -545,7 +545,7 @@ function randomGen($min, $max, $quantity)
     -webkit-border-radius: 3px 4px 4px 3px;
     -moz-border-radius: 3px 4px 4px 3px;
     border-radius: 3px 4px 4px 3px;
-    border-left: 1px solid #ff0000;
+    border-left: 1px solid #008000;
     margin-left: 19px;
     position: relative;
     color: white;

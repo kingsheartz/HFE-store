@@ -191,11 +191,11 @@ for ($j = 0; $j < $i; $j++) {
                                 <p style="padding-left:15px;margin-bottom:10px">
                                   <a
                                     href="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/customer/Order/yourorders.php?id=<?= $customer_id ?>"
-                                    style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
+                                    style="background-color:#139b3b;color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
                                     rel="noreferrer"
                                     target="_blank"
                                     data-saferedirecturl="">
-                                    <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">
+                                    <button type="button" style="background-color:#139b3b;color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">
                                       View Order Status
                                     </button>
                                   </a>
