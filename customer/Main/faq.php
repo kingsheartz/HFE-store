@@ -56,7 +56,7 @@ require "header.php";
           <li class="subitem1">
             <p>
               We do our best not to happen such thing. In case you never received you order,You can report to
-              <a href="mailto:onestoreforallyourneeds@gmail.com" target="_blank">onestoreforallyourneeds@gmail.com</a>
+              <a href="mailto:healthandfitnessequipmentstore@gmail.com" target="_blank">healthandfitnessequipmentstore@gmail.com</a>
               or contact us +9181 13990368 or whatsapp us
               <a href="https://wa.me/[918113990368]?text=Missing%2C%20ordered%20product!">
                 <i class="fa fa-whatsapp"></i>
@@ -92,10 +92,10 @@ require "header.php";
         </ul>
       </li>
       <li class="item7">
-        <a href="#" title="click here" class="que">Is it necessary to have an account to shop on OneStore ?</a>
+        <a href="#" title="click here" class="que">Is it necessary to have an account to shop on HFE-Store ?</a>
         <ul>
           <li class="subitem1">
-            <p>Yes, it's necessary to log into your OneStore account to shop. Shopping as a logged-in user is fast & convenient and also provides extra security.</p>
+            <p>Yes, it's necessary to log into your HFE-Store account to shop. Shopping as a logged-in user is fast & convenient and also provides extra security.</p>
             <p>You'll have access to a personalised shopping experience including recommendations and quicker check-out.</p>
           </li>
         </ul>

@@ -12,7 +12,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <meta name="keywords"
-    content="One Store,OneStore,onestore,shoppingcart,One,one,Store,store,shopping,cart,for all your needs" />
+    content="One Store,HFE-Store,HFE-Store,shoppingcart,One,one,Store,store,shopping,cart,for all your needs" />
   <script type="application/x-javascript">
     addEventListener("load", function() {
       setTimeout(hideURLbar, 0);
@@ -1350,11 +1350,6 @@ if (session_status() === PHP_SESSION_NONE) {
                       </button>
                     </form>
                   </li>
-                <?php
-                } else {
-                ?>
-                  <li><a href="../Account/registered.php"> Create Account </a></li>
-                  <li><a href="#myModal" data-toggle="modal" data-dismiss="modal"> Login </a></li>
                 <?php
                 }
                 ?>

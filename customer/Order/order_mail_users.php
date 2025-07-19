@@ -28,8 +28,8 @@ echo '
               <tbody>
               <tr>
                 <td style="width:35%;text-align:left">
-                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                  <img border="0"  src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none" class="CToWUd">
+                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                  <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                 </a>
                 </td>
                 <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Reissuing <span style="font-weight:bold">Password</span></p> </td>
@@ -172,7 +172,7 @@ echo '
                                 <tbody>
                                   <tr>
                                     <td style="width:10%;text-align:left;padding-top:5px"></td>
-                                    <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">OneStore</a>. All rights reserved  </td>
+                                    <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                     <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                   </tr>
                                 </tbody>

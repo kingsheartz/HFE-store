@@ -81,8 +81,8 @@ for ($l = 0; $l < $i; $l++) {
                     <tbody>
                       <tr>
                         <td style="width:40%;text-align:left;padding-top:5px">
-                          <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml">
-                            <img border="0" src="../../images/logo/logo-high.png" alt="OneStore.ml" style="border:none;width: 150px;" class="CToWUd">
+                          <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml">
+                            <img border="0" src="../../images/logo/logo-high.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd">
                           </a>
                         </td>
                         <td style="width:60%;text-align:right;padding-top:5px">
@@ -196,7 +196,7 @@ for ($l = 0; $l < $i; $l++) {
                               <tr>
                                 <td valign="top" align="left">
                                   <p style="padding-left:15px;margin-bottom:10px"> <a
-                                      href="http://localhost:81/One-Store-Renewed/onestore-website/customer/Orders/yourorders.php?id=<?= $customer_id ?>"
+                                      href="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/customer/Orders/yourorders.php?id=<?= $customer_id ?>"
                                       style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
                                       rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button"
                                         style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">View
@@ -331,8 +331,8 @@ for ($l = 0; $l < $i; $l++) {
                                   <table>
                                     <tbody>
                                       <tr>
-                                        <td style="width:35%;text-align:left"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none" class="CToWUd"> </a> </td>
-                                        <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">OneStore</a>. All rights reserved  </td>
+                                        <td style="width:35%;text-align:left"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd"> </a> </td>
+                                        <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                         <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                       </tr>
                                     </tbody>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <title>NO NETWORK || ONESTORE</title>
+      <title>NO NETWORK || HFE-Store</title>
 <!-- SCRIPTS GOES HERE OR IN HEAD -->
 <link href="../../../../images/logo/favicon.png" rel="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">

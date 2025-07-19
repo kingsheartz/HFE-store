@@ -126,7 +126,7 @@ if (isset($_POST['register'])) {
     } else {
       $uniqid = uniqid();
       //EMAIL SENDING//
-      $from = 'onestoreforallyourneeds@gmail.com';
+      $from = 'healthandfitnessequipmentstore@gmail.com';
       $subject = 'Account Activation Required';
       $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
       $activate_link = '../Common/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
@@ -143,8 +143,8 @@ if (isset($_POST['register'])) {
                           <tbody>
                             <tr>
                               <td style="width:35%;text-align:left">
-                                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                  <img border="0"  src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none" class="CToWUd">
+                                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                  <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                 </a>
                               </td>
                               <td style="width:60%;text-align:right;padding-top:5px">
@@ -279,7 +279,7 @@ if (isset($_POST['register'])) {
                                         <tbody>
                                           <tr>
                                           <td style="width:10%;text-align:left;padding-top:5px"></td>
-                                          <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">OneStore</a>. All rights reserved  </td>
+                                          <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                           <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                           </tr>
                                         </tbody>
@@ -354,9 +354,9 @@ if (isset($_POST['register'])) {
         $mail->Port = 587; // TLS only
         $mail->SMTPSecure = 'tls'; // ssl is deprecated
         $mail->SMTPAuth = true;
-        $mail->Username = "onestoreforallyourneeds@gmail.com"; // email
+        $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
         $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
-        $mail->setFrom('onestoreforallyourneeds@gmail.com', 'OneStore'); // From email and name
+        $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
         $mail->addAddress($_POST['email'],$_POST['first_name'] ); // to email and name
         $mail->Subject = $subject;
         $mail->msgHTML($message); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -530,7 +530,7 @@ if (isset($_POST['update_customer_details'])) {
       $time = date('h' . "." . 'i' . " " . 'A');
       $uniqid = uniqid();
       //EMAIL SENDING//
-      $from = 'onestoreforallyourneeds@gmail.com';
+      $from = 'healthandfitnessequipmentstore@gmail.com';
       $subject = 'Account Details Updated';
       $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
       $activate_link = '../Common/functions.php?emailupdateverified=1&emailcurrent=' . $row['email'] . '&emailnew=' . $_POST['email'] . '&code=' . $uniqid . '&id=' . $customer_id;
@@ -556,7 +556,7 @@ if (isset($_POST['update_customer_details'])) {
                               <td style="width:35%;text-align:left">
                                 <a
                                   style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                  href="https://www.one-store.ml"
+                                  href="https://www.HFE-Store.ml"
                                   rel="noreferrer"
                                   target="_blank"
                                   data-saferedirecturl=""
@@ -564,7 +564,7 @@ if (isset($_POST['update_customer_details'])) {
                                   <img
                                     border="0"
                                     src="../../images/logo/logo.png"
-                                    alt="OneStore.ml"
+                                    alt="HFE-Store.ml"
                                     style="border:none"
                                     class="CToWUd"
                                   />
@@ -876,7 +876,7 @@ if (isset($_POST['update_customer_details'])) {
                                             <a
                                               style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
                                               href=""
-                                              >OneStore</a
+                                              >HFE-Store</a
                                             >. All rights reserved
                                           </td>
                                           <td style="width:10%;text-align:right">
@@ -1012,9 +1012,9 @@ if (isset($_POST['update_customer_details'])) {
         $mail->Port = 587; // TLS only
         $mail->SMTPSecure = 'tls'; // ssl is deprecated
         $mail->SMTPAuth = true;
-        $mail->Username = "onestoreforallyourneeds@gmail.com"; // email
+        $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
         $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
-        $mail->setFrom('onestoreforallyourneeds@gmail.com', 'OneStore'); // From email and name
+        $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
         $mail->addAddress($row['email'],$_POST['first_name'] ); // to email and name
         $mail->Subject = $subject;
         $mail->msgHTML($message); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -1183,22 +1183,22 @@ if(isset($_POST['register'])){
 				':password'=>$password,
 				':activation_code'=>$uniqid));
 		//EMAIL SENDING LOCALHOST MAIL() FUNCTION
-				$from    = 'onestoreforallyourneeds@gmail.com';
+				$from    = 'healthandfitnessequipmentstore@gmail.com';
 				$subject = 'Account Activation Required';
 				$headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
 				// Update the activation variable below
-				//$activate_link = 'https://falconsinfoworld.000webhostapp.com/OneStore/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
-				$activate_link = 'http://localhost/MY%20WEBSITES/ONESTORE/OneStore/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+				//$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
+				$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
 				$message = '<html><body style="background-color:rgba(255,255,255,255.85);padding:20px;"><center>';
-				$message .= '<img src="https://falconsinfoworld.000webhostapp.com/OneStore/images/logo/logomail.png"><br>';
-				$message .= '<h3 style="color:#059DF9">Hi Govind, OneStore Welcomes You</h3><br></center>';
+				$message .= '<img src="https://falconsinfoworld.000webhostapp.com/HFE-Store/images/logo/logomail.png"><br>';
+				$message .= '<h3 style="color:#059DF9">Hi Govind, HFE-Store Welcomes You</h3><br></center>';
 				$message .= '<h3 style="color:#FF8A00;text-align:margin-left">You are one step away from sign in to our world of shopping </h3>';
 				$message .= '<p>Please click the following verify email button to activate your account</p><br>';
 				$message .= ' <a style="margin-left:26%" href="'.$activate_link.'"><button style="background-color:rgba(0,0,0,85);color:white;border-radius:7px;">Verify Email</button></a><br>';
 				$message .= '<br><p>Regards,</p>';
-				$message .= '<p>OneStore</p><br>';
+				$message .= '<p>HFE-Store</p><br>';
 				$message .= '<br><p>if you\'re having trouble clicking the'." \"Verify Email\" ".' button,copy and paste the URL below into your web browser : '.$activate_link.' </p><br><br><br><br>';
-				$message .= '<p><center>© 2020 <a href="https://falconsinfoworld.000webhostapp.com/">OneStore</a>. All rights reserved </center></p>';
+				$message .= '<p><center>© 2020 <a href="https://falconsinfoworld.000webhostapp.com/">HFE-Store</a>. All rights reserved </center></p>';
 				$message .= '</body></html>';
 				mail($_POST['email'], $subject, $message,$headers);
 				$response['status']="success";
@@ -1237,14 +1237,14 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
           $last_name = $row['last_name'];
           $email = $row['email'];
           $customer_id = $row['customer_id'];
-          $from = 'onestoreforallyourneeds@gmail.com';
+          $from = 'healthandfitnessequipmentstore@gmail.com';
           $subject = 'Registration Successfully completed';
           $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
           // Update the activation variable below
-          //$activate_link = 'https://falconsinfoworld.000webhostapp.com/OneStore/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-          //$activate_link = 'http://localhost/MY%20WEBSITES/ONESTORE/OneStore/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-          //$activate_link = 'https://onestore.epizy.com/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-          $activate_link = 'http://localhost:81/One-Store-Renewed/onestore-website';
+          //$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+          //$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+          //$activate_link = 'https://HFE-Store.epizy.com/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+          $activate_link = 'http://localhost:81/HFE-Store-Renewed/HFE-Store-website';
           $message = '
             <table style="width:100%!important">
               <tbody>
@@ -1258,8 +1258,8 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                               <tbody>
                                 <tr>
                                   <td style="width:35%;text-align:left">
-                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                      <img border="0"  src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none" class="CToWUd">
+                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                      <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                     </a>
                                   </td>
                                   <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Account <span style="font-weight:bold">Activated</span></p> </td>
@@ -1306,14 +1306,14 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Hi ' . $first_name . ', OneStore Welcomes You. Your Account is activated successfully  by <b>' . date("F j") . "," . date("Y") . '</b>. You are now became a member of our family.Enjoy shopping with us.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Please click the following button to open your door to our world of shopping .</p> </td>
+                                          <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Hi ' . $first_name . ', HFE-Store Welcomes You. Your Account is activated successfully  by <b>' . date("F j") . "," . date("Y") . '</b>. You are now became a member of our family.Enjoy shopping with us.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Please click the following button to open your door to our world of shopping .</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="350" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">OneStore</button> </a></span></p> </td>
+                                          <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">HFE-Store</button> </a></span></p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1327,7 +1327,7 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top" align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: The \'<b>OneStore</b>\' button will send you to our website .Thanks for your support and also for being a member of our family .</p> </td>
+                                          <td valign="top" align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: The \'<b>HFE-Store</b>\' button will send you to our website .Thanks for your support and also for being a member of our family .</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1387,7 +1387,7 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                                           <tbody>
                                             <tr>
                                               <td style="width:10%;text-align:left;padding-top:5px"></td>
-                                              <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">OneStore</a>. All rights reserved  </td>
+                                              <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                               <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                             </tr>
                                           </tbody>
@@ -1462,9 +1462,9 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
             $mail->Port = 587; // TLS only
             $mail->SMTPSecure = 'tls'; // ssl is deprecated
             $mail->SMTPAuth = true;
-            $mail->Username = "onestoreforallyourneeds@gmail.com"; // email
+            $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
             $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
-            $mail->setFrom('onestoreforallyourneeds@gmail.com', 'OneStore'); // From email and name
+            $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
             $mail->addAddress($email,$first_name ); // to email and name
             $mail->Subject = $subject;
             $mail->msgHTML($message); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -1564,14 +1564,14 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
           $last_name = $row['last_name'];
           $email = $row['email'];
           $customer_id = $row['customer_id'];
-          $from = 'onestoreforallyourneeds@gmail.com';
+          $from = 'healthandfitnessequipmentstore@gmail.com';
           $subject = 'Email Verified Successfully';
           $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
           // Update the activation variable below
-          //$activate_link = 'https://falconsinfoworld.000webhostapp.com/OneStore/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-          //$activate_link = 'http://localhost/MY%20WEBSITES/ONESTORE/OneStore/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-          //$activate_link = 'https://onestore.epizy.com/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-          $activate_link = 'http://localhost:81/One-Store-Renewed/onestore-website';
+          //$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+          //$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+          //$activate_link = 'https://HFE-Store.epizy.com/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+          $activate_link = 'http://localhost:81/HFE-Store-Renewed/HFE-Store-website';
           $message = '
             <table style="width:100%!important">
               <tbody>
@@ -1585,8 +1585,8 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                               <tbody>
                                 <tr>
                                   <td style="width:35%;text-align:left">
-                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                      <img border="0"  src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none" class="CToWUd">
+                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                      <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                     </a>
                                   </td>
                                   <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Email <span style="font-weight:bold">Verified</span></p> </td>
@@ -1632,14 +1632,14 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Hi ' . $first_name . ', OneStore Welcomes You. Your Email id (' . $_GET['emailnew'] . ') is verified successfully  by <b>' . date("F j") . "," . date("Y") . '</b>. Enjoy shopping with us.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Please click the following button to open your door to our world of shopping .</p> </td>
+                                          <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Hi ' . $first_name . ', HFE-Store Welcomes You. Your Email id (' . $_GET['emailnew'] . ') is verified successfully  by <b>' . date("F j") . "," . date("Y") . '</b>. Enjoy shopping with us.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Please click the following button to open your door to our world of shopping .</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="350" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">OneStore</button> </a></span></p> </td>
+                                          <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">HFE-Store</button> </a></span></p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1653,7 +1653,7 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top" align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: The \'<b>OneStore</b>\' button will send you to our website .Thanks for your support and also for being a member of our family .</p> </td>
+                                          <td valign="top" align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: The \'<b>HFE-Store</b>\' button will send you to our website .Thanks for your support and also for being a member of our family .</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1713,7 +1713,7 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                                           <tbody>
                                             <tr>
                                               <td style="width:10%;text-align:left;padding-top:5px"></td>
-                                              <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">OneStore</a>. All rights reserved  </td>
+                                              <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                               <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                             </tr>
                                           </tbody>
@@ -1788,9 +1788,9 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
             $mail->Port = 587; // TLS only
             $mail->SMTPSecure = 'tls'; // ssl is deprecated
             $mail->SMTPAuth = true;
-            $mail->Username = "onestoreforallyourneeds@gmail.com"; // email
+            $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
             $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
-            $mail->setFrom('onestoreforallyourneeds@gmail.com', 'OneStore'); // From email and name
+            $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
             $mail->addAddress($email,$first_name ); // to email and name
             $mail->Subject = $subject;
             $mail->msgHTML($message); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -2791,7 +2791,7 @@ if (isset($_POST['forgotlogin'])) {
             setcookie($pass, NULL, time() - 3600, "/");
           }
           //EMAIL SENDING//
-          $from = 'onestoreforallyourneeds@gmail.com';
+          $from = 'healthandfitnessequipmentstore@gmail.com';
           $subject = 'Reset password verification OTP';
           $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
           $activate_link = '../../extras/OS/pages/FRL/OTP-v2.php?otp=' . $otp;
@@ -2808,8 +2808,8 @@ if (isset($_POST['forgotlogin'])) {
                               <tbody>
                                 <tr>
                                   <td style="width:35%;text-align:left">
-                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                      <img border="0"  src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none" class="CToWUd">
+                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                      <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                     </a>
                                   </td>
                                   <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Reissuing <span style="font-weight:bold">Password</span></p> </td>
@@ -2945,7 +2945,7 @@ if (isset($_POST['forgotlogin'])) {
                                           <tbody>
                                             <tr>
                                               <td style="width:10%;text-align:left;padding-top:5px"></td>
-                                              <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">OneStore</a>. All rights reserved  </td>
+                                              <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                               <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                             </tr>
                                           </tbody>
@@ -3020,9 +3020,9 @@ if (isset($_POST['forgotlogin'])) {
             $mail->Port = 587; // TLS only
             $mail->SMTPSecure = 'tls'; // ssl is deprecated
             $mail->SMTPAuth = true;
-            $mail->Username = "onestoreforallyourneeds@gmail.com"; // email
+            $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
             $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
-            $mail->setFrom('onestoreforallyourneeds@gmail.com', 'OneStore'); // From email and name
+            $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
             $mail->addAddress($_POST['email'],$first_name ); // to email and name
             $mail->Subject = $subject;
             $mail->msgHTML($message); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -3089,7 +3089,7 @@ if (isset($_POST['forgotlogin'])) {
           setcookie($pass, NULL, time() - 3600, "/");
         }
         //EMAIL SENDING//
-        $from = 'onestoreforallyourneeds@gmail.com';
+        $from = 'healthandfitnessequipmentstore@gmail.com';
         $subject = 'OTP generated for password recovery';
         $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
         $activate_link = '../../extras/OS/pages/FRL/OTP-v2.php?otp=' . $otp;
@@ -3106,8 +3106,8 @@ if (isset($_POST['forgotlogin'])) {
                             <tbody>
                               <tr>
                                 <td style="width:35%;text-align:left">
-                                  <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                    <img border="0"  src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none" class="CToWUd">
+                                  <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                    <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                   </a>
                                 </td>
                                 <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Reissuing <span style="font-weight:bold">Password</span></p> </td>
@@ -3153,7 +3153,7 @@ if (isset($_POST['forgotlogin'])) {
                                   <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                     <tbody>
                                       <tr>
-                                        <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Seems like you lost your key to your One-Store ' . $row2['store_name'] . ' .One time OTP for recovering your password is generated below .Enjoy shopping with us.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"> .Please click the  click the following button to reset your password .</p> </td>
+                                        <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Seems like you lost your key to your HFE-Store ' . $row2['store_name'] . ' .One time OTP for recovering your password is generated below .Enjoy shopping with us.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"> .Please click the  click the following button to reset your password .</p> </td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -3243,7 +3243,7 @@ if (isset($_POST['forgotlogin'])) {
                                         <tbody>
                                           <tr>
                                             <td style="width:10%;text-align:left;padding-top:5px"></td>
-                                            <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">OneStore</a>. All rights reserved  </td>
+                                            <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                             <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                             </tr>
                                         </tbody>
@@ -3471,7 +3471,7 @@ if (isset($_POST['recoverlogin'])) {
   header('Content-type: application/json');
   echo json_encode($response);
 }
-//http://localhost/MY%20WEBSITES/ONESTORE/OneStore/extras/OS/pages/FRL/recover-password-v2.php?otp=123456
+//http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/extras/OS/pages/FRL/recover-password-v2.php?otp=123456
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //-----------------------------------------------------------------------------------------------------------
@@ -3652,7 +3652,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
   $stmtdel = $pdo->query($sqldel);
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //EMAIL SENDING//
-  $from = 'onestoreforallyourneeds@gmail.com';
+  $from = 'healthandfitnessequipmentstore@gmail.com';
   $subject = 'Your requested orders';
   $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
   $activate_link = '../Order/myorders.php?id=' . $customer_id;
@@ -3673,8 +3673,8 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                       <tbody>
                         <tr>
                           <td style="width:35%;text-align:left">
-                            <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                              <img border="0"  src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none" class="CToWUd">
+                            <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                              <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                             </a>
                           </td>
                           <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Order <span style="font-weight:bold">Processed</span></p> </td>
@@ -3861,8 +3861,8 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                     <table>
                                       <tbody>
                                         <tr>
-                                          <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml"><img  border="0" src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
-                                          <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">OneStore</a>. All rights reserved  </td>
+                                          <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml"><img  border="0" src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
+                                          <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                           <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                         </tr>
                                       </tbody>
@@ -3913,9 +3913,9 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
     $mail->Port = 587; // TLS only
     $mail->SMTPSecure = 'tls'; // ssl is deprecated
     $mail->SMTPAuth = true;
-    $mail->Username = "onestoreforallyourneeds@gmail.com"; // email
+    $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
     $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
-    $mail->setFrom('onestoreforallyourneeds@gmail.com', 'OneStore'); // From email and name
+    $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
     $mail->addAddress($email,$first_name ); // to email and name
     $mail->Subject = $subject;
     $mail->msgHTML($message1);//(file_get_contents('ordermailtouser.php'),'' ); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -3986,7 +3986,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                             <td style="width:35%;text-align:left">
                               <a
                                 style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                href="https://www.one-store.ml"
+                                href="https://www.HFE-Store.ml"
                                 rel="noreferrer"
                                 target="_blank"
                                 data-saferedirecturl=""
@@ -3994,7 +3994,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                 <img
                                   border="0"
                                   src="../../images/logo/logo.png"
-                                  alt="OneStore.ml"
+                                  alt="HFE-Store.ml"
                                   style="border:none"
                                   class="CToWUd"
                                 />
@@ -4443,11 +4443,11 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                             <td style="width:40%;text-align:left;padding-top:5px">
                                               <a
                                                 style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                                href="https://www.one-store.ml"
+                                                href="https://www.HFE-Store.ml"
                                                 ><img
                                                   border="0"
                                                   src="../../images/logo/logo.png"
-                                                  alt="OneStore.ml"
+                                                  alt="HFE-Store.ml"
                                                   style="border:none;width: 150px;"
                                                   class="CToWUd"
                                                 />
@@ -4458,7 +4458,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                               <a
                                                 style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
                                                 href=""
-                                                >OneStore</a
+                                                >HFE-Store</a
                                               >. All rights reserved
                                             </td>
                                             <td style="width:10%;text-align:right">
@@ -4542,9 +4542,9 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
       $mail->Port = 587; // TLS only
       $mail->SMTPSecure = 'tls'; // ssl is deprecated
       $mail->SMTPAuth = true;
-      $mail->Username = "onestoreforallyourneeds@gmail.com"; // email
+      $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
       $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
-      $mail->setFrom('onestoreforallyourneeds@gmail.com', 'OneStore'); // From email and name
+      $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
       $mail->addAddress( $store_array[$l]['email'],$store_array[$l]['store_name'] ); // to email and name
       $mail->Subject = $subject;
       $mail->msgHTML($message2);//(file_get_contents('ordermailtouser.php'),'' ); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -5025,7 +5025,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //EMAIL SENDING//
-  $from = 'onestoreforallyourneeds@gmail.com';
+  $from = 'healthandfitnessequipmentstore@gmail.com';
   $subject = 'Your requested orders';
   $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
   $activate_link = '../Order/myorders.php?id=' . $customer_id;
@@ -5054,7 +5054,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                           <td style="width:35%;text-align:left">
                             <a
                               style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                              href="https://www.one-store.ml"
+                              href="https://www.HFE-Store.ml"
                               rel="noreferrer"
                               target="_blank"
                               data-saferedirecturl=""
@@ -5062,7 +5062,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                               <img
                                 border="0"
                                 src="../../images/logo/logo.png"
-                                alt="OneStore.ml"
+                                alt="HFE-Store.ml"
                                 style="border:none"
                                 class="CToWUd"
                               />
@@ -5384,8 +5384,8 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                     <table>
                                       <tbody>
                                         <tr>
-                                          <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml"><img  border="0" src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
-                                          <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">OneStore</a>. All rights reserved  </td>
+                                          <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml"><img  border="0" src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
+                                          <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                           <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                         </tr>
                                       </tbody>
@@ -5436,9 +5436,9 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
     $mail->Port = 587; // TLS only
     $mail->SMTPSecure = 'tls'; // ssl is deprecated
     $mail->SMTPAuth = true;
-    $mail->Username = "onestoreforallyourneeds@gmail.com"; // email
+    $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
     $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
-    $mail->setFrom('onestoreforallyourneeds@gmail.com', 'OneStore'); // From email and name
+    $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
     $mail->addAddress($email,$first_name ); // to email and name
     $mail->Subject = $subject;
     $mail->msgHTML($message1);//(file_get_contents('ordermailtouser.php'),'' ); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -5501,8 +5501,8 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                           <tbody>
                             <tr>
                               <td style="width:35%;text-align:left">
-                                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                  <img border="0"  src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none" class="CToWUd">
+                                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                  <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                 </a>
                               </td>
                               <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Order <span style="font-weight:bold">Requested</span></p> </td>
@@ -5697,8 +5697,8 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                               <table>
                                                 <tbody>
                                                   <tr>
-                                                    <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml"><img  border="0" src="../../images/logo/logo.png" alt="OneStore.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
-                                                    <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">OneStore</a>. All rights reserved  </td>
+                                                    <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml"><img  border="0" src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
+                                                    <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                                     <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                                   </tr>
                                                 </tbody>
@@ -5750,9 +5750,9 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
       $mail->Port = 587; // TLS only
       $mail->SMTPSecure = 'tls'; // ssl is deprecated
       $mail->SMTPAuth = true;
-      $mail->Username = "onestoreforallyourneeds@gmail.com"; // email
+      $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
       $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
-      $mail->setFrom('onestoreforallyourneeds@gmail.com', 'OneStore'); // From email and name
+      $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
       $mail->addAddress( $store_array[$l]['email'],$store_array[$l]['store_name'] ); // to email and name
       $mail->Subject = $subject;
       $mail->msgHTML($message2);//(file_get_contents('ordermailtouser.php'),'' ); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,
@@ -9054,7 +9054,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
   }
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //EMAIL SENDING//
-  $from = 'onestoreforallyourneeds@gmail.com';
+  $from = 'healthandfitnessequipmentstore@gmail.com';
   $subject = 'Your requested orders';
   $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
   $activate_link = '../Order/myorders.php?id=' . $customer_id;
@@ -9083,7 +9083,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                           <td style="width:35%;text-align:left">
                             <a
                               style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                              href="https://www.one-store.ml"
+                              href="https://www.HFE-Store.ml"
                               rel="noreferrer"
                               target="_blank"
                               data-saferedirecturl=""
@@ -9091,7 +9091,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                               <img
                                 border="0"
                                 src="../../images/logo/logo.png"
-                                alt="OneStore.ml"
+                                alt="HFE-Store.ml"
                                 style="border:none"
                                 class="CToWUd"
                               />
@@ -9533,11 +9533,11 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                           <td style="width:40%;text-align:left;padding-top:5px">
                                             <a
                                               style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                              href="https://www.one-store.ml"
+                                              href="https://www.HFE-Store.ml"
                                               ><img
                                                 border="0"
                                                 src="../../images/logo/logo.png"
-                                                alt="OneStore.ml"
+                                                alt="HFE-Store.ml"
                                                 style="border:none;width: 150px;"
                                                 class="CToWUd"
                                               />
@@ -9548,7 +9548,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                             <a
                                               style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
                                               href=""
-                                              >OneStore</a
+                                              >HFE-Store</a
                                             >. All rights reserved
                                           </td>
                                           <td style="width:10%;text-align:right">
@@ -9688,7 +9688,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                             <td style="width:35%;text-align:left">
                               <a
                                 style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                href="https://www.one-store.ml"
+                                href="https://www.HFE-Store.ml"
                                 rel="noreferrer"
                                 target="_blank"
                                 data-saferedirecturl=""
@@ -9696,7 +9696,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 <img
                                   border="0"
                                   src="../../images/logo/logo.png"
-                                  alt="OneStore.ml"
+                                  alt="HFE-Store.ml"
                                   style="border:none"
                                   class="CToWUd"
                                 />
@@ -10144,11 +10144,11 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                                     <td style="width:40%;text-align:left;padding-top:5px">
                                                       <a
                                                         style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                                        href="https://www.one-store.ml"
+                                                        href="https://www.HFE-Store.ml"
                                                         ><img
                                                           border="0"
                                                           src="../../images/logo/logo.png"
-                                                          alt="OneStore.ml"
+                                                          alt="HFE-Store.ml"
                                                           style="border:none;width: 150px;"
                                                           class="CToWUd"
                                                         />
@@ -10161,7 +10161,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                                       <a
                                                         style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
                                                         href=""
-                                                        >OneStore</a
+                                                        >HFE-Store</a
                                                       >. All rights reserved
                                                     </td>
                                                     <td style="width:10%;text-align:right">
@@ -10323,7 +10323,7 @@ if (isset($_POST['cancel_product'])) {
   $customer_id = $row['customer_id'];
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //EMAIL SENDING//
-  $from = 'onestoreforallyourneeds@gmail.com';
+  $from = 'healthandfitnessequipmentstore@gmail.com';
   $subject = 'Order cancelled';
   $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
   $activate_link = '../Order/myorders.php?id=' . $customer_id;
@@ -10352,7 +10352,7 @@ if (isset($_POST['cancel_product'])) {
                           <td style="width:35%;text-align:left">
                             <a
                               style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                              href="https://www.one-store.ml"
+                              href="https://www.HFE-Store.ml"
                               rel="noreferrer"
                               target="_blank"
                               data-saferedirecturl=""
@@ -10360,7 +10360,7 @@ if (isset($_POST['cancel_product'])) {
                               <img
                                 border="0"
                                 src="../../images/logo/logo.png"
-                                alt="OneStore.ml"
+                                alt="HFE-Store.ml"
                                 style="border:none"
                                 class="CToWUd"
                               />
@@ -10796,11 +10796,11 @@ if (isset($_POST['cancel_product'])) {
                                           <td style="width:40%;text-align:left;padding-top:5px">
                                             <a
                                               style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                              href="https://www.one-store.ml"
+                                              href="https://www.HFE-Store.ml"
                                               ><img
                                                 border="0"
                                                 src="../../images/logo/logo.png"
-                                                alt="OneStore.ml"
+                                                alt="HFE-Store.ml"
                                                 style="border:none;width: 150px;"
                                                 class="CToWUd"
                                               />
@@ -10811,7 +10811,7 @@ if (isset($_POST['cancel_product'])) {
                                             <a
                                               style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
                                               href=""
-                                              >OneStore</a
+                                              >HFE-Store</a
                                             >. All rights reserved
                                           </td>
                                           <td style="width:10%;text-align:right">
@@ -10941,7 +10941,7 @@ if (isset($_POST['cancel_product'])) {
                           <td style="width:35%;text-align:left">
                             <a
                               style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                              href="https://www.one-store.ml"
+                              href="https://www.HFE-Store.ml"
                               rel="noreferrer"
                               target="_blank"
                               data-saferedirecturl=""
@@ -10949,7 +10949,7 @@ if (isset($_POST['cancel_product'])) {
                               <img
                                 border="0"
                                 src="../../images/logo/logo.png"
-                                alt="OneStore.ml"
+                                alt="HFE-Store.ml"
                                 style="border:none"
                                 class="CToWUd"
                               />
@@ -11384,11 +11384,11 @@ if (isset($_POST['cancel_product'])) {
                                           <td style="width:40%;text-align:left;padding-top:5px">
                                             <a
                                               style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                              href="https://www.one-store.ml"
+                                              href="https://www.HFE-Store.ml"
                                               ><img
                                                 border="0"
                                                 src="../../images/logo/logo.png"
-                                                alt="OneStore.ml"
+                                                alt="HFE-Store.ml"
                                                 style="border:none;width: 150px;"
                                                 class="CToWUd"
                                               />
@@ -11399,7 +11399,7 @@ if (isset($_POST['cancel_product'])) {
                                             <a
                                               style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
                                               href=""
-                                              >OneStore</a
+                                              >HFE-Store</a
                                             >. All rights reserved
                                           </td>
                                           <td style="width:10%;text-align:right">

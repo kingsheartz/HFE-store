@@ -60,7 +60,7 @@ require "header.php";
       <div class="col-md-8 about-wthree-grids grid-top">
         <h4>One World, One Store !!! </h4>
         <p class="top" style="padding:5px">Shopping without roaming, We are here for all your needs.......</p>
-        <p>It goes back in time when we made our simple beginning in the year 2021.OneStore online shopping
+        <p>It goes back in time when we made our simple beginning in the year 2021.HFE-Store online shopping
           system which further contains several other entities describing the entire system. Also provides the
           24×7 service, that is customers can surf the website, place orders anytime they wish to. The
           delivery system works according to the shops opening and closing time.</p>
@@ -68,11 +68,11 @@ require "header.php";
           disruption that came upon the world last year and continues to impact every single thing we do even
           today. It pushed boundaries and realigned priorities. It created daunting challenges especially for
           small businesses . Many of them have gone through personal loss and hardship in their lives in
-          recent months. We at OneStore recognize the immense responsibility that we have as a company during
+          recent months. We at HFE-Store recognize the immense responsibility that we have as a company during
           such challenging times – to our customers as by partnering small scale companies to launch their
           products in good manner and also helps to reach people. </p>
-        <p>OneStore helps customers to purchase commodities as per requirement during this covid-19
-          circumstances. The major Objective of "OneStore" is that by enabling device location , we could know
+        <p>HFE-Store helps customers to purchase commodities as per requirement during this covid-19
+          circumstances. The major Objective of "HFE-Store" is that by enabling device location , we could know
           where to find our requirements at nearest location, also we can either order it to home or purchase
           from those particular shop by visiting over there. We could also know whether the shops are open or
           not.</p>
@@ -94,7 +94,7 @@ require "header.php";
       <div class="col-md-4 about-wthree-grids">
         <div class="offic-time">
           <div class="time-top">
-            <h4>OneStore </h4>
+            <h4>HFE-Store </h4>
           </div>
           <div class="time-bottom">
             <h5>From 9.00 AM </h5>
@@ -152,7 +152,7 @@ require "header.php";
                   <h4>" THANKS TO YOU.</h4>
                   <p>Everything we doing great because of your support.We are expecting that it will continue from your side,Thank you !! </p>
                   <div class="testi-subscript">
-                    <p><a href="#">Supporting Team,</a>OneStore</p>
+                    <p><a href="#">Supporting Team,</a>HFE-Store</p>
                     <span class="w3-agilesub"> </span>
                   </div>
                 </div>
@@ -171,7 +171,7 @@ require "header.php";
   <div style="background-color: rgba(0,0,0,0.55);">
     <div class="container">
       <div class="about-slid-info">
-        <h2>OneStore, Save time for doing great !</h2>
+        <h2>HFE-Store, Save time for doing great !</h2>
         <p style="text-align:justify">Technology is growing day to day for saving our time and giving
           extraordinary features and specifications to us. We also thinks in the same way to provide the same
           result to you. We believe in providing you a best user friendly atmosphere is our success. We are

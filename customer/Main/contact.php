@@ -80,7 +80,7 @@ require "header.php"
               <ul class="wthree_contact_info_address">
                 <li>
                   <i class="fa fa-envelope" aria-hidden="true"></i>
-                  <a href="mailto:onestoreforallyourneeds@gmail.com">onestore</a>
+                  <a href="mailto:healthandfitnessequipmentstore@gmail.com">HFE-Store</a>
                 </li>
                 <li>
                   <i class="fa fa-phone" aria-hidden="true" style="padding:0 14px 0 0;margin: 0;"></i>+91 8113990368
@@ -95,7 +95,7 @@ require "header.php"
                     <a href="https://wa.me/[918113990368]?text=Hai%2C%20There!" data-action="share/whatsapp/share" target="_blank" class="icon icon-cube agile_phone"></a>
                   </li>
                   <li>
-                    <a href="mailto:onestoreforallyourneeds@gmail.com" target="_blank" class="icon icon-cube agile_email"></a>
+                    <a href="mailto:healthandfitnessequipmentstore@gmail.com" target="_blank" class="icon icon-cube agile_email"></a>
                   </li>
                 </ul>
               </div>

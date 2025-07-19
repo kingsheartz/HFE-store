@@ -336,11 +336,16 @@ require "../Main/header.php";
                 }
                 ?>
                 <?php
-                if (isset($_SESSION['error'])) {
+                if (isset($_SESSION['reg_error'])) {
                 ?>
                   <div class="alert alert-danger"><?= $_SESSION['reg_error'] ?></div>
                 <?php
                   unset($_SESSION['reg_error']);
+                } else if (isset($_SESSION['error'])) {
+                ?>
+                  <div class="alert alert-danger"><?= $_SESSION['error'] ?></div>
+                <?php
+                  unset($_SESSION['error']);
                 }
                 ?>
                 <p id="nameerror" style="display: none;color: red;font-weight: bolder;margin:0px">

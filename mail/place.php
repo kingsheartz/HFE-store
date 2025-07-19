@@ -76,22 +76,22 @@ function initilize(){
 <?php
 /*
 $uniqid = uniqid();
-$from    = 'onestoreforallyourneeds@gmail.com';
+$from    = 'healthandfitnessequipmentstore@gmail.com';
 				$subject = 'Account Activation Required';
 				$headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
 				// Update the activation variable below
-				//$activate_link = 'https://falconsinfoworld.000webhostapp.com/OneStore/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
-				$activate_link = 'http://localhost/MY%20WEBSITES/ONESTORE/OneStore/functions.php?emailverified=1&email=govind.das279@gmail.com&code='.$uniqid;
+				//$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
+				$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/functions.php?emailverified=1&email=govind.das279@gmail.com&code='.$uniqid;
 				$message = '<html><body style="background-color:rgba(255,255,255,255.85);padding:20px;"><center>';
-				$message .= '<img src="https://falconsinfoworld.000webhostapp.com/OneStore/images/logo/logomail.png"><br>';
-				$message .= '<h3 style="color:#059DF9">Hi Govind, OneStore Welcomes You</h3><br></center>';
+				$message .= '<img src="https://falconsinfoworld.000webhostapp.com/HFE-Store/images/logo/logomail.png"><br>';
+				$message .= '<h3 style="color:#059DF9">Hi Govind, HFE-Store Welcomes You</h3><br></center>';
 				$message .= '<h3 style="color:#FF8A00;text-align:margin-left">You are one step away from sign in to our world of shopping </h3>';
 				$message .= '<p>Please click the following verify email button to activate your account</p><br>';
 				$message .= ' <a style="margin-left:26%" href="'.$activate_link.'"><button style="background-color:rgba(0,0,0,85);color:white;border-radius:7px;">Verify Email</button></a><br>';
 				$message .= '<br><p>Regards,</p>';
-				$message .= '<p>OneStore</p><br>';
+				$message .= '<p>HFE-Store</p><br>';
 				$message .= '<br><p>if you\'re having trouble clicking the'." \"Verify Email\" ".' button,copy and paste the URL below into your web browser : '.$activate_link.' </p><br><br><br><br>';
-				$message .= '<p><center>© 2020 <a href="https://falconsinfoworld.000webhostapp.com/">OneStore</a>. All rights reserved </center></p>';
+				$message .= '<p><center>© 2020 <a href="https://falconsinfoworld.000webhostapp.com/">HFE-Store</a>. All rights reserved </center></p>';
 				$message .= '</body></html>';
 				mail('asgovind686@gmail.com', $subject, $message, $headers);
 				echo"alert('hai')";
@@ -99,30 +99,30 @@ $from    = 'onestoreforallyourneeds@gmail.com';
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
 $uniqid = uniqid();
-$from = 'onestoreforallyourneeds@gmail.com';
+$from = 'healthandfitnessequipmentstore@gmail.com';
 $subject = 'Account Activation Required';
 $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
 // Update the activation variable below
-//$activate_link = 'https://falconsinfoworld.000webhostapp.com/OneStore/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-//$activate_link = 'http://localhost/MY%20WEBSITES/ONESTORE/OneStore/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-$activate_link = 'http://onestore.epizy.com/functions.php?emailverified=1&email=govind.das279@gmail.com&code=' . $uniqid;
+//$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+//$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+$activate_link = 'http://HFE-Store.epizy.com/functions.php?emailverified=1&email=govind.das279@gmail.com&code=' . $uniqid;
 $message = '<html><body style="background-color:rgba(255,255,255,255.85);padding:20px;"><center>';
-//$message .= '<img src="https://falconsinfoworld.000webhostapp.com/OneStore/images/logo/logomail.png"><br>';
-$message .= '<img src="http://onestore.epizy.com/images/logo/logomail.png"><br>';
-$message .= '<h3 style="color:#059DF9">Hi Govind, OneStore Welcomes You</h3><br></center>';
+//$message .= '<img src="https://falconsinfoworld.000webhostapp.com/HFE-Store/images/logo/logomail.png"><br>';
+$message .= '<img src="http://HFE-Store.epizy.com/images/logo/logomail.png"><br>';
+$message .= '<h3 style="color:#059DF9">Hi Govind, HFE-Store Welcomes You</h3><br></center>';
 $message .= '<h3 style="color:#FF8A00;text-align:margin-left">You are one step away from sign in to our world of shopping </h3>';
 $message .= '<p>Please click the following verify email button to activate your account</p><br>';
 $message .= ' <a style="margin-left:26%" href="' . $activate_link . '"><button style="background-color:rgba(0,0,0,85);color:white;border-radius:7px;">Verify Email</button></a><br>';
 $message .= '<br><p>Regards,</p>';
-$message .= '<p>OneStore</p><br>';
+$message .= '<p>HFE-Store</p><br>';
 $message .= '<br><p>if you\'re having trouble clicking the' . " \"Verify Email\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . ' </p><br><br><br><br>';
-//$message .= '<p><center>© 2020 <a href="https://falconsinfoworld.000webhostapp.com/">OneStore</a>. All rights reserved </center></p>';
-$message .= '<p><center>&#169; 2020 <a href="http://onestore.epizy.com/">OneStore</a>. All rights reserved </center></p>';
+//$message .= '<p><center>© 2020 <a href="https://falconsinfoworld.000webhostapp.com/">HFE-Store</a>. All rights reserved </center></p>';
+$message .= '<p><center>&#169; 2020 <a href="http://HFE-Store.epizy.com/">HFE-Store</a>. All rights reserved </center></p>';
 $message .= '</body></html>';
 //mail($_POST['email'], $subject, $message,$headers);
-//require $_SERVER['DOCUMENT_ROOT'] . '/OneStore/mail/Exception.php';
-//require $_SERVER['DOCUMENT_ROOT'] . '/OneStore/mail/PHPMailer.php';
-//require $_SERVER['DOCUMENT_ROOT'] . '/OneStore/mail/SMTP.php';
+//require $_SERVER['DOCUMENT_ROOT'] . '/HFE-Store/mail/Exception.php';
+//require $_SERVER['DOCUMENT_ROOT'] . '/HFE-Store/mail/PHPMailer.php';
+//require $_SERVER['DOCUMENT_ROOT'] . '/HFE-Store/mail/SMTP.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/mail/Exception.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/mail/PHPMailer.php';
 require $_SERVER['DOCUMENT_ROOT'] . '/mail/SMTP.php';
@@ -133,9 +133,9 @@ $mail->Host = "smtp.gmail.com"; // use $mail->Host = gethostbyname('smtp.gmail.c
 $mail->Port = 587; // TLS only
 $mail->SMTPSecure = 'tls'; // ssl is deprecated
 $mail->SMTPAuth = true;
-$mail->Username = "onestoreforallyourneeds@gmail.com"; // email
-$mail->Password = "iwshnjhsafnrpzig"; // password
-$mail->setFrom('onestoreforallyourneeds@gmail.com', 'OneStore'); // From email and name
+$mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
+$mail->Password = "zoqvnbgcszvohhqe"; // password
+$mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
 $mail->addAddress('govind.das279@gmail.com', 'Govind'); // to email and name
 $mail->Subject = $subject;
 $mail->msgHTML($message); //$mail->msgHTML(file_get_contents('contents.html'), __DIR__); //Read an HTML message body from an external file, convert referenced images to embedded,

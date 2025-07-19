@@ -175,7 +175,7 @@
           <li><i class="glyphicon glyphicon-map-marker" aria-hidden="true"></i>Trivandrum</li>
           <li>
             <i class="glyphicon glyphicon-envelope" aria-hidden="true"></i>
-            <a href="mailto:onestoreforallyourneeds@gmail.com">HFE</a>
+            <a href="mailto:healthandfitnessequipmentstore@gmail.com">HFE</a>
           </li>
           <li><i class="glyphicon glyphicon-earphone" aria-hidden="true"></i>+91 8113990368</li>
         </ul>
@@ -265,7 +265,7 @@
   </div>
   <div class="footer-copy">
     <div class="container">
-      <p>© 2025 HFE. All rights reserved | <a id="me" onmouseover="$('#me').css('color','#4f8a40')" onmouseleave="$('#me').css('color','#4f8a40')" href="www.one-store.com">Govind</a></p>
+      <p>© 2025 HFE. All rights reserved | <a id="me" onmouseover="$('#me').css('color','#4f8a40')" onmouseleave="$('#me').css('color','#4f8a40')" href="www.HFE-Store.com">Govind</a></p>
     </div>
   </div>
 </div>
@@ -315,7 +315,7 @@
                     class=""
                     id="input_apk_link"
                     placeholder="URL to share"
-                    value="../../extras/APK/RELEASE/OneStore_version_high.apk"
+                    value="../../extras/APK/RELEASE/HFE-Store_version_high.apk"
                     name=""
                     required=" "
                     style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline-color: #e59700;">
@@ -439,11 +439,11 @@
 
   function copyapklink(n) {
     if (n == 1) {
-      var link = "../../extras/APK/RELEASE/OneStore_version_high.apk";
+      var link = "../../extras/APK/RELEASE/HFE-Store_version_high.apk";
     } else if (n == 2) {
-      var link = "../../extras/APK/RELEASE/OneStore_version_low.apk";
+      var link = "../../extras/APK/RELEASE/HFE-Store_version_low.apk";
     } else {
-      var link = "../../extras/APK/RELEASE/OneStore_version_low.apk";
+      var link = "../../extras/APK/RELEASE/HFE-Store_version_low.apk";
     }
     $('#input_apk_link').val(link);
     ///////////WHATSAPP///////////

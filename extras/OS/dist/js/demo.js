@@ -36,7 +36,7 @@
   ]
 
   $container.append(
-    '<h5>Customize OneStore</h5><hr class="mb-2"/>'
+    '<h5>Customize HFE-Store</h5><hr class="mb-2"/>'
   )
 
   var $no_border_checkbox = $('<input />', {

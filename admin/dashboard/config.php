@@ -7,16 +7,16 @@
  */
 // The name and address which should be used for the sender details.
 // The name can be anything you want, the address should be something in your own domain. It does not need to exist as a mailbox.
-define('CONTACTFORM_FROM_ADDRESS', 'onestoreforallyourneeds@gmail.com');
-define('CONTACTFORM_FROM_NAME', 'OneStore');
+define('CONTACTFORM_FROM_ADDRESS', 'healthandfitnessequipmentstore@gmail.com');
+define('CONTACTFORM_FROM_NAME', 'HFE-Store');
 // The name and address to which the contact message should be sent.
 // These details should NOT be the same as the sender details.
 /*define('CONTACTFORM_TO_ADDRESS', 'krishnendugopi8592@gmail.com');
 define('CONTACTFORM_TO_NAME', 'KRISHNENDU R G');*/
 // The details of your SMTP service, e.g. Gmail.
 define('CONTACTFORM_SMTP_HOSTNAME', 'smtp.gmail.com');
-define('CONTACTFORM_SMTP_USERNAME', 'onestoreforallyourneeds@gmail.com');
-define('CONTACTFORM_SMTP_PASSWORD', 'lgjlpnjvlbdjlskh');
+define('CONTACTFORM_SMTP_USERNAME', 'healthandfitnessequipmentstore@gmail.com');
+define('CONTACTFORM_SMTP_PASSWORD', 'zoqvnbgcszvohhqe');
 // The reCAPTCHA credentials for your site. You can get these at https://www.google.com/recaptcha/admin
 /*define('CONTACTFORM_RECAPTCHA_SITE_KEY', '');
 define('CONTACTFORM_RECAPTCHA_SECRET_KEY', '');

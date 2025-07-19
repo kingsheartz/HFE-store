@@ -80,11 +80,11 @@
 
   function copyapklink(n) {
     if (n == 1) {
-      var link = "../../extras/APK/RELEASE/OneStore_version_high.apk";
+      var link = "../../extras/APK/RELEASE/HFE-Store_version_high.apk";
     } else if (n == 2) {
-      var link = "../../extras/APK/RELEASE/OneStore_version_low.apk";
+      var link = "../../extras/APK/RELEASE/HFE-Store_version_low.apk";
     } else {
-      var link = "../../extras/APK/RELEASE/OneStore_version_low.apk";
+      var link = "../../extras/APK/RELEASE/HFE-Store_version_low.apk";
     }
     $('#input_apk_link').val(link);
     ///////////WHATSAPP///////////

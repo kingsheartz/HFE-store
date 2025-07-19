@@ -178,7 +178,7 @@ if (isset($_POST['setstorepass'])) {
     $message = '
     <table style="width:100%!important">
       <tbody>
-        <tr style="" width="834px" height="60" background="http://localhost:81/One-Store-Renewed/onestore-website/images/logo/log2.jpg" align="center">
+        <tr style="" width="834px" height="60" background="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/images/logo/log2.jpg" align="center">
           <td>
             <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
               <tbody>
@@ -188,8 +188,8 @@ if (isset($_POST['setstorepass'])) {
                       <tbody>
                         <tr>
                           <td style="width:35%;text-align:left">
-                            <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="http://localhost:81/One-Store-Renewed/onestore-website/" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                            <img border="0"  src="http://localhost:81/One-Store-Renewed/onestore-website/images/logo/logo.png" alt="OneStore.ml" style="border:none" class="CToWUd">
+                            <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                            <img border="0"  src="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                             </a>
                           </td>
                           <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Store <span style="font-weight:bold">Added</span></p> </td>
@@ -243,14 +243,14 @@ if (isset($_POST['setstorepass'])) {
                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                       <tbody>
                         <tr>
-                          <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Hi ' . $name . ', OneStore Welcomes You. Your Email id (' . $email . ') is verified successfully  by <b>' . date("F j") . "," . date("Y") . '</b>. You are now became a seller of our family.Best wishes for your product sales.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Please click the following button to open the door to your new <span style="color:red" >on</span><span style="color:#000">lin</span><span style="color:red ">e store</span> in our world .</p> </td>
+                          <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Hi ' . $name . ', HFE-Store Welcomes You. Your Email id (' . $email . ') is verified successfully  by <b>' . date("F j") . "," . date("Y") . '</b>. You are now became a seller of our family.Best wishes for your product sales.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Please click the following button to open the door to your new <span style="color:red" >on</span><span style="color:#000">lin</span><span style="color:red ">e store</span> in our world .</p> </td>
                         </tr>
                       </tbody>
                     </table>
                     <table width="350" border="0" cellpadding="0" cellspacing="0" align="left">
                       <tbody>
                         <tr>
-                          <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">OneStore</button> </a> </span> </p> </td>
+                          <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">HFE-Store</button> </a> </span> </p> </td>
                         </tr>
                       </tbody>
                     </table>
@@ -264,7 +264,7 @@ if (isset($_POST['setstorepass'])) {
                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                       <tbody>
                         <tr>
-                          <td valign="top" align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: The \'<b>OneStore</b>\' button will send you to your <span style="color:red" >on</span><span style="color:#000">lin</span><span style="color:red ">e store</span> .Thanks for your support and also for being a member of our family .</p> </td>
+                          <td valign="top" align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: The \'<b>HFE-Store</b>\' button will send you to your <span style="color:red" >on</span><span style="color:#000">lin</span><span style="color:red ">e store</span> .Thanks for your support and also for being a member of our family .</p> </td>
                         </tr>
                       </tbody>
                     </table>
@@ -324,7 +324,7 @@ if (isset($_POST['setstorepass'])) {
                           <tbody>
                             <tr>
                               <td style="width:10%;text-align:left;padding-top:5px"></td>
-                              <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="http://localhost:81/One-Store-Renewed/onestore-website/">OneStore</a>. All rights reserved  </td>
+                              <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/">HFE-Store</a>. All rights reserved  </td>
                               <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                             </tr>
                           </tbody>
