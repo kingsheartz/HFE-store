@@ -4403,7 +4403,7 @@ div.scrollmenu a {
     border-bottom-color: #4f8a40;
     border-width: 2px;
     outline: none;
-    background-color: rgb(0, 0, 0) !important;
+    background-color: white !important;
 }
 .locbtn {
     width: 15%;

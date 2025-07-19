@@ -26,6 +26,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <!--favicon-->
   <link href="../../images/logo/favicon.png" rel="icon" />
   <!--//favicon-->
+	<link rel="stylesheet" href="../../extras/OS/pages/CSS/single.css">
   <link href="../../css/style.css" rel="stylesheet" type="text/css" media="all" />
   <!-- font-awesome icons -->
   <link href="../../css/font-awesome.css" rel="stylesheet">
@@ -1495,7 +1496,7 @@ if (session_status() === PHP_SESSION_NONE) {
       <ul class="multi-column-dropdown">
         <h6>Your Location</h6>
         <li>
-          <input type="tel" class="locmark" name="pincode" id="pincode" placeholder="PIN">
+          <input type="tel" class="locmark" name="pincode" id="pincode" placeholder="PIN" style="background-color: black !important;">
           <button type="button" name="pin" class="locbtn" onclick="locate()">
             <i class="fa fa-search"></i>
           </button>
@@ -1503,7 +1504,7 @@ if (session_status() === PHP_SESSION_NONE) {
         <li style="display: none;" id="setloc">
           <!--pop up location-->
           <span class="popuptext" id="myPopup">
-            <select name="po_list" class="locmark" id="po_list">
+            <select name="po_list" class="locmark" id="po_list" style="background-color: black !important;">
               <option value="0" selected="" disabled="">location</option>
             </select>
           </span>

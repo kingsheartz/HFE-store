@@ -3,7 +3,7 @@ require "../Main/header.php";
 require "../../db.php";
 if (isset($_GET['product'])) {
   $nm = strtolower($_GET['product']);
-	echo "<h1>". $nm ."</h1>";
+  echo "<h1>" . $nm . "</h1>";
   $res = $pdo->query(
     "SELECT category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
     INNER JOIN product_description ON product_description.product_id=product.product_id
@@ -13,11 +13,11 @@ if (isset($_GET['product'])) {
     WHERE  product.product_name LIKE \"%$nm%\" GROUP BY product_description.product_description_id"
   );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
-	if ($row2) {
-		$name = $row2['product_name'];
-		$cat_id = $row2['category_id'];
-	}
-}  else if (isset($_GET['category_id'])) {
+  if ($row2) {
+    $name = $row2['product_name'];
+    $cat_id = $row2['category_id'];
+  }
+} else if (isset($_GET['category_id'])) {
   $cat = $_GET['category_id'];
   try {
     $res = $pdo->query(
@@ -841,7 +841,7 @@ if (isset($_GET['product'])) {
             dataType: "json", //datatype=json format
             timeout: 30000, //waiting time 30 sec
             success: function(data) { //if registration is success
-							console.log("Sucess", data);
+              console.log("Sucess", data);
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
@@ -1056,7 +1056,7 @@ if ($result_cnt == 0) {
                     <span class="px-md-2 px-1">List view</span>
                   </span>
                 <?php
-                }  else if (isset($_GET['category_id'])) {
+                } else if (isset($_GET['category_id'])) {
                 ?>
                   <span class="btn-pdt_pg list_view_mul listview"
                     onclick="location.href='../Product/products.php?category_id=<?= $_GET['category_id'] ?>'"> &nbsp;
@@ -1158,7 +1158,7 @@ if ($result_cnt == 0) {
                       //     $getsubcatqnty_row['qntycnt'] = 0;
                       //   }
                       ?>
-                        <!-- <li
+                      <!-- <li
                           onclick="sortandfilter('getcat-<?= $getcat_row['sub_category_id'] ?>','category')"
                           class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category cat-font  getcat-<?= $getcat_row['sub_category_id'] ?>"
                           style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
@@ -1194,7 +1194,7 @@ if ($result_cnt == 0) {
                                 INNER JOIN store ON product_details.store_id=store.store_id
                                 INNER JOIN category ON category.category_id=product.category_id
                                 WHERE product.product_name LIKE '%" . $_GET['product'] . "%' GROUP BY brand.brand_name";
-                  } else if (isset($_GET['category_id']) ) {
+                  } else if (isset($_GET['category_id'])) {
                     if (isset($_GET['category_id'])) {
                       $keeper = 'product.category_id';
                       $brandval = $_GET['category_id'];
@@ -1465,7 +1465,7 @@ if ($result_cnt == 0) {
                         //     $getsubcatqnty_row['qntycnt'] = 0;
                         //   }
                         ?>
-                          <!-- <li
+                        <!-- <li
                             onclick="sortandfilter('getcat-<?= $getcat_row['sub_category_id'] ?>','category')"
                             class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category cat-font  getcat-<?= $getcat_row['sub_category_id'] ?>"
                             style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fff), color-stop(1, #fff)) !important;color:#000 ">

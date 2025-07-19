@@ -194,6 +194,22 @@ require "../Common/cookie.php";
     $('#customCarousel').carousel({
       interval: 3000 // Auto slide every 3 seconds
     });
+    <?php
+    if (isset($_SESSION['error_msg'])) {
+    ?>
+      swal({
+        title: "Error",
+        text: "<?= $_SESSION['error_msg'] ?>",
+        icon: "error",
+        closeOnClickOutside: false,
+        dangerMode: true,
+      }).then(() => {
+        location.href = '../Account/logout.php';
+      });
+    <?php
+      unset($_SESSION['error_msg']);
+    }
+    ?>
   });
 </script>
 <div class="slider-area" style="background-color: white;margin-top: 10px;">
@@ -815,6 +831,7 @@ require "../Common/cookie.php";
                 ;
               }
             }
+
             .fa-star.active {
               color: orange;
             }

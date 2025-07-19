@@ -1,24 +1,53 @@
 <?php
+ob_start(); // Start output buffering
 session_start();
 
+// Check if session exists and has valid ID
 if (!isset($_SESSION['id'])) {
-  header("location:../Main/hfe.php");
+    // Set error message in session
+    $_SESSION['error_msg'] = "Your session has expired. Please login again.";
+    header("location:../Account/login.php");
+    exit();
 }
 
 require "../Main/header.php";
 
-if (isset($_SESSION['id'])) {
-  $id = $_SESSION['id'];
-} else if (isset($_GET['id'])) {
-  $id = $_GET['id'];
-}
+try {
+    // Get user ID from session or query parameter
+    if (isset($_SESSION['id'])) {
+        $id = $_SESSION['id'];
+    } else if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    } else {
+        throw new Exception("User ID not found");
+    }
 
-$usersql = 'select* from customers where customer_id=' . $id;
-$userstmt = $pdo->query($usersql);
-$userrow = $userstmt->fetch(PDO::FETCH_ASSOC);
-$susersql = 'select* from customer_delivery_details where type="permanent" and customer_id=' . $id;
-$suserstmt = $pdo->query($susersql);
-$suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
+    // Validate that ID is numeric
+    if (!is_numeric($id)) {
+        throw new Exception("Invalid user ID");
+    }
+
+    // Fetch user details
+    $usersql = 'SELECT * FROM customers WHERE customer_id = :id';
+    $userstmt = $pdo->prepare($usersql);
+    $userstmt->execute(['id' => $id]);
+    $userrow = $userstmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$userrow) {
+        throw new Exception("Your session has expired. Please login again.");
+    }
+
+    // Fetch delivery details
+    $susersql = 'SELECT * FROM customer_delivery_details WHERE type="permanent" AND customer_id = :id';
+    $suserstmt = $pdo->prepare($susersql);
+    $suserstmt->execute(['id' => $id]);
+    $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
+
+} catch (Exception $e) {
+    $_SESSION['error_msg'] = $e->getMessage();
+    header("location:../Main/hfe.php");
+    exit();
+}
 ?>
 <style type="text/css">
   .left-log {
