@@ -1289,11 +1289,11 @@ if (session_status() === PHP_SESSION_NONE) {
 	</div>
 	</div>-->
     <!-- navigation -->
-    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 10px;">
+    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 10px;background-color: #050505; border: 0px !important;">
       <div class="container-fluid">
         <div class="row">
           <div style="padding: 0px">
-            <div class="navbar-header">
+            <div class="navbar-header" style="background-color: #333;">
               <button
                 class="navbar-toggle"
                 data-target="#mobile_menu"

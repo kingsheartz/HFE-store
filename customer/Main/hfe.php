@@ -9,7 +9,7 @@ require "../Common/cookie.php";
   }
 
   body {
-    background: #8080807a;
+    background: #000000;
   }
 
   .block-slider img {
@@ -246,7 +246,14 @@ require "../Common/cookie.php";
   </div><br>
 </div>
 <!-- ./Slider -->
-<div>
+<div style="
+  background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(35,35,35,0.85));
+  color: #f1f1f1;
+  padding: 24px 28px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255,255,255,0.05);
+">
   <br>
   <!-- //top-header and slider -->
   <!-- top-brands -->
@@ -341,14 +348,14 @@ require "../Common/cookie.php";
       display: inline-block;
       overflow: hidden;
       text-align: center;
-      border: 1px solid #d2d2d2;
+      border: 1px solid #a8a8a8;
       padding: 0px;
       padding-bottom: 0px;
       position: relative;
       height: 275px;
       width: 250px;
-      background: white;
-      color: #000;
+      background: #000;
+      color: #a8a8a8;
       margin-right: 20px;
     }
 
@@ -808,7 +815,6 @@ require "../Common/cookie.php";
                 ;
               }
             }
-
             .fa-star.active {
               color: orange;
             }
