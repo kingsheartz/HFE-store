@@ -8704,7 +8704,7 @@ if (isset($_POST['customer_rated']) && $_POST['customer_rated'] == 1) {
   ));
   /*COLOR PICKER*/
   $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-  $bgcolor = array('orange', '#4f8a40', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+  $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
   $c1 = 'white';
   $rancolor1 = array_rand($color, 1);
   if ($bgcolor[$rancolor1] == "cyan" || $bgcolor[$rancolor1] == "#FF6666" || $bgcolor[$rancolor1] == "#E6BF00") {
@@ -8778,7 +8778,7 @@ if (isset($_POST['edit_customer_rated']) && $_POST['edit_customer_rated'] == 1) 
     <div class="clearfix"></div>
     <label class="form-label" for="reviewinput">edit your review <i class="fas fa-pen"></i><span style="color:red" onclick="canceledit()">&nbsp;Cancel</span><span id="charnow" style="color:rgb(0, 97, 0);padding-left:10px">' . strlen($review) . '</span>/<span style="color:rgb(0, 97, 0)">500</span></label>
     <div class="form-group input-field" style="width: 100%;margin-top:0;">
-      <textarea maxlength="500" style="width:100%;outline:#4f8a40" title="Maximum character count is 500" rows="4" onkeyup="changed_details();maxchar()" onfocus="dis_add();" onblur="dis_add()" id="reviewinput" placeholder="" >' . $review . '</textarea>
+      <textarea maxlength="500" style="width:100%;outline:#139b3b" title="Maximum character count is 500" rows="4" onkeyup="changed_details();maxchar()" onfocus="dis_add();" onblur="dis_add()" id="reviewinput" placeholder="" >' . $review . '</textarea>
       <span onclick="dis_add()" id="dis_add" class="fa fa-sm fa-edit" style="position: absolute;right: 0;top: 0;color: white;background-color:#0c77cc;padding: 4px;" onmouseover="$(this).css(\'background-color\',\'#0c66cc\')" onmouseleave="$(this).css(\'background-color\',\'#0c77cc\')"></span>
       <span onclick="reset_add()" id="hide_add" class="fa fa-sm fa-close" style="display: none;position: absolute;right: 0;top: 0;color: white;background-color:red;padding: 5px;padding-top: 4px;padding-bottom: 4px;" onmouseover="$(this).css(\'background-color\',\'#bb0000\')" onmouseleave="$(this).css(\'background-color\',\'red\')"></span>
       <span onclick="dis_ok()" id="hide_add1" class="fa fa-check" style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color:#07C103;padding: 3px;" onmouseover="$(this).css(\'background-color\',\'#4f994f\')" onmouseleave="$(this).css(\'background-color\',\'#07C103\')"></span>
@@ -8806,7 +8806,7 @@ if (isset($_POST['cancel_customer_rated']) && $_POST['cancel_customer_rated'] ==
   $customer_id = $_POST['customer_id'];
   /*COLOR PICKER*/
   $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-  $bgcolor = array('orange', '#4f8a40', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+  $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
   $c1 = 'white';
   $rancolor1 = array_rand($color, 1);
   if ($bgcolor[$rancolor1] == "cyan" || $bgcolor[$rancolor1] == "#FF6666" || $bgcolor[$rancolor1] == "#E6BF00") {

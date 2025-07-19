@@ -382,7 +382,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .dropdown-menu li>span:nth-child(1) {
-      color: #4f8a40;
+      color: #139b3b;
     }
 
     .dropdown-menu li {
@@ -469,7 +469,7 @@ if (session_status() === PHP_SESSION_NONE) {
     .side_nav_content_head:hover,
     .category_side_head:hover {
       color: white !important;
-      background-color: #4f8a40 !important;
+      background-color: #139b3b !important;
       border-bottom: 0px;
       border-bottom-right-radius: 0px;
       border-bottom-left-radius: 0px;
@@ -484,8 +484,8 @@ if (session_status() === PHP_SESSION_NONE) {
       border-bottom-left-radius: 5px;
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
-      border-left: 5px #4f8a40 solid;
-      border-right: 5px #4f8a40 solid;
+      border-left: 5px #139b3b solid;
+      border-right: 5px #139b3b solid;
     }
 
     .side_nav_content_head,
@@ -567,8 +567,8 @@ if (session_status() === PHP_SESSION_NONE) {
       border-bottom: 0px;
       border-bottom-right-radius: 0px;
       border-bottom-left-radius: 0px;
-      border-left: 5px #4f8a40 solid;
-      border-right: 5px #4f8a40 solid;
+      border-left: 5px #139b3b solid;
+      border-right: 5px #139b3b solid;
     }
 
     .side_drop_li>span:hover {
@@ -576,7 +576,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .side_drop_li>span:nth-child(1) {
-      color: #4f8a40;
+      color: #139b3b;
     }
 
     .side_drop_li {
@@ -611,8 +611,8 @@ if (session_status() === PHP_SESSION_NONE) {
       border-bottom-left-radius: 5px;
       border-top-right-radius: 5px;
       border-bottom-right-radius: 5px;
-      border-left: 5px #4f8a40 solid;
-      border-right: 5px #4f8a40 solid;
+      border-left: 5px #139b3b solid;
+      border-right: 5px #139b3b solid;
     }
 
     .slide_drop_li_main_first {
@@ -1089,9 +1089,9 @@ if (session_status() === PHP_SESSION_NONE) {
                           <span class="input-group-btn">
                             <button
                               onclick="check()"
-                              onmouseover="$(this).css('background-color','#4f8a40')"
-                              onmouseleave="$(this).css('background-color','#4f8a40')"
-                              style="color: white;background-color: #4f8a40;border: 0px;height: 30px;"
+                              onmouseover="$(this).css('background-color','#139b3b')"
+                              onmouseleave="$(this).css('background-color','#139b3b')"
+                              style="color: white;background-color: #139b3b;border: 0px;height: 30px;"
                               class="btn btn-default search_btn" type="button">
                               <span class="fa fa-search"></span>
                             </button>
@@ -1185,9 +1185,9 @@ if (session_status() === PHP_SESSION_NONE) {
                           <span class="input-group-btn">
                             <button
                               onclick="check2()"
-                              onmouseover="$(this).css('background-color','#4f8a40')"
-                              onmouseleave="$(this).css('background-color','#4f8a40')"
-                              style="color: white;background-color: #4f8a40;border: 0px;height: 30px;"
+                              onmouseover="$(this).css('background-color','#139b3b')"
+                              onmouseleave="$(this).css('background-color','#139b3b')"
+                              style="color: white;background-color: #139b3b;border: 0px;height: 30px;"
                               class=" btn btn-default search_btn"
                               type="button"><span class="fa fa-search"></span>
                             </button>
@@ -1534,7 +1534,7 @@ if (session_status() === PHP_SESSION_NONE) {
       </i>
     </a><br>
     <!-- ||||||||||||||||||||||||||||||||||||||||||||||||#1#|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
-    <a class="side_nav_content_header" href="#" style="color: #4f8a40">
+    <a class="side_nav_content_header" href="#" style="color: #139b3b">
       <i class="fa fa-sm fa-shopping-cart" style="color:white "></i> Shop By Category
     </a>
     <?php
@@ -1564,7 +1564,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <div id="side_cat_list_endi" style="display: none;margin-top: 37px;"></div><!--n+4 breaks 37px difference-->
     <div id="side_cat_list_endj" style="display: none;margin-top: 0px;"></div><!--n+4 breaks 37px difference-->
     <a class="side_nav_content_end" id="side_nav_content_end_line" href="#"></a><br />
-    <a class="side_nav_content_header" href="#" style="color: #4f8a40">
+    <a class="side_nav_content_header" href="#" style="color: #139b3b">
       <i class="fa fa-sm fa-cog" style="color:white "></i> Help & Settings
     </a>
     <?php
@@ -1596,6 +1596,6 @@ if (session_status() === PHP_SESSION_NONE) {
     ?>
     <a class="side_nav_content_end" href="#"></a>
   </div>
-  <!--SIDE-BAR-DIV #4f8a40,#02171e,#337ab7-->
+  <!--SIDE-BAR-DIV #139b3b,#02171e,#337ab7-->
   <!--<div id="main_all" style="padding: 0px;margin: 0px;left: 0px;right: 0px">-->
   <!--SIDE-BAR-DIV-->

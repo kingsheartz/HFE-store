@@ -351,7 +351,7 @@ function randomGen($min, $max, $quantity)
   /* On hover, add a black background color with a little bit see-through */
   .prev-single:hover,
   .next-single:hover {
-    background-color: #4f8a40;
+    background-color: #139b3b;
     color: white;
   }
 
@@ -1840,7 +1840,7 @@ function randomGen($min, $max, $quantity)
                 <?php
                 /*COLOR PICKER*/
                 $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-                $bgcolor = array('orange', '#4f8a40', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+                $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
                 $reviewlen = 0;
                 //customer REVIEW
                 //-------------------------------------------------------------------------------------------------------------------
@@ -1974,7 +1974,7 @@ function randomGen($min, $max, $quantity)
                             <div class="form-group input-field" style="width: 100%;margin-top:0;">
                               <textarea
                                 maxlength="500"
-                                style="width:100%;outline:#4f8a40"
+                                style="width:100%;outline:#139b3b"
                                 title="Maximum character count is 500"
                                 rows="4"
                                 oninput="$(this).removeClass('invalid');"
@@ -2668,7 +2668,7 @@ function randomGen($min, $max, $quantity)
   );
   /*COLOR PICKER*/
   $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-  $bgcolor = array('orange', '#4f8a40', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+  $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
   $c1 = $c2 = 'white';
   do {
     $rancolor1 = array_rand($color, 1);

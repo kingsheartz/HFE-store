@@ -465,8 +465,8 @@ require "../Main/header.php";
                         <button
                           onclick="reglocate()"
                           onmouseover="$(this).css('background-color','#ee8126');$(this).css('border-color','#ee8126')"
-                          onmouseleave="$(this).css('background-color','#4f8a40');$(this).css('border-color','#4f8a40')"
-                          style="color: white;background-color:#4f8a40;padding-top:10px;padding-bottom: 10px;outline: none;border-color:#4f8a40 "
+                          onmouseleave="$(this).css('background-color','#139b3b');$(this).css('border-color','#139b3b')"
+                          style="color: white;background-color:#139b3b;padding-top:10px;padding-bottom: 10px;outline: none;border-color:#139b3b "
                           class="btn btn-default search_btn" type="button">
                           <span class="fa fa-search"></span>
                         </button>
@@ -875,7 +875,7 @@ require "../Main/header.php";
             <a
               href="../Main/hfe.php"
               onmouseover="$(this).css('background-color','#0c66cc')"
-              onmouseleave="$(this).css('background-color','#4f8a40')"
+              onmouseleave="$(this).css('background-color','#139b3b')"
               style="color: white; background-color: rgb(56 56 56); border-radius: 5px; font-size: 12px;">
               Home
             </a>

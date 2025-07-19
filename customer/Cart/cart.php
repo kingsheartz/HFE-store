@@ -26,7 +26,7 @@ function randomGen($min, $max, $quantity)
   input[type="submit"],
   button[type=submit],
   input[type="button"] {
-    background: none repeat scroll 0 0 #4f8a40;
+    background: none repeat scroll 0 0 #139b3b;
     border: medium none;
     color: #fff;
     padding: 11px 20px;
@@ -60,7 +60,7 @@ function randomGen($min, $max, $quantity)
   }
 
   table.shop_table th {
-    background: none repeat scroll 0 0 #4f8a40;
+    background: none repeat scroll 0 0 #139b3b;
     color: #ffffff;
     font-size: 15px;
     text-transform: uppercase;
@@ -89,7 +89,7 @@ function randomGen($min, $max, $quantity)
   }
 
   .cart-collaterals h2 {
-    color: #4f8a40;
+    color: #139b3b;
     font-size: 25px;
     margin-bottom: 25px;
     text-transform: uppercase;
@@ -137,7 +137,7 @@ function randomGen($min, $max, $quantity)
   }
 
   div.cart-collaterals ul.products li.product .onsale {
-    background: none repeat scroll 0 0 #4f8a40;
+    background: none repeat scroll 0 0 #139b3b;
     color: #fff;
     padding: 5px 10px;
     position: absolute;
@@ -163,7 +163,7 @@ function randomGen($min, $max, $quantity)
   }
 
   div.cart-collaterals ul.products li.product .price ins {
-    color: #4f8a40;
+    color: #139b3b;
     font-weight: 700;
     margin-left: 10px;
     text-decoration: none;
@@ -274,7 +274,7 @@ function randomGen($min, $max, $quantity)
     }
 
     #proceed {
-      background: none repeat scroll 0 0 #4f8a40;
+      background: none repeat scroll 0 0 #139b3b;
       border: medium none;
       color: #fff;
       padding: 0px 8px;
@@ -1216,7 +1216,7 @@ function randomGen($min, $max, $quantity)
           } else {
             /*COLOR PICKER*/
             $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-            $bgcolor = array('orange', '#4f8a40', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+            $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
             $c1 = $c2 = 'white';
             do {
               $rancolor1 = array_rand($color, 1);
@@ -1293,7 +1293,7 @@ function randomGen($min, $max, $quantity)
       <?php
             /*COLOR PICKER*/
             $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-            $bgcolor = array('orange', '#4f8a40', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+            $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
             $c1 = $c2 = 'white';
             do {
               $rancolor1 = array_rand($color, 1);

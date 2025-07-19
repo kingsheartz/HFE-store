@@ -269,7 +269,7 @@
   </div>
   <div class="footer-copy">
     <div class="container">
-      <p>© 2025 HFE. All rights reserved | <a id="me" onmouseover="$('#me').css('color','#4f8a40')" onmouseleave="$('#me').css('color','#4f8a40')" href="www.HFE-Store.com">Govind</a></p>
+      <p>© 2025 HFE. All rights reserved | <a id="me" onmouseover="$('#me').css('color','#139b3b')" onmouseleave="$('#me').css('color','#139b3b')" href="www.HFE-Store.com">Govind</a></p>
     </div>
   </div>
 </div>

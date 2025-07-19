@@ -129,7 +129,7 @@ $cat_name2=$catrow2['category_name'];
 style="max-height: 180px;width: auto;max-width: 180px;image-rendering: auto;margin-left: auto;margin-right: auto;"
 
 //color ouline selected///
-#66afe9---------#4f8a40----------#02171e-------------#337ab7
+#66afe9---------#139b3b----------#02171e-------------#337ab7
 //color ouline selected///
 
 .cat-img a img{
