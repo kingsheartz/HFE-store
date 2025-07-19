@@ -7,8 +7,9 @@ if (isset($_GET['product'])) {
     "SELECT category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
 		INNER JOIN product_description ON product_description.product_id=product.product_id
 		INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
+		INNER JOIN store ON product_details.store_id=store.store_id
 		INNER JOIN category ON category.category_id=product.category_id
-		where product.product_name like \"%$nm%\" "
+		where product.product_name like \"%$nm%\" GROUP BY product_description.product_description_id"
   );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
 	if ($row2) {
@@ -23,7 +24,7 @@ if (isset($_GET['product'])) {
     INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
     INNER JOIN store ON product_details.store_id=store.store_id
     INNER JOIN category ON category.category_id=product.category_id
-    where category.category_id=$cat GROUP BY product.product_id "
+    where category.category_id=$cat GROUP BY product.product_id"
   );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
 	if ($row2) {
@@ -325,7 +326,7 @@ if (isset($_GET['product'])) {
           "max-price": maxprice,
           "page_no": pageId,
           "sort": sort,
-          "item": '<?= $_GET['product'] ?>'
+          "product": '<?= $_GET['product'] ?>'
         }, //form data
         type: "post", //post data
         dataType: "json", //datatype=json format
@@ -419,7 +420,7 @@ if (isset($_GET['product'])) {
             "min-price": minprice,
             "max-price": maxprice,
             "sort": sort,
-            "item": '<?= $_GET['product'] ?>'
+            "product": '<?= $_GET['product'] ?>'
           }, //form data
           type: "post", //post data
           dataType: "json", //datatype=json format
@@ -464,7 +465,7 @@ if (isset($_GET['product'])) {
             "min-price": minprice,
             "max-price": maxprice,
             "sort": sort,
-            "item": '<?= $_GET['product'] ?>'
+            "product": '<?= $_GET['product'] ?>'
           }, //form data
           type: "post", //post data
           dataType: "json", //datatype=json format
@@ -557,7 +558,7 @@ if (isset($_GET['product'])) {
             "min-price": minprice,
             "max-price": maxprice,
             "sort": sort,
-            "item": '<?= $_GET['product'] ?>'
+            "product": '<?= $_GET['product'] ?>'
           }, //form data
           type: "post", //post data
           dataType: "json", //datatype=json format

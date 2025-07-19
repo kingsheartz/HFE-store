@@ -3,7 +3,6 @@ require "../Main/header.php";
 require "../../db.php";
 if (isset($_GET['product'])) {
   $nm = strtolower($_GET['product']);
-  echo "<h1>" . $nm . "</h1>";
   $res = $pdo->query(
     "SELECT category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
     INNER JOIN product_description ON product_description.product_id=product.product_id
@@ -337,7 +336,7 @@ if (isset($_GET['product'])) {
           "max-price": maxprice,
           "page_no": pageId,
           "sort": sort,
-          "item": '<?= $_GET['product'] ?>'
+          "product": '<?= $_GET['product'] ?>'
         }, //form data
         type: "post", //post data
         dataType: "json", //datatype=json format
@@ -447,7 +446,7 @@ if (isset($_GET['product'])) {
               "min-price": minprice,
               "max-price": maxprice,
               "sort": sort,
-              "item": '<?= $_GET['product'] ?>'
+              "product": '<?= $_GET['product'] ?>'
             }, //form data
             type: "post", //post data
             dataType: "json", //datatype=json format
@@ -493,7 +492,7 @@ if (isset($_GET['product'])) {
               "min-price": minprice,
               "max-price": maxprice,
               "sort": sort,
-              "item": '<?= $_GET['product'] ?>'
+              "product": '<?= $_GET['product'] ?>'
             }, //form data
             type: "post", //post data
             dataType: "json", //datatype=json format
@@ -589,7 +588,7 @@ if (isset($_GET['product'])) {
             "min-price": minprice,
             "max-price": maxprice,
             "sort": sort,
-            "item": '<?= $_GET['product'] ?>'
+            "product": '<?= $_GET['product'] ?>'
           }, //form data
           type: "post", //post data
           dataType: "json", //datatype=json format

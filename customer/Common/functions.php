@@ -6808,7 +6808,7 @@ if (isset($_POST['filter_cat_b'])) {
           </div>
           <div class="col-sm-9 col-xs-9" style="padding:0px;">
             <table width="100%" style="padding:0px;margin:0px;">
-              <tr><td><div style="width: 100%;text-align: center;color: #000;font-weight:bold;font-size:20px;padding-top:30px">' . $row['product_name'] . '</div></td></tr>
+              <tr><td><div style="width: 100%;text-align: left;color: #000;font-weight:bold;font-size:20px;padding-top:30px">' . $row['product_name'] . '</div></td></tr>
             </table>
             <div class="col-sm-12 col-xs-12" style="padding:0px;">
               <div class="col-sm-7 col-xs-7" style="min-height:200px;padding:0;">
@@ -7650,7 +7650,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
           </div>
           <div class="col-sm-9 col-xs-9" style="padding:0px;">
             <table >
-              <tr><td><div style="width: 100%;text-align: center;color: #000;font-weight:bold;font-size:20px;padding-top:30px">' . $row['product_name'] . '</div></td></tr>
+              <tr><td><div style="width: 100%;text-align: left;color: #000;font-weight:bold;font-size:20px;padding-top:30px">' . $row['product_name'] . '</div></td></tr>
             </table>
             <div class="col-sm-12 col-xs-12" style="padding:0px;">
               <div class="col-sm-7 col-xs-7" style="min-height:200px;padding:0;">
@@ -8449,7 +8449,7 @@ if (isset($_POST['filter_item_b'])) {
 </div>
 <div class="col-sm-9 col-xs-9" style="padding:0px;">
  <table >
-    <tr><td><div style="width: 100%;text-align: center;color: #000;font-weight:bold;font-size:20px;padding-top:30px">' . $row['product_name'] . '</div></td></tr>
+    <tr><td><div style="width: 100%;text-align: left;color: #000;font-weight:bold;font-size:20px;padding-top:30px">' . $row['product_name'] . '</div></td></tr>
 </table>
 <div class="col-sm-12 col-xs-12" style="padding:0px;">
 <div class="col-sm-7 col-xs-7" style="min-height:200px;padding:0;">
@@ -8485,7 +8485,7 @@ if (isset($_POST['filter_item_b'])) {
         INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
         INNER JOIN store ON product_details.store_id=store.store_id
         INNER JOIN category ON category.category_id=product.category_id
-        WHERE category.category_id=" . $row['category_id'] . " AND product_description.product_description_id=" . $row['product_description_id'] . " AND "
+        WHERE category.category_id=" . $row['category_id'] . " AND product_description.product_description_id=" . $row['product_description_id']
       );
       $product_det_row = $product_det->fetch(PDO::FETCH_ASSOC);
       $dynamic_content .= '<tr class=" dw"><th class="cust_header2"><li>Category</th>
