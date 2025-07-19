@@ -1,8 +1,9 @@
 <?php
 require "../Main/header.php";
 require "../../db.php";
-if (isset($_GET['item'])) {
-  $nm = strtolower($_GET['item']);
+if (isset($_GET['product'])) {
+  $nm = strtolower($_GET['product']);
+	echo "<h1>". $nm ."</h1>";
   $res = $pdo->query(
     "SELECT category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
     INNER JOIN product_description ON product_description.product_id=product.product_id
@@ -12,8 +13,10 @@ if (isset($_GET['item'])) {
     WHERE  product.product_name LIKE \"%$nm%\" GROUP BY product_description.product_description_id"
   );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
-  $name = $row2['product_name'];
-  $cat_id = $row2['category_id'];
+	if ($row2) {
+		$name = $row2['product_name'];
+		$cat_id = $row2['category_id'];
+	}
 }  else if (isset($_GET['category_id'])) {
   $cat = $_GET['category_id'];
   try {
@@ -40,7 +43,6 @@ if (isset($_GET['item'])) {
 <link href='../../css/product.css' rel='stylesheet'>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-
 </style>
 <script>
   function getCookieset(cname) {
@@ -239,7 +241,7 @@ if (isset($_GET['item'])) {
         x = rows[i].getElementsByTagName("TD")[n];
         y = rows[i + 1].getElementsByTagName("TD")[n];
         /* Check if the two rows should switch place,
-        based ON the direction, asc or desc: */
+        based on the direction, asc or desc: */
         if (n == 2) {
           a = x.innerHTML.substring(1);
           b = y.innerHTML.substring(1);
@@ -295,7 +297,7 @@ if (isset($_GET['item'])) {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   <?php
-  if (isset($_GET['item'])) {
+  if (isset($_GET['product'])) {
   ?>
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -335,7 +337,7 @@ if (isset($_GET['item'])) {
           "max-price": maxprice,
           "page_no": pageId,
           "sort": sort,
-          "item": '<?= $_GET['item'] ?>'
+          "item": '<?= $_GET['product'] ?>'
         }, //form data
         type: "post", //post data
         dataType: "json", //datatype=json format
@@ -445,7 +447,7 @@ if (isset($_GET['item'])) {
               "min-price": minprice,
               "max-price": maxprice,
               "sort": sort,
-              "item": '<?= $_GET['item'] ?>'
+              "item": '<?= $_GET['product'] ?>'
             }, //form data
             type: "post", //post data
             dataType: "json", //datatype=json format
@@ -491,7 +493,7 @@ if (isset($_GET['item'])) {
               "min-price": minprice,
               "max-price": maxprice,
               "sort": sort,
-              "item": '<?= $_GET['item'] ?>'
+              "item": '<?= $_GET['product'] ?>'
             }, //form data
             type: "post", //post data
             dataType: "json", //datatype=json format
@@ -587,7 +589,7 @@ if (isset($_GET['item'])) {
             "min-price": minprice,
             "max-price": maxprice,
             "sort": sort,
-            "item": '<?= $_GET['item'] ?>'
+            "item": '<?= $_GET['product'] ?>'
           }, //form data
           type: "post", //post data
           dataType: "json", //datatype=json format
@@ -641,7 +643,6 @@ if (isset($_GET['item'])) {
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   else if (isset($_GET['category_id'])) {
   ?>
-
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     var filter = [];
@@ -850,8 +851,6 @@ if (isset($_GET['item'])) {
               }
             },
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
-											console.log("in 671 filter categ", message);
-
               $('.background_loader').hide();
               $('.std_text2').hide();
               if (textstatus === "timeout") {
@@ -1035,7 +1034,7 @@ if ($result_cnt == 0) {
           <div class="wrapper hide_nav_small" style="margin: 0;width: 100% !important;">
             <div class="d-md-flex align-items-md-center" style="width: 100%;">
               <?php
-              if (isset($_GET['item'])) {
+              if (isset($_GET['product'])) {
               ?>
                 <div class="h3" style="font-family: 'Poppins', sans-serif">Search results <span class='fa fa-search'></span></div>
               <?php
@@ -1050,9 +1049,9 @@ if ($result_cnt == 0) {
                   <span class="fas fa-th px-md-2 px-1"></span><span>Grid view</span>
                 </span>
                 <?php
-                if (isset($_GET['item'])) {
+                if (isset($_GET['product'])) {
                 ?>
-                  <span class="btn-pdt_pg list_view_mul listview" onclick="location.href='../Product/products.php?item=<?= $_GET['item'] ?>'"> &nbsp;
+                  <span class="btn-pdt_pg list_view_mul listview" onclick="location.href='../Product/products.php?product=<?= $_GET['product'] ?>'"> &nbsp;
                     <span class="fas fa-list-ul"></span>
                     <span class="px-md-2 px-1">List view</span>
                   </span>
@@ -1185,8 +1184,8 @@ if ($result_cnt == 0) {
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                if (isset($_GET['category_id']) || isset($_GET['item'])) {
-                  if (isset($_GET['item'])) {
+                if (isset($_GET['category_id']) || isset($_GET['product'])) {
+                  if (isset($_GET['product'])) {
                     $brandsql = "SELECT brand.brand_name,brand.brand_id from product
                                 INNER JOIN product_description ON product_description.product_id=product.product_id
                                 INNER JOIN brand ON product_description.brand=brand.brand_id
@@ -1194,7 +1193,7 @@ if ($result_cnt == 0) {
                                 INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
                                 INNER JOIN store ON product_details.store_id=store.store_id
                                 INNER JOIN category ON category.category_id=product.category_id
-                                WHERE product.product_name LIKE '%" . $_GET['item'] . "%' GROUP BY brand.brand_name";
+                                WHERE product.product_name LIKE '%" . $_GET['product'] . "%' GROUP BY brand.brand_name";
                   } else if (isset($_GET['category_id']) ) {
                     if (isset($_GET['category_id'])) {
                       $keeper = 'product.category_id';
@@ -1492,8 +1491,8 @@ if ($result_cnt == 0) {
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  if (isset($_GET['category_id']) || isset($_GET['item'])) {
-                    if (isset($_GET['item'])) {
+                  if (isset($_GET['category_id']) || isset($_GET['product'])) {
+                    if (isset($_GET['product'])) {
                       $brandsql = "SELECT brand.brand_name,brand.brand_id from product
                                   INNER JOIN product_description ON product_description.product_id=product.product_id
                                   INNER JOIN brand ON product_description.brand=brand.brand_id
