@@ -18,6 +18,18 @@ require_once '../../mail/contactform/config.php';
 //use PHPMailer\PHPMailer\PHPMailer;
 //use PHPMailer\PHPMailer\Exception;
 //Email smtp access
+//-----------------Get Base URL-----------------------------------------------------------------------------------------
+function getBaseUrl() {
+    $protocol = (!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off' || $_SERVER['SERVER_PORT'] == 443) ? "https://" : "http://";
+    $host = $_SERVER['HTTP_HOST'];
+    $script = $_SERVER['SCRIPT_NAME']; // e.g. /HFE-Store/customer/Main/hfe.php
+    $parts = explode('/', trim($script, '/'));
+    
+    // Adjust 'HFE-Store' part length (here: 1 level deep)
+    $basePath = '/' . $parts[0] . '/';
+
+    return $protocol . $host . $basePath;
+}
 //-----------------Name Check------------------------------------------------------------------------------------------
 if (isset($_POST['checkname'])) {
   $name = clean_text($_POST["name"]);
@@ -129,11 +141,11 @@ if (isset($_POST['register'])) {
       $from = 'healthandfitnessequipmentstore@gmail.com';
       $subject = 'Account Activation Required';
       $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-      $activate_link = '../Common/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
+      $activate_link = getBaseUrl() . 'customer/Common/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
       $message = '
         <table style="width:100%!important">
           <tbody>
-            <tr style="" width="834px" height="60" background="../../images/logo/log2.jpg" align="center">
+            <tr style="" width="834px" height="60" background="' . getBaseUrl() . 'images/logo/log2.jpg" align="center">
               <td>
                 <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
                   <tbody>
@@ -143,8 +155,8 @@ if (isset($_POST['register'])) {
                           <tbody>
                             <tr>
                               <td style="width:35%;text-align:left">
-                                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                  <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
+                                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="'. getBaseUrl(). '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                  <img border="0"  src="' . getBaseUrl() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                 </a>
                               </td>
                               <td style="width:60%;text-align:right;padding-top:5px">
@@ -533,12 +545,12 @@ if (isset($_POST['update_customer_details'])) {
       $from = 'healthandfitnessequipmentstore@gmail.com';
       $subject = 'Account Details Updated';
       $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-      $activate_link = '../Common/functions.php?emailupdateverified=1&emailcurrent=' . $row['email'] . '&emailnew=' . $_POST['email'] . '&code=' . $uniqid . '&id=' . $customer_id;
-      $cancel = '../Common/functions.php?emailupdateverified=0&emailcurrent=' . $row['email'] . '&emailnew=' . $_POST['email'] . '&code=' . $uniqid;
+      $activate_link = getBaseUrl() . 'customer/Common/functions.php?emailupdateverified=1&emailcurrent=' . $row['email'] . '&emailnew=' . $_POST['email'] . '&code=' . $uniqid . '&id=' . $customer_id;
+      $cancel = getBaseUrl() . 'customer/Common/functions.php?emailupdateverified=0&emailcurrent=' . $row['email'] . '&emailnew=' . $_POST['email'] . '&code=' . $uniqid;
       $message = '
         <table style="width:100%!important">
           <tbody>
-            <tr width="834px" height="60" background="../../images/logo/log2.jpg" align="center">
+            <tr width="834px" height="60" background="' . getBaseUrl() . 'images/logo/log2.jpg" align="center">
               <td>
                 <table
                   width="100%"
@@ -556,14 +568,14 @@ if (isset($_POST['update_customer_details'])) {
                               <td style="width:35%;text-align:left">
                                 <a
                                   style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                  href="https://www.HFE-Store.ml"
+                                  href="'. getBaseUrl(). '"
                                   rel="noreferrer"
                                   target="_blank"
                                   data-saferedirecturl=""
                                 >
                                   <img
                                     border="0"
-                                    src="../../images/logo/logo.png"
+                                    src="' . getBaseUrl() . 'images/logo/logo.png"
                                     alt="HFE-Store.ml"
                                     style="border:none"
                                     class="CToWUd"
@@ -1244,11 +1256,11 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
           //$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
           //$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
           //$activate_link = 'https://HFE-Store.epizy.com/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-          $activate_link = 'http://localhost:81/HFE-Store-Renewed/HFE-Store-website';
+          $activate_link = getBaseUrl();
           $message = '
             <table style="width:100%!important">
               <tbody>
-                <tr style="" width="834px" height="60" background="../../images/logo/log2.jpg" align="center">
+                <tr style="" width="834px" height="60" background="' . getBaseUrl() . 'images/logo/log2.jpg" align="center">
                   <td>
                     <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
                       <tbody>
@@ -1258,8 +1270,8 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                               <tbody>
                                 <tr>
                                   <td style="width:35%;text-align:left">
-                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                      <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
+                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="'. getBaseUrl(). '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                      <img border="0"  src="' . getBaseUrl() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                     </a>
                                   </td>
                                   <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Account <span style="font-weight:bold">Activated</span></p> </td>
@@ -1571,11 +1583,11 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
           //$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
           //$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
           //$activate_link = 'https://HFE-Store.epizy.com/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-          $activate_link = 'http://localhost:81/HFE-Store-Renewed/HFE-Store-website';
+          $activate_link = getBaseUrl();
           $message = '
             <table style="width:100%!important">
               <tbody>
-                <tr style="" width="834px" height="60" background="../../images/logo/log2.jpg" align="center">
+                <tr style="" width="834px" height="60" background="' . getBaseUrl() . 'images/logo/log2.jpg" align="center">
                   <td>
                     <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
                       <tbody>
@@ -1585,8 +1597,8 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                               <tbody>
                                 <tr>
                                   <td style="width:35%;text-align:left">
-                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                      <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
+                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="'. getBaseUrl(). '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                      <img border="0"  src="' . getBaseUrl() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                     </a>
                                   </td>
                                   <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Email <span style="font-weight:bold">Verified</span></p> </td>
@@ -2794,11 +2806,11 @@ if (isset($_POST['forgotlogin'])) {
           $from = 'healthandfitnessequipmentstore@gmail.com';
           $subject = 'Reset password verification OTP';
           $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-          $activate_link = '../../extras/OS/pages/FRL/OTP-v2.php?otp=' . $otp;
+          $activate_link = getBaseUrl() . 'extras/OS/pages/FRL/OTP-v2.php?otp=' . $otp;
           $message = '
             <table style="width:100%!important">
               <tbody>
-                <tr style="" width="834px" height="60" background="../../images/logo/log2.jpg" align="center">
+                <tr style="" width="834px" height="60" background="' . getBaseUrl() . 'images/logo/log2.jpg" align="center">
                   <td>
                     <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
                       <tbody>
@@ -2808,8 +2820,8 @@ if (isset($_POST['forgotlogin'])) {
                               <tbody>
                                 <tr>
                                   <td style="width:35%;text-align:left">
-                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                      <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
+                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="'. getBaseUrl(). '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                      <img border="0"  src="' . getBaseUrl() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                     </a>
                                   </td>
                                   <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Reissuing <span style="font-weight:bold">Password</span></p> </td>
@@ -3092,11 +3104,11 @@ if (isset($_POST['forgotlogin'])) {
         $from = 'healthandfitnessequipmentstore@gmail.com';
         $subject = 'OTP generated for password recovery';
         $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-        $activate_link = '../../extras/OS/pages/FRL/OTP-v2.php?otp=' . $otp;
+        $activate_link = getBaseUrl() . 'extras/OS/pages/FRL/OTP-v2.php?otp=' . $otp;
         $message = '
           <table style="width:100%!important">
             <tbody>
-              <tr style="" width="834px" height="60" background="../../images/logo/log2.jpg" align="center">
+              <tr style="" width="834px" height="60" background="' . getBaseUrl() . 'images/logo/log2.jpg" align="center">
                 <td>
                   <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
                     <tbody>
@@ -3106,8 +3118,8 @@ if (isset($_POST['forgotlogin'])) {
                             <tbody>
                               <tr>
                                 <td style="width:35%;text-align:left">
-                                  <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                    <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
+                                  <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="'. getBaseUrl(). '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                    <img border="0"  src="' . getBaseUrl() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                   </a>
                                 </td>
                                 <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Reissuing <span style="font-weight:bold">Password</span></p> </td>
@@ -3655,7 +3667,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
   $from = 'healthandfitnessequipmentstore@gmail.com';
   $subject = 'Your requested orders';
   $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-  $activate_link = '../Order/myorders.php?id=' . $customer_id;
+  $activate_link = getBaseUrl() . 'customer/Order/myorders.php?id=' . $customer_id;
   //EMAIL SENDING//
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -3663,7 +3675,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
   $message1 = '
     <table style="width:100%!important">
       <tbody>
-        <tr background="../../images/logo/log2.jpg" width="834px" height="60">
+        <tr background="' . getBaseUrl() . 'images/logo/log2.jpg" width="834px" height="60">
           <td>
             <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
               <tbody>
@@ -3673,8 +3685,8 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                       <tbody>
                         <tr>
                           <td style="width:35%;text-align:left">
-                            <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                              <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
+                            <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="'. getBaseUrl(). '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                              <img border="0"  src="' . getBaseUrl() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                             </a>
                           </td>
                           <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Order <span style="font-weight:bold">Processed</span></p> </td>
@@ -3799,7 +3811,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                             <table width="120" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-bottom: 15px;">
                               <tbody>
                                 <tr>
-                                  <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
+                                  <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="' . getBaseUrl() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -3861,7 +3873,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                     <table>
                                       <tbody>
                                         <tr>
-                                          <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml"><img  border="0" src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
+                                          <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="'. getBaseUrl(). '"><img  border="0" src="' . getBaseUrl() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
                                           <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                           <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                         </tr>
@@ -3954,7 +3966,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $subject = 'Requested service';
-  $activate_link = '../../Store%20admin/index.php?id=' . $customer_id;
+  $activate_link = '' . getBaseUrl() . 'equipment-store-admin/index.php?id=' . $customer_id;
   for ($l = 0; $l < $i; $l++) {
     $storerecieve_sql = "SELECT sum(total_amt) AS storerecieve FROM cart  WHERE  customer_id=:customer_id AND store_id=:store_id";
     $storerecieve_stmt = $pdo->prepare($storerecieve_sql);
@@ -3968,7 +3980,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
     $message2 = '
       <table style="width:100%!important">
         <tbody>
-          <tr background="../../images/logo/log2.jpg" width="834px" height="60">
+          <tr background="' . getBaseUrl() . 'images/logo/log2.jpg" width="834px" height="60">
             <td>
               <table
                 width="100%"
@@ -3986,14 +3998,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                             <td style="width:35%;text-align:left">
                               <a
                                 style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                href="https://www.HFE-Store.ml"
+                                href="'. getBaseUrl(). '"
                                 rel="noreferrer"
                                 target="_blank"
                                 data-saferedirecturl=""
                               >
                                 <img
                                   border="0"
-                                  src="../../images/logo/logo.png"
+                                  src="' . getBaseUrl() . 'images/logo/logo.png"
                                   alt="HFE-Store.ml"
                                   style="border:none"
                                   class="CToWUd"
@@ -4297,7 +4309,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                       >
                                         <img
                                           border="0"
-                                          src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
+                                          src="' . getBaseUrl() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
                                           alt="' . $store_array[$l]['product_name'][$m] . '"
                                           style="border:none;max-width:125px;max-height:125px;margin-top:20px"
                                           class="CToWUd"
@@ -4443,10 +4455,10 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                             <td style="width:40%;text-align:left;padding-top:5px">
                                               <a
                                                 style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                                href="https://www.HFE-Store.ml"
+                                                href="'. getBaseUrl(). '"
                                                 ><img
                                                   border="0"
-                                                  src="../../images/logo/logo.png"
+                                                  src="' . getBaseUrl() . 'images/logo/logo.png"
                                                   alt="HFE-Store.ml"
                                                   style="border:none;width: 150px;"
                                                   class="CToWUd"
@@ -5028,7 +5040,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
   $from = 'healthandfitnessequipmentstore@gmail.com';
   $subject = 'Your requested orders';
   $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-  $activate_link = '../Order/myorders.php?id=' . $customer_id;
+  $activate_link = getBaseUrl() . 'customer/Order/myorders.php?id=' . $customer_id;
   //EMAIL SENDING//
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -5036,7 +5048,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
   $message1 = '
     <table style="width:100%!important">
       <tbody>
-        <tr background="../../images/logo/log2.jpg" width="834px" height="60">
+        <tr background="' . getBaseUrl() . 'images/logo/log2.jpg" width="834px" height="60">
           <td>
             <table
               width="100%"
@@ -5054,14 +5066,14 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                           <td style="width:35%;text-align:left">
                             <a
                               style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                              href="https://www.HFE-Store.ml"
+                              href="'. getBaseUrl(). '"
                               rel="noreferrer"
                               target="_blank"
                               data-saferedirecturl=""
                             >
                               <img
                                 border="0"
-                                src="../../images/logo/logo.png"
+                                src="' . getBaseUrl() . 'images/logo/logo.png"
                                 alt="HFE-Store.ml"
                                 style="border:none"
                                 class="CToWUd"
@@ -5321,7 +5333,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                             <table width="120" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-bottom: 15px;">
                               <tbody>
                                 <tr>
-                                  <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
+                                  <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="' . getBaseUrl() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -5384,7 +5396,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                     <table>
                                       <tbody>
                                         <tr>
-                                          <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml"><img  border="0" src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
+                                          <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="'. getBaseUrl(). '"><img  border="0" src="' . getBaseUrl() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
                                           <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                           <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                         </tr>
@@ -5477,7 +5489,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $subject = 'Requested service';
-  $activate_link = '../../Store%20admin/index.php?id=' . $customer_id;
+  $activate_link = '' . getBaseUrl() . 'equipment-store-admin/index.php?id=' . $customer_id;
   for ($l = 0; $l < $i; $l++) {
     $storerecieve_sql = "SELECT sum(total_amt) AS storerecieve FROM cart  WHERE  customer_id=:customer_id AND store_id=:store_id";
     $storerecieve_stmt = $pdo->prepare($storerecieve_sql);
@@ -5491,7 +5503,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
     $message2 = '
       <table style="width:100%!important">
         <tbody>
-          <tr background="../../images/logo/log2.jpg" width="834px" height="60">
+          <tr background="' . getBaseUrl() . 'images/logo/log2.jpg" width="834px" height="60">
             <td>
               <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
                 <tbody>
@@ -5501,8 +5513,8 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                           <tbody>
                             <tr>
                               <td style="width:35%;text-align:left">
-                                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                  <img border="0"  src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
+                                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="'. getBaseUrl(). '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                  <img border="0"  src="' . getBaseUrl() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none" class="CToWUd">
                                 </a>
                               </td>
                               <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Order <span style="font-weight:bold">Requested</span></p> </td>
@@ -5638,7 +5650,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                         <table width="120" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-bottom: 15px;">
                                           <tbody>
                                             <tr>
-                                              <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="../../images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
+                                              <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="../Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="' . getBaseUrl() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
                                             </tr>
                                           </tbody>
                                         </table>
@@ -5697,7 +5709,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                               <table>
                                                 <tbody>
                                                   <tr>
-                                                    <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml"><img  border="0" src="../../images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
+                                                    <td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="'. getBaseUrl(). '"><img  border="0" src="' . getBaseUrl() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd"> </a> </td>
                                                     <td style="width:55%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold" href="">HFE-Store</a>. All rights reserved  </td>
                                                     <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
                                                   </tr>
@@ -6251,7 +6263,7 @@ if (isset($_POST['filter_cat_a'])) {
           <div class='flip-box'>
             <div class='flip-box-inner' >
               <div class='flip-box-front'>
-                <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='../../images/" . $row['category_id'] . "/" . $row['product_description_id'] . ".jpg'>
+                <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='' . getBaseUrl() . 'images/" . $row['category_id'] . "/" . $row['product_description_id'] . ".jpg'>
                   <div class='card-body'>
                     <!--NAME--><br>
                     <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -6291,7 +6303,7 @@ if (isset($_POST['filter_cat_a'])) {
                       </div>
                     </div>
                     <div class='flip-box-back'>
-                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
+                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='' . getBaseUrl() . 'images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                         <div class='card-body'>
                           <!--NAME-->
                           <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -6537,7 +6549,7 @@ if (isset($_POST['filter_cat_a'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getBaseUrl() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -6800,7 +6812,7 @@ if (isset($_POST['filter_cat_b'])) {
               <tr>
                 <td>
                   <div style="height: 150px;width: 100%">
-                    <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="../../images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
+                    <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="' . getBaseUrl() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
                   </div>
                 </td>
               </tr>
@@ -6859,7 +6871,7 @@ if (isset($_POST['filter_cat_b'])) {
       $dynamic_content .= '
                   <tr>
                     <td align="right">
-                      <img style="height:auto;max-width: 100%;width:auto;max-height: 50px;display: block;padding-top:30px; " class="img-responsive" src="../../images/logo/logofill-sm.png">
+                      <img style="height:auto;max-width: 100%;width:auto;max-height: 50px;display: block;padding-top:30px; " class="img-responsive" src="' . getBaseUrl() . 'images/logo/logofill-sm.png">
                     </td>
                   </tr>
                   <tr class="div-wrapper dw" style="padding-top:30px;">
@@ -7064,7 +7076,7 @@ if (isset($_POST['filter_cat_b'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getBaseUrl() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -7246,7 +7258,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
             <div class='flip-box'>
               <div class='flip-box-inner' >
                 <div class='flip-box-front'>
-                  <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
+                  <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='' . getBaseUrl() . 'images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                     <div class='card-body'>
                       <!--NAME--><br>
                       <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -7287,7 +7299,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
                       </div>
                     </div>
                     <div class='flip-box-back'>
-                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
+                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='' . getBaseUrl() . 'images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                         <div class='card-body'>
                           <!--NAME-->
                           <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -7459,7 +7471,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getBaseUrl() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -7642,7 +7654,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
               <tr>
                   <td>
                       <div style="height: 150px;width: 100%">
-                          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="../../images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
+                          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="' . getBaseUrl() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
                       </div>
                   </td>
               </tr>
@@ -7711,7 +7723,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
       $dynamic_content .= '
                   <tr>
                     <td align="right">
-                      <img style="height:auto;max-width: 100%;width:auto;max-height: 50px;display: block;padding-top:30px; " class="img-responsive" src="../../images/logo/logofill-sm.png">
+                      <img style="height:auto;max-width: 100%;width:auto;max-height: 50px;display: block;padding-top:30px; " class="img-responsive" src="' . getBaseUrl() . 'images/logo/logofill-sm.png">
                     </td>
                   </tr>
                   <tr class="div-wrapper dw" style="padding-top:30px;">
@@ -7841,7 +7853,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getBaseUrl() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -8027,7 +8039,7 @@ if (isset($_POST['filter_item_a'])) {
           <div class='flip-box'>
             <div class='flip-box-inner' >
               <div class='flip-box-front'>
-                <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
+                <div class='card card-front' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' style='max-width: 100%;' src='' . getBaseUrl() . 'images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                   <div class='card-body'>
                     <!--NAME--><br>
                     <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -8067,7 +8079,7 @@ if (isset($_POST['filter_item_a'])) {
                       </div>
                     </div>
                     <div class='flip-box-back'>
-                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='../../images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
+                      <div class='card card-back' style='height: 320px;padding-top: 10px;'> <img  class='card-img-top' src='' . getBaseUrl() . 'images/" . $row['category_id'] .  "/" . $row['product_description_id'] . ".jpg'>
                           <div class='card-body'>
                             <!--NAME-->
                             <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
@@ -8239,7 +8251,7 @@ if (isset($_POST['filter_item_a'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getBaseUrl() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -8441,7 +8453,7 @@ if (isset($_POST['filter_item_b'])) {
     <tr>
       <td>
         <div style="height: 150px;width: 100%">
-          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="../../images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
+          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="' . getBaseUrl() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
         </div>
       </td>
     </tr>
@@ -8501,7 +8513,7 @@ if (isset($_POST['filter_item_b'])) {
       $save = ($row['mrp'] != 0) ? round(($row['mrp'] - (int) $row['price']) / $row['mrp'] * 100) : 0;
       $dynamic_content .= '<tr>
         <td align="right">
-            <img style="height:auto;max-width: 100%;width:auto;max-height: 50px;display: block;padding-top:30px; " class="img-responsive" src="../../images/logo/logofill-sm.png">
+            <img style="height:auto;max-width: 100%;width:auto;max-height: 50px;display: block;padding-top:30px; " class="img-responsive" src="' . getBaseUrl() . 'images/logo/logofill-sm.png">
             </td>
     </tr>
     <tr class="div-wrapper dw" style="padding-top:30px;">
@@ -8629,7 +8641,7 @@ if (isset($_POST['filter_item_b'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getBaseUrl() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -9057,7 +9069,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
   $from = 'healthandfitnessequipmentstore@gmail.com';
   $subject = 'Your requested orders';
   $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-  $activate_link = '../Order/myorders.php?id=' . $customer_id;
+  $activate_link = getBaseUrl() . 'customer/Order/myorders.php?id=' . $customer_id;
   //EMAIL SENDING//
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -9065,7 +9077,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
   $message1 = '
     <table style="width:100%!important">
       <tbody>
-        <tr background="../../images/logo/log2.jpg" width="834px" height="60">
+        <tr background="' . getBaseUrl() . 'images/logo/log2.jpg" width="834px" height="60">
           <td>
             <table
               width="100%"
@@ -9083,14 +9095,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                           <td style="width:35%;text-align:left">
                             <a
                               style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                              href="https://www.HFE-Store.ml"
+                              href="'. getBaseUrl(). '"
                               rel="noreferrer"
                               target="_blank"
                               data-saferedirecturl=""
                             >
                               <img
                                 border="0"
-                                src="../../images/logo/logo.png"
+                                src="' . getBaseUrl() . 'images/logo/logo.png"
                                 alt="HFE-Store.ml"
                                 style="border:none"
                                 class="CToWUd"
@@ -9381,7 +9393,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                     >
                                       <img
                                         border="0"
-                                        src="../../images/' . $store_array[$l]['product_category_id'][$m] .  '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
+                                        src="' . getBaseUrl() . 'images/' . $store_array[$l]['product_category_id'][$m] .  '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
                                         alt="' . $store_array[$l]['product_name'][$m] . '"
                                         style="border:none;max-width:125px;max-height:125px;margin-top:20px"
                                         class="CToWUd"
@@ -9533,10 +9545,10 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                           <td style="width:40%;text-align:left;padding-top:5px">
                                             <a
                                               style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                              href="https://www.HFE-Store.ml"
+                                              href="'. getBaseUrl(). '"
                                               ><img
                                                 border="0"
-                                                src="../../images/logo/logo.png"
+                                                src="' . getBaseUrl() . 'images/logo/logo.png"
                                                 alt="HFE-Store.ml"
                                                 style="border:none;width: 150px;"
                                                 class="CToWUd"
@@ -9656,7 +9668,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $subject = 'Requested service';
-  $activate_link = '../../Store%20admin/index.php?id=' . $customer_id;
+  $activate_link = '' . getBaseUrl() . 'equipment-store-admin/index.php?id=' . $customer_id;
   for ($l = 0; $l < $i; $l++) {
     $storerecieve_sql = "SELECT sum(total_amt) AS storerecieve FROM cart  WHERE  customer_id=:customer_id AND store_id=:store_id";
     $storerecieve_stmt = $pdo->prepare($storerecieve_sql);
@@ -9670,7 +9682,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
     $message2 = '
       <table style="width:100%!important">
         <tbody>
-          <tr background="../../images/logo/log2.jpg" width="834px" height="60">
+          <tr background="' . getBaseUrl() . 'images/logo/log2.jpg" width="834px" height="60">
             <td>
               <table
                 width="100%"
@@ -9688,14 +9700,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                             <td style="width:35%;text-align:left">
                               <a
                                 style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                href="https://www.HFE-Store.ml"
+                                href="'. getBaseUrl(). '"
                                 rel="noreferrer"
                                 target="_blank"
                                 data-saferedirecturl=""
                               >
                                 <img
                                   border="0"
-                                  src="../../images/logo/logo.png"
+                                  src="' . getBaseUrl() . 'images/logo/logo.png"
                                   alt="HFE-Store.ml"
                                   style="border:none"
                                   class="CToWUd"
@@ -9988,7 +10000,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                               >
                                                 <img
                                                   border="0"
-                                                  src="../../images/' . $store_array[$l]['product_category_id'][$m] .  '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
+                                                  src="' . getBaseUrl() . 'images/' . $store_array[$l]['product_category_id'][$m] .  '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
                                                   alt="' . $store_array[$l]['product_name'][$m] . '"
                                                   style="border:none;max-width:125px;max-height:125px;margin-top:20px"
                                                   class="CToWUd"
@@ -10144,10 +10156,10 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                                     <td style="width:40%;text-align:left;padding-top:5px">
                                                       <a
                                                         style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                                        href="https://www.HFE-Store.ml"
+                                                        href="'. getBaseUrl(). '"
                                                         ><img
                                                           border="0"
-                                                          src="../../images/logo/logo.png"
+                                                          src="' . getBaseUrl() . 'images/logo/logo.png"
                                                           alt="HFE-Store.ml"
                                                           style="border:none;width: 150px;"
                                                           class="CToWUd"
@@ -10326,7 +10338,7 @@ if (isset($_POST['cancel_product'])) {
   $from = 'healthandfitnessequipmentstore@gmail.com';
   $subject = 'Order cancelled';
   $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
-  $activate_link = '../Order/myorders.php?id=' . $customer_id;
+  $activate_link = getBaseUrl() . 'customer/Order/myorders.php?id=' . $customer_id;
   //EMAIL SENDING//
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -10334,7 +10346,7 @@ if (isset($_POST['cancel_product'])) {
   $message1 = '
     <table style="width:100%!important">
       <tbody>
-        <tr background="../../images/logo/log2.jpg" width="834px" height="60">
+        <tr background="' . getBaseUrl() . 'images/logo/log2.jpg" width="834px" height="60">
           <td>
             <table
               width="100%"
@@ -10352,14 +10364,14 @@ if (isset($_POST['cancel_product'])) {
                           <td style="width:35%;text-align:left">
                             <a
                               style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                              href="https://www.HFE-Store.ml"
+                              href="'. getBaseUrl(). '"
                               rel="noreferrer"
                               target="_blank"
                               data-saferedirecturl=""
                             >
                               <img
                                 border="0"
-                                src="../../images/logo/logo.png"
+                                src="' . getBaseUrl() . 'images/logo/logo.png"
                                 alt="HFE-Store.ml"
                                 style="border:none"
                                 class="CToWUd"
@@ -10648,7 +10660,7 @@ if (isset($_POST['cancel_product'])) {
                                     >
                                       <img
                                         border="0"
-                                        src="../../images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg"
+                                        src="' . getBaseUrl() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg"
                                         alt="' . $row['product_name'] . '"
                                         style="border:none;max-width:125px;max-height:125px;margin-top:20px"
                                         class="CToWUd"
@@ -10796,10 +10808,10 @@ if (isset($_POST['cancel_product'])) {
                                           <td style="width:40%;text-align:left;padding-top:5px">
                                             <a
                                               style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                              href="https://www.HFE-Store.ml"
+                                              href="'. getBaseUrl(). '"
                                               ><img
                                                 border="0"
-                                                src="../../images/logo/logo.png"
+                                                src="' . getBaseUrl() . 'images/logo/logo.png"
                                                 alt="HFE-Store.ml"
                                                 style="border:none;width: 150px;"
                                                 class="CToWUd"
@@ -10919,11 +10931,11 @@ if (isset($_POST['cancel_product'])) {
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $subject = 'Requested service cancelled by a user';
-  $activate_link = '../../Store%20admin/index.php?id=' . $row['store_id'];
+  $activate_link = '' . getBaseUrl() . 'equipment-store-admin/index.php?id=' . $row['store_id'];
   $message2 = '
     <table style="width:100%!important">
       <tbody>
-        <tr background="../../images/logo/log2.jpg" width="834px" height="60">
+        <tr background="' . getBaseUrl() . 'images/logo/log2.jpg" width="834px" height="60">
           <td>
             <table
               width="100%"
@@ -10941,14 +10953,14 @@ if (isset($_POST['cancel_product'])) {
                           <td style="width:35%;text-align:left">
                             <a
                               style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                              href="https://www.HFE-Store.ml"
+                              href="'. getBaseUrl(). '"
                               rel="noreferrer"
                               target="_blank"
                               data-saferedirecturl=""
                             >
                               <img
                                 border="0"
-                                src="../../images/logo/logo.png"
+                                src="' . getBaseUrl() . 'images/logo/logo.png"
                                 alt="HFE-Store.ml"
                                 style="border:none"
                                 class="CToWUd"
@@ -11237,7 +11249,7 @@ if (isset($_POST['cancel_product'])) {
                                     >
                                       <img
                                         border="0"
-                                        src="../../images/' . $row['category_id'] .  '/' . $idid . '.jpg"
+                                        src="' . getBaseUrl() . 'images/' . $row['category_id'] .  '/' . $idid . '.jpg"
                                         alt="' . $row['product_name'] . '"
                                         style="border:none;max-width:125px;max-height:125px;margin-top:20px"
                                         class="CToWUd"
@@ -11384,10 +11396,10 @@ if (isset($_POST['cancel_product'])) {
                                           <td style="width:40%;text-align:left;padding-top:5px">
                                             <a
                                               style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                                              href="https://www.HFE-Store.ml"
+                                              href="'. getBaseUrl(). '"
                                               ><img
                                                 border="0"
-                                                src="../../images/logo/logo.png"
+                                                src="' . getBaseUrl() . 'images/logo/logo.png"
                                                 alt="HFE-Store.ml"
                                                 style="border:none;width: 150px;"
                                                 class="CToWUd"

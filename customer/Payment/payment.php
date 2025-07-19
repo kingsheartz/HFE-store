@@ -141,6 +141,7 @@ log_message("Payment page data used: " . json_encode([
       };
     }
     data_used = {
+      "placeorder": 1,
       "customer_id": 1,
       "user": user,
       "user_id": user_id,
