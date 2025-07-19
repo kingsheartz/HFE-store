@@ -147,7 +147,7 @@ require "../Common/pdo.php";
   }
 
   #proceed {
-    background: none repeat scroll 0 0 #5a88ca;
+    background: none repeat scroll 0 0 #4f8a40;
     border: medium none;
     color: #0080ff;
     padding: 0px 10px;

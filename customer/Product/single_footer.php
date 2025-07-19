@@ -45,7 +45,7 @@
       width: 100% !important;
     }
 
-		.footer-botm>.container>div{
+		.footer-botm>.container>div {
       width: 100%;
     }
   }
@@ -106,31 +106,36 @@
     float: right;
   }
 
-	@media(max-width:767px){
-    .col-sm-3.w3_footer_grid{
+	@media(max-width:767px) {
+    .col-sm-3.w3_footer_grid {
       height: 200px;
       width: 50%;
     }
+
     .col-sm-3.w3_footer_grid>h3,
-    .col-sm-3.w3_footer_grid>ul{
+    .col-sm-3.w3_footer_grid>ul {
       padding-left: 30%;
     }
-    .col-sm-3.w3_footer_grid>h3{
+
+    .col-sm-3.w3_footer_grid>h3 {
       height: 30px;
     }
   }
 
-  @media(max-width:470px){
-    .col-sm-3.w3_footer_grid{
+  @media(max-width:470px) {
+    .col-sm-3.w3_footer_grid {
       width: 100%;
     }
-    .col-sm-3.w3_footer_grid>img{
+
+    .col-sm-3.w3_footer_grid>img {
       width: 100%;
     }
+
     .col-sm-3.w3_footer_grid:nth-child(1) {
       height: fit-content;
     }
-    .footer-botm>.container>div{
+
+    .footer-botm>.container>div {
       display: block !important;
     }
   }
@@ -161,50 +166,6 @@
 </style>
 <div class="footer">
   <link rel="stylesheet" href="../../css/font-awesome.min.css">
-  <div class="footer-botm">
-    <div class="container">
-      <div class="col-sm-8 w3_footer_grid">
-        <h3 class="title">Subscribe to newsletter</h3>
-        <div class="newsletter">
-          <p style="text-align: justify;">
-            Send your email to us.
-          </p>
-          <form method="post" name="sendmail" action="#">
-            <input name="cntemail" id="nlmail" class="form-control" type="email" placeholder="Your email here">
-            <button type="button" class="btn" onclick="nlcheckmail()">Submit</button>
-          </form>
-        </div>
-      </div>
-      <div class="col-sm-4">
-        <div class="w3layouts-foot">
-          <ul>
-            <li>
-              <a href="https://www.facebook.com/falconsinfoworld/" target="_blank" class="w3_agile_facebook">
-                <i class="fa fa-facebook" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://www.instagram.com/_k_i_n_g_s_h_e_a_r_t_z/" target="_blank" class="w3_agile_instagram">
-                <i class="fa fa-instagram" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="https://twitter.com/GovindA20531879" target="_blank" class="w3_agile_twitter">
-                <i class="fa fa-twitter" aria-hidden="true"></i>
-              </a>
-            </li>
-            <li>
-              <a href="#" data-toggle="modal" data-target="#myModal_share_apk" onclick="copyapklink()" class="w3_agile_android" style=>
-                <i class="fa fa-android" aria-hidden="true"></i>
-              </a>
-            </li>
-          </ul>
-        </div>
-      </div>
-      <div class="clearfix"> </div>
-    </div>
-  </div>
-
   <div class="container">
     <div class="w3_footer_grids">
       <div class="col-sm-3 w3_footer_grid">
@@ -273,7 +234,39 @@
           <li><a href="../Main/faq.php">FAQ</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
         </ul>
       </div>
-
+			<div class="footer-botm">
+        <div class="container">
+          <div class="col-lg-5 col-md-6 col-sm-12 w3_footer_grid" style="display: inline-flex;">
+            <div class="newsletter">
+              <p style="text-align: justify;margin-bottom: 0px;">
+                Send your email to us.
+              </p>
+              <form method="post" name="sendmail" action="#">
+                <input name="cntemail" id="nlmail" class="form-control" type="email"
+                  placeholder="Your email here">
+                <button type="button" class="btn" onclick="nlcheckmail()">Submit</button>
+              </form>
+            </div>
+          </div>
+					<div class="col-lg-2"></div>
+          <div class="col-lg-3 col-md-6 col-sm-12">
+            <div class="w3layouts-foot">
+              <ul>
+                <li><a href="https://www.facebook.com/falconsinfoworld/" target="_blank"
+                    class="w3_agile_facebook"><i class="fa fa-facebook" aria-hidden="true"></i></a></li>
+                <li><a href="https://www.instagram.com/_k_i_n_g_s_h_e_a_r_t_z/" target="_blank"
+                    class="w3_agile_instagram"><i class="fa fa-instagram" aria-hidden="true"></i></a></li>
+                <li><a href="https://twitter.com/GovindA20531879" target="_blank" class="w3_agile_twitter"><i
+                      class="fa fa-twitter" aria-hidden="true"></i></a></li>
+                <li><a href="#" data-toggle="modal" data-target="#myModal_share_apk" onclick="copyapklink()"
+                    class="w3_agile_android" style=><i class="fa fa-android" aria-hidden="true"></i></a>
+                </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="clearfix"> </div>
+      </div>
       <div class="clearfix"> </div>
     </div>
   </div>
@@ -282,8 +275,8 @@
       <p>© 2025 HFE. All rights reserved |
         <a
           id="me"
-          onmouseover="$('#me').css('color','#0c99cc')"
-          onmouseleave="$('#me').css('color','#fe9126')"
+          onmouseover="$('#me').css('color','#4f8a40')"
+          onmouseleave="$('#me').css('color','#4f8a40')"
           href="www.one-store.com">Govind</a>
       </p>
     </div>

@@ -44,7 +44,7 @@ $t_mrp = $mrprow['price'];
     input[type="submit"],
     button[type=submit],
     input[type="button"] {
-      background: none repeat scroll 0 0 #5a88ca;
+      background: none repeat scroll 0 0 #4f8a40;
       border: medium none;
       color: #fff;
       padding: 11px 20px;
@@ -159,11 +159,11 @@ $t_mrp = $mrprow['price'];
       color: #fff;
       display: block;
       width: 100%;
-      background-color: #5a88ca;
+      background-color: #4f8a40;
     }
 
     .place_order.nav-maker {
-      background-color: #fe9126;
+      background-color: #4f8a40;
       color: white;
       outline: none;
       border: 0px;
@@ -184,7 +184,7 @@ $t_mrp = $mrprow['price'];
         right: 10px;
         width: 100% !important;
         z-index: 1 !important;
-        background-color: #fe9126;
+        background-color: #4f8a40;
         color: white;
         outline: none;
         border: 0px;

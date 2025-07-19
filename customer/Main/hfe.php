@@ -9,7 +9,7 @@ require "../Common/cookie.php";
   }
 
   body {
-    background: #8080807a;
+    background: #000000;
   }
 
   .block-slider img {
@@ -28,23 +28,26 @@ require "../Common/cookie.php";
   }
 
   .cat-title a:hover {
-    color: #0c99cc;
+    color: #4f8a40;
   }
 
   p.cap_body {
     width: 400px;
     text-align: justify;
+    color: #ccc;
   }
 
   .block-slider .caption-group .primary {
-    color: #555;
-    font-size: 20px;
+    color: #ddd;
+
   }
 
-  .block-slider .caption-group {
-    position: absolute;
-    top: 26%;
-    right: 12%;
+  .block-slider .caption-group .primary strong {
+    color: #4f8a40 !important;
+  }
+
+  .block-slider .cap_head {
+    color: #eee !important;
   }
 
   .cat-img {
@@ -74,8 +77,7 @@ require "../Common/cookie.php";
   .deupd {
     height: -webkit-fill-available;
     text-overflow: ellipsis;
-    margin-top: 10px;
-    padding-top: 20px;
+    padding-top: 25px;
     border-top: 1px solid #e8e8e8;
   }
 </style>
@@ -192,12 +194,28 @@ require "../Common/cookie.php";
     $('#customCarousel').carousel({
       interval: 3000 // Auto slide every 3 seconds
     });
+    <?php
+    if (isset($_SESSION['error_msg'])) {
+    ?>
+      swal({
+        title: "Error",
+        text: "<?= $_SESSION['error_msg'] ?>",
+        icon: "error",
+        closeOnClickOutside: false,
+        dangerMode: true,
+      }).then(() => {
+        location.href = '../Account/logout.php';
+      });
+    <?php
+      unset($_SESSION['error_msg']);
+    }
+    ?>
   });
 </script>
-<div class="slider-area" style="background-color: white;padding-top: 10px;margin-top: 30px;">
+<div class="slider-area" style="background-color: white;margin-top: 10px;">
   <!-- Slider -->
   <div class="block-slider block-slider4">
-    <ul class="" id="bxslider-home4" style="height: 400px;">
+    <ul class="" id="bxslider-home4" style="height: 400px;background-color: rgba(255, 255, 255, 0.95);">
       <?php
       $slider = array(
         "Power /Precision /Performance //Built for serious runners, this treadmill delivers smooth, quiet operation and advanced tracking features.",
@@ -216,14 +234,22 @@ require "../Common/cookie.php";
           <div class="row captions">
             <div class="col-md-12 ">
               <img src="../../images/slider/h4-slide<?= $i + 1 ?>.png" alt="Slide">
-              <div class="caption-group">
+              <div class="caption-group" style="
+								background: linear-gradient(135deg, rgba(0,0,0,0.75), rgba(30,30,30,0.65));
+								backdrop-filter: blur(6px);
+								padding: 24px;
+								border-radius: 12px;
+								border: 1px solid rgba(255,255,255,0.1);
+								box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+								color: #fff;
+							">
                 <div class="cap_dyn">
                   <p class="cap_head">
                     <?= $split[0] ?> <span class="primary"><?= $split[1] ?> <strong><?= $split[2] ?></strong></span>
                   </p>
                   <p class="cap_body" style="font-family:Arial;"><?= $divider[1] ?></p>
                 </div>
-                <a class=" button-radius" href="#"><span class="icon"></span>Shop now</a>
+                <a class="button-radius" href="#"><span class="icon"></span>Shop now</a>
               </div>
             </div>
           </div>
@@ -236,7 +262,14 @@ require "../Common/cookie.php";
   </div><br>
 </div>
 <!-- ./Slider -->
-<div style="background-color: #e0e0e0;padding-left: 7px;padding-right: 7px;">
+<div style="
+  background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(35,35,35,0.85));
+  color: #f1f1f1;
+  padding: 24px 28px;
+  border-radius: 14px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255,255,255,0.05);
+">
   <br>
   <!-- //top-header and slider -->
   <!-- top-brands -->
@@ -253,7 +286,7 @@ require "../Common/cookie.php";
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /*COLOR PICKER*/
   $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-  $bgcolor = array('orange', '#0c99cc', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+  $bgcolor = array('orange', '#4f8a40', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
   do {
     $rancolor1 = array_rand($color, 1);
     $rancolor2 = array_rand($color, 1);
@@ -331,14 +364,14 @@ require "../Common/cookie.php";
       display: inline-block;
       overflow: hidden;
       text-align: center;
-      border: 1px solid #d2d2d2;
+      border: 1px solid #a8a8a8;
       padding: 0px;
       padding-bottom: 0px;
       position: relative;
-      height: 300px;
+      height: 275px;
       width: 250px;
-      background: white;
-      color: #000;
+      background: #000;
+      color: #a8a8a8;
       margin-right: 20px;
     }
 
@@ -548,8 +581,6 @@ require "../Common/cookie.php";
           }
         }
       </script>
-      <hr class="make_div">
-      <hr class="make_div">
       <!--banner-bottom-->
       <div class="ban-bottom-w3l">
         <div class="container">
@@ -593,7 +624,7 @@ require "../Common/cookie.php";
             <?php
             /*COLOR PICKER*/
             $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-            $bgcolor = array('orange', '#0c99cc', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+            $bgcolor = array('orange', '#4f8a40', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
             $c1 = $c2 = 'white';
             do {
               $rancolor1 = array_rand($color, 1);
@@ -800,10 +831,7 @@ require "../Common/cookie.php";
                 ;
               }
             }
-          </style>
-          <hr class="make_div">
-          <hr class="make_div">
-          <style>
+
             .fa-star.active {
               color: orange;
             }

@@ -32,7 +32,7 @@ require "../Main/header.php";
   }
 
   select {
-    border-color: #0c99cc !important;
+    border-color: #4f8a40 !important;
     box-shadow: none;
     outline: none;
     border-radius: 5px;
@@ -41,7 +41,7 @@ require "../Main/header.php";
 
   select:hover {
     transition-duration: 1s;
-    box-shadow: inset 0 0 5px #0c99cc !important;
+    box-shadow: inset 0 0 5px #4f8a40 !important;
   }
 
   .wltr {
@@ -209,7 +209,7 @@ require "../Main/header.php";
       </h2>
       <h2 style="display: none;" class="search_wishlist_head">
         <a href="#" style="color: #000;font-size: 1.5em">
-          <span class="fa fa-search" style="color: #fe9126;"></span><span style="color: #fff"> Search Wishlist
+          <span class="fa fa-search" style="color: #4f8a40;"></span><span style="color: #fff"> Search Wishlist
           </span>
         </a>
       </h2>
@@ -240,7 +240,7 @@ require "../Main/header.php";
                   <span class="fa fa-search"> Search wishlist</span>
                 </div>
                 <div class="wishlist-method sw-active" style="border-left:1px solid #fff;display: none;">
-                  <span class="fa fa-search" style="color: #fe9126"> <span style="color: #0f99ff">Search
+                  <span class="fa fa-search" style="color: #4f8a40"> <span style="color: #0f99ff">Search
                       wishlist</span></span>
                 </div>
               </div>
@@ -285,7 +285,7 @@ require "../Main/header.php";
                   </div>
                   <div class="wishlist-method sw-active"
                     style="display:flex;align-items: center;justify-content: center;display: none;">
-                    <span class="fa fa-search" style="color: #fe9126"> <span
+                    <span class="fa fa-search" style="color: #4f8a40"> <span
                         style="color: #0f99ff;">Search</span></span>
                   </div>
                 </div>
@@ -303,13 +303,13 @@ require "../Main/header.php";
         <div class="your_wishlist_large">
           <?php
           if (isset($_SESSION['id'])) {
-            $sql_check = 'select count(wishlist_id) as cnt from wishlist where user_id=:user_id';
+            $sql_check = 'select count(wishlist_id) as cnt from wishlist where customer_id=:customer_id';
             $stmt_check = $pdo->prepare($sql_check);
-            $stmt_check->execute(array(':user_id' => $_SESSION['id']));
+            $stmt_check->execute(array(':customer_id' => $_SESSION['id']));
             $row_check = $stmt_check->fetch(PDO::FETCH_ASSOC);
-            $sql_wish = 'select * FROM wishlist WHERE user_id=:user_id';
+            $sql_wish = 'select * FROM wishlist WHERE customer_id=:customer_id';
             $stmt_wish = $pdo->prepare($sql_wish);
-            $stmt_wish->execute(array(':user_id' => $_SESSION['id']));
+            $stmt_wish->execute(array(':customer_id' => $_SESSION['id']));
             if ($row_check['cnt'] > 0) {
           ?>
               <div class="container" style="margin-top: 50px;">
@@ -413,13 +413,13 @@ require "../Main/header.php";
         <!--YOUR WISHLIST SMALL-->
         <div class="your_wishlist_small" style="display: none;">
           <?php
-          $sql_check = 'select count(wishlist_id) as cnt from wishlist where user_id=:user_id';
+          $sql_check = 'select count(wishlist_id) as cnt from wishlist where customer_id=:customer_id';
           $stmt_check = $pdo->prepare($sql_check);
-          $stmt_check->execute(array(':user_id' => $_SESSION['id']));
+          $stmt_check->execute(array(':customer_id' => $_SESSION['id']));
           $row_check = $stmt_check->fetch(PDO::FETCH_ASSOC);
-          $sql_wish = 'select * FROM wishlist WHERE user_id=:user_id';
+          $sql_wish = 'select * FROM wishlist WHERE customer_id=:customer_id';
           $stmt_wish = $pdo->prepare($sql_wish);
-          $stmt_wish->execute(array(':user_id' => $_SESSION['id']));
+          $stmt_wish->execute(array(':customer_id' => $_SESSION['id']));
           if ($row_check['cnt'] > 0) {
           ?>
             <div class="container" style="margin-top: 50px;">
@@ -547,7 +547,7 @@ require "../Main/header.php";
         $stmt_check1 = $pdo->prepare($sql_check1);
         $stmt_check1->execute();
         $row_check1 = $stmt_check1->fetch(PDO::FETCH_ASSOC);
-        $sql_wish1 = 'select users.first_name,wishlist.list_name,wishlist.wishlist_id,wishlist.date FROM wishlist INNER JOIN wishlist_items ON wishlist.wishlist_id=wishlist_items.wishlist_id inner join users on wishlist.user_id=users.user_id WHERE privacy="public" group by wishlist.wishlist_id';
+        $sql_wish1 = 'select users.first_name,wishlist.list_name,wishlist.wishlist_id,wishlist.date FROM wishlist INNER JOIN wishlist_items ON wishlist.wishlist_id=wishlist_items.wishlist_id inner join users on wishlist.customer_id=users.customer_id WHERE privacy="public" group by wishlist.wishlist_id';
         $stmt_wish1 = $pdo->prepare($sql_wish1);
         $stmt_wish1->execute();
         if ($row_check1['cnt'] > 0) {
@@ -564,8 +564,8 @@ require "../Main/header.php";
                         style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline: none;">
                       <span id="" class="input-group-btn">
                         <button onclick="dispsrch()" onmouseover="$(this).css('background-color','#ee8126')"
-                          onmouseleave="$(this).css('background-color','#fe9126')"
-                          style="color: white;background-color:#fe9126;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;"
+                          onmouseleave="$(this).css('background-color','#4f8a40')"
+                          style="color: white;background-color:#4f8a40;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;"
                           class="btn btn-default search_btn" type="button"><span class="fa fa-search"></span></button>
                       </span>
                       <span id="" class="input-group-btn">
@@ -659,7 +659,7 @@ require "../Main/header.php";
   <div class="modal-dialog modal-m" style="background-color: white;border-radius: 7px;">
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #fe9126">
+      <div class="modal-header" style="background-color: #4f8a40">
         <button type="button" class="close" data-dismiss="modal" onclick="$('.yw').click();">&times;</button>
         <h4 class="modal-title">
           <span class="fa fa-file-text" style="color: #fff;"></span>

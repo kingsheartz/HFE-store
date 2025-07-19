@@ -1,24 +1,53 @@
 <?php
+ob_start(); // Start output buffering
 session_start();
 
+// Check if session exists and has valid ID
 if (!isset($_SESSION['id'])) {
-  header("location:../Main/hfe.php");
+    // Set error message in session
+    $_SESSION['error_msg'] = "Your session has expired. Please login again.";
+    header("location:../Account/login.php");
+    exit();
 }
 
 require "../Main/header.php";
 
-if (isset($_SESSION['id'])) {
-  $id = $_SESSION['id'];
-} else if (isset($_GET['id'])) {
-  $id = $_GET['id'];
-}
+try {
+    // Get user ID from session or query parameter
+    if (isset($_SESSION['id'])) {
+        $id = $_SESSION['id'];
+    } else if (isset($_GET['id'])) {
+        $id = $_GET['id'];
+    } else {
+        throw new Exception("User ID not found");
+    }
 
-$usersql = 'select* from customers where customer_id=' . $id;
-$userstmt = $pdo->query($usersql);
-$userrow = $userstmt->fetch(PDO::FETCH_ASSOC);
-$susersql = 'select* from customer_delivery_details where type="permanent" and customer_id=' . $id;
-$suserstmt = $pdo->query($susersql);
-$suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
+    // Validate that ID is numeric
+    if (!is_numeric($id)) {
+        throw new Exception("Invalid user ID");
+    }
+
+    // Fetch user details
+    $usersql = 'SELECT * FROM customers WHERE customer_id = :id';
+    $userstmt = $pdo->prepare($usersql);
+    $userstmt->execute(['id' => $id]);
+    $userrow = $userstmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$userrow) {
+        throw new Exception("Your session has expired. Please login again.");
+    }
+
+    // Fetch delivery details
+    $susersql = 'SELECT * FROM customer_delivery_details WHERE type="permanent" AND customer_id = :id';
+    $suserstmt = $pdo->prepare($susersql);
+    $suserstmt->execute(['id' => $id]);
+    $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
+
+} catch (Exception $e) {
+    $_SESSION['error_msg'] = $e->getMessage();
+    header("location:../Main/hfe.php");
+    exit();
+}
 ?>
 <style type="text/css">
   .left-log {
@@ -139,7 +168,7 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
         <h2 style="color: white;" class="account-head-active account-head acc_details">ACCOUNT DETAILS</h2>
         <h2 style="color: white;" class="account-head changeep">Change Email / Password</h2>
         <h2 style="color: white;" class="account-head del_add">Delivery Address</h2>
-        <div class="login-form-grids" style="border-top: 10px solid #fe9126;border-radius: 5px;width: 100%">
+        <div class="login-form-grids" style="border-top: 10px solid #4f8a40;border-radius: 5px;width: 100%">
           <div class="account-details pi account-details-active">
             <h5><i class="fa fa-info-circle fa-lg"></i>&nbsp;profile information
               <span id='succeeded' style="float: right;background-color: green;border-radius: 5px;color:white">&nbsp;
@@ -354,8 +383,8 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
                       <button
                         onclick="user_update_locate()"
                         onmouseover="$(this).css('background-color','#ee8126')"
-                        onmouseleave="$(this).css('background-color','#fe9126')"
-                        style="color: white;background-color:#fe9126;padding-top:10px;padding-bottom: 10px;outline: none;"
+                        onmouseleave="$(this).css('background-color','#4f8a40')"
+                        style="color: white;background-color:#4f8a40;padding-top:10px;padding-bottom: 10px;outline: none;"
                         class="btn btn-default search_btn"
                         type="button">
                         <span class="fa fa-search"></span>
@@ -1029,8 +1058,8 @@ $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
           <a
             href="../Main/hfe.php"
             onmouseover="$(this).css('background-color','#0c66cc')"
-            onmouseleave="$(this).css('background-color','#fe9126')"
-            style="color: white;background-color:#fe9126;">
+            onmouseleave="$(this).css('background-color','#4f8a40')"
+            style="color: white;background-color:#4f8a40;">
             Home
           </a>
         </div>

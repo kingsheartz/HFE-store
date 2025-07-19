@@ -50,7 +50,7 @@ function fill(Value) {
 var item;
 function getitems(src) {
   $.ajax({
-    url: "ajax.php",
+    url: "../Common/ajax.php",
     type: "POST",
     data: { key: src },
     dataType: "json",
@@ -85,35 +85,35 @@ function searchele() {
       document.getElementById("display").innerHTML = "";
       var html = "";
       if (item) {
-        for (var i = 0; i < item.length; i++) {
-          console.log("item is" + item[i].item_name);
+        for (var i = 0; i < item?.length; i++) {
+          console.log("item is " + item[i].product_name);
           html +=
             '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
             item[i].category_id +
             "/" +
-            item[i].item_description_id +
+            item[i].product_description_id +
             '.jpg" style="max-width:80px;height:30px">' +
-            item[i].item_name +
+            item[i].product_name +
             "</p>";
         }
       }
       $("#display").html(html);
     } else {
       document.getElementById("display").innerHTML = "";
-      console.log(item.length);
+      console.log(item?.length);
       var html = "";
       if (item) {
-        for (var i = 0; i < item.length; i++) {
+        for (var i = 0; i < item?.length; i++) {
           console.log(item[i]);
           if (item[i].category_id == cat) {
-            console.log("item is" + item[i].item_name);
+            console.log("item is" + item[i].product_name);
             html +=
               '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
               item[i].category_id +
               "/" +
-              item[i].item_description_id +
+              item[i].product_description_id +
               '.jpg" style="max-width:80px;height:30px">' +
-              item[i].item_name +
+              item[i].product_name +
               "</p>";
           }
         }
@@ -141,33 +141,33 @@ function searchele2() {
     if (typeof cat === "undefined") {
       document.getElementById("display2").innerHTML = "";
       var html = "";
-      for (var i = 0; i < item.length; i++) {
-        console.log("item is" + item[i].item_name);
+      for (var i = 0; i < item?.length; i++) {
+        console.log("item is" + item[i].product_name);
         html +=
           '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
           item[i].category_id +
           "/" +
-          item[i].item_description_id +
+          item[i].product_description_id +
           '.jpg" style="max-width:80px;height:30px">' +
-          item[i].item_name +
+          item[i].product_name +
           "</p>";
       }
       $("#display2").html(html);
     } else {
       document.getElementById("display2").innerHTML = "";
-      console.log(item.length);
+      console.log(item?.length);
       var html = "";
-      for (var i = 0; i < item.length; i++) {
+      for (var i = 0; i < item?.length; i++) {
         console.log(item[i]);
         if (item[i].category_id == cat) {
-          console.log("item is" + item[i].item_name);
+          console.log("item is" + item[i].product_name);
           html +=
             '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
             item[i].category_id +
             "/" +
-            item[i].item_description_id +
+            item[i].product_description_id +
             '.jpg" style="max-width:80px;height:30px">' +
-            item[i].item_name +
+            item[i].product_name +
             "</p>";
         }
       }

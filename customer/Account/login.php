@@ -9,7 +9,7 @@ require "../Main/header.php";
 ?>
 <style type="text/css">
   a:hover {
-    color: #0c99cc !important;
+    color: #4f8a40 !important;
   }
 
   p:hover {
