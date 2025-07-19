@@ -79,15 +79,15 @@ require "header.php";
                       Purchase of a product on the website is subject to availability of stock.
                       <br>
                       <br>
-                      OneStore reserves the right, at any time, to modify, suspend, or discontinue the sale of any
+                      HFE-Store reserves the right, at any time, to modify, suspend, or discontinue the sale of any
                       product or services with or without notice.
                       <br>
                       <br>
                       In the event a product or service is listed at an incorrect price or with incorrect information
-                      due to typographical error, error in pricing or information received from OneStore's suppliers,
-                      OneStore shall have the right, post the acceptance of any order, to decline or cancel any such
+                      due to typographical error, error in pricing or information received from HFE-Store's suppliers,
+                      HFE-Store shall have the right, post the acceptance of any order, to decline or cancel any such
                       order, whether or not the order has been confirmed and/or you have been charged for such product
-                      or service. If you have already been charged for the order and OneStore cancels your order, we
+                      or service. If you have already been charged for the order and HFE-Store cancels your order, we
                       will refund the amount.
                       <br>
                       <br>
@@ -106,13 +106,13 @@ require "header.php";
                       reserve the right at any time, after receiving your order, to accept or decline or cancel your
                       order (in whole or in part) for any reason whatever. We may require additional verifications or
                       information before accepting any order. In the event of a purchase, you will be required to
-                      accurately provide the recipient?s name and shipping address. You agree that, if OneStore cancels
+                      accurately provide the recipient?s name and shipping address. You agree that, if HFE-Store cancels
                       all or a part of your order, your sole and exclusive remedy is either that:
                       <br>
                       <br>
-                      (a) OneStore will issue an email to your registered account in the amount charged for the
+                      (a) HFE-Store will issue an email to your registered account in the amount charged for the
                       cancelled portion (if your account has already been charged for the order) <br>
-                      Note: OneStore will not charge your credit/debit card or bank account since yet we haven't started
+                      Note: HFE-Store will not charge your credit/debit card or bank account since yet we haven't started
                       online payment for any kind of purchase.
                       <br>
                       <br>
@@ -145,11 +145,11 @@ require "header.php";
                     <h4>Order/Delivery Confirmation E-mail</h4>
                     <p style="text-align:justify">Shortly after you place an order, you will receive an Order
                       Confirmation e-mail which will include all the details of your order, including the order number
-                      which will be required in the event you need to contact OneStore.
+                      which will be required in the event you need to contact HFE-Store.
                       <br>
                       <br>
                       In case you have not received an Order Confirmation e-mail , please call on +91 811 3990368 (08:00
-                      hours?22:30 hours, 7 days a week) or write to us at onestoreforallyourneeds@gmail.com
+                      hours?22:30 hours, 7 days a week) or write to us at healthandfitnessequipmentstore@gmail.com
                       <br>
                       <br>
                       You will also receive a Delivery Confirmation e-mail when your order has been delivered.
@@ -211,7 +211,7 @@ require "header.php";
                       <br>
                       <br>
                       Notwithstanding anything contained in the Shipping Disclaimer or in the Terms and Conditions, in
-                      the event the order is made to deliver through any courier agency or any third party, OneStore
+                      the event the order is made to deliver through any courier agency or any third party, HFE-Store
                       does not make any representation or warranty in relation to the delivery of such order.
                       <br>
                       <br>
@@ -257,9 +257,9 @@ require "header.php";
                       You agree to pay the price applicable for the product or service on our website at the time you
                       submitted your order (Product Price), the delivery fees for the delivery service you select, if
                       any (Delivery Fees), or any applicable taxes (defined below). You will be solely responsible for
-                      payment of all taxes (other than taxes based on OneStore's income), fees, duties, and other
+                      payment of all taxes (other than taxes based on HFE-Store's income), fees, duties, and other
                       governmental charges, and any related penalties and interest, arising from the purchase of the
-                      products and services (Taxes) not withheld by OneStore.
+                      products and services (Taxes) not withheld by HFE-Store.
                       <br>
                       <br>
                       All payments are non-refundable (except as expressly set forth in the Terms and Conditions). We
@@ -283,7 +283,7 @@ require "header.php";
                     <h4>Communications</h4>
                     <p style="text-align:justify">You agree to receive communications from us by e-mail or any other
                       communication made electronically, verbally or physically through post. You agree that all
-                      agreements, notices, disclosures and other communications that OneStore provides to you by e-mail
+                      agreements, notices, disclosures and other communications that HFE-Store provides to you by e-mail
                       or in any other aforementioned mediums satisfy any legal requirement that such communications be
                       in writing.
                       <br>
@@ -296,10 +296,10 @@ require "header.php";
                   </div>
                   <div class="bhoechie-tab-content">
                     <h4>Feedback and Suggestions</h4>
-                    <p style="text-align:justify">At OneStore, we make every effort to ensure that you receive excellent
+                    <p style="text-align:justify">At HFE-Store, we make every effort to ensure that you receive excellent
                       products and services. We strive hard not only meet, but exceed your expectations. If, at any
                       time, you experience problems with an order or are not happy with our service, you can call us on
-                      +91-811 3990368 (08:00 hours-22:30 hours, 7 days a week) or write to us at support@OneStore.com
+                      +91-811 3990368 (08:00 hours-22:30 hours, 7 days a week) or write to us at support@HFE-Store.com
                       <br>
                       <br>
                       Your feedback and suggestions are important to us.
@@ -319,12 +319,12 @@ require "header.php";
                     <h4>Returns and Refund Policy </h4>
                     <p style="text-align:justify">
                       No returns are allowed. However, in case if a wrong or a defective product has been sent, do let
-                      us know at the earliest. You can write to us at onestoreforallyour@gmail.com or <a
-                        href="../Main/contact.php">write a feedback on onestore</a> or call us at +91 811 3990368 (08:00
+                      us know at the earliest. You can write to us at HFE-Storeforallyour@gmail.com or <a
+                        href="../Main/contact.php">write a feedback on HFE-Store</a> or call us at +91 811 3990368 (08:00
                       AM-10:30 PM, Monday-Sunday).
                       <br>
                       <br>
-                      OneStore is not responsible and does not guarantee refund for cases where:
+                      HFE-Store is not responsible and does not guarantee refund for cases where:
                       <br>
                       <br>
                       products and preserved items are delivered to incorrect address provided by the sender.
@@ -341,7 +341,7 @@ require "header.php";
                       <br>
                       <br>
                       Online refund is credited directly through the mode from which the customer has paid the money
-                      within 24 working hours. Once processed by OneStore, refund takes 7 to 10 business days to reflect
+                      within 24 working hours. Once processed by HFE-Store, refund takes 7 to 10 business days to reflect
                       in your account.
                       <br>
                       <br>
@@ -350,7 +350,7 @@ require "header.php";
                       <br>
                       <br>
                       Online refund is credited directly through the mode from which the customer has paid the money
-                      within 24 working hours. Once processed by OneStore, refund takes 7 to 10 business days to reflect
+                      within 24 working hours. Once processed by HFE-Store, refund takes 7 to 10 business days to reflect
                       in your account.
                       <br>
                       <br>
@@ -359,7 +359,7 @@ require "header.php";
                       <br>
                       <br>
                       Online refund is credited directly through the mode from which the customer has paid the money
-                      within 24 working hours. Once processed by OneStore, refund takes 7-10 business days to reflect in
+                      within 24 working hours. Once processed by HFE-Store, refund takes 7-10 business days to reflect in
                       your account.
                       <br>
                       <br>
@@ -372,9 +372,9 @@ require "header.php";
                     <p style="text-align:justify">
                       If any product received by you is damaged/defective, you can let us know the same. You can call us
                       at +91 811 3990368 (7 days a week) or send us an e-mail with the photographs of the same at
-                      onestoreforallyourneeds@gmail.com, within 48 hours of receiving the product. We will either
+                      healthandfitnessequipmentstore@gmail.com, within 48 hours of receiving the product. We will either
                       deliver to you the new product or refund the amount to you. Subject to the Terms and Conditions,
-                      once refund is initiated by OneStore, it takes 7-10 business days for the refund amount to reflect
+                      once refund is initiated by HFE-Store, it takes 7-10 business days for the refund amount to reflect
                       in your account.
                     </p>
                   </div>

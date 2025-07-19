@@ -1041,7 +1041,7 @@ if ($result_cnt == 0) {
               <hr style="margin-top: 0px;margin-bottom: -10px;">
               <div class="filters" style="margin-right:0px;">
                 <button
-                  style="display: block;border-color:#002b41;outline:#4f8a40;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;margin-bottom:0px;height:40px;border-radius:5px"
+                  style="display: block;border-color:#002b41;outline:#139b3b;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;margin-bottom:0px;height:40px;border-radius:5px"
                   class="btn-pdt_pg btn-success"
                   type="button"
                   data-toggle="collapse"

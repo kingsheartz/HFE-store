@@ -29,8 +29,8 @@ $email = $placerow_u['email'];
                     <tr>
                       <td style="width:35%;text-align:left">
                         <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
-                          href="https://www.one-store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                          <img border="0" src="images/logo/logo.png" alt="OneStore.ml" style="border:none"
+                          href="https://www.HFE-Store.ml" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                          <img border="0" src="images/logo/logo.png" alt="HFE-Store.ml" style="border:none"
                             class="CToWUd">
                         </a>
                       </td>
@@ -85,7 +85,7 @@ $email = $placerow_u['email'];
                               <td valign="top">
                                 <p
                                   style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">
-                                  User ID <span style="font-weight:bold;color:#000">onestore<?= $user_id ?></span> </p>
+                                  User ID <span style="font-weight:bold;color:#000">HFE-Store<?= $user_id ?></span> </p>
                                 <p
                                   style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px">
                                   Order ID <span style="font-weight:bold;color:#000">OD123</span> </p>
@@ -146,7 +146,7 @@ $email = $placerow_u['email'];
                             <tr>
                               <td valign="top" align="left">
                                 <p style="padding-left:15px;margin-bottom:10px"> <a
-                                    href="http://localhost:81/One-Store-Renewed/onestore-website/customer/Order/yourorders.php?id=<?= $user_id ?>"
+                                    href="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/customer/Order/yourorders.php?id=<?= $user_id ?>"
                                     style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
                                     rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button"
                                       style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">Verify
@@ -233,10 +233,10 @@ $email = $placerow_u['email'];
                               <tbody>
                                 <tr>
                                   <td style="width:10%;text-align:left;padding-top:5px"></td>
-                                  <!--<td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.one-store.ml"><img  border="0" src="images/logo/logo.png" alt="OneStore.ml" style="border:none;width: 150px;" class="CToWUd">-->
+                                  <!--<td style="width:40%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml"><img  border="0" src="images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd">-->
                                   <td style="width:80%;text-align:center;font-family:Arial;color: #fff"> &#169; 2020 <a
                                       style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
-                                      href="http://localhost:81/One-Store-Renewed/onestore-website/">OneStore</a>. All
+                                      href="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/">HFE-Store</a>. All
                                     rights reserved </td>
                                   <td style="width:10%;text-align:right"> <a
                                       style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href=""

@@ -32,7 +32,7 @@ require "../Main/header.php";
   }
 
   select {
-    border-color: #4f8a40 !important;
+    border-color: #139b3b !important;
     box-shadow: none;
     outline: none;
     border-radius: 5px;
@@ -41,7 +41,7 @@ require "../Main/header.php";
 
   select:hover {
     transition-duration: 1s;
-    box-shadow: inset 0 0 5px #4f8a40 !important;
+    box-shadow: inset 0 0 5px #139b3b !important;
   }
 
   .wltr {
@@ -209,7 +209,7 @@ require "../Main/header.php";
       </h2>
       <h2 style="display: none;" class="search_wishlist_head">
         <a href="#" style="color: #000;font-size: 1.5em">
-          <span class="fa fa-search" style="color: #4f8a40;"></span><span style="color: #fff"> Search Wishlist
+          <span class="fa fa-search" style="color: #139b3b;"></span><span style="color: #fff"> Search Wishlist
           </span>
         </a>
       </h2>
@@ -240,7 +240,7 @@ require "../Main/header.php";
                   <span class="fa fa-search"> Search wishlist</span>
                 </div>
                 <div class="wishlist-method sw-active" style="border-left:1px solid #fff;display: none;">
-                  <span class="fa fa-search" style="color: #4f8a40"> <span style="color: #0f99ff">Search
+                  <span class="fa fa-search" style="color: #139b3b"> <span style="color: #0f99ff">Search
                       wishlist</span></span>
                 </div>
               </div>
@@ -285,7 +285,7 @@ require "../Main/header.php";
                   </div>
                   <div class="wishlist-method sw-active"
                     style="display:flex;align-items: center;justify-content: center;display: none;">
-                    <span class="fa fa-search" style="color: #4f8a40"> <span
+                    <span class="fa fa-search" style="color: #139b3b"> <span
                         style="color: #0f99ff;">Search</span></span>
                   </div>
                 </div>
@@ -564,8 +564,8 @@ require "../Main/header.php";
                         style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline: none;">
                       <span id="" class="input-group-btn">
                         <button onclick="dispsrch()" onmouseover="$(this).css('background-color','#ee8126')"
-                          onmouseleave="$(this).css('background-color','#4f8a40')"
-                          style="color: white;background-color:#4f8a40;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;"
+                          onmouseleave="$(this).css('background-color','#139b3b')"
+                          style="color: white;background-color:#139b3b;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;"
                           class="btn btn-default search_btn" type="button"><span class="fa fa-search"></span></button>
                       </span>
                       <span id="" class="input-group-btn">
@@ -659,7 +659,7 @@ require "../Main/header.php";
   <div class="modal-dialog modal-m" style="background-color: white;border-radius: 7px;">
     <!-- Modal content-->
     <div class="modal-content">
-      <div class="modal-header" style="background-color: #4f8a40">
+      <div class="modal-header" style="background-color: #139b3b">
         <button type="button" class="close" data-dismiss="modal" onclick="$('.yw').click();">&times;</button>
         <h4 class="modal-title">
           <span class="fa fa-file-text" style="color: #fff;"></span>
@@ -860,7 +860,7 @@ require "../Main/header.php";
     $('#input_link').val(link);
     var code = link.split("=");
     $('.facebook').html('');
-    var fb_content = '<div class="fb-share-button"  data-href="' + link + '" data-layout="button_count" data-size="small" style="margin:auto;width: 30px;height: 30px;background-color: #395693;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2Fone-store.ml%2F/customer/Wishlist/wishlist.php%3Fsharelink%3D' + code[1] + '&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fa fa-facebook fa-lg" style="color: white;"></i></a></div><p>Facebook</p>';
+    var fb_content = '<div class="fb-share-button"  data-href="' + link + '" data-layout="button_count" data-size="small" style="margin:auto;width: 30px;height: 30px;background-color: #395693;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FHFE-Store.ml%2F/customer/Wishlist/wishlist.php%3Fsharelink%3D' + code[1] + '&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fa fa-facebook fa-lg" style="color: white;"></i></a></div><p>Facebook</p>';
     $('.facebook').html(fb_content);
     "wishlist_share.php?sharelink=62_60c9b30ccaa8a&amp;fbclid=IwAR310ESZCEPJ8uFUub--H6gnJ3FkFRjgzz1duPK3NVdARhV2f8VD1GWtpX0"
     $('#myModal_share_wishlist').modal('show');

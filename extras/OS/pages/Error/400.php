@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-      <title>BAD REQUEST || ONESTORE</title>
+      <title>BAD REQUEST || HFE-Store</title>
 <!-- SCRIPTS GOES HERE OR IN HEAD -->
 <link href="../../../../images/logo/favicon.png" rel="icon"/>
 <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">

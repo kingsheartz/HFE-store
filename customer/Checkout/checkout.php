@@ -23,7 +23,7 @@ $pdt_cnt = $stmt->rowCount();
     input[type="submit"],
     button[type=submit],
     input[type="button"] {
-      background: none repeat scroll 0 0 #4f8a40;
+      background: none repeat scroll 0 0 #139b3b;
       border: medium none;
       color: #fff;
       padding: 11px 20px;
@@ -42,10 +42,6 @@ $pdt_cnt = $stmt->rowCount();
     }
 
     @media(max-width:991px) {
-      #bill_gap {
-        margin-bottom: 40px !important;
-      }
-
       .billing_details {
         padding-left: 0px;
       }
@@ -129,11 +125,11 @@ $pdt_cnt = $stmt->rowCount();
       color: #fff;
       display: block;
       width: 100%;
-      background-color: #4f8a40;
+      background-color: #139b3b;
     }
 
     .place_order.nav-maker {
-      background-color: #4f8a40;
+      background-color: #139b3b;
       color: white;
       outline: none;
       border: 0px;
@@ -156,7 +152,7 @@ $pdt_cnt = $stmt->rowCount();
         right: 10px;
         width: 100% !important;
         z-index: 1 !important;
-        background-color: #4f8a40;
+        background-color: #139b3b;
         color: white;
         outline: none;
         border: 0px;
@@ -252,11 +248,12 @@ $pdt_cnt = $stmt->rowCount();
     }
 
     button#place_order {
-      background: #777;
+      background: #139b3b;
       border: 0px;
       border-radius: 5px;
-      height: 30px;
+      height: 40px;
       color: white;
+      text-align: center;
     }
 
     #customer_details h3 {
@@ -266,12 +263,10 @@ $pdt_cnt = $stmt->rowCount();
     }
 
     button#bill_gap {
-      position: absolute;
-      right: 10px;
-      top: 227px;
+      margin-right: 5px;
       border: 0px;
       border-radius: 5px;
-      background-color: #4b4b4b !important;
+      background-color: #139b3b !important;
       z-index: 40;
     }
 
@@ -333,13 +328,15 @@ $pdt_cnt = $stmt->rowCount();
   <!-- //breadcrumbs -->
   <!--<div style="background-image: url(../../images/logo/check.jpg);width: 100%;height: 100%;" >-->
   <!-- checkout -->
-  <a href="../Main/hfe.php">
-    <button id="bill_gap" class="shadow_b" style="padding:10px;background-color:#3399cc ">
-      <i class="glyphicon glyphicon-menu-left" style="color: white" aria-hidden="true"></i>
-      <span style="color: white">Continue Shopping</span>
-    </button>
-  </a>
-  <span style="padding:15px;">Your shopping cart contains: <span style="font-family: arial"><?= $pdt_cnt ?> Products</span></span>
+  <div style="width: 100%;padding: 0px;margin: 0px;display: flex;align-items: center;justify-content: space-between;">
+    <span style="padding:15px;">Your shopping cart contains: <span style="font-family: arial"><?= $pdt_cnt ?> Products</span></span>
+    <a href="../Main/hfe.php">
+      <button id="bill_gap" class="shadow_b" style="padding:10px;background-color:#3399cc ">
+        <i class="glyphicon glyphicon-menu-left" style="color: white" aria-hidden="true"></i>
+        <span style="color: white">Continue Shopping</span>
+      </button>
+    </a>
+  </div>
   <div class="slno col-sm-12">Order details</div>
   <div class="checkout" style="padding-top: 0px;padding-bottom: 0px; background-color: rgba(255,255,255,0.05);">
     <div class="container col-sm-12" style="width: 99%;padding: 10px;padding-bottom: 30px;background: white;margin: 10px;border-radius: 5px;border: 1px solid gray;">
@@ -469,7 +466,7 @@ $pdt_cnt = $stmt->rowCount();
                   <div class="billing_details">
                     <div class="woocommerce-shipping-fields" style="display: inline-flex;">
                       <h3>Select address</h3>
-                      <select name="use-as-register-checkbox">
+                      <select name="delivery-option" id="delivery-option">
                         <option value="0">Select Address</option>
                         <option value="1" selected>Home</option>
                         <option value="2">Work</option>
@@ -480,7 +477,6 @@ $pdt_cnt = $stmt->rowCount();
                 </div>
                 <div class="col-sm-6">
                   <div class="shipping_address" style="display: none;" id="stda_div">
-                    <hr class="make_divc">
                     <br />
                     <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
                       <label
@@ -667,27 +663,19 @@ require "../Main/footer.php";
       $('#payment').show();
     }
   };
-  var checkBox_diff = document.getElementById("stda_check");
-  var checkBox_user = document.getElementById("use-as-register-checkbox");
+  
+  const delivery_option = document.getElementById("delivery-option");
+
 
   function stda() {
-    if (checkBox_diff.checked == true) {
+    if (delivery_option?.value == 2) {
       $("#stda_div").css("display", "block");
     } else {
       $("#stda_div").css("display", "none");
     }
   }
-  window.addEventListener("click", function() {
-    if (checkBox_diff.checked == true) {
-      checkBox_user.checked = false;
-    } else if (checkBox_user.checked == true) {
-      checkBox_diff.checked = false;
-    }
-  });
-  checkBox_user.addEventListener("click", function() {
-    $("#stda_div").css("display", "none");
-    checkBox_diff.checked = false;
-  });
+
+  delivery_option?.addEventListener("change", stda);
 </script>
 <script>
   function placeorder() {
@@ -695,10 +683,10 @@ require "../Main/footer.php";
     if (order_notes == "" || order_notes == null) {
       order_notes = 0;
     }
-    if (checkBox_user.checked == false && checkBox_diff.checked == false) {
+    if (delivery_option?.value == 0) {
       toastr.error('Require billing details!!!')
       return;
-    } else if (checkBox_user.checked == true) {
+    } else if (delivery_option?.value == 1) {
       var uid = "<?= $_SESSION['id'] ?>";
       var pdt_cnt = "<?= $pdt_cnt ?>";
       var total_amt = "<?= $total_amt ?>";
@@ -723,7 +711,7 @@ require "../Main/footer.php";
       }
       document.body.appendChild(form);
       form.submit(); // This opens payment.php with POST data
-    } else if (checkBox_diff.checked == true) {
+    } else if (delivery_option?.value == 2) {
       var shipping_first_name = document.getElementById("shipping_first_name").value;
       var shipping_last_name = document.getElementById("shipping_last_name").value;
       var shipping_ph_no = document.getElementById("shipping_ph_no").value;

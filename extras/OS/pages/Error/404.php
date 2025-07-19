@@ -2,7 +2,7 @@
 <html>
 
 <head>
-  <title>ERROR 404 || ONESTORE</title>
+  <title>ERROR 404 || HFE-Store</title>
   <!-- SCRIPTS GOES HERE OR IN HEAD -->
   <link href="../../../../images/logo/favicon.png" rel="icon" />
   <meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
@@ -568,7 +568,7 @@
       <path class="pupilL3 moko-404__l" d="M218.07,96.89s-1.43,0-3.2,0-3.2,0-3.2,0,1.44-.05,3.2-.05,3.2,0,3.2.05" />
       <path class="pupilR3 moko-404__l" d="M269.1,96.89s1.43,0,3.19,0,3.19,0,3.19,0-1.43-.05-3.19-.05-3.19,0-3.19.05" />
     </svg>
-    <p><a href="http://localhost:81/One-Store-Renewed/onestore-website/">Back to homepage</a></p>
+    <p><a href="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/">Back to homepage</a></p>
     <!-- Main content -->
     <section class="content">
       <br><br>
@@ -593,7 +593,7 @@
         <b>KinGsHearTz</b> 1.0
       </div>
       <strong>Copyright &copy; 2020 <a style="color:#007BFF "
-          href="http://localhost:81/One-Store-Renewed/onestore-website/">OneStore</a>.</strong> All rights reserved.
+          href="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/">HFE-Store</a>.</strong> All rights reserved.
     </footer>
   </div>
 </body>
