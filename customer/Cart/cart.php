@@ -12,9 +12,9 @@ function randomGen($min, $max, $quantity)
 //Generate Dynamic Loading
 ?>
 <!-- breadcrumbs -->
-<div class="breadcrumbs" style="background-color: #eaeded">
+<div class="breadcrumbs">
   <div class="container">
-    <ol class="breadcrumb breadcrumb1" style="background-color: #eaeded">
+    <ol class="breadcrumb breadcrumb1">
       <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
       <li class="active">Cart</li>
     </ol>

@@ -1195,6 +1195,7 @@ a.w3_agile_vimeo:hover {
 
 .breadcrumbs {
   padding: 1.5em 0;
+  padding-top: 2em 0;
   background: #151515;
 }
 
@@ -1655,10 +1656,10 @@ h3.w3ls-title.w3ls-title1 {
 }
 
 .faq-w3agile {
-  padding: 5em 0;
+  padding: 2em 0;
 }
 
-ul.faq {
+ol.faq {
   margin-top: 5em;
 }
 
@@ -3388,7 +3389,7 @@ h3.agileits-icons-title {
     width: 45%;
   }
 
-  ul.faq {
+  ol.faq {
     margin-top: 3em;
     padding: 0 1.5em;
   }
@@ -4293,7 +4294,7 @@ h3.agileits-icons-title {
     padding: 2em 0em;
   }
 
-  ul.faq {
+  ol.faq {
     margin-top: 2em;
     padding: 0 1em;
   }
