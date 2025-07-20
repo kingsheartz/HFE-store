@@ -1085,7 +1085,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             onkeyup="searchele()"
                             name="Search"
                             placeholder="Search"
-                            style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;">
+                            style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;color:darkgray;">
                           <span class="input-group-btn">
                             <button
                               onclick="check()"
@@ -1109,16 +1109,15 @@ if (session_status() === PHP_SESSION_NONE) {
               style="color: white;float: right;text-align: right;padding: 0px;"
               class="col-lg-2 col-md-4 col-sm-4 topli"
               id="lg_top_ph_mail">
-              <a href="tel:+918113990368" style="color:white;font-family:arial;padding: 0px;">
+              <a href="tel:+918113990368" style="color:darkgrey;font-family:Arial;padding: 0px;">
                 <i class="fa fa-phone" aria-hidden="true"></i> Ph: <span><i>+91 8113990368</i></span>
               </a>
               <br>
-              <a href="mailto:govind.das279@gmail.com" style="color:white; font-family:Arial; padding:0;">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span><i>govind.das279@gmail.com</i></span>
+              <a href="mailto:healthandfitnessequipmentstore@gmail.com" style="color:darkgrey;font-family:Arial;padding:0;">
+                <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<i>hfestore@gmail.com</i>
               </a>
             </div>
-            <div style="color: white;float: right;" class="topli" id="sm_top_ph_mail">
+            <div style="color: darkgrey;float: right;" class="topli" id="sm_top_ph_mail">
               <i class="fa fa-phone" aria-hidden="true"></i>
               <br />
               <i><span><i class="fa fa-envelope"></i></span></i>
@@ -1181,7 +1180,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             onkeyup="searchele2()"
                             name="Search"
                             placeholder="Search"
-                            style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;">
+                            style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;color:darkgray;">
                           <span class="input-group-btn">
                             <button
                               onclick="check2()"
