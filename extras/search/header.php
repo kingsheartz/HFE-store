@@ -159,7 +159,6 @@
           <div class="w3ls_logo_products_left1">
             <ul class="phone_email topli">
               <li style="color: white;" class="topli"><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : +91 8113990368</li>
-
             </ul>
           </div>
         </div>
