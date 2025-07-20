@@ -72,17 +72,27 @@ function randomGen($min, $max, $quantity)
 ?>
 <style type="text/css">
   /*SINGLE PAGE STYLING*/
+  body {
+    background-color: #151515;
+  }
+
   .product-image-thumb {
     margin: auto;
     display: block;
     max-height: 100px;
     width: 100px;
+    margin-top: 10px;
     margin-bottom: 5px;
-    margin-bottom: 5px;
+    background-color: #151515;
   }
 
   h3.my-3 {
     font-size: 20px;
+  }
+
+  h3.my-3,
+  .d-inline-block {
+    color: darkgrey;
   }
 
   .btn.btn-default.btn-lg.btn-flat.product_wish {
@@ -125,6 +135,16 @@ function randomGen($min, $max, $quantity)
     margin-left: -15px;
   }
 
+  #reviewsingle,
+  #ratingsingle .row {
+    background-color: #101010 !important;
+    color: darkgrey;
+  }
+
+  #reviewsingle p {
+    color: darkgrey;
+  }
+
   @media (max-width: 767px) {
     .d-inline-block {
       display: inline-block !important;
@@ -147,7 +167,8 @@ function randomGen($min, $max, $quantity)
   .tab_single {
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    background-color: #101010;
+    color: darkgrey;
   }
 
   /* Style the buttons inside the tab_single */
@@ -164,12 +185,13 @@ function randomGen($min, $max, $quantity)
 
   /* Change background color of buttons on hover */
   .tab_single button:hover {
-    background-color: #ddd;
+    background-color: #333;
   }
 
   /* Create an active/current tab_singlelink class */
   .tab_single .active {
-    background-color: #ccc;
+    color: #fff;
+    background-color: #139b3b;
   }
 
   /* Style the tab_single content */
@@ -192,7 +214,7 @@ function randomGen($min, $max, $quantity)
     border: 1px solid #d4d4d4;
     /*set the size of the lens:*/
     max-width: 100%;
-    min-width: 25%;
+    min-width: 20%;
     height: 45px;
   }
 
@@ -205,6 +227,7 @@ function randomGen($min, $max, $quantity)
   }
 
   .img-zoom-result {
+    margin-top: -20px;
     right: 10px;
   }
 
@@ -252,14 +275,14 @@ function randomGen($min, $max, $quantity)
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: #fff;
+    background-color: #151515;
     z-index: 99999;
   }
 
   .column-single {
     float: left;
     width: auto;
-    background-color: #fff;
+    background-color: #151515;
   }
 
   .column-single img {
@@ -272,7 +295,7 @@ function randomGen($min, $max, $quantity)
   /* Modal Content */
   .modal-content-single {
     position: relative;
-    background-color: #FFF;
+    background-color: #151515;
     margin: auto;
     padding: 0;
     width: 90%;
@@ -402,6 +425,18 @@ function randomGen($min, $max, $quantity)
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
+  #partially_needed ul li {
+    color: darkgrey;
+  }
+
+  .newproducts-w3agile {
+    background-color: #151515;
+  }
+
+  .newproducts-w3agile h3 {
+    color: darkgrey;
+  }
+
   @media (max-width: 991px) {
     .mySlides-single img {
       max-height: 300px;
@@ -489,7 +524,7 @@ function randomGen($min, $max, $quantity)
   }
 
   .btn-buy {
-    background: #337ab7;
+    background: #001e38;
     color: white;
     border-radius: 10px !important;
   }
@@ -504,7 +539,7 @@ function randomGen($min, $max, $quantity)
   }
 
   .btn-cart:hover {
-    background-color: #337ab7 !important;
+    background-color: #454545 !important;
     color: white !important;
   }
 
@@ -740,11 +775,15 @@ function randomGen($min, $max, $quantity)
     padding: 0px;
     padding-bottom: 0px;
     position: relative;
-    height: 300px;
+    height: 275px;
     width: 250px;
-    background: white;
-    color: #000;
+    background: black;
+    color: darkgrey;
     margin-right: 20px;
+  }
+
+  .deupd {
+    padding-top: 25px;
   }
 
   .left-arrow-btn-all {
@@ -882,7 +921,7 @@ function randomGen($min, $max, $quantity)
       if ($(window).width() > 825) {
         $('.fixed-pos-left').css('top', '200px');
         $('.fixed-pos-left-container').css('height', '0');
-        $('#myresult').css('top', '200px');
+        $('#myresult').css('top', '145px');
         $('#myresult').css('height', screen.height - 310);
       } else if ($(window).width() <= 825 && $(window).width() > 767) {
         $('.fixed-pos-left').css('top', '230px');
@@ -911,7 +950,7 @@ function randomGen($min, $max, $quantity)
         big_screen = 1;
         $('.fixed-pos-left').css('top', '200px');
         $('.fixed-pos-left-container').css('height', '0');
-        $('#myresult').css('top', '200px');
+        $('#myresult').css('top', '145px');
         $('#myresult').css('height', screen.height - 310);
       } else if ($(window).width() <= 825 && $(window).width() > 767) {
         big_screen = 1;
@@ -1350,7 +1389,7 @@ function randomGen($min, $max, $quantity)
     data-toggle="modal"
     data-target="#avail_stores"
     style="width: 100%;justify-content: flex-start;border-radius: 0px;border-color: #fff;">
-    <i class="fas fa-cart-plus mr-2"></i>
+    <i class="fas fa-cart-plus mr-2" style="color: cyan"></i>
     Add to Cart
   </div>
   <div
@@ -1366,31 +1405,31 @@ function randomGen($min, $max, $quantity)
       type="button"
       name="submit"
       style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px;background-color: transparent;">
-      <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-flash mr-2"></i>
+      <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-shopping-bag mr-2"></i>
     </div>
     Buy Now
   </div>
 </div>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="overflow-x: hidden;width: 100%">
-  <section class="content">
+<div class="content-wrapper" style="overflow-x: hidden;width: 100%;background-color: #151515">
+  <section class="content" style="background-color: #151515">
     <!-- Default box -->
-    <div class="card card-solid">
-      <div class="card-body" style="margin-top: 0px;">
-        <div class="row">
+    <div class="card card-solid" style="margin-top: 30px;">
+      <div class="card-body" style="margin-top: 0px;background-color: #151515;">
+        <div class="row" style="background-color: #151515;">
           <div class="col-12 col-sm-6 fixed-pos" style="padding-left: 15px;">
             <h3 class="d-inline-block d-sm-none"><?= $row2['product_name'] ?></h3>
             <!---------------------------------------------------------------------------------------------------------------->
             <!---------------------------------------------------------------------------------------------------------------->
             <!---------------------------------------------------------------------------------------------------------------->
-            <div class="fixed-pos-left-container" style="background-color:white">
-              <div class="fixed-pos-left" style="background-color:white">
+            <div class="fixed-pos-left-container" style="background-color: #151515">
+              <div class="fixed-pos-left" style="background-color: #151515">
                 <div class="abolute_div" style="margin:0;">
                   <div class="relative_div" style="margin:0;">
                     <div class="row zoom-in-adjust" style="margin:0;width:100%;">
                       <div
                         class="col-md-12 div-wrapper product_contain_div"
-                        style="margin-top: 20px;padding-right:0px;height:430px;">
+                        style="margin-top: 10px;padding-right: 0px;padding-left: 10px;height: 430px;border-radius: 10px;background-color: #151515">
                         <?php
                         $img_cnt_sql = "select img_count from product_description where product_description_id=$product_description_id";
                         $img_cnt_stmt = $pdo->prepare($sql);
@@ -1498,7 +1537,7 @@ function randomGen($min, $max, $quantity)
                                   id="view-single-img"
                                   style="display: flex;position: absolute;bottom: 20px;float: left;border: 0px;padding: 10px;padding-top: 13px; background-color: transparent;"
                                   onclick="openModal_single();currentSlide(1)">
-                                  <i style="color: #000000" class="fa fa-search-plus fa-lg"></i>
+                                  <i style="color: darkgrey" class="fa fa-search-plus fa-lg"></i>
                                 </div>
                               </div>
                               </div>
@@ -1513,7 +1552,7 @@ function randomGen($min, $max, $quantity)
                                 data-toggle="modal"
                                 data-target="#avail_stores"
                                 style="width: 100%;justify-content: flex-start;border-radius: 4px;">
-                                <i class="fas fa-cart-plus mr-2"></i> Add to Cart
+                                <i class="fas fa-cart-plus mr-2" style="color: cyan"></i> Add to Cart
                               </div>
                               <div
                                 class="btn btn-default btn-lg btn-flat btn-buy button"
@@ -1527,7 +1566,7 @@ function randomGen($min, $max, $quantity)
                                   type="button"
                                   name="submit"
                                   style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px;background-color: transparent;">
-                                  <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-flash mr-2"></i>
+                                  <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-shopping-bag mr-2"></i>
                                 </div>
                                 Buy Now
                               </div>
@@ -1742,7 +1781,7 @@ function randomGen($min, $max, $quantity)
                                     data-toggle="modal"
                                     data-target="#avail_stores"
                                     style="max-width: 200px;justify-content: flex-start;border-radius: 4px;">
-                                    <i class="fas fa-cart-plus mr-2"></i>
+                                    <i class="fas fa-cart-plus mr-2" style="color: cyan"></i>
                                     Add to Cart
                                   </div>
                                   <div
@@ -1758,7 +1797,7 @@ function randomGen($min, $max, $quantity)
                                       type="button"
                                       name="submit"
                                       style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%; padding: 4px;background-color: transparent;">
-                                      <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-flash mr-2"></i>
+                                      <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-shopping-bag mr-2"></i>
                                     </div>
                                     Buy Now
                                   </div>
@@ -1972,7 +2011,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="dis_add()"
                                 id="dis_add"
                                 class="fa fa-sm fa-edit"
-                                style="position: absolute;right: 0;top: 0;color: white;background-color:#0c77cc;padding: 4px;"
+                                style="position: absolute;right: 0;top: 0;color: white;background-color: #0c77cc;padding: 4px;"
                                 onmouseover="$(this).css('background-color','#0c66cc')"
                                 onmouseleave="$(this).css('background-color','#0c77cc')">
                               </span>
@@ -1980,7 +2019,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="reset_add()"
                                 id="hide_add"
                                 class="fa fa-sm fa-close"
-                                style="display: none;position: absolute;right: 0;top: 0;color: white;background-color:red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
+                                style="display: none;position: absolute;right: 0;top: 0;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
                                 onmouseover="$(this).css('background-color','#bb0000')"
                                 onmouseleave="$(this).css('background-color','red')">
                               </span>
@@ -1988,7 +2027,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="dis_ok()"
                                 id="hide_add1"
                                 class="fa fa-check"
-                                style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color:#07C103;padding: 3px;"
+                                style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color: #07C103;padding: 3px;"
                                 onmouseover="$(this).css('background-color','#4f994f')"
                                 onmouseleave="$(this).css('background-color','#07C103')">
                               </span>
@@ -2371,7 +2410,7 @@ function randomGen($min, $max, $quantity)
                     }
                   }
                 } else {
-                  echo "<img src='../../images/logo/no-review.png' style='max-height:150px;max-width:250px'><p><i class='fa fa-frown fa-lg' style='color:#000000;background-color:#ffff00;border-radius:50%'></i> No other reviews on this product..! </p>";
+                  echo "<img src='../../images/logo/no-review.png' style='max-height:150px;max-width:250px'><p><i class='fa fa-frown fa-lg' style='color:#000000;background-color: #ffff00;border-radius:50%'></i> No other reviews on this product..! </p>";
                 }
                 ?>
               </div>
