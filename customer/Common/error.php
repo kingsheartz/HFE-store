@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['failed'] = "Unauthorised entry is prohibited";
+$_SESSION['failed'] = "Access Denied: Unauthorized Entry Prohibited";
 try {
   if (isset($_GET['click'])) {
     $_SESSION['failed'] = "The account is already activated <br> (or) <br> doesn't exist!";
@@ -34,7 +34,7 @@ try {
 <style type="text/css">
   body {
     text-align: center;
-    background: url("../../images/logo/store.png") 0px 0px no-repeat;
+    background: url("../../images/logo/store1.png") 0px 0px no-repeat;
     background-size: cover;
     background-attachment: fixed;
   }
@@ -57,7 +57,7 @@ try {
     width: 50px;
   }
 
-  .loader .hidden {
+  .loader.hidden {
     animation: fadeout 1s;
     animation-fill-mode: forwards;
   }

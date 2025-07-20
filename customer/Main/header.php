@@ -461,7 +461,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .side_nav_content_head {
-      background-color: #02171e;
+      background-color: #151515df;
       border-top: 0px !important;
       font-size: 15px;
     }
@@ -507,7 +507,7 @@ if (session_status() === PHP_SESSION_NONE) {
       z-index: 1;
       top: 0;
       left: 0;
-      background-color: #02171e;
+      background-color: #151515df;
       overflow-x: hidden;
       transition: 0.15s;
       padding-top: 60px;
