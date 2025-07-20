@@ -197,7 +197,7 @@ require "../Common/cookie.php";
     ?>
   });
 </script>
-<div class="slider-area" style="background-color: white;margin-top: 10px;">
+<div class="slider-area" style="background-color: white;margin-top: 0px;">
   <!-- Slider -->
   <div class="block-slider block-slider4">
     <ul class="" id="bxslider-home4" style="height: 400px;background-color: rgba(255, 255, 255, 0.95);">
@@ -251,6 +251,7 @@ require "../Common/cookie.php";
   background: linear-gradient(135deg, rgba(20,20,20,0.95), rgba(35,35,35,0.85));
   color: #f1f1f1;
   padding: 24px 28px;
+  padding-top: 0px;
   border-radius: 14px;
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
   border: 1px solid rgba(255,255,255,0.05);
@@ -326,7 +327,7 @@ require "../Common/cookie.php";
       width: 100%;
       margin: 0;
       color: #a8a8a8;
-      margin-top: 50px;
+      margin-top: 30px;
       font-size: 18px;
       font-family: sans-serif;
       font-weight: 600;
@@ -571,17 +572,17 @@ require "../Common/cookie.php";
         <div class="container">
           <div class="col-md-6 ban-bottom3">
             <div class="ban-top">
-              <img src="../../images/p2.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6'" />
+              <img src="../../images/p2.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=6'" />
             </div>
             <div class="ban-img">
               <div class=" ban-bottom1">
                 <div class="ban-top">
-                  <img src="../../images/p1.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=4'" />
+                  <img src="../../images/p1.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=4'" />
                 </div>
               </div>
               <div class="ban-bottom2">
                 <div class="ban-top">
-                  <img src="../../images/p3.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6'" />
+                  <img src="../../images/p3.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=6'" />
                 </div>
               </div>
               <div class="clearfix"></div>
@@ -589,7 +590,7 @@ require "../Common/cookie.php";
           </div>
           <div class="col-md-6 ban-bottom">
             <div class="ban-top">
-              <img src="../../images/p4.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products_limited.php?category_id=6'" />
+              <img src="../../images/p4.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=6'" />
             </div>
           </div>
           <div class="clearfix"></div>

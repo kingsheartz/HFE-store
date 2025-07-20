@@ -16,12 +16,8 @@
 
     #display {
       width: 90%;
-
       box-sizing: border-box;
       background-color: #cccccc;
-
-
-
     }
   </style>
 </head>

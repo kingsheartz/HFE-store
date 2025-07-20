@@ -2,6 +2,15 @@
 require "header.php";
 ?>
 <style type="text/css">
+  .about,
+  .about-team {
+    background-color: #151515;
+  }
+
+  h4 {
+    color: darkgrey !important;
+  }
+
   @media(min-width: 992px) {
     .about-team-grids {
       width: 24.6%;
@@ -55,31 +64,18 @@ require "header.php";
 <!-- about -->
 <div class="about">
   <div class="container">
-    <h3 class="w3_agile_header">About Us</h3>
+    <h3 class="w3_agile_header">About HFE Store</h3>
     <div class="about-agileinfo w3layouts">
       <div class="col-md-8 about-wthree-grids grid-top">
-        <h4>One World, One Store !!! </h4>
-        <p class="top" style="padding:5px">Shopping without roaming, We are here for all your needs.......</p>
-        <p>It goes back in time when we made our simple beginning in the year 2021.HFE-Store online shopping
-          system which further contains several other entities describing the entire system. Also provides the
-          24×7 service, that is customers can surf the website, place orders anytime they wish to. The
-          delivery system works according to the shops opening and closing time.</p>
-        <p>The pandemic has put people and economies under immense pressure. Nobody could have foreseen the
-          disruption that came upon the world last year and continues to impact every single thing we do even
-          today. It pushed boundaries and realigned priorities. It created daunting challenges especially for
-          small businesses . Many of them have gone through personal loss and hardship in their lives in
-          recent months. We at HFE-Store recognize the immense responsibility that we have as a company during
-          such challenging times – to our customers as by partnering small scale companies to launch their
-          products in good manner and also helps to reach people. </p>
-        <p>HFE-Store helps customers to purchase commodities as per requirement during this covid-19
-          circumstances. The major Objective of "HFE-Store" is that by enabling device location , we could know
-          where to find our requirements at nearest location, also we can either order it to home or purchase
-          from those particular shop by visiting over there. We could also know whether the shops are open or
-          not.</p>
+        <h4>Your One-Stop Health & Fitness Equipment Store</h4>
+        <p class="top" style="padding:5px">Stay fit from home. We bring the store to your screen.</p>
+        <p>Established in 2021, HFE-Store is an eCommerce platform dedicated to providing high-quality health and fitness equipment at your fingertips. We enable users to discover, compare, and order gym essentials with ease, from the comfort of their homes. With 24x7 accessibility, we bring convenience and reliability to your wellness journey.</p>
+        <p>Our initiative emerged during the pandemic, recognizing the need for accessible fitness solutions. With disrupted supply chains and closed gyms, HFE-Store aimed to empower individuals and small vendors alike. By connecting fitness-focused buyers with trusted sellers, we promote well-being across communities.</p>
+        <p>Through geo-location features, customers can check real-time availability and store status near their locality, either placing orders online or visiting the physical store directly. We believe fitness is for everyone, and our technology ensures it’s always within reach.</p>
         <div class="about-w3agilerow">
           <div class="col-md-12" style="margin: 0px;padding: 0px;">
             <div class="col-md-4 about-w3imgs" style="margin: 0px;padding: 0px;">
-              <img src="../../images/p5.jpg" alt="" class="img-responsive zoom-img" style="height: 147.53px" />
+              <img src="../../images/logo/store1.png" alt="" class="img-responsive zoom-img" style="height: 147.53px" />
             </div>
             <div class="col-md-4 about-w3imgs" style="margin: 0px;padding: 0px;">
               <img src="../../images/logo/store.jpg" alt="" class="img-responsive zoom-img" style="height: 147.53px" />
@@ -94,16 +90,16 @@ require "header.php";
       <div class="col-md-4 about-wthree-grids">
         <div class="offic-time">
           <div class="time-top">
-            <h4>HFE-Store </h4>
+            <h4>HFE-Store</h4>
           </div>
           <div class="time-bottom">
-            <h5>From 9.00 AM </h5>
-            <h5>To 9.00 PM :)</h5>
-            <p>Service provided 24x7 hours a week. </p>
+            <h5>From 9.00 AM</h5>
+            <h5>To 9.00 PM</h5>
+            <p>Online orders open 24x7</p>
           </div>
         </div>
         <div class="testi">
-          <h3 class="w3_agile_header">Testimonial</h3>
+          <h3 class="w3_agile_header">Testimonials</h3>
           <!--//End-slider-script -->
           <script src="../../js/responsiveslides.min.js"></script>
           <script>
@@ -129,30 +125,30 @@ require "header.php";
             <ul class="rslides" id="slider5">
               <li>
                 <div class="testi-slider">
-                  <h4>" I AM VERY PLEASED.</h4>
-                  <p>Thanks for your visit to our store.We believe ,you like to shop with us.Feel free to explore our world.We are here to help you. :)</p>
+                  <h4>"Loved the Experience!"</h4>
+                  <p>Ordering gym gear was never this smooth. Great UI and fast delivery!</p>
                   <div class="testi-subscript">
-                    <p><a href="#">Govind,</a>Leader</p>
+                    <p><a href="#">Rahul,</a> Verified Customer</p>
                     <span class="w3-agilesub"> </span>
                   </div>
                 </div>
               </li>
               <li>
                 <div class="testi-slider">
-                  <h4>" WORLD IS SO BIG</h4>
-                  <p>World is so big,we can't roam for every needs.We try to bring that to your finger tips, so that you can save your precious time.</p>
+                  <h4>"Made fitness easy"</h4>
+                  <p>Incredible way to shop fitness gear online. Highly recommend!</p>
                   <div class="testi-subscript">
-                    <p><a href="#">KING'S HEARTZ,</a>Manager</p>
+                    <p><a href="#">Priya,</a> Gym Owner</p>
                     <span class="w3-agilesub"> </span>
                   </div>
                 </div>
               </li>
               <li>
                 <div class="testi-slider">
-                  <h4>" THANKS TO YOU.</h4>
-                  <p>Everything we doing great because of your support.We are expecting that it will continue from your side,Thank you !! </p>
+                  <h4>"Outstanding Support"</h4>
+                  <p>Customer service is exceptional. Helped me track my order in real time.</p>
                   <div class="testi-subscript">
-                    <p><a href="#">Supporting Team,</a>HFE-Store</p>
+                    <p><a href="#">Deepak,</a> Coach</p>
                     <span class="w3-agilesub"> </span>
                   </div>
                 </div>
@@ -171,12 +167,8 @@ require "header.php";
   <div style="background-color: rgba(0,0,0,0.55);">
     <div class="container">
       <div class="about-slid-info">
-        <h2>HFE-Store, Save time for doing great !</h2>
-        <p style="text-align:justify">Technology is growing day to day for saving our time and giving
-          extraordinary features and specifications to us. We also thinks in the same way to provide the same
-          result to you. We believe in providing you a best user friendly atmosphere is our success. We are
-          trying hard time-to-time in achieving that.
-        </p>
+        <h2>Smart Fitness Shopping Starts Here</h2>
+        <p style="text-align:justify">HFE-Store blends modern tech with wellness needs. With seamless search, secure checkout, and real-time availability, we empower individuals to focus on fitness without delay.</p>
       </div>
     </div>
   </div>
@@ -191,8 +183,8 @@ require "header.php";
         <div class="col-md-3 about-team-grids">
           <img src="../../images/team/t1.JPG" alt="" height="450px" />
           <div class="team-w3lstext">
-            <h4><span>GOVIND,</span> Leader</h4>
-            <p>Controls overall project and direct into the right path for the fullfilness of work.</p>
+            <h4><span>Govind,</span> Leader</h4>
+            <p>Project lead and strategist, ensures smooth execution and team guidance.</p>
           </div>
           <div class="social-icons caption">
             <ul>
@@ -213,15 +205,15 @@ require "header.php";
             <div class='flip-box-front'>
               <img src="../../images/team/t2.JPG" alt="" height="450px" />
               <div class="team-w3lstext">
-                <h4><span>Anumol,</span> Member</h4>
-                <p>Provides datas and support to the team which helps in reaching fullness of work.</p>
+                <h4><span>Anumol,</span> Data Manager</h4>
+                <p>Manages data resources and supports backend integration.</p>
               </div>
             </div>
             <div class='flip-box-back'>
               <img src="../../images/team/t5.jpg" alt="" height="450px" />
               <div class="team-w3lstext">
-                <h4><span>Dhanalakshmi,</span> Member</h4>
-                <p>Helps collecting datas for the project completion.</p>
+                <h4><span>Dhanalakshmi,</span> Research Analyst</h4>
+                <p>Focuses on market and product research.</p>
               </div>
             </div>
           </div>
@@ -229,8 +221,8 @@ require "header.php";
         <div class="col-md-3 about-team-grids">
           <img src="../../images/team/t4.JPG" alt="" height="450px" />
           <div class="team-w3lstext">
-            <h4><span>KRISHNENDU,</span> Co-Leader</h4>
-            <p>Functional advisor of the extra-ordinary requirements in our work.</p>
+            <h4><span>Krishnendu,</span> Co-Leader</h4>
+            <p>Assists with technical development and supports project delivery.</p>
           </div>
           <div class="social-icons caption">
             <div class="clearfix"> </div>
@@ -239,8 +231,8 @@ require "header.php";
         <div class="col-md-3 about-team-grids">
           <img src="../../images/team/t3.JPG" alt="" height="450px" />
           <div class="team-w3lstext">
-            <h4><span>SHAHANAS,</span> Supervisor</h4>
-            <p>Holds the root of our project and supervise the members group .</p>
+            <h4><span>Shahanas,</span> Supervisor</h4>
+            <p>Oversees workflow and team coordination.</p>
           </div>
           <div class="social-icons caption">
           </div>
@@ -255,14 +247,11 @@ require "footer.php";
 ?>
 <script type="text/javascript">
   const homeactive = document.querySelector('#homeactive');
-  //const catactive=document.querySelector('#catactive');
   const aboutactive = document.querySelector('#aboutactive');
   const contactactive = document.querySelector('#contactactive');
   homeactive.className = "";
-  //catactive.className="";
-  aboutactive.className = "";
-  contactactive.className = "";
   aboutactive.className = "active";
+  contactactive.className = "";
 </script>
 </body>
 

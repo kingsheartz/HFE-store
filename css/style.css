@@ -1919,13 +1919,13 @@ input#amount {
 .about-team,
 .contact,
 .codes {
-  padding: 5em 0;
+  padding: 2em 0;
 }
 
 h3.w3_agile_header,
 h2.w3_agile_header {
   text-align: center;
-  color: #212121;
+  color: darkgrey;
   padding-bottom: .5em;
   position: relative;
   font-size: 2.5em;
@@ -2078,6 +2078,7 @@ h2.w3_agile_header:after {
   padding: 4em 2em 3em;
   background: #139b3b;
   margin-top: 2em;
+  margin-bottom: 2em;
 }
 
 /*-- slider start here --*/
@@ -2353,7 +2354,7 @@ a.callbacks1_s3:focus {
 }
 
 .about-team-grids {
-  background: #139b3b;
+  background: #151515;
   padding: 2em 1em;
   margin-left: 5px;
   width: 24.5%;
@@ -2371,7 +2372,7 @@ a.callbacks1_s3:focus {
 
 .about-team-grids h4 span {
   font-size: 1.3em;
-  color: #000;
+  color: #139b3b;
   margin-right: 10px;
 }
 
@@ -5128,7 +5129,6 @@ div.scrollmenu a {
 }
 
 @media (max-width: 767px) {
-
   .menu-bar,
   .navbar-nav {
     background-color: #02171e !important;
@@ -5138,6 +5138,7 @@ div.scrollmenu a {
   .navbar-default .navbar-nav>.active>a,
   .navbar-default .navbar-nav>.active>a:focus {
     color: #ffffff !important;
+    height: 50px !important;
   }
 
   .navbar-default .navbar-nav>.active>a:hover {

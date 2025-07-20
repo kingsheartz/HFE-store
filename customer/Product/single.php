@@ -1839,7 +1839,7 @@ function randomGen($min, $max, $quantity)
                     AND product_keys.customer_id = " . $_SESSION['id']
                   );
                   $myreviewcount = $myreviewstmt->rowCount();
-                  echo "<h3 style='margin-top:20px;'>Customer Reviews" . $myreviewcount . "</h3>";
+                  echo "<h4 style='margin-top:20px;'>Customer Reviews: " . $myreviewcount . "</h4>";
 
                   if ($myreviewcount != 0) {
                     $myreviewrow = $myreviewstmt->fetch(PDO::FETCH_ASSOC);
@@ -2302,7 +2302,8 @@ function randomGen($min, $max, $quantity)
                   );
                 }
                 $reviewcount = $reviewstmt->rowCount();
-                if ($reviewcount != 0) {
+                if ($reviewcount > 0) {
+                  echo $reviewcount;
                   while ($reviewrow = $reviewstmt->fetch(PDO::FETCH_ASSOC)) {
                     $ordered_cnt = $reviewrow['ordered_cnt'];
                     $review = $reviewrow['review'];
@@ -2370,7 +2371,7 @@ function randomGen($min, $max, $quantity)
                     }
                   }
                 } else {
-                  echo "<img src='../../images/logo/no-review.png' style='max-height:150px;max-width:250px'><p><i class='fa fa-frown fa-lg' style='color:#000000;background-color:#ffff00;border-radius:50%'></i> No reviews on this product..! </p>";
+                  echo "<img src='../../images/logo/no-review.png' style='max-height:150px;max-width:250px'><p><i class='fa fa-frown fa-lg' style='color:#000000;background-color:#ffff00;border-radius:50%'></i> No other reviews on this product..! </p>";
                 }
                 ?>
               </div>

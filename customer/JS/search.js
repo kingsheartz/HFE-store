@@ -12,7 +12,7 @@ function check() {
     });
     return;
   } else {
-    location.href = "../Product/products_limited.php?product=" + ele;
+    location.href = "../Product/products.php?product=" + ele;
   }
 }
 function check2() {
@@ -29,7 +29,7 @@ function check2() {
     });
     return;
   } else {
-    location.href = "../Product/products_limited.php?product=" + ele;
+    location.href = "../Product/products.php?product=" + ele;
   }
 }
 $(document).on("click", ".item_search_list_p", function () {

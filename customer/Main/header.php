@@ -421,8 +421,8 @@ if (session_status() === PHP_SESSION_NONE) {
         color: white !important;
         background-color: rgb(63 63 63 / 41%) !important;
         border-bottom: 0px;
-        border-bottom-right-radius: 0px;
-        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
       }
 
       .navbar-inverse .navbar-nav li:hover {
@@ -831,10 +831,6 @@ if (session_status() === PHP_SESSION_NONE) {
         width: 100%;
       }
 
-      #header-mock {
-        height: 120px;
-      }
-
       div#lg_top_ph_mail {
         width: 25rem !important;
       }
@@ -853,22 +849,22 @@ if (session_status() === PHP_SESSION_NONE) {
 
       li.locationdiv {
         position: absolute !important;
-        right: 150px;
+        right: 100px;
       }
 
       li.cartdiv {
         position: absolute !important;
-        right: 100px;
+        right: 50px;
       }
 
       li.wishdiv {
         position: absolute !important;
-        right: 50px;
+        right: 0px;
       }
 
       li.logindiv {
         position: absolute !important;
-        right: 0px;
+        right: 150px;
         display: flex;
         justify-content: center;
         align-items: center;
@@ -889,10 +885,6 @@ if (session_status() === PHP_SESSION_NONE) {
       .usericon {
         right: 0px !important;
         top: 20px !important;
-      }
-
-      #header-mock {
-        height: 200px;
       }
 
       div#lg_top_ph_mail {
@@ -918,7 +910,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .header {
-      position: fixed;
+      position: sticky;
       width: 100%;
       top: 0px;
       z-index: 500;
@@ -942,7 +934,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .navbar.navbar-inverse.shadow_b {
-      height: 55px !important;
+      height: 50px !important;
       border: 0px !important;
     }
 
@@ -1298,7 +1290,7 @@ if (session_status() === PHP_SESSION_NONE) {
 	</div>
 	</div>-->
     <!-- navigation -->
-    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 10px;background-color: #050505; border: 0px !important;">
+    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 0px;background-color: #050505; border: 0px !important;">
       <div class="container-fluid">
         <div class="row">
           <div style="padding: 0px">
@@ -1362,7 +1354,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 }
                 ?>
                 <li class="profile-popup">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="display:flex;align-items:center;justify-content:center;">
                     <span class="glyphicon glyphicon-user" style="font-size:16px;"></span> Profile <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" style="border:1px solid rgb(55, 55, 55);padding: 0px; background-color: #000 !important; color:white !important;">
@@ -1507,7 +1499,6 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
   </div>
 
-  <div id="header-mock"></div>
   <!--</nav>-->
   <!--LOCATION ACCESS-->
   <section id="popup2">
