@@ -45,7 +45,7 @@
       width: 100% !important;
     }
 
-		.footer-botm>.container>div {
+    .footer-botm>.container>div {
       width: 100%;
     }
   }
@@ -98,7 +98,7 @@
     font-weight: normal;
   }
 
-	.info>li {
+  .info>li {
     width: 130px;
   }
 
@@ -106,7 +106,7 @@
     float: right;
   }
 
-	@media(max-width:767px) {
+  @media(max-width:767px) {
     .col-sm-3.w3_footer_grid {
       height: 200px;
       width: 50%;
@@ -139,6 +139,7 @@
       display: block !important;
     }
   }
+
   .footer .newsletter input {
     width: 100%;
     height: 35px;
@@ -234,7 +235,7 @@
           <li><a href="../Main/faq.php">FAQ</a><i class="fa fa-chevron-right" aria-hidden="true"></i></li>
         </ul>
       </div>
-			<div class="footer-botm">
+      <div class="footer-botm">
         <div class="container">
           <div class="col-lg-5 col-md-6 col-sm-12 w3_footer_grid" style="display: inline-flex;">
             <div class="newsletter">
@@ -248,7 +249,7 @@
               </form>
             </div>
           </div>
-					<div class="col-lg-2"></div>
+          <div class="col-lg-2"></div>
           <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="w3layouts-foot">
               <ul>
@@ -371,46 +372,47 @@
       </div>
       <div class="modal-body" style="padding:0px;height: 100%;">
         <div class="col-md-12">
-          <div class="col-md-12" style="padding: 0px;height: 100%;background-color: white">
+          <div class="col-md-12" style="padding: 0px;height: 100%;background-color: #151515;">
             <form name="signin_form" id="signin_form">
-              <div class="col-md-12" style="padding: 0px;height: 100%;background-color: white">
+              <div class="col-md-12" style="padding: 0px;height: 100%;background-color: #151515;">
                 <div class="col-md-6 hidden-xs no-padding" style="padding:0px;height: 70%">
-                  <img
-                    class="img-responsive"
-                    style="padding: 0px;padding-top: 0px;height: 400px;position: relative;"
-                    src="../../images/logo/store.jpg">
+                  <img class="img-responsive" style="padding: 0px;padding-top: 0px;height: 400px;position: relative;" src="../../images/logo/store1.png">
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <br>
-                    <img src="../../images/logo/logost.svg" height="50px">
-                    <i style="font-size: 1.6em;font-weight: bolder;font-family: sans-serif;font-style: normal;">
+                    <img src="../../images/logo/logo-horizontal.png" height="50px">
+                    <br>
+                    <i style="font-size: 1.6em;font-weight: 800;font-family: 'Open Sans', sans-serif;font-style: normal;color: darkgrey;">
                       Log in
-                    </i><br />
-                    <p id="emppass" style="color: red;position: relative;top: 45px;display: none;"></p><br><br>
+                    </i>
+                    <p id="emppass" style="color: red;position: relative;top: 45px;display: none;">
+                    </p><br><br>
                     <input
                       type="email"
                       class="form-control md-brdr"
                       id="mobile"
                       name="mobile"
                       placeholder="Email ID"
+                      style="background-color: #151515;border-color: darkgrey !important;"
                       required>
                     <input type="hidden" id="valchg">
                   </div>
-                  <p class="capson_warning" style="display: none;float:left;color: #d9534f">
-                    <i class="fa fa-warning"></i> &nbsp;WARNING! Caps lock is ON.
+                  <p class="capson_warning" style="display: none;color: #d9534f">
+                    <i class="fa fa-warning"></i>
+                    &nbsp;WARNING! Caps lock is ON.
                   </p>
-                  <div id="passdiv" style="display: block;background-color: white">
+                  <div id="passdiv" style="display: block;background-color: #151515">
                     <div class="form-group">
                       <input
                         type="password"
                         class="form-control  md-brdr password_fields"
                         pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}"
                         title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters"
-                        required=" "
-                        placeholder="Enter Password"
+                        placeholder="Enter  Password"
                         name="password"
                         id="pwd"
+                        style="background-color: #151515;border-color: darkgrey !important;"
                         required>
                     </div>
                   </div>
@@ -419,25 +421,34 @@
                       <button
                         type="button"
                         onclick="forgottenpass()"
-                        style="background-color: transparent;border: none;"
-                        class="frgt-pswrd">Forgot Password ?
+                        style="background-color: transparent;border: none;color: darkgrey;"
+                        class="frgt-pswrd">Forgot Password?
                       </button>
                     </a>
                     <br><br><br>
-                    <button onclick="signin()" type="button" class="btn btn-primary btn-full mgbtm15 real_btn">LOGIN</button>
-                    <button type="button" style="display:none" class="btn btn-primary btn-full mgbtm15 load_btn">
-                      <i class="fa fa-refresh fa-spin"></i> LOGIN
-                    </button>
+                    <button
+                      onclick="signin()"
+                      style="background-color: #139b3b !important; border-color: #139b3b !important"
+                      type="button"
+                      class="btn btn-primary btn-full mgbtm15 real_btn">LOGIN</button>
+                    <button
+                      type="button"
+                      style="display:none;background-color: #139b3b !important; border-color: #139b3b !important"
+                      class="btn btn-primary btn-full mgbtm15 load_btn">
+                      <i class="fa fa-refresh fa-spin"></i> LOGIN</button>
                     <a href="../Account/registered.php">
-                      <button type="button" class="btn btn-danger btn-full mgbtm15" onclick="signup()">Sign Up</button>
-                    </a><br /><br />
-                    <!--<a href="registered.php" data-toggle="modal" data-dismiss="modal"> <button type="button" class="btn btn-danger btn-full mgbtm15" onclick="signup()" data-dismiss="modal">Sign Up</button></a>-->
+                      <button
+                        type="button"
+                        style="background-color: #451f1e !important"
+                        class="btn btn-danger btn-full mgbtm15"
+                        onclick="signup()">Sign Up</button>
+                    </a><br><br>
+                    <!--<a href="../Account/registered.php" data-toggle="modal" data-dismiss="modal"> <button type="button" class="btn btn-danger btn-full mgbtm15" onclick="signup()" data-dismiss="modal">Sign Up</button></a>-->
                   </div>
                 </div>
               </div>
             </form>
-            <div class="pop-btm-fx">
-            </div>
+            <div class="pop-btm-fx"></div>
           </div>
         </div>
       </div>

@@ -1365,7 +1365,7 @@ function randomGen($min, $max, $quantity)
       class="btn btn-default btn-lg btn-flat"
       type="button"
       name="submit"
-      style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px;margin-right: 20px;background-color: transparent;">
+      style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px;background-color: transparent;">
       <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-flash mr-2"></i>
     </div>
     Buy Now
@@ -1526,7 +1526,7 @@ function randomGen($min, $max, $quantity)
                                   class="btn btn-default btn-lg btn-flat"
                                   type="button"
                                   name="submit"
-                                  style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px; margin-right: 20px;background-color: transparent;">
+                                  style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px;background-color: transparent;">
                                   <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-flash mr-2"></i>
                                 </div>
                                 Buy Now
@@ -1757,7 +1757,7 @@ function randomGen($min, $max, $quantity)
                                       class="btn btn-default btn-lg btn-flat"
                                       type="button"
                                       name="submit"
-                                      style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%; padding: 4px;margin-right: 20px; background-color: transparent;">
+                                      style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%; padding: 4px;background-color: transparent;">
                                       <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-flash mr-2"></i>
                                     </div>
                                     Buy Now

@@ -26,7 +26,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <!--favicon-->
   <link href="../../images/logo/favicon.png" rel="icon" />
   <!--//favicon-->
-	<link rel="stylesheet" href="../../extras/OS/pages/CSS/single.css">
+  <link rel="stylesheet" href="../../extras/OS/pages/CSS/single.css">
   <link href="../../css/style.css" rel="stylesheet" type="text/css" media="all" />
   <!-- font-awesome icons -->
   <link href="../../css/font-awesome.css" rel="stylesheet">
@@ -788,7 +788,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     li.side-bar-collapsed>a>span {
       border: 1px solid #999999;
-			color: #999999;
+      color: #999999;
       padding: 5px;
       font-size: 16px !important;
       font-weight: 200;
@@ -853,17 +853,26 @@ if (session_status() === PHP_SESSION_NONE) {
 
       li.locationdiv {
         position: absolute !important;
-        right: 100px;
+        right: 150px;
       }
 
       li.cartdiv {
         position: absolute !important;
-        right: 50px;
+        right: 100px;
       }
 
       li.wishdiv {
         position: absolute !important;
+        right: 50px;
+      }
+
+      li.logindiv {
+        position: absolute !important;
         right: 0px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        padding-top: 5px;
       }
 
       .usericon {
@@ -1466,6 +1475,22 @@ if (session_status() === PHP_SESSION_NONE) {
                     </button>
                   </form>
                 </li>
+                <?php
+                if (!isset($_SESSION['name'])) {
+                ?>
+                  <li class="logindiv">
+                    <a href="#myModal" data-toggle="modal" data-dismiss="modal">
+                      <i class="fa fa-sign-in dropdown" style="color: white;font-size:16px;" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                  <!-- <li>
+                    <a href="#myModal" data-toggle="modal" data-dismiss="modal">
+                      <span class="fa fa-sign-in" style="color: white;font-size:16px;"></span>
+                    </a>
+                  </li> -->
+                <?php
+                }
+                ?>
               </ul>
             </div>
           </div>

@@ -1,6 +1,9 @@
 <?php
 require "header.php";
 ?>
+
+<!-- NDA agreements generator link: https://policymaker.io/non-disclosure-agreement/ -->
+
 <style>
   body {
     background-color: black;
@@ -107,7 +110,7 @@ require "header.php";
       <p>While using our Service, we may also collect the following information: sex, age, date of birth, place of
         birth, passport details, citizenship, registration at place of residence and actual address, telephone
         number (work, mobile), details of documents on education, qualification, professional training,
-        employment agreements, <a href="https://policymaker.io/non-disclosure-agreement/">NDA agreements</a>,
+        employment agreements, <a target="_blank" href="../../images/nda.pdf">NDA agreements</a>,
         information on bonuses and compensation, information on marital status, family members, social security
         (or other taxpayer identification) number, office location and other data.</p>
       <h3><b>5.Use of Data</b></h3>
