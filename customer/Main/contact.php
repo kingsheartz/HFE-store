@@ -56,16 +56,27 @@ require "header.php"
   textarea::placeholder {
     color: white !important;
   }
+
+  .contact-overlay {
+    background: url("../../images/logo/store1.png");
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+  }
 </style>
 <!-- contact -->
-<div style="background:url(../../images/logo/store.jpg);width: 100%;">
+<div class="contact-overlay">
   <div style="background-color: rgba(0,0,0,0.65);padding-right: 20px;padding-left: 20px; margin-top: 0px;">
     <div class="about" style="width: 100%">
       <div class="w3_agileits_contact_grids">
         <div class="col-md-5 w3_agileits_contact_grid_left">
           <div class="agile_map">
             <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3922.6102591769463!2d76.21932811431537!3d10.531331466550668!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ba7ee5256ead4f5%3A0x561f76122d6724e6!2sMaharaja&#39;s%20Technological%20Institute%2C%20Thrissur!5e0!3m2!1sen!2sin!4v1625389112967!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3945.4973923467014!2d76.94067199999999!3d8.5480754!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3b05b93fe7f8bd81%3A0x3319d0cffa3dc17e!2sIGNOU%20Study%20center%2040043!5e0!3m2!1sen!2sin!4v1753026063350!5m2!1sen!2sin"
               width="600"
               height="450"
               style="border:0;"
@@ -73,7 +84,7 @@ require "header.php"
               loading="lazy">
             </iframe>
           </div>
-          <div class="agileits_w3layouts_map_pos" style="background-color: #0c77aa">
+          <div class="agileits_w3layouts_map_pos">
             <div class="agileits_w3layouts_map_pos1" style=" background-color: rgba(0,0,0,0.75)">
               <img src="../../images/logo/logo.png">
               <br><br>
@@ -104,10 +115,10 @@ require "header.php"
         </div>
         <div class="col-md-2"></div>
         <div class="col-md-5 col-sm-12 w3_agileits_contact_grid_right">
-          <div style="background-color: #0c77aa;padding:5px;width: 100%;">
+          <div style="background-color: #139b3b;padding:5px;width: 100%;border-radius: 10px;">
             <div style="background-color: rgba(0,0,0,0.65);padding: 15px">
               <h3 class="w3_agile_header" style="color: white;font-weight: bolder;margin-top: 0px;padding-top: 20px;">
-                Leave a<span> Message</span>
+                Contact<span> Support</span>
               </h3>
               <form action="#" name="feedback_form" method="post"
                 style="background-color: rgba(0,0,0,0.55);padding: 5px;">
