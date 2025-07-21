@@ -67,6 +67,12 @@ require "header.php"
     background-attachment: fixed;
     background-repeat: no-repeat;
   }
+
+  .input__label--ichiro::before,
+  #input-27,
+  input.button {
+    border-radius: 5px !important;
+  }
 </style>
 <!-- contact -->
 <div class="contact-overlay">
@@ -116,13 +122,13 @@ require "header.php"
         <div class="col-md-2"></div>
         <div class="col-md-5 col-sm-12 w3_agileits_contact_grid_right">
           <div style="background-color: #139b3b;padding:5px;width: 100%;border-radius: 10px;">
-            <div style="background-color: rgba(0,0,0,0.65);padding: 15px">
+            <div style="background-color: rgba(0,0,0,0.65);padding: 15px;border-radius: 5px;">
               <h3 class="w3_agile_header" style="color: white;font-weight: bolder;margin-top: 0px;padding-top: 20px;">
                 Contact<span> Support</span>
               </h3>
               <form action="#" name="feedback_form" method="post"
-                style="background-color: rgba(0,0,0,0.55);padding: 5px;">
-                <span class="input input--ichiro">
+                style="background-color: rgba(0,0,0,0.55);padding: 5px;border-radius: 5px;">
+                <span class="input input--ichiro" style="margin-top:0.1em;">
                   <input
                     class="input__field input__field--ichiro"
                     type="text"
@@ -140,7 +146,14 @@ require "header.php"
                   Can't use any symbols(@ # $ %... )
                 </p>
                 <span class="input input--ichiro">
-                  <input class="input__field input__field--ichiro" type="email" onkeyup="checkmail()" id="input-26" name="Email" placeholder=" " required="" />
+                  <input
+                    class="input__field input__field--ichiro"
+                    type="email"
+                    onkeyup="checkmail()"
+                    id="input-26"
+                    name="Email"
+                    placeholder=" "
+                    required="" />
                   <label class="input__label input__label--ichiro" for="input-26">
                     <span class="input__label-content input__label-content--ichiro" style="color: white">Your Email</span>
                   </label>

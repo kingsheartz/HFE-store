@@ -537,9 +537,13 @@ if (session_status() === PHP_SESSION_NONE) {
       top: 0px;
       left: 0px;
       color: white;
-      margin-left: 320px;
-      margin-top: 20px;
-      position: fixed;
+      margin-left: 255px;
+      margin-top: -20px;
+      padding: 5px;
+      background-color: darkred;
+      border-radius: 15%;
+      width: 25px;
+      height: 25px;
     }
 
     #side_nav_bar_lock {
@@ -825,6 +829,19 @@ if (session_status() === PHP_SESSION_NONE) {
       text-align: center;
     }
 
+    .username-placeholder {
+      text-decoration: none;
+      background-color: #00000055;
+      color: white;
+      overflow-wrap: anywhere;
+    }
+
+    .username-placeholder .fa-user-circle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
     @media (min-width:825px) {
       .srch {
         float: left;
@@ -991,11 +1008,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <div id="show_online" style="padding: 3px;text-align: center;color: white;width: 100%;background-color: #489e07;display: none;font-weight: 400;font-size: 1.4rem ;font-family: Poppins, sans-serif">Online</div>
   <div id="show_offline" style="padding: 3px;text-align: center;color: white;width: 100%;background-color: #c50505;display: none;font-weight: 400;font-size: 1.4rem ;font-family: Poppins, sans-serif">Offline</div>
   <!--SIDE-BAR-DIV-->
-  <div id="side_nav_bar_lock" style="padding: 0px;margin: 0px;">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="float: left;">
-      <img src="../../images/close.png" alt="close">
-    </a>
-  </div>
+  <div id="side_nav_bar_lock" style="padding: 0px;margin: 0px;"></div>
   <!--SIDE-BAR-DIV-->
   <!--RESPONSE AWAITING-->
   <div class="background_loader">
@@ -1528,11 +1541,16 @@ if (session_status() === PHP_SESSION_NONE) {
   </section>
   <!--LOCATION ACCESS-->
   <!--SIDE NAV BAR-->
-  <div id="mySidenav" class="sidenav scroll_handle_blue"
+  <div
+    id="mySidenav"
+    class="sidenav scroll_handle_blue"
     style="z-index: 99999999;padding-top: 0px;overflow-y: scroll;">
-    <a style="text-decoration:none;background-color: white;color: black">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="float: left;width: 100%;">
+      <img src="../../images/close.png" alt="close">
+    </a>
+    <a class="username-placeholder">
       <i class="fas fa-user-circle fa-2x">
-        <span style="font-family: arial;font-weight: bold;font-size: 22px">
+        <span style="font-family: arial;font-weight: bold;font-size: 22px;">
           Hello,
           <?php
           if (isset($_SESSION['name'])) {
