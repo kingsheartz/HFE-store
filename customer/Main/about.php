@@ -11,6 +11,12 @@ require "header.php";
     color: darkgrey !important;
   }
 
+  .time-top h4,
+  .testi-slider h4 {
+    color: #fff !important;
+    font-weight: bolder;
+  }
+
   @media(min-width: 992px) {
     .about-team-grids {
       width: 24.6%;
