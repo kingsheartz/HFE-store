@@ -889,6 +889,14 @@ function randomGen($min, $max, $quantity)
     color: white;
     border-radius: 5px;
   }
+
+  div.progress.mt-3 {
+    background-color: #555555 !important;
+  }
+
+  .stars-outer::before {
+    color: #555555 !important;
+  }
 </style>
 <script type="text/javascript">
   var url = window.location.href;
@@ -1359,7 +1367,7 @@ function randomGen($min, $max, $quantity)
     } else {
     ?>
       $(".stars-outer").empty();
-      $(".stars-outer").html('<p style="color:red">No rating..!</p>');
+      $(".stars-outer").html('<p style="color: #ef752f">No rating..!</p>');
     <?php
     }
     ?>

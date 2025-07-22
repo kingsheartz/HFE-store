@@ -292,8 +292,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .loader>img {
-      width: 50px;
-      margin-top: 140px;
+      width: 35px;
     }
 
     .loader {
@@ -1029,13 +1028,13 @@ if (session_status() === PHP_SESSION_NONE) {
   <!--RESPONSE AWAITING-->
   <!--ANIMATION-->
   <div class="loader1">
-    <img src="../../images/logo/store.jpg" class="ri" />
+    <img src="../../images/logo/store.png" class="ri" />
   </div>
   <div class="loader2">
-    <img src="../../images/logo/logofullfill.png" class="ic">
+    <img src="../../images/logo/logo-horizontal.png" class="ic">
   </div>
   <div class="loader">
-    <img src="..\..\images\load\3.svg" height="70" alt="loading..." />
+    <img src="../../images/load/4.svg" alt="loading..." />
   </div>
   <!--ANIMATION-->
   <!-- header -->

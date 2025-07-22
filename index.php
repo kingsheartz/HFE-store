@@ -208,16 +208,16 @@ $_COOKIE['animate'] = 0;
 
 <body onload="userlogged_in()">
   <div class="loader">
-    <img src="images\load\3.svg" height="70" alt="loading..." />
+    <img src="images\load\4.svg" height="35" alt="loading..." />
   </div>
   <div class="loader1">
-    <img src="images/logo/store.jpg" class="ri" />
+    <img src="images/logo/store1.png" class="ri" />
   </div>
   <div class="loader2">
-    <img src="images/logo/logo-high.png" class="ic">
+    <img src="images/logo/logo-horizontal.png" class="ic">
   </div>
   <div class="loader3">
-    <img src="images/logo/logofullfill.png" class="log">
+    <img src="images/logo/favicon.png" class="log">
   </div>
   <script src="js/sweetalert.min.js"></script>
   <script type="text/javascript">

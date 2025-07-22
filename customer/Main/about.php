@@ -84,7 +84,7 @@ require "header.php";
               <img src="../../images/logo/store1.png" alt="" class="img-responsive zoom-img" style="height: 147.53px" />
             </div>
             <div class="col-md-4 about-w3imgs" style="margin: 0px;padding: 0px;">
-              <img src="../../images/logo/store.jpg" alt="" class="img-responsive zoom-img" style="height: 147.53px" />
+              <img src="../../images/logo/store.png" alt="" class="img-responsive zoom-img" style="height: 147.53px" />
             </div>
             <div class="col-md-4 about-w3imgs" style="margin: 0px;padding: 0px;">
               <img src="../../images/logo/login.jpg" alt="" class="img-responsive zoom-img" style="height: 147.53px" />
