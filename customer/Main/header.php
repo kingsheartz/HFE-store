@@ -102,18 +102,6 @@ if (session_status() === PHP_SESSION_NONE) {
       color: white;
     }
 
-    img.ic {
-      max-height: 100px;
-      max-width: 100px;
-      width: 0;
-      position: absolute;
-      animation-name: rotate;
-      animation-duration: 1s;
-      animation-direction: alternate;
-      animation-iteration-count: 1;
-      /*  animation-delay: 1.5s;*/
-    }
-
     button.location_marker.popup2_open,
     .wishicon,
     .carticon,
@@ -172,48 +160,70 @@ if (session_status() === PHP_SESSION_NONE) {
       padding: 12px 0 0 0 !important;
     }
 
-    @keyframes rotate {
-      0% {
-        transform: rotate(0);
-        width: 100px;
-      }
-
-      80% {
-        width: 100px;
-      }
-
-      100% {
-        transform: rotate(0deg);
-        width: 100px;
-      }
-    }
-
-    img.ic:empty {
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      margin-left: -50px;
-      margin-top: -60px;
-    }
-
-    .loader2 {
+    /* loader 0: loader svg */
+    .loader {
       position: fixed;
-      z-index: 999999999999;
+      z-index: 9999;
       top: 0;
       left: 0;
       height: 100%;
-      width: 100%;
       background-color: rgb(000, 000, 000, 0.85);
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .loader2 {
+    .loader img.main-svg {
+      position: absolute;
+      margin-top: 0px;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      height: 125px;
+    }
+
+    .loader img.bg-svg {
+      position: absolute;
+      margin-top: 180px;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      height: 20px;
+    }
+
+    .loader.hidden {
+      animation: fadeout 2s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeout {
+      100% {
+        opacity: 100%;
+        visibility: hidden;
+      }
+    }
+
+    /* loader 0: loader svg */
+
+    /* loader 2: main icon */
+    .loader1 {
+      position: fixed;
+      z-index: 10000;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader1 {
       animation: fadegone 1s;
       animation-fill-mode: forwards;
     }
@@ -225,22 +235,15 @@ if (session_status() === PHP_SESSION_NONE) {
       }
     }
 
-    img.ri {
+    img.ic {
+      max-height: 100px;
       position: absolute;
-      min-width: 100%;
-      height: 100%;
       top: 0;
       left: 0;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+      z-index: 999;
     }
 
-    .navbar-inverse .navbar-nav>li>a {
-      color: #999999;
-      font-size: 12px;
-    }
-
-
-    img.ri:empty {
+    img.ic:empty {
       top: 50%;
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
@@ -250,62 +253,7 @@ if (session_status() === PHP_SESSION_NONE) {
       transform: translate(-50%, -50%);
     }
 
-    .loader1 {
-      position: fixed;
-      z-index: 999999999990;
-      top: 0;
-      left: 0;
-      height: 100%;
-      background-color: rgb(000, 000, 000, 0.85);
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .loader1>img {
-      width: 50px;
-    }
-
-    .loader1 {
-      animation: fadein 1s;
-      animation-fill-mode: forwards;
-    }
-
-    @keyframes fadein {
-      100% {
-        opacity: 100%;
-        visibility: hidden;
-      }
-    }
-
-    .loader {
-      position: fixed;
-      z-index: 999999999999;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .loader>img {
-      width: 35px;
-    }
-
-    .loader {
-      animation: fadeout 1s;
-      animation-fill-mode: forwards;
-    }
-
-    @keyframes fadeout {
-      100% {
-        opacity: 100;
-        visibility: hidden;
-      }
-    }
+    /* loader 2: main icon */
 
     @media(max-width: 567px) {
       #popup2 {
@@ -1027,14 +975,14 @@ if (session_status() === PHP_SESSION_NONE) {
   </div>
   <!--RESPONSE AWAITING-->
   <!--ANIMATION-->
-  <div class="loader1">
-    <img src="../../images/logo/store.png" class="ri" />
-  </div>
-  <div class="loader2">
-    <img src="../../images/logo/logo-horizontal.png" class="ic">
-  </div>
+  <!-- loader svg -->
   <div class="loader">
-    <img src="../../images/load/4.svg" alt="loading..." />
+    <img class="main-svg" src="../../images/load/rotating-circle.svg" alt="loading..." />
+    <img class="bg-svg" src="../../images/load/dot-bouncer.svg" alt="loading..." />
+  </div>
+  <!-- main icon -->
+  <div class="loader1">
+    <img src="../../images/logo/favicon.png" class="ic">
   </div>
   <!--ANIMATION-->
   <!-- header -->

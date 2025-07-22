@@ -14,102 +14,57 @@ $_COOKIE['animate'] = 0;
   <link href="css/style.css" rel="stylesheet" type="text/css" media="all" />
   <script src="js/jquery-1.11.1.min.js"></script>
   <style type="text/css">
-    img.log {
-      max-height: 100px;
-      max-width: 100px;
-      width: 0;
-      position: absolute;
-      animation-name: rotate;
-      animation-duration: 6s;
-      animation-direction: normal;
-      animation-iteration-count: 1;
-      animation-delay: 2s;
-    }
-
-    @keyframes rotate {
-      0% {
-        transform: rotate(0);
-        width: 0px;
-        margin-left: 0px;
-        margin-top: 60px;
-      }
-
-      50% {
-        transform: rotate(360deg);
-        margin-left: -50px;
-        margin-top: -60px;
-        width: 100px;
-      }
-
-      80% {
-        margin-top: 60px;
-        width: 100px;
-      }
-
-      100% {
-        margin-left: 0px;
-        margin-top: 0px;
-        width: 100px;
-      }
-    }
-
-    img.log:empty {
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      margin-left: -60px;
-      margin-top: -60px;
-    }
-
-    .loader3 {
+    /* loader 0: loader svg */
+    .loader {
       position: fixed;
       z-index: 99;
       top: 0;
       left: 0;
       height: 100%;
+      background-color: rgb(000, 000, 000, 0.85);
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .loader3 {
-      animation: fadegone 4s infinite;
+    .loader img.main-svg {
+      position: absolute;
+      margin-top: 0px;
+      z-index: 99;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader img.bg-svg {
+      position: absolute;
+      margin-top: 180px;
+      z-index: 99;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader.hidden {
+      animation: fadeout 2s;
       animation-fill-mode: forwards;
     }
 
-    @keyframes fadegone {
+    @keyframes fadeout {
       100% {
         opacity: 100%;
         visibility: hidden;
       }
     }
 
-    img.ic {
-      max-height: 80px;
-      position: absolute;
-      top: 0;
-      left: 0;
-      z-index: 999;
-    }
+    /* loader 0: loader svg */
 
-    img.ic:empty {
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-    }
+    /* loader 1: background image */
 
-    .loader2 {
+    .loader1 {
       position: fixed;
-      z-index: 99;
+      z-index: 98;
       top: 0;
       left: 0;
       height: 100%;
@@ -119,12 +74,12 @@ $_COOKIE['animate'] = 0;
       align-items: center;
     }
 
-    .loader2 {
-      animation: fadeloga 2s;
+    .loader1 {
+      animation: fadeimg 3s infinite;
       animation-fill-mode: forwards;
     }
 
-    @keyframes fadeloga {
+    @keyframes fadeimg {
       100% {
         opacity: 100%;
         visibility: hidden;
@@ -151,73 +106,68 @@ $_COOKIE['animate'] = 0;
       transform: translate(-50%, -50%);
     }
 
-    .loader1 {
-      position: fixed;
-      z-index: 98;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
+    /* loader 1: background image */
 
-    .loader1 {
-      animation: fadeimg 3s infinite;
-      animation-fill-mode: forwards;
-    }
-
-    @keyframes fadeimg {
-      100% {
-        opacity: 100%;
-        visibility: hidden;
-      }
-    }
-
-    .loader {
+    /* loader 2: main icon */
+    .loader2 {
       position: fixed;
       z-index: 99;
       top: 0;
       left: 0;
       height: 100%;
-      background-color: rgb(000, 000, 000, 0.85);
       width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .loader img {
-      margin-top: 120px;
-    }
-
-    .loader.hidden {
-      animation: fadeout 3s;
+    .loader2 {
+      animation: fadeloga 4s;
       animation-fill-mode: forwards;
     }
 
-    @keyframes fadeout {
+    @keyframes fadeloga {
       100% {
         opacity: 100%;
         visibility: hidden;
       }
     }
+
+    img.ic {
+      max-height: 100px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 999;
+    }
+
+    img.ic:empty {
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%, -50%);
+      -moz-transform: translate(-50%, -50%);
+      -ms-transform: translate(-50%, -50%);
+      -o-transform: translate(-50%, -50%);
+      transform: translate(-50%, -50%);
+    }
+
+    /* loader 2: main icon */
   </style>
 </head>
 
 <body onload="userlogged_in()">
+  <!-- loader svg -->
   <div class="loader">
-    <img src="images\load\4.svg" height="35" alt="loading..." />
+    <img class="main-svg" src="images/load/rotating-circle.svg" height="125" alt="loading..." />
+    <img class="bg-svg" src="images/load/dot-bouncer.svg" height="20" alt="loading..." />
   </div>
+  <!-- background image -->
   <div class="loader1">
     <img src="images/logo/store1.png" class="ri" />
   </div>
+  <!-- main icon -->
   <div class="loader2">
-    <img src="images/logo/logo-horizontal.png" class="ic">
-  </div>
-  <div class="loader3">
-    <img src="images/logo/favicon.png" class="log">
+    <img src="images/logo/favicon.png" class="ic">
   </div>
   <script src="js/sweetalert.min.js"></script>
   <script type="text/javascript">
@@ -311,7 +261,7 @@ $_COOKIE['animate'] = 0;
           console.log('loading main page')
           location.href = "customer/Main/hfe.php";
         }
-      }, 4800);
+      }, 2000);
     }
   </script>
 </body>

@@ -2663,12 +2663,10 @@ if (isset($product_description_id)) {
   //AUTO LOG IN
   $(document).ready(function() {
     setTimeout(() => {
-      const loader1 = document.querySelector(".loader1");
-      const loader2 = document.querySelector(".loader2");
       const loader = document.querySelector(".loader");
+      const loader1 = document.querySelector(".loader1");
       loader.className += " hidden";
       loader1.className += " hidden";
-      loader2.className += " hidden";
     }, 3000);
 
     function getCookie(name) {

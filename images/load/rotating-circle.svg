@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 128 128">
+  <defs>
+    <!-- Tail gradient effect -->
+    <linearGradient id="trail" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00c853" stop-opacity="1"/>
+      <stop offset="100%" stop-color="#00c853" stop-opacity="0"/>
+    </linearGradient>
+
+    <!-- Use the gradient in a stroke pattern -->
+    <mask id="trailMask">
+      <circle cx="64" cy="64" r="48" stroke="white" stroke-width="12" stroke-linecap="round" fill="none"/>
+    </mask>
+  </defs>
+
+  <!-- Base ring (subtle background) -->
+  <circle cx="64" cy="64" r="48" stroke="#111" stroke-width="12" fill="none" opacity="0.15"/>
+
+  <!-- Glowing trail circle -->
+  <g transform="rotate(0 64 64)">
+    <circle cx="64" cy="64" r="48" stroke="url(#trail)" stroke-width="12" stroke-linecap="round" fill="none" mask="url(#trailMask)">
+      <animateTransform
+        attributeName="transform"
+        type="rotate"
+        from="0 64 64"
+        to="360 64 64"
+        dur="1s"
+        repeatCount="indefinite" />
+    </circle>
+  </g>
+</svg>

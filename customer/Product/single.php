@@ -2604,9 +2604,9 @@ function randomGen($min, $max, $quantity)
                         <div class="card mt-5" style="margin:0;margin-top:0 !important;">
                           <div class="card-body rating-left-padding" style="width:100%;padding:0px;">
                             <div class="row">
-                              <div class="col-md-3 col-xs-5 review_container" style="text-align:center">
+                              <div class="col-md-3 col-xs-5 review_container" style="text-align:center;">
                                 <h2 class="review">Reviews</h2>
-                                <button class="rating_circle"><?= round($rating, 1) ?></button>
+                                <button class="rating_circle" style="background-color: #444;color: darkgrey;"><?= round($rating, 1) ?></button>
                                 <div>
                                   <div class="stars-outer mt-4">
                                     <div class="stars-inner"></div>
@@ -2616,24 +2616,24 @@ function randomGen($min, $max, $quantity)
                               <div class="col-md-8 col-xs-6 review_content" style="padding:5px;">
                                 <br>
                                 <span><b>5</b> <i class="fa fa-star" style="color: orange;"></i>(<?= $ratingstar[5] ?>)</span>
-                                <div class="progress mt-3" style="height:10px;margin-top:0px !important;">
+                                <div class="progress mt-3" style="height:10px;max-width:500px;margin-top:0px !important;">
                                   <div class="progress-bar dark bar-a" style="width:<?= $ratingper[5] ?>%;height:10px;"></div>
                                 </div>
                                 <span><b>4</b> <i class="fa fa-star"
                                     style="color: orange;"></i>(<?= $ratingstar[4] ?>)</span>
-                                <div class="progress mt-3" style="height:10px;margin-top:0px !important;">
+                                <div class="progress mt-3" style="height:10px;max-width:500px;margin-top:0px !important;">
                                   <div class="progress-bar dark bar-b" style="width:<?= $ratingper[4] ?>%;height:10px"></div>
                                 </div>
                                 <span><b>3</b> <i class="fa fa-star" style="color: orange;"></i>(<?= $ratingstar[3] ?>)</span>
-                                <div class="progress mt-3" style="height:10px;margin-top:0px !important;">
+                                <div class="progress mt-3" style="height:10px;max-width:500px;margin-top:0px !important;">
                                   <div class="progress-bar dark bar-c" style="width:<?= $ratingper[3] ?>%;height:10px"></div>
                                 </div>
                                 <span><b>2</b> <i class="fa fa-star" style="color: orange;"></i>(<?= $ratingstar[2] ?>)</span>
-                                <div class="progress mt-3" style="height:10px;margin-top:0px !important;">
+                                <div class="progress mt-3" style="height:10px;max-width:500px;margin-top:0px !important;">
                                   <div class="progress-bar dark bar-d" style="width:<?= $ratingper[2] ?>%;height:10px"></div>
                                 </div>
                                 <span><b>1</b> <i class="fa fa-star" style="color: orange;"></i>(<?= $ratingstar[1] ?>)</span>
-                                <div class="progress mt-3" style="height:10px;margin-top:0px !important;">
+                                <div class="progress mt-3" style="height:10px;max-width:500px;margin-top:0px !important;">
                                   <div class="progress-bar dark bar-e" style="width:<?= $ratingper[1] ?>%;height:10px"></div>
                                 </div>
                               </div>
