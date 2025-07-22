@@ -465,7 +465,7 @@ require "../Common/cookie.php";
       border-radius: 5px;
     }
   </style>
-  <link href="../CSS/what-we-promised.css" rel="stylesheet">
+  <link href="../CSS/hfe.css" rel="stylesheet">
   <script type="text/javascript">
     function scrolllisten(x) {
       var y = Math.round($('#' + x).scrollLeft());
@@ -569,38 +569,38 @@ require "../Common/cookie.php";
         }
       </script>
       <!--banner-bottom-->
-      <div class="ban-bottom-w3l">
-        <div class="container" style="padding: 0em;">
-          <div class="col-md-6 ban-bottom3">
-            <div class="ban-top">
-              <img src="../../images/p2.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=6'" />
-            </div>
-            <div class="ban-img">
-              <div class=" ban-bottom1">
-                <div class="ban-top">
-                  <img src="../../images/p1.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=4'" />
-                </div>
-              </div>
-              <div class="ban-bottom2">
-                <div class="ban-top">
-                  <img src="../../images/p3.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=6'" />
-                </div>
-              </div>
-              <div class="clearfix"></div>
-            </div>
-          </div>
-          <div class="col-md-6 ban-bottom">
-            <div class="ban-top">
+      <div class="advertise-container container-fluid px-3">
+        <div class="row">
+          <h2 class="section-title custom-header-h2">Engineered for Versatility. Built for Strength.</h2>
+          <div class="advertise-image col-md-3 col-sm-6 col-3 mb-1">
+            <div class="advertise">
               <img src="../../images/p4.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=6'" />
             </div>
           </div>
-          <div class="clearfix"></div>
+
+          <div class="advertise-image col-md-3 col-sm-6 col-3 mb-1">
+            <div class="advertise">
+              <img src="../../images/p1.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=6'" />
+            </div>
+          </div>
+
+          <div class="advertise-image col-md-3 col-sm-6 col-3 mb-1">
+            <div class="advertise">
+              <img src="../../images/p2.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=6'" />
+            </div>
+          </div>
+
+          <div class="advertise-image col-md-3 col-sm-6 col-3 mb-1">
+            <div class="advertise">
+              <img src="../../images/p3.jpg" class="img-responsive" alt="" onclick="location.href='../Product/products.php?category_id=6'" />
+            </div>
+          </div>
         </div>
       </div>
       <!--banner-bottom-->
       <!-- what we promise -->
       <div class="row what-we-promised">
-        <h2 class="section-title">What We Promised</h2>
+        <h2 class="section-title custom-header-h2">What We Promised</h2>
         <div class="promised-card col-md-3 flex flex-col items-center justify-center p-6 text-center">
           <div class="animated-border-container shadow-lg">
             <div class="animated-border green">

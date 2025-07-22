@@ -1,3 +1,4 @@
+  /* what we promise */
   .what-we-promised {
     width: 100%;
     background-color: #151515 !important;
@@ -451,3 +452,36 @@
       height: 100%;
     }
   }
+
+  .custom-header-h2 {
+    font-size: 40px !important;
+    margin-top: 50px !important;
+  }
+
+  @media screen and (max-width: 768px) {
+    .custom-header-h2 {
+      font-size: 26px !important;
+    }
+  }
+
+  /* what we promise */
+
+  /* banner-bottom- */
+  .advertise {
+    min-height: 30rem;
+    background-size: contain !important;
+  }
+
+  .advertise-container {
+    margin-top: 3em;
+    padding-bottom: 3em;
+    background-color: darkslategray;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+
+  .advertise-image {
+    padding: 10px;
+  }
+
+  /* banner-bottom- */

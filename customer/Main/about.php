@@ -74,7 +74,7 @@ require "header.php";
     <div class="about-agileinfo w3layouts">
       <div class="col-md-8 about-wthree-grids grid-top">
         <h4>Your One-Stop Health & Fitness Equipment Store</h4>
-        <p class="top" style="padding:5px">Stay fit from home. We bring the store to your screen.</p>
+        <p class="top" style="padding: 5px;background-color: rgba(36, 36, 36, 0.95)">Stay fit from home. We bring the store to your screen.</p>
         <p>Established in 2021, HFE-Store is an eCommerce platform dedicated to providing high-quality health and fitness equipment at your fingertips. We enable users to discover, compare, and order gym essentials with ease, from the comfort of their homes. With 24x7 accessibility, we bring convenience and reliability to your wellness journey.</p>
         <p>Our initiative emerged during the pandemic, recognizing the need for accessible fitness solutions. With disrupted supply chains and closed gyms, HFE-Store aimed to empower individuals and small vendors alike. By connecting fitness-focused buyers with trusted sellers, we promote well-being across communities.</p>
         <p>Through geo-location features, customers can check real-time availability and store status near their locality, either placing orders online or visiting the physical store directly. We believe fitness is for everyone, and our technology ensures it’s always within reach.</p>
