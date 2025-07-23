@@ -243,7 +243,8 @@ function randomGen($min, $max, $quantity)
     }
 
     #img-zoom-conatiner-none {
-      display: unset !important;
+      display: block !important;
+      width: -webkit-fill-available !important;
     }
 
     #img-zoom-conatiner {
@@ -480,7 +481,7 @@ function randomGen($min, $max, $quantity)
     }
 
     #partially_needed {
-      min-height: 550px !important;
+      /* min-height: 550px !important; */
     }
 
     .big-btn {
@@ -490,7 +491,7 @@ function randomGen($min, $max, $quantity)
 
   @media (max-width: 767px) {
     .fixed-pos-left-container {
-      min-height: 450px !important;
+      min-height: max-content !important;
     }
 
     .mySlides-single img {
@@ -654,13 +655,13 @@ function randomGen($min, $max, $quantity)
 
   @media(max-height:610px) {
     .product_contain_div {
-      height: 350px !important;
+      height: max-content !important;
     }
   }
 
   @media(max-height:524px) and (min-width:767px) {
     .product_contain_div {
-      height: 270px !important;
+      height: max-content !important;
     }
 
     #myimage {
@@ -678,7 +679,7 @@ function randomGen($min, $max, $quantity)
     }
 
     .fixed-pos-left-container {
-      min-height: 400px !important;
+      min-height: max-content !important;
     }
   }
 
@@ -897,6 +898,16 @@ function randomGen($min, $max, $quantity)
   .stars-outer::before {
     color: #555555 !important;
   }
+
+  .fixed-pos-left,
+  #myresult {
+    transition: top 1s ease, height 1s ease, transform 1s ease;
+    will-change: top, height, transform;
+  }
+
+  div.content-wrapper {
+    min-height: -webkit-fill-available !important;
+  }
 </style>
 <script type="text/javascript">
   var url = window.location.href;
@@ -909,18 +920,33 @@ function randomGen($min, $max, $quantity)
     document.cookie = 'singlescrollTop=' + $(window).scrollTop();
   });
   sessionStorage.setItem("prev_url", url);
+  // DYNAMIC DIV SIZING ON WINDOW LOAD
+  $(document).ready(function() {
+    $('.product-desc').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+    $('#partially_needed').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+  })
+
+  $(window).scroll(function() {
+    $('.product-desc').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+    $('#partially_needed').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+  });
+
+  $(window).resize(function() {
+    $('.product-desc').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+    $('#partially_needed').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+  });
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //SCROLLING AND RESIZING EFFECTS
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $(window).scroll(function() {
     if ($(this).scrollTop() > 60) {
       if ($(window).width() > 825) {
-        $('.fixed-pos-left').css('top', '80px');
+        $('.fixed-pos-left').css('top', '180px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '90px');
         $('#myresult').css('height', screen.height - 200);
       } else if ($(window).width() <= 825 && $(window).width() > 767) {
-        $('.fixed-pos-left').css('top', '80px');
+        $('.fixed-pos-left').css('top', '180px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '120px');
         $('#myresult').css('height', screen.height - 355);
@@ -943,12 +969,12 @@ function randomGen($min, $max, $quantity)
   $(window).resize(function() {
     if ($(this).scrollTop() > 60) {
       if ($(window).width() > 825) {
-        $('.fixed-pos-left').css('top', '80px');
+        $('.fixed-pos-left').css('top', '150px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '90px');
         $('#myresult').css('height', screen.height - 200);
       } else if ($(window).width() <= 825 && $(window).width() > 767) {
-        $('.fixed-pos-left').css('top', '80px');
+        $('.fixed-pos-left').css('top', '120px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '120px');
         $('#myresult').css('height', screen.height - 355);
@@ -994,14 +1020,14 @@ function randomGen($min, $max, $quantity)
         $('.fixed-pos-left-container').css('height', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - 250);
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
-        $('.fixed-pos-left').css('top', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - $('.fixed-pos-left').outerHeight() - 170);
+        $('.fixed-pos-left').css('top', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - $('.fixed-pos-left').outerHeight() - 220);
         if ($(window).scrollTop() <= 60) {
           $('.fixed-pos-left').css('top', 0);
         }
       } else if ($(window).scrollTop() <= 60) {
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
-        $('.fixed-pos-left').css('top', '-20px');
+        $('.fixed-pos-left').css('top', '0px');
         $('#myresult').css('position', 'inherit');
         $('#myresult').css('width', '50%');
       } else if ($(window).scrollTop() > 60) {
@@ -1036,11 +1062,11 @@ function randomGen($min, $max, $quantity)
         $('.fixed-pos-left-container').css('height', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - 250);
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
-        $('.fixed-pos-left').css('top', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - $('.fixed-pos-left').outerHeight() - 250);
+        $('.fixed-pos-left').css('top', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - $('.fixed-pos-left').outerHeight() - 190);
       } else if ($(window).scrollTop() <= 60) {
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
-        $('.fixed-pos-left').css('top', '-20px');
+        $('.fixed-pos-left').css('top', '0px');
         $('#myresult').css('position', 'inherit');
         $('#myresult').css('width', '50%');
       } else if ($(window).scrollTop() > 60) {
@@ -1419,11 +1445,11 @@ function randomGen($min, $max, $quantity)
   </div>
 </div>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="overflow-x: hidden;width: 100%;background-color: #151515">
+<div class="content-wrapper" style="overflow-x: hidden;width: 100%;background-color: #151515;">
   <section class="content" style="background-color: #151515">
     <!-- Default box -->
     <div class="card card-solid" style="margin-top: 30px;">
-      <div class="card-body" style="margin-top: 0px;background-color: #151515;">
+      <div class="card-body product-desc" style="margin-top: 0px;background-color: #151515;">
         <div class="row" style="background-color: #151515;">
           <div class="col-12 col-sm-6 fixed-pos" style="padding-left: 15px;">
             <h3 class="d-inline-block d-sm-none"><?= $row2['product_name'] ?></h3>
@@ -1437,7 +1463,7 @@ function randomGen($min, $max, $quantity)
                     <div class="row zoom-in-adjust" style="margin:0;width:100%;">
                       <div
                         class="col-md-12 div-wrapper product_contain_div"
-                        style="margin-top: 10px;padding-right: 0px;padding-left: 10px;height: 430px;border-radius: 10px;background-color: #151515">
+                        style="margin-top: 10px;padding-right: 0px;padding-left: 10px;height: max-content;border-radius: 10px;background-color: #151515">
                         <?php
                         $img_cnt_sql = "select img_count from product_description where product_description_id=$product_description_id";
                         $img_cnt_stmt = $pdo->prepare($sql);
@@ -1492,7 +1518,7 @@ function randomGen($min, $max, $quantity)
                                 </ul>
                               </div>
                               </div>
-                              <div class="col-md-10 col-sm-10 col-xs-10 img-big" style="position: relative;justify-content:center;align-items:center;display:flex;padding-left:0;">
+                              <div class="col-md-10 col-sm-10 col-xs-10 img-big" style="position: relative;justify-content: center;align-items: center;display:flex; padding-left: 0;">
                                 <div
                                   id="img-zoom-container"
                                   class="img-zoom-container"
