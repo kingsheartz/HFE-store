@@ -152,6 +152,16 @@ INSERT INTO `cart` (`cart_id`, `customer_id`, `product_description_id`, `store_i
 (33, 65, 668, 5, 1, 2750, 'booking', '2025-04-25', '18:07:42');
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `cart_temp`
+--
+CREATE TABLE `cart_temp` (
+  `cart_temp_id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `category`

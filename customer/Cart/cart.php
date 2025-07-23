@@ -602,9 +602,9 @@ function randomGen($min, $max, $quantity)
       });
       console.log('Before removing object from an array -> ' + JSON.stringify(filter));
       // Convert the cart object into JSON string and save it into storage
-      localStorage.setproduct("cartObject", JSON.stringify(filter));
+      localStorage.setItem("cartObject", JSON.stringify(filter));
       // Retrieve the JSON string
-      /*var jsonString = localStorage.getproduct("cartObject");
+      /*var jsonString = localStorage.getItem("cartObject");
       var cartobj=JSON.parse(jsonString);
       console.log(cartobj);*/
     } else {
@@ -828,12 +828,12 @@ function randomGen($min, $max, $quantity)
                                   name="select_product"
                                   value="s-<?= $store_id . "_i-" . $product_description_id ?>">
                               </div>
-                              <div class="col-sm-4">
+                              <div class="col-sm-4" style="margin-top: 30px;">
                                 <div class="product-quantity quantity buttons_added" style="justify-content: center;display: flex;text-align: center;align-items: center;position: relative;margin-right: 0px">
                                   <div class="product_img" style="padding: 0px; margin-top: 7px;margin-left: 15px;">
                                     <p class="product-thumbnail" style="text-align:right;">
                                       <a href="../Product/single.php?id=<?= $row2['product_description_id'] ?>">
-                                        <img style="max-width: 400px;max-height: 400px;" alt="<?= $row2['product_name'] ?>" class="shop_thumbnail" src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg">
+                                        <img style="max-width: 100%;max-height: 100%;" alt="<?= $row2['product_name'] ?>" class="shop_thumbnail" src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg">
                                       </a>
                                     </p>
                                   </div>
@@ -1361,6 +1361,10 @@ function randomGen($min, $max, $quantity)
           max-width: 170px;
           height: auto;
           max-height: 180px;
+        }
+
+        .product_img {
+          width: -webkit-fill-available;
         }
 
         .difhed {

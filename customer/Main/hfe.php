@@ -13,8 +13,8 @@ require "../Common/cookie.php";
   }
 
   .block-slider img {
-    width: auto;
-    height: auto;
+    width: -webkit-fill-available;
+    height: -webkit-fill-available;
   }
 
   /*CATEGORY HORIZONTAL VIEW*/
@@ -218,7 +218,7 @@ require "../Common/cookie.php";
         <li>
           <div class="row captions">
             <div class="col-md-12 ">
-              <img src="../../images/slider/h4-slide<?= $i + 1 ?>.png" alt="Slide">
+              <img src="../../images/slider/h4-slide<?= $i + 1 ?>.png" style="max-width: 500px;" alt="Slide">
               <div class="caption-group" style="
 								background: linear-gradient(135deg, rgba(0,0,0,0.75), rgba(30,30,30,0.65));
 								backdrop-filter: blur(6px);
