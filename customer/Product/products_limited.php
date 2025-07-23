@@ -43,6 +43,29 @@ if (isset($_GET['product'])) {
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 </style>
+<style>
+  .product-content-right img {
+    height: 260px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .product-content-right img {
+      height: 200px !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .product-content-right img {
+      height: 150px !important;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .product-content-right img {
+      height: 120px !important;
+    }
+  }
+</style>
 <script>
   var url = window.location.href;
   if (sessionStorage.getItem("prev_url") == url) {
@@ -977,7 +1000,7 @@ if ($result_cnt == 0) {
     </div>
   </div>
   <!-- //breadcrumbs -->
-  <div class="container" style="padding-top:100px;padding-bottom:100px;margin: 0;width: 100%;">
+  <div class="container" style="padding-top:50px;padding-bottom:50px;margin: 0;width: 100%;background-color: #181818ff;">
   <?php
 } else {
   ?>
@@ -1005,12 +1028,11 @@ if ($result_cnt == 0) {
         ?>
           <div class="product-content-right">
             <center>
-              <img style="justify-content: center;" class="sidebar-title" src="../../images/logo/error-no-search.png">
-              <h2 class="sidebar-title" style="text-align: center;color:#2d70ff;display: inline-flex;font-weight: 600;">No result found</h2>
+              <img style="justify-content: center;" class="sidebar-title" src="../../images/logo/no-search-result.png">
             </center>
           </div>
-          <center style="margin-bottom:0px;margin-top: 50px;">
-            <h4>Can't find requested product ?<a href="../Main/HFE-Store.php"> Try again!</a></h4>
+          <center style="margin-bottom:0px;margin-top: 50px;color: darkgrey;">
+            <h4>Can't find requested product ?<a href="../Main/HFE-Store.php" style="color: #139b3b;"> Try again!</a></h4>
           </center>
         <?php
         } else {

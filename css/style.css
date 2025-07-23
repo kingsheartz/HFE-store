@@ -1984,7 +1984,7 @@ h2.w3_agile_header:after {
 
 .time-top {
   padding: 1em;
-  background-color: #139b3b;
+  background-color: #005a1b;
 }
 
 .time-top h4 {
@@ -2031,7 +2031,7 @@ h2.w3_agile_header:after {
 
 .testi p {
   font-style: italic;
-  color: #000;
+  color: #e8e8e8;
   font-size: 1em;
   margin-top: 1em;
   line-height: 1.5em;
@@ -2045,7 +2045,7 @@ h2.w3_agile_header:after {
 .testi p a {
   font-size: 1em;
   font-weight: 600;
-  color: #000;
+  color: #ffffff;
   margin: 0 5px;
   text-decoration: none;
   text-transform: capitalize;
@@ -2077,7 +2077,7 @@ h2.w3_agile_header:after {
 
 .testi-slider {
   padding: 4em 2em 3em;
-  background: #139b3b;
+  background: #373737;
   margin-top: 2em;
   margin-bottom: 2em;
 }

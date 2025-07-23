@@ -12,10 +12,10 @@ if (isset($_GET['product'])) {
 		where product.product_name like \"%$nm%\" GROUP BY product_description.product_description_id"
   );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
-	if ($row2) {
-		$name = $row2['product_name'];
-		$cat_id = $row2['category_id'];
-	}
+  if ($row2) {
+    $name = $row2['product_name'];
+    $cat_id = $row2['category_id'];
+  }
 } else if (isset($_GET['category_id'])) {
   $cat = $_GET['category_id'];
   $res = $pdo->query(
@@ -27,16 +27,39 @@ if (isset($_GET['product'])) {
     where category.category_id=$cat GROUP BY product.product_id"
   );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
-	if ($row2) {
-		$name = $row2['category_name'];
-		$cat_id = $row2['category_id'];
-	}
+  if ($row2) {
+    $name = $row2['category_name'];
+    $cat_id = $row2['category_id'];
+  }
 }
 ?>
 <link href='https://use.fontawesome.com/releases/v5.7.2/css/all.css' rel='stylesheet'>
 <link href='../../css/product.css' rel='stylesheet'>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+</style>
+<style>
+  .product-content-right img {
+    height: 260px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .product-content-right img {
+      height: 200px !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .product-content-right img {
+      height: 150px !important;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .product-content-right img {
+      height: 120px !important;
+    }
+  }
 </style>
 <script>
   ///////////////////////////////RESIZE UPTO 635 FLOW CTRLS TO GRID PAGE #SMALL DEVICE PURPOSE/////////////
@@ -939,7 +962,7 @@ if ($result_cnt == 0) {
     </div>
   </div>
   <!-- //breadcrumbs -->
-  <div class="container" style="padding-top:100px;padding-bottom:100px;margin: 0;width: 100%;">
+  <div class="container" style="padding-top:50px;padding-bottom:50px;margin: 0;width: 100%;background-color: #181818ff;">
   <?php
 } else {
   ?>
@@ -967,14 +990,11 @@ if ($result_cnt == 0) {
         ?>
           <div class="product-content-right">
             <center>
-              <img style="justify-content: center;" class="sidebar-title" src="../../images/logo/error-no-search.png">
-              <h2 class="sidebar-title" style="text-align: center;color:#2d70ff;display: inline-flex;font-weight: 600;">
-                No result found
-              </h2>
+              <img style="justify-content: center;" class="sidebar-title" src="../../images/logo/no-search-result.png">
             </center>
           </div>
-          <center style="margin-bottom:0px;margin-top: 50px;">
-            <h4>Can't find requested product ?<a href="../Main/hfe.php"> Try again!</a></h4>
+          <center style="margin-bottom:0px;margin-top: 50px;color: darkgrey;">
+            <h4>Can't find requested product ?<a href="../Main/HFE-Store.php" style="color: #139b3b;"> Try again!</a></h4>
           </center>
         <?php
         } else {
@@ -1390,7 +1410,7 @@ if ($result_cnt == 0) {
                                   INNER JOIN store ON product_details.store_id=store.store_id
                                   INNER JOIN category ON category.category_id=product.category_id
                                   WHERE product.product_name LIKE '%" . $_GET['product'] . "%' GROUP BY brand.brand_name";
-                    } else if (isset($_GET['category_id']) ) {
+                    } else if (isset($_GET['category_id'])) {
                       if (isset($_GET['category_id'])) {
                         $keeper = 'product.category_id';
                         $brandval = $_GET['category_id'];
@@ -1614,7 +1634,7 @@ if ($result_cnt == 0) {
                         INNER JOIN category ON category.category_id=product.category_id
                         WHERE product.product_name LIKE \"%$nm%\" "
                       );
-                    }else if (isset($_GET['category_id'])) {
+                    } else if (isset($_GET['category_id'])) {
                       $cat = $_GET['category_id'];
                       $res = $pdo->query(
                         "SELECT store.store_name ,product.product_id,product.price AS 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,store.store_name from product

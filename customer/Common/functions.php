@@ -1192,7 +1192,7 @@ if(isset($_POST['register'])){
 				//$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
 				$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
 				$message = '<html><body style="background-color:rgba(255,255,255,255.85);padding:20px;"><center>';
-				$message .= '<img src="https://falconsinfoworld.000webhostapp.com/HFE-Store/images/logo/logomail.png"><br>';
+				$message .= '<img src="https://falconsinfoworld.000webhostapp.com/HFE-Store/images/logo/logo-horizontal.png"><br>';
 				$message .= '<h3 style="color:#059DF9">Hi Govind, HFE-Store Welcomes You</h3><br></center>';
 				$message .= '<h3 style="color:#FF8A00;text-align:margin-left">You are one step away from sign in to our world of shopping </h3>';
 				$message .= '<p>Please click the following verify email button to activate your account</p><br>';

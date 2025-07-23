@@ -122,7 +122,8 @@ function randomGen($min, $max, $quantity)
     background-color: transparent;
     border-radius: 10px;
     overflow: hidden;
-
+    display: flex;
+    justify-content: center;
   }
 
   .cart_totals table th,
@@ -752,7 +753,7 @@ function randomGen($min, $max, $quantity)
   </h2>
   <div class="container nopadding-margin" style="margin-left: 0px;width: 100%;padding:0;background-color: #111111;">
     <div class="row" style="margin: 0px;">
-      <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%">
+      <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%;display: list-item;">
         <script>
           console.log("Session ID:: <?php echo $_SESSION['id']; ?>");
         </script>
@@ -1241,8 +1242,8 @@ function randomGen($min, $max, $quantity)
     ?>
       <div class="row emp_cart">
         <div class="product-content-right">
-          <center><img style="justify-content: center;" class="sidebar-title" src="../../images/logo/cart-empty.png">
-            <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #005549">
+          <center><img style="justify-content: center;padding-bottom: 20px;margin-bottom: 0px" height="400" class="sidebar-title" src="../../images/logo/cart-empty.png">
+            <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #56c57d">
               Your Cart is Empty
             </h2>
           </center>

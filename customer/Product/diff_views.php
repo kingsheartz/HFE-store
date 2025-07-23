@@ -216,7 +216,7 @@ require "../Main/header.php";
             <img
               style="justify-content: center;"
               class="sidebar-title"
-              src="../../images/logo/error-no-search.png">
+              src="../../images/logo/no-search-result.png">
             <h2
               class="sidebar-title"
               style="text-align: center;color: #2d70ff;display: inline-flex;font-weight: 600;">

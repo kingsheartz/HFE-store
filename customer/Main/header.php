@@ -1526,7 +1526,7 @@ if (session_status() === PHP_SESSION_NONE) {
       $category_name = $row11['category_name'];
     ?>
       <button class="dropdown-btn  category_side_head" id="list_enda" style="width: 100%;float: left;padding-left: 0px;">
-        <a href="../Product/products_limited.php?category_id=<?= $category_id ?>" style="color: white;"> <?= $category_name ?></a>
+        <a href="../Product/products.php?category_id=<?= $category_id ?>" style="color: white;"> <?= $category_name ?></a>
       </button>
     <?php
     }

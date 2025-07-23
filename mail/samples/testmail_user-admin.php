@@ -77,7 +77,7 @@ for ($j = 0; $j < $i; $j++) {
                           href="https://www.HFE-Store.ml">
                           <img
                             border="0"
-                            src="../../images/logo/logo-high.png"
+                            src="../../images/logo/logo-horizontal.png"
                             alt="HFE-Store.ml"
                             style="border:none;width: 150px;"
                             class="CToWUd">
