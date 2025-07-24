@@ -669,6 +669,33 @@ CREATE TABLE `wishlist_items` (
   `time` time DEFAULT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calories`
+--
+
+CREATE TABLE `calories` (
+  `calories_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `customer_id` INT NOT NULL,
+  `food_item` VARCHAR(100) NOT NULL,
+  `calories` INT NOT NULL,
+  `date_logged` DATE DEFAULT CURRENT_DATE,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calorie_goals`
+--
+
+CREATE TABLE calorie_goals (
+  `customer_id` INT PRIMARY KEY,
+  `goal` INT NOT NULL CHECK (goal >= 0),
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 --
 -- Indexes for dumped tables
 --
