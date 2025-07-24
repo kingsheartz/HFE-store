@@ -16,8 +16,27 @@ require "../Main/header.php";
     color: #fff;
   }
 
+  @media screen and (min-width: 991px) {
+    .login-form-grids {
+      width: 30%;
+    }
+  }
+
+  .login-form-grids input[type="email"],
+  .login-form-grids input[type="tel"],
+  .login-form-grids textarea,
+  .login-form-grids input[type="text"],
+  .login-form-grids input[type="password"] {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .login-form-grids input[type="button"] {
+    font-size: 0.9em;
+    padding: 8px;
+  }
+
   .login-form-grids {
-    width: 30%;
     padding: 3em;
     background: #f7f7f91a;
     margin: 3em auto 0;
@@ -103,7 +122,7 @@ require "../Main/header.php";
 <div class="login" style="background: url(../../images/logo/log2.jpg) no-repeat;padding-top: 0px;padding-bottom: 0px;">
   <div style="background-color: rgba(0,0,0,0.55);width: 100%;height: 100%;padding-top: 30px;padding-bottom: 30px;">
     <div class="container">
-      <h2 style="color: white">Login Form</h2>
+      <h2 style="color: white">Login</h2>
       <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s" style="border-top: 0px; border-radius: 10px;">
         <form name="login_form">
           <?php

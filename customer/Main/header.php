@@ -1435,11 +1435,6 @@ if (session_status() === PHP_SESSION_NONE) {
                       <i class="fa fa-sign-in dropdown" style="color: white;font-size:16px;" aria-hidden="true"></i>
                     </a>
                   </li>
-                  <!-- <li>
-                    <a href="#myModal" data-toggle="modal" data-dismiss="modal">
-                      <span class="fa fa-sign-in" style="color: white;font-size:16px;"></span>
-                    </a>
-                  </li> -->
                 <?php
                 }
                 ?>

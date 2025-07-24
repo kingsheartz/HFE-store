@@ -5434,6 +5434,7 @@ ul.topli {
   .navbar-inverse .wishdiv,
   .navbar-inverse .cartdiv,
   .navbar-inverse .locationdiv,
+  .navbar-inverse .logindiv,
   .profilediv {
     display: none !important;
   }
