@@ -109,6 +109,7 @@ if (session_status() === PHP_SESSION_NONE) {
     .loginicon,
     .bmiicon,
     .calorieicon,
+    .usericon,
     .location_marker {
       display: flex !important;
       justify-content: center !important;
@@ -642,25 +643,6 @@ if (session_status() === PHP_SESSION_NONE) {
       width: 100%;
     }
 
-    .usericon {
-      background-color: #0072d357 !important;
-      border: 0px;
-      color: white;
-      position: absolute;
-      top: 10px;
-      border-radius: 5px;
-      padding: 5px;
-      font-size: 12px;
-      width: max-content;
-      padding-left: 5px;
-      padding-right: 5px;
-      height: 30px !important;
-    }
-
-    .usericon>i {
-      font-size: 12px !important;
-    }
-
     .std_loader {
       border: 6px solid #f3f3f3;
       border-radius: 50%;
@@ -693,13 +675,6 @@ if (session_status() === PHP_SESSION_NONE) {
       position: fixed;
       display: none;
       top: 10%;
-    }
-
-    .userdiv .usericon {
-      justify-content: center;
-      display: flex;
-      align-items: center;
-      gap: 5px;
     }
 
     .background_loader {
@@ -767,7 +742,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
     div#mobile_menu {
       width: 100% !important;
-      padding-right: 0px !important;
       background-color: #050505;
       padding-top: 0px;
     }
@@ -795,6 +769,23 @@ if (session_status() === PHP_SESSION_NONE) {
       gap: 5px;
     }
 
+    .usericon {
+      background-color: #0072d357 !important;
+      border: 0px;
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      height: 40px !important;
+      width: 40px !important;
+    }
+
+    ul li.profilediv {
+      float: right;
+      padding: 0px !important;
+      display: block;
+      width: 40px;
+    }
+
     @media (min-width:825px) {
       .srch {
         float: left;
@@ -807,14 +798,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
       .col-lg-2.col-md-2.col-sm-2.topli {
         width: 15rem;
-      }
-
-      li.profilediv {
-        position: absolute !important;
-        right: 0px !important;
-        font-weight: 100 !important;
-        font-size: 14px !important;
-        color: gray !important;
       }
 
       li.locationdiv {
@@ -841,7 +824,7 @@ if (session_status() === PHP_SESSION_NONE) {
         float: right;
       }
 
-      .usericon {
+      li.userdiv {
         float: right;
       }
     }
@@ -850,11 +833,6 @@ if (session_status() === PHP_SESSION_NONE) {
       .srch {
         margin-left: 10px !important;
         margin-right: 10px !important;
-      }
-
-      .usericon {
-        right: 0px !important;
-        top: 20px !important;
       }
 
       div#lg_top_ph_mail {
@@ -1176,6 +1154,19 @@ if (session_status() === PHP_SESSION_NONE) {
                           <span style="cursor:pointer" onclick="openNav()">&#9776;</span>
                         </a>
                       </li>
+                      <?php
+                      if (isset($_SESSION['name'])) {
+                      ?>
+                        <li class="userdiv" style="float: right;">
+                          <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
+                            <button class="w3view-cart usericon " type="button" name="submit" value="">
+                              <span id="location"><?= strtoupper(substr($_SESSION['name'], 0, 1)); ?></span>
+                            </button>
+                          </form>
+                        </li>
+                      <?php
+                      }
+                      ?>
                       <li class="caloriediv">
                         <form action="#" method="post" class="last">
                           <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_tracker.php';">
@@ -1238,24 +1229,6 @@ if (session_status() === PHP_SESSION_NONE) {
                           </span>
                         </form>
                       </li>
-                      <div id="userdetails" style="float: right;">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                        ?>
-                          <a href="#">
-                            <li class="userdiv" style="float: right;">
-                              <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
-                                <button class="w3view-cart usericon " type="button" name="submit" value="">
-                                  <i class="fa fa-user" aria-hidden="true"></i>
-                                  <span id="location"><?= $_SESSION['name'] ?></span>
-                                </button>
-                              </form>
-                            </li>
-                          </a>
-                        <?php
-                        }
-                        ?>
-                      </div>
                     </ul>
                   </div>
                 </div>
@@ -1325,8 +1298,7 @@ if (session_status() === PHP_SESSION_NONE) {
                   <li class="profilediv">
                     <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
                       <button class=" usericon " type="button" name="submit" value="">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <span><?= $_SESSION['name'] ?></span>
+                        <span><?= strtoupper(substr($_SESSION['name'], 0, 1)); ?></span>
                       </button>
                     </form>
                   </li>
