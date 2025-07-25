@@ -179,9 +179,9 @@ require "../Main/header.php";
   /*///////////////////////////////////////////////////////////////*/
 </style>
 <!-- breadcrumbs -->
-<div class="breadcrumbs" style="background-color: #eaeded">
+<div class="breadcrumbs">
   <div class="container">
-    <ol class="breadcrumb breadcrumb1" style="background-color: #eaeded">
+    <ol class="breadcrumb breadcrumb1">
       <li><a href="hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
       <li class="active">wishlist</li>
     </ol>
@@ -547,7 +547,7 @@ require "../Main/header.php";
         $stmt_check1 = $pdo->prepare($sql_check1);
         $stmt_check1->execute();
         $row_check1 = $stmt_check1->fetch(PDO::FETCH_ASSOC);
-        $sql_wish1 = 'select users.first_name,wishlist.list_name,wishlist.wishlist_id,wishlist.date FROM wishlist INNER JOIN wishlist_items ON wishlist.wishlist_id=wishlist_items.wishlist_id inner join users on wishlist.customer_id=users.customer_id WHERE privacy="public" group by wishlist.wishlist_id';
+        $sql_wish1 = 'select customers.first_name,wishlist.list_name,wishlist.wishlist_id,wishlist.date FROM wishlist INNER JOIN wishlist_items ON wishlist.wishlist_id=wishlist_items.wishlist_id inner join customers on wishlist.customer_id=customers.customer_id WHERE privacy="public" group by wishlist.wishlist_id';
         $stmt_wish1 = $pdo->prepare($sql_wish1);
         $stmt_wish1->execute();
         if ($row_check1['cnt'] > 0) {

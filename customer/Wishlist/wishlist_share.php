@@ -35,9 +35,9 @@ if (isset($_GET['sharelink'])) {
 require "../Main/header.php";
 ?>
 <!-- breadcrumbs -->
-<div class="breadcrumbs" style="background-color: #eaeded">
+<div class="breadcrumbs">
   <div class="container">
-    <ol class="breadcrumb breadcrumb1" style="background-color: #eaeded">
+    <ol class="breadcrumb breadcrumb1">
       <li>
         <a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
       </li>
