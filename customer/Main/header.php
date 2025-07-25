@@ -105,6 +105,8 @@ if (session_status() === PHP_SESSION_NONE) {
     button.location_marker.popup2_open,
     .wishicon,
     .carticon,
+    .carticon,
+    .loginicon,
     .location_marker {
       height: 40px !important;
       margin: 0px !important;
@@ -114,7 +116,6 @@ if (session_status() === PHP_SESSION_NONE) {
       border: 0px;
       font-size: 16px !important;
       padding: 5px !important;
-      padding-top: 15px !important;
     }
 
     div#lg-cartcnt {
@@ -1431,7 +1432,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 if (!isset($_SESSION['name'])) {
                 ?>
                   <li class="logindiv">
-                    <a href="#myModal" data-toggle="modal" data-dismiss="modal">
+                    <a class="loginicon" href="#myModal" data-toggle="modal" data-dismiss="modal">
                       <i class="fa fa-sign-in dropdown" style="color: white;font-size:16px;" aria-hidden="true"></i>
                     </a>
                   </li>
