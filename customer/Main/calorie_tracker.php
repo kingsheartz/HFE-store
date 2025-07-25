@@ -76,7 +76,6 @@ require "header.php";
   input[type="date"] {
     padding: 12px;
     border: 1px solid darkgrey;
-    border: 1px solid darkgrey;
     color: darkgrey;
     background-color: #101010;
     border-radius: 8px;
@@ -223,6 +222,7 @@ require "header.php";
     border-color: #eee;
   }
 </style>
+
 <div class="calories-outer-container">
   <div class="bg-overlay">
     <div class="calories-container">
@@ -232,9 +232,7 @@ require "header.php";
       </div>
 
       <fieldset class="tracker">
-        <legend>
-          Log Your Calories
-        </legend>
+        <legend>Log Your Calories</legend>
         <form id="calorie-form">
           <input id="food-item" type="text" placeholder="Food Item" required />
           <input id="calories" type="number" placeholder="Calories" required />
@@ -275,7 +273,9 @@ require "header.php";
 
       <div id="row" class="history-container" style="margin-top: 20px;">
         <h2>History:</h2>
-        <ul id="history-list"></ul>
+        <ul id="history-list">
+          <li>No entries yet.</li>
+        </ul>
       </div>
       <hr>
 
@@ -486,6 +486,7 @@ require "header.php";
           $(document).ready(function() {
             checkGoalStatus();
             loadWeekChart();
+            loadCalorieHistory();
             loadCalorieHistory(false); // Load today's history by default
           });
         </script>
