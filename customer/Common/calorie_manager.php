@@ -56,7 +56,7 @@ if (isset($_POST['customer_id']) && isset($_POST['food_item']) && isset($_POST['
  * Load the total calories consumed by a customer for a day.
  */
 
-if (isset($_POST['load_calories']) && isset($_POST['customer_id']) && isset($_POST['date'])) {
+if (isset($_POST['calory_history']) && isset($_POST['customer_id']) && isset($_POST['date'])) {
   $date = $_POST['date'];
   $customer_id = $_POST['customer_id'];
 
