@@ -696,6 +696,23 @@ CREATE TABLE calorie_goals (
   `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
   FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calorie_goals`
+--
+
+CREATE TABLE bmi_entries (
+  `bmi_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `customer_id` INT NOT NULL,
+  `weight_kg` DECIMAL(5,2) NOT NULL,
+  `height_cm` DECIMAL(5,2) NOT NULL,
+  `bmi` DECIMAL(5,2) NOT NULL,
+  `date_logged` DATE DEFAULT CURRENT_DATE,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
 --
 -- Indexes for dumped tables
 --

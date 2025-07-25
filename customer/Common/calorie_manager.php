@@ -57,13 +57,24 @@ if (isset($_POST['customer_id']) && isset($_POST['food_item']) && isset($_POST['
  */
 
 if (isset($_POST['calory_history']) && isset($_POST['customer_id']) && isset($_POST['date'])) {
-  $date = $_POST['date'];
+  $date = $_POST['date'] && !empty($_POST['date']) ? $_POST['date'] : date('Y-m-d');
   $customer_id = $_POST['customer_id'];
 
-  $stmt = $pdo->prepare("SELECT food_item, calories, date_logged FROM calories WHERE customer_id = ? AND date_logged = ?");
-  $stmt->execute([$customer_id, $date]);
-  $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
+  $sql = 'SELECT food_item, calories, date_logged FROM calories WHERE customer_id = ? ';
 
+  if (isset($_POST['date']) && !empty($_POST['date'])) {
+    $sql = $sql . 'AND date_logged = ?';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$customer_id, $date]);
+    $message = 'No BMI for this date';
+  } else {
+    $sql = $sql . 'ORDER BY date_logged DESC LIMIT 10';
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute([$customer_id]);
+    $message = 'No BMI records yet';
+  }
+
+  $data = $stmt->fetchAll(PDO::FETCH_ASSOC);
   echo json_encode($data);
   exit;
 }
@@ -120,21 +131,6 @@ if (isset($_POST['loadWeekChart']) && isset($_POST['customer_id'])) {
   $customer_id = $_POST['customer_id'];
 
   // Get the last 7 days of calorie data
-  $stmt = $pdo->prepare("SELECT DATE(date_logged) as date, SUM(calories) as total FROM calories WHERE customer_id = ? AND date_logged >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) GROUP BY date");
-  $stmt->execute([$customer_id]);
-
-  $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
-
-  $labels = [];
-  $values = [];
-  foreach ($rows as $row) {
-    $labels[] = $row['date'];
-    $values[] = (int) $row['total'];
-  }
-
-  echo json_encode(["labels" => $labels, "values" => $values]);
-} else {
-  $customer_id = $_POST['customer_id'];
   $stmt = $pdo->prepare("SELECT DATE(date_logged) as date, SUM(calories) as total FROM calories WHERE customer_id = ? AND date_logged >= DATE_SUB(CURDATE(), INTERVAL 6 DAY) GROUP BY date");
   $stmt->execute([$customer_id]);
 
