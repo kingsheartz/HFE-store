@@ -107,7 +107,12 @@ if (session_status() === PHP_SESSION_NONE) {
     .carticon,
     .carticon,
     .loginicon,
+    .bmiicon,
+    .calorieicon,
     .location_marker {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
       height: 40px !important;
       margin: 0px !important;
       width: 40px !important;
@@ -813,31 +818,31 @@ if (session_status() === PHP_SESSION_NONE) {
       }
 
       li.locationdiv {
-        position: absolute !important;
-        right: 100px;
+        float: right;
       }
 
       li.cartdiv {
-        position: absolute !important;
-        right: 50px;
+        float: right;
       }
 
       li.wishdiv {
-        position: absolute !important;
-        right: 0px;
+        float: right;
+      }
+
+      li.bmidiv {
+        float: right;
+      }
+
+      li.caloriediv {
+        float: right;
       }
 
       li.logindiv {
-        position: absolute !important;
-        right: 150px;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        padding-top: 5px;
+        float: right;
       }
 
       .usericon {
-        right: 150px !important;
+        float: right;
       }
     }
 
@@ -1166,10 +1171,24 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="agile-login"><!--#7-->
                   <div>
                     <ul class="phone_email topli"><!--SIDE OPEN NAV BAR-->
-                      <li class="side-bar-collapsed" style="	margin-left: 15px;">
-                        <a href="#" style="float: left;    margin-top: 10px;" id="sm_side_active">
+                      <li class="side-bar-collapsed" style="margin-left: 15px;">
+                        <a href="#" style="float: left;margin-top: 10px;" id="sm_side_active">
                           <span style="cursor:pointer" onclick="openNav()">&#9776;</span>
                         </a>
+                      </li>
+                      <li class="caloriediv">
+                        <form action="#" method="post" class="last">
+                          <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_tracker.php';">
+                            <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                          </button>
+                        </form>
+                      </li>
+                      <li class="bmidiv">
+                        <form action="#" method="post" class="last">
+                          <button class="bmiicon" type="button" name="submit" value="" onclick="location.href='../Main/bmi_calculator.php';">
+                            <i class="fa fa-calculator" aria-hidden="true"></i>
+                          </button>
+                        </form>
                       </li>
                       <li class="wishdiv">
                         <form action="#" method="post" class="last">
@@ -1390,10 +1409,24 @@ if (session_status() === PHP_SESSION_NONE) {
                     ?>
                   </ul>
                 </li>
-                <li class="locationdiv">
+                <li class="caloriediv">
                   <form action="#" method="post" class="last">
-                    <button class="location_marker popup2_open" type="submit" name="submit" value="">
-                      <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
+                    <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_tracker.php';">
+                      <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                    </button>
+                  </form>
+                </li>
+                <li class="bmidiv">
+                  <form action="#" method="post" class="last">
+                    <button class="bmiicon" type="button" name="submit" value="" onclick="location.href='../Main/bmi_calculator.php';">
+                      <i class="fa fa-calculator" aria-hidden="true"></i>
+                    </button>
+                  </form>
+                </li>
+                <li class="wishdiv">
+                  <form action="#" method="post" class="last">
+                    <button class=" wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
+                      <i class="fa fa-heart" aria-hidden="true"></i>
                     </button>
                   </form>
                 </li>
@@ -1421,10 +1454,10 @@ if (session_status() === PHP_SESSION_NONE) {
                     </div>
                   </form>
                 </li>
-                <li class="wishdiv">
+                <li class="locationdiv">
                   <form action="#" method="post" class="last">
-                    <button class=" wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
-                      <i class="fa fa-heart" aria-hidden="true"></i>
+                    <button class="location_marker popup2_open" type="submit" name="submit" value="">
+                      <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
                     </button>
                   </form>
                 </li>

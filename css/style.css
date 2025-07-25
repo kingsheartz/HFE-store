@@ -188,7 +188,9 @@ button.btn.btn-default.search:hover {
 
 #small-div .agile-login ul li.cartdiv,
 #small-div .agile-login ul li.wishdiv,
-#small-div .agile-login ul li.locationdiv {
+#small-div .agile-login ul li.locationdiv,
+#small-div .agile-login ul li.bmidiv,
+#small-div .agile-login ul li.caloriediv {
   float: right;
   padding: 0px !important;
   display: block;
@@ -5343,6 +5345,14 @@ div.scrollmenu a {
   background-color: #00A9C7 !important;
 }
 
+.bmiicon {
+  background-color: #19383d !important;
+}
+
+.calorieicon {
+  background-color: #540522 !important;
+}
+
 @media(min-width: 1001px) {
   #menu_items_reglog {
     margin-top: 50px !important;
@@ -5446,6 +5456,8 @@ ul.topli {
   .navbar-inverse .cartdiv,
   .navbar-inverse .locationdiv,
   .navbar-inverse .logindiv,
+  .navbar-inverse .bmidiv,
+  .navbar-inverse .caloriediv,
   .profilediv {
     display: none !important;
   }
