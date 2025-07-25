@@ -1528,8 +1528,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
     ?>
 
-    <div id="side_cat_list_end_default" style="margin-top: 370px;"></div><!--n+4 breaks 37px difference-->
-    <div id="side_cat_list_enda" style="display: none;margin-top: 333px;"></div><!--n+4 breaks 37px difference-->
+    <div id="side_cat_list_end_default" style="margin-top: 310px;"></div><!--n+4 breaks 37px difference (here margin-top was 333)-->
     <div id="side_cat_list_endb" style="display: none;margin-top: 296px;"></div><!--n+4 breaks 37px difference-->
     <div id="side_cat_list_endc" style="display: none;margin-top: 259px;"></div><!--n+4 breaks 37px difference-->
     <div id="side_cat_list_endd" style="display: none;margin-top: 222px;"></div><!--n+4 breaks 37px difference-->

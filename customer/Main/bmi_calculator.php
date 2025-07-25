@@ -49,7 +49,7 @@ require "header.php";
 
   .bmi-header h1 {
     font-size: 3rem;
-    color: #27ae60;
+    color: #139b3b;
     margin-bottom: 10px;
   }
 
@@ -68,7 +68,7 @@ require "header.php";
   .bmi-box legend,
   .bmi-date-picker-container legend {
     font-size: 1.5rem;
-    color: #27ae60;
+    color: #139b3b;
     margin-bottom: 10px;
     border: none;
     width: auto;
@@ -104,7 +104,7 @@ require "header.php";
 
   #bmi-calculate-btn,
   #history-status button {
-    background: #27ae60;
+    background: #139b3b;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -143,7 +143,7 @@ require "header.php";
   }
 
   #bmi-history {
-    color: #27ae60;
+    color: #139b3b;
     margin-bottom: 10px;
   }
 
@@ -157,7 +157,7 @@ require "header.php";
   .history-container h2,
   .bmi-chart-container h2 {
     font-size: 18px;
-    color: #27ae60;
+    color: #139b3b;
   }
 
   ul {
@@ -188,6 +188,26 @@ require "header.php";
   hr {
     margin: 30px 0;
     border-color: #eee;
+  }
+
+  .bmi-box button,
+  #history-status button {
+    color: #e3e2e2;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .bmi-box button:hover,
+  #history-status button:hover {
+    background: #139b3b;
+    transform: translateY(-2px);
+  }
+
+  .bmi-box button:active,
+  #history-status button:active {
+    transform: translateY(0);
   }
 </style>
 
@@ -330,7 +350,7 @@ require "header.php";
               datasets: [{
                 label: 'BMI',
                 data: data.values,
-                borderColor: '#27ae60',
+                borderColor: '#139b3b',
                 backgroundColor: 'rgba(39, 174, 96, 0.1)',
                 tension: 0.3,
                 fill: true
