@@ -1202,7 +1202,7 @@ a.w3_agile_vimeo:hover {
 .breadcrumb {
   margin-bottom: 0 !important;
   padding: 0 !important;
-  background: #151515 !important;
+  background-color: #151515 !important;
 }
 
 .breadcrumb1 li {
@@ -3389,6 +3389,11 @@ h3.agileits-icons-title {
     width: 45%;
   }
 
+  ul.faq {
+    margin-top: 3em;
+    padding: 0 1.5em;
+  }
+
   ol.faq {
     margin-top: 3em;
     padding: 0 1.5em;
@@ -4294,6 +4299,11 @@ h3.agileits-icons-title {
     padding: 2em 0em;
   }
 
+  ul.faq {
+    margin-top: 2em;
+    padding: 0 1em;
+  }
+
   ol.faq {
     margin-top: 2em;
     padding: 0 1em;
@@ -5130,6 +5140,7 @@ div.scrollmenu a {
 }
 
 @media (max-width: 767px) {
+
   .menu-bar,
   .navbar-nav {
     background-color: #02171e !important;
