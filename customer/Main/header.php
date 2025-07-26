@@ -1158,7 +1158,7 @@ if (session_status() === PHP_SESSION_NONE) {
                       if (isset($_SESSION['name'])) {
                       ?>
                         <li class="userdiv" style="float: right;">
-                          <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
+                          <form action="../Account/registered.php" title="<?= $_SESSION['name'] ?>" method="post" class="last" onclick="openNav()">
                             <button class="w3view-cart usericon " type="button" name="submit" value="">
                               <span id="location"><?= strtoupper(substr($_SESSION['name'], 0, 1)); ?></span>
                             </button>
@@ -1168,28 +1168,28 @@ if (session_status() === PHP_SESSION_NONE) {
                       }
                       ?>
                       <li class="caloriediv">
-                        <form action="#" method="post" class="last">
+                        <form action="#" title="Calorie Tracker" method="post" class="last">
                           <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_tracker.php';">
                             <i class="fas fa-heartbeat" aria-hidden="true"></i>
                           </button>
                         </form>
                       </li>
                       <li class="bmidiv">
-                        <form action="#" method="post" class="last">
+                        <form action="#" title="BMI Calculator" method="post" class="last">
                           <button class="bmiicon" type="button" name="submit" value="" onclick="location.href='../Main/bmi_calculator.php';">
                             <i class="fa fa-calculator" aria-hidden="true"></i>
                           </button>
                         </form>
                       </li>
                       <li class="wishdiv">
-                        <form action="#" method="post" class="last">
+                        <form action="#" title="Wishlist" method="post" class="last">
                           <button class="wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
                             <i class="fa fa-heart" aria-hidden="true"></i>
                           </button>
                         </form>
                       </li>
                       <li class="cartdiv">
-                        <form action="#" method="post" class="last">
+                        <form action="#" title="Cart" method="post" class="last">
                           <div id="cart" class="btn-group btn-shopping-cart">
                             <a href="..\Cart\cart.php">
                               <div class="shopcart">
@@ -1220,7 +1220,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         </form>
                       </li>
                       <li class="locationdiv">
-                        <form action="#" method="post" class="last">
+                        <form action="#" title="Location" method="post" class="last">
                           <button class="location_marker popup2_open" type="submit" name="submit" value="">
                             <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
                           </button>
@@ -1382,28 +1382,28 @@ if (session_status() === PHP_SESSION_NONE) {
                   </ul>
                 </li>
                 <li class="caloriediv">
-                  <form action="#" method="post" class="last">
+                  <form action="#" title="Calorie Tracker" method="post" class="last">
                     <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_tracker.php';">
                       <i class="fas fa-heartbeat" aria-hidden="true"></i>
                     </button>
                   </form>
                 </li>
                 <li class="bmidiv">
-                  <form action="#" method="post" class="last">
+                  <form action="#" title="BMI Calculator" method="post" class="last">
                     <button class="bmiicon" type="button" name="submit" value="" onclick="location.href='../Main/bmi_calculator.php';">
                       <i class="fa fa-calculator" aria-hidden="true"></i>
                     </button>
                   </form>
                 </li>
                 <li class="wishdiv">
-                  <form action="#" method="post" class="last">
+                  <form action="#" title="Wishlist" method="post" class="last">
                     <button class=" wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
                       <i class="fa fa-heart" aria-hidden="true"></i>
                     </button>
                   </form>
                 </li>
                 <li class="cartdiv">
-                  <form action="#" method="post" class="last">
+                  <form action="#" title="Cart" method="post" class="last">
                     <div id="cart" class="btn-group btn-shopping-cart">
                       <a href="../Cart/cart.php">
                         <div class="shopcart">
@@ -1427,7 +1427,7 @@ if (session_status() === PHP_SESSION_NONE) {
                   </form>
                 </li>
                 <li class="locationdiv">
-                  <form action="#" method="post" class="last">
+                  <form action="#" title="Location" method="post" class="last">
                     <button class="location_marker popup2_open" type="submit" name="submit" value="">
                       <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
                     </button>
@@ -1436,7 +1436,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 <?php
                 if (!isset($_SESSION['name'])) {
                 ?>
-                  <li class="logindiv">
+                  <li class="logindiv" title="Login">
                     <a class="loginicon" href="#myModal" data-toggle="modal" data-dismiss="modal">
                       <i class="fa fa-sign-in dropdown" style="color: white;font-size:16px;" aria-hidden="true"></i>
                     </a>

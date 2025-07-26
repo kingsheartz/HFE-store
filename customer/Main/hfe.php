@@ -322,6 +322,9 @@ require "../Common/cookie.php";
     }
 
     .difhed {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
       background: black;
       border-radius: 5px;
       width: 100%;
@@ -332,7 +335,7 @@ require "../Common/cookie.php";
       font-family: sans-serif;
       font-weight: 600;
       text-transform: capitalize;
-      padding: 20px;
+      padding: 10px;
       box-shadow: 2px 1px 3px #656565;
       margin-bottom: 20px;
     }
@@ -451,13 +454,12 @@ require "../Common/cookie.php";
     }
 
     .difhed button {
-      float: right;
       font-weight: 600;
       font-size: 12px;
-      margin-right: 5px;
       margin-top: 0px;
-      padding: 5px;
-      width: 100px;
+      padding: 10px;
+      padding-top: 5px;
+      padding-bottom: 5px;
       background: #4a4a4a;
       font-family: Verdana, Geneva, Tahoma, sans-serif;
       border: none;
@@ -909,6 +911,16 @@ require "../Common/cookie.php";
                 margin-top: 0;
                 padding-top: 0;
                 ;
+              }
+            }
+
+            @media(max-width:484px) {
+              .difhed {
+                font-size: 14px;
+              }
+
+              .difhed button{
+                font-size: 10px;
               }
             }
 

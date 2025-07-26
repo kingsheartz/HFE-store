@@ -5423,10 +5423,6 @@ div.scrollmenu a {
   #menu_items_reglog {
     display: none;
   }
-
-  .usericon>span {
-    display: none;
-  }
 }
 
 @media(min-width:667px) {
