@@ -468,7 +468,7 @@
 
   /* banner-bottom- */
   .advertise {
-    min-height: 30rem;
+    min-height: -webkit-fill-available;
     background-size: contain !important;
   }
 

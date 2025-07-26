@@ -32,7 +32,7 @@ require "../Common/cookie.php";
   }
 
   p.cap_body {
-    width: 400px;
+    width: auto;
     text-align: justify;
     color: #ccc;
   }
@@ -79,6 +79,10 @@ require "../Common/cookie.php";
     text-overflow: ellipsis;
     padding-top: 25px;
     border-top: 1px solid #e8e8e8;
+  }
+
+  #bxslider-home4 {
+    height: -webkit-fill-available;
   }
 </style>
 <?php
@@ -200,7 +204,7 @@ require "../Common/cookie.php";
 <div class="slider-area" style="background-color: white;margin-top: 0px;">
   <!-- Slider -->
   <div class="block-slider block-slider4">
-    <ul class="" id="bxslider-home4" style="height: 400px;background-color: rgba(255, 255, 255, 0.95);">
+    <ul class="" id="bxslider-home4" style="background-color: rgba(255, 255, 255, 0.95);">
       <?php
       $slider = array(
         "Power /Precision /Performance //Built for serious runners, this treadmill delivers smooth, quiet operation and advanced tracking features.",

@@ -870,7 +870,7 @@ function randomGen($min, $max, $quantity)
                               <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 product_description_td">
                                 <div class="product-name" colspan="2" style="padding: 0px;margin-top: 5px;margin-bottom: 5px">
                                   <p style="margin:0px;margin-bottom: 0px;font-size:17px;">
-                                  <div style="margin-right:10px;background-color: transparent;padding-right:20px;padding-left:10px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
+                                  <div style="margin-right:10px;background-color: transparent;padding-right:20px;padding-left:0px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
                                     <div style="display: flex;">
                                       <a class="pd_name" href="#" style="color: darkgrey;font-weight: normal;text-align:justify;">
                                         <?= $row2['product_name'] ?>

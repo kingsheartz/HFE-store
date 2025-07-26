@@ -5588,26 +5588,20 @@ ul.topli {
 @media(max-width: 496px) {
   .cap_head {
     font-size: 18px;
-    margin-right: -30px;
   }
 
   .cap_body {
     font-size: 12px;
-    margin-right: -30px;
   }
 }
 
 @media(max-width: 411px) {
   .cap_head {
     font-size: 18px;
-    margin-right: -60px !important;
-    margin-left: 60px;
   }
 
   .cap_body {
     font-size: 12px;
-    margin-right: -60px !important;
-    margin-left: 60px;
   }
 
   .button-radius {
