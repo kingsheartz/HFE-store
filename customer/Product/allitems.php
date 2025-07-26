@@ -3,13 +3,17 @@ require "../Common/pdo.php";
 require "../Main/header.php";
 ?>
 <style type="text/css">
+  body {
+    background: #1b1b1b;
+  }
+
   .difcat {
     position: relative;
     height: max-content;
     margin: auto;
     margin-top: 20px;
     display: block;
-    background: #FFFFFF;
+    background: #151515;
     box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
   }
 
@@ -32,14 +36,15 @@ require "../Main/header.php";
     position: relative;
     height: 280px;
     width: 200px;
-    background: white;
-    color: #000;
+    background: #151515;
+    color: darkgrey;
+    font-size: 13px;
   }
 
   .products-all-in-one img {
     margin: auto;
     display: block;
-    background: white;
+    background: #151515;
     image-rendering: auto;
     image-rendering: crisp-edges;
     width: auto;
@@ -49,17 +54,17 @@ require "../Main/header.php";
   }
 
   .difhed {
-    border-bottom: 3px solid #dadada;
+    color: #676767;
+    border-bottom: 3px solid #676767ff;
     width: 100%;
     margin: 0;
     font-size: 24px;
-    font-family: serif;
     font-weight: bold;
     text-transform: capitalize;
     padding-bottom: 0px;
     padding-top: 20px;
     margin-left: 20px;
-    font-family: serif;
+    font-family: 'Segoe UI', sans-serif;
   }
 
   .left-arrow-btn-all {
@@ -110,26 +115,28 @@ require "../Main/header.php";
     margin-bottom: 0px;
     max-height: max-content;
     height: 60px;
+    background-color: #151515;
   }
 
   .difhed button {
     float: right;
     font-weight: bold;
     font-size: 16px;
-    margin-right: 16px;
+    margin-right: 5px;
     padding: 2px;
     width: 100px;
     background: --webkit-gradient(linear, left bottom, left top, color-stop(0, #3197ff), color-stop(1, #2196f3)) !important;
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-family: 'Segoe UI', sans-serif;
     border: none;
-    color: white;
+    color: #ffffff;
+    background-color: #139b3b;
     border-radius: 5px;
   }
 </style>
 
 <body>
   <div class="table1">
-    <h4 style="margin-top: 10px;border-bottom:  1px solid#E3E3E3;padding:10px;">
+    <h4 style="margin-top: 10px;border-bottom: 1px solid darkgrey;color: darkgrey;padding: 10px;">
       <i
         class="fas fa-boxes"
         style="font-size: 24px;padding-right: 12px"
@@ -185,8 +192,8 @@ require "../Main/header.php";
     <?php
     $query = "SELECT * FROM product
 							JOIN product_description ON product.product_id=product_description.product_id
-							where product.category_id=$ct and (product.added_date) in (
-								select max(added_date) as date from product
+							where product.category_id=$ct AND (product.added_date) IN (
+								SELECT max(added_date) AS date FROM product
 							) GROUP BY product_description.product_id
 							ORDER BY CAST(product.product_id AS UNSIGNED) DESC";
     $st = $pdo->query($query);
@@ -212,7 +219,7 @@ require "../Main/header.php";
           while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
           ?>
             <div class="products-all-in-one">
-              <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+              <div style="display: flex;justify-content: center;height: 200px;width:100%;background: #151515;text-align: center;">
                 <img
                   class="image"
                   align="middle"
@@ -222,7 +229,7 @@ require "../Main/header.php";
               <?php
               if (strlen($row['product_name']) >= 25) {
                 $product = $row['product_name'];
-                $product_name = substr($product, 0, 20) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+                $product_name = substr($product, 0, 20) . "... <small class='div_wrapper' title='" . $product . "' style='color: #109502'>view</small>";
               } else {
                 $product_name = $row['product_name'];
               }

@@ -984,7 +984,7 @@ if (isset($product_description_id, $_SESSION['id'])) {
                 </tr>
                 <?php
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
-                  $sql_wish1 = 'select count(wishlist_id) as product_count FROM wishlist_products WHERE wishlist_id=:wish_id ';
+                  $sql_wish1 = 'select count(wishlist_id) as product_count FROM wishlist_items WHERE wishlist_id=:wish_id ';
                   $stmt_wish1 = $pdo->prepare($sql_wish1);
                   $stmt_wish1->execute(array(':wish_id' => $row['wishlist_id']));
                   $row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);

@@ -118,7 +118,7 @@ require "../Main/header.php";
                 product_description.product_description_id,
                 product.product_name,
                 product.description,
-                product.category_id,
+                product.category_id
         FROM product
         INNER JOIN product_description ON product_description.product_id = product.product_id
         INNER JOIN product_details ON product_details.product_description_id = product_description.product_description_id

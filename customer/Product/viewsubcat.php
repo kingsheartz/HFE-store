@@ -4,124 +4,148 @@ require "../Main/header.php";
 ?>
 
 <body>
-  <div class="wrapper">
-    <style>
+  <style>
+    .wrapper,
+    .wrapper .content {
+      background-color: #151515;
+      color: darkgrey;
+    }
+
+    .wrapper .content .deupd {
+      color: darkgrey;
+    }
+
+    .products-container {
+      display: inline-block;
+    }
+
+    .products {
+      display: flex;
+      flex-direction: column;
+      text-align: center;
+      justify-content: center;
+      padding: 15px;
+      position: relative;
+      height: 300px;
+      background: #151515;
+      color: #000;
+      border: 1px solid #2f2f2fff;
+    }
+
+    .products img {
+      margin: auto;
+      display: block;
+      background: #151515;
+      image-rendering: auto;
+      image-rendering: crisp-edges;
+      width: auto;
+      max-width: 170px;
+      height: auto;
+      max-height: 200px;
+    }
+
+    .products:hover {
+      opacity: 0.5;
+      transition: opacity .5s;
+    }
+
+    .content {
+      position: relative;
+      background: #151515;
+      height: auto;
+      padding-bottom: 50px;
+      border-top: none;
+    }
+
+    .divhed {
+      padding: 20px;
+      font-family: Roboto;
+      font-size: 32px;
+      text-align: center;
+      border-bottom: 1px solid #767676;
+      margin-bottom: 50px;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+
+    nav.numbering {
+      float: right;
+    }
+
+    .pagination li a {
+      background-color: #000 !important;
+    }
+
+    .pagination li.active a {
+      background-color: #139b3b !important;
+      border: 1px solid darkgrey;
+    }
+
+    @media(max-width:568px) {
       .products {
-        display: inline-block;
-        text-align: center;
-        padding: 14px;
+        padding: 10px;
         position: relative;
-        height: 300px;
-        background: white;
+        height: 280px;
+        background: #151515;
+      }
+
+      .products img {
+        margin: auto;
+        display: block;
+        background: #151515;
+        image-rendering: auto;
+        image-rendering: crisp-edges;
+        width: auto;
+        max-width: 160px;
+        height: auto;
+        max-height: 160px;
+      }
+    }
+
+    @media(max-width:450px) {
+      .products {
+        padding: 10px;
+        position: relative;
+        height: 260px;
+        background: #151515;
         color: #000;
       }
 
       .products img {
         margin: auto;
         display: block;
-        background: white;
+        background: #151515;
         image-rendering: auto;
         image-rendering: crisp-edges;
         width: auto;
-        max-width: 170px;
+        max-width: 130px;
         height: auto;
-        max-height: 200px;
+        max-height: 130px;
       }
+    }
 
-      .products:hover {
-        opacity: 0.5;
-        transition: opacity .5s;
-      }
-
-      .content {
+    @media(max-width:320px) {
+      .products {
+        padding: 10px;
         position: relative;
-        background: white;
+        height: 260px;
+        width: 100%;
+        background: #151515;
+      }
+
+      .products img {
+        margin: auto;
+        display: block;
+        background: #151515;
+        image-rendering: auto;
+        image-rendering: crisp-edges;
+        width: auto;
+        max-width: 130px;
         height: auto;
-        padding-bottom: 50px;
-        border-top: none;
+        max-height: 130px;
       }
-
-      .divhed {
-        padding: 20px;
-        font-family: Roboto;
-        font-size: 32px;
-        text-align: center;
-        border-bottom: 1px solid #dcdcdc;
-        margin-bottom: 50px;
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      }
-
-      nav.numbering {
-        float: right;
-      }
-
-      @media(max-width:568px) {
-        .products {
-          padding: 10px;
-          position: relative;
-          height: 280px;
-          background: white;
-          color: #000;
-        }
-
-        .products img {
-          margin: auto;
-          display: block;
-          background: white;
-          image-rendering: auto;
-          image-rendering: crisp-edges;
-          width: auto;
-          max-width: 160px;
-          height: auto;
-          max-height: 160px;
-        }
-      }
-
-      @media(max-width:450px) {
-        .products {
-          padding: 10px;
-          position: relative;
-          height: 260px;
-          background: white;
-          color: #000;
-        }
-
-        .products img {
-          margin: auto;
-          display: block;
-          background: white;
-          image-rendering: auto;
-          image-rendering: crisp-edges;
-          width: auto;
-          max-width: 130px;
-          height: auto;
-          max-height: 130px;
-        }
-      }
-
-      @media(max-width:320px) {
-        .products {
-          padding: 10px;
-          position: relative;
-          height: 260px;
-          width: 100%;
-          background: white;
-          color: #000;
-        }
-
-        .products img {
-          margin: auto;
-          display: block;
-          background: white;
-          image-rendering: auto;
-          image-rendering: crisp-edges;
-          width: auto;
-          max-width: 130px;
-          height: auto;
-          max-height: 130px;
-        }
-      }
-    </style>
+    }
+  </style>
+  <div class="wrapper">
     <?php
     if (isset($_GET['category_id'])) {
       $ctid = $_GET['category_id'];
@@ -132,7 +156,7 @@ require "../Main/header.php";
     //find the total number of results stored in the database
     $query = "SELECT * FROM product
 							JOIN product_description ON product.product_id=product_description.product_id
-							where product.category_id=$ctid
+							WHERE product.category_id=$ctid
 							GROUP BY product_description.product_id";
     $result = $pdo->query($query);
     $number_of_result = $result->rowCount();
@@ -150,52 +174,56 @@ require "../Main/header.php";
     <div class="content table1 col-sm-12">
       <div class="divhed">
         <?php
-        $query6 = "SELECT * FROM category
-          				where category_id=$ctid ";
+        $query6 = "SELECT * FROM category WHERE category_id=$ctid ";
         $st6 = $pdo->query($query6);
         $row6 = $st6->fetch(PDO::FETCH_ASSOC);
         ?><?= $row6['category_name'] ?>
       </div>
-      <?php
-      //display the link of the pages in URL
+      <div class="products-container">
+        <?php
+        //display the link of the pages in URL
 
-      $query = "SELECT * FROM product
+        $query = "SELECT * FROM product
 								JOIN product_description ON product.product_id=product_description.product_id
-								where product.category_id=$ctid
+								WHERE product.category_id=$ctid
 								GROUP BY product_description.product_id
 								LIMIT " . $page_first_result . "," . $results_per_page;
-      $st = $pdo->query($query);
-      while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
-        if (strlen($row['product_name']) >= 35) {
-          $item = $row['product_name'];
-          $item_name = substr($item, 0, 35) . "...";
-        } else {
-          $item_name = $row['product_name'];
-        }
-      ?>
-        <div class="products col-lg-3 col-sm-4 col-xs-6"
-          onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
-          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
-            <img class="image" align="middle" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+        $st = $pdo->query($query);
+        while ($row = $st->fetch(PDO::FETCH_ASSOC)) {
+          if (strlen($row['product_name']) >= 35) {
+            $item = $row['product_name'];
+            $item_name = substr($item, 0, 35) . "...";
+          } else {
+            $item_name = $row['product_name'];
+          }
+        ?>
+          <div class="products col-lg-3 col-sm-4 col-xs-6 p-2"
+            onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
+            <div style="display: flex;justify-content: center;height: 200px;width:100%;background: #151515;text-align: center;">
+              <img class="image" align="middle" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+            </div>
+            <div class="deupd"><?= $item_name ?><br></div>
           </div>
-          <div class="deupd"><?= $item_name ?><br></div>
-        </div>
-      <?php
-      }
-      ?>
+        <?php
+        }
+        ?>
+      </div>
     </div>
     <div class="clearfix"> </div>
     <nav class="numbering">
       <ul class="pagination">
-        <li class="<?php if ($pageno <= 1) {
-                      echo 'disabled';
-                    } ?>">
-          <a id="prev" href="<?php if ($pageno <= 1) {
-                                echo '#';
-                              } else {
-                                $_GET['pageno'] = $pageno - 1;
-                                echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
-                              } ?>">Prev</a>
+        <li class="
+        <?php if ($pageno <= 1) {
+          echo 'disabled';
+        } ?>">
+          <a id="prev" href="
+          <?php if ($pageno <= 1) {
+            echo '#';
+          } else {
+            $_GET['pageno'] = $pageno - 1;
+            echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+          } ?>
+          ">Prev</a>
         </li>
         <?php
         $ends_count = 1;  //how many items at the ends (before and after [...])
@@ -205,10 +233,12 @@ require "../Main/header.php";
           if ($page == $pageno) {
         ?>
             <li class="active">
-              <a href="<?php
-                        $_GET['pageno'] = $page;
-                        echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
-                <?= $page ?></a>
+              <a href="
+              <?php
+              $_GET['pageno'] = $page;
+              echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
+                <?= $page ?>
+              </a>
             </li>
             <?php
             $dots = true;
@@ -216,32 +246,39 @@ require "../Main/header.php";
             if ($page <= $ends_count || ($pageno && $page >= $pageno - $middle_count && $page <= $pageno + $middle_count) || $page > $number_of_page - $ends_count) {
             ?>
               <li>
-                <a href="<?php
-                          $_GET['pageno'] = $page;
-                          echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
-                  <?= $page ?></a>
+                <a href="
+                <?php
+                $_GET['pageno'] = $page;
+                echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET); ?>">
+                  <?= $page ?>
+                </a>
               </li>
             <?php
               $dots = true;
             } elseif ($dots) {
             ?>
-              <li><a>&hellip;</a></li><?php
-                                      $dots = false;
-                                    }
-                                  }
-                                      ?>
+              <li><a>&hellip;</a></li>
+          <?php
+              $dots = false;
+            }
+          }
+          ?>
         <?php
         }
         ?>
-        <li class="<?php if ($pageno >= $number_of_page) {
-                      echo 'disabled';
-                    } ?>">
-          <a id="next" href="<?php if ($pageno >= $number_of_page) {
-                                echo '#';
-                              } else {
-                                $_GET['pageno'] = $pageno + 1;
-                                echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
-                              } ?>">Next</a>
+        <li class="
+        <?php if ($pageno >= $number_of_page) {
+          echo 'disabled';
+        } ?>
+        ">
+          <a id="next" href="
+          <?php if ($pageno >= $number_of_page) {
+            echo '#';
+          } else {
+            $_GET['pageno'] = $pageno + 1;
+            echo $_SERVER['SCRIPT_NAME'] . '?' . http_build_query($_GET);
+          } ?>
+          ">Next</a>
         </li>
       </ul>
     </nav>
