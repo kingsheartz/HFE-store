@@ -191,6 +191,7 @@ if (!empty($_SESSION['_contact_form_success'])) {
         border-radius: 5px;
         color: white;
         margin-bottom: 50px;
+				margin-left: 15px;
       }
 
       body {

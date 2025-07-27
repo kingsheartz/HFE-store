@@ -1,8 +1,10 @@
 .wrapper {
   display: inline-flex;
   width: 100%;
+  min-height: 100vh;
   background-color: #000000;
 }
+
 @media (max-width: 768px) {
   .wrapper #content {
     resize: both;
@@ -56,7 +58,7 @@ select {
   border-radius: 10px;
 }
 
-.nav > li.active > a {
+.nav>li.active>a {
   text-decoration: none;
   background-color: #181a1c;
   color: white;
@@ -240,8 +242,9 @@ hr {
   .sele {
     margin-right: 70px;
   }
-  .sele_inp {
-  }
+
+  .sele_inp {}
+
   .col-lg-5 {
     border-top: 4px solid #e72727;
     margin-left: 1.5%;
@@ -249,6 +252,7 @@ hr {
     box-shadow: -2px 0 3px #ddd;
     width: 47%;
   }
+
   #newupdation {
     border-radius: 5px;
     border-top: 4px solid #1eb00f;
@@ -265,25 +269,32 @@ hr {
   .sele {
     margin-right: 50px;
   }
+
   .sele_inp {
     width: 40vw;
   }
+
   .add_bt {
     width: 35vw;
   }
+
   .ne_lab1 {
     width: 35vw;
   }
+
   .ne_img {
     width: 200px;
   }
+
   .cart {
     width: 50%;
     overflow: hidden;
   }
+
   .well {
     margin-bottom: 20px;
   }
+
   .col-lg-5 {
     border-top: 4px solid #e72727;
     margin-left: 1.5%;
@@ -291,10 +302,12 @@ hr {
     box-shadow: -2px 0 3px #ddd;
     width: 47%;
   }
+
   .col-md-3 {
     float: left;
     width: 50%;
   }
+
   #newupdation {
     border-radius: 5px;
     border-top: 4px solid #1eb00f;
@@ -311,27 +324,34 @@ hr {
   .sele {
     overflow: hidden;
   }
+
   #cat {
     font-size: 12px;
   }
+
   .sele_inp {
     width: 40vw;
   }
+
   .add_bt {
     width: 60vw;
   }
+
   .ne_lab1 {
     width: 60vw;
   }
+
   .dashboard {
     position: absolute;
     margin: 0;
     left: 0;
     top: -80px;
   }
+
   .well {
     margin-bottom: 20px;
   }
+
   #newupdation {
     border-radius: 5px;
     border-top: 4px solid #1eb00f;
@@ -418,7 +438,7 @@ hr {
   position: fixed;
 }
 
-.container-fluid > .navbar-header {
+.container-fluid>.navbar-header {
   line-height: 1.42857143;
   color: #333;
   font-family: "Lucida Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
@@ -461,6 +481,7 @@ body {
 }
 
 @media (max-width: 768px) {
+
   .col-xs-1,
   .col-sm-1,
   .col-md-1,
@@ -516,72 +537,36 @@ body {
 /* chat.php*/
 
 #chat {
-  background: #ffffff;
-  width: 100%;
-  height: auto;
-  overflow: auto;
   font-family: "Lucida Sans", "Helvetica Neue", Helvetica, Arial, sans-serif;
   box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
+  margin-top: 100px;
+  margin-left: 15px;
 }
 
 #contact {
   text-transform: capitalize;
   padding-right: 0 !important;
-  box-shadow: -2px 0 3px #ddd;
   padding: 0;
   max-height: 400px;
   overflow: auto;
 }
 
-.connect {
-  overflow-x: auto;
-}
-
-.connect::-webkit-scrollbar {
-  width: 6px;
-  height: 1px;
-  scroll-behavior: smooth;
-}
-
-.connect::-webkit-scrollbar-track {
-  -webkit-box-shadow: inset 0 0 3px #dadada;
-  border-radius: 10px;
-}
-
-.connect::-webkit-scrollbar-thumb {
-  border-radius: 10px;
-  -webkit-box-shadow: inset 0 0 3px #cecece;
-}
 
 .connect {
   width: 100%;
-  padding: 0.7rem 1rem;
+  border-radius: 5px;
   border-bottom: 1px solid #ddd;
-  margin: 0;
-  display: flex;
-  -webkit-box-align: start;
-  align-items: flex-start;
-  background-color: #ffff;
-  color: rgba(0, 0, 0, 0.87);
-  height: 70px;
-}
-
-.connect h6 {
-  font-size: 14px;
   display: block;
-  padding-left: 0.5rem !important;
-  padding-right: 0.5rem !important;
-  align-self: center !important;
-  margin-bottom: 0.5rem;
-  color: inherit;
-  font-weight: 700;
-  margin-top: 0;
-  line-height: 1.1;
-  text-overflow: ellipsis;
-  width: 170px;
-  white-space: nowrap;
+  height: 40px;
+  padding: 5px !important;
+  margin-left: auto;
+  margin-top: 2px;
+  margin-right: auto;
+  background-color: #040a104f;
+  color: white;
   overflow: hidden;
 }
+
 
 .conimg i {
   font-size: 50px;
@@ -590,7 +575,6 @@ body {
 }
 
 #chat-cont {
-  background: url("../images/backgr.jpg");
   padding: 0 !important;
   position: relative;
 }
@@ -841,8 +825,7 @@ textarea {
   padding-right: 20px;
 }
 
-#newcalendar {
-}
+#newcalendar {}
 
 .image {
   opacity: 1;
@@ -877,13 +860,11 @@ textarea {
 }
 
 .updation {
-  background: -webkit-gradient(
-    linear,
-    left bottom,
-    left top,
-    color-stop(0, #00885c),
-    color-stop(1, #00dc95)
-  ) !important;
+  background: -webkit-gradient(linear,
+      left bottom,
+      left top,
+      color-stop(0, #00885c),
+      color-stop(1, #00dc95)) !important;
   color: white;
   font-size: 16px;
   padding: 16px 32px;

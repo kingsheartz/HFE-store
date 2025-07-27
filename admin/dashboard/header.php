@@ -24,6 +24,24 @@
       showConfirmButton: false,
       timer: 3000
     });
+
+    function manageClassBasedOnWidth() {
+      const $element = $('#sidebar'); // Replace with your element's ID or class
+      const screenWidth = $(window).width();
+
+      if (screenWidth < 768) { // Example breakpoint for smaller screens
+        $element.addClass('active');
+      } else {
+        $element.removeClass('active'); // Remove if it was previously applied
+      }
+    }
+    $(document).ready(function() {
+      manageClassBasedOnWidth(); // Initial check on page load
+    });
+
+    $(window).on('resize', function() {
+      manageClassBasedOnWidth(); // Re-check on window resize
+    });
   </script>
   <script src="../../js/sweetalert.min.js"></script>
   <link type="text/css" rel="stylesheet" href="https://cdn.jsdelivr.net/npm/jsgrid@1.5.3/dist/jsgrid.min.css" />
@@ -46,11 +64,6 @@ margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50p
 <style>
   .main-frame {
     margin-top: 100px;
-    margin-right: -35px;
-  }
-
-  .jsgrid select {
-    display: block;
   }
 
   a.nav-link {
@@ -98,7 +111,6 @@ margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50p
   }
 
   #mainPieChart {
-    margin-top: 30px !important;
     height: 400px;
     background: #17212f;
     padding: 0;
@@ -114,19 +126,22 @@ margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50p
     border-top: none;
     position: absolute;
     float: right;
-    right: -40px;
+    right: 1.5%;
     border-radius: 5px;
     height: fit-content;
+    width: 32.3%;
   }
 
   .table1 {
     height: auto;
+    width: 100% !important;
     border-radius: 5px;
     overflow: auto;
     background-color: #17212f;
     margin-top: 80px;
     margin-bottom: 20px;
     border-top: 0px;
+    margin-left: 15px;
     box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
   }
 
@@ -233,20 +248,20 @@ margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50p
     box-shadow: 0px -2px 0px #18191e !important;
   }
 
-  .panel-group {
+  .todolist {
     margin-bottom: 20px;
     margin-left: 15px;
-    margin-top: -30px;
+    width: 30.8%;
   }
 
   .recently-added {
     padding: 0px;
-    margin-left: 80px;
-    margin-top: -150px;
-    margin-right: -20px;
+    margin-left: 0px;
+    margin-top: 125px;
     position: relative;
     float: right;
-    width: 64%;
+    width: 63.8%;
+    right: -.9%;
   }
 
   #event {
@@ -259,7 +274,7 @@ margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50p
 
   h4 {
     padding: 10px;
-    box-shadow: 0px 1px 1px #4b4b4b;
+    box-shadow: 0px 1px 0px #4b4b4b;
     margin-left: 0px;
   }
 
@@ -314,5 +329,111 @@ margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50p
   .recently-added>.panel {
     height: 150px;
     background: #17212f;
+  }
+
+  .div-status {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 15px;
+  }
+
+  #chfrm {
+    padding: 20px;
+  }
+
+  @media(max-width: 1200px) {
+    #calendar-div {
+      position: relative;
+      width: 46.6% !important;
+      float: left;
+      margin-left: 30px;
+      height: 400px;
+    }
+
+    #mainPieChart {
+      width: 47%;
+    }
+
+    #event {
+      height: 90px;
+    }
+
+    .todolist {
+      margin-top: 30px;
+      margin-left: 2px;
+    }
+
+    .recently-added {
+      width: 66%;
+      right: 1.5%;
+      top: -95px;
+    }
+  }
+
+  @media(max-width: 992px) {
+    #calendar-div {
+      position: relative;
+      width: 96% !important;
+      margin-left: 27px;
+    }
+
+    #mainPieChart {
+      margin-top: 30px;
+      width: 96%;
+      margin-left: 17px;
+
+    }
+
+    .todolist {
+      width: 100%;
+    }
+
+    .addBtn {
+      width: 23% !important;
+    }
+
+    .recently-added {
+      width: 96%;
+      right: 1.5%;
+      top: -115px;
+    }
+  }
+
+  @media(max-width: 768px) {
+    #mainPieChart {
+      margin-top: 460px;
+      width: 96%;
+      margin-left: 15px;
+
+    }
+
+    .visible-xs {
+      display: none !important;
+      float: right;
+      position: absolute;
+      right: 10px;
+      top: 10px;
+      height: 40px;
+    }
+
+    #calendar-div {
+      margin-left: 23px;
+    }
+
+    .todolist {
+      margin-top: -30px;
+      margin-left: 0px;
+    }
+
+    .recently-added {
+      margin-top: 125px;
+
+    }
+
+    #content {
+      overflow: auto;
+    }
+
   }
 </style>

@@ -129,11 +129,9 @@ if (!empty($_SESSION['_contact_form_success'])) {
       <form id="size1">
         <div class="new" id="myModal" tabindex="-1" role="dialog">
           <div class="modal-dialog1" role="document">
-            <div class="modal-content1">
-              <div class="modal-header1">
-                <h5 class="modal-title1">Add Size</h5>
-              </div>
-              <div class="modal-body1" id="event" style="display: flex;">
+            <div class="table1">
+              <h4 class="modal-title1">Add Size</h4>
+              <div class="modal-body1" id="event" style="display: flex;background: transparent;">
                 <input type="text" id="size" class="ftcl" name="size">
                 <button type="button" onclick="appjo('size')" class="btn btn-primary">Save changes</button>
               </div>
@@ -150,11 +148,9 @@ if (!empty($_SESSION['_contact_form_success'])) {
       <form id="brand1">
         <div class="new" id="myModal" tabindex="-1" role="dialog">
           <div class="modal-dialog1" role="document">
-            <div class="modal-content1">
-              <div class="modal-header1">
-                <h5 class="modal-title1">Add brand</h5>
-              </div>
-              <div class="modal-body1" id="event" style="display: flex;">
+            <div class="table1">
+              <h4 class="modal-title1">Add brand</h4>
+              <div class="modal-body1" id="event" style="display: flex;background: transparent;">
                 <input type="text" placeholder="brand" id="brand" class="ftcl" name="brand">
                 <select id='brct'>
                   <?php

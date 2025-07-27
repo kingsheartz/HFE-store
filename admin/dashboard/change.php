@@ -125,7 +125,8 @@ include "header.php";
 
       .form-group {
         position: relative;
-        margin-top: 50px;
+        margin-top: 0px;
+        margin-right: 10px !important;
       }
 
       .newupdation {
@@ -175,7 +176,6 @@ include "header.php";
         float: left;
         margin: auto;
         display: block;
-        margin-top: 30px;
       }
 
       .form-group .floating-label {
@@ -385,7 +385,7 @@ include "header.php";
 
       .imgdis,
       .subb {
-        background: #ffffff5e;
+        background: #18222f;
       }
 
       .prim {
@@ -461,11 +461,6 @@ include "header.php";
         padding-right: 12px;
       }
 
-      .form-group {
-        position: relative;
-        margin-top: 50px;
-      }
-
       .newupdation {
         border-radius: 5px;
         width: 100%;
@@ -506,15 +501,6 @@ include "header.php";
         .col-sm-9 {
           width: 100%;
         }
-      }
-
-      .form-group {
-        position: relative;
-        width: 100%;
-        float: left;
-        margin: auto;
-        display: block;
-        margin-top: 30px;
       }
 
       .form-group .floating-label {
@@ -664,10 +650,11 @@ include "header.php";
 
       .col-sm-12 textarea {
         height: 200px;
-        border: 1px solid #b1b1b1;
         border-radius: 5px;
         padding: 10px;
         white-space: pre-line;
+        background: #0d1117;
+        border: 0px;
       }
 
       .col-sm-12 {
@@ -875,11 +862,6 @@ include "header.php";
         }
       }
 
-      .form-group {
-        position: relative;
-        margin-top: 50px;
-      }
-
       #position_fields .form-group {
         position: relative;
         width: 100%;
@@ -923,6 +905,7 @@ include "header.php";
 
       #myform {
         margin-top: 80px;
+        margin-left: 15px;
       }
     </style>
     <?php
@@ -1114,7 +1097,7 @@ include "header.php";
       $price = $_POST['price'];
       $it = $_POST['product_id'];
     ?>
-      <div class="pr1" style="margin-top: 80px;">
+      <div class="pr1" style="margin-top: 80px;margin-left:15px">
         <div class="proupda ">
           <div class="newupdation">
             <span>
@@ -1247,128 +1230,128 @@ include "header.php";
                             </div>
                           <?php
                           } ?>
-
-                          <label class="checkbox">
-                            <input
-                              type="checkbox"
-                              class="form-control-check"
-                              onclick="$('#<?= $row['product_description_id'] ?>w1').toggle();$('#<?= $row['product_description_id'] ?>w2').toggle();$('#<?= $row['product_description_id'] ?>weight1').toggle()"
-                              name="check1"
-                              id="<?= $row['product_description_id'] ?>check3"
-                              value="weight">
-                            <span>Weight</span>
-                            <?php
-                            if ($row['weight'] != 0) {
-                              $we = $row['weight'];
-                              $we3 = explode(' ', $we);
-                            ?>
-                              <script type="text/javascript">
-                                $('#<?= $row['product_description_id'] ?>check3').prop('checked', true);
-                                $('#<?= $row['product_description_id'] ?>check3').attr('disabled', true);
-                              </script>
-                              <div class="form-group">
-                                <input
-                                  type="number"
-                                  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                                  class="form-control"
-                                  style="width:70%;border-right:none; float:left;"
-                                  id="<?= $row['product_description_id'] ?>w1"
-                                  onkeyup="conca(<?= $row['product_description_id'] ?>)"
-                                  value="<?= $we3[0] ?>">
-                                <select
-                                  class="form-control"
-                                  style="width:30%;float:left;color: white;background: #0B7383"
-                                  id="<?= $row['product_description_id'] ?>w2"
-                                  onchange="conca(<?= $row['product_description_id'] ?>)">
-                                  <option value="<?= $we3[1] ?>" selected><?= $we3[1] ?></option>
-                                  <option value="kg">kg</option>
-                                  <option value="g">g</option>
-                                  <option value="lt">lt</option>
-                                  <option value="ml">ml</option>
-                                </select>
-                                <input type="hidden" id="<?= $row['product_description_id'] ?>w3" name="weight">
-                              </div>
-                            <?php
-                            } else {
-                            ?>
-                              <div class="form-group">
-                                <input
-                                  onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
-                                  type="number"
-                                  class="form-control"
-                                  style="display:none;width:70%;border-right:none;float:left;"
-                                  id="<?= $row['product_description_id'] ?>w1"
-                                  onkeyup="conca(<?= $row['product_description_id'] ?>)">
-                                <select
-                                  class="form-control"
-                                  style="display:none;width:30%;float:left;color: white;background: #0B7383"
-                                  id="<?= $row['product_description_id'] ?>w2"
-                                  onchange="conca(<?= $row['product_description_id'] ?>)">
-                                  <option value="kg">kg</option>
-                                  <option value="g">g</option>
-                                  <option value="lt">lt</option>
-                                  <option value="ml">ml</option>
-                                </select>
-                                <input type="hidden" id="<?= $row['product_description_id'] ?>w3" name="weight">
-                              </div>
-                            <?php
-                            }
-                            ?>
-                          </label>
-                          <label class="checkbox">
-                            <input
-                              type="checkbox"
-                              class="form-control-check"
-                              onclick="$('#<?= $row['product_description_id'] ?>brand').toggle();$('#<?= $row['product_description_id'] ?>brand1').toggle()"
-                              name="check1" id="<?= $row['product_description_id'] ?>check9"
-                              value="brand">
-                            <span>Brand</span>
-                            <?php
-                            if ($row['brand'] != 0) {
-                              $query1 = "SELECT * FROM brand where brand_id=" . $row['brand'];
-                              $st1 = $pdo->query($query1);
-                              $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                            ?>
-                              <script type="text/javascript">
-                                $('#<?= $row['product_description_id'] ?>check9').prop('checked', true);
-                                $('#<?= $row['product_description_id'] ?>check9').attr('disabled', true);
-                              </script>
-                              <div class="form-group">
-                                <span id="<?= $row['product_description_id'] ?>brand" class="floating-label" id="<?= $row['product_description_id'] ?>brand1">Brand</span>
-                                <select class="form-control" name="brand">
-                                  <option value="<?= $row1['brand_id'] ?>"><?= $row1['brand_name'] ?></option>
-                                  <?php
-                                  $cat = $pdo->query("select * from brand where category_id=" . $row['category_id']);
-                                  while ($row2 = $cat->fetch(PDO::FETCH_ASSOC)) {
-                                  ?>
-                                    <option value="<?= $row2['brand_id'] ?>"><?= $row2['brand_name'] ?></option>
-                                  <?php
-                                  }
-                                  ?>
-                                </select>
-                              </div>
-                            <?php
-                            } else {
-                            ?>
-                              <div class="form-group">
-                                <select id="<?= $row['product_description_id'] ?>brand" placeholder="brand" class="form-control" style="display:none;width: 100%" name="brand">
-                                  <option value="">Select...</option>
-                                  <?php
-                                  $cat = $pdo->query("select * from brand where category_id=" . $row['category_id']);
-                                  while ($row2 = $cat->fetch(PDO::FETCH_ASSOC)) {
-                                  ?>
-                                    <option value="<?= $row2['brand_id'] ?>"><?= $row2['brand_name'] ?></option>
-                                  <?php
-                                  }
-                                  ?>
-                                </select>
-                              </div>
-                            <?php
-                            }
-                            ?>
-                          </label>
-                          <input type="hidden" name="it_id" value="<?= $row['product_description_id'] ?>">
-                          <input type="hidden" name="product_id" value="<?= $it ?>">
+                        </label>
+                        <label class="checkbox">
+                          <input
+                            type="checkbox"
+                            class="form-control-check"
+                            onclick="$('#<?= $row['product_description_id'] ?>w1').toggle();$('#<?= $row['product_description_id'] ?>w2').toggle();$('#<?= $row['product_description_id'] ?>weight1').toggle()"
+                            name="check1"
+                            id="<?= $row['product_description_id'] ?>check3"
+                            value="weight">
+                          <span>Weight</span>
+                          <?php
+                          if ($row['weight'] != 0) {
+                            $we = $row['weight'];
+                            $we3 = explode(' ', $we);
+                          ?>
+                            <script type="text/javascript">
+                              $('#<?= $row['product_description_id'] ?>check3').prop('checked', true);
+                              $('#<?= $row['product_description_id'] ?>check3').attr('disabled', true);
+                            </script>
+                            <div class="form-group">
+                              <input
+                                type="number"
+                                onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                class="form-control"
+                                style="width:70%;border-right:none; float:left;"
+                                id="<?= $row['product_description_id'] ?>w1"
+                                onkeyup="conca(<?= $row['product_description_id'] ?>)"
+                                value="<?= $we3[0] ?>">
+                              <select
+                                class="form-control"
+                                style="width:30%;float:left;color: white;background: #0B7383"
+                                id="<?= $row['product_description_id'] ?>w2"
+                                onchange="conca(<?= $row['product_description_id'] ?>)">
+                                <option value="<?= $we3[1] ?>" selected><?= $we3[1] ?></option>
+                                <option value="kg">kg</option>
+                                <option value="g">g</option>
+                                <option value="lt">lt</option>
+                                <option value="ml">ml</option>
+                              </select>
+                              <input type="hidden" id="<?= $row['product_description_id'] ?>w3" name="weight">
+                            </div>
+                          <?php
+                          } else {
+                          ?>
+                            <div class="form-group">
+                              <input
+                                onkeypress="return (event.charCode == 8 || event.charCode == 0 || event.charCode == 13) ? null : event.charCode >= 48 && event.charCode <= 57"
+                                type="number"
+                                class="form-control"
+                                style="display:none;width:70%;border-right:none;float:left;"
+                                id="<?= $row['product_description_id'] ?>w1"
+                                onkeyup="conca(<?= $row['product_description_id'] ?>)">
+                              <select
+                                class="form-control"
+                                style="display:none;width:30%;float:left;color: white;background: #0B7383"
+                                id="<?= $row['product_description_id'] ?>w2"
+                                onchange="conca(<?= $row['product_description_id'] ?>)">
+                                <option value="kg">kg</option>
+                                <option value="g">g</option>
+                                <option value="lt">lt</option>
+                                <option value="ml">ml</option>
+                              </select>
+                              <input type="hidden" id="<?= $row['product_description_id'] ?>w3" name="weight">
+                            </div>
+                          <?php
+                          }
+                          ?>
+                        </label>
+                        <label class="checkbox">
+                          <input
+                            type="checkbox"
+                            class="form-control-check"
+                            onclick="$('#<?= $row['product_description_id'] ?>brand').toggle();$('#<?= $row['product_description_id'] ?>brand1').toggle()"
+                            name="check1" id="<?= $row['product_description_id'] ?>check9"
+                            value="brand">
+                          <span>Brand</span>
+                          <?php
+                          if ($row['brand'] != 0) {
+                            $query1 = "SELECT * FROM brand where brand_id=" . $row['brand'];
+                            $st1 = $pdo->query($query1);
+                            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                          ?>
+                            <script type="text/javascript">
+                              $('#<?= $row['product_description_id'] ?>check9').prop('checked', true);
+                              $('#<?= $row['product_description_id'] ?>check9').attr('disabled', true);
+                            </script>
+                            <div class="form-group">
+                              <span id="<?= $row['product_description_id'] ?>brand" class="floating-label" id="<?= $row['product_description_id'] ?>brand1">Brand</span>
+                              <select class="form-control" name="brand">
+                                <option value="<?= $row1['brand_id'] ?>"><?= $row1['brand_name'] ?></option>
+                                <?php
+                                $cat = $pdo->query("select * from brand where category_id=" . $row['category_id']);
+                                while ($row2 = $cat->fetch(PDO::FETCH_ASSOC)) {
+                                ?>
+                                  <option value="<?= $row2['brand_id'] ?>"><?= $row2['brand_name'] ?></option>
+                                <?php
+                                }
+                                ?>
+                              </select>
+                            </div>
+                          <?php
+                          } else {
+                          ?>
+                            <div class="form-group">
+                              <select id="<?= $row['product_description_id'] ?>brand" placeholder="brand" class="form-control" style="display:none;width: 100%" name="brand">
+                                <option value="">Select...</option>
+                                <?php
+                                $cat = $pdo->query("select * from brand where category_id=" . $row['category_id']);
+                                while ($row2 = $cat->fetch(PDO::FETCH_ASSOC)) {
+                                ?>
+                                  <option value="<?= $row2['brand_id'] ?>"><?= $row2['brand_name'] ?></option>
+                                <?php
+                                }
+                                ?>
+                              </select>
+                            </div>
+                          <?php
+                          }
+                          ?>
+                        </label>
+                        <input type="hidden" name="it_id" value="<?= $row['product_description_id'] ?>">
+                        <input type="hidden" name="product_id" value="<?= $it ?>">
                       </div>
                       <div class="col-sm-12 subb" style="left: 0; padding: 0;">
                         <input type="hidden" name="check_id" value="<?= $row['product_description_id'] ?>">
