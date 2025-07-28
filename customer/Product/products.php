@@ -39,8 +39,29 @@ if (isset($_GET['product'])) {
   @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
 </style>
 <style>
-  .product-content-right img {
-    height: 260px;
+  .outside-wrapper {
+    background: repeating-linear-gradient(45deg, black, transparent 100px);
+  }
+
+  .bg-overlay {
+    width: 100%;
+    background: rgba(0, 0, 0, 0.90);
+  }
+
+  .wrapper {
+    position: relative;
+    color: darkgrey;
+    height: auto;
+  }
+
+  .h3 {
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .pagination>li>a,
+  .pagination>li>span {
+    color: #139b3b;
   }
 
   @media screen and (max-width: 991px) {
@@ -973,7 +994,7 @@ if ($result_cnt == 0) {
           <li>
             <a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
           </li>
-          <li class="active">Search results <span class='fa fa-search'></span></li>
+          <li class="active"><span class='fa fa-search pr-1'></span>Search results</li>
         </ol>
       </div>
     </div>
@@ -983,416 +1004,135 @@ if ($result_cnt == 0) {
   }
     ?>
     <div class="row no_padding">
-      <div class="col-xs-12 col-md-12 col-sm-12">
-        <?php
-        $result_cnt = $res->rowCount();
-        if ($result_cnt == 0) {
-        ?>
-          <div class="product-content-right">
-            <center>
-              <img style="justify-content: center;" class="sidebar-title" src="../../images/logo/no-search-result.png">
+      <div class="col-xs-12 col-md-12 col-sm-12 outside-wrapper">
+        <div class="bg-overlay">
+          <?php
+          $result_cnt = $res->rowCount();
+          if ($result_cnt == 0) {
+          ?>
+            <div class="product-content-right">
+              <center>
+                <img style="justify-content: center;" class="sidebar-title" src="../../images/logo/no-search-result.png">
+              </center>
+            </div>
+            <center style="margin-bottom:0px;margin-top: 50px;color: darkgrey;">
+              <h4>Can't find requested product ?<a href="../Main/HFE-Store.php" style="color: #139b3b;"> Try again!</a></h4>
             </center>
-          </div>
-          <center style="margin-bottom:0px;margin-top: 50px;color: darkgrey;">
-            <h4>Can't find requested product ?<a href="../Main/HFE-Store.php" style="color: #139b3b;"> Try again!</a></h4>
-          </center>
-        <?php
-        } else {
-        ?>
-          <div class="wrapper hide_nav_small" style="margin: 0;width: 100% !important;">
-            <div class="d-md-flex align-items-md-center" style="width: 100%;">
-              <?php
-              if (isset($_GET['product'])) {
-              ?>
-                <div class="h3" style="font-family: 'Poppins', sans-serif">Search results <span class='fa fa-search'></span></div>
-              <?php
-              } else {
-              ?>
-                <div class="h3" style="font-family: 'Poppins', sans-serif"><?= $name ?></div>
-              <?php
-              }
-              ?>
-              <div class="ml-auto d-flex align-items-center views">
+          <?php
+          } else {
+          ?>
+            <div class="wrapper hide_nav_small" style="margin: 0;width: 100% !important;">
+              <div class="d-md-flex align-items-md-center" style="width: 100%;">
                 <?php
                 if (isset($_GET['product'])) {
                 ?>
-                  <span class="btn-pdt_pg gridview" onclick="location.href='../Product/products_limited.php?product=<?= $_GET['product'] ?>'"> &nbsp;
-                    <span class="fas fa-th px-md-2 px-1"></span>
-                    <span class="px-md-2 px-1">Grid view</span>
-                  </span>
+                  <div class="h3" style="font-family: 'Poppins', sans-serif"><span class='fa fa-search pr-1'></span> Search results</div>
                 <?php
-                } else if (isset($_GET['category_id'])) {
+                } else {
                 ?>
-                  <span class="btn-pdt_pg gridview" onclick="location.href='../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?>'"> &nbsp;
-                    <span class="fas fa-th px-md-2 px-1"></span>
-                    <span class="px-md-2 px-1">Grid view</span>
-                  </span>
+                  <div class="h3" style="font-family: 'Poppins', sans-serif"><?= $name ?></div>
                 <?php
                 }
                 ?>
-                <span class="btn-pdt_pg listview"> &nbsp;
-                  <span class="fas fa-list-ul text-success"></span>
-                  <span class="px-md-2 px-1">List view</span>
-                </span>
-                <span class="green-label px-md-2 px-1"><?= $result_cnt ?></span> <span class="text-muted">Products</span>
+                <div class="ml-auto d-flex align-items-center views">
+                  <?php
+                  if (isset($_GET['product'])) {
+                  ?>
+                    <span class="btn-pdt_pg gridview" onclick="location.href='../Product/products_limited.php?product=<?= $_GET['product'] ?>'"> &nbsp;
+                      <span class="fas fa-th px-md-2 px-1"></span>
+                      <span class="px-md-2 px-1">Grid view</span>
+                    </span>
+                  <?php
+                  } else if (isset($_GET['category_id'])) {
+                  ?>
+                    <span class="btn-pdt_pg gridview" onclick="location.href='../Product/products_limited.php?category_id=<?= $_GET['category_id'] ?>'"> &nbsp;
+                      <span class="fas fa-th px-md-2 px-1"></span>
+                      <span class="px-md-2 px-1">Grid view</span>
+                    </span>
+                  <?php
+                  }
+                  ?>
+                  <span class="btn-pdt_pg listview"> &nbsp;
+                    <span class="fas fa-list-ul text-success"></span>
+                    <span class="px-md-2 px-1">List view</span>
+                  </span>
+                  <span class="green-label px-md-2 px-1"><?= $result_cnt ?></span> <span class="text-muted">Products</span>
+                </div>
               </div>
             </div>
-          </div>
-          <hr class="make_divb">
-          <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #f1f3f6;padding:0;">
-            <!--FILTER-->
-            <div class="col-md-3 sidebar_divider no_margin" style="padding:0;padding-bottom: 0px;margin-top:10px;border-radius: 5px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63));">
-              <div class="container" style="margin:0;padding:0;padding-top: 15px;padding-bottom: 15px;width: 100%;height: auto;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;">
-                <div class="text-muted filter-label" style="padding-left: 15px;color:#ddd !important;font-size:20px;">
-                  <b>Filters</b>
-                </div>
-                <div class="row filter-container" style="margin:0;padding:0;display:none">
-                  <div class="col-12 filter-container-child" style="margin:0;padding:0;">
-                    <!--FILTER TICKES-->
-                    <div
-                      id="filter-tag"
-                      class="form-inline filter-tag d-flex align-items-center my-2 checkbox bg-light border mx-lg-2 filter-ticket"
-                      style="display:none !important;float: left;margin:0px;max-width:max-content;padding-top: 3px;padding-bottom:3px;">
+            <hr class="make_divb">
+            <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #151515;padding: 0;color: darkgrey">
+              <!--FILTER-->
+              <div class="col-md-3 sidebar_divider no_margin" style="padding:0;padding-bottom: 0px;margin-top:10px;border-radius: 5px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff));">
+                <div class="container" style="margin:0;padding:0;padding-top: 15px;padding-bottom: 15px;width: 100%;height: auto;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;">
+                  <div class="text-muted filter-label" style="padding-left: 15px;color:#ddd !important;font-size:20px;">
+                    <b>Filters</b>
+                  </div>
+                  <div class="row filter-container" style="margin:0;padding:0;display:none">
+                    <div class="col-12 filter-container-child" style="margin:0;padding:0;">
+                      <!--FILTER TICKES-->
+                      <div
+                        id="filter-tag"
+                        class="form-inline filter-tag d-flex align-items-center my-2 checkbox bg-light border mx-lg-2 filter-ticket"
+                        style="display:none !important;float: left;margin:0px;max-width:max-content;padding-top: 3px;padding-bottom:3px;">
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-              <div style="clear: both;"></div>
-              <hr style="margin-top: 0px;margin-bottom: -10px;">
-              <div class="filters" style="margin-right:0px;">
-                <button
-                  style="display: block;border-color:#002b41;outline:#139b3b;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;margin-bottom:0px;height:40px;border-radius:5px"
-                  class="btn-pdt_pg btn-success"
-                  type="button"
-                  data-toggle="collapse"
-                  data-target="#mobile-filter"
-                  aria-expanded="false"
-                  aria-controls="mobile-filter">
-                  <span class="px-1 fas fa-list"></span>
-                  <span class="px-1 fas fa-filter fa-lg"></span>
-                </button>
-              </div>
-              <div style="clear: both;"></div>
-              <div id="mobile-filter" class="collapse">
-                <div class="d-lg-flex align-items-lg-center pt-2 small-sort-select" style="padding-bottom: 5px;margin-top: -15px;">
-                  <!--LABEL TICKES-->
-                  <!--<div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2"> <label class="tick">Farm <input type="checkbox" checked="checked"> <span class="check"></span> </label> <span class="text-success px-2 count"> 328</span> </div>-->
-                  <div class="checkbox bg-light border" style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;width:100% !important;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;border-radius: 5px;">
-                    <select
-                      id="mobsortall"
-                      class="frm-field required sect"
-                      style="font-family: 'Poppins', sans-serif;height: 22px;font-size: 13px;display: flex;padding:0;border: none;width:100%;background-color: transparent;background-color: transparent;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;outline:none;color:white"
-                      onchange="sortandfilter('getsort','sort')">
-                      <option value="default"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
-                      <option value="high"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price high to low</option>
-                      <option value="low"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price low to high</option>
-                      <option value="view"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option>
-                    </select>
-                  </div>
-                </div>
-                <?php
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                if (isset($_GET['category_id'])) {
-                ?>
-                  <div class="py-3 side-nav-filters-head">
-                    <h5
-                      data-toggle="collapse"
-                      data-target="#cat-filter-mob"
-                      aria-expanded="false"
-                      aria-controls="cat-filter-mob"
-                      class="font-weight-bold side-nav-filters"
-                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
-                      onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
-                      Categories
-                      <i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i>
-                      <i class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px;border-bottom:none;"></i>
-                    </h5>
-                    <ul id="cat-filter-mob" class="list-group collapse" style="margin-bottom: 0px;">
-                    </ul>
-                  </div>
-                  <?php
-                }
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-                if (isset($_GET['category_id'])  || isset($_GET['product'])) {
-                  if (isset($_GET['product'])) {
-                    $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
-                                INNER JOIN product_description ON product_description.product_id=product.product_id
-                                INNER JOIN brand ON product_description.brand=brand.brand_id
-                                INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
-                                INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
-                                INNER JOIN store ON product_details.store_id=store.store_id
-                                INNER JOIN category ON category.category_id=product.category_id
-                                WHERE product.product_name LIKE '%" . $_GET['product'] . "%' GROUP BY brand.brand_name";
-                  } else if (isset($_GET['category_id'])) {
-                    if (isset($_GET['category_id'])) {
-                      $keeper = 'product.category_id';
-                      $brandval = $_GET['category_id'];
-                    }
-                    $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
-                                INNER JOIN product_description ON product_description.product_id=product.product_id
-                                INNER JOIN brand ON product_description.brand=brand.brand_id
-                                INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
-                                INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
-                                INNER JOIN store ON product_details.store_id=store.store_id
-                                INNER JOIN category ON category.category_id=product.category_id
-                                WHERE " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
-                  }
-                  $brandstmt = $pdo->query($brandsql);
-                  $brandcnt = $brandstmt->rowCount();
-                  if ($brandcnt > 0) {
-                  ?>
-                    <div class="py-3 side-nav-filters-head">
-                      <h5
-                        data-toggle="collapse"
-                        data-target="#brand-filter-mob"
-                        aria-expanded="false"
-                        aria-controls="brand-filter-mob"
-                        class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
-                        onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
-                        Brands
-                        <i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i>
-                        <i class="fa fa-angle-up brand-down" style="float: right;display: none;padding-right:5px"></i>
-                      </h5>
-                      <form class="brand collapse" id="brand-filter-mob">
-                        <?php
-                        while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
-                        ?>
-                          <li
-                            onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
-                            class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
-                            style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
-                            <label class="options" style="display:flex;justify-content:center;align-items:center;margin-top:3px;">
-                              <span class="val-getbrand-<?= $getbrand_row['brand_id'] ?>"><?= $getbrand_row['brand_name'] ?></span>
-                              <input
-                                value="<?= $getbrand_row['brand_id'] ?>"
-                                id="mobgetbrand-<?= $getbrand_row['brand_id'] ?>"
-                                type="radio"
-                                disabled
-                                name="mob-radio-getbrand-<?= $getbrand_row['brand_id'] ?>">
-                              <span class="checkmark"></span>
-                            </label>
-                          </li>
-                        <?php
-                        }
-                        ?>
-                      </form>
-                    </div>
-                <?php
-                  }
-                }
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                ?>
-                <div class="py-3 side-nav-filters-head">
-                  <h5
+                <div style="clear: both;"></div>
+                <hr style="margin-top: 0px;margin-bottom: -10px;">
+                <div class="filters" style="margin-right:0px;">
+                  <button
+                    style="display: block;border-color:#004123ff;outline:#139b3b;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;margin-bottom:0px;height:40px;border-radius:5px"
+                    class="btn-pdt_pg btn-success"
+                    type="button"
                     data-toggle="collapse"
-                    data-target="#rating-filter-mob"
+                    data-target="#mobile-filter"
                     aria-expanded="false"
-                    aria-controls="rating-filter-mob"
-                    class="font-weight-bold side-nav-filters"
-                    style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
-                    onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
-                    Rating
-                    <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i>
-                    <i class="fa fa-angle-up rating-down" style="float: right;display: none;padding-right:5px"></i>
-                  </h5>
-                  <form class="rating collapse" id="rating-filter-mob">
-                    <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-5','star')">
-                      <label class="tick">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <input type="checkbox" id="mobgetstar-5" disabled value="5">
-                        <span class="check"></span>
-                      </label>
-                    </div>
-                    <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-4','star')">
-                      <label class="tick">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star px-1 text-muted"></span>
-                        <input type="checkbox" id="mobgetstar-4" disabled value="4">
-                        <span class="check"></span>
-                      </label>
-                    </div>
-                    <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-3','star')">
-                      <label class="tick">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star px-1 text-muted"></span>
-                        <span class="fas fa-star px-1 text-muted"></span>
-                        <input type="checkbox" id="mobgetstar-3" disabled value="3">
-                        <span class="check"></span>
-                      </label>
-                    </div>
-                    <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-2','star')">
-                      <label class="tick">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star px-1 text-muted"></span>
-                        <span class="fas fa-star px-1 text-muted"></span>
-                        <span class="fas fa-star px-1 text-muted"></span>
-                        <input type="checkbox" id="mobgetstar-2" disabled value="2">
-                        <span class="check"></span>
-                      </label>
-                    </div>
-                    <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-1','star')">
-                      <label class="tick">
-                        <span class="fas fa-star"></span>
-                        <span class="fas fa-star px-1 text-muted"></span>
-                        <span class="fas fa-star px-1 text-muted"></span>
-                        <span class="fas fa-star px-1 text-muted"></span>
-                        <span class="fas fa-star px-1 text-muted"></span>
-                        <input type="checkbox" id="mobgetstar-1" disabled value="1">
-                        <span class="check"></span>
-                      </label>
-                    </div>
-                  </form>
+                    aria-controls="mobile-filter">
+                    <span class="px-1 fas fa-list"></span>
+                    <span class="px-1 fas fa-filter fa-lg"></span>
+                  </button>
                 </div>
-                <?php
-                $pricesql = $pdo->query(
-                  "SELECT product_details.price FROM product_details
-                  JOIN product_description ON product_description.product_description_id=product_details.product_description_id
-                  JOIN product ON product_description.product_id=product.product_id
-                  WHERE category_id=$cat_id"
-                );
-                $pricecnt = 0;
-                while ($pricerow = $pricesql->fetch(PDO::FETCH_ASSOC)) {
-                  $pricearray[$pricecnt] = $pricerow['price'];
-                  $pricecnt++;
-                }
-                $maxprice = max($pricearray);
-                $minprice = min($pricearray);
-                $maxpricelen = strlen($maxprice);
-                $minpricelen = strlen($minprice);
-                ?>
-                <div class="py-3 side-nav-filters-head">
-                  <h5
-                    data-toggle="collapse"
-                    data-target="#mob-pricing-filter"
-                    aria-expanded="false"
-                    aria-controls="mob-pricing-filter"
-                    class="font-weight-bold side-nav-filters"
-                    style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
-                    onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
-                    Price
-                    <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i>
-                    <i class="fa fa-angle-up pricing-down" style="float: right;display: none;padding-right:5px"></i>
-                  </h5>
-                  <form class=" pricing collapse range-field my-5" id="mob-pricing-filter" style="margin:5px !important">
-                    <div class="div-wrapper">
-                      <label>
-                        <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
-                        <select style="width: 100%;height:40px" class="min-price" id="mob-min-price" onchange="sortandfilter('getprice','price')">
-                          <option><?= $minprice ?></option>
-                          <?php
-                          $divident = 10;
-                          for ($j = 1; $j < $minpricelen; $j++) {
-                            $divident .= 0;
-                          }
-                          ?>
-                          <?php
-                          $divident = (int) $divident;
-                          $cnt = $maxprice / $divident;
-                          for ($i = 1; $i < $cnt; $i++) {
-                            if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                              $pricelist = $divident * $i;
-                            }
-                          ?>
-                            <option><?= $pricelist ?></option>
-                          <?php
-                          }
-                          ?>
-                        </select>
-                      </label>
-                      <label>
-                        <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
-                        <select style="width: 100%;height:40px" class="max-price" id="mob-max-price" onchange="sortandfilter('getprice','price')">
-                          <option><?= $maxprice ?></option>
-                          <?php
-                          $divident = 10;
-                          for ($j = 1; $j < $minpricelen; $j++) {
-                            $divident .= 0;
-                          }
-                          ?>
-                          <?php
-                          $divident = (int) $divident;
-                          $cnt = $maxprice / $divident;
-                          for ($i = 1; $i < $cnt; $i++) {
-                            if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                              $pricelist = $divident * $i;
-                            }
-                          ?>
-                            <option><?= $pricelist ?></option>
-                          <?php
-                          }
-                          ?>
-                        </select>
-                      </label>
-                    </div>
-                  </form>
-                </div>
-              </div>
-              <div class="content py-md-0 py-3" style="width: 100%;padding: 0px !important;">
-                <section id="sidebar" style="width: 100%;">
-                  <!--DEFAULT FILTERS-->
-                  <div class=" align-items-lg-center pt-2" style="padding-bottom: 0px;margin-top:15px !important">
-                    <div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2" style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;">
+                <div style="clear: both;"></div>
+                <div id="mobile-filter" class="collapse">
+                  <div class="d-lg-flex align-items-lg-center pt-2 small-sort-select" style="padding-bottom: 5px;margin-top: -15px;">
+                    <!--LABEL TICKES-->
+                    <!--<div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2"> <label class="tick">Farm <input type="checkbox" checked="checked"> <span class="check"></span> </label> <span class="text-success px-2 count"> 328</span> </div>-->
+                    <div class="checkbox bg-light border" style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;width:100% !important;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;border-radius: 5px;">
                       <select
-                        id="sortall"
+                        id="mobsortall"
                         class="frm-field required sect"
-                        style="font-family: 'Poppins', sans-serif;height: 22px;font-size: 13px;display: flex;padding:0;border: none;width:100%;background-color: transparent;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;outline:none;color:white"
+                        style="font-family: 'Poppins', sans-serif;height: 22px;font-size: 13px;display: flex;padding:0;border: none;width:100%;background-color: transparent;outline:none;color:white"
                         onchange="sortandfilter('getsort','sort')">
-                        <option value="default">
-                          <i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting
-                        </option>
-                        <option value="high">
-                          <i class="fa fa-arrow-right" aria-hidden="true"></i>Price high to low
-                        </option>
-                        <option value="low">
-                          <i class="fa fa-arrow-right" aria-hidden="true"></i>Price low to high
-                        </option>
-                        <option value="view">
-                          <i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity
-                        </option>
+                        <option value="default"><i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting</option>
+                        <option value="high"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price high to low</option>
+                        <option value="low"><i class="fa fa-arrow-right" aria-hidden="true"></i>Price low to high</option>
+                        <option value="view"><i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity</option>
                       </select>
                     </div>
                   </div>
-                  <!--DEFAULT FILTERS-->
-                  <hr style="margin-top: 15px;margin-bottom: 1px;">
                   <?php
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
                   if (isset($_GET['category_id'])) {
                   ?>
                     <div class="py-3 side-nav-filters-head">
                       <h5
                         data-toggle="collapse"
-                        data-target="#cat-filter"
+                        data-target="#cat-filter-mob"
                         aria-expanded="false"
-                        aria-controls="cat-filter"
+                        aria-controls="cat-filter-mob"
                         class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
                         onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
                         Categories
                         <i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i>
-                        <i class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px"></i>
+                        <i class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px;border-bottom:none;"></i>
                       </h5>
-                      <ul id="cat-filter" class="list-group collapse" style="margin-bottom: 0px;">
+                      <ul id="cat-filter-mob" class="list-group collapse" style="margin-bottom: 0px;">
                       </ul>
                     </div>
                     <?php
@@ -1400,7 +1140,8 @@ if ($result_cnt == 0) {
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
                   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  if (isset($_GET['category_id']) || isset($_GET['product'])) {
+
+                  if (isset($_GET['category_id'])  || isset($_GET['product'])) {
                     if (isset($_GET['product'])) {
                       $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
                                   INNER JOIN product_description ON product_description.product_id=product.product_id
@@ -1431,39 +1172,39 @@ if ($result_cnt == 0) {
                       <div class="py-3 side-nav-filters-head">
                         <h5
                           data-toggle="collapse"
-                          data-target="#brand-filter"
+                          data-target="#brand-filter-mob"
                           aria-expanded="false"
-                          aria-controls="brand-filter"
+                          aria-controls="brand-filter-mob"
                           class="font-weight-bold side-nav-filters"
-                          style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                          style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
                           onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
                           Brands
                           <i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i>
                           <i class="fa fa-angle-up brand-down" style="float: right;display: none;padding-right:5px"></i>
                         </h5>
-                        <ul id="brand-filter" class="list-group collapse" style="margin-bottom: 0px;">
+                        <form class="brand collapse" id="brand-filter-mob">
                           <?php
                           while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
                           ?>
                             <li
                               onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
                               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
-                              style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color:#ddd ">
+                              style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;color:#ddd ">
                               <label class="options" style="display:flex;justify-content:center;align-items:center;margin-top:3px;">
                                 <span class="val-getbrand-<?= $getbrand_row['brand_id'] ?>"><?= $getbrand_row['brand_name'] ?></span>
                                 <input
                                   value="<?= $getbrand_row['brand_id'] ?>"
-                                  id="getbrand-<?= $getbrand_row['brand_id'] ?>"
+                                  id="mobgetbrand-<?= $getbrand_row['brand_id'] ?>"
                                   type="radio"
                                   disabled
-                                  name="radio-getbrand-<?= $getbrand_row['brand_id'] ?>">
+                                  name="mob-radio-getbrand-<?= $getbrand_row['brand_id'] ?>">
                                 <span class="checkmark"></span>
                               </label>
                             </li>
                           <?php
                           }
                           ?>
-                        </ul>
+                        </form>
                       </div>
                   <?php
                     }
@@ -1475,17 +1216,17 @@ if ($result_cnt == 0) {
                   <div class="py-3 side-nav-filters-head">
                     <h5
                       data-toggle="collapse"
-                      data-target="#rating-filter"
+                      data-target="#rating-filter-mob"
                       aria-expanded="false"
-                      aria-controls="rating-filter"
+                      aria-controls="rating-filter-mob"
                       class="font-weight-bold side-nav-filters"
-                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
                       onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
                       Rating
                       <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i>
                       <i class="fa fa-angle-up rating-down" style="float: right;display: none;padding-right:5px"></i>
                     </h5>
-                    <form class="rating collapse" id="rating-filter">
+                    <form class="rating collapse" id="rating-filter-mob">
                       <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-5','star')">
                         <label class="tick">
                           <span class="fas fa-star"></span>
@@ -1493,7 +1234,7 @@ if ($result_cnt == 0) {
                           <span class="fas fa-star"></span>
                           <span class="fas fa-star"></span>
                           <span class="fas fa-star"></span>
-                          <input type="checkbox" id="getstar-5" disabled value="5">
+                          <input type="checkbox" id="mobgetstar-5" disabled value="5">
                           <span class="check"></span>
                         </label>
                       </div>
@@ -1504,7 +1245,7 @@ if ($result_cnt == 0) {
                           <span class="fas fa-star"></span>
                           <span class="fas fa-star"></span>
                           <span class="fas fa-star px-1 text-muted"></span>
-                          <input type="checkbox" id="getstar-4" disabled value="4">
+                          <input type="checkbox" id="mobgetstar-4" disabled value="4">
                           <span class="check"></span>
                         </label>
                       </div>
@@ -1515,7 +1256,7 @@ if ($result_cnt == 0) {
                           <span class="fas fa-star"></span>
                           <span class="fas fa-star px-1 text-muted"></span>
                           <span class="fas fa-star px-1 text-muted"></span>
-                          <input type="checkbox" id="getstar-3" disabled value="3">
+                          <input type="checkbox" id="mobgetstar-3" disabled value="3">
                           <span class="check"></span>
                         </label>
                       </div>
@@ -1526,7 +1267,7 @@ if ($result_cnt == 0) {
                           <span class="fas fa-star px-1 text-muted"></span>
                           <span class="fas fa-star px-1 text-muted"></span>
                           <span class="fas fa-star px-1 text-muted"></span>
-                          <input type="checkbox" id="getstar-2" disabled value="2">
+                          <input type="checkbox" id="mobgetstar-2" disabled value="2">
                           <span class="check"></span>
                         </label>
                       </div>
@@ -1537,30 +1278,47 @@ if ($result_cnt == 0) {
                           <span class="fas fa-star px-1 text-muted"></span>
                           <span class="fas fa-star px-1 text-muted"></span>
                           <span class="fas fa-star px-1 text-muted"></span>
-                          <input type="checkbox" id="getstar-1" disabled value="1">
+                          <input type="checkbox" id="mobgetstar-1" disabled value="1">
                           <span class="check"></span>
                         </label>
                       </div>
                     </form>
                   </div>
+                  <?php
+                  $pricesql = $pdo->query(
+                    "SELECT product_details.price FROM product_details
+                    JOIN product_description ON product_description.product_description_id=product_details.product_description_id
+                    JOIN product ON product_description.product_id=product.product_id
+                    WHERE category_id=$cat_id"
+                  );
+                  $pricecnt = 0;
+                  while ($pricerow = $pricesql->fetch(PDO::FETCH_ASSOC)) {
+                    $pricearray[$pricecnt] = $pricerow['price'];
+                    $pricecnt++;
+                  }
+                  $maxprice = max($pricearray);
+                  $minprice = min($pricearray);
+                  $maxpricelen = strlen($maxprice);
+                  $minpricelen = strlen($minprice);
+                  ?>
                   <div class="py-3 side-nav-filters-head">
                     <h5
                       data-toggle="collapse"
-                      data-target="#pricing-filter"
+                      data-target="#mob-pricing-filter"
                       aria-expanded="false"
-                      aria-controls="pricing-filter"
+                      aria-controls="mob-pricing-filter"
                       class="font-weight-bold side-nav-filters"
-                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #01222b)) !important;"
+                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
                       onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
                       Price
                       <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i>
                       <i class="fa fa-angle-up pricing-down" style="float: right;display: none;padding-right:5px"></i>
                     </h5>
-                    <form class=" pricing collapse range-field my-5" id="pricing-filter" style="margin:5px !important">
+                    <form class=" pricing collapse range-field my-5" id="mob-pricing-filter" style="margin:5px !important">
                       <div class="div-wrapper">
                         <label>
                           <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
-                          <select style="width: 100%;height:35px" class="min-price" id="min-price" onchange="sortandfilter('getprice','price')">
+                          <select style="width: 100%;height:40px" class="min-price" id="mob-min-price" onchange="sortandfilter('getprice','price')">
                             <option><?= $minprice ?></option>
                             <?php
                             $divident = 10;
@@ -1584,7 +1342,7 @@ if ($result_cnt == 0) {
                         </label>
                         <label>
                           <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
-                          <select style="width: 100%;height:35px" class="max-price" id="max-price" onchange="sortandfilter('getprice','price')">
+                          <select style="width: 100%;height:40px" class="max-price" id="mob-max-price" onchange="sortandfilter('getprice','price')">
                             <option><?= $maxprice ?></option>
                             <?php
                             $divident = 10;
@@ -1609,239 +1367,504 @@ if ($result_cnt == 0) {
                       </div>
                     </form>
                   </div>
-                </section> <!-- Products Section -->
-              </div>
-            </div>
-            <!----------------------------------------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------------------------------------------------------------------------------------------------------------->
-            <!----------------------------------------------------------------------------------------------------------------------------------------------->
-            <div class="col-md-9 col-sm-12 col-xs-12" style="padding:0px;margin:0px">
-              <div style="margin-bottom: 0px;padding:0px"></div>
-              <section>
-                <div class="container py-3" style="padding:0px;">
-                  <div class="row" style="margin:0;padding-top:0px !important">
+                </div>
+                <div class="content py-md-0 py-3" style="width: 100%;padding: 0px !important;">
+                  <section id="sidebar" style="width: 100%;">
+                    <!--DEFAULT FILTERS-->
+                    <div class=" align-items-lg-center pt-2" style="padding-bottom: 0px;margin-top:15px !important">
+                      <div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2" style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;">
+                        <select
+                          id="sortall"
+                          class="frm-field required sect"
+                          style="font-family: 'Poppins', sans-serif;height: 22px;font-size: 13px;display: flex;padding:0;border: none;width:100%;background-color: transparent;outline:none;color:white"
+                          onchange="sortandfilter('getsort','sort')">
+                          <option value="default">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting
+                          </option>
+                          <option value="high">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>Price high to low
+                          </option>
+                          <option value="low">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>Price low to high
+                          </option>
+                          <option value="view">
+                            <i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity
+                          </option>
+                        </select>
+                      </div>
+                    </div>
+                    <!--DEFAULT FILTERS-->
+                    <hr style="margin-top: 15px;margin-bottom: 1px;">
                     <?php
-                    require "../Common/pdo.php";
-                    if (isset($_GET['product'])) {
-                      $nm = $_GET['product'];
-                      $res = $pdo->query(
-                        "SELECT store.store_name ,product.product_id,product.price AS 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
-                        INNER JOIN product_description ON product_description.product_id=product.product_id
-                        INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
-                        INNER JOIN store ON product_details.store_id=store.store_id
-                        INNER JOIN category ON category.category_id=product.category_id
-                        WHERE product.product_name LIKE \"%$nm%\" "
-                      );
-                    } else if (isset($_GET['category_id'])) {
-                      $cat = $_GET['category_id'];
-                      $res = $pdo->query(
-                        "SELECT store.store_name ,product.product_id,product.price AS 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,store.store_name from product
-                        INNER JOIN product_description ON product_description.product_id=product.product_id
-                        INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
-                        INNER JOIN store ON product_details.store_id=store.store_id
-                        INNER JOIN category ON category.category_id=product.category_id
-                        WHERE category.category_id=$cat GROUP BY product.product_id "
-                      );
-                    }
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    if (isset($_GET['category_id'])) {
                     ?>
-                    <div class="col-lg-12 col-md-12 col-sm-12 col xs-12 dynamic-content" id="dynamic-content" style="width: 100%;padding:0">
-                      <div id="table-data">
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <!---ALL CONTENTS ARE LOADED HERE--->
-                        <?php
-                        while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
-                          if (strlen($row['product_name']) >= 35) {
-                            $item = $row['product_name'];
-                            $item_name = substr($item, 0, 35) . "...";
-                          } else {
-                            $item_name = $row['product_name'];
-                          }
-                          if (strlen($row['description']) >= 65) {
-                            $description = substr($row['description'], 65);
-                            $description2 = $description . "...";
-                          } else {
-                            $description = $row['description'];
-                            $description2 = $row['description'] . "... ";
-                          }
-                        ?>
-                          <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">
+                      <div class="py-3 side-nav-filters-head">
+                        <h5
+                          data-toggle="collapse"
+                          data-target="#cat-filter"
+                          aria-expanded="false"
+                          aria-controls="cat-filter"
+                          class="font-weight-bold side-nav-filters"
+                          style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                          onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
+                          Categories
+                          <i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i>
+                          <i class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px"></i>
+                        </h5>
+                        <ul id="cat-filter" class="list-group collapse" style="margin-bottom: 0px;">
+                        </ul>
+                      </div>
+                      <?php
+                    }
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    if (isset($_GET['category_id']) || isset($_GET['product'])) {
+                      if (isset($_GET['product'])) {
+                        $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
+                                    INNER JOIN product_description ON product_description.product_id=product.product_id
+                                    INNER JOIN brand ON product_description.brand=brand.brand_id
+                                    INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
+                                    INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
+                                    INNER JOIN store ON product_details.store_id=store.store_id
+                                    INNER JOIN category ON category.category_id=product.category_id
+                                    WHERE product.product_name LIKE '%" . $_GET['product'] . "%' GROUP BY brand.brand_name";
+                      } else if (isset($_GET['category_id'])) {
+                        if (isset($_GET['category_id'])) {
+                          $keeper = 'product.category_id';
+                          $brandval = $_GET['category_id'];
+                        }
+                        $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
+                                    INNER JOIN product_description ON product_description.product_id=product.product_id
+                                    INNER JOIN brand ON product_description.brand=brand.brand_id
+                                    INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
+                                    INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
+                                    INNER JOIN store ON product_details.store_id=store.store_id
+                                    INNER JOIN category ON category.category_id=product.category_id
+                                    WHERE " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
+                      }
+                      $brandstmt = $pdo->query($brandsql);
+                      $brandcnt = $brandstmt->rowCount();
+                      if ($brandcnt > 0) {
+                      ?>
+                        <div class="py-3 side-nav-filters-head">
+                          <h5
+                            data-toggle="collapse"
+                            data-target="#brand-filter"
+                            aria-expanded="false"
+                            aria-controls="brand-filter"
+                            class="font-weight-bold side-nav-filters"
+                            style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                            onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
+                            Brands
+                            <i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i>
+                            <i class="fa fa-angle-up brand-down" style="float: right;display: none;padding-right:5px"></i>
+                          </h5>
+                          <ul id="brand-filter" class="list-group collapse" style="margin-bottom: 0px;">
                             <?php
-                            $query = "SELECT store.store_name, category.category_name,size,weight,brand FROM product_details
-                                      JOIN product_description ON product_details.product_description_id=product_description.product_description_id
-                                      JOIN product ON product.product_id=product_description.product_id
-                                      JOIN category ON category.category_id=product.category_id
-                                      JOIN store ON store.store_id=product_details.store_id
-                                      WHERE product_description.product_description_id=:idid";
-                            $statement = $pdo->prepare($query);
-                            $statement->execute(array(
-                              ':idid' => $row['product_description_id']
-                            ));
-                            $row_feature = $statement->fetch(PDO::FETCH_ASSOC);
+                            while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
                             ?>
-                            <div class="order-single" style="margin:0;padding:0;background-color:#fff;width:100%;height:100%;border-bottom: 1px solid #666;">
-                              <div class="col-sm-3 col-xs-3" style="background-color:#fff" onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
-                                <table>
-                                  <tr style="padding-bottom:30px;"></tr>
-                                  <tr>
-                                    <td>
-                                      <div style="height: 150px;width: 100%">
-                                        <img
-                                          style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block; margin: auto;padding-top:30px "
-                                          class="img-responsive"
-                                          src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
-                                      </div>
-                                    </td>
-                                  </tr>
-                                </table>
-                              </div>
-                              <div class="col-sm-9 col-xs-9" style="padding:0px;">
-                                <table>
-                                  <tr>
-                                    <td>
-                                      <div style="width: 100%;text-align: center;color: #000;font-weight:bold;font-size:20px;padding-top:30px">
-                                        <?= $row['product_name'] ?>
-                                      </div>
-                                    </td>
-                                  </tr>
-                                </table>
-                                <div class="col-sm-12 col-xs-12" style="padding:0px;">
-                                  <div class="col-sm-7 col-xs-7" style="min-height:200px;padding:0;">
-                                    <table width="100%" style="padding:0px;margin:0px;">
-                                      <tr style="padding-top:10px;">
-                                        <td colspan="2">
-                                          <div style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size:14px;padding-top:30px;padding-bottom:10px"></div>
-                                        </td>
-                                      </tr>
-                                      <?php
-                                      if ($row_feature['size'] != 0) {
-                                        $query1 = "SELECT * FROM size where size_id=" . $row_feature['size'];
-                                        $st1 = $pdo->query($query1);
-                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                      ?>
-                                        <tr class=" dw">
-                                          <th class="cust_header2">
-                                            <li>Size</li>
-                                          </th>
-                                          <td class="cust_details">
-                                            <?= $row1['size_name'] ?>
-                                          </td>
-                                        </tr>
-                                      <?php
-                                      }
-                                      if ($row_feature['weight'] != 0) {
-                                      ?>
-                                        <tr class=" dw">
-                                          <th class="cust_header2">
-                                            <li>Weight</li>
-                                          </th>
-                                          <td class="cust_details">
-                                            <?= $row_feature['weight'] ?>
-                                          </td>
-                                        </tr>
-                                      <?php
-                                      }
-                                      if ($row_feature['brand'] != 0) {
-                                        $query1 = "SELECT * FROM brand where brand_id=" . $row_feature['brand'];
-                                        $st1 = $pdo->query($query1);
-                                        $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                                      ?>
-                                        <tr class=" dw">
-                                          <th class="cust_header2">
-                                            <li>Brand</li>
-                                          </th>
-                                          <td class="cust_details">
-                                            <?= $row1['brand_name'] ?>
-                                          </td>
-                                        </tr>
-                                      <?php
-                                      }
-                                      ?>
-                                      <tr class=" dw">
-                                        <th class="cust_header2">
-                                          <li>Category
-                                        </th>
-                                        <td class="cust_details">
-                                          <?= $row_feature['category_name'] ?>
-                                          </li>
-                                        </td>
-                                      </tr>
-                                      <tr class=" dw">
-                                        <th class="cust_header2">
-                                          <li>Seller
-                                        </th>
-                                        <td class="cust_details">
-                                          <?= $row_feature['store_name'] ?>
-                                          </li>
-                                        </td>
-                                      </tr>
-                                    </table>
-                                  </div>
-                                  <div class="col-sm-5 col-xs-5">
-                                    <table width="100%" style="padding:0px;margin:0px;">
-                                      <?php
-                                      $save = round(($row['mrp'] - $row['price']) / $row['mrp'] * 100);
-                                      ?>
-                                      <tr>
-                                        <td align="right">
+                              <li
+                                onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
+                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
+                                style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;color:#ddd ">
+                                <label class="options" style="display:flex;justify-content:center;align-items:center;margin-top:3px;">
+                                  <span class="val-getbrand-<?= $getbrand_row['brand_id'] ?>"><?= $getbrand_row['brand_name'] ?></span>
+                                  <input
+                                    value="<?= $getbrand_row['brand_id'] ?>"
+                                    id="getbrand-<?= $getbrand_row['brand_id'] ?>"
+                                    type="radio"
+                                    disabled
+                                    name="radio-getbrand-<?= $getbrand_row['brand_id'] ?>">
+                                  <span class="checkmark"></span>
+                                </label>
+                              </li>
+                            <?php
+                            }
+                            ?>
+                          </ul>
+                        </div>
+                    <?php
+                      }
+                    }
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    ?>
+                    <div class="py-3 side-nav-filters-head">
+                      <h5
+                        data-toggle="collapse"
+                        data-target="#rating-filter"
+                        aria-expanded="false"
+                        aria-controls="rating-filter"
+                        class="font-weight-bold side-nav-filters"
+                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                        onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
+                        Rating
+                        <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i>
+                        <i class="fa fa-angle-up rating-down" style="float: right;display: none;padding-right:5px"></i>
+                      </h5>
+                      <form class="rating collapse" id="rating-filter">
+                        <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-5','star')">
+                          <label class="tick">
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star"></span>
+                            <input type="checkbox" id="getstar-5" disabled value="5">
+                            <span class="check"></span>
+                          </label>
+                        </div>
+                        <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-4','star')">
+                          <label class="tick">
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star px-1 text-muted"></span>
+                            <input type="checkbox" id="getstar-4" disabled value="4">
+                            <span class="check"></span>
+                          </label>
+                        </div>
+                        <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-3','star')">
+                          <label class="tick">
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star px-1 text-muted"></span>
+                            <span class="fas fa-star px-1 text-muted"></span>
+                            <input type="checkbox" id="getstar-3" disabled value="3">
+                            <span class="check"></span>
+                          </label>
+                        </div>
+                        <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-2','star')">
+                          <label class="tick">
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star px-1 text-muted"></span>
+                            <span class="fas fa-star px-1 text-muted"></span>
+                            <span class="fas fa-star px-1 text-muted"></span>
+                            <input type="checkbox" id="getstar-2" disabled value="2">
+                            <span class="check"></span>
+                          </label>
+                        </div>
+                        <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-1','star')">
+                          <label class="tick">
+                            <span class="fas fa-star"></span>
+                            <span class="fas fa-star px-1 text-muted"></span>
+                            <span class="fas fa-star px-1 text-muted"></span>
+                            <span class="fas fa-star px-1 text-muted"></span>
+                            <span class="fas fa-star px-1 text-muted"></span>
+                            <input type="checkbox" id="getstar-1" disabled value="1">
+                            <span class="check"></span>
+                          </label>
+                        </div>
+                      </form>
+                    </div>
+                    <div class="py-3 side-nav-filters-head">
+                      <h5
+                        data-toggle="collapse"
+                        data-target="#pricing-filter"
+                        aria-expanded="false"
+                        aria-controls="pricing-filter"
+                        class="font-weight-bold side-nav-filters"
+                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                        onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
+                        Price
+                        <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i>
+                        <i class="fa fa-angle-up pricing-down" style="float: right;display: none;padding-right:5px"></i>
+                      </h5>
+                      <form class=" pricing collapse range-field my-5" id="pricing-filter" style="margin:5px !important">
+                        <div class="div-wrapper">
+                          <label>
+                            <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
+                            <select style="width: 100%;height:35px" class="min-price" id="min-price" onchange="sortandfilter('getprice','price')">
+                              <option><?= $minprice ?></option>
+                              <?php
+                              $divident = 10;
+                              for ($j = 1; $j < $minpricelen; $j++) {
+                                $divident .= 0;
+                              }
+                              ?>
+                              <?php
+                              $divident = (int) $divident;
+                              $cnt = $maxprice / $divident;
+                              for ($i = 1; $i < $cnt; $i++) {
+                                if ($divident * $i > $minprice and $divident * $i < $maxprice) {
+                                  $pricelist = $divident * $i;
+                                }
+                              ?>
+                                <option><?= $pricelist ?></option>
+                              <?php
+                              }
+                              ?>
+                            </select>
+                          </label>
+                          <label>
+                            <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
+                            <select style="width: 100%;height:35px" class="max-price" id="max-price" onchange="sortandfilter('getprice','price')">
+                              <option><?= $maxprice ?></option>
+                              <?php
+                              $divident = 10;
+                              for ($j = 1; $j < $minpricelen; $j++) {
+                                $divident .= 0;
+                              }
+                              ?>
+                              <?php
+                              $divident = (int) $divident;
+                              $cnt = $maxprice / $divident;
+                              for ($i = 1; $i < $cnt; $i++) {
+                                if ($divident * $i > $minprice and $divident * $i < $maxprice) {
+                                  $pricelist = $divident * $i;
+                                }
+                              ?>
+                                <option><?= $pricelist ?></option>
+                              <?php
+                              }
+                              ?>
+                            </select>
+                          </label>
+                        </div>
+                      </form>
+                    </div>
+                  </section> <!-- Products Section -->
+                </div>
+              </div>
+              <!----------------------------------------------------------------------------------------------------------------------------------------------->
+              <!----------------------------------------------------------------------------------------------------------------------------------------------->
+              <!----------------------------------------------------------------------------------------------------------------------------------------------->
+              <!----------------------------------------------------------------------------------------------------------------------------------------------->
+              <!----------------------------------------------------------------------------------------------------------------------------------------------->
+              <div class="col-md-9 col-sm-12 col-xs-12" style="padding:0px;margin:0px">
+                <div style="margin-bottom: 0px;padding:0px"></div>
+                <section>
+                  <div class="container py-3" style="padding:0px;">
+                    <div class="row" style="margin:0;padding-top:0px !important">
+                      <?php
+                      require "../Common/pdo.php";
+                      if (isset($_GET['product'])) {
+                        $nm = $_GET['product'];
+                        $res = $pdo->query(
+                          "SELECT store.store_name ,product.product_id,product.price AS 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
+                          INNER JOIN product_description ON product_description.product_id=product.product_id
+                          INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
+                          INNER JOIN store ON product_details.store_id=store.store_id
+                          INNER JOIN category ON category.category_id=product.category_id
+                          WHERE product.product_name LIKE \"%$nm%\" "
+                        );
+                      } else if (isset($_GET['category_id'])) {
+                        $cat = $_GET['category_id'];
+                        $res = $pdo->query(
+                          "SELECT store.store_name ,product.product_id,product.price AS 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id,store.store_name from product
+                          INNER JOIN product_description ON product_description.product_id=product.product_id
+                          INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
+                          INNER JOIN store ON product_details.store_id=store.store_id
+                          INNER JOIN category ON category.category_id=product.category_id
+                          WHERE category.category_id=$cat GROUP BY product.product_id "
+                        );
+                      }
+                      ?>
+                      <div class="col-lg-12 col-md-12 col-sm-12 col xs-12 dynamic-content" id="dynamic-content" style="width: 100%;padding:0">
+                        <div id="table-data">
+                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                          <!---ALL CONTENTS ARE LOADED HERE--->
+                          <?php
+                          while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
+                            if (strlen($row['product_name']) >= 35) {
+                              $item = $row['product_name'];
+                              $item_name = substr($item, 0, 35) . "...";
+                            } else {
+                              $item_name = $row['product_name'];
+                            }
+                            if (strlen($row['description']) >= 65) {
+                              $description = substr($row['description'], 65);
+                              $description2 = $description . "...";
+                            } else {
+                              $description = $row['description'];
+                              $description2 = $row['description'] . "... ";
+                            }
+                          ?>
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">
+                              <?php
+                              $query = "SELECT store.store_name, category.category_name,size,weight,brand FROM product_details
+                                        JOIN product_description ON product_details.product_description_id=product_description.product_description_id
+                                        JOIN product ON product.product_id=product_description.product_id
+                                        JOIN category ON category.category_id=product.category_id
+                                        JOIN store ON store.store_id=product_details.store_id
+                                        WHERE product_description.product_description_id=:idid";
+                              $statement = $pdo->prepare($query);
+                              $statement->execute(array(
+                                ':idid' => $row['product_description_id']
+                              ));
+                              $row_feature = $statement->fetch(PDO::FETCH_ASSOC);
+                              ?>
+                              <div class="order-single" style="margin: 0;padding: 0;background-color: #151515;width: 100%;height: 100%;border-bottom: 1px solid #666;">
+                                <div class="col-sm-3 col-xs-3" style="background-color: #151515" onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
+                                  <table>
+                                    <tr style="padding-bottom:30px;"></tr>
+                                    <tr>
+                                      <td>
+                                        <div style="height: 150px;width: 100%">
                                           <img
-                                            style="height:auto;max-width: 100%;width:auto;max-height: 50px;display: block;padding-top:30px; "
-                                            class="img-responsive" src="../../images/logo/logofill-sm.png">
-                                        </td>
-                                      </tr>
-                                      <tr class="div-wrapper dw" style="padding-top:30px;">
-                                        <td class="cust_details" style="font-size:24px;font-weight:bold" align="right">
-                                          <i class='fa fa-rupee-sign'></i>
-                                          <?= $row['price'] ?>
-                                        </td>
-                                      </tr>
-                                      <td class="cust_details" style="font-size:14px;font-weight:normal" align="right">
-                                        <del>
-                                          <i class='fa fa-rupee-sign'></i>
-                                          <?= $row['mrp'] ?>
-                                        </del>
-                                        <span style="color: #119904;font-weight:bold">
-                                          <?= $save ?>% off
-                                        </span>
+                                            style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block; margin: auto;padding-top:30px "
+                                            class="img-responsive"
+                                            src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
+                                        </div>
                                       </td>
-                                      </tr>
-                                    </table>
+                                    </tr>
+                                  </table>
+                                </div>
+                                <div class="col-sm-9 col-xs-9" style="padding:0px;">
+                                  <table>
+                                    <tr>
+                                      <td>
+                                        <div style="width: 100%;text-align: center;color: #000;font-weight:bold;font-size:20px;padding-top:30px">
+                                          <?= $row['product_name'] ?>
+                                        </div>
+                                      </td>
+                                    </tr>
+                                  </table>
+                                  <div class="col-sm-12 col-xs-12" style="padding:0px;">
+                                    <div class="col-sm-7 col-xs-7" style="min-height:200px;padding:0;">
+                                      <table width="100%" style="padding:0px;margin:0px;">
+                                        <tr style="padding-top:10px;">
+                                          <td colspan="2">
+                                            <div style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size:14px;padding-top:30px;padding-bottom:10px"></div>
+                                          </td>
+                                        </tr>
+                                        <?php
+                                        if ($row_feature['size'] != 0) {
+                                          $query1 = "SELECT * FROM size where size_id=" . $row_feature['size'];
+                                          $st1 = $pdo->query($query1);
+                                          $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                        ?>
+                                          <tr class=" dw">
+                                            <th class="cust_header2">
+                                              <li>Size</li>
+                                            </th>
+                                            <td class="cust_details">
+                                              <?= $row1['size_name'] ?>
+                                            </td>
+                                          </tr>
+                                        <?php
+                                        }
+                                        if ($row_feature['weight'] != 0) {
+                                        ?>
+                                          <tr class=" dw">
+                                            <th class="cust_header2">
+                                              <li>Weight</li>
+                                            </th>
+                                            <td class="cust_details">
+                                              <?= $row_feature['weight'] ?>
+                                            </td>
+                                          </tr>
+                                        <?php
+                                        }
+                                        if ($row_feature['brand'] != 0) {
+                                          $query1 = "SELECT * FROM brand where brand_id=" . $row_feature['brand'];
+                                          $st1 = $pdo->query($query1);
+                                          $row1 = $st1->fetch(PDO::FETCH_ASSOC);
+                                        ?>
+                                          <tr class=" dw">
+                                            <th class="cust_header2">
+                                              <li>Brand</li>
+                                            </th>
+                                            <td class="cust_details">
+                                              <?= $row1['brand_name'] ?>
+                                            </td>
+                                          </tr>
+                                        <?php
+                                        }
+                                        ?>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Category
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row_feature['category_name'] ?>
+                                            </li>
+                                          </td>
+                                        </tr>
+                                        <tr class=" dw">
+                                          <th class="cust_header2">
+                                            <li>Seller
+                                          </th>
+                                          <td class="cust_details">
+                                            <?= $row_feature['store_name'] ?>
+                                            </li>
+                                          </td>
+                                        </tr>
+                                      </table>
+                                    </div>
+                                    <div class="col-sm-5 col-xs-5">
+                                      <table width="100%" style="padding:0px;margin:0px;">
+                                        <?php
+                                        $save = round(($row['mrp'] - $row['price']) / $row['mrp'] * 100);
+                                        ?>
+                                        <tr>
+                                          <td align="right">
+                                            <img
+                                              style="height: auto;max-width: 100%;width: auto;max-height: 70px;display: block;"
+                                              class="img-responsive" src="../../images/logo/logofill-sm.png">
+                                          </td>
+                                        </tr>
+                                        <tr class="div-wrapper dw">
+                                          <td class="cust_details" style="font-size:24px;font-weight:bold" align="right">
+                                            <i class='fa fa-rupee-sign'></i>
+                                            <?= $row['price'] ?>
+                                          </td>
+                                        </tr>
+                                        <td class="cust_details" style="font-size:14px;font-weight:normal" align="right">
+                                          <del>
+                                            <i class='fa fa-rupee-sign'></i>
+                                            <?= $row['mrp'] ?>
+                                          </del>
+                                          <span style="color: #119904;font-weight:bold">
+                                            <?= $save ?>% off
+                                          </span>
+                                        </td>
+                                        </tr>
+                                      </table>
+                                    </div>
                                   </div>
                                 </div>
                               </div>
                             </div>
-                          </div>
-                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                          <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
-                        <?php
-                        }
-                        ?>
+                            <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                            <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                            <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                            <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                            <!--------------------------------------REMOVE CONTENTS------------------------------------------------------------------------------------------>
+                          <?php
+                          }
+                          ?>
+                        </div>
                       </div>
                     </div>
                   </div>
-                </div>
-              </section>
-              <div id="dynamic-paging"></div>
-              <!----------------------------------------------------------------------------------------------------------------------------------------------->
-              <!----------------------------------------------------------------------------------------------------------------------------------------------->
-              <!----------------------------------------------------------------------------------------------------------------------------------------------->
-              <!----------------------------------------------------------------------------------------------------------------------------------------------->
-              <!----------------------------------------------------------------------------------------------------------------------------------------------->
-            </div>
+                </section>
+                <div id="dynamic-paging"></div>
+                <!----------------------------------------------------------------------------------------------------------------------------------------------->
+                <!----------------------------------------------------------------------------------------------------------------------------------------------->
+                <!----------------------------------------------------------------------------------------------------------------------------------------------->
+                <!----------------------------------------------------------------------------------------------------------------------------------------------->
+                <!----------------------------------------------------------------------------------------------------------------------------------------------->
+              </div>
+              <!--to be removed-->
+            <?php
+          }
+            ?>
             <!--to be removed-->
-          <?php
-        }
-          ?>
-          <!--to be removed-->
-          </div>
+            </div>
+        </div>
       </div>
     </div>
     <?php

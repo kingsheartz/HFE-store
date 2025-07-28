@@ -476,7 +476,7 @@ require "../Main/header.php";
                                                   <img
                                                     alt=""
                                                     src="../../images/logo/logofill-sm.png"
-                                                    style="max-width:115px"
+                                                    style="max-height:70px"
                                                     data-a-hires="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px-2x._CB485942108_.png">
                                                 </p>
                                                 <?php

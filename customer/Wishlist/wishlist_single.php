@@ -741,7 +741,8 @@ $rowcount = $row_single_div['checksingle'];
                                           <div>
                                             <!--FEATURES-->
                                             <ul>
-                                              <li class="large_specs_seen"><span class="a-list-item">
+                                              <li class="large_specs_seen">
+                                                <span class="a-list-item">
                                                   <span class="a-size-small a-color-success sc-product-availability">
                                                     <b style="color:#86001d;">In stock</b>
                                                   </span>
@@ -751,7 +752,7 @@ $rowcount = $row_single_div['checksingle'];
                                                 <img
                                                   alt=""
                                                   src="../../images/logo/logofill-sm.png"
-                                                  style="max-width:115px"
+                                                  style="max-height:70px"
                                                   data-a-hires="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px-2x._CB485942108_.png">
                                               </p>
                                               <?php
@@ -1578,7 +1579,14 @@ require "../Main/footer.php";
       total(store_id, product_description_id, mrp);
     }
   }
-  selected = "<?= $row1['quantity'] ?>"
+
+  <?php
+  if (isset($row1['quantity'])) {
+  ?>
+    selected = "<?= $row1['quantity'] ?>"
+  <?php
+  }
+  ?>
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   function sub_item_all(store_id, product_id, tmrp) {

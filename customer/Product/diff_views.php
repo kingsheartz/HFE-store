@@ -2,21 +2,46 @@
 require "../Main/header.php";
 ?>
 <style>
-  .wrapper {
-    display: flex;
-    align-items: stretch;
-    margin-bottom: 20px;
-    margin-top: 0px;
+  html,
+  body {
+    background: #1b1b1b;
+  }
+
+  .products {
+    position: relative;
+    background: #151515;
+    border: 1px solid #2f2f2fff;
+  }
+
+  .products .column,
+  .products .height_set {
+    background: #151515;
+    border: 1px solid #2f2f2fff;
+    margin-bottom: 30px;
+  }
+
+  .products-right {
+    background: #151515;
+  }
+
+  .product-content-right h2 {
+    text-align: center;
+    display: inline-flex;
+    font-weight: 600;
+  }
+
+  .snipcart-thumb p {
+    color: darkgrey;
   }
 
   .card-header {
-    background-color: transparent;
+    background-color: #151515;
+    color: darkgrey;
     border-bottom: 1px solid rgba(0, 0, 0, .125);
     padding: .75rem 1.25rem;
     position: relative;
     border-top-left-radius: .25rem;
     font-size: 50px;
-    text-align: center;
     text-transform: uppercase;
     margin-bottom: 10px;
     border-top-right-radius: .25rem;
@@ -29,7 +54,7 @@ require "../Main/header.php";
   .table1 {
     height: auto;
     overflow: auto;
-    background-color: white;
+    background-color: #151515;
     padding: 5px;
     margin-bottom: 20px;
     border-top: 5px solid #116d60;
@@ -38,7 +63,7 @@ require "../Main/header.php";
   .img_size {
     margin: auto;
     display: flex;
-    background: white;
+    background: #151515;
     image-rendering: auto;
     image-rendering: crisp-edges;
     width: auto;
@@ -49,9 +74,53 @@ require "../Main/header.php";
 
   a.img-cont {
     display: flex;
-    justify: center;
+    justify-content: center;
     align-items: center;
     margin: auto;
+  }
+
+  .product-content-right img {
+    height: 260px;
+  }
+
+  .agile_top_brands_grids {
+    margin: 0px !important;
+  }
+
+  .pagination li a {
+    background-color: #000 !important;
+  }
+
+  .pagination li.active a {
+    background-color: #139b3b !important;
+    border: 1px solid darkgrey;
+  }
+
+  hr {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    border: 0;
+    border-top: 2px solid #585858;
+    margin-left: -6px;
+    margin-right: -20px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .product-content-right img {
+      height: 200px !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .product-content-right img {
+      height: 150px !important;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .product-content-right img {
+      height: 120px !important;
+    }
   }
 </style>
 <!-- breadcrumbs -->
@@ -83,11 +152,12 @@ require "../Main/header.php";
         $head = $_GET['brand'];
       }
       ?>
-      <h3 style="text-transform:capitalize;font-weight:bold;text-align:center">
+      <h3 style="text-transform: capitalize;font-weight: bold;text-align: center">
         <?= $head ?>
       </h3>
       <h4></h4>
     </div>
+    <hr />
     <?php
     require "../Common/pdo.php";
     if (isset($_GET['pageno'])) {
@@ -213,19 +283,11 @@ require "../Main/header.php";
       ?>
         <div class="product-content-right">
           <center>
-            <img
-              style="justify-content: center;"
-              class="sidebar-title"
-              src="../../images/logo/no-search-result.png">
-            <h2
-              class="sidebar-title"
-              style="text-align: center;color: #2d70ff;display: inline-flex;font-weight: 600;">
-              No result found
-            </h2>
+            <img style="justify-content: center;" class="sidebar-title" src="../../images/logo/no-search-result.png">
           </center>
         </div>
-        <center style="margin-bottom:0px;margin-top: 50px;">
-          <h4>Can't find requested product ?<a href="../Main/hfe.php"> Try again!</a></h4>
+        <center style="margin-bottom:0px;margin-top: 50px;color: darkgrey;">
+          <h4>Can't find requested product ?<a href="../Main/HFE-Store.php" style="color: #139b3b;"> Try again!</a></h4>
         </center>
         <?php
       } else {
@@ -248,7 +310,7 @@ require "../Main/header.php";
                     <figure>
                       <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: #151515;text-align: center;">
                             <a class="img-cont" href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
                               <img title=" "
                                 alt=" "
@@ -259,7 +321,7 @@ require "../Main/header.php";
                           <?php
                           if (strlen($row['product_name']) >= 35) {
                             $product = $row['product_name'];
-                            $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+                            $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color: #109502'>view</small>";
                           } else {
                             $product_name = $row['product_name'];
                           }
@@ -302,7 +364,7 @@ require "../Main/header.php";
                     <figure>
                       <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: #151515;text-align: center;">
                             <a class="img-cont" href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
                               <img
                                 title=" "
@@ -313,7 +375,7 @@ require "../Main/header.php";
                           <?php
                           if (strlen($row['product_name']) >= 35) {
                             $product = $row['product_name'];
-                            $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+                            $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color: #109502'>view</small>";
                           } else {
                             $product_name = $row['product_name'];
                           }
@@ -352,7 +414,7 @@ require "../Main/header.php";
                     <figure>
                       <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: #151515;text-align: center;">
                             <a class="img-cont" href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
                               <img title=" "
                                 alt=" "
@@ -363,7 +425,7 @@ require "../Main/header.php";
                           <?php
                           if (strlen($row['product_name']) >= 35) {
                             $product = $row['product_name'];
-                            $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+                            $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color: #109502'>view</small>";
                           } else {
                             $product_name = $row['product_name'];
                           }
@@ -404,7 +466,7 @@ require "../Main/header.php";
                     <figure>
                       <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: #151515;text-align: center;">
                             <a class="img-cont" href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
                               <img title=" "
                                 alt=" "
@@ -415,7 +477,7 @@ require "../Main/header.php";
                           <?php
                           if (strlen($row['product_name']) >= 35) {
                             $product = $row['product_name'];
-                            $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+                            $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color: #109502'>view</small>";
                           } else {
                             $product_name = $row['product_name'];
                           }
@@ -460,7 +522,7 @@ require "../Main/header.php";
                     <figure>
                       <div class="snipcart-item block">
                         <div class="snipcart-thumb">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: #151515;text-align: center;">
                             <a class="img-cont" href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
                               <img
                                 title=" "
@@ -471,7 +533,7 @@ require "../Main/header.php";
                           <?php
                           if (strlen($row['product_name']) >= 35) {
                             $product = $row['product_name'];
-                            $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+                            $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color: #109502'>view</small>";
                           } else {
                             $product_name = $row['product_name'];
                           }
@@ -595,21 +657,19 @@ require "../Main/header.php";
     <div class="clearfix">
     </div>
   </div>
-  <!--- products --->
-  <?php
-  require "../Main/footer.php";
-  ?>
-  <script type="text/javascript">
-    const homeactive = document.querySelector('#homeactive');
-    //const catactive=document.querySelector('#catactive');
-    const aboutactive = document.querySelector('#aboutactive');
-    const contactactive = document.querySelector('#contactactive');
-    homeactive.className = "";
-    //catactive.className="";
-    aboutactive.className = "";
-    contactactive.className = "";
-    //catactive.className="active";
-  </script>
-  </body>
+</div>
+<!--- products --->
+<?php
+require "../Main/footer.php";
+?>
+<script type="text/javascript">
+  const homeactive = document.querySelector('#homeactive');
+  const aboutactive = document.querySelector('#aboutactive');
+  const contactactive = document.querySelector('#contactactive');
+  homeactive.className = "";
+  aboutactive.className = "";
+  contactactive.className = "";
+</script>
+</body>
 
-  </html>
+</html>

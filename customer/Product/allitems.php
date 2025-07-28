@@ -132,6 +132,17 @@ require "../Main/header.php";
     background-color: #139b3b;
     border-radius: 5px;
   }
+
+  button.right-arrow-btn-all,
+  button.left-arrow-btn-all {
+    height: 40px;
+    border-radius: 25px;
+    font-size: 12px;
+    width: 40px;
+    top: 40%;
+    color: white;
+    background-color: black !important;
+  }
 </style>
 
 <body>

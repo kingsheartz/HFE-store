@@ -2,21 +2,46 @@
 require "../Main/header.php";
 ?>
 <style>
-  .wrapper {
-    display: flex;
-    align-items: stretch;
-    margin-bottom: 20px;
-    margin-top: 0px;
+  html,
+  body {
+    background: #1b1b1b;
+  }
+
+  .products {
+    position: relative;
+    background: #151515;
+    border: 1px solid #2f2f2fff;
+  }
+
+  .products .column,
+  .products .height_set {
+    background: #151515;
+    border: 1px solid #2f2f2fff;
+    margin-bottom: 30px;
+  }
+
+  .products-right {
+    background: #151515;
+  }
+
+  .product-content-right h2 {
+    text-align: center;
+    display: inline-flex;
+    font-weight: 600;
+  }
+
+  .snipcart-thumb p {
+    color: darkgrey;
   }
 
   .card-header {
-    background-color: transparent;
+    background-color: #151515;
+    color: darkgrey;
     border-bottom: 1px solid rgba(0, 0, 0, .125);
     padding: .75rem 1.25rem;
     position: relative;
     border-top-left-radius: .25rem;
     font-size: 50px;
-    text-align: center;
     text-transform: uppercase;
     margin-bottom: 10px;
     border-top-right-radius: .25rem;
@@ -29,7 +54,7 @@ require "../Main/header.php";
   .table1 {
     height: auto;
     overflow: auto;
-    background-color: white;
+    background-color: #151515;
     padding: 5px;
     margin-bottom: 20px;
     border-top: 5px solid #116d60;
@@ -38,7 +63,7 @@ require "../Main/header.php";
   .img_size {
     margin: auto;
     display: flex;
-    background: white;
+    background: #151515;
     image-rendering: auto;
     image-rendering: crisp-edges;
     width: auto;
@@ -52,6 +77,50 @@ require "../Main/header.php";
     justify-content: center;
     align-items: center;
     margin: auto;
+  }
+
+  .product-content-right img {
+    height: 260px;
+  }
+
+  .agile_top_brands_grids {
+    margin: 0px !important;
+  }
+
+  .pagination li a {
+    background-color: #000 !important;
+  }
+
+  .pagination li.active a {
+    background-color: #139b3b !important;
+    border: 1px solid darkgrey;
+  }
+
+  hr {
+    margin-top: 0px;
+    margin-bottom: 30px;
+    border: 0;
+    border-top: 2px solid #585858;
+    margin-left: -6px;
+    margin-right: -20px;
+  }
+
+  @media screen and (max-width: 991px) {
+    .product-content-right img {
+      height: 200px !important;
+    }
+  }
+
+  @media screen and (max-width: 480px) {
+    .product-content-right img {
+      height: 150px !important;
+    }
+  }
+
+  @media screen and (max-width: 350px) {
+    .product-content-right img {
+      height: 120px !important;
+    }
   }
 </style>
 <!-- breadcrumbs -->
@@ -68,7 +137,7 @@ require "../Main/header.php";
 <!-- //breadcrumbs -->
 <!--- products --->
 <div class="products" style="padding: 0px">
-  <div class="col-12 products-right  card">
+  <div class="col-12 products-right card">
     <div class="card-header">
       <?php
       require "../Common/pdo.php";
@@ -78,7 +147,7 @@ require "../Main/header.php";
           "SELECT * FROM product WHERE product_name LIKE '%" . $nm . "%'"
         );
         $row = $res1->fetch(PDO::FETCH_ASSOC);
-        $head = "Items related to '" . $nm . "'";
+        $head = "Products related to '" . $nm . "'";
       } else if (isset($_GET['category_id'])) {
         $res1 = $pdo->query(
           "SELECT * FROM category WHERE category_id = " . $_GET['category_id']
@@ -87,11 +156,13 @@ require "../Main/header.php";
         $head = $row['category_name'];
       }
       ?>
-      <h3 style="text-transform:capitalize;font-weight:bold;text-align:center">
+      <h3 style="text-transform: capitalize;font-weight: bold;">
+        <i class="fa fa-search"></i>
         <?= $head ?>
       </h3>
       <h4></h4>
     </div>
+    <hr />
     <?php
     require "../Common/pdo.php";
     if (isset($_GET['pageno'])) {
@@ -178,22 +249,11 @@ require "../Main/header.php";
       ?>
         <div class="product-content-right">
           <center>
-            <img
-              style="justify-content: center;"
-              class="sidebar-title"
-              src="../../images/logo/no-search-result.png">
-            <h2
-              class="sidebar-title"
-              style="text-align: center;
-                    color: #2d70ff;
-                    display: inline-flex;
-                    font-weight: 600;">
-              No result found
-            </h2>
+            <img style="justify-content: center;" class="sidebar-title" src="../../images/logo/no-search-result.png">
           </center>
         </div>
-        <center style="margin-bottom:0px;margin-top: 50px;">
-          <h4>Can't find requested product ?<a href="../Main/hfe.php"> Try again!</a></h4>
+        <center style="margin-bottom:0px;margin-top: 50px;color: darkgrey;">
+          <h4>Can't find requested product ?<a href="../Main/HFE-Store.php" style="color: #139b3b;"> Try again!</a></h4>
         </center>
         <?php
       } else {
@@ -211,7 +271,7 @@ require "../Main/header.php";
                                 justify-content: center;
                                 height: 200px;
                                 width: 100%;
-                                background: white;
+                                background: #151515;
                                 text-align: center;">
                           <a class="img-cont" href="../Product/single.php?id=<?= $row['product_description_id'] ?>">
                             <img
@@ -224,7 +284,7 @@ require "../Main/header.php";
                         <?php
                         if (strlen($row['product_name']) >= 35) {
                           $product = $row['product_name'];
-                          $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color:#109502'>view</small>";
+                          $product_name = substr($product, 0, 22) . "... <small class='div_wrapper' style='color: #109502'>view</small>";
                         } else {
                           $product_name = $row['product_name'];
                         }
@@ -254,7 +314,7 @@ require "../Main/header.php";
       class="agile_top_brands_grids">
       <div class="clearfix"> </div>
       <?php
-      if ($total_pages != 1) {
+      if ($total_pages > 1) {
       ?>
         <nav class="numbering">
           <ul class="pagination">
@@ -345,21 +405,20 @@ require "../Main/header.php";
     </div>
     <div class=" clearfix">
     </div>
-  </div> <!--- products --->
-  <?php
-  require "../Main/footer.php";
-  ?>
-  <script type="text/javascript">
-    const homeactive = document.querySelector('#homeactive');
-    //const catactive=document.querySelector('#catactive');
-    const aboutactive = document.querySelector('#aboutactive ');
-    const contactactive = document.querySelector('#contactactive ');
-    homeactive.className = "";
-    //catactive.className="";
-    aboutactive.className = "";
-    contactactive.className = "";
-    //catactive.className="active";
-  </script>
-  </body>
+  </div>
+</div>
+<!--- products --->
+<?php
+require "../Main/footer.php";
+?>
+<script type="text/javascript">
+  const homeactive = document.querySelector('#homeactive');
+  const aboutactive = document.querySelector('#aboutactive ');
+  const contactactive = document.querySelector('#contactactive ');
+  homeactive.className = "";
+  aboutactive.className = "";
+  contactactive.className = "";
+</script>
+</body>
 
-  </html>
+</html>
