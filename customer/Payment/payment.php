@@ -248,11 +248,11 @@ log_message("Payment page data used: " . json_encode([
 </script>
 <style>
   .payment_full {
-    background-color: #fff;
+    background-color: aliceblue;
     width: 50%;
     margin: auto;
-    color: #000;
-    border-radius: 15px;
+    color: black;
+    border-radius: 10px;
     box-shadow: 8px 8px 16px 2px #746363;
     padding: 1%;
   }
@@ -260,8 +260,7 @@ log_message("Payment page data used: " . json_encode([
   .payment_options {
     margin: 2%;
     width: 96%;
-    color: #000;
-    border-radius: 15px;
+    color: black;
     box-shadow: 0px 1px 2px 2px #e4dada;
   }
 
@@ -275,6 +274,8 @@ log_message("Payment page data used: " . json_encode([
     box-shadow: 0px 1px 2px 2px #e4dada;
     margin-left: 3px;
     vertical-align: middle;
+    justify-content: center;
+    align-items: center;
   }
 
   hr {
@@ -287,22 +288,27 @@ log_message("Payment page data used: " . json_encode([
     width: 100%;
     font-size: 15px;
     font-weight: 500;
+    background-color: white;
   }
 
   .ui-opt {
     padding: 2% 5%;
     background: aliceblue;
+    color: black;
     margin: 0;
   }
 
   .upi-span {
-    font-size: 93%;
+    font-size: 14px;
     padding: 10% 0%;
     vertical-align: middle;
+    width: -webkit-fill-available;
   }
 
   .icon-img {
-    padding: 8% 8%;
+    padding: 5px 5px;
+    max-width: -webkit-fill-available;
+    max-height: 40px;
   }
 
   .heading {
@@ -320,8 +326,14 @@ log_message("Payment page data used: " . json_encode([
   }
 
   .pay-select {
-    background: aliceblue;
+    background: #151515;
+    color: black;
     padding: 5% 5%;
+  }
+
+  #upi-options {
+    display: table;
+    width: 100%;
   }
 
   .ui-opt,
@@ -331,6 +343,36 @@ log_message("Payment page data used: " . json_encode([
 
   .heading img {
     margin-right: 20px;
+  }
+
+  @media (max-width: 991px) {
+    .payment_full {
+      width: 80%;
+    }
+
+    .upi-span {
+      font-size: 13px;
+    }
+
+    .icon-img {
+      max-width: auto;
+      max-height: 40px;
+    }
+  }
+
+  @media (max-width: 568px) {
+    .payment_full {
+      width: 90%;
+    }
+
+    .upi-span {
+      font-size: 12px;
+    }
+
+    .icon-img {
+      max-width: auto;
+      max-height: 35px;
+    }
   }
 </style>
 <script>
