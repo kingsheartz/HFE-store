@@ -724,7 +724,7 @@ require "../Common/cookie.php";
             }
             /*COLOR PICKER*/
             ?>
-            <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat" style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
+            <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat" style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: black;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: darkgrey;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
               Rate this <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
               <span style="float: right;margin-right: 5px;margin-top: -4px;">
                 <button

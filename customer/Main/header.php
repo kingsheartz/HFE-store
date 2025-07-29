@@ -130,16 +130,19 @@ if (session_status() === PHP_SESSION_NONE) {
 
     div#lg-cartcnt {
       position: absolute;
-      right: 5px;
-      top: 8px;
+      top: -2px;
+      right: -2px;
       background: red;
-      height: 15px !important;
-      width: 15px;
-      padding: 0px;
-      border-radius: 10px;
-      text-align: center;
       color: white;
       font-size: 10px;
+      font-weight: bold;
+      border-radius: 50%;
+      padding: 4px 6px;
+      line-height: 1;
+      min-width: 16px;
+      text-align: center;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+      z-index: 10;
     }
 
     .navbar ul li {

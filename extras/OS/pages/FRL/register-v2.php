@@ -50,14 +50,44 @@ if (($row2) && ($row2['activation_code'] == $code)) {
   <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <style>
+    body.login-page {
+      position: absolute;
+      background-image: url(../../../../images/logo/check1.jpg) !important;
+      background-position: center !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .register-bg-overlay {
+      background-color: rgba(0, 0, 0, 0.65);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .card-primary.card-outline {
+      border-top: 3px solid #139b3b;
+    }
+
+    .card-body p>a {
+      color: #139b3b;
+    }
+  </style>
 </head>
 
-<body class="hold-transition login-page" style="background: url(../../../../images/logo/check1.jpg) no-repeat;position: absolute;background-position: center;width: 100%;">
-  <div style="background-color: rgba(0,0,0,0.65); position: absolute;width: 100%;height: 100%;align-items: center;justify-content: center;display: flex;">
+<body class="hold-transition login-page">
+  <div class="register-bg-overlay">
     <div class="register-box" style="display: inline-flex;">
       <div class="card card-outline card-primary">
         <div class="card-header text-center">
-          <a href="../../index2.html" class="h1"><img src="../../../../images/logo/logost.svg" height="auto" width="auto " style="width: 80%;height: auto;" class="image-fluid mb-2"></a>
+          <a href="../../index2.html" class="h1"><img src="../../../../images/logo/logo-horizontal.png" height="auto" width="auto " style="width: 80%;height: auto;" class="image-fluid mb-2"></a>
         </div>
         <div class="card-body">
           <p class="login-box-msg" style="padding-bottom: 0px;">Set your password for sign in</p>
