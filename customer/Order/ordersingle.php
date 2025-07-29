@@ -20,7 +20,7 @@ require "../Common/pdo.php";
     margin-top: 30px;
     margin-bottom: 30px;
     text-overflow: ellipsis;
-    box-shadow: -2px -2px 3px 3px #ddd;
+    box-shadow: -2px -2px 3px 3px black;
     margin-right: 2%;
     margin-left: 2%;
     border-radius: 10px;
@@ -33,11 +33,18 @@ require "../Common/pdo.php";
     margin-top: 30px;
     margin-bottom: 30px;
     text-overflow: ellipsis;
-    box-shadow: -2px 0px 2px 2px #ddd;
-    border: 1px solid #ddd;
+    box-shadow: -2px 0px 2px 2px #2b3740;
+    border: 1px solid #2b3740;
     margin-right: 2%;
     margin-left: 2%;
     border-radius: 10px;
+    color: darkgrey;
+    background-color: #151515;
+  }
+
+  .order-single>div {
+    background-color: #151515;
+    border-color: #2b3740;
   }
 
   .order button {
@@ -80,7 +87,7 @@ require "../Common/pdo.php";
   .orhead {
     position: relative;
     font-size: 34px;
-    background-color: #0080ff;
+    background-color: #139b3b;
     color: #ffffff;
     height: 70px;
   }
@@ -88,7 +95,7 @@ require "../Common/pdo.php";
   .tablhde {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 18px;
-    background: #2b3740;
+    background: black;
     color: #ffffff;
     width: 100%;
     height: 30px;
@@ -152,6 +159,10 @@ require "../Common/pdo.php";
     color: #fff;
     padding: 0px 10px;
     text-transform: capitalize;
+  }
+
+  hr.make_divb {
+    border-color: #101010 !important;
   }
 
   @media(min-width: 430px) {
@@ -307,18 +318,18 @@ require "../Common/pdo.php";
   <div class="order">
     <div class="orhead">
       <h2 class="sidebar-title"
-        style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 29px;padding-top: 20px;
-          margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;
-          text-transform: capitalize;padding-left: 10px;color:white ">
-        Ordered Product <i style="color: #fffd00" class="fa fa-product-hunt "></i>
+        style="border-top: 2px solid #151515;border-top-left-radius: 10px;text-align: left;padding-bottom: 29px;padding-top: 20px;
+          margin-top: 0px;font-weight: normal;border-bottom: darkgrey;margin-bottom: 0px;border-radius: 10px;color: black;
+          text-transform: capitalize;padding-left: 10px;color: white ">
+        Ordered Product <i style="color: white" class="fa fa-product-hunt "></i>
         <span style="float: right;margin-right: 5px;margin-top: -16px;">
           <button type="button"
             style="max-width: 180px;min-width:90px;height: 62px;font-weight: bold;border-top-right-radius: 10px;
-              background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;"
+              background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff));"
             id="proceed" name="proceed" class="checkout-button button alt wc-forward back-lg"
             onclick="location.href='../Order/myorders.php'"><i class='fas fa-arrow-circle-left'></i> Back</button>
           <button type="button"
-            style="display:none;max-width: 180px;width:50px;height: 62px;font-weight: bold;border-top-right-radius: 10px;color:#c7c7c7;background-color:#0080ff"
+            style="display:none;max-width: 180px;width:50px;height: 62px;font-weight: bold;border-top-right-radius: 10px;color:#c7c7c7;background-color: #139b3b"
             id="proceed" name="proceed" class="checkout-button button alt wc-forward back-sm"
             onclick="location.href='../Order/myorders.php'"><i class='fas fa-arrow-circle-left'
               style="background-color:#000;padding:6px;border-radius:50%"></i></button>
@@ -334,7 +345,7 @@ require "../Common/pdo.php";
       <div class="check-pending">
         <div onclick="cancel();" onmouseover="$(this).css('cursor','pointer')"
           style="float:right;border:1px solid rgb(165, 164, 164);color:red;padding-left:10px;padding-right:10px;margin-top:10px;clear:both;border-radius: 3px;">
-          <i class="fa fa-close"></i><span style="color: #000;"><b> Cancel this order</b></span>
+          <i class="fa fa-close"></i><span style="color: darkgrey;"><b> Cancel this order</b></span>
         </div><br>
       </div>
     <?php
@@ -381,14 +392,14 @@ require "../Common/pdo.php";
                     class="img-responsive"
                     src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                 </div>
-                <div style="width: 100%;text-align: center;color: #333;font-weight:bold;font-size:15px;"><?= $itm_nm ?>
+                <div style="width: 100%;text-align: center;color: darkgrey;font-weight: bold;font-size: 15px;"><?= $itm_nm ?>
                 </div>
               </td>
             </tr>
           </table>
         </div>
         <div class="col-sm-8">
-          <div class="col-sm-6" style="border-left:1px solid #ddd;border-right:1px solid #ddd;min-height:230px;">
+          <div class="col-sm-6" style="border-left:1px solid black;border-right:1px solid black;min-height:230px;">
             <table>
               <tr>
                 <th class="tablhde" colspan="2">Features </th>
@@ -458,7 +469,7 @@ require "../Common/pdo.php";
               <tr style="padding-bottom:30px;"></tr>
               <tr class="div-wrapper dw">
                 <th class="cust_header2">Order ID</th>
-                <td class="cust_details">OSID<?= sprintf('%06d', $row['new_orders_id']) ?></td>
+                <td class="cust_details">HFEID<?= sprintf('%06d', $row['new_orders_id']) ?></td>
               </tr>
               <tr class="div-wrapper dw">
                 <th class="cust_header2">Seller</th>

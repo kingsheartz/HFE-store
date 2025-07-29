@@ -63,13 +63,13 @@ if (isset($_REQUEST["name"])) {
         $result_con .= '
           <div class="order">
             <div class="orhead" style="height:auto">
-              <h2 class="sidebar-title" style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white;border-bottom-left-radius:0px "> <i style="color: #fff" class="fa fa-file-text-o"></i> OSID' . sprintf('%06d', $row2['new_orders_id']) . '
+              <h2 class="sidebar-title" style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white;border-bottom-left-radius:0px "> <i style="color: #fff" class="fa fa-file-text-o"></i> HFEID' . sprintf('%06d', $row2['new_orders_id']) . '
                 <span style="float: right;margin-right: 5px;margin-top: -5px;">
                   <button type="button" style="max-width: 150px;min-width:90px;height: 33px;font-weight: bold;border-top-right-radius: 10px;background-color: #fff;"  id="proceed" name="proceed" class="checkout-button button alt wc-forward">Total <i class=\'fas fa-rupee-sign\'></i>' . $row_order_cnt['sub_total'] . '</button>
                 </span>
               </h2>
             </div>
-            <div style="background-color:#eee;height:5px;"></div>
+            <div style="background-color: black;height: 5px;"></div>
             <table>
               <tr><th class="tablhde"colspan="2">    Delivery details       </th></tr>
               <tr class="div-wrapper dw"><th class="cust_header">Name</th>
@@ -83,10 +83,10 @@ if (isset($_REQUEST["name"])) {
               <tr class="div-wrapper dw"><th class="cust_header">Email</th>
               <td class="cust_details">' . $row2['email'] . '</td></tr>
               <tr class="div-wrapper dw"><th class="cust_header">Order ID</th>
-              <td class="cust_details">OSID' . sprintf('%06d', $row_order_cnt['new_orders_id']) . '</td>
+              <td class="cust_details">HFEID' . sprintf('%06d', $row_order_cnt['new_orders_id']) . '</td>
               </tr>
             </table>
-            <div style="background-color:#eee;height:20px;"></div>';
+            <div style="background-color: black;height:20px;"></div>';
         $query = "SELECT *  FROM new_orders
 									JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
 									JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
@@ -291,7 +291,7 @@ if (isset($_REQUEST["name"])) {
           $result_con .= '</td>
                               </tr>
                               <tr>
-                                <th><span  style="color:maroon;font-size:19px;"><i class=\'fas fa-rupee-sign\'></i> ' . $row['total_amt'] . ' </span>(' . $row['item_quantity'] . ')</th>
+                                <th><span  style="color: #029400;font-size:19px;"><i class=\'fas fa-rupee-sign\'></i> ' . $row['total_amt'] . ' </span>(' . $row['item_quantity'] . ')</th>
                               </tr>
                             </table>
                             <table style="align-items:center;justify-content:center;height:0px;float:right;margin-top:-60px;">
@@ -369,13 +369,13 @@ if (isset($_REQUEST["name"])) {
         $result_con .= '
           <div class="order">
             <div class="orhead" style="height:auto">
-              <h2 class="sidebar-title" style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white;border-bottom-left-radius:0px "> <i style="color: #fff" class="fa fa-file-text-o"></i> OSID' . sprintf('%06d', $row2['new_orders_id']) . '
+              <h2 class="sidebar-title" style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white;border-bottom-left-radius:0px "> <i style="color: #fff" class="fa fa-file-text-o"></i> HFEID' . sprintf('%06d', $row2['new_orders_id']) . '
                 <span style="float: right;margin-right: 5px;margin-top: -5px;">
                   <button type="button" style="max-width: 150px;min-width:90px;height: 33px;font-weight: bold;border-top-right-radius: 10px;background-color: #fff;"  id="proceed" name="proceed" class="checkout-button button alt wc-forward">Total <i class=\'fas fa-rupee-sign\'></i>' . $row_order_cnt['sub_total'] . '</button>
                 </span>
               </h2>
             </div>
-          <div style="background-color:#eee;height:5px;"></div>
+          <div style="background-color: black;height:5px;"></div>
           <table>
             <tr><th class="tablhde"colspan="2">    Delivery details       </th></tr>
             <tr class="div-wrapper dw"><th class="cust_header">Name</th>
@@ -389,9 +389,9 @@ if (isset($_REQUEST["name"])) {
             <tr class="div-wrapper dw"><th class="cust_header">Email</th>
             <td class="cust_details">' . $row2['email'] . '</td></tr>
             <tr class="div-wrapper dw"><th class="cust_header">Order ID</th>
-            <td class="cust_details">OSID' . sprintf('%06d', $row2['new_orders_id']) . '</td></tr>
+            <td class="cust_details">HFEID' . sprintf('%06d', $row2['new_orders_id']) . '</td></tr>
           </table>
-          <div style="background-color:#eee;height:20px;"></div>';
+          <div style="background-color: black;height:20px;"></div>';
         $query = "SELECT *  FROM new_orders
 									JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
 									JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
@@ -587,7 +587,7 @@ if (isset($_REQUEST["name"])) {
           $result_con .= '</td>
                               </tr>
                               <tr>
-                                <th><span  style="color:maroon;font-size:19px;"><i class=\'fas fa-rupee-sign\'></i> ' . $row['total_amt'] . ' </span>(' . $row['item_quantity'] . ')</th>
+                                <th><span  style="color: #029400;font-size:19px;"><i class=\'fas fa-rupee-sign\'></i> ' . $row['total_amt'] . ' </span>(' . $row['item_quantity'] . ')</th>
                               </tr>
                             </table>
                             <table style="align-items:center;justify-content:center;height:0px;float:right;margin-top:-60px;">
@@ -647,13 +647,13 @@ if (isset($_REQUEST["name"])) {
       if ($row2) {
         $result_con .= '<div class="order">
           <div class="orhead" style="height:auto">
-          <h2 class="sidebar-title" style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white;border-bottom-left-radius:0px "> <i style="color: #fff" class="fa fa-file-text-o"></i> OSID' . sprintf('%06d', $row2['new_orders_id']) . '
+          <h2 class="sidebar-title" style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white;border-bottom-left-radius:0px "> <i style="color: #fff" class="fa fa-file-text-o"></i> HFEID' . sprintf('%06d', $row2['new_orders_id']) . '
           <span style="float: right;margin-right: 5px;margin-top: -5px;">
             <button type="button" style="max-width: 150px;min-width:90px;height: 33px;font-weight: bold;border-top-right-radius: 10px;background-color: #fff;"  id="proceed" name="proceed" class="checkout-button button alt wc-forward">Total <i class=\'fas fa-rupee-sign\'></i>' . $row_order_cnt['sub_total'] . '</button>
           </span>
           </h2>
           </div>
-          <div style="background-color:#eee;height:5px;"></div>
+          <div style="background-color: black;height:5px;"></div>
           <table>
             <tr><th class="tablhde"colspan="2">    Delivery details       </th></tr>
             <tr class="div-wrapper dw"><th class="cust_header">Name</th>
@@ -667,9 +667,9 @@ if (isset($_REQUEST["name"])) {
             <tr class="div-wrapper dw"><th class="cust_header">Email</th>
             <td class="cust_details">' . $row2['email'] . '</td></tr>
             <tr class="div-wrapper dw"><th class="cust_header">Order ID</th>
-            <td class="cust_details">OSID' . sprintf('%06d', $row2['new_orders_id']) . '</td></tr>
+            <td class="cust_details">HFEID' . sprintf('%06d', $row2['new_orders_id']) . '</td></tr>
           </table>
-          <div style="background-color:#eee;height:20px;"></div>';
+          <div style="background-color: black;height:20px;"></div>';
         $query = "SELECT *  FROM new_orders
 									JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
 									JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
@@ -863,7 +863,7 @@ if (isset($_REQUEST["name"])) {
           $result_con .= '</td>
                             </tr>
                             <tr>
-                              <th><span  style="color:maroon;font-size:19px;"><i class=\'fas fa-rupee-sign\'></i> ' . $row['total_amt'] . ' </span>(' . $row['item_quantity'] . ')</th>
+                              <th><span  style="color: #029400;font-size:19px;"><i class=\'fas fa-rupee-sign\'></i> ' . $row['total_amt'] . ' </span>(' . $row['item_quantity'] . ')</th>
                             </tr>
                           </table>
                           <table style="align-items:center;justify-content:center;height:0px;float:right;margin-top:-60px;">
@@ -935,13 +935,13 @@ if (isset($_REQUEST["name"])) {
       if ($row2) {
         $result_con .= '<div class="order">
           <div class="orhead" style="height:auto">
-          <h2 class="sidebar-title" style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white;border-bottom-left-radius:0px "> <i style="color: #fff" class="fa fa-file-text-o"></i> OSID' . sprintf('%06d', $row2['new_orders_id']) . '
+          <h2 class="sidebar-title" style="border-left: 5px solid #fff;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:white;border-bottom-left-radius:0px "> <i style="color: #fff" class="fa fa-file-text-o"></i> HFEID' . sprintf('%06d', $row2['new_orders_id']) . '
           <span style="float: right;margin-right: 5px;margin-top: -5px;">
             <button type="button" style="max-width: 150px;min-width:90px;height: 33px;font-weight: bold;border-top-right-radius: 10px;background-color: #fff;"  id="proceed" name="proceed" class="checkout-button button alt wc-forward">Total <i class=\'fas fa-rupee-sign\'></i>' . $row_order_cnt['sub_total'] . '</button>
           </span>
           </h2>
           </div>
-          <div style="background-color:#eee;height:5px;"></div>
+          <div style="background-color: black;height:5px;"></div>
           <table>
             <tr><th class="tablhde"colspan="2">    Delivery details       </th></tr>
             <tr class="div-wrapper dw"><th class="cust_header">Name</th>
@@ -955,9 +955,9 @@ if (isset($_REQUEST["name"])) {
             <tr class="div-wrapper dw"><th class="cust_header">Email</th>
             <td class="cust_details">' . $row2['email'] . '</td></tr>
             <tr class="div-wrapper dw"><th class="cust_header">Order ID</th>
-            <td class="cust_details">OSID' . sprintf('%06d', $row2['new_orders_id']) . '</td></tr>
+            <td class="cust_details">HFEID' . sprintf('%06d', $row2['new_orders_id']) . '</td></tr>
           </table>
-          <div style="background-color:#eee;height:20px;"></div>';
+          <div style="background-color: black;height:20px;"></div>';
         $query = "SELECT *  FROM new_orders
 									JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
 									JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
@@ -1152,7 +1152,7 @@ if (isset($_REQUEST["name"])) {
           $result_con .= '</td>
                               </tr>
                               <tr>
-                                <th><span  style="color:maroon;font-size:19px;"><i class=\'fas fa-rupee-sign\'></i> ' . $row['total_amt'] . ' </span>(' . $row['item_quantity'] . ')</th>
+                                <th><span  style="color: #029400;font-size:19px;"><i class=\'fas fa-rupee-sign\'></i> ' . $row['total_amt'] . ' </span>(' . $row['item_quantity'] . ')</th>
                               </tr>
                             </table>
                             <table style="align-items:center;justify-content:center;height:0px;float:right;margin-top:-60px;">
@@ -1272,7 +1272,7 @@ if (isset($_REQUEST["name"])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //NAME CNT
   if ($getordercnt == 0) {
-    $result_con .= '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $result_con .= '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
 }
 $response['paging'] = $dynamic_paging;

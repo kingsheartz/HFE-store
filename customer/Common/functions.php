@@ -3423,7 +3423,7 @@ if (isset($_POST['recoverlogin'])) {
   function isStoreAdminAndUser($email, $role)
   {
     global $pdo;
-    $sql = "SELECT * FROM  $role WHERE email = :email";
+    $sql = "SELECT * FROM $role WHERE email = :email";
     $stmt = $pdo->prepare($sql);
     $stmt->execute([':email' => $email]);
 
@@ -3456,8 +3456,8 @@ if (isset($_POST['recoverlogin'])) {
     if ($row4['activation_code'] != "activated") {
       $response['status'] = "error1";
     } else {
-      if (isStoreAdminAndUser($row4['email'], 'customer')) {
-        $sql2 = "UPDATE customer set password='$password',password_reset=1 WHERE email=:email";
+      if (isStoreAdminAndUser($row4['email'], 'customers')) {
+        $sql2 = "UPDATE customers set password='$password',password_reset=1 WHERE email=:email";
         $stmt2 = $pdo->prepare($sql2);
         $stmt2->execute([':email' => $row4['email']]);
       }
@@ -3712,7 +3712,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                               <table width="230" border="0" cellpadding="0" cellspacing="0" align="right">
                               <tbody>
                                 <tr>
-                                  <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Customer ID <span style="font-weight:bold;color:#000">OSUID' . sprintf('%06d', $customer_id) . '</span> </p> <p style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px">Order ID <span style="font-weight:bold;color:#000">OSID' . sprintf('%06d', $noid) . '</span> </p> </td>
+                                  <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Customer ID <span style="font-weight:bold;color:#000">OSUID' . sprintf('%06d', $customer_id) . '</span> </p> <p style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px">Order ID <span style="font-weight:bold;color:#000">HFEID' . sprintf('%06d', $noid) . '</span> </p> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -4092,7 +4092,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                         style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px"
                                       >
                                         Order ID
-                                        <span style="font-weight:bold;color:#000">OSID' . sprintf('%06d', $noid) . '</span>
+                                        <span style="font-weight:bold;color:#000">HFEID' . sprintf('%06d', $noid) . '</span>
                                       </p>
                                     </td>
                                   </tr>
@@ -5163,7 +5163,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                     >
                                       Order ID
                                       <span style="font-weight:bold;color:#000"
-                                        >OSID' . sprintf('%06d', $noid) . '</span
+                                        >HFEID' . sprintf('%06d', $noid) . '</span
                                       >
                                     </p>
                                   </td>
@@ -5555,7 +5555,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                               <table width="230" border="0" cellpadding="0" cellspacing="0" align="right">
                                 <tbody>
                                   <tr>
-                                    <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Store ID <span style="font-weight:bold;color:#000">OSSID' . sprintf('%06d', $store_array[$l]['store_id']) . '</span> </p> <p style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px">Order ID <span style="font-weight:bold;color:#000">OSID' . sprintf('%06d', $noid) . '</span> </p> </td>
+                                    <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Store ID <span style="font-weight:bold;color:#000">OSSID' . sprintf('%06d', $store_array[$l]['store_id']) . '</span> </p> <p style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px">Order ID <span style="font-weight:bold;color:#000">HFEID' . sprintf('%06d', $noid) . '</span> </p> </td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -6569,7 +6569,7 @@ if (isset($_POST['filter_cat_a'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -7096,7 +7096,7 @@ if (isset($_POST['filter_cat_b'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -7491,7 +7491,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -7873,7 +7873,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -8271,7 +8271,7 @@ if (isset($_POST['filter_item_a'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -8661,7 +8661,7 @@ if (isset($_POST['filter_item_b'])) {
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -9202,7 +9202,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                       style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px"
                                     >
                                       Order ID
-                                      <span style="font-weight:bold;color:#000">OSID' . sprintf('%06d', $noid) . '</span>
+                                      <span style="font-weight:bold;color:#000">HFEID' . sprintf('%06d', $noid) . '</span>
                                     </p>
                                   </td>
                                 </tr>
@@ -9808,7 +9808,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                         style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px"
                                       >
                                         Order ID
-                                        <span style="font-weight:bold;color:#000">OSID' . sprintf('%06d', $noid) . '</span>
+                                        <span style="font-weight:bold;color:#000">HFEID' . sprintf('%06d', $noid) . '</span>
                                       </p>
                                     </td>
                                   </tr>
@@ -10341,7 +10341,7 @@ if (isset($_POST['cancel_product'])) {
   $new_order_tot_amt = $prev_order_tot_amt - $product_tot_amt;
   $idid = $row['product_description_id'];
   $pid = $row['product_details_id'];
-  $order_id = "OSID" . sprintf('%06d', $row['new_orders_id']);
+  $order_id = "HFEID" . sprintf('%06d', $row['new_orders_id']);
   /*
     echo "Order_id : ".$order_id." | product_details_id : ".$pid." | product_qnty : ".$product_qnty." | pre_tot : ".$prev_order_tot_amt." | new_tot : ".$new_order_tot_amt;
   */
