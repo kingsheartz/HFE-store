@@ -1726,7 +1726,7 @@ if ($result_cnt == 0) {
                                   <table>
                                     <tr>
                                       <td>
-                                        <div style="width: 100%;text-align: center;color: #000;font-weight:bold;font-size:20px;padding-top:30px">
+                                        <div style="width: 100%;text-align: center;color: darkgrey;font-weight:bold;font-size:20px;padding-top:30px">
                                           <?= $row['product_name'] ?>
                                         </div>
                                       </td>

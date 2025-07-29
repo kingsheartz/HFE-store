@@ -18,8 +18,12 @@ $stmt->execute(array(
 ));
 $pdt_cnt = $stmt->rowCount();
 ?>
-<div style="background-color: #f8f8f8">
+<div style="background-color: #151515; color: darkgrey">
   <style type="text/css">
+    .checkout .container {
+      color: darkgrey;
+    }
+
     input[type="submit"],
     button[type=submit],
     input[type="button"] {
@@ -144,6 +148,16 @@ $pdt_cnt = $stmt->rowCount();
       background-color: #337ab7;
     }
 
+    @media(min-width:769px) {
+      #place_order {
+        max-width: 490px;
+      }
+
+      .place_order.nav-maker {
+        max-width: 100%;
+      }
+    }
+
     @media(max-width:768px) {
       .place_order.nav-maker {
         position: fixed;
@@ -159,6 +173,7 @@ $pdt_cnt = $stmt->rowCount();
         padding: 12px !important;
         font-weight: bold;
         font-size: 16px !important;
+        max-width: 100%;
       }
 
       .place_order.nav-maker:hover {
@@ -238,10 +253,9 @@ $pdt_cnt = $stmt->rowCount();
     #customer_details select,
     .shipping_calculator select {
       border: 1px solid #dedede;
-      margin-bottom: 30px;
-      margin-left: 25px;
+      margin-left: 10px;
       margin-top: 10px;
-      width: 400px;
+      width: 100%;
       padding: 5px;
       height: 30px;
       border-radius: 5px;
@@ -257,7 +271,7 @@ $pdt_cnt = $stmt->rowCount();
     }
 
     #customer_details h3 {
-      color: #000000;
+      color: white;
       font-size: 20px;
       text-transform: capitalize;
     }
@@ -276,16 +290,16 @@ $pdt_cnt = $stmt->rowCount();
     }
 
     #customer_details h3 {
-      color: #000000;
+      color: darkgrey;
       font-size: 14px;
       font-weight: bold;
       text-transform: capitalize;
     }
 
     .slno.col-sm-12 {
-      background: black;
+      background: #242424;
       height: 50px;
-      margin: 10px;
+      margin: 5px;
       width: 99%;
       color: white;
       font-size: 25px;
@@ -315,6 +329,54 @@ $pdt_cnt = $stmt->rowCount();
       padding: 10px;
       font-weight: 400;
     }
+
+    .shipping_address {
+      padding: 20px;
+      padding-top: 0px;
+      max-width: 520px;
+    }
+
+    .shipping_address .form-row .input-text {
+      background-color: #101010;
+      border-radius: 8px;
+    }
+
+    .shipping_address p {
+      color: darkgrey;
+    }
+
+    .place-order {
+      margin: 0;
+    }
+
+    .billing_details {
+      padding: 10px;
+    }
+
+    .woocommerce-shipping-fields {
+      max-width: 500px;
+      width: 100%;
+      padding: 10px;
+    }
+
+    .woocommerce-shipping-fields h3 {
+      min-width: fit-content;
+    }
+
+    .woocommerce-shipping-fields select {
+      background-color: #101010;
+      height: 100%;
+    }
+
+    .woocommerce-shipping-fields option {
+      background-color: #101010;
+      font-size: 14px;
+    }
+
+    hr {
+      margin-top: 0px;
+      border-color: darkgrey;
+    }
   </style>
   <!-- breadcrumbs -->
   <div class="breadcrumbs">
@@ -339,13 +401,13 @@ $pdt_cnt = $stmt->rowCount();
   </div>
   <div class="slno col-sm-12">Order details</div>
   <div class="checkout" style="padding-top: 0px;padding-bottom: 0px; background-color: rgba(255,255,255,0.05);">
-    <div class="container col-sm-12" style="width: 99%;padding: 10px;padding-bottom: 30px;background: white;margin: 10px;border-radius: 5px;border: 1px solid gray;">
+    <div class="container col-sm-12" style="width: 99%;padding: 10px;padding-bottom: 30px;background: #151515;margin: 5px;border-radius: 5px;border: 1px solid gray;">
       <h2 style="padding:15px;">
         Your shopping cart contains: <span style="font-family: arial"><?= $pdt_cnt ?> Products</span>
       </h2>
       <div class="col-md-12" style="margin-bottom: 15px;">
         <div class="woocommerce-billing-fields small-size">
-          <div class="checkout-left-basket" style="width: 100%;background-color: white">
+          <div class="checkout-left-basket" style="width: 100%;background-color: #151515">
             <ul style="margin: 0px;padding:0px;width: 100%;">
               <div style="width: 100%;">
                 <li>
@@ -358,7 +420,7 @@ $pdt_cnt = $stmt->rowCount();
           </div>
         </div>
         <div class="checkout-right">
-          <table class="timetable_sub " style="background-color: white;">
+          <table class="timetable_sub " style="background-color: #151515;">
             <?php
             $ai = 1;
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
@@ -404,7 +466,7 @@ $pdt_cnt = $stmt->rowCount();
       </div>
       <div class="col-md-12 col-sm-12 pdt_block" style="padding: 0px;padding-right:15px;">
         <div class="woocommerce-billing-fields">
-          <div class="checkout-left-basket" style="width: 100%;background-color: white;">
+          <div class="checkout-left-basket" style="width: 100%;background-color: #151515;">
             <ul style="margin: 0px;padding:0px;width: 100%;">
               <div style="width: 100%;">
                 <div style="padding-left: 20px;padding-right:20px;width: 100%;">
@@ -439,10 +501,10 @@ $pdt_cnt = $stmt->rowCount();
                     <span>&#8377;<?= $total_mrp - $total_amt . " " ?></span>
                   </li>
                   <li>
-                    <i style="font-weight: bolder;font-family:sans-serif; ;color: black;font-style: unset;">
+                    <i style="font-weight: bolder;font-family:sans-serif;color: white;font-style: unset;">
                       Total <i>-</i>
                     </i>
-                    <span style="font-weight: bolder;font-family:sans-serif; ;color: black;">&#8377;<?= $total_amt ?></span>
+                    <span style="font-weight: bolder;font-family:sans-serif;color: white;">&#8377;<?= $total_amt ?></span>
                   </li>
                   <hr style="color:gray;">
                 </div>
@@ -461,23 +523,21 @@ $pdt_cnt = $stmt->rowCount();
                   <b>NOTE : </b>Booked products need to received from the corresponding shops.
                 </p>
               </div>
-              <div id="customer_details" class="col2-set" style="margin:0px;padding: 0px;width: 100%">
-                <div class="col-sm-6">
+              <div id="customer_details" class="row" style="margin:0px;padding: 0px;width: 100%">
+                <div class="col-sm-6 col-s-6">
                   <div class="billing_details">
                     <div class="woocommerce-shipping-fields" style="display: inline-flex;">
-                      <h3>Select address</h3>
-                      <select name="delivery-option" id="delivery-option">
-                        <option value="0">Select Address</option>
+                      <h3>Select address:</h3>
+                      <select name="delivery-option" class="input-text" id="delivery-option">
+                        <option value="0" disabled>Select Address</option>
                         <option value="1" selected>Home</option>
                         <option value="2">Work</option>
                       </select>
                       <input type="hidden" value="" id="order_comments" name="order_comments" />
                     </div>
                   </div>
-                </div>
-                <div class="col-sm-6">
                   <div class="shipping_address" style="display: none;" id="stda_div">
-                    <br />
+                    <hr />
                     <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
                       <label
                         class=""
@@ -599,30 +659,31 @@ $pdt_cnt = $stmt->rowCount();
                     <div class="clear"></div>
                     <input type="submit" id="delivery_button" style="display:none" />
                   </div>
-                </div>
-                <div id="payment" class="col-sm-12">
-                  <div class="form-row place-order" style="width: 100%">
-                    <button
-                      type="button"
-                      data-value="Place order"
-                      id="place_order"
-                      name="woocommerce_checkout_place_order"
-                      class="button alt real_btn place_order"
-                      style="width: 100%;font-size:1em"
-                      onclick="placeorder()"><i class="fas fa-shopping-bag"></i>&nbsp; PLACE ORDER
-                    </button>
+                  <div id="payment" class="col-sm-12">
+                    <div class="form-row place-order" style="width: 100%">
+                      <button
+                        type="button"
+                        data-value="Place order"
+                        id="place_order"
+                        name="woocommerce_checkout_place_order"
+                        class="button alt real_btn place_order"
+                        style="width: 100%;font-size:1em"
+                        onclick="placeorder()"><i class="fas fa-shopping-bag"></i>&nbsp; PLACE ORDER
+                      </button>
+                    </div>
+                    <div class="form-row place-order" style="width: 100%">
+                      <button
+                        class="load_btn place_order"
+                        data-value="Place order"
+                        style="display:none;width: 100%;font-weight:bold"
+                        name="woocommerce_checkout_place_order"
+                        type="button"><i class="fa fa-refresh fa-spin"></i>&nbsp;PLACE ORDER
+                      </button>
+                    </div>
+                    <div class="clear"></div>
                   </div>
-                  <div class="form-row place-order" style="width: 100%">
-                    <button
-                      class="load_btn place_order"
-                      data-value="Place order"
-                      style="display:none;width: 100%;font-weight:bold"
-                      name="woocommerce_checkout_place_order"
-                      type="button"><i class="fa fa-refresh fa-spin"></i>&nbsp;PLACE ORDER
-                    </button>
-                  </div>
-                  <div class="clear"></div>
                 </div>
+                <div class="col-sm-6 col-s-6"></div>
               </div>
             </form>
           </div>
@@ -663,7 +724,7 @@ require "../Main/footer.php";
       $('#payment').show();
     }
   };
-  
+
   const delivery_option = document.getElementById("delivery-option");
 
 

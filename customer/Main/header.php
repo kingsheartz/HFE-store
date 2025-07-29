@@ -89,6 +89,10 @@ if (session_status() === PHP_SESSION_NONE) {
   <!-- Bootstrap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <style type="text/css">
+    #strt {
+      background-color: #151515;
+    }
+
     /*PAGE LOADER*/
     #popup2 {
       display: none;

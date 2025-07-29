@@ -1245,7 +1245,7 @@ function randomGen($min, $max, $quantity)
                                 <div style="padding: 10px;">
                                   <button
                                     type="button"
-                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;border: 1px solid #413f3f;float: right;background: #862e00;"
+                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;border: 1px solid #413f3f;float: right;background: #006904;"
                                     onclick="go()"
                                     name="proceed"
                                     class="checkout-button btn-primary btn button alt wc-forward">
