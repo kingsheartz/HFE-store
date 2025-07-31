@@ -65,7 +65,7 @@
 
 <body>
   <center id="logo">
-    <img id="image" src="../../../../images/logo/logost.svg">
+    <img id="image" src="../../../../images/logo/logo-horizontal.png">
   </center>
   <script type="text/javascript">
     'use strict';

@@ -72,17 +72,27 @@ function randomGen($min, $max, $quantity)
 ?>
 <style type="text/css">
   /*SINGLE PAGE STYLING*/
+  body {
+    background-color: #151515;
+  }
+
   .product-image-thumb {
     margin: auto;
     display: block;
     max-height: 100px;
     width: 100px;
+    margin-top: 10px;
     margin-bottom: 5px;
-    margin-bottom: 5px;
+    background-color: #151515;
   }
 
   h3.my-3 {
     font-size: 20px;
+  }
+
+  h3.my-3,
+  .d-inline-block {
+    color: darkgrey;
   }
 
   .btn.btn-default.btn-lg.btn-flat.product_wish {
@@ -125,6 +135,16 @@ function randomGen($min, $max, $quantity)
     margin-left: -15px;
   }
 
+  #reviewsingle,
+  #ratingsingle .row {
+    background-color: #101010 !important;
+    color: darkgrey;
+  }
+
+  #reviewsingle p {
+    color: darkgrey;
+  }
+
   @media (max-width: 767px) {
     .d-inline-block {
       display: inline-block !important;
@@ -147,7 +167,8 @@ function randomGen($min, $max, $quantity)
   .tab_single {
     overflow: hidden;
     border: 1px solid #ccc;
-    background-color: #f1f1f1;
+    background-color: #101010;
+    color: darkgrey;
   }
 
   /* Style the buttons inside the tab_single */
@@ -164,12 +185,13 @@ function randomGen($min, $max, $quantity)
 
   /* Change background color of buttons on hover */
   .tab_single button:hover {
-    background-color: #ddd;
+    background-color: #333;
   }
 
   /* Create an active/current tab_singlelink class */
   .tab_single .active {
-    background-color: #ccc;
+    color: #fff;
+    background-color: #139b3b;
   }
 
   /* Style the tab_single content */
@@ -192,7 +214,7 @@ function randomGen($min, $max, $quantity)
     border: 1px solid #d4d4d4;
     /*set the size of the lens:*/
     max-width: 100%;
-    min-width: 25%;
+    min-width: 20%;
     height: 45px;
   }
 
@@ -205,6 +227,7 @@ function randomGen($min, $max, $quantity)
   }
 
   .img-zoom-result {
+    margin-top: -20px;
     right: 10px;
   }
 
@@ -220,7 +243,8 @@ function randomGen($min, $max, $quantity)
     }
 
     #img-zoom-conatiner-none {
-      display: unset !important;
+      display: block !important;
+      width: -webkit-fill-available !important;
     }
 
     #img-zoom-conatiner {
@@ -252,14 +276,14 @@ function randomGen($min, $max, $quantity)
     width: 100%;
     height: 100%;
     overflow: auto;
-    background-color: #fff;
+    background-color: #151515;
     z-index: 99999;
   }
 
   .column-single {
     float: left;
     width: auto;
-    background-color: #fff;
+    background-color: #151515;
   }
 
   .column-single img {
@@ -272,7 +296,7 @@ function randomGen($min, $max, $quantity)
   /* Modal Content */
   .modal-content-single {
     position: relative;
-    background-color: #FFF;
+    background-color: #151515;
     margin: auto;
     padding: 0;
     width: 90%;
@@ -402,6 +426,18 @@ function randomGen($min, $max, $quantity)
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
   }
 
+  #partially_needed ul li {
+    color: darkgrey;
+  }
+
+  .newproducts-w3agile {
+    background-color: #151515;
+  }
+
+  .newproducts-w3agile h3 {
+    color: darkgrey;
+  }
+
   @media (max-width: 991px) {
     .mySlides-single img {
       max-height: 300px;
@@ -445,7 +481,7 @@ function randomGen($min, $max, $quantity)
     }
 
     #partially_needed {
-      min-height: 550px !important;
+      /* min-height: 550px !important; */
     }
 
     .big-btn {
@@ -455,7 +491,7 @@ function randomGen($min, $max, $quantity)
 
   @media (max-width: 767px) {
     .fixed-pos-left-container {
-      min-height: 450px !important;
+      min-height: max-content !important;
     }
 
     .mySlides-single img {
@@ -489,7 +525,7 @@ function randomGen($min, $max, $quantity)
   }
 
   .btn-buy {
-    background: #337ab7;
+    background: #001e38;
     color: white;
     border-radius: 10px !important;
   }
@@ -504,7 +540,7 @@ function randomGen($min, $max, $quantity)
   }
 
   .btn-cart:hover {
-    background-color: #337ab7 !important;
+    background-color: #454545 !important;
     color: white !important;
   }
 
@@ -619,13 +655,13 @@ function randomGen($min, $max, $quantity)
 
   @media(max-height:610px) {
     .product_contain_div {
-      height: 350px !important;
+      height: max-content !important;
     }
   }
 
   @media(max-height:524px) and (min-width:767px) {
     .product_contain_div {
-      height: 270px !important;
+      height: max-content !important;
     }
 
     #myimage {
@@ -643,7 +679,7 @@ function randomGen($min, $max, $quantity)
     }
 
     .fixed-pos-left-container {
-      min-height: 400px !important;
+      min-height: max-content !important;
     }
   }
 
@@ -740,11 +776,15 @@ function randomGen($min, $max, $quantity)
     padding: 0px;
     padding-bottom: 0px;
     position: relative;
-    height: 300px;
+    height: 275px;
     width: 250px;
-    background: white;
-    color: #000;
+    background: black;
+    color: darkgrey;
     margin-right: 20px;
+  }
+
+  .deupd {
+    padding-top: 25px;
   }
 
   .left-arrow-btn-all {
@@ -850,23 +890,26 @@ function randomGen($min, $max, $quantity)
     color: white;
     border-radius: 5px;
   }
+
+  div.progress.mt-3 {
+    background-color: #555555 !important;
+  }
+
+  .stars-outer::before {
+    color: #555555 !important;
+  }
+
+  .fixed-pos-left,
+  #myresult {
+    transition: top 1s ease, height 1s ease, transform 1s ease;
+    will-change: top, height, transform;
+  }
+
+  div.content-wrapper {
+    min-height: -webkit-fill-available !important;
+  }
 </style>
 <script type="text/javascript">
-  function getCookieset(cname) {
-    let name = cname + "=";
-    let decodedCookie = decodeURIComponent(document.cookie);
-    let ca = decodedCookie.split(';');
-    for (let i = 0; i < ca.length; i++) {
-      let c = ca[i];
-      while (c.charAt(0) == ' ') {
-        c = c.substring(1);
-      }
-      if (c.indexOf(name) == 0) {
-        return c.substring(name.length, c.length);
-      }
-    }
-    return "";
-  }
   var url = window.location.href;
   if (sessionStorage.getItem("prev_url") == url) {
     var scrollTop = 'singlescrollTop';
@@ -877,18 +920,33 @@ function randomGen($min, $max, $quantity)
     document.cookie = 'singlescrollTop=' + $(window).scrollTop();
   });
   sessionStorage.setItem("prev_url", url);
+  // DYNAMIC DIV SIZING ON WINDOW LOAD
+  $(document).ready(function() {
+    $('.product-desc').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+    $('#partially_needed').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+  })
+
+  $(window).scroll(function() {
+    $('.product-desc').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+    $('#partially_needed').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+  });
+
+  $(window).resize(function() {
+    $('.product-desc').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+    $('#partially_needed').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
+  });
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //SCROLLING AND RESIZING EFFECTS
   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   $(window).scroll(function() {
     if ($(this).scrollTop() > 60) {
       if ($(window).width() > 825) {
-        $('.fixed-pos-left').css('top', '80px');
+        $('.fixed-pos-left').css('top', '180px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '90px');
         $('#myresult').css('height', screen.height - 200);
       } else if ($(window).width() <= 825 && $(window).width() > 767) {
-        $('.fixed-pos-left').css('top', '80px');
+        $('.fixed-pos-left').css('top', '180px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '120px');
         $('#myresult').css('height', screen.height - 355);
@@ -897,7 +955,7 @@ function randomGen($min, $max, $quantity)
       if ($(window).width() > 825) {
         $('.fixed-pos-left').css('top', '200px');
         $('.fixed-pos-left-container').css('height', '0');
-        $('#myresult').css('top', '200px');
+        $('#myresult').css('top', '145px');
         $('#myresult').css('height', screen.height - 310);
       } else if ($(window).width() <= 825 && $(window).width() > 767) {
         $('.fixed-pos-left').css('top', '230px');
@@ -911,12 +969,12 @@ function randomGen($min, $max, $quantity)
   $(window).resize(function() {
     if ($(this).scrollTop() > 60) {
       if ($(window).width() > 825) {
-        $('.fixed-pos-left').css('top', '80px');
+        $('.fixed-pos-left').css('top', '150px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '90px');
         $('#myresult').css('height', screen.height - 200);
       } else if ($(window).width() <= 825 && $(window).width() > 767) {
-        $('.fixed-pos-left').css('top', '80px');
+        $('.fixed-pos-left').css('top', '120px');
         $('.fixed-pos-left-container').css('height', '0');
         $('#myresult').css('top', '120px');
         $('#myresult').css('height', screen.height - 355);
@@ -926,7 +984,7 @@ function randomGen($min, $max, $quantity)
         big_screen = 1;
         $('.fixed-pos-left').css('top', '200px');
         $('.fixed-pos-left-container').css('height', '0');
-        $('#myresult').css('top', '200px');
+        $('#myresult').css('top', '145px');
         $('#myresult').css('height', screen.height - 310);
       } else if ($(window).width() <= 825 && $(window).width() > 767) {
         big_screen = 1;
@@ -962,14 +1020,14 @@ function randomGen($min, $max, $quantity)
         $('.fixed-pos-left-container').css('height', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - 250);
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
-        $('.fixed-pos-left').css('top', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - $('.fixed-pos-left').outerHeight() - 170);
+        $('.fixed-pos-left').css('top', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - $('.fixed-pos-left').outerHeight() - 220);
         if ($(window).scrollTop() <= 60) {
           $('.fixed-pos-left').css('top', 0);
         }
       } else if ($(window).scrollTop() <= 60) {
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
-        $('.fixed-pos-left').css('top', '-20px');
+        $('.fixed-pos-left').css('top', '0px');
         $('#myresult').css('position', 'inherit');
         $('#myresult').css('width', '50%');
       } else if ($(window).scrollTop() > 60) {
@@ -1004,11 +1062,11 @@ function randomGen($min, $max, $quantity)
         $('.fixed-pos-left-container').css('height', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - 250);
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
-        $('.fixed-pos-left').css('top', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - $('.fixed-pos-left').outerHeight() - 250);
+        $('.fixed-pos-left').css('top', $('#partially_needed').offset().top + $('#partially_needed').outerHeight() - $('.fixed-pos-left').outerHeight() - 190);
       } else if ($(window).scrollTop() <= 60) {
         $('.fixed-pos-left').css('position', 'absolute');
         $('.fixed-pos-left').css('width', '100%');
-        $('.fixed-pos-left').css('top', '-20px');
+        $('.fixed-pos-left').css('top', '0px');
         $('#myresult').css('position', 'inherit');
         $('#myresult').css('width', '50%');
       } else if ($(window).scrollTop() > 60) {
@@ -1335,7 +1393,7 @@ function randomGen($min, $max, $quantity)
     } else {
     ?>
       $(".stars-outer").empty();
-      $(".stars-outer").html('<p style="color:red">No rating..!</p>');
+      $(".stars-outer").html('<p style="color: #ef752f">No rating..!</p>');
     <?php
     }
     ?>
@@ -1365,7 +1423,7 @@ function randomGen($min, $max, $quantity)
     data-toggle="modal"
     data-target="#avail_stores"
     style="width: 100%;justify-content: flex-start;border-radius: 0px;border-color: #fff;">
-    <i class="fas fa-cart-plus mr-2"></i>
+    <i class="fas fa-cart-plus mr-2" style="color: cyan"></i>
     Add to Cart
   </div>
   <div
@@ -1380,32 +1438,32 @@ function randomGen($min, $max, $quantity)
       class="btn btn-default btn-lg btn-flat"
       type="button"
       name="submit"
-      style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px;margin-right: 20px;background-color: transparent;">
-      <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-flash mr-2"></i>
+      style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px;background-color: transparent;">
+      <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-shopping-bag mr-2"></i>
     </div>
     Buy Now
   </div>
 </div>
 <!-- Content Wrapper. Contains page content -->
-<div class="content-wrapper" style="overflow-x: hidden;width: 100%">
-  <section class="content">
+<div class="content-wrapper" style="overflow-x: hidden;width: 100%;background-color: #151515;">
+  <section class="content" style="background-color: #151515">
     <!-- Default box -->
-    <div class="card card-solid">
-      <div class="card-body" style="margin-top: 0px;">
-        <div class="row">
+    <div class="card card-solid" style="margin-top: 30px;">
+      <div class="card-body product-desc" style="margin-top: 0px;background-color: #151515;">
+        <div class="row" style="background-color: #151515;">
           <div class="col-12 col-sm-6 fixed-pos" style="padding-left: 15px;">
             <h3 class="d-inline-block d-sm-none"><?= $row2['product_name'] ?></h3>
             <!---------------------------------------------------------------------------------------------------------------->
             <!---------------------------------------------------------------------------------------------------------------->
             <!---------------------------------------------------------------------------------------------------------------->
-            <div class="fixed-pos-left-container" style="background-color:white">
-              <div class="fixed-pos-left" style="background-color:white">
+            <div class="fixed-pos-left-container" style="background-color: #151515">
+              <div class="fixed-pos-left" style="background-color: #151515">
                 <div class="abolute_div" style="margin:0;">
                   <div class="relative_div" style="margin:0;">
                     <div class="row zoom-in-adjust" style="margin:0;width:100%;">
                       <div
                         class="col-md-12 div-wrapper product_contain_div"
-                        style="margin-top: 20px;padding-right:0px;height:430px;">
+                        style="margin-top: 10px;padding-right: 0px;padding-left: 10px;height: max-content;border-radius: 10px;background-color: #151515">
                         <?php
                         $img_cnt_sql = "select img_count from product_description where product_description_id=$product_description_id";
                         $img_cnt_stmt = $pdo->prepare($sql);
@@ -1460,7 +1518,7 @@ function randomGen($min, $max, $quantity)
                                 </ul>
                               </div>
                               </div>
-                              <div class="col-md-10 col-sm-10 col-xs-10 img-big" style="position: relative;justify-content:center;align-items:center;display:flex;padding-left:0;">
+                              <div class="col-md-10 col-sm-10 col-xs-10 img-big" style="position: relative;justify-content: center;align-items: center;display:flex; padding-left: 0;">
                                 <div
                                   id="img-zoom-container"
                                   class="img-zoom-container"
@@ -1513,7 +1571,7 @@ function randomGen($min, $max, $quantity)
                                   id="view-single-img"
                                   style="display: flex;position: absolute;bottom: 20px;float: left;border: 0px;padding: 10px;padding-top: 13px; background-color: transparent;"
                                   onclick="openModal_single();currentSlide(1)">
-                                  <i style="color: #000000" class="fa fa-search-plus fa-lg"></i>
+                                  <i style="color: darkgrey" class="fa fa-search-plus fa-lg"></i>
                                 </div>
                               </div>
                               </div>
@@ -1528,7 +1586,7 @@ function randomGen($min, $max, $quantity)
                                 data-toggle="modal"
                                 data-target="#avail_stores"
                                 style="width: 100%;justify-content: flex-start;border-radius: 4px;">
-                                <i class="fas fa-cart-plus mr-2"></i> Add to Cart
+                                <i class="fas fa-cart-plus mr-2" style="color: cyan"></i> Add to Cart
                               </div>
                               <div
                                 class="btn btn-default btn-lg btn-flat btn-buy button"
@@ -1541,8 +1599,8 @@ function randomGen($min, $max, $quantity)
                                   class="btn btn-default btn-lg btn-flat"
                                   type="button"
                                   name="submit"
-                                  style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px; margin-right: 20px;background-color: transparent;">
-                                  <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-flash mr-2"></i>
+                                  style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%;padding: 4px;background-color: transparent;">
+                                  <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-shopping-bag mr-2"></i>
                                 </div>
                                 Buy Now
                               </div>
@@ -1757,7 +1815,7 @@ function randomGen($min, $max, $quantity)
                                     data-toggle="modal"
                                     data-target="#avail_stores"
                                     style="max-width: 200px;justify-content: flex-start;border-radius: 4px;">
-                                    <i class="fas fa-cart-plus mr-2"></i>
+                                    <i class="fas fa-cart-plus mr-2" style="color: cyan"></i>
                                     Add to Cart
                                   </div>
                                   <div
@@ -1772,8 +1830,8 @@ function randomGen($min, $max, $quantity)
                                       class="btn btn-default btn-lg btn-flat"
                                       type="button"
                                       name="submit"
-                                      style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%; padding: 4px;margin-right: 20px; background-color: transparent;">
-                                      <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-flash mr-2"></i>
+                                      style="width: 25px;height: 25px;position: relative;border: 0px;justify-content: center;border-radius: 50%; padding: 4px;background-color: transparent;">
+                                      <i style="color: orange;display: flex;align-items: center;justify-content: center;margin-left: 50%;" class="fas fa-shopping-bag mr-2"></i>
                                     </div>
                                     Buy Now
                                   </div>
@@ -1854,7 +1912,7 @@ function randomGen($min, $max, $quantity)
                     AND product_keys.customer_id = " . $_SESSION['id']
                   );
                   $myreviewcount = $myreviewstmt->rowCount();
-                  echo "<h3 style='margin-top:20px;'>Customer Reviews" . $myreviewcount . "</h3>";
+                  echo "<h4 style='margin-top:20px;'>Customer Reviews: " . $myreviewcount . "</h4>";
 
                   if ($myreviewcount != 0) {
                     $myreviewrow = $myreviewstmt->fetch(PDO::FETCH_ASSOC);
@@ -1987,7 +2045,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="dis_add()"
                                 id="dis_add"
                                 class="fa fa-sm fa-edit"
-                                style="position: absolute;right: 0;top: 0;color: white;background-color:#0c77cc;padding: 4px;"
+                                style="position: absolute;right: 0;top: 0;color: white;background-color: #0c77cc;padding: 4px;"
                                 onmouseover="$(this).css('background-color','#0c66cc')"
                                 onmouseleave="$(this).css('background-color','#0c77cc')">
                               </span>
@@ -1995,7 +2053,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="reset_add()"
                                 id="hide_add"
                                 class="fa fa-sm fa-close"
-                                style="display: none;position: absolute;right: 0;top: 0;color: white;background-color:red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
+                                style="display: none;position: absolute;right: 0;top: 0;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
                                 onmouseover="$(this).css('background-color','#bb0000')"
                                 onmouseleave="$(this).css('background-color','red')">
                               </span>
@@ -2003,7 +2061,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="dis_ok()"
                                 id="hide_add1"
                                 class="fa fa-check"
-                                style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color:#07C103;padding: 3px;"
+                                style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color: #07C103;padding: 3px;"
                                 onmouseover="$(this).css('background-color','#4f994f')"
                                 onmouseleave="$(this).css('background-color','#07C103')">
                               </span>
@@ -2317,7 +2375,8 @@ function randomGen($min, $max, $quantity)
                   );
                 }
                 $reviewcount = $reviewstmt->rowCount();
-                if ($reviewcount != 0) {
+                if ($reviewcount > 0) {
+                  echo $reviewcount;
                   while ($reviewrow = $reviewstmt->fetch(PDO::FETCH_ASSOC)) {
                     $ordered_cnt = $reviewrow['ordered_cnt'];
                     $review = $reviewrow['review'];
@@ -2385,7 +2444,7 @@ function randomGen($min, $max, $quantity)
                     }
                   }
                 } else {
-                  echo "<img src='../../images/logo/no-review.png' style='max-height:150px;max-width:250px'><p><i class='fa fa-frown fa-lg' style='color:#000000;background-color:#ffff00;border-radius:50%'></i> No reviews on this product..! </p>";
+                  echo "<img src='../../images/logo/no-review.png' style='max-height:150px;max-width:250px'><p><i class='fa fa-frown fa-lg' style='color:#000000;background-color: #ffff00;border-radius:50%'></i> No other reviews on this product..! </p>";
                 }
                 ?>
               </div>
@@ -2571,9 +2630,9 @@ function randomGen($min, $max, $quantity)
                         <div class="card mt-5" style="margin:0;margin-top:0 !important;">
                           <div class="card-body rating-left-padding" style="width:100%;padding:0px;">
                             <div class="row">
-                              <div class="col-md-3 col-xs-5 review_container" style="text-align:center">
+                              <div class="col-md-3 col-xs-5 review_container" style="text-align:center;">
                                 <h2 class="review">Reviews</h2>
-                                <button class="rating_circle"><?= round($rating, 1) ?></button>
+                                <button class="rating_circle" style="background-color: #444;color: darkgrey;"><?= round($rating, 1) ?></button>
                                 <div>
                                   <div class="stars-outer mt-4">
                                     <div class="stars-inner"></div>
@@ -2583,24 +2642,24 @@ function randomGen($min, $max, $quantity)
                               <div class="col-md-8 col-xs-6 review_content" style="padding:5px;">
                                 <br>
                                 <span><b>5</b> <i class="fa fa-star" style="color: orange;"></i>(<?= $ratingstar[5] ?>)</span>
-                                <div class="progress mt-3" style="height:10px;margin-top:0px !important;">
+                                <div class="progress mt-3" style="height:10px;max-width:500px;margin-top:0px !important;">
                                   <div class="progress-bar dark bar-a" style="width:<?= $ratingper[5] ?>%;height:10px;"></div>
                                 </div>
                                 <span><b>4</b> <i class="fa fa-star"
                                     style="color: orange;"></i>(<?= $ratingstar[4] ?>)</span>
-                                <div class="progress mt-3" style="height:10px;margin-top:0px !important;">
+                                <div class="progress mt-3" style="height:10px;max-width:500px;margin-top:0px !important;">
                                   <div class="progress-bar dark bar-b" style="width:<?= $ratingper[4] ?>%;height:10px"></div>
                                 </div>
                                 <span><b>3</b> <i class="fa fa-star" style="color: orange;"></i>(<?= $ratingstar[3] ?>)</span>
-                                <div class="progress mt-3" style="height:10px;margin-top:0px !important;">
+                                <div class="progress mt-3" style="height:10px;max-width:500px;margin-top:0px !important;">
                                   <div class="progress-bar dark bar-c" style="width:<?= $ratingper[3] ?>%;height:10px"></div>
                                 </div>
                                 <span><b>2</b> <i class="fa fa-star" style="color: orange;"></i>(<?= $ratingstar[2] ?>)</span>
-                                <div class="progress mt-3" style="height:10px;margin-top:0px !important;">
+                                <div class="progress mt-3" style="height:10px;max-width:500px;margin-top:0px !important;">
                                   <div class="progress-bar dark bar-d" style="width:<?= $ratingper[2] ?>%;height:10px"></div>
                                 </div>
                                 <span><b>1</b> <i class="fa fa-star" style="color: orange;"></i>(<?= $ratingstar[1] ?>)</span>
-                                <div class="progress mt-3" style="height:10px;margin-top:0px !important;">
+                                <div class="progress mt-3" style="height:10px;max-width:500px;margin-top:0px !important;">
                                   <div class="progress-bar dark bar-e" style="width:<?= $ratingper[1] ?>%;height:10px"></div>
                                 </div>
                               </div>

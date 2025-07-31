@@ -50,7 +50,7 @@ require "header.php";
 
   .calories-header h1 {
     font-size: 3rem;
-    color: #27ae60;
+    color: #139b3b;
     margin-bottom: 10px;
   }
 
@@ -63,7 +63,7 @@ require "header.php";
   .history-container h2,
   .weekly-report-container h2 {
     font-size: 20px;
-    color: #27ae60;
+    color: #139b3b;
   }
 
   .total h3 {
@@ -105,14 +105,14 @@ require "header.php";
   .date-picker-container legend,
   .daily-progress legend {
     font-size: 1.5rem;
-    color: #27ae60;
+    color: #139b3b;
     margin-bottom: 10px;
     border: 0px;
     width: auto;
   }
 
   #calorie-history {
-    color: #27ae60;
+    color: #139b3b;
     margin-bottom: 10px;
   }
 
@@ -136,7 +136,7 @@ require "header.php";
 
   .tracker button,
   #history-status button {
-    background: #27ae60;
+    background: #139b3b;
     color: white;
     padding: 12px 20px;
     border: none;
@@ -201,7 +201,7 @@ require "header.php";
 
   #progress-bar {
     height: 100%;
-    background: #27ae60;
+    background: #139b3b;
     width: 0%;
     text-align: center;
     color: white;
@@ -211,7 +211,7 @@ require "header.php";
   }
 
   .daily-progress-bar {
-    background: #27ae60;
+    background: #139b3b;
     height: 22px;
     border-radius: 8px;
     width: 0%
@@ -220,6 +220,29 @@ require "header.php";
   hr {
     margin: 30px 0;
     border-color: #eee;
+  }
+
+  .tracker button,
+  #history-status button,
+  #save-goal {
+    color: #e3e2e2;
+    border: none;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .tracker button:hover,
+  #history-status button:hover,
+  #save-goal:hover {
+    background: #139b3b;
+    transform: translateY(-2px);
+  }
+
+  .tracker button:active,
+  #history-status button:active,
+  #save-goal:active {
+    transform: translateY(0);
   }
 </style>
 
@@ -479,7 +502,7 @@ require "header.php";
             // Color based on progress
             if (percent === 0) $bar.css('margin-left', '10px'); // orange
             else if (percent < 50) $bar.css('background', '#f1c40f'); // yellow
-            else if (percent < 100) $bar.css('background', '#27ae60'); // green
+            else if (percent < 100) $bar.css('background', '#139b3b'); // green
             else $bar.css('background', '#e74c3c'); // red
           }
 

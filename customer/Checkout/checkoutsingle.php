@@ -39,7 +39,7 @@ $mrpstmt = $pdo->query($mrpsql);
 $mrprow = $mrpstmt->fetch(PDO::FETCH_ASSOC);
 $t_mrp = $mrprow['price'];
 ?>
-<div style="background-color: #f8f8f8">
+<div style="background-color: #151515">
   <style type="text/css">
     input[type="submit"],
     button[type=submit],
@@ -147,7 +147,7 @@ $t_mrp = $mrprow['price'];
     }
 
     .timetable_sub th {
-      background-color: #3399cc;
+      background-color: #139b3b;
       border-color: white;
     }
 
@@ -264,6 +264,67 @@ $t_mrp = $mrprow['price'];
     .options input {
       opacity: 0
     }
+
+    button#place_order {
+      background: #139b3b;
+      border: 0px;
+      border-radius: 5px;
+      height: 40px;
+      color: white;
+      text-align: center;
+    }
+
+    .billing_details textarea {
+      background-color: #151515;
+    }
+
+    .woocommerce-shipping-fields label {
+      color: darkgrey;
+    }
+
+
+    .shipping_address {
+      padding: 20px;
+      padding-top: 0px;
+      max-width: 520px;
+    }
+
+    .shipping_address .form-row .input-text {
+      background-color: #101010;
+      border-radius: 8px;
+    }
+
+    .shipping_address p {
+      color: darkgrey;
+    }
+
+    .place-order {
+      margin: 0;
+    }
+
+    .billing_details {
+      padding: 10px;
+    }
+
+    .woocommerce-shipping-fields {
+      max-width: 500px;
+      width: 100%;
+      padding: 10px;
+    }
+
+    .woocommerce-shipping-fields h3 {
+      min-width: fit-content;
+    }
+
+    .woocommerce-shipping-fields select {
+      background-color: #101010;
+      height: 100%;
+    }
+
+    .woocommerce-shipping-fields option {
+      background-color: #101010;
+      font-size: 14px;
+    }
   </style>
   <!-- breadcrumbs -->
   <div class="breadcrumbs">
@@ -288,7 +349,7 @@ $t_mrp = $mrprow['price'];
       </h2>
       <div class="col-md-8" style="margin-bottom: 15px;">
         <div class="woocommerce-billing-fields small-size">
-          <div class="checkout-left-basket" style="width: 100%;background-color: white">
+          <div class="checkout-left-basket" style="width: 100%;background-color: #151515">
             <ul style="margin: 0px;padding:0px;width: 100%;">
               <div style="width: 100%;">
                 <li>
@@ -301,7 +362,7 @@ $t_mrp = $mrprow['price'];
           </div>
         </div>
         <div class="checkout-right">
-          <table class="timetable_sub " style="background-color: white;">
+          <table class="timetable_sub " style="background-color: #151515;">
             <thead>
               <tr>
                 <th class="slno">SL No.</th>
@@ -339,7 +400,7 @@ $t_mrp = $mrprow['price'];
                         <button
                           id="btn_s<?= $store_id . "i" . $idid ?>"
                           type="button"
-                          style="width: 100%;width: 30px;height: 25px;font-weight: bold;font-size: 14px;background-color: white;outline: none;border-color:#02171e;padding: 0"
+                          style="width: 100%;width: 30px;height: 25px;font-weight: bold;font-size: 14px;background-color: #151515;outline: none;border-color:#02171e;padding: 0"
                           onclick="$(this).hide(); if ($(this).html()<10) { $('#sel_s<?= $store_id . 'i' . $idid ?>').show(); } else { $('#qnty_s<?= $store_id . 'i' . $idid ?>').show(); }"> 1
                         </button>
                         <select
@@ -347,7 +408,7 @@ $t_mrp = $mrprow['price'];
                           onchange="select_item_option('<?= $store_id ?>','<?= $idid ?>','<?= $t_mrp ?>');"
                           name="quantity"
                           autocomplete="off"
-                          style="width: 100%;max-width: 30px;bottom: 0;box-shadow: none;outline: none;border-color:#aaa;height:25px;display: none;background-color: white">
+                          style="width: 100%;max-width: 30px;bottom: 0;box-shadow: none;outline: none;border-color:#aaa;height:25px;display: none;background-color: #151515">
                           <option value="1" id="sel_opt_s<?= $store_id . "i" . $idid ?>" selected disabled>1</option>
                           <option value="1" class="sc-update-quantity-option" data-a-css-class="quantity-option" data-a-html-content="1">1</option>
                           <option value="2" class="sc-update-quantity-option" data-a-css-class="quantity-option" data-a-html-content="2">2</option>
@@ -411,28 +472,28 @@ $t_mrp = $mrprow['price'];
                         <li>
                           <p style="margin:0px;margin-top: 10px;">
                             <select
-                              style="outline: none;border:none;background-color:#006904;color: white;padding: 5px;border-radius: 3px;padding-top: 5px;padding-bottom: 5px;align-items: flex-start;justify-content: flex-start;display: flex; "
+                              style="outline: none;border:none;background-color: #006904;color: white;padding: 5px;border-radius: 3px;padding-top: 5px;padding-bottom: 5px;align-items: flex-start;justify-content: flex-start;display: flex; "
                               id="order_s<?= $store_id . "i" . $idid ?>">
                               <?php
                               $preordsql = $pdo->query("select order_preference from product_details where store_id=" . $store_id . " and product_description_id=" . $idid);
                               $preord = $preordsql->fetch(PDO::FETCH_ASSOC);
                               if ($preord['order_preference'] == 1) {
                               ?>
-                                <option style="background-color: white;color:#006904;font-weight: bold;text-align: center; "
+                                <option style="background-color: #151515;color: #006904;font-weight: bold;text-align: center; "
                                   value="1">Booking</option>
                               <?php
                               } else if ($preord['order_preference'] == 2) {
                                 $ord_typ = "Delivery";
                               ?>
-                                <option style="background-color: white;color:#006904;font-weight: bold;text-align: center;"
+                                <option style="background-color: #151515;color: #006904;font-weight: bold;text-align: center;"
                                   value="2">Delivery</option>
                               <?php
                               } else if ($preord['order_preference'] == 3) {
                                 $ord_typ = "Delivery";
                               ?>
-                                <option style="background-color: white;color:#006904;font-weight: bold;text-align: center; "
+                                <option style="background-color: #151515;color: #006904;font-weight: bold;text-align: center; "
                                   value="1">Booking</option>
-                                <option style="background-color: white;color:#006904;font-weight: bold;text-align: center;"
+                                <option style="background-color: #151515;color: #006904;font-weight: bold;text-align: center;"
                                   value="2">Delivery</option>
                               <?php
                               }
@@ -454,7 +515,7 @@ $t_mrp = $mrprow['price'];
       </div>
       <div class="col-md-4 col-sm-12 pdt_block" style="padding: 0px;padding-right:15px;">
         <div class="woocommerce-billing-fields">
-          <div class="checkout-left-basket" style="width: 100%;background-color: white;">
+          <div class="checkout-left-basket" style="width: 100%;background-color: #151515;">
             <ul style="margin: 0px;padding:0px;width: 100%;">
               <div style="width: 100%;">
                 <li class="large-size">
@@ -479,7 +540,7 @@ $t_mrp = $mrprow['price'];
                   ));
                   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   ?>
-                    <li style="color: #333">
+                    <li style="color: #d6d6d6">
                       <?= $row['product_name'] ?> <i>-</i> <span>&#8377; <span id="mrp_s<?= $store_id . "i" . $idid ?>">
                           <?= $row['mrp'] ?>
                         </span></span>
@@ -496,7 +557,7 @@ $t_mrp = $mrprow['price'];
                   $total += $service_chrg;
                   $base += $mrp_chrg;
                   ?>
-                  <li>Total Service Charges <i>-</i>
+                  <li style="margin-top: 30px;">Total Service Charges <i>-</i>
                     <span>&#8377;
                       <?= $service_chrg . " " ?>
                     </span>
@@ -510,10 +571,10 @@ $t_mrp = $mrprow['price'];
                   </li>
                   <li></li>
                   <li>
-                    <i style="font-weight: bolder;font-family:sans-serif; ;color: black;font-style: unset;">
+                    <i style="font-weight: bolder;font-family:sans-serif; ;color: darkgrey;font-style: unset;">
                       Total <i>-</i>
                     </i>
-                    <span style="font-weight: bolder;font-family:sans-serif;color: black;">
+                    <span style="font-weight: bolder;font-family:sans-serif;color: darkgrey;">
                       &#8377;
                       <span id="total_s<?= $store_id . "i" . $idid ?>">
                         <?= $total_amt ?>
@@ -523,7 +584,7 @@ $t_mrp = $mrprow['price'];
                 </div>
                 <br>
                 <a href="../Main/hfe.php">
-                  <li id="bill_gap" class="shadow_b" style="padding:10px;background-color:#3399cc ">
+                  <li id="bill_gap" class="shadow_b" style="padding:10px;background-color:#139b3b ">
                     <i class="glyphicon glyphicon-menu-left" style="color: white" aria-hidden="true"></i>
                     <span style="color: white">Continue Shopping</span>
                   </li>
@@ -534,6 +595,7 @@ $t_mrp = $mrprow['price'];
         </div>
       </div>
     </div>
+    <hr />
   </div>
   <!-- //checkout -->
   <div class="container" style="margin-top: -80px;width:100% !important;">
@@ -628,7 +690,6 @@ $t_mrp = $mrprow['price'];
                 </div>
                 <div class="col-sm-5">
                   <div class="shipping_address" style="display: none;" id="stda_div">
-                    <hr class="make_divc"><br>
                     <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
                       <label
                         class=""

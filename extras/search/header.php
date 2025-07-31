@@ -6,8 +6,7 @@
   <!-- for-mobile-apps -->
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="keywords" content="Super Market Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,
-Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+  <meta name="keywords" content="fitness equipment, health store, gym equipment, treadmills, dumbbells, resistance bands, yoga mats, online fitness shop, home workout gear, buy fitness equipment online, exercise accessories, fitness tracker, BMI calculator, calorie tracker, strength training tools">
   <script type="application/x-javascript">
     addEventListener("load", function() {
       setTimeout(hideURLbar, 0);
@@ -160,7 +159,6 @@ Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, Sony
           <div class="w3ls_logo_products_left1">
             <ul class="phone_email topli">
               <li style="color: white;" class="topli"><i class="fa fa-phone" aria-hidden="true"></i>Order online or call us : +91 8113990368</li>
-
             </ul>
           </div>
         </div>

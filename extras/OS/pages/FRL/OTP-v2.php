@@ -1,9 +1,9 @@
 <?php
 session_start();
-if (!isset($_SESSION['forgot_pass_email'])) {
-  header('location:forgot-password-v2.html');
-  return;
-}
+// if (!isset($_SESSION['forgot_pass_email'])) {
+//   header('location:forgot-password-v2.html');
+//   return;
+// }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,18 +30,49 @@ if (!isset($_SESSION['forgot_pass_email'])) {
   <link rel="stylesheet" href="../../plugins/icheck-bootstrap/icheck-bootstrap.min.css">
   <!-- Theme style -->
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
+  <style>
+    body.login-page {
+      position: absolute;
+      background-image: url(../../../../images/logo/check1.jpg) !important;
+      background-position: center !important;
+      background-size: cover !important;
+      background-repeat: no-repeat !important;
+      background-attachment: fixed !important;
+      width: 100% !important;
+      height: 100% !important;
+    }
+
+    .otp-bg-overlay {
+      background-color: rgba(0, 0, 0, 0.65);
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      align-items: center;
+      justify-content: center;
+      display: flex;
+    }
+
+    .card-primary.card-outline {
+      border-top: 3px solid #139b3b;
+    }
+
+    .card-body p>a {
+      color: #139b3b;
+    }
+  </style>
+
 </head>
 
-<body onload="verifyotp()" class="hold-transition login-page" style="background: url(../../../../images/logo/log2.jpg) no-repeat;position: absolute;background-position: center;width: 100%;">
+<body onload="verifyotp()" class="hold-transition login-page">
   <!--RESPONSE AWAITING-->
   <div class="background_loader"></div>
   <div class="std_loader"></div>
   <!--RESPONSE AWAITING-->
-  <div style="background-color: rgba(0,0,0,0.65); position: absolute;width: 100%;height: 100%;align-items: center;justify-content: center;display: flex;overflow-y: scroll;">
+  <div class="otp-bg-overlay">
     <div class="login-box" style="display: inline-flex;">
       <div class="card card-outline card-primary">
         <div class="card-header text-center">
-          <a href="../../../../hfe.php" class="h1"><img src="../../../../images/logo/logost.svg" height="auto" width="auto " style="width: 80%;height: auto;" class="image-fluid mb-2"></a>
+          <a href="../../../../hfe.php" class="h1"><img src="../../../../images/logo/logo-horizontal.png" height="auto" width="auto " style="width: 80%;height: auto;" class="image-fluid mb-2"></a>
         </div>
         <div class="card-body">
           <p class="login-box-msg">Enter your OTP here.</p>

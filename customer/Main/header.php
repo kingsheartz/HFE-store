@@ -26,7 +26,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <!--favicon-->
   <link href="../../images/logo/favicon.png" rel="icon" />
   <!--//favicon-->
-	<link rel="stylesheet" href="../../extras/OS/pages/CSS/single.css">
+  <link rel="stylesheet" href="../../extras/OS/pages/CSS/single.css">
   <link href="../../css/style.css" rel="stylesheet" type="text/css" media="all" />
   <!-- font-awesome icons -->
   <link href="../../css/font-awesome.css" rel="stylesheet">
@@ -89,6 +89,10 @@ if (session_status() === PHP_SESSION_NONE) {
   <!-- Bootstrap -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
   <style type="text/css">
+    #strt {
+      background-color: #151515;
+    }
+
     /*PAGE LOADER*/
     #popup2 {
       display: none;
@@ -102,22 +106,18 @@ if (session_status() === PHP_SESSION_NONE) {
       color: white;
     }
 
-    img.ic {
-      max-height: 100px;
-      max-width: 100px;
-      width: 0;
-      position: absolute;
-      animation-name: rotate;
-      animation-duration: 1s;
-      animation-direction: alternate;
-      animation-iteration-count: 1;
-      /*  animation-delay: 1.5s;*/
-    }
-
     button.location_marker.popup2_open,
     .wishicon,
     .carticon,
+    .carticon,
+    .loginicon,
+    .bmiicon,
+    .calorieicon,
+    .usericon,
     .location_marker {
+      display: flex !important;
+      justify-content: center !important;
+      align-items: center !important;
       height: 40px !important;
       margin: 0px !important;
       width: 40px !important;
@@ -126,21 +126,28 @@ if (session_status() === PHP_SESSION_NONE) {
       border: 0px;
       font-size: 16px !important;
       padding: 5px !important;
-      padding-top: 15px !important;
     }
 
-    div#lg-cartcnt {
+    div#lg-cartcnt,
+    div#sm-cartcnt {
       position: absolute;
-      right: 5px;
-      top: 8px;
+      top: -2px;
+      right: -2px;
       background: red;
-      height: 15px !important;
-      width: 15px;
-      padding: 0px;
-      border-radius: 10px;
-      text-align: center;
       color: white;
       font-size: 10px;
+      font-weight: bold;
+      border-radius: 50%;
+      padding: 3px 5px 3px 5px;
+      line-height: 1;
+      min-width: 18px;
+      min-height: 18px;
+      text-align: center;
+      box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .navbar ul li {
@@ -172,48 +179,70 @@ if (session_status() === PHP_SESSION_NONE) {
       padding: 12px 0 0 0 !important;
     }
 
-    @keyframes rotate {
-      0% {
-        transform: rotate(0);
-        width: 100px;
-      }
-
-      80% {
-        width: 100px;
-      }
-
-      100% {
-        transform: rotate(0deg);
-        width: 100px;
-      }
-    }
-
-    img.ic:empty {
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-      -moz-transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%);
-      -o-transform: translate(-50%, -50%);
-      transform: translate(-50%, -50%);
-      margin-left: -50px;
-      margin-top: -60px;
-    }
-
-    .loader2 {
+    /* loader 0: loader svg */
+    .loader {
       position: fixed;
-      z-index: 999999999999;
+      z-index: 9999;
       top: 0;
       left: 0;
       height: 100%;
-      width: 100%;
       background-color: rgb(000, 000, 000, 0.85);
+      width: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
     }
 
-    .loader2 {
+    .loader img.main-svg {
+      position: absolute;
+      margin-top: 0px;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      height: 125px;
+    }
+
+    .loader img.bg-svg {
+      position: absolute;
+      margin-top: 180px;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: auto;
+      height: 20px;
+    }
+
+    .loader.hidden {
+      animation: fadeout 2s;
+      animation-fill-mode: forwards;
+    }
+
+    @keyframes fadeout {
+      100% {
+        opacity: 100%;
+        visibility: hidden;
+      }
+    }
+
+    /* loader 0: loader svg */
+
+    /* loader 2: main icon */
+    .loader1 {
+      position: fixed;
+      z-index: 10000;
+      top: 0;
+      left: 0;
+      height: 100%;
+      width: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .loader1 {
       animation: fadegone 1s;
       animation-fill-mode: forwards;
     }
@@ -225,22 +254,15 @@ if (session_status() === PHP_SESSION_NONE) {
       }
     }
 
-    img.ri {
+    img.ic {
+      max-height: 100px;
       position: absolute;
-      min-width: 100%;
-      height: 100%;
       top: 0;
       left: 0;
-      box-shadow: 0 3px 6px rgba(0, 0, 0, 0.9);
+      z-index: 999;
     }
 
-    .navbar-inverse .navbar-nav>li>a {
-      color: #999999;
-      font-size: 12px;
-    }
-
-
-    img.ri:empty {
+    img.ic:empty {
       top: 50%;
       left: 50%;
       -webkit-transform: translate(-50%, -50%);
@@ -250,63 +272,7 @@ if (session_status() === PHP_SESSION_NONE) {
       transform: translate(-50%, -50%);
     }
 
-    .loader1 {
-      position: fixed;
-      z-index: 999999999990;
-      top: 0;
-      left: 0;
-      height: 100%;
-      background-color: rgb(000, 000, 000, 0.85);
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .loader1>img {
-      width: 50px;
-    }
-
-    .loader1 {
-      animation: fadein 1s;
-      animation-fill-mode: forwards;
-    }
-
-    @keyframes fadein {
-      100% {
-        opacity: 100%;
-        visibility: hidden;
-      }
-    }
-
-    .loader {
-      position: fixed;
-      z-index: 999999999999;
-      top: 0;
-      left: 0;
-      height: 100%;
-      width: 100%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-    }
-
-    .loader>img {
-      width: 50px;
-      margin-top: 140px;
-    }
-
-    .loader {
-      animation: fadeout 1s;
-      animation-fill-mode: forwards;
-    }
-
-    @keyframes fadeout {
-      100% {
-        opacity: 100;
-        visibility: hidden;
-      }
-    }
+    /* loader 2: main icon */
 
     @media(max-width: 567px) {
       #popup2 {
@@ -421,8 +387,8 @@ if (session_status() === PHP_SESSION_NONE) {
         color: white !important;
         background-color: rgb(63 63 63 / 41%) !important;
         border-bottom: 0px;
-        border-bottom-right-radius: 0px;
-        border-bottom-left-radius: 0px;
+        border-bottom-right-radius: 5px;
+        border-bottom-left-radius: 5px;
       }
 
       .navbar-inverse .navbar-nav li:hover {
@@ -461,7 +427,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .side_nav_content_head {
-      background-color: #02171e;
+      background-color: #151515df;
       border-top: 0px !important;
       font-size: 15px;
     }
@@ -507,7 +473,7 @@ if (session_status() === PHP_SESSION_NONE) {
       z-index: 1;
       top: 0;
       left: 0;
-      background-color: #02171e;
+      background-color: #151515df;
       overflow-x: hidden;
       transition: 0.15s;
       padding-top: 60px;
@@ -537,9 +503,13 @@ if (session_status() === PHP_SESSION_NONE) {
       top: 0px;
       left: 0px;
       color: white;
-      margin-left: 320px;
-      margin-top: 20px;
-      position: fixed;
+      margin-left: 255px;
+      margin-top: -20px;
+      padding: 5px;
+      background-color: darkred;
+      border-radius: 15%;
+      width: 25px;
+      height: 25px;
     }
 
     #side_nav_bar_lock {
@@ -685,25 +655,6 @@ if (session_status() === PHP_SESSION_NONE) {
       width: 100%;
     }
 
-    .usericon {
-      background-color: #0072d357 !important;
-      border: 0px;
-      color: white;
-      position: absolute;
-      top: 10px;
-      border-radius: 5px;
-      padding: 5px;
-      font-size: 12px;
-      width: max-content;
-      padding-left: 5px;
-      padding-right: 5px;
-      height: 30px !important;
-    }
-
-    .usericon>i {
-      font-size: 12px !important;
-    }
-
     .std_loader {
       border: 6px solid #f3f3f3;
       border-radius: 50%;
@@ -736,13 +687,6 @@ if (session_status() === PHP_SESSION_NONE) {
       position: fixed;
       display: none;
       top: 10%;
-    }
-
-    .userdiv .usericon {
-      justify-content: center;
-      display: flex;
-      align-items: center;
-      gap: 5px;
     }
 
     .background_loader {
@@ -788,7 +732,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     li.side-bar-collapsed>a>span {
       border: 1px solid #999999;
-			color: #999999;
+      color: #999999;
       padding: 5px;
       font-size: 16px !important;
       font-weight: 200;
@@ -810,7 +754,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
     div#mobile_menu {
       width: 100% !important;
-      padding-right: 0px !important;
       background-color: #050505;
       padding-top: 0px;
     }
@@ -825,14 +768,40 @@ if (session_status() === PHP_SESSION_NONE) {
       text-align: center;
     }
 
+    .username-placeholder {
+      text-decoration: none;
+      background-color: #00000055;
+      color: white;
+      overflow-wrap: anywhere;
+    }
+
+    .username-placeholder .fa-user-circle {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .usericon {
+      background-color: #0072d357 !important;
+      border: 0px;
+      color: white;
+      border-radius: 50%;
+      font-size: 12px;
+      height: 40px !important;
+      width: 40px !important;
+    }
+
+    ul li.profilediv {
+      float: right;
+      padding: 0px !important;
+      display: block;
+      width: 40px;
+    }
+
     @media (min-width:825px) {
       .srch {
         float: left;
         width: 100%;
-      }
-
-      #header-mock {
-        height: 120px;
       }
 
       div#lg_top_ph_mail {
@@ -843,31 +812,32 @@ if (session_status() === PHP_SESSION_NONE) {
         width: 15rem;
       }
 
-      li.profilediv {
-        position: absolute !important;
-        right: 0px !important;
-        font-weight: 100 !important;
-        font-size: 14px !important;
-        color: gray !important;
-      }
-
       li.locationdiv {
-        position: absolute !important;
-        right: 100px;
+        float: right;
       }
 
       li.cartdiv {
-        position: absolute !important;
-        right: 50px;
+        float: right;
       }
 
       li.wishdiv {
-        position: absolute !important;
-        right: 0px;
+        float: right;
       }
 
-      .usericon {
-        right: 150px !important;
+      li.bmidiv {
+        float: right;
+      }
+
+      li.caloriediv {
+        float: right;
+      }
+
+      li.logindiv {
+        float: right;
+      }
+
+      li.userdiv {
+        float: right;
       }
     }
 
@@ -875,15 +845,6 @@ if (session_status() === PHP_SESSION_NONE) {
       .srch {
         margin-left: 10px !important;
         margin-right: 10px !important;
-      }
-
-      .usericon {
-        right: 0px !important;
-        top: 20px !important;
-      }
-
-      #header-mock {
-        height: 200px;
       }
 
       div#lg_top_ph_mail {
@@ -909,7 +870,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .header {
-      position: fixed;
+      position: sticky;
       width: 100%;
       top: 0px;
       z-index: 500;
@@ -933,7 +894,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .navbar.navbar-inverse.shadow_b {
-      height: 55px !important;
+      height: 50px !important;
       border: 0px !important;
     }
 
@@ -990,11 +951,7 @@ if (session_status() === PHP_SESSION_NONE) {
   <div id="show_online" style="padding: 3px;text-align: center;color: white;width: 100%;background-color: #489e07;display: none;font-weight: 400;font-size: 1.4rem ;font-family: Poppins, sans-serif">Online</div>
   <div id="show_offline" style="padding: 3px;text-align: center;color: white;width: 100%;background-color: #c50505;display: none;font-weight: 400;font-size: 1.4rem ;font-family: Poppins, sans-serif">Offline</div>
   <!--SIDE-BAR-DIV-->
-  <div id="side_nav_bar_lock" style="padding: 0px;margin: 0px;">
-    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="float: left;">
-      <img src="../../images/close.png" alt="close">
-    </a>
-  </div>
+  <div id="side_nav_bar_lock" style="padding: 0px;margin: 0px;"></div>
   <!--SIDE-BAR-DIV-->
   <!--RESPONSE AWAITING-->
   <div class="background_loader">
@@ -1014,14 +971,14 @@ if (session_status() === PHP_SESSION_NONE) {
   </div>
   <!--RESPONSE AWAITING-->
   <!--ANIMATION-->
-  <div class="loader1">
-    <img src="../../images/logo/store.jpg" class="ri" />
-  </div>
-  <div class="loader2">
-    <img src="../../images/logo/logofullfill.png" class="ic">
-  </div>
+  <!-- loader svg -->
   <div class="loader">
-    <img src="..\..\images\load\3.svg" height="70" alt="loading..." />
+    <img class="main-svg" src="../../images/load/rotating-circle.svg" alt="loading..." />
+    <img class="bg-svg" src="../../images/load/dot-bouncer.svg" alt="loading..." />
+  </div>
+  <!-- main icon -->
+  <div class="loader1">
+    <img src="../../images/logo/favicon.png" class="ic">
   </div>
   <!--ANIMATION-->
   <!-- header -->
@@ -1085,7 +1042,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             onkeyup="searchele()"
                             name="Search"
                             placeholder="Search"
-                            style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;">
+                            style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;color:darkgray;">
                           <span class="input-group-btn">
                             <button
                               onclick="check()"
@@ -1109,16 +1066,15 @@ if (session_status() === PHP_SESSION_NONE) {
               style="color: white;float: right;text-align: right;padding: 0px;"
               class="col-lg-2 col-md-4 col-sm-4 topli"
               id="lg_top_ph_mail">
-              <a href="tel:+918113990368" style="color:white;font-family:arial;padding: 0px;">
+              <a href="tel:+918113990368" style="color:darkgrey;font-family:Arial;padding: 0px;">
                 <i class="fa fa-phone" aria-hidden="true"></i> Ph: <span><i>+91 8113990368</i></span>
               </a>
               <br>
-              <a href="mailto:govind.das279@gmail.com" style="color:white; font-family:Arial; padding:0;">
-                <i class="fa fa-envelope" aria-hidden="true"></i>
-                <span><i>govind.das279@gmail.com</i></span>
+              <a href="mailto:healthandfitnessequipmentstore@gmail.com" style="color:darkgrey;font-family:Arial;padding:0;">
+                <i class="fa fa-envelope" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;<i>hfestore@gmail.com</i>
               </a>
             </div>
-            <div style="color: white;float: right;" class="topli" id="sm_top_ph_mail">
+            <div style="color: darkgrey;float: right;" class="topli" id="sm_top_ph_mail">
               <i class="fa fa-phone" aria-hidden="true"></i>
               <br />
               <i><span><i class="fa fa-envelope"></i></span></i>
@@ -1181,7 +1137,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             onkeyup="searchele2()"
                             name="Search"
                             placeholder="Search"
-                            style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;">
+                            style="margin-top: 0px;z-index: 0;padding: 5px;height: 30px;border: 0px !important;background: #76788473;color:darkgray;">
                           <span class="input-group-btn">
                             <button
                               onclick="check2()"
@@ -1205,27 +1161,51 @@ if (session_status() === PHP_SESSION_NONE) {
                 <div class="agile-login"><!--#7-->
                   <div>
                     <ul class="phone_email topli"><!--SIDE OPEN NAV BAR-->
-                      <li class="side-bar-collapsed" style="	margin-left: 15px;">
-                        <a href="#" style="float: left;    margin-top: 10px;" id="sm_side_active">
+                      <li class="side-bar-collapsed" style="margin-left: 15px;">
+                        <a href="#" style="float: left;margin-top: 10px;" id="sm_side_active">
                           <span style="cursor:pointer" onclick="openNav()">&#9776;</span>
                         </a>
                       </li>
+                      <?php
+                      if (isset($_SESSION['name'])) {
+                      ?>
+                        <li class="userdiv" style="float: right;">
+                          <form action="../Account/registered.php" title="<?= $_SESSION['name'] ?>" method="post" class="last" onclick="openNav()">
+                            <button class="w3view-cart usericon " type="button" name="submit" value="">
+                              <span id="location"><?= strtoupper(substr($_SESSION['name'], 0, 1)); ?></span>
+                            </button>
+                          </form>
+                        </li>
+                      <?php
+                      }
+                      ?>
+                      <li class="caloriediv">
+                        <form action="#" title="Calorie Tracker" method="post" class="last">
+                          <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_tracker.php';">
+                            <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                          </button>
+                        </form>
+                      </li>
+                      <li class="bmidiv">
+                        <form action="#" title="BMI Calculator" method="post" class="last">
+                          <button class="bmiicon" type="button" name="submit" value="" onclick="location.href='../Main/bmi_calculator.php';">
+                            <i class="fa fa-calculator" aria-hidden="true"></i>
+                          </button>
+                        </form>
+                      </li>
                       <li class="wishdiv">
-                        <form action="#" method="post" class="last">
+                        <form action="#" title="Wishlist" method="post" class="last">
                           <button class="wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
                             <i class="fa fa-heart" aria-hidden="true"></i>
                           </button>
                         </form>
                       </li>
                       <li class="cartdiv">
-                        <form action="#" method="post" class="last">
+                        <form action="#" title="Cart" method="post" class="last">
                           <div id="cart" class="btn-group btn-shopping-cart">
                             <a href="..\Cart\cart.php">
                               <div class="shopcart">
-                                <div
-                                  id="sm-cartcnt"
-                                  style="position: absolute;margin-bottom: -10px;background-color: red;border-radius: 50px;width: 20px;height:20px;margin-left: 20px"
-                                  class="crt-count">
+                                <div id="sm-cartcnt" class="crt-count">
                                   <?php
                                   if (isset($_SESSION['cart_count'])) {
                                     echo $_SESSION['cart_count'];
@@ -1249,7 +1229,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         </form>
                       </li>
                       <li class="locationdiv">
-                        <form action="#" method="post" class="last">
+                        <form action="#" title="Location" method="post" class="last">
                           <button class="location_marker popup2_open" type="submit" name="submit" value="">
                             <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
                           </button>
@@ -1258,24 +1238,6 @@ if (session_status() === PHP_SESSION_NONE) {
                           </span>
                         </form>
                       </li>
-                      <div id="userdetails" style="float: right;">
-                        <?php
-                        if (isset($_SESSION['name'])) {
-                        ?>
-                          <a href="#">
-                            <li class="userdiv" style="float: right;">
-                              <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
-                                <button class="w3view-cart usericon " type="button" name="submit" value="">
-                                  <i class="fa fa-user" aria-hidden="true"></i>
-                                  <span id="location"><?= $_SESSION['name'] ?></span>
-                                </button>
-                              </form>
-                            </li>
-                          </a>
-                        <?php
-                        }
-                        ?>
-                      </div>
                     </ul>
                   </div>
                 </div>
@@ -1290,7 +1252,7 @@ if (session_status() === PHP_SESSION_NONE) {
 	</div>
 	</div>-->
     <!-- navigation -->
-    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 10px;background-color: #050505; border: 0px !important;">
+    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 0px;background-color: #050505; border: 0px !important;">
       <div class="container-fluid">
         <div class="row">
           <div style="padding: 0px">
@@ -1345,8 +1307,7 @@ if (session_status() === PHP_SESSION_NONE) {
                   <li class="profilediv">
                     <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
                       <button class=" usericon " type="button" name="submit" value="">
-                        <i class="fa fa-user" aria-hidden="true"></i>
-                        <span><?= $_SESSION['name'] ?></span>
+                        <span><?= strtoupper(substr($_SESSION['name'], 0, 1)); ?></span>
                       </button>
                     </form>
                   </li>
@@ -1354,7 +1315,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 }
                 ?>
                 <li class="profile-popup">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="display:flex;align-items:center;justify-content:center;">
                     <span class="glyphicon glyphicon-user" style="font-size:16px;"></span> Profile <span class="caret"></span>
                   </a>
                   <ul class="dropdown-menu" style="border:1px solid rgb(55, 55, 55);padding: 0px; background-color: #000 !important; color:white !important;">
@@ -1429,15 +1390,29 @@ if (session_status() === PHP_SESSION_NONE) {
                     ?>
                   </ul>
                 </li>
-                <li class="locationdiv">
-                  <form action="#" method="post" class="last">
-                    <button class="location_marker popup2_open" type="submit" name="submit" value="">
-                      <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
+                <li class="caloriediv">
+                  <form action="#" title="Calorie Tracker" method="post" class="last">
+                    <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_tracker.php';">
+                      <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                    </button>
+                  </form>
+                </li>
+                <li class="bmidiv">
+                  <form action="#" title="BMI Calculator" method="post" class="last">
+                    <button class="bmiicon" type="button" name="submit" value="" onclick="location.href='../Main/bmi_calculator.php';">
+                      <i class="fa fa-calculator" aria-hidden="true"></i>
+                    </button>
+                  </form>
+                </li>
+                <li class="wishdiv">
+                  <form action="#" title="Wishlist" method="post" class="last">
+                    <button class=" wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
+                      <i class="fa fa-heart" aria-hidden="true"></i>
                     </button>
                   </form>
                 </li>
                 <li class="cartdiv">
-                  <form action="#" method="post" class="last">
+                  <form action="#" title="Cart" method="post" class="last">
                     <div id="cart" class="btn-group btn-shopping-cart">
                       <a href="../Cart/cart.php">
                         <div class="shopcart">
@@ -1460,13 +1435,24 @@ if (session_status() === PHP_SESSION_NONE) {
                     </div>
                   </form>
                 </li>
-                <li class="wishdiv">
-                  <form action="#" method="post" class="last">
-                    <button class=" wishicon" type="button" name="submit" value="" onclick="location.href='../Wishlist/wishlist.php';">
-                      <i class="fa fa-heart" aria-hidden="true"></i>
+                <li class="locationdiv">
+                  <form action="#" title="Location" method="post" class="last">
+                    <button class="location_marker popup2_open" type="submit" name="submit" value="">
+                      <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
                     </button>
                   </form>
                 </li>
+                <?php
+                if (!isset($_SESSION['name'])) {
+                ?>
+                  <li class="logindiv" title="Login">
+                    <a class="loginicon" href="#myModal" data-toggle="modal" data-dismiss="modal">
+                      <i class="fa fa-sign-in dropdown" style="color: white;font-size:16px;" aria-hidden="true"></i>
+                    </a>
+                  </li>
+                <?php
+                }
+                ?>
               </ul>
             </div>
           </div>
@@ -1483,7 +1469,6 @@ if (session_status() === PHP_SESSION_NONE) {
     </div>
   </div>
 
-  <div id="header-mock"></div>
   <!--</nav>-->
   <!--LOCATION ACCESS-->
   <section id="popup2">
@@ -1513,11 +1498,16 @@ if (session_status() === PHP_SESSION_NONE) {
   </section>
   <!--LOCATION ACCESS-->
   <!--SIDE NAV BAR-->
-  <div id="mySidenav" class="sidenav scroll_handle_blue"
+  <div
+    id="mySidenav"
+    class="sidenav scroll_handle_blue"
     style="z-index: 99999999;padding-top: 0px;overflow-y: scroll;">
-    <a style="text-decoration:none;background-color: white;color: black">
+    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()" style="float: left;width: 100%;">
+      <img src="../../images/close.png" alt="close">
+    </a>
+    <a class="username-placeholder">
       <i class="fas fa-user-circle fa-2x">
-        <span style="font-family: arial;font-weight: bold;font-size: 22px">
+        <span style="font-family: arial;font-weight: bold;font-size: 22px;">
           Hello,
           <?php
           if (isset($_SESSION['name'])) {
@@ -1546,14 +1536,13 @@ if (session_status() === PHP_SESSION_NONE) {
       $category_name = $row11['category_name'];
     ?>
       <button class="dropdown-btn  category_side_head" id="list_enda" style="width: 100%;float: left;padding-left: 0px;">
-        <a href="../Product/products_limited.php?category_id=<?= $category_id ?>" style="color: white;"> <?= $category_name ?></a>
+        <a href="../Product/products.php?category_id=<?= $category_id ?>" style="color: white;"> <?= $category_name ?></a>
       </button>
     <?php
     }
     ?>
 
-    <div id="side_cat_list_end_default" style="margin-top: 370px;"></div><!--n+4 breaks 37px difference-->
-    <div id="side_cat_list_enda" style="display: none;margin-top: 333px;"></div><!--n+4 breaks 37px difference-->
+    <div id="side_cat_list_end_default" style="margin-top: 310px;"></div><!--n+4 breaks 37px difference (here margin-top was 333)-->
     <div id="side_cat_list_endb" style="display: none;margin-top: 296px;"></div><!--n+4 breaks 37px difference-->
     <div id="side_cat_list_endc" style="display: none;margin-top: 259px;"></div><!--n+4 breaks 37px difference-->
     <div id="side_cat_list_endd" style="display: none;margin-top: 222px;"></div><!--n+4 breaks 37px difference-->

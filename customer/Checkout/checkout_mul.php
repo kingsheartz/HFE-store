@@ -22,7 +22,7 @@ $stmt->execute(array(
 ));
 $pdt_cnt = $stmt->rowCount();
 ?>
-<div style="background-color: #f8f8f8">
+<div style="background-color: #151515">
   <style type="text/css">
     input[type="submit"],
     button[type=submit],
@@ -121,7 +121,7 @@ $pdt_cnt = $stmt->rowCount();
     }
 
     .timetable_sub th {
-      background-color: #3399cc;
+      background-color: #139b3b;
       border-color: white;
     }
 
@@ -185,7 +185,7 @@ $pdt_cnt = $stmt->rowCount();
       left: 0;
       height: 20px;
       width: 20px;
-      background-color: #f8f8f8;
+      background-color: #151515;
       border: 1px solid #ddd;
       border-radius: 50%
     }
@@ -199,7 +199,7 @@ $pdt_cnt = $stmt->rowCount();
       width: 9px;
       height: 9px;
       display: block;
-      background: white;
+      background: #151515;
       position: absolute;
       top: 52%;
       left: 51%;
@@ -242,6 +242,68 @@ $pdt_cnt = $stmt->rowCount();
     .options input {
       opacity: 0
     }
+
+
+    button#place_order {
+      background: #139b3b;
+      border: 0px;
+      border-radius: 5px;
+      height: 40px;
+      color: white;
+      text-align: center;
+    }
+
+    .billing_details textarea {
+      background-color: #151515;
+    }
+
+    .woocommerce-shipping-fields label {
+      color: darkgrey;
+    }
+
+
+    .shipping_address {
+      padding: 20px;
+      padding-top: 0px;
+      max-width: 520px;
+    }
+
+    .shipping_address .form-row .input-text {
+      background-color: #101010;
+      border-radius: 8px;
+    }
+
+    .shipping_address p {
+      color: darkgrey;
+    }
+
+    .place-order {
+      margin: 0;
+    }
+
+    .billing_details {
+      padding: 10px;
+    }
+
+    .woocommerce-shipping-fields {
+      max-width: 500px;
+      width: 100%;
+      padding: 10px;
+    }
+
+    .woocommerce-shipping-fields h3 {
+      min-width: fit-content;
+    }
+
+    .woocommerce-shipping-fields select {
+      background-color: #101010;
+      height: 100%;
+    }
+
+    .woocommerce-shipping-fields option {
+      background-color: #101010;
+      font-size: 14px;
+    }
   </style>
   <!-- breadcrumbs -->
   <div class="breadcrumbs">
@@ -260,7 +322,7 @@ $pdt_cnt = $stmt->rowCount();
       <h2 style="padding:15px;">Your shopping cart contains: <span style="font-family: arial"><?= $pdt_cnt ?>Products</span></h2>
       <div class="col-md-8" style="margin-bottom: 15px;">
         <div class="woocommerce-billing-fields small-size">
-          <div class="checkout-left-basket" style="width: 100%;background-color: white">
+          <div class="checkout-left-basket" style="width: 100%;background-color: #151515">
             <ul style="margin: 0px;padding:0px;width: 100%;">
               <div style="width: 100%;">
                 <li>
@@ -271,7 +333,7 @@ $pdt_cnt = $stmt->rowCount();
           </div>
         </div>
         <div class="checkout-right">
-          <table class="timetable_sub " style="background-color: white;">
+          <table class="timetable_sub " style="background-color: #151515;">
             <thead>
               <tr>
                 <th class="slno">SL No.</th>
@@ -324,7 +386,7 @@ $pdt_cnt = $stmt->rowCount();
       </div>
       <div class="col-md-4 col-sm-12 pdt_block" style="padding: 0px;padding-right:15px;">
         <div class="woocommerce-billing-fields">
-          <div class="checkout-left-basket" style="width: 100%;background-color: white;">
+          <div class="checkout-left-basket" style="width: 100%;background-color: #151515;">
             <ul style="margin: 0px;padding:0px;width: 100%;">
               <div style="width: 100%;">
                 <li class="large-size">
@@ -347,7 +409,7 @@ $pdt_cnt = $stmt->rowCount();
                   $stmt = $pdo->query($sql);
                   while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                   ?>
-                    <li style="color: #333"><?= $row['product_name'] ?> <i>-</i> <span>&#8377;
+                    <li style="color: #d6d6d6"><?= $row['product_name'] ?> <i>-</i> <span>&#8377;
                         <?= $row['total_amt'] ?></span></li>
                   <?php
                     $qty = $row['quantity'];
@@ -361,20 +423,19 @@ $pdt_cnt = $stmt->rowCount();
                   $total += $service_chrg;
                   $base += $mrp_chrg;
                   ?>
-                  <li>Total Service Charges <i>-</i>
+                  <li style="margin-top: 30px;">Total Service Charges <i>-</i>
                     <span>&#8377;<?= $service_chrg . " " ?></span>
                   </li>
                   <li>Total Savings <i>-</i>
                     <span>&#8377;<?= $total_mrp - $total_amt . " " ?></span>
                   </li>
                   <li>
-                    <i style="font-weight: bolder;font-family:sans-serif; ;color: black;font-style: unset;">Total <i>-</i></i>
-                    <span style="font-weight: bolder;font-family:sans-serif; ;color: black;">&#8377;<?= $total_amt ?></span>
+                    <i style="font-weight: bolder;font-family:sans-serif; ;color: darkgrey;font-style: unset;">Total <i>-</i></i>
+                    <span style="font-weight: bolder;font-family:sans-serif; ;color: darkgrey;">&#8377;<?= $total_amt ?></span>
                   </li>
-                  <hr>
                 </div><br>
                 <a href="../Main/hfe.php">
-                  <li id="bill_gap" class="shadow_b" style="padding:10px;background-color:#3399cc ">
+                  <li id="bill_gap" class="shadow_b" style="padding:10px;background-color:#139b3b ">
                     <i class="glyphicon glyphicon-menu-left" style="color: white" aria-hidden="true"></i>
                     <span style="color: white">Continue Shopping</span>
                   </li>
@@ -385,6 +446,7 @@ $pdt_cnt = $stmt->rowCount();
         </div>
       </div>
     </div>
+    <hr />
   </div>
   <!-- //checkout -->
   <div class="container" style="margin-top: -80px;width:100% !important;">
@@ -475,7 +537,6 @@ $pdt_cnt = $stmt->rowCount();
                 </div>
                 <div class="col-sm-5">
                   <div class="shipping_address" style="display: none;" id="stda_div">
-                    <hr class="make_divc"><br>
                     <p id="shipping_first_name_field" class="form-row form-row-first validate-required">
                       <label
                         class=""

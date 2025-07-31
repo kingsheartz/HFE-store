@@ -12,7 +12,7 @@ function check() {
     });
     return;
   } else {
-    location.href = "../Product/products_limited.php?product=" + ele;
+    location.href = "../Product/products.php?product=" + ele;
   }
 }
 function check2() {
@@ -29,7 +29,7 @@ function check2() {
     });
     return;
   } else {
-    location.href = "../Product/products_limited.php?product=" + ele;
+    location.href = "../Product/products.php?product=" + ele;
   }
 }
 $(document).on("click", ".item_search_list_p", function () {
@@ -88,11 +88,11 @@ function searchele() {
         for (var i = 0; i < item?.length; i++) {
           console.log("item is " + item[i].product_name);
           html +=
-            '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
+            '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid darkgrey;border-top: none;cursor: pointer;"><img src="../../images/' +
             item[i].category_id +
             "/" +
             item[i].product_description_id +
-            '.jpg" style="max-width:80px;height:30px">' +
+            '.jpg" style="max-width:80px;height:30px"> ' +
             item[i].product_name +
             "</p>";
         }
@@ -108,11 +108,11 @@ function searchele() {
           if (item[i].category_id == cat) {
             console.log("item is" + item[i].product_name);
             html +=
-              '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
+              '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid darkgrey;border-top: none;cursor: pointer;"><img src="../../images/' +
               item[i].category_id +
               "/" +
               item[i].product_description_id +
-              '.jpg" style="max-width:80px;height:30px">' +
+              '.jpg" style="max-width:80px;height:30px"> ' +
               item[i].product_name +
               "</p>";
           }
@@ -144,11 +144,11 @@ function searchele2() {
       for (var i = 0; i < item?.length; i++) {
         console.log("item is" + item[i].product_name);
         html +=
-          '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
+          '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid darkgrey;border-top: none;cursor: pointer;"><img src="../../images/' +
           item[i].category_id +
           "/" +
           item[i].product_description_id +
-          '.jpg" style="max-width:80px;height:30px">' +
+          '.jpg" style="max-width:80px;height:30px"> ' +
           item[i].product_name +
           "</p>";
       }
@@ -162,11 +162,11 @@ function searchele2() {
         if (item[i].category_id == cat) {
           console.log("item is" + item[i].product_name);
           html +=
-            '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid #CCCCCC;border-top: none;cursor: pointer;"><img src="../../images/' +
+            '<p class="item_search_list_p" style="margin: 0;padding: 7px 10px;border: 1px solid darkgrey;border-top: none;cursor: pointer;"><img src="../../images/' +
             item[i].category_id +
             "/" +
             item[i].product_description_id +
-            '.jpg" style="max-width:80px;height:30px">' +
+            '.jpg" style="max-width:80px;height:30px"> ' +
             item[i].product_name +
             "</p>";
         }
