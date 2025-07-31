@@ -128,7 +128,8 @@ if (session_status() === PHP_SESSION_NONE) {
       padding: 5px !important;
     }
 
-    div#lg-cartcnt {
+    div#lg-cartcnt,
+    div#sm-cartcnt {
       position: absolute;
       top: -2px;
       right: -2px;
@@ -137,12 +138,16 @@ if (session_status() === PHP_SESSION_NONE) {
       font-size: 10px;
       font-weight: bold;
       border-radius: 50%;
-      padding: 4px 6px;
+      padding: 3px 5px 3px 5px;
       line-height: 1;
-      min-width: 16px;
+      min-width: 18px;
+      min-height: 18px;
       text-align: center;
       box-shadow: 0 0 4px rgba(0, 0, 0, 0.3);
       z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .navbar ul li {
@@ -1200,10 +1205,7 @@ if (session_status() === PHP_SESSION_NONE) {
                           <div id="cart" class="btn-group btn-shopping-cart">
                             <a href="..\Cart\cart.php">
                               <div class="shopcart">
-                                <div
-                                  id="sm-cartcnt"
-                                  style="position: absolute;margin-bottom: -10px;background-color: red;border-radius: 50px;width: 20px;height:20px;margin-left: 20px"
-                                  class="crt-count">
+                                <div id="sm-cartcnt" class="crt-count">
                                   <?php
                                   if (isset($_SESSION['cart_count'])) {
                                     echo $_SESSION['cart_count'];

@@ -7,7 +7,7 @@ if (isset($_GET['wishlist_id'])) {
 }
 require "../Main/header.php";
 require "../Common/pdo.php";
-$update_setting_sql = 'select* from wishlist where wishlist_id= ' . $wishlist_id;
+$update_setting_sql = 'SELECT* FROM wishlist WHERE wishlist_id= ' . $wishlist_id;
 $update_setting_stmt = $pdo->query($update_setting_sql);
 $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);
 ?>
@@ -34,7 +34,7 @@ $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);
   input[type="button"] {
     background: none repeat scroll 0 0 #139b3b;
     border: medium none;
-    color: #fff;
+    color: darkgrey;
     padding: 11px 20px;
     text-transform: uppercase;
     font-size: 12px;
@@ -51,23 +51,23 @@ $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);
   }
 
   table.shop_table {
-    border-bottom: 0px none #fff;
-    border-right: 0px none #fff;
+    border-bottom: 0px none darkgrey;
+    border-right: 0px none darkgrey;
     margin-bottom: 50px;
     width: 100%;
   }
 
   table.shop_table th,
   table.shop_table td {
-    border-left: 0px none #fff;
-    border-top: 0px none #fff;
+    border-left: 0px none darkgrey;
+    border-top: 0px none darkgrey;
     padding: 15px;
     text-align: left;
   }
 
   table.shop_table th {
     background: none repeat scroll 0 0 #139b3b;
-    color: #ffffff;
+    color: darkgrey;
     font-size: 15px;
     text-transform: uppercase;
   }
@@ -128,25 +128,25 @@ $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);
   }
 
   .cart_totals table th {
-    background: none repeat scroll 0 0 #f4f4f4;
+    background: none repeat scroll 0 0 #151515;
   }
 
   div.cart-collaterals ul.products li.product .onsale {
     background: none repeat scroll 0 0 #139b3b;
-    color: #fff;
+    color: darkgrey;
     padding: 5px 10px;
     position: absolute;
     right: 0;
   }
 
   div.cart-collaterals ul.products li.product h3 {
-    color: #333;
+    color: darkgrey;
     font-size: 20px;
     margin-top: 15px;
   }
 
   div.cart-collaterals ul.products li.product .price {
-    color: #333;
+    color: darkgrey;
     display: block;
     margin-bottom: 10px;
     overflow: hidden;
@@ -157,6 +157,29 @@ $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);
     font-weight: 700;
     margin-left: 10px;
     text-decoration: none;
+  }
+
+  #wishlist_name_input,
+  #wishlist_description_input {
+    background-color: black;
+    color: #757575;
+  }
+
+  .single-product-area h2,
+  .single-product-area h3,
+  .single-product-area h4,
+  .settings_show label,
+  .product-quantity p,
+  .product-price .amount {
+    color: darkgrey;
+  }
+
+  .large_specs_seen {
+    list-style: none;
+  }
+
+  hr.make_divc {
+    border-color: #333333 !important;
   }
 
   @media(max-width: 991px) {
@@ -281,7 +304,7 @@ $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);
     #proceed {
       background: none repeat scroll 0 0 #139b3b;
       border: medium none;
-      color: #fff;
+      color: darkgrey;
       padding: 0px 8px;
       text-transform: uppercase;
       font-size: 10px;
@@ -325,7 +348,7 @@ $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);
   });
 </script>
 <?php
-$sql_single_div = "select COUNT(wishlist_items_id) as checksingle from wishlist_items where wishlist_id=:wishlist_id";
+$sql_single_div = "SELECT COUNT(wishlist_items_id) AS checksingle FROM wishlist_items WHERE wishlist_id=:wishlist_id";
 $stmt_single_div = $pdo->prepare($sql_single_div);
 $stmt_single_div->execute(array(
   ':wishlist_id' => $wishlist_id
@@ -333,15 +356,15 @@ $stmt_single_div->execute(array(
 $row_single_div = $stmt_single_div->fetch(PDO::FETCH_ASSOC);
 $rowcount = $row_single_div['checksingle'];
 ?>
-<div class="single-product-area" style="padding-top: 0px; background-color: #eaeded;padding-bottom: 0px;">
+<div class="single-product-area" style="padding-top: 0px; background-color: #151515;padding-bottom: 0px;">
   <div class="zigzag-bottom"></div>
   <div class="container nopadding-margin" style="margin-left: 0px;width: 100%;padding: 0px;padding-bottom: 30px;">
-    <div class="row" style="margin: 0px;padding: 0px;">
+    <div class="row" style="margin: 0px;padding: 0px;background-color: black;">
       <div class="col-md-12 main_padding" style="padding: 15px;">
-        <div class="shadow_b" style="background-color: white;border-radius: 5px;padding: 15px;">
+        <div class="shadow_b" style="background-color: #151515;border-radius: 5px;padding: 15px;">
           <h2><i class="fa fa-edit"></i> Manage List </h2>
           <br>
-          <h3 style="color: #0599dd;display: flex;" class="div-wrapper">
+          <h3 style="color: #139b3b;display: flex;" class="div-wrapper">
             <div><img src="../../images/logo/wishlist2.png" style="max-height: 45px;"></div>
             <div style="display: flex;align-items: center;"><?= $update_setting_row['list_name'] ?>
               <div class="wishlist_cnt">(<?= $rowcount ?>)</div>
@@ -400,7 +423,7 @@ $rowcount = $row_single_div['checksingle'];
           action="#"
           onsubmit="return update_my_list()"
           class="shadow_b"
-          style="background-color: white;padding: 15px;border-radius: 5px;">
+          style="background-color: #151515;padding: 15px;border-radius: 5px;">
           <table style="width: 100%;padding: 5px;" class="create_wishlist_table">
             <tr>
               <td>
@@ -423,9 +446,9 @@ $rowcount = $row_single_div['checksingle'];
                     required=""
                     readonly>
                   <span id="dis_fn" class="input-group-btn">
-                    <button onclick="dis_fn()" onmouseover="$(this).css('background-color','#0c66cc')"
-                      onmouseleave="$(this).css('background-color','#0c77cc')"
-                      style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;
+                    <button onclick="dis_fn()" onmouseover="$(this).css('background-color','#139b3b')"
+                      onmouseleave="$(this).css('background-color','#139b3b')"
+                      style="color: darkgrey;background-color: #139b3b;padding-top: 10px;padding-bottom: 10px;outline: none;
                         border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;"
                       class="btn btn-default search_btn" type="button"><span class="fa fa-edit"></span></button>
                   </span>
@@ -434,7 +457,7 @@ $rowcount = $row_single_div['checksingle'];
                       onclick="reset_fn()"
                       onmouseover="$(this).css('background-color','#bb0000')"
                       onmouseleave="$(this).css('background-color','red')"
-                      style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
+                      style="color: darkgrey;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -445,7 +468,7 @@ $rowcount = $row_single_div['checksingle'];
                       onclick="dis_fn()"
                       onmouseover="$(this).css('background-color','#4f994f')"
                       onmouseleave="$(this).css('background-color','#07C103')"
-                      style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;"
+                      style="color: darkgrey;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-check"></span>
@@ -476,15 +499,15 @@ $rowcount = $row_single_div['checksingle'];
                     onclick="dis_add()"
                     id="dis_add"
                     class="fa fa-sm fa-edit"
-                    style="position: absolute;right: 0;top: 0;color: white;background-color:#0c77cc;padding: 4px;"
-                    onmouseover="$(this).css('background-color','#0c66cc')"
-                    onmouseleave="$(this).css('background-color','#0c77cc')">
+                    style="position: absolute;right: 0;top: 0;color: darkgrey;background-color: #139b3b;padding: 4px;"
+                    onmouseover="$(this).css('background-color','#139b3b')"
+                    onmouseleave="$(this).css('background-color','#139b3b')">
                   </span>
                   <span
                     onclick="reset_add()"
                     id="hide_add"
                     class="fa fa-sm fa-close"
-                    style="display: none;position: absolute;right: 0;top: 0;color: white;background-color:red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
+                    style="display: none;position: absolute;right: 0;top: 0;color: darkgrey;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
                     onmouseover="$(this).css('background-color','#bb0000')"
                     onmouseleave="$(this).css('background-color','red')">
                   </span>
@@ -492,7 +515,7 @@ $rowcount = $row_single_div['checksingle'];
                     onclick="dis_add()"
                     id="hide_add1"
                     class="fa fa-check"
-                    style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color:#07C103;padding: 3px;"
+                    style="display:none;position: absolute;right: 0;top: 23px;color: darkgrey;background-color: #07C103;padding: 3px;"
                     onmouseover="$(this).css('background-color','#4f994f')"
                     onmouseleave="$(this).css('background-color','#07C103')">
                   </span>
@@ -509,34 +532,27 @@ $rowcount = $row_single_div['checksingle'];
             </tr>
             <tr>
               <td>
-                <div class="div-wrapper" onclick="changed_details()" style="grid-gap: 0;margin: auto;display: flex;">
-                  <input type="radio" value="public" id="public" name="privacy">
-                  <label for="public">&nbsp;Public</label>
-                  <div>
-                    <span style="font-size: 12px;color: #666">
-                      - Anyone can search for and see this list.You can also share using a link
-                    </span>
-                  </div>
-                </div>
+                <input type="radio" value="public" id="public" name="privacy">
+                <label for="public">&nbsp;Public</label>
+                <span style="font-size: 12px;color: darkgrey">
+                  - Anyone can search for and see this list.You can also share using a link
+                </span>
               </td>
             </tr>
             <tr>
               <td>
-                <div class="div-wrapper" onclick="changed_details()" style="grid-gap: 0;margin: auto;display: flex;">
-                  <input type="radio" value="shared" id="shared" name="privacy"><label for="shared">&nbsp;Shared</label>
-                  <div>
-                    <span style="font-size: 12px;color: #666">
-                      - Only people with the link see this list.It will not appear in public search results.
-                    </span>
-                  </div>
-                </div>
+                <input type="radio" value="shared" id="shared" name="privacy">
+                <label for="shared">&nbsp;Shared</label>
+                <span style="font-size: 12px;color: darkgrey">
+                  - Only people with the link see this list.It will not appear in public search results.
+                </span>
               </td>
             </tr>
             <tr>
               <td>
                 <input type="radio" id="private" onclick="changed_details()" value="private" name="privacy">
                 <label for="private">&nbsp;Private</label>
-                <span style="font-size: 12px;color: #666"> - Only you can see the list</span>
+                <span style="font-size: 12px;color: darkgrey"> - Only you can see the list</span>
               </td>
             </tr>
             <tr>
@@ -549,7 +565,7 @@ $rowcount = $row_single_div['checksingle'];
                     class="btn btn-default search"
                     name="createlist"
                     disabled="">
-                    <h4 style="text-transform: capitalize;">Save changes</h4>
+                    <h4 style="text-transform: capitalize;color: white;">Save changes</h4>
                   </button>
                 </center>
               </td>
@@ -580,7 +596,7 @@ $rowcount = $row_single_div['checksingle'];
         //Generate Dynamic Loading
         if (isset($_SESSION['id'])) {
           $id = $_SESSION['id'];
-          $sqlc = "select * from wishlist_items where wishlist_id=:wid";
+          $sqlc = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid";
           $stmtc = $pdo->prepare($sqlc);
           $stmtc->execute(array(
             ':wid' => $wishlist_id
@@ -589,20 +605,20 @@ $rowcount = $row_single_div['checksingle'];
           if ($rowc) {
         ?>
             <div class="col-md-12" style="margin:0px;padding: 0px;">
-              <div class="product-content-right nopadding-margin" style="margin:0px;padding: 0px;margin-right:0px;background-color: white;border-radius: 10px;">
+              <div class="product-content-right nopadding-margin" style="margin: 0px;padding: 0px;margin-right: 0px;background-color: #151515;border-radius: 10px;">
                 <h2
                   class="sidebar-title"
                   style="border-left: 5px solid #c50505;border-top-left-radius: 10px;
                         text-align: left;padding-bottom: 30px;padding-top: 20px;
-                        background-color: white;margin-top: 0px;font-weight:normal;
-                        border-bottom:#333;margin-bottom: 0px;border-radius: 10px;
-                        color: black;text-transform: capitalize;padding-left: 10px; ">
+                        background-color: #151515;margin-top: 0px;font-weight: normal;
+                        border-bottom:darkgrey;margin-bottom: 0px;border-radius: 10px;
+                        color: darkgrey;text-transform: capitalize;padding-left: 10px; ">
                   Wish List
                   <i style="color: red" class="fa fa-heart"></i>
                   <span style="float: right;margin-right: 5px;margin-top: -16px;">
                     <input
                       type="button"
-                      style="max-width: 150px;height: 60px;font-weight: bold;border-top-right-radius: 10px;background-color: #c50505"
+                      style="max-width: 150px;height: 60px;font-weight: bold;border-top-right-radius: 10px;background-color: #c50505;color: white"
                       onclick="updateall_cart()"
                       value="Move to cart"
                       id="proceed"
@@ -615,7 +631,7 @@ $rowcount = $row_single_div['checksingle'];
                   <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;width: 100%">
                     <?php
                     $id = $_SESSION['id'];
-                    $sql1 = "select * from wishlist_items where wishlist_id=:wid order by product_description_id";
+                    $sql1 = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid ORDER BY product_description_id";
                     $stmt1 = $pdo->prepare($sql1);
                     $stmt1->execute(array(
                       ':wid' => $wishlist_id
@@ -631,17 +647,17 @@ $rowcount = $row_single_div['checksingle'];
                       $product_description_id = $row1['product_description_id'];
                       $store_id = $row1['store_id'];
                       $n = 0;
-                      $sql2 = "select * from product inner join category on category.category_id=product.category_id
-															inner join product_description on product_description.product_id=product.product_id
-															inner join product_details on product_description.product_description_id=product_details.product_description_id
-															inner join store on store.store_id=product_details.store_id
-															where product.category_id=category.category_id and product_description.product_description_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
+                      $sql2 = "SELECT * FROM product INNER JOIN category ON category.category_id=product.category_id
+															INNER JOIN product_description ON product_description.product_id=product.product_id
+															INNER JOIN product_details ON product_description.product_description_id=product_details.product_description_id
+															INNER JOIN store ON store.store_id=product_details.store_id
+															WHERE product.category_id=category.category_id AND product_description.product_description_id=:product_description_id AND product_details.store_id=:store_id ORDER BY product_description.product_description_id";
                       $stmt2 = $pdo->prepare($sql2);
                       $stmt2->execute(array(
                         ':product_description_id' => $product_description_id,
                         ':store_id' => $store_id
                       ));
-                      $mrpsql = "select product.price from product inner join product_description on product_description.product_id=product.product_id where product_description.product_description_id=$product_description_id";
+                      $mrpsql = "SELECT product.price FROM product INNER JOIN product_description ON product_description.product_id=product.product_id WHERE product_description.product_description_id=$product_description_id";
                       $mrpstmt = $pdo->query($mrpsql);
                       $mrprow = $mrpstmt->fetch(PDO::FETCH_ASSOC);
                       $t_mrp = $mrprow['price'];
@@ -658,7 +674,7 @@ $rowcount = $row_single_div['checksingle'];
                           <div class="container" style="padding: 0px;margin:0;width: 100%">
                             <div class="row" style="padding: 0;margin:0;width: 100%;">
                               <div class="col-md-12 shop_table cart"
-                                style="background-color: #fff;margin: 0px;margin-top: -28px;padding: 0;width: 100%;">
+                                style="background-color: #151515;margin: 0px;margin-top: -28px;padding: 0;width: 100%;">
                               <?php
                             }
                               ?>
@@ -667,7 +683,7 @@ $rowcount = $row_single_div['checksingle'];
                                   <div style="padding: 0px;" class="tbl_wi<?= $wishlist_items_id ?> col-md-12">
                                     <div class="product-name col-md-12" colspan="2" style="padding: 0px;margin-top: 5px;">
                                       <p style="margin:0px;margin-bottom: 20px;font-size:17px;">
-                                      <div style="margin-left: 0px;background-color: #02171e;padding-left: 15px;padding-right:15px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
+                                      <div style="margin-left: 0px;background-color: #101010;padding-left: 15px;padding-right: 15px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top: 8px;padding-bottom: 8px;text-align: justify">
                                         <?php
                                         if (strlen($row2['product_name']) >= 50) {
                                           $product_name = substr($row2['product_name'], 0, 50);
@@ -676,14 +692,14 @@ $rowcount = $row_single_div['checksingle'];
                                           $product_name2 = $row2['product_name'];
                                         }
                                         ?>
-                                        <a href="#" style="color: white;font-weight: normal;text-align:justify;font-size:17px;">
+                                        <a href="#" style="color: darkgrey;font-weight: normal;text-align: justify;font-size: 17px;">
                                           <i class="fa fa-product-hunt"></i>
                                           <?= $product_name2 ?>
                                         </a>
                                       </div>
                                       </p>
                                     </div>
-                                    <div class="cart_item col-md-12" style=" background-color: #fff">
+                                    <div class="cart_item col-md-12" style=" background-color: #151515">
                                       <div class="div-wrapper height_setter" style="height: 250px;">
                                         <div class="img_check_big col-md-5" style="padding: 0px;">
                                           <div style="width: 180px;margin-top: 5px;" class="tbl_wi<?= $wishlist_items_id ?>">
@@ -708,14 +724,14 @@ $rowcount = $row_single_div['checksingle'];
                                         </div>
                                         <div class="tbl_wi<?= $wishlist_items_id ?> product_description_td col-md-7 product-img" style="padding:0;">
                                           <div class=" full-size-cart-store-div" style="padding: 0px;margin-left: 20px;width: 200px;">
-                                            <p style="z-index: 1;text-align:left;margin-top: 15px;">
-                                              <span style='font-family: arial;color:#006904;font-weight: bold;text-decoration: none;font-size: 12px'>
+                                            <p style="z-index: 1;text-align: left;margin-top: 15px;">
+                                              <span style='font-family: arial;color: #139b3b;font-weight: bold;text-decoration: none;font-size: 12px'>
                                                 You Save &#8377;
-                                                <span id="save_s<?= $store_id . "i" . $product_description_id ?>" style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px">
+                                                <span id="save_s<?= $store_id . "i" . $product_description_id ?>" style="text-decoration: none;font-weight: bold;color: #139b3b;padding-left: 0px">
                                                   <?= $save ?>
                                                 </span>
                                                 (<span
-                                                  style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"
+                                                  style="text-decoration: none;font-weight: bold;color: #139b3b;padding-left: 0px"
                                                   id="off_s<?= $store_id . "i" . $product_description_id ?>">
                                                   <?= $off ?>
                                                 </span>%)
@@ -726,7 +742,7 @@ $rowcount = $row_single_div['checksingle'];
                                                 <span id="total_s<?= $store_id . "i" . $product_description_id ?>">
                                                   <?= $total ?>
                                                 </span>
-                                                <i style="color: #303030" class="fa fa-tags">&nbsp;
+                                                <i style="color: darkgrey" class="fa fa-tags">&nbsp;
                                                   <del style="color: #999;font-weight:normal;font-size: 13px;">&#8377;</del>
                                                 </i>
                                                 <del
@@ -744,7 +760,7 @@ $rowcount = $row_single_div['checksingle'];
                                               <li class="large_specs_seen">
                                                 <span class="a-list-item">
                                                   <span class="a-size-small a-color-success sc-product-availability">
-                                                    <b style="color:#86001d;">In stock</b>
+                                                    <b style="color: #d3002eff;">In stock</b>
                                                   </span>
                                                 </span>
                                               </li>
@@ -756,9 +772,9 @@ $rowcount = $row_single_div['checksingle'];
                                                   data-a-hires="https://m.media-amazon.com/images/G/31/marketing/fba/fba-badge_18px-2x._CB485942108_.png">
                                               </p>
                                               <?php
-                                              $sqlfeatures = "select * from product_details
-                                                              inner join product_description on product_description.product_description_id=product_details.product_description_id
-                                                              where product_description.product_description_id=:product_description_id and store_id=:store_id";
+                                              $sqlfeatures = "SELECT * FROM product_details
+                                                              INNER JOIN product_description ON product_description.product_description_id=product_details.product_description_id
+                                                              WHERE product_description.product_description_id=:product_description_id AND store_id=:store_id";
                                               $stmtfeatures = $pdo->prepare($sqlfeatures);
                                               $stmtfeatures->execute(array(
                                                 ':product_description_id' => $product_description_id,
@@ -766,35 +782,19 @@ $rowcount = $row_single_div['checksingle'];
                                               ));
                                               $rowfeatures = $stmtfeatures->fetch(PDO::FETCH_ASSOC);
                                               $rowfeatures['f0'] = $rowfeatures['size'];
-                                              $rowfeatures['f1'] = $rowfeatures['color'];
-                                              $rowfeatures['f2'] = $rowfeatures['weight'];
-                                              $rowfeatures['f3'] = $rowfeatures['flavour'];
-                                              $rowfeatures['f4'] = $rowfeatures['processor'];
-                                              $rowfeatures['f5'] = $rowfeatures['display'];
-                                              $rowfeatures['f6'] = $rowfeatures['battery'];
-                                              $rowfeatures['f7'] = $rowfeatures['internal_storage'];
-                                              $rowfeatures['f8'] = $rowfeatures['brand'];
-                                              $rowfeatures['f9'] = $rowfeatures['material'];
-                                              $features = array('size', 'color', 'weight', 'flavour', 'processor', 'display', 'battery', 'Internal_storage', 'brand', 'material', 'price', 'quantity');
+                                              $rowfeatures['f1'] = $rowfeatures['weight'];
+                                              $rowfeatures['f2'] = $rowfeatures['brand'];
+                                              $features = array('size', 'weight', 'brand', 'price', 'quantity');
                                               $f = 0;
-                                              while ($f < 10) {
+                                              while ($f < 3) {
                                                 if (!is_null($rowfeatures['f' . $f]) && $rowfeatures['f' . $f] != 0 && $rowfeatures['f' . $f] != '0') {
                                                   if ($features[$f] != 'weight') {
-                                                    $sqlfeature_name = "select " . $features[$f] . '_name from ' . $features[$f] . ' where ' . $features[$f] . '_id=' . (int) $rowfeatures['f' . $f];
+                                                    $sqlfeature_name = "SELECT " . $features[$f] . '_name FROM ' . $features[$f] . ' WHERE ' . $features[$f] . '_id=' . (int) $rowfeatures['f' . $f];
                                                     $stmtfeature_name = $pdo->query($sqlfeature_name);
                                                     $rowfeature_name = $stmtfeature_name->fetch(PDO::FETCH_ASSOC);
                                                   }
-                                                  if ($features[$f] == "color") {
+                                                  if ($features[$f] == "weight") {
                                               ?>
-                                                    <li class="sc-product-variation">
-                                                      <span class="a-list-item">
-                                                        <span class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>: </b></span>
-                                                        <span class="a-size-small" style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
-                                                      </span>
-                                                    </li>
-                                                  <?php
-                                                  } else if ($features[$f] == "weight") {
-                                                  ?>
                                                     <li class="sc-product-variation">
                                                       <span class="a-list-item">
                                                         <span class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>: </b></span>
@@ -834,7 +834,7 @@ $rowcount = $row_single_div['checksingle'];
                                           </div>
                                           <div>
                                             <p class="product-store">
-                                              <i style="color: #303030;bottom: 0px;margin-top: 2px;margin-left: 5px;" class="fas fa-store">&nbsp;</i>
+                                              <i style="color: darkgrey;bottom: 0px;margin-top: 2px;margin-left: 5px;" class="fas fa-store">&nbsp;</i>
                                               <a title="<?= $row2['store_name'] ?>" href="#"><?= $row2['store_name'] ?></a>
                                             </p>
                                           </div>
@@ -847,7 +847,7 @@ $rowcount = $row_single_div['checksingle'];
                                               type="button"
                                               onclick="updatecart(<?= $product_description_id ?>,<?= $store_id ?>)"
                                               title="Add to wish list"
-                                              style="width: 100%;height: 40px;background-color: #f6f6f6;border: 0px solid #999;outline: none;font-weight: bold;-webkit-box-shadow: inset -1px 1px 15px 3px #bbb;box-shadow: inset -1px 1px 15px 3px #ccc;">
+                                              style="width: 100%;height: 40px;background-color: #c2c2c2;border: 0px solid #999;outline: none;font-weight: bold;-webkit-box-shadow: inset -1px 1px 15px 3px #bbb;box-shadow: inset -1px 1px 15px 3px #ccc;">
                                               <i class="fa fa trash"></i> Add to Cart <i style="color: red" class="fa fa-shopping-cart fa-lg"></i>
                                             </button>
                                           </div>
@@ -855,7 +855,7 @@ $rowcount = $row_single_div['checksingle'];
                                             <button
                                               type="button"
                                               title="Remove this item"
-                                              style="width: 100%;height: 40px;border:none;border-color: #fff;color: #fff;background-color: #c50505;outline: none;-webkit-box-shadow: inset -1px 1px 15px 3px #76001d;box-shadow: inset -1px 1px 15px 3px #86001d;"
+                                              style="width: 100%;height: 40px;border:none;border-color: darkgrey;color: white;background-color: #c50505;outline: none;-webkit-box-shadow: inset -1px 1px 15px 3px #76001d;box-shadow: inset -1px 1px 15px 3px #86001d;"
                                               class="remove" onclick="remove_item('<?= $row1['wishlist_items_id'] ?>')"
                                               href="#">
                                               <b>Remove </b><i class="fas fa-trash-alt"></i>
@@ -870,8 +870,8 @@ $rowcount = $row_single_div['checksingle'];
                               <?php
                               $item_cnt++;
                               $flag++;
-                              $sql_single_div = "select COUNT(wishlist_items_id) as checksingle from wishlist_items
-                                where wishlist_id=:wishlist_id";
+                              $sql_single_div = "SELECT COUNT(wishlist_items_id) AS checksingle FROM wishlist_items
+                                WHERE wishlist_id=:wishlist_id";
                               $stmt_single_div = $pdo->prepare($sql_single_div);
                               $stmt_single_div->execute(array(
                                 ':wishlist_id' => $wishlist_id
@@ -903,7 +903,7 @@ $rowcount = $row_single_div['checksingle'];
               <div class="col-md-3"></div>
             </div>
             <div class="col-md-4 small" id="small_screen" style="margin:0px;padding: 0px"></div>
-            <center style="margin-bottom:0px;margin-top: 50px;">
+            <center style="margin-bottom:0px;margin-top: 0px;">
               <h4>Need more ?<a href="../Main/hfe.php"> Start adding!</a></h4>
             </center>
           <?php
@@ -911,7 +911,7 @@ $rowcount = $row_single_div['checksingle'];
             /*COLOR PICKER*/
             $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
             $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
-            $c1 = $c2 = 'white';
+            $c1 = $c2 = 'darkgrey';
             do {
               $rancolor1 = array_rand($color, 1);
               $rancolor2 = array_rand($color, 1);
@@ -923,7 +923,7 @@ $rowcount = $row_single_div['checksingle'];
               $c2 = "black";
             }
             /*COLOR PICKER*/
-            $cntsql = "select count(category_id) as cat_cnt from category";
+            $cntsql = "SELECT count(category_id) AS cat_cnt FROM category";
             $cntstmt = $pdo->query($cntsql);
             $cntrow = $cntstmt->fetch(PDO::FETCH_ASSOC);
             $cat_cnt = $cntrow['cat_cnt'];
@@ -935,10 +935,10 @@ $rowcount = $row_single_div['checksingle'];
               $rand_cat_id2_rand2 = array_rand($rand_cat_id2, 1);
               $rand_cat_id2 = $rand_cat_id2[$rand_cat_id2_rand2];
             } while ($rand_cat_id1 == $rand_cat_id2);
-            $catsql1 = "select* from category where category_id=" . (int) $rand_cat_id1;
+            $catsql1 = "SELECT* FROM category WHERE category_id=" . (int) $rand_cat_id1;
             $catstmt1 = $pdo->query($catsql1);
             $catrow1 = $catstmt1->fetch(PDO::FETCH_ASSOC);
-            $catsql2 = "select* from category where category_id=" . (int) $rand_cat_id2;
+            $catsql2 = "SELECT* FROM category WHERE category_id=" . (int) $rand_cat_id2;
             $catstmt2 = $pdo->query($catsql2);
             $catrow2 = $catstmt2->fetch(PDO::FETCH_ASSOC);
             $cat_id1 = $catrow1['category_id'];
@@ -950,7 +950,7 @@ $rowcount = $row_single_div['checksingle'];
               <div class="product-content-right">
                 <center>
                   <img style="justify-content: center;max-height: 288px;" class="sidebar-title" src="../../images/logo/wishlist.png">
-                  <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color:#c50505">
+                  <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #c50505">
                     Your Wish
                     List is Empty
                   </h2>
@@ -959,7 +959,7 @@ $rowcount = $row_single_div['checksingle'];
               </div>
               <div class="element_grid">
                 <div class="shadow_b">
-                  <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat" style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
+                  <h4 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat" style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: #151515;font-weight: normal;border-bottom: darkgrey;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: darkgrey;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
                     <?= $cat_name1 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
                     <span style="float: right;margin-right: 5px;margin-top: -4px;">
                       <button
@@ -972,13 +972,13 @@ $rowcount = $row_single_div['checksingle'];
                     </span>
                   </h4>
                   <hr style="padding: 0;margin:0;">
-                  <div class="scrollmenu bl_item_scroll  <?= $color[$rancolor1] ?>" style="background-color: #fff">
+                  <div class="scrollmenu bl_item_scroll  <?= $color[$rancolor1] ?>" style="background-color: #151515">
                     <?php
                     $row = $pdo->query(
-                      "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
-                      inner join product_description on product_description.product_id=product.product_id
-                      inner join category on category.category_id=product.category_id
-                      where category.category_id=$cat_id1 and product.category_id=$cat_id1 "
+                      "SELECT product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id FROM product
+                      INNER JOIN product_description ON product_description.product_id=product.product_id
+                      INNER JOIN category ON category.category_id=product.category_id
+                      WHERE category.category_id=$cat_id1 AND product.category_id=$cat_id1 "
                     );
                     while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
                     ?>
@@ -998,7 +998,7 @@ $rowcount = $row_single_div['checksingle'];
                 <div class="shadow_b">
                   <h4
                     class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
-                    style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
+                    style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: #151515;font-weight: normal;border-bottom: darkgrey;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: darkgrey;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
                     <?= $cat_name2 ?> <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
                     <span style="float: right;margin-right: 5px;margin-top: -4px;">
                       <button
@@ -1011,13 +1011,13 @@ $rowcount = $row_single_div['checksingle'];
                     </span>
                   </h4>
                   <hr style="padding: 0;margin:0;">
-                  <div class="scrollmenu mui_item_scroll <?= $color[$rancolor2] ?>" style="background-color: #fff">
+                  <div class="scrollmenu mui_item_scroll <?= $color[$rancolor2] ?>" style="background-color: #151515">
                     <?php
                     $row = $pdo->query(
-                      "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
-                      inner join product_description on product_description.product_id=product.product_id
-                      inner join category on category.category_id=product.category_id
-                      where  category.category_id=$cat_id2 and product.category_id=$cat_id2"
+                      "SELECT product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id FROM product
+                      INNER JOIN product_description ON product_description.product_id=product.product_id
+                      INNER JOIN category ON category.category_id=product.category_id
+                      WHERE  category.category_id=$cat_id2 AND product.category_id=$cat_id2"
                     );
                     while ($row1 = $row->fetch(PDO::FETCH_ASSOC)) {
                     ?>
@@ -1383,7 +1383,7 @@ require "../Main/footer.php";
   function updateall_cart() {
     <?php
     if (isset($id)) {
-      $sql1 = "select * from wishlist_items where wishlist_id=:wid order by product_description_id";
+      $sql1 = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid ORDER BY product_description_id";
       $stmt1 = $pdo->prepare($sql1);
       $stmt1->execute(array(
         ':wid' => $wishlist_id
@@ -1397,11 +1397,11 @@ require "../Main/footer.php";
       $product_description_id = $row1['product_description_id'];
       $store_id = $row1['store_id'];
       $n = 0;
-      $sql2 = "select * from product inner join category on category.category_id=product.category_id
-							inner join product_description on product_description.product_id=product.product_id
-							inner join product_details on product_description.product_description_id=product_details.product_description_id
-							inner join store on store.store_id=product_details.store_id
-							where product.category_id=category.category_id and product.product_id=:product_description_id and product_details.store_id=:store_id order by product_description.product_description_id";
+      $sql2 = "SELECT * FROM product INNER JOIN category ON category.category_id=product.category_id
+							INNER JOIN product_description ON product_description.product_id=product.product_id
+							INNER JOIN product_details ON product_description.product_description_id=product_details.product_description_id
+							INNER JOIN store ON store.store_id=product_details.store_id
+							WHERE product.category_id=category.category_id AND product.product_id=:product_description_id AND product_details.store_id=:store_id ORDER BY product_description.product_description_id";
       $stmt2 = $pdo->prepare($sql2);
       $stmt2->execute(array(
         ':product_description_id' => $product_description_id,

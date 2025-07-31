@@ -1,5 +1,7 @@
 <?php
-require "../Common/pdo.php";
+require dirname(__DIR__, 1) . "/Common/pdo.php";
+require_once dirname(__DIR__, 2) . '/utils/getBaseURL.php';
+
 if (isset($_GET['sharelink'])) {
   $sql = "select privacy from wishlist where share_link=:link";
   $stmt = $pdo->prepare($sql);
@@ -79,7 +81,7 @@ require "../Main/header.php";
     text-align: left;
     justify-content: left;
     padding: 5px;
-    color: black;
+    color: darkgrey;
   }
 
   .create_wishlist_table tr {
@@ -89,6 +91,15 @@ require "../Main/header.php";
   .create_wishlist_table {
     border-radius: 7px;
     margin-top: 10px;
+  }
+
+  #Wishlist_name,
+  #Wishlist_descibe {
+    background-color: #000000;
+  }
+
+  .create_wishlist_table label {
+    margin: 0;
   }
 
   @media (max-width: 710px) {
@@ -203,14 +214,14 @@ require "../Main/header.php";
       </h2>
       <h2 class="your_wishlist_head">
         <a href="#" style="color: #000;font-size: 1.5em">
-          <span class="fa fa-heart" style="color: #c50505;"></span><span style="color: #fff"> Your Wishlists
+          <span class="fa fa-heart" style="color: #c50505;"></span><span style="color: #fff"> My Wishlists
           </span>
         </a>
       </h2>
       <h2 style="display: none;" class="search_wishlist_head">
         <a href="#" style="color: #000;font-size: 1.5em">
-          <span class="fa fa-search" style="color: #139b3b;"></span><span style="color: #fff"> Search Wishlist
-          </span>
+          <span class="fa fa-search" style="color: #139b3b;"></span>
+          <span style="color: #fff"> Search Wishlist </span>
         </a>
       </h2>
       <!------------------------------------------------------------------------------------------------------------------------------>
@@ -230,11 +241,10 @@ require "../Main/header.php";
                       wishlist</span></span>
                 </div>
                 <div class="wishlist-method yw" style="border-left:1px solid #fff;display: none;">
-                  <span class="fa fa-heart"> Your wishlist</span>
+                  <span class="fa fa-heart"> My wishlist</span>
                 </div>
                 <div class="wishlist-method yw-active" style="border-left:1px solid #fff;">
-                  <span class="fa fa-heart" style="color:#c50505 "> <span style="color: #0f99ff">Your
-                      wishlist</span></span>
+                  <span class="fa fa-heart" style="color:#c50505 "> <span style="color: #0f99ff">My wishlists</span> </span>
                 </div>
                 <div class="wishlist-method sw" style="border-left:1px solid #fff">
                   <span class="fa fa-search"> Search wishlist</span>
@@ -317,7 +327,7 @@ require "../Main/header.php";
                   <div class="col-md-12">
                     <table id="show_wishlist" cellpadding="20px" cellspacing="20px" width="100%">
                       <tbody>
-                        <tr style="background-color: #0f99cc;">
+                        <tr style="background-color: #139b3b;">
                           <th>
                             <h4>Wishlists</h4>
                           </th>
@@ -371,13 +381,12 @@ require "../Main/header.php";
                             </div>
                             <td>
                               <h4>
-                                <select style="font-size: 16px;" onchange="actions(this,'<?= $row_wish['wishlist_id'] ?>')"
+                                <select style="font-size: 16px;background-color: black; color: darkgrey" onchange="actions(this,'<?= $row_wish['wishlist_id'] ?>')"
                                   id="sharewid_<?= $row_wish['wishlist_id'] ?>">
                                   <option value="0" selected="" disabled="">Select</option>
-                                  <option value='1' style="color: #333;">Edit</option>
-                                  <option value="2" style="color: #333;">Delete</i></option>
-                                  <option value="wishlist_share.php?sharelink=<?= $row_wish['share_link'] ?>"
-                                    style="color: #333;">Share</i></option>
+                                  <option value='1' style="color: darkgrey;">Edit</option>
+                                  <option value="2" style="color: darkgrey;">Delete</i></option>
+                                  <option value="wishlist_share.php?sharelink=<?= $row_wish['share_link'] ?>" style="color: darkgrey;">Share</i></option>
                                 </select>
                               </h4>
                             </td>
@@ -442,7 +451,7 @@ require "../Main/header.php";
                     <div id="show_wishlist_small">
                       <table class="wltr ywl_table_small del_w_<?= $row_wish['wishlist_id'] ?>" cellpadding="20px"
                         cellspacing="20px" width="100%" style="background-color: rgba(0,0,0,.65);">
-                        <tr style="background-color: #0f99cc;"
+                        <tr style="background-color: #139b3b;"
                           onclick="location.href='../Wishlist/wishlist_single.php?wishlist_id=<?= $row_wish['wishlist_id'] ?>'">
                           <th colspan="2">
                             <h4 class="ywl_table_small_list_head" title="<?= $row_wish['list_name'] ?>"><?= $listname ?>
@@ -559,9 +568,15 @@ require "../Main/header.php";
                   <tr>
                     <div class="input-group bar-srch"
                       style="padding: 0px;margin: 0px;left: 0px;right: 0px;margin-bottom: 15px;">
-                      <input type="text" class="" id="wishsrch" placeholder="Search wishlist" value="" name=""
+                      <input
+                        type="text"
+                        class=""
+                        id="wishsrch"
+                        placeholder="Search wishlist"
+                        value=""
+                        name=""
                         required=" "
-                        style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline: none;">
+                        style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline: none;background-color: black; color: darkgrey">
                       <span id="" class="input-group-btn">
                         <button onclick="dispsrch()" onmouseover="$(this).css('background-color','#ee8126')"
                           onmouseleave="$(this).css('background-color','#139b3b')"
@@ -569,15 +584,15 @@ require "../Main/header.php";
                           class="btn btn-default search_btn" type="button"><span class="fa fa-search"></span></button>
                       </span>
                       <span id="" class="input-group-btn">
-                        <button onmouseover="$(this).css('background-color','#0d99cc')"
-                          onmouseleave="$(this).css('background-color','#0f99cc')"
+                        <button onmouseover="$(this).css('background-color','#139b3b')"
+                          onmouseleave="$(this).css('background-color','#139b3b')"
                           onclick="$('#wishsrch').val('');dispsrch()"
-                          style="color: white;background-color:#0f99cc;padding-top:10px;padding-bottom: 10px;outline: none;"
+                          style="color: white;background-color: #139b3b;padding-top: 10px;padding-bottom: 10px;outline: none;"
                           class="btn btn-default search_btn" type="button"><span class="fa fa-refresh"></span></button>
                       </span>
                     </div>
                   </tr>
-                  <tr style="background-color: #0f99cc;">
+                  <tr style="background-color: #139b3b;">
                     <th>
                       <h4>Wishlist of</h4>
                     </th>
@@ -658,7 +673,7 @@ require "../Main/header.php";
 <div class="modal fade" id="myModal_create_wishlist" role="dialog" onclose="$('.yw').click();" style="height: 95%;">
   <div class="modal-dialog modal-m" style="background-color: white;border-radius: 7px;">
     <!-- Modal content-->
-    <div class="modal-content">
+    <div class="modal-content" style="background-color: #151515 !important">
       <div class="modal-header" style="background-color: #139b3b">
         <button type="button" class="close" data-dismiss="modal" onclick="$('.yw').click();">&times;</button>
         <h4 class="modal-title">
@@ -676,7 +691,7 @@ require "../Main/header.php";
         </center>
         <div style="display: none;margin-top: 20px;" class="alert alert-danger"></div>
         <form action="#" onsubmit="return create_my_list()" method="post" enctype="multipart/form-data">
-          <table style="background-color: #fff;width: 100%" class="create_wishlist_table">
+          <table style="background-color: #151515;width: 100%" class="create_wishlist_table">
             <tr>
               <td>
                 <h4>
@@ -712,34 +727,35 @@ require "../Main/header.php";
             </tr>
             <tr>
               <td>
-                <div class="div-wrapper" style="grid-gap: 0;margin: auto;display: flex;"><input type="radio" id="public"
-                    class="privacy" name="privacy" value='public'><label for="public">&nbsp;Public</label>
-                  <div><span style="font-size: 12px;color: #666">-Anyone can search for and see this
-                      list.You can also share using a link</span></div>
-                </div>
+                <input type="radio" id="public" class="privacy" name="privacy" value='public'>
+                <label for="public">&nbsp;Public</label>
+                <span style="font-size: 12px;color: darkgrey"> - Anyone can search for and see this list.You can also share using a link</span>
               </td>
             </tr>
             <tr>
               <td>
-                <div class="div-wrapper" style="grid-gap: 0;margin: auto;display: flex;"><input type="radio" id="shared"
-                    class="privacy" name="privacy" value="shared"><label for="shared">&nbsp;Shared</label>
-                  <div><span style="font-size: 12px;color: #666">-Only people with the link see this
-                      list.It will not appear in public search results.</span></div>
-                </div>
+                <input type="radio" id="shared" class="privacy" name="privacy" value="shared">
+                <label for="shared">&nbsp;Shared</label>
+                <span style="font-size: 12px;color: darkgrey"> - Only people with the link see this list.It will not appear in public search results.</span>
               </td>
             </tr>
             <tr>
               <td>
-                <input type="radio" id="private" class="privacy" name="privacy" value="private"><label
-                  for="private">&nbsp;Private</label><span style="font-size: 12px;color: #666"> - Only
-                  you can see the list</span>
+                <input type="radio" id="private" class="privacy" name="privacy" value="private">
+                <label for="private">&nbsp;Private</label>
+                <span style="font-size: 12px;color: darkgrey"> - Only you can see the list</span>
               </td>
             </tr>
             <tr>
               <td><br><br>
                 <center>
-                  <button style="width: 100%;color: white;padding-top: 3px;padding-bottom: 3px;" type="submit"
-                    id="createlist" class="btn btn-default search" name="createlist" onclick="">
+                  <button
+                    style="width: 100%;color: white;padding-top: 3px;padding-bottom: 3px;"
+                    type="submit"
+                    id="createlist"
+                    class="btn btn-default search"
+                    name="createlist"
+                    onclick="">
                     <h4 style="text-transform: capitalize;">create wishlist</h4>
                   </button>
                 </center>
@@ -749,7 +765,7 @@ require "../Main/header.php";
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="$('.yw').click();">Close</button>
+        <button type="button" class="btn btn-default" style="background-color: #c50505;color: white" data-dismiss="modal" onclick="$('.yw').click();">Close</button>
       </div>
     </div>
   </div>
@@ -763,27 +779,27 @@ require "../Main/header.php";
 <!--SHARE WISHLIST-->
 <!-- Modal -->
 <div class="modal fade" id="myModal_share_wishlist" role="dialog" onclose="$('.yw').click();" style="height: 95%;">
-  <div class="modal-dialog modal-m" style="background-color: white;border-radius: 7px;">
+  <div class="modal-dialog modal-m" style="background-color: #151515;border-radius: 7px;">
     <!-- Modal content-->
     <div class="modal-content">
       <div class="modal-header" style="background-color: #c50505">
         <button type="button" class="close" data-dismiss="modal" onclick="$('.yw').click();">&times;</button>
         <h4 class="modal-title">
           <span class="fa fa-file-text" style="color: #fff;"></span>
-          <span style="color: #fff"> Share your wishlist </span>
+          <span style="color: #fff"> Share my wishlist </span>
         </h4>
       </div>
       <div class="modal-body">
         <center>
           <div
-            style="background-color: rgba(255,255,255);padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid black;">
+            style="background-color: #151515;padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid darkgrey;">
             <img src="../../images/logo/wishlist1.png" style="max-width: 80px;">
-            <span class="fa fa-share fa-lg" style="margin-left: -10px;"></span>
+            <span class="fa fa-share fa-lg" style="margin-left: -10px;color: darkgrey;"></span>
           </div>
         </center>
         <div style="display: none;margin-top: 20px;" class="alert alert-danger"></div>
         <form action="#" onsubmit="return create_my_list()" method="post" enctype="multipart/form-data">
-          <table style="background-color: #fff;width: 100%" class="create_wishlist_table">
+          <table style="background-color: #151515;width: 100%" class="create_wishlist_table">
             <tr>
               <td>
                 <h4>
@@ -795,9 +811,15 @@ require "../Main/header.php";
               <td>
                 <div class="input-group bar-srch"
                   style="padding: 0px;margin: 0px;left: 0px;right: 0px;margin-bottom: 0px;">
-                  <input readonly="true" type="text" class="" id="input_link" placeholder="URL to share" value=""
-                    name="" required=" "
-                    style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline-color: #e59700;">
+                  <input
+                    readonly="true"
+                    type="text"
+                    id="input_link"
+                    placeholder="URL to share"
+                    value=""
+                    name=""
+                    required=" "
+                    style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline-color: #e59700;background-color: black">
                   <span id="" class="input-group-btn">
                     <button onclick="clipboard()"
                       style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #740000), color-stop(1, #ff0000)) !important;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"
@@ -822,23 +844,20 @@ require "../Main/header.php";
                         style="margin:auto;width: 30px;height: 30px;background-color: darkgreen;border-radius:3px;display: flex;align-items: center;justify-content: center;">
                         <i class="fa fa-whatsapp fa-lg" style="color: white;"></i>
                       </div>
-                      <p>Whatsapp</p>
+                      <p style="color: darkgrey">Whatsapp</p>
                     </td>
-                    <td class="social-share facebook" style="text-align: center;">
-                    </td>
+                    <td class="social-share facebook" style="text-align: center;"></td>
                     <td class="social-share twitter" style="text-align: center;" onclick="setShareLinks()">
-                      <div
-                        style="margin:auto;width: 30px;height: 30px;background-color: #1da1f2;border-radius:3px;display: flex;align-items: center;justify-content: center;">
+                      <div style="margin:auto;width: 30px;height: 30px;background-color: #1da1f2;border-radius:3px;display: flex;align-items: center;justify-content: center;">
                         <i class="fa fa-twitter fa-lg" style="color: white;"></i>
                       </div>
-                      <p>Twitter</p>
+                      <p style="color: darkgrey">Twitter</p>
                     </td>
                     <td class="social-share linkedin" style="text-align: center;" onclick="setShareLinks()">
-                      <div
-                        style="margin:auto;width: 30px;height: 30px;background-color: #0077af;border-radius:3px;display: flex;align-items: center;justify-content: center;">
+                      <div style="margin:auto;width: 30px;height: 30px;background-color: #0077af;border-radius:3px;display: flex;align-items: center;justify-content: center;">
                         <i class="fa fa-linkedin fa-lg" style="color: white;"></i>
                       </div>
-                      <p>Linkedin</p>
+                      <p style="color: darkgrey">Linkedin</p>
                     </td>
                   </tr>
                 </table>
@@ -848,7 +867,7 @@ require "../Main/header.php";
         </form>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn-default" data-dismiss="modal" onclick="$('.yw').click();">Close</button>
+        <button type="button" class="btn btn-default" style="background-color: #c50505;color: white" data-dismiss="modal" onclick="$('.yw').click();">Close</button>
       </div>
     </div>
   </div>
@@ -860,7 +879,7 @@ require "../Main/header.php";
     $('#input_link').val(link);
     var code = link.split("=");
     $('.facebook').html('');
-    var fb_content = '<div class="fb-share-button"  data-href="' + link + '" data-layout="button_count" data-size="small" style="margin:auto;width: 30px;height: 30px;background-color: #395693;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FHFE-Store.ml%2F/customer/Wishlist/wishlist.php%3Fsharelink%3D' + code[1] + '&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fa fa-facebook fa-lg" style="color: white;"></i></a></div><p>Facebook</p>';
+    var fb_content = '<div class="fb-share-button"  data-href="' + link + '" data-layout="button_count" data-size="small" style="margin:auto;width: 30px;height: 30px;background-color: #395693;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FHFE-Store.ml%2F/customer/Wishlist/wishlist.php%3Fsharelink%3D' + code[1] + '&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore"><i class="fa fa-facebook fa-lg" style="color: white;"></i></a></div><p style="color: darkgrey">Facebook</p>';
     $('.facebook').html(fb_content);
     "wishlist_share.php?sharelink=62_60c9b30ccaa8a&amp;fbclid=IwAR310ESZCEPJ8uFUub--H6gnJ3FkFRjgzz1duPK3NVdARhV2f8VD1GWtpX0"
     $('#myModal_share_wishlist').modal('show');
@@ -911,7 +930,7 @@ require "../Main/header.php";
     } else if (selectmenu.value == 1) {
       location.href = '../Wishlist/wishlist_single.php?wishlist_id=' + wishlist_id + '&setting=1';
     } else {
-      var link = selectmenu.value;
+      var link = '<?= getBaseUrl() ?>customer/Wishlist/' + selectmenu.value;
       copylink(wishlist_id, link);
       selectmenu.value = 0;
     }
@@ -1078,11 +1097,11 @@ require "../Main/header.php";
             timeout: 30000, //waiting time 30 sec
             success: function(data) { //if registration is success
               if (data.status == 'success') {
-                var markup = '<tr class="wltr del_w_' + data.wid + '"><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4 title="list_name">' + listname + '</h4></td><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4>' + privacy + '</h4></td><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4>0</h4></td><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4>' + data.date + '</h4></td><td><h4><select style="font-size: 16px;" onchange=\'actions(this,' + data.wid + ')\'><option value="0" selected="" disabled="">Select</option><option value="1" style="color: #333;">Edit</option><option value="2" style="color: #333;">Delete</i></option><option value="../Wishlist/wishlist.php?sharelink=' + data.link + '" style="color: #333;">Share</i></option></select></h4></td></tr>';
+                var markup = '<tr class="wltr del_w_' + data.wid + '"><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4 title="list_name">' + listname + '</h4></td><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4>' + privacy + '</h4></td><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4>0</h4></td><td onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><h4>' + data.date + '</h4></td><td><h4><select style="font-size: 16px;background-color: black" onchange=\'actions(this,' + data.wid + ')\'><option value="0" selected="" disabled="">Select</option><option value="1" style="color: darkgrey;">Edit</option><option value="2" style="color: darkgrey;">Delete</i></option><option value="../Wishlist/wishlist.php?sharelink=' + data.link + '" style="color: darkgrey;">Share</i></option></select></h4></td></tr>';
                 var tableBody = $('#show_wishlist');
                 tableBody.append(markup);
                 var link = '../Wishlist/wishlist.php?sharelink=' + data.link;
-                var markupsmall = '<table class="wltr ywl_table_small del_w_' + data.wid + '" cellpadding="20px" cellspacing="20px" width="100%" style="background-color: rgba(0,0,0,.65);"><tr style="background-color: #0f99cc;" onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><th colspan="2"><h4 class="ywl_table_small_list_head" title="' + listname + '">' + listname + ' &nbsp;<i class="fa fa-file-text"></i><i class="fa fa-heart" style="font-size: 12px;color:#c50505 "></i></h4></th></tr><tr><th class="ywl_small_table_th"><h4>Privacy</h4></th><td class="ywl_small_table_td"><h4>' + privacy + '</h4></td></tr><tr><th class="ywl_small_table_th"><h4>Item count</h4></th><td class="ywl_small_table_td"><h4>0</h4></td></tr><tr><th class="ywl_small_table_th"><h4>Created on</h4></th><td class="ywl_small_table_td"><h4>' + data.date + '</h4></td></tr><tr><td colspan="2"><table style="width:100%"><tr><td><h4><i class="fa fa-edit" onclick="location.href=\'wishlist_single.php?wishlist_id=' + data.wid + '&setting=1\'"></i></h4></td><td><h4><i class="fa fa-trash" onclick=\'del_list(' + data.wid + ')\'></i></h4></td><td><h4><i class="fa fa-share" onclick="copylink(' + data.wid + ',\'' + link + '\')"></i></h4></td></tr></table></td></tr></table><br>';
+                var markupsmall = '<table class="wltr ywl_table_small del_w_' + data.wid + '" cellpadding="20px" cellspacing="20px" width="100%" style="background-color: rgba(0,0,0,.65);"><tr style="background-color: #139b3b;" onclick="location.href=\'wishlist_single.php?wishlist_id=\'' + data.wid + '"><th colspan="2"><h4 class="ywl_table_small_list_head" title="' + listname + '">' + listname + ' &nbsp;<i class="fa fa-file-text"></i><i class="fa fa-heart" style="font-size: 12px;color:#c50505 "></i></h4></th></tr><tr><th class="ywl_small_table_th"><h4>Privacy</h4></th><td class="ywl_small_table_td"><h4>' + privacy + '</h4></td></tr><tr><th class="ywl_small_table_th"><h4>Item count</h4></th><td class="ywl_small_table_td"><h4>0</h4></td></tr><tr><th class="ywl_small_table_th"><h4>Created on</h4></th><td class="ywl_small_table_td"><h4>' + data.date + '</h4></td></tr><tr><td colspan="2"><table style="width:100%"><tr><td><h4><i class="fa fa-edit" onclick="location.href=\'wishlist_single.php?wishlist_id=' + data.wid + '&setting=1\'"></i></h4></td><td><h4><i class="fa fa-trash" onclick=\'del_list(' + data.wid + ')\'></i></h4></td><td><h4><i class="fa fa-share" onclick="copylink(' + data.wid + ',\'' + link + '\')"></i></h4></td></tr></table></td></tr></table><br>';
                 var tableBodySmall = $('#show_wishlist_small');
                 tableBodySmall.append(markupsmall);
                 swal({

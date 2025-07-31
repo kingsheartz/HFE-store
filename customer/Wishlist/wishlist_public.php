@@ -38,7 +38,7 @@ require "../Main/header.php";
   input[type="button"] {
     background: none repeat scroll 0 0 #139b3b;
     border: medium none;
-    color: #fff;
+    color: darkgrey;
     padding: 11px 20px;
     text-transform: uppercase;
     font-size: 12px;
@@ -55,23 +55,23 @@ require "../Main/header.php";
   }
 
   table.shop_table {
-    border-bottom: 0px none #fff;
-    border-right: 0px none #fff;
+    border-bottom: 0px none darkgrey;
+    border-right: 0px none darkgrey;
     margin-bottom: 50px;
     width: 100%;
   }
 
   table.shop_table th,
   table.shop_table td {
-    border-left: 0px none #fff;
-    border-top: 0px none #fff;
+    border-left: 0px none darkgrey;
+    border-top: 0px none darkgrey;
     padding: 15px;
     text-align: left;
   }
 
   table.shop_table th {
     background: none repeat scroll 0 0 #139b3b;
-    color: #ffffff;
+    color: darkgrey;
     font-size: 15px;
     text-transform: uppercase;
   }
@@ -132,27 +132,27 @@ require "../Main/header.php";
   }
 
   .cart_totals table th {
-    background: none repeat scroll 0 0 #f4f4f4;
+    background: none repeat scroll 0 0 #151515;
   }
 
   .onsale {}
 
   div.cart-collaterals ul.products li.product .onsale {
     background: none repeat scroll 0 0 #139b3b;
-    color: #fff;
+    color: darkgrey;
     padding: 5px 10px;
     position: absolute;
     right: 0;
   }
 
   div.cart-collaterals ul.products li.product h3 {
-    color: #333;
+    color: darkgrey;
     font-size: 20px;
     margin-top: 15px;
   }
 
   div.cart-collaterals ul.products li.product .price {
-    color: #333;
+    color: darkgrey;
     display: block;
     margin-bottom: 10px;
     overflow: hidden;
@@ -163,6 +163,33 @@ require "../Main/header.php";
     font-weight: 700;
     margin-left: 10px;
     text-decoration: none;
+  }
+
+  #wishlist_name_input,
+  #wishlist_description_input {
+    background-color: black;
+    color: #757575;
+  }
+
+  .single-product-area h2,
+  .single-product-area h3,
+  .single-product-area h4,
+  .settings_show label,
+  .product-quantity p,
+  .product-price .amount {
+    color: darkgrey;
+  }
+
+  .large_specs_seen {
+    list-style: none;
+  }
+
+  hr.make_divc {
+    border-color: #333333 !important;
+  }
+
+  ul li {
+    color: darkgrey;
   }
 
   @media(max-width: 991px) {
@@ -254,7 +281,7 @@ require "../Main/header.php";
     #proceed {
       background: none repeat scroll 0 0 #139b3b;
       border: medium none;
-      color: #fff;
+      color: darkgrey;
       padding: 0px 8px;
       text-transform: uppercase;
       font-size: 10px;
@@ -275,10 +302,10 @@ require "../Main/header.php";
     }
   }
 </style>
-<div class="single-product-area" style="padding-top: 0px; background-color: #eaeded;padding-bottom: 0px;">
+<div class="single-product-area" style="padding-top: 0px; background-color: #151515;padding-bottom: 0px;">
   <div class="zigzag-bottom"></div>
   <div class="container nopadding-margin" style="margin-left: 0px;width: 100%;padding-bottom: 40px;">
-    <div class="row" style="margin: 0px;">
+    <div class="row" style="margin: 0px;background-color: #151515;">
       <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%">
         <?php
         if (isset($_SESSION['id'])) {
@@ -292,14 +319,14 @@ require "../Main/header.php";
         $rowc = $stmtc->fetch(PDO::FETCH_ASSOC);
         if ($rowc) {
         ?>
-          <div class="col-md-12" style="margin:0px;padding: 0px;margin: 0px;">
-            <div class="product-content-right nopadding-margin" style="margin:0px;padding: 0px;margin-right: 10px;background-color: white;border-radius: 10px;width: 100%;">
-              <h2 class="sidebar-title" style="border-left: 5px solid #c50505;border-top-left-radius: 10px;text-align: left;padding-bottom: 30px;padding-top: 20px;background-color: white;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; ">
+          <div class="col-md-12" style="margin: 0px;padding: 0px;margin: 0px;">
+            <div class="product-content-right nopadding-margin" style="margin: 0px;padding: 0px;margin-right: 10px;background-color: #101010;border-radius: 10px;width: 100%;">
+              <h2 class="sidebar-title" style="border-left: 5px solid #c50505;border-top-left-radius: 10px;text-align: left;padding-bottom: 30px;padding-top: 20px;background-color: #101010;margin-top: 0px;font-weight: normal;border-bottom: darkgrey;margin-bottom: 0px;border-radius: 10px;color: darkgrey;text-transform: capitalize;padding-left: 10px;">
                 Wish List <i style="color: red" class="fa fa-heart"></i>
                 <span style="float: right;margin-right: 5px;margin-top: -16px;">
                   <input
                     type="button"
-                    style="max-width: 150px;height: 60px;font-weight: bold;border-top-right-radius: 10px;background-color: #c50505"
+                    style="max-width: 150px;height: 60px;font-weight: bold;border-top-right-radius: 10px;background-color: #c50505;color: white"
                     onclick="updateall_cart()"
                     value="Move to cart"
                     id="proceed"
@@ -310,7 +337,7 @@ require "../Main/header.php";
               <hr class="make_divc" style="margin-bottom: 0px;margin-top: -10px;">
               <div class="woocommerce">
                 <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;">
-                  <table class="shop_table cart" border="0px" style="background-color:#ffffff;margin: 0px;margin-top: -20px">
+                  <table class="shop_table cart" border="0px" style="background-color: #101010;margin: 0px;margin-top: -20px">
                     <tr>
                       <?php
                       $sql1 = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid order by product_description_id";
@@ -337,7 +364,9 @@ require "../Main/header.php";
                           ':product_description_id' => $product_description_id,
                           ':store_id' => $store_id
                         ));
-                        $mrpsql = "SELECT price from product WHERE product_id=$product_description_id";
+                        $mrpsql = "SELECT price FROM product 
+                                  INNER JOIN product_description ON product.product_id=product_description.product_id 
+                                  WHERE product_description.product_description_id=$product_description_id";
                         $mrpstmt = $pdo->query($mrpsql);
                         $mrprow = $mrpstmt->fetch(PDO::FETCH_ASSOC);
                         $t_mrp = $mrprow['price'];
@@ -353,7 +382,7 @@ require "../Main/header.php";
                                   <tr>
                                     <td class="product-name" colspan="2" style="padding: 0px;margin-top: 5px;">
                                       <p style="margin:0px;margin-bottom: 20px;font-size:17px;">
-                                      <div style="margin-left: 0px;background-color: #02171e;padding-left: 15px;padding-right:15px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
+                                      <div style="margin-left: 0px;background-color: #000804ff;padding-left: 15px;padding-right:15px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
                                         <a href="#" style="color: white;font-weight: normal;text-align:justify;font-size:17px;">
                                           <i class="fa fa-product-hunt"></i>
                                           <?= $row2['product_name'] ?>
@@ -362,7 +391,7 @@ require "../Main/header.php";
                                       </p>
                                     </td>
                                   </tr>
-                                  <tr class="cart_item" style="width: 100%; background-color: #fff">
+                                  <tr class="cart_item" style="width: 100%; background-color: #101010ff">
                                     <td style="padding: 0px;width: 20%">
                                       <table style="width: 180px;margin-top: 5px;" class="tbl_s<?= $store_id . "i" . $product_description_id ?>">
                                         <tr>
@@ -398,15 +427,15 @@ require "../Main/header.php";
                                             <div class="row" style="margin-left: 5px;float: left;">
                                               <div class="col-md-6 full-size-cart-store-div" style="padding: 0px;margin-left: 20px;width: 200px;">
                                                 <p style="z-index: 1;text-align:left;margin-top: 35px;">
-                                                  <span style='font-family: arial;color:#006904;font-weight: bold;text-decoration: none;font-size: 12px'>
+                                                  <span style='font-family: arial;color :#139b3b;font-weight: bold;text-decoration: none;font-size: 12px'>
                                                     You Save &#8377;
                                                     <span
                                                       id="save_s<?= $store_id . "i" . $product_description_id ?>"
-                                                      style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px">
+                                                      style="text-decoration: none;font-weight: bold;color: #139b3b;padding-left: 0px">
                                                       <?= $save ?>
                                                     </span>
                                                     (<span
-                                                      style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"
+                                                      style="text-decoration: none;font-weight: bold;color: #139b3b;padding-left: 0px"
                                                       id="off_s<?= $store_id . "i" . $product_description_id ?>"><?= $off ?>
                                                     </span>%)
                                                   </span>
@@ -414,7 +443,7 @@ require "../Main/header.php";
                                                 <p class="product-price" style="z-index: 1;text-align:left;margin-top: 10px;;font-weight: bold;font-size: 2vw">
                                                   <span class="amount">&#8377;
                                                     <span id="total_s<?= $store_id . "i" . $product_description_id ?>"><?= $total ?></span>
-                                                    <i style="color: #303030" class="fa fa-tags">&nbsp;
+                                                    <i style="color: darkgrey" class="fa fa-tags">&nbsp;
                                                       <del style="color: #999;font-weight:normal;font-size: 13px;">&#8377;</del>
                                                     </i>
                                                     <del
@@ -426,14 +455,14 @@ require "../Main/header.php";
                                                 </p>
                                                 <p style="margin-top:10px;">
                                                   <select
-                                                    style="outline: none;border:none;background-color:#006904;color: white;padding: 5px;border-radius: 3px;padding-top: 1px;padding-bottom: 1px; "
+                                                    style="outline: none;border:cnone;background-color: #139b3b;color: white;padding: 5px;border-radius: 3px;padding-top: 1px;padding-bottom: 1px; "
                                                     id="order_s<?= $store_id . "i" . $product_description_id ?>">
                                                     <option
-                                                      style="background-color: white;color:#006904;font-weight: bold;text-align: center; "
+                                                      style="background-color: white;color: #139b3b;font-weight: bold;text-align: center; "
                                                       value="1">Booking
                                                     </option>
                                                     <option
-                                                      style="background-color: white;color:#006904;font-weight: bold;text-align: center;"
+                                                      style="background-color: white;color: #139b3b;font-weight: bold;text-align: center;"
                                                       value="2">delivery
                                                     </option>
                                                   </select>
@@ -448,7 +477,7 @@ require "../Main/header.php";
                                               <ul>
                                                 <li><span class="a-list-item">
                                                     <span class="a-size-small a-color-success sc-product-availability">
-                                                      <b style="color:#86001d; ">In stock</b>
+                                                      <b style="color: #d3002eff; ">In stock</b>
                                                     </span>
                                                   </span>
                                                 </li>
@@ -470,43 +499,25 @@ require "../Main/header.php";
                                                 ));
                                                 $rowfeatures = $stmtfeatures->fetch(PDO::FETCH_ASSOC);
                                                 $rowfeatures['f0'] = $rowfeatures['size'];
-                                                $rowfeatures['f1'] = $rowfeatures['color'];
-                                                $rowfeatures['f2'] = $rowfeatures['weight'];
-                                                $rowfeatures['f3'] = $rowfeatures['flavour'];
-                                                $rowfeatures['f4'] = $rowfeatures['processor'];
-                                                $rowfeatures['f5'] = $rowfeatures['display'];
-                                                $rowfeatures['f6'] = $rowfeatures['battery'];
-                                                $rowfeatures['f7'] = $rowfeatures['internal_storage'];
-                                                $rowfeatures['f8'] = $rowfeatures['brand'];
-                                                $rowfeatures['f9'] = $rowfeatures['material'];
-                                                $features = array('size', 'color', 'weight', 'flavour', 'processor', 'display', 'battery', 'Internal_storage', 'brand', 'material', 'price', 'quantity');
+                                                $rowfeatures['f1'] = $rowfeatures['weight'];
+                                                $rowfeatures['f2'] = $rowfeatures['brand'];
+                                                $features = array('size', 'weight', 'brand', 'price', 'quantity');
                                                 $f = 0;
-                                                while ($f < 10) {
+                                                while ($f < 3) {
                                                   if (!is_null($rowfeatures['f' . $f]) && $rowfeatures['f' . $f] != 0 && $rowfeatures['f' . $f] != '0') {
                                                     if ($features[$f] != 'weight') {
                                                       $sqlfeature_name = "SELECT " . $features[$f] . '_name from ' . $features[$f] . ' WHERE ' . $features[$f] . '_id=' . (int) $rowfeatures['f' . $f];
                                                       $stmtfeature_name = $pdo->query($sqlfeature_name);
                                                       $rowfeature_name = $stmtfeature_name->fetch(PDO::FETCH_ASSOC);
                                                     }
-                                                    if ($features[$f] == "color") {
+                                                    if ($features[$f] == "weight") {
                                                 ?>
-                                                      <li class="sc-product-variation">
-                                                        <span class="a-list-item">
-                                                          <span class="a-size-small a-text-bold">
-                                                            <b><?= ucwords($features[$f]) ?>: </b>
-                                                          </span>
-                                                          <span class="a-size-small" style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
-                                                        </span>
-                                                      </li>
-                                                    <?php
-                                                    } else if ($features[$f] == "weight") {
-                                                    ?>
                                                       <li class="sc-product-variation">
                                                         <span class="a-list-item">
                                                           <span class="a-size-small a-text-bold">
                                                             <b><?= ucwords($features[$f]) ?>:</b>
                                                           </span>
-                                                          <span class="a-size-small" style="text-decoration: none;font-weight:normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
+                                                          <span class="a-size-small" style="text-decoration: none;font-weight: normal;padding: 0px;"><?= $rowfeatures['f2'] ?></span>
                                                         </span>
                                                       </li>
                                                     <?php
@@ -532,7 +543,7 @@ require "../Main/header.php";
                                                 ?>
                                                 <li class="sc-product-variation">
                                                   <span class="a-list-item">
-                                                    <small>
+                                                    <small style="color: darkgrey">
                                                       <span class="a-size-small a-text-bold"><b>Description:</b></span>
                                                       <span class="a-size-small"><?= $description2 ?></span>
                                                     </small>
@@ -562,7 +573,7 @@ require "../Main/header.php";
                                           <p class="product-store">
                                             <span>|</span>
                                             <i
-                                              style="color: #303030;bottom: 0px;margin-top: 2px;margin-left: 5px;"
+                                              style="color: darkgrey;bottom: 0px;margin-top: 2px;margin-left: 5px;"
                                               class="fas fa-store">&nbsp;
                                             </i>
                                             <a title="<?= $row2['store_name'] ?>" href="#"><?= $row2['store_name'] ?></a>
@@ -579,7 +590,7 @@ require "../Main/header.php";
                                             <!--------------------------------------------------------------------------------------------------------------------------------------------------------->
                                             <div class="btn_sub_q" style="padding: 0px;margin: 0px;margin-left: 2px;">
                                               <button
-                                                style="background-color: #02171e;-webkit-box-shadow: inset 0px 0px 15px 3px #02171e;box-shadow: inset 0px 0px 15px 3px #02171e;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #02171e;color: white;font-size: 18px;border-radius: 5px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;"
+                                                style="background-color: #000804ff;-webkit-box-shadow: inset 0px 0px 15px 3px #000804ff;box-shadow: inset 0px 0px 15px 3px #000804ff;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: black;color: white;font-size: 18px;border-radius: 5px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;"
                                                 type="button"
                                                 id="sub_s<?= $store_id . "i" . $product_description_id ?>"
                                                 onclick="sub_item_all('<?= $store_id ?>','<?= $product_description_id ?>','<?= $t_mrp ?>')">
@@ -590,7 +601,7 @@ require "../Main/header.php";
                                               <button
                                                 id="btn_s<?= $store_id . "i" . $product_description_id ?>"
                                                 type="button"
-                                                style="width: 100%;min-width: 50px;height: 40px;font-weight: bold;font-size: 14px;background-color: white;outline: none;border-color:#02171e;padding: 0"
+                                                style="width: 100%;min-width: 50px;height: 40px;font-weight: bold;font-size: 14px;background-color: white;outline: none;border-color: #004123ff;padding: 0"
                                                 onclick="$(this).hide();if($(this).html()<10){$('#sel_s<?= $store_id . 'i' . $product_description_id ?>').show();}else{$('#qnty_s<?= $store_id . 'i' . $product_description_id ?>').show();}">
                                                 1
                                               </button>
@@ -599,7 +610,7 @@ require "../Main/header.php";
                                                 onchange="select_item_option('<?= $store_id ?>','<?= $product_description_id ?>','<?= $t_mrp ?>');"
                                                 name="quantity"
                                                 autocomplete="off"
-                                                style="width: 100%;min-width: 50px;bottom: 0;box-shadow: none;outline: none;border-color:#aaa;height:40px;display: none;background-color: white">
+                                                style="width: 100%;min-width: 50px;bottom: 0;box-shadow: none;outline: none;border-color: #aaa;height:40px;display: none;background-color: white">
                                                 <option
                                                   value="1"
                                                   id="sel_opt_s<?= $store_id . "i" . $product_description_id ?>"
@@ -681,7 +692,7 @@ require "../Main/header.php";
                                             </div>
                                             <div class="btn_add_q" style="padding: 0px;margin: 0px;">
                                               <button
-                                                style="background-color: #02171e;-webkit-box-shadow: inset 0px 0px 15px 3px #02171e;box-shadow: inset 0px 0px 15px 3px #02171e;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #02171e;color: white;font-size: 18px;border-radius: 5px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;"
+                                                style="background-color: #000804ff;-webkit-box-shadow: inset 0px 0px 15px 3px #000804ff;box-shadow: inset 0px 0px 15px 3px #000804ff;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: black;color: white;font-size: 18px;border-radius: 5px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;"
                                                 id="add_s<?= $store_id . "i" . $product_description_id ?>"
                                                 onclick="add_item_all('<?= $store_id ?>','<?= $product_description_id ?>','<?= $t_mrp ?>')"
                                                 type="button">
@@ -816,7 +827,7 @@ require "../Main/header.php";
               </span>
             </h4>
             <hr style="padding: 0;margin:0;">
-            <div class="scrollmenu bl_item_scroll  <?= $color[$rancolor1] ?>" style="background-color: #fff">
+            <div class="scrollmenu bl_item_scroll  <?= $color[$rancolor1] ?>" style="background-color: #101010">
               <?php
               $row = $pdo->query(
                 "SELECT product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id FROM product
@@ -849,7 +860,7 @@ require "../Main/header.php";
               </span>
             </h4>
             <hr style="padding: 0;margin:0;">
-            <div class="scrollmenu mui_item_scroll <?= $color[$rancolor2] ?> " style="background-color: #fff">
+            <div class="scrollmenu mui_item_scroll <?= $color[$rancolor2] ?> " style="background-color: #101010">
               <?php
               $row = $pdo->query(
                 "SELECT product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
@@ -877,117 +888,6 @@ require "../Main/header.php";
     <?php
         }
     ?>
-    <div class="container" style="width: 100%;background-color: #fff;margin-top: 15px;">
-      <div class="row">
-        <div class="col-md-12">
-          <div class="cart-collaterals">
-            <div class="cart_totals " style="width: 100%">
-              <h2>You may be interested in...</h2>
-              <div class="agile_top_brands_grids" style="overflow-x: scroll;">
-                <?php
-                $it_id = 1;
-                $n = 0;
-                $sql5 = "SELECT * FROM product
-                        INNER JOIN category ON category.category_id=product.category_id
-                        INNER JOIN product_description ON product.product_id=product_description.product_id
-                        INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
-                        WHERE product.category_id=category.category_id AND product.product_id=$it_id ";
-                //Generate Dynamic Loading
-                function randomGen($min, $max, $quantity)
-                {
-                  $numbers = range($min, $max);
-                  shuffle($numbers);
-                  return array_slice($numbers, 0, $quantity);
-                }
-                //Generate Dynamic Loading
-                $stmt5 = $pdo->query($sql5);
-                $row5 = $stmt5->fetch(PDO::FETCH_ASSOC);
-                $cat = $row5['category_name'];
-                $r1 = $pdo->query(
-                  "SELECT MIN(product_description_id) from product_description
-                  INNER JOIN product ON product.product_id=product_description.product_id
-                  INNER JOIN category ON category.category_id=product.category_id
-                  WHERE product.category_id=category.category_id AND category.category_name= '$cat'"
-                );
-                $id1 = $r1->fetch(PDO::FETCH_ASSOC);
-                $r2 = $pdo->query(
-                  "SELECT MAX(product_description_id) from product_description
-                  INNER JOIN product ON product.product_id=product_description.product_id
-                  INNER JOIN category ON category.category_id=product.category_id
-                  WHERE product.category_id=category.category_id AND category.category_name= '$cat' "
-                );
-                $id2 = $r2->fetch(PDO::FETCH_ASSOC);
-                $cn = 0;
-                $ran = randomGen($id1['MIN(product_description_id)'], $id2['MAX(product_description_id)'], (int) $id2['MAX(product_description_id)'] - (int) $id1['MIN(product_description_id)']);
-                while ($cn != 3) {
-                  $r = $pdo->query("SELECT * FROM product INNER JOIN product_description ON product.product_id=product_description.product_id WHERE product_description_id= $ran[$cn]");
-                  $rw = $r->fetch(PDO::FETCH_ASSOC);
-                ?>
-                  <div class="col-md-3 top_brand_left-1">
-                    <div class="hover14 column">
-                      <div class="agile_top_brand_left_grid">
-                        <div class="agile_top_brand_left_grid_pos">
-                          <img src="../../images/offer.png" alt=" " class="img-responsive">
-                        </div>
-                        <div class="agile_top_brand_left_grid1">
-                          <figure>
-                            <div class="snipcart-item block" style="height: 330px">
-                              <div class="snipcart-thumb" style="height: 320px">
-                                <a href="../Product/single.php?id=<?= $rw['product_id'] ?>">
-                                  <img
-                                    title=" "
-                                    alt=" "
-                                    style="height: 100px;"
-                                    class="new_size"
-                                    src="../../images/<?= $rw['category_id'] ?>/<?= $rw['product_description_id'] ?>.jpg">
-                                </a>
-                                <p style="height: 70px;"><?= $rw['product_name'] ?></p>
-                                <div class="stars">
-                                  <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                  <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                  <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                  <i class="fa fa-star blue-star" aria-hidden="true"></i>
-                                  <i class="fa fa-star gray-star" aria-hidden="true"></i>
-                                </div>
-                                <h4>$35.99 <span>$55.00</span></h4>
-                              </div>
-                              <div class="snipcart-details top_brand_home_details" style="margin-top: -30px;">
-                                <form action="#" method="post">
-                                  <fieldset>
-                                    <input type="hidden" name="cmd" value="_cart">
-                                    <input type="hidden" name="add" value="1">
-                                    <input type="hidden" name="business" value=" ">
-                                    <input type="hidden" name="item_name" value="<?= $rw['product_name'] ?>">
-                                    <input type="hidden" name="amount" value="35.99">
-                                    <input type="hidden" name="discount_amount" value="1.00">
-                                    <input type="hidden" name="currency_code" value="USD">
-                                    <input type="hidden" name="return" value=" ">
-                                    <input type="hidden" name="cancel_return" value=" ">
-                                    <input type="submit" name="submit" value="Add to cart" class="button">
-                                  </fieldset>
-                                </form>
-                              </div>
-                            </div>
-                          </figure>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <?php
-                  $cn++;
-                  if ($cn == 3) {
-                  ?>
-                    <div class="clearfix"> </div>
-              </div>
-          <?php
-                  }
-                }
-          ?>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
     </div>
   </div>
 </div>
