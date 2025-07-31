@@ -147,6 +147,11 @@ if (!empty($_SESSION['_contact_form_success'])) {
         padding-top: 20px;
       }
 
+      .pr1 {
+        margin-top: 100px;
+        margin-left: 15px;
+      }
+
       #message {
         padding: 20px;
         margin: auto;
@@ -407,10 +412,9 @@ if (!empty($_SESSION['_contact_form_success'])) {
     ?>
       <div class="pr1">
         <div class="proupda ">
-          <div class="newupdation">
-            <span style="font-size: 16px;font-weight: bolder;color: #ffffff;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ffc107), color-stop(1, #ff9800)) !important;    position: relative;top: 0px;left: 0;text-align: center;padding: 10px;width: 100%;justify-content: center;display: flex;">
-              <h4 style="text-overflow: ellipsis;width: 400px;white-space: nowrap;overflow: hidden;"> <?= $itna ?></h4>
-            </span><br>
+          <div class="table1" style="overflow:hidden;">
+            <h4> <?= $itna ?></h4>
+            <br>
             <div class="row">
               <?php
               $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product_description.product_id=$it ";
@@ -523,8 +527,18 @@ if (!empty($_SESSION['_contact_form_success'])) {
                             id="btnSubmit"
                             onclick="showupda(<?= $row['product_description_id'] ?>)"
                             name="upload_image"
-                            style="width: 100%;padding: 5px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #2196f4), color-stop(1, #1965a2)) !important;border: none;color: white;font-weight: bolder;position: absolute;bottom: 0;left: 0;">
-                            <i class="fas fa-upload" style="font-size: 24px;float: left;"></i>Upload
+                            style="width: 260px;
+    padding: 5px;
+    background: #075676d1;
+    border: none;
+    color: white;
+    font-weight: bolder;
+    position: absolute;
+    left: 15px;
+    top: -50px;
+    border-radius: 5px;
+    float: right;">
+                            <i class="fa fa-cloud-upload" style="font-size: 24px;float: left;"></i>Upload
                           </button>
                         </div>
                       </table>
