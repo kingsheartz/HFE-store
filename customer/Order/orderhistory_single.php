@@ -154,6 +154,10 @@ require "../Common/pdo.php";
     text-transform: capitalize;
   }
 
+  hr.make_divb {
+    border-color: #101010 !important;
+  }
+
   @media(min-width: 430px) {
     #proceed {
       width: 160px;
@@ -368,7 +372,7 @@ require "../Common/pdo.php";
               <tr style="padding-bottom:30px;"></tr>
               <tr class="div-wrapper dw">
                 <th class="cust_header2">Order ID</th>
-                <td class="cust_details">OSID<?= sprintf('%06d', $row['new_orders_id']) ?></td>
+                <td class="cust_details">HFEID<?= sprintf('%06d', $row['new_orders_id']) ?></td>
               </tr>
               <tr class="div-wrapper dw">
                 <th class="cust_header2">Seller</th>

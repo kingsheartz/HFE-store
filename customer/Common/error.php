@@ -1,6 +1,6 @@
 <?php
 session_start();
-$_SESSION['failed'] = "Unauthorised entry is prohibited";
+$_SESSION['failed'] = "Access Denied: Unauthorized Entry Prohibited";
 try {
   if (isset($_GET['click'])) {
     $_SESSION['failed'] = "The account is already activated <br> (or) <br> doesn't exist!";
@@ -26,14 +26,15 @@ try {
   </style>
   <meta name="viewport" content="user-scalable=no">
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-  <meta name="keywords"
-    content="Super Market Responsive web template, Bootstrap Web Templates, Flat Web Templates, Android Compatible web template,Smartphone Compatible web template, free webdesigns for Nokia, Samsung, LG, SonyEricsson, Motorola web design" />
+  <meta name="keywords" content="fitness equipment, health store, gym equipment, treadmills, dumbbells, resistance bands, yoga mats, online fitness shop, home workout gear, buy fitness equipment online, exercise accessories, fitness tracker, BMI calculator, calorie tracker, strength training tools">
   <!--favicon-->
+  <link href="../../images/logo/favicon.png" rel="icon" />
+  <!--//favicon-->
 </head>
 <style type="text/css">
   body {
     text-align: center;
-    background: url("../../images/logo/store1.jpg") 0px 0px no-repeat;
+    background: url("../../images/logo/store1.png") 0px 0px no-repeat;
     background-size: cover;
     background-attachment: fixed;
   }
@@ -56,7 +57,7 @@ try {
     width: 50px;
   }
 
-  .loader .hidden {
+  .loader.hidden {
     animation: fadeout 1s;
     animation-fill-mode: forwards;
   }
@@ -106,7 +107,7 @@ try {
 <body>
   <!--ANIMATION-->
   <div class="loader">
-    <img src="../../images\load\4.svg" alt="loading..." />
+    <img src="../../images/load/dot-bouncer.svg" height="50" alt="loading..." style="max-height: 30px;"/>
   </div>
   <!--ANIMATION-->
   <div>
@@ -114,10 +115,10 @@ try {
   <div id="main">
     <?php
     if (isset($_SESSION['failed'])) {
-      echo '<div id="cont"><div style="padding-top:100px;"><center><a href="../Main/hfe.php" ><img src="../../images/logo/logomail.png"  ></a></center></div>';
-      echo '<div id="error">';
-      echo "<p style='text-align:center;font-size:42px;color:white;padding-top:5%;'><i style='color:yellow' class='fa fa-warning'></i> " . $_SESSION['failed'] . " <span style='color:red'>!!!</span></p><br>";
-      echo "<center><a style='font-size:34px;color:white;font-weight:bold;text-decoration:none' href='../Account/login.php'><i style='color:#FFB04A' class='fas fa-hand-point-right'></i> <span style='color:red'><u>Log In</u></span></a></center>";
+      echo '<div id="cont"><div style="padding-top:100px;"><center><a href="../Main/hfe.php" ><img src="../../images/logo/logo-horizontal.png" style="max-width:250px"></a></center></div>';
+      echo '<div id="error" style="font-family:monospace;">';
+      echo "<p style='text-align:center;font-size:30px;color:white;padding-top:5%;'><i style='color:yellow' class='fa fa-warning'></i> " . $_SESSION['failed'] . " <span style='color:red'>!!!</span></p><br>";
+      echo "<center><a style='font-size:34px;color:white;font-weight:bold;text-decoration:none' href='../Account/login.php'><span class='fa fa-sign-in' style='color: white;'></span><i style='color:#FFB04A' class='fas fa-hand-point-right'></i> <span style='color:red'><u>Log In</u></span></a></center>";
       echo '</div></div>';
     }
     ?>

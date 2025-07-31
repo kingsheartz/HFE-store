@@ -227,7 +227,7 @@
           </li>
         </ul>
       </div>
-			<div class="footer-botm">
+      <div class="footer-botm">
         <div class="container">
           <div class="col-lg-5 col-md-6 col-sm-12 w3_footer_grid" style="display: inline-flex;">
             <div class="newsletter">
@@ -241,7 +241,7 @@
               </form>
             </div>
           </div>
-					<div class="col-lg-2"></div>
+          <div class="col-lg-2"></div>
           <div class="col-lg-3 col-md-6 col-sm-12">
             <div class="w3layouts-foot">
               <ul>
@@ -461,40 +461,48 @@
   <div class="modal-dialog" style="width: 70%;height: 70%;">
     <!-- Modal content-->
     <div class="modal-content" style="width: 70%;height:70%;background-color:white;">
-      <div class="modal-header" style="padding: 0px;min-height: 0px;border:0px;">
+      <div class="modal-header" style="padding: 0px;min-height: 0px;border:0px;background-color: currentColor;">
         <button
           type="button"
-          style="font-size: 2.2em;margin-right: -20px;margin-top: -20px;opacity: unset;outline: none;color: white"
+          style="font-size: 2.2em;margin-right: 12px;margin-top: 0px;opacity: unset;outline: none;color: white"
           class="close"
           data-dismiss="modal">
-          <img src="../../images/close.png" alt="close">
+          <img src="../../images/close.png" alt="close" style="height: 15px;margin-top: -2px;margin-right: 2px;">
         </button>
       </div>
       <div class="modal-body" style="padding:0px;height: 100%;">
-        <div class="col-md-12">
-          <div class="col-md-12" style="padding: 0px;height: 100%;background-color: white">
+        <div class="col-md-12" style="padding: 0px;">
+          <div class="col-md-12" style="padding: 0px;height: 100%;background-color: #151515;">
             <form name="signin_form" id="signin_form">
-              <div class="col-md-12" style="padding: 0px;height: 100%;background-color: white">
+              <div class="col-md-12" style="padding: 0px;height: 100%;background-color: #151515;">
                 <div class="col-md-6 hidden-xs no-padding" style="padding:0px;height: 70%">
-                  <img class="img-responsive" style="padding: 0px;padding-top: 0px;height: 400px;position: relative;" src="../../images/logo/store.jpg">
+                  <img class="img-responsive" style="padding: 0px;padding-top: 0px;height: 355px;position: relative;" src="../../images/logo/store1.png">
                 </div>
                 <div class="col-md-6">
                   <div class="form-group">
                     <br>
-                    <img src="../../images/logo/logost.svg" height="50px">
-                    <i style="font-size: 1.6em;font-weight: 800;font-family: 'Open Sans', sans-serif;font-style: normal;">
+                    <img src="../../images/logo/logo-horizontal.png" style="height: 50px; width: auto;">
+                    <br><br>
+                    <i style="font-size: 1.6em;font-weight: 800;font-family: 'Open Sans', sans-serif;font-style: normal;color: darkgrey;">
                       Log in
-                    </i><br>
+                    </i>
                     <p id="emppass" style="color: red;position: relative;top: 45px;display: none;">
                     </p><br><br>
-                    <input type="email" class="form-control md-brdr" id="mobile" name="mobile" placeholder="Email ID" required>
+                    <input
+                      type="email"
+                      class="form-control md-brdr"
+                      id="mobile"
+                      name="mobile"
+                      placeholder="Email ID"
+                      style="background-color: #151515;border-color: darkgrey !important;"
+                      required>
                     <input type="hidden" id="valchg">
                   </div>
                   <p class="capson_warning" style="display: none;color: #d9534f">
                     <i class="fa fa-warning"></i>
                     &nbsp;WARNING! Caps lock is ON.
                   </p>
-                  <div id="passdiv" style="display: block;background-color: white">
+                  <div id="passdiv" style="display: block;background-color: #151515">
                     <div class="form-group">
                       <input
                         type="password"
@@ -504,6 +512,7 @@
                         placeholder="Enter  Password"
                         name="password"
                         id="pwd"
+                        style="background-color: #151515;border-color: darkgrey !important;"
                         required>
                     </div>
                   </div>
@@ -512,16 +521,27 @@
                       <button
                         type="button"
                         onclick="forgottenpass()"
-                        style="background-color: transparent;border: none;"
+                        style="background-color: transparent;border: none;color: darkgrey;"
                         class="frgt-pswrd">Forgot Password?
                       </button>
                     </a>
                     <br><br><br>
-                    <button onclick="signin()" type="button" class="btn btn-primary btn-full mgbtm15 real_btn">LOGIN</button>
-                    <button type="button" style="display:none" class="btn btn-primary btn-full mgbtm15 load_btn">
+                    <button
+                      onclick="signin()"
+                      style="background-color: #139b3b !important; border-color: #139b3b !important"
+                      type="button"
+                      class="btn btn-primary btn-full mgbtm15 real_btn">LOGIN</button>
+                    <button
+                      type="button"
+                      style="display:none;background-color: #139b3b !important; border-color: #139b3b !important"
+                      class="btn btn-primary btn-full mgbtm15 load_btn">
                       <i class="fa fa-refresh fa-spin"></i> LOGIN</button>
                     <a href="../Account/registered.php">
-                      <button type="button" class="btn btn-danger btn-full mgbtm15" onclick="signup()">Sign Up</button>
+                      <button
+                        type="button"
+                        style="background-color: #451f1e !important"
+                        class="btn btn-danger btn-full mgbtm15"
+                        onclick="signup()">Sign Up</button>
                     </a><br><br>
                     <!--<a href="../Account/registered.php" data-toggle="modal" data-dismiss="modal"> <button type="button" class="btn btn-danger btn-full mgbtm15" onclick="signup()" data-dismiss="modal">Sign Up</button></a>-->
                   </div>
@@ -1010,6 +1030,22 @@ if (isset($_SESSION['id'])) {
 <!-----------------------------------------SINGLE JSS----------------------------------------------------------------->
 <!-------TESTING SIDE-NAV---------->
 <script type="text/javascript">
+  function getCookieset(cname) {
+    let name = cname + "=";
+    let decodedCookie = decodeURIComponent(document.cookie);
+    let ca = decodedCookie.split(';');
+    for (let i = 0; i < ca.length; i++) {
+      let c = ca[i];
+      while (c.charAt(0) == ' ') {
+        c = c.substring(1);
+      }
+      if (c.indexOf(name) == 0) {
+        return c.substring(name.length, c.length);
+      }
+    }
+    return "";
+  }
+
   function openNav() {
     document.cookie = 'OpenNavScroll=' + $(window).scrollTop();
     var NavScrollTop = 'OpenNavScroll';
@@ -1906,12 +1942,10 @@ if (isset($_SESSION['id'])) {
   //AUTO LOG IN
   $(document).ready(function() {
     setTimeout(() => {
-      const loader1 = document.querySelector(".loader1");
-      const loader2 = document.querySelector(".loader2");
       const loader = document.querySelector(".loader");
+      const loader1 = document.querySelector(".loader1");
       loader.className += " hidden";
       loader1.className += " hidden";
-      loader2.className += " hidden";
     }, 3000);
 
     function getCookie(name) {

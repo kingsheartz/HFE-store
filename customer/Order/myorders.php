@@ -9,7 +9,7 @@ require "../Common/pdo.php";
 <!-- breadcrumbs -->
 <style type="text/css">
   .table1 {
-    background: #eee;
+    background: #151515;
   }
 
   .order {
@@ -19,9 +19,9 @@ require "../Common/pdo.php";
     margin-top: 30px;
     margin-bottom: 30px;
     text-overflow: ellipsis;
-    box-shadow: -2px -2px 3px 3px #ddd;
+    box-shadow: -2px -2px 3px 3px black;
     border-radius: 10px;
-    background: #fff;
+    background: #151515;
   }
 
   .order-single {
@@ -31,8 +31,8 @@ require "../Common/pdo.php";
     margin-top: 30px;
     margin-bottom: 30px;
     text-overflow: ellipsis;
-    border-bottom: 1px solid #ddd;
-    box-shadow: -1px -1px 1px 1px #ddd;
+    border-bottom: 1px solid black;
+    box-shadow: -1px -1px 1px 1px black;
     border-radius: 5px;
   }
 
@@ -75,7 +75,7 @@ require "../Common/pdo.php";
   .orhead {
     position: relative;
     font-size: 34px;
-    background: #00779e;
+    background: #139b3b;
     color: #ffffff;
     height: 70px;
   }
@@ -83,8 +83,8 @@ require "../Common/pdo.php";
   .tablhde {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 18px;
-    background: #cacaca;
-    color: #000;
+    background: #101010;
+    color: darkgrey;
     width: 100%;
     height: 30px;
     padding-top: 6px;
@@ -165,6 +165,30 @@ require "../Common/pdo.php";
 
   .sidebar-title {
     font-size: 20px;
+  }
+
+  .page-item.active a {
+    background-color: #139b3b !important;
+    color: white !important;
+  }
+
+  #order_search,
+  #ord_filt,
+  #ord_filt option,
+  .sidebar-title-a,
+  #content_order {
+    background-color: black !important;
+    color: darkgrey;
+  }
+
+  hr.make_div {
+    background-color: black !important;
+    border: 3px solid black !important;
+    color: black !important;
+  }
+
+  hr.make_divb {
+    border-color: #101010 !important;
   }
 
   @media(min-width: 430px) {
@@ -413,7 +437,7 @@ require "../Common/pdo.php";
   if ($order_cnt == 0) {
     echo '<center>
             <img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" >
-            <h2 class="noorder-title" style="text-align: center;color:#f16b7f;display: inline-flex;font-weight: 600;">No Orders Yet...</h2>
+            <h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Orders Yet...</h2>
           </center><br/ ><br/ >';
   } else {
   ?>
@@ -473,12 +497,15 @@ require "../Common/pdo.php";
         </div>
       </div>
     </div>
+    <br>
+    <hr class="make_divb">
+    <br>
     <div class="order" style="border-bottom-left-radius:0px;border-bottom-right-radius:0px;margin-top: 10px;">
-      <div class="orhead" style="background-color: #ffffff;">
+      <div class="orhead" style="background-color: #151515;">
         <h2
           class="sidebar-title-a"
-          style="border-left: 5px solid #00869e;border-top-left-radius: 10px;text-align: left;padding-bottom: 24px;padding-top: 20px;margin-top: 0px;font-weight:normal;border-bottom:#333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color:#00869e;border-bottom-left-radius:0px ">
-          My Orders <i style="color: #ffc400" class="fa fa-shopping-bag"></i>
+          style="border-left: 5px solid #139b3b;border-top-left-radius: 10px;text-align: left;padding-bottom: 24px;padding-top: 20px;margin-top: 0px;font-weight: normal;border-bottom: #333;margin-bottom: 0px;border-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px;color: #139b3b;border-bottom-left-radius :0px ">
+          My Orders <i style="color: #ffffffff" class="fa fa-shopping-bag"></i>
         </h2>
       </div>
     </div>

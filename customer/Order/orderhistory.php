@@ -9,7 +9,7 @@ require "../Common/pdo.php";
 <!-- breadcrumbs -->
 <style type="text/css">
   .table1 {
-    background: #eee;
+    background: #151515;
   }
 
   .order {
@@ -19,9 +19,9 @@ require "../Common/pdo.php";
     margin-top: 30px;
     margin-bottom: 30px;
     text-overflow: ellipsis;
-    box-shadow: -2px -2px 3px 3px #ddd;
+    box-shadow: -2px -2px 3px 3px black;
     border-radius: 10px;
-    background: #fff;
+    background: #151515;
   }
 
   .order-single {
@@ -31,8 +31,8 @@ require "../Common/pdo.php";
     margin-top: 30px;
     margin-bottom: 30px;
     text-overflow: ellipsis;
-    border-bottom: 1px solid #ddd;
-    box-shadow: -1px -1px 1px 1px #ddd;
+    border-bottom: 1px solid black;
+    box-shadow: -1px -1px 1px 1px black;
     border-radius: 5px;
   }
 
@@ -54,7 +54,7 @@ require "../Common/pdo.php";
     top: 0;
     width: 200px;
     height: 100%;
-    background-color: #423e75;
+    background-color: #139b3b;
   }
 
   .col-sm-3,
@@ -75,16 +75,16 @@ require "../Common/pdo.php";
   .orhead {
     position: relative;
     font-size: 34px;
-    background: #00779e;
-    color: #ffffff;
+    background: #139b3b;
+    color: darkgrey;
     height: 70px;
   }
 
   .tablhde {
     font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
     font-size: 18px;
-    background: #cacaca;
-    color: #000;
+    background: #101010;
+    color: darkgrey;
     width: 100%;
     height: 30px;
     padding-top: 6px;
@@ -165,6 +165,31 @@ require "../Common/pdo.php";
 
   .sidebar-title {
     font-size: 20px;
+  }
+
+
+  .page-item.active a {
+    background-color: #139b3b !important;
+    color: white !important;
+  }
+
+  #order_search,
+  #ord_filt,
+  #ord_filt option,
+  .sidebar-title-a,
+  #content_order {
+    background-color: black !important;
+    color: darkgrey;
+  }
+
+  hr.make_div {
+    background-color: black !important;
+    border: 3px solid black !important;
+    color: black !important;
+  }
+
+  hr.make_divb {
+    border-color: #101010 !important;
   }
 
   @media(min-width: 430px) {

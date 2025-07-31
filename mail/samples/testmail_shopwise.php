@@ -82,7 +82,7 @@ for ($l = 0; $l < $i; $l++) {
                       <tr>
                         <td style="width:40%;text-align:left;padding-top:5px">
                           <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="https://www.HFE-Store.ml">
-                            <img border="0" src="../../images/logo/logo-high.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd">
+                            <img border="0" src="../../images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;width: 150px;" class="CToWUd">
                           </a>
                         </td>
                         <td style="width:60%;text-align:right;padding-top:5px">

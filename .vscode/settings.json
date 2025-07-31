@@ -20,7 +20,10 @@
   },
 
   "php-cs-fixer.onsave": false, // disable if not using it
-  "intelephense.format.enable": true
+  "intelephense.format.enable": true,
+  "[xml]": {
+    "editor.defaultFormatter": "redhat.vscode-xml"
+  }
 }
 // Note: Make sure to install the required extensions for the formatters you choose.
 // You can also customize the settings further based on your preferences and the extensions you are using.

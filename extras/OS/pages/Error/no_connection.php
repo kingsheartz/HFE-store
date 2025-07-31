@@ -307,7 +307,7 @@ a:hover {
   <div class="row" style="display:flex;justify-content: center;align-items: center;margin: 0;">
      <center id="logo">
 
-    <img  id="image" src="../../../../images/logo/logost.svg">
+    <img  id="image" src="../../../../images/logo/logo-horizontal.png">
 
 
   </center>

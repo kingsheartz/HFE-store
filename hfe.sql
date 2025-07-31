@@ -152,6 +152,16 @@ INSERT INTO `cart` (`cart_id`, `customer_id`, `product_description_id`, `store_i
 (33, 65, 668, 5, 1, 2750, 'booking', '2025-04-25', '18:07:42');
 
 -- --------------------------------------------------------
+--
+-- Table structure for table `cart_temp`
+--
+CREATE TABLE `cart_temp` (
+  `cart_temp_id` int(11) NOT NULL,
+  `cart_id` int(11) NOT NULL,
+  `customer_id` int(11) NOT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=latin1;
+
+-- --------------------------------------------------------
 
 --
 -- Table structure for table `category`
@@ -667,6 +677,50 @@ CREATE TABLE `wishlist_items` (
   `store_id` int(11) DEFAULT 0,
   `date` date DEFAULT NULL,
   `time` time DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calories`
+--
+
+CREATE TABLE `calories` (
+  `calories_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `customer_id` INT NOT NULL,
+  `food_item` VARCHAR(100) NOT NULL,
+  `calories` INT NOT NULL,
+  `date_logged` DATE DEFAULT CURRENT_DATE,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calorie_goals`
+--
+
+CREATE TABLE calorie_goals (
+  `customer_id` INT PRIMARY KEY,
+  `goal` INT NOT NULL CHECK (goal >= 0),
+  `updated_at` DATETIME DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `calorie_goals`
+--
+
+CREATE TABLE bmi_entries (
+  `bmi_id` INT AUTO_INCREMENT PRIMARY KEY,
+  `customer_id` INT NOT NULL,
+  `weight_kg` DECIMAL(5,2) NOT NULL,
+  `height_cm` DECIMAL(5,2) NOT NULL,
+  `bmi` DECIMAL(5,2) NOT NULL,
+  `date_logged` DATE DEFAULT CURRENT_DATE,
+  FOREIGN KEY (customer_id) REFERENCES customers(customer_id) ON DELETE CASCADE
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --

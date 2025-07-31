@@ -12,9 +12,9 @@ function randomGen($min, $max, $quantity)
 //Generate Dynamic Loading
 ?>
 <!-- breadcrumbs -->
-<div class="breadcrumbs" style="background-color: #eaeded">
+<div class="breadcrumbs">
   <div class="container">
-    <ol class="breadcrumb breadcrumb1" style="background-color: #eaeded">
+    <ol class="breadcrumb breadcrumb1">
       <li><a href="index.html"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a></li>
       <li class="active">Cart</li>
     </ol>
@@ -122,7 +122,8 @@ function randomGen($min, $max, $quantity)
     background-color: transparent;
     border-radius: 10px;
     overflow: hidden;
-
+    display: flex;
+    justify-content: center;
   }
 
   .cart_totals table th,
@@ -145,8 +146,9 @@ function randomGen($min, $max, $quantity)
   }
 
   .checktobuy {
-    width: 25px;
-    height: 25px;
+    width: 15px;
+    height: 15px;
+    margin: 5px !important;
   }
 
   div.cart-collaterals ul.products li.product h3 {
@@ -167,6 +169,10 @@ function randomGen($min, $max, $quantity)
     font-weight: 700;
     margin-left: 10px;
     text-decoration: none;
+  }
+
+  .large_specs_seen {
+    margin-top: 5px !important;
   }
 
   @media(max-width: 991px) {
@@ -261,7 +267,7 @@ function randomGen($min, $max, $quantity)
     border-bottom: #333;
     border-radius: 10px;
     color: #ffffff;
-    background: black;
+    background: #111111;
     text-transform: capitalize;
     padding-left: 10px;
     margin-left: 5px;
@@ -292,7 +298,7 @@ function randomGen($min, $max, $quantity)
     }
 
     img.shop_thumbnail {
-      max-height: 120px !important;
+      /* max-height: 120px !important; */
       width: auto !important;
     }
   }
@@ -336,7 +342,7 @@ function randomGen($min, $max, $quantity)
 
   @media (min-width:451px) {
     .pd_name {
-      font-size: 18px !important;
+      font-size: 15px !important;
     }
   }
 
@@ -346,7 +352,7 @@ function randomGen($min, $max, $quantity)
     }
 
     .pd_name {
-      font-size: 15px !important;
+      font-size: 14px !important;
     }
   }
 
@@ -359,7 +365,7 @@ function randomGen($min, $max, $quantity)
     width: 9px;
     height: 9px;
     display: block;
-    background: white;
+    background: #151515;
     position: absolute;
     top: 52%;
     left: 51%;
@@ -398,16 +404,48 @@ function randomGen($min, $max, $quantity)
   }
 
   .each-product {
-    background-color: #fff;
+    background-color: #151515;
     border-radius: 10px;
     margin-right: 0px;
     overflow: hidden;
     width: 100% !important;
   }
+
+  .amount {
+    color: darkgrey;
+  }
+
+  .sc-product-variation,
+  .product-subtotal {
+    color: #aaaaaa;
+  }
+
+  .update-cart-button,
+  .checkout-button {
+    /* background: #139b3b; */
+    color: #e3e2e2;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease !important;
+  }
+
+  .update-cart-button:hover,
+  .checkout-button:hover {
+    transform: translateY(-2px) !important;
+  }
+
+  .update-cart-button:active,
+  .checkout-button:active {
+    transform: translateY(0) !important;
+  }
 </style>
 
 <script>
   $(document).ready(function() {
+    $('.shop_thumbnail').css('max-height', $('.product_description_td').innerHeight() - 30 + 'px')
     $('.deselect').attr('checked', false);
   })
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -592,9 +630,9 @@ function randomGen($min, $max, $quantity)
       });
       console.log('Before removing object from an array -> ' + JSON.stringify(filter));
       // Convert the cart object into JSON string and save it into storage
-      localStorage.setproduct("cartObject", JSON.stringify(filter));
+      localStorage.setItem("cartObject", JSON.stringify(filter));
       // Retrieve the JSON string
-      /*var jsonString = localStorage.getproduct("cartObject");
+      /*var jsonString = localStorage.getItem("cartObject");
       var cartobj=JSON.parse(jsonString);
       console.log(cartobj);*/
     } else {
@@ -717,7 +755,7 @@ function randomGen($min, $max, $quantity)
       class=" button alt wc-forward side-ext-k shadow_l">
   </div>
   <div class="side-ext-l side-ext-r shadow_l" style="visibility: visible;opacity: 1;display: none;position: fixed;width: 200px;right:0;bottom:0;z-index: 99;">
-    <div class="side-ext-l side-ext-r shadow_l" style="position: fixed;bottom: 50px;right:0;z-index: 99;color:white;background-color: rgb(70, 70, 70);padding:10px;width:200px;">
+    <div class="side-ext-l side-ext-r shadow_l" style="position: fixed;bottom: 60px;right:0;z-index: 99;color:white;background-color: rgb(70, 70, 70);padding:10px;width:200px;">
       <label class="options">
         <span class="val-getbrand">Deselect all</span>
         <input onclick="deselect()" class="deselect" value="" id="mobgetbrand" type="radio" name="mob-radio-getbrand">
@@ -736,14 +774,14 @@ function randomGen($min, $max, $quantity)
   </div>
 </div>
 <!--side-ext-->
-<div class="single-product-area" style="padding-top: 0px; background-color: #eaeded;padding-bottom:0px">
+<div class="single-product-area" style="padding-top: 0px; background-color: #151515;padding-bottom:0px">
   <div class="zigzag-bottom"></div>
   <h2 class="sidebar-title">
     Shopping Cart <i class="fa fa-shopping-cart"></i>
   </h2>
-  <div class="container nopadding-margin" style="margin-left: 0px;width: 100%;padding:0">
+  <div class="container nopadding-margin" style="margin-left: 0px;width: 100%;padding:0;background-color: #111111;">
     <div class="row" style="margin: 0px;">
-      <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%">
+      <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%;display: list-item;">
         <script>
           console.log("Session ID:: <?php echo $_SESSION['id']; ?>");
         </script>
@@ -763,7 +801,7 @@ function randomGen($min, $max, $quantity)
                 <hr class=" make_divc" style="margin-bottom: 0px;margin-top: -10px;">
                 <div class="woocommerce">
                   <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;">
-                    <div class="shop_table cart">
+                    <div class="shop_table cart" style="background-color: #111111;">
                       <?php
                       $id = $_SESSION['id'];
                       $sql1 = "select * from cart where customer_id=:id order by product_description_id";
@@ -807,9 +845,9 @@ function randomGen($min, $max, $quantity)
                           $off = round(($save * 100) / $total);
                       ?>
                           <div class="cross-sells">
-                            <div class="each-product" style="padding: 0px;width: 100%;"
+                            <div class="each-product" style="padding: 0px;padding-top: 10px;width: 100%;background-color: #111111"
                               class="tbl_s<?= $store_id . "i" . $product_description_id ?>">
-                              <div class="col-sm-1" style="padding: 0px;padding-left: 10px;padding-right: 10px;position: relative;top: 200px;left: 20px;">
+                              <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0" style="padding: 0px;">
                                 <input
                                   id="check_s<?= $store_id . "i" . $product_description_id ?>"
                                   class="checktobuy"
@@ -818,32 +856,32 @@ function randomGen($min, $max, $quantity)
                                   name="select_product"
                                   value="s-<?= $store_id . "_i-" . $product_description_id ?>">
                               </div>
-                              <div class="col-sm-4">
+                              <div class="col-lg-4 col-md-4 col-sm-4 col-xs-12">
                                 <div class="product-quantity quantity buttons_added" style="justify-content: center;display: flex;text-align: center;align-items: center;position: relative;margin-right: 0px">
                                   <div class="product_img" style="padding: 0px; margin-top: 7px;margin-left: 15px;">
                                     <p class="product-thumbnail" style="text-align:right;">
                                       <a href="../Product/single.php?id=<?= $row2['product_description_id'] ?>">
-                                        <img style="max-width: 400px;max-height: 400px;" alt="<?= $row2['product_name'] ?>" class="shop_thumbnail" src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg">
+                                        <img style="max-width: 100%;max-height: 100%;" alt="<?= $row2['product_name'] ?>" class="shop_thumbnail" src="../../images/<?= $row2['category_id'] ?>/<?= $row2['product_description_id'] ?>.jpg">
                                       </a>
                                     </p>
                                   </div>
                                 </div>
                               </div>
-                              <div class="col-sm-7 product_description_td">
-                                <div class="product-name" colspan="2" style="padding: 0px;margin-top: 5px;">
-                                  <p style="margin:0px;margin-bottom: 20px;font-size:17px;">
-                                  <div style="margin-right:10px;background-color: transparent;padding-right:20px;padding-left:10px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
+                              <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 product_description_td">
+                                <div class="product-name" colspan="2" style="padding: 0px;margin-top: 5px;margin-bottom: 5px">
+                                  <p style="margin:0px;margin-bottom: 0px;font-size:17px;">
+                                  <div style="margin-right:10px;background-color: transparent;padding-right:20px;padding-left:0px;width: 100%;border-radius: 2px;margin-bottom: -8px;padding-top:8px;padding-bottom:8px;text-align:justify">
                                     <div style="display: flex;">
-                                      <a class="pd_name" href="#" style="color: black;font-weight: normal;text-align:justify;">
+                                      <a class="pd_name" href="#" style="color: darkgrey;font-weight: normal;text-align:justify;">
                                         <?= $row2['product_name'] ?>
                                       </a>
                                     </div>
                                   </div>
                                   </p>
                                 </div>
-                                <div class="cart_product" style="width: 100%; background-color: #fff">
+                                <div class="cart_product" style="width: 100%; background-color: #151515">
                                   <div class="large_specs_seen" style="width:100%;float: left;text-align: left;margin-left:10px;">
-                                    <div style="margin-top: 40px;">
+                                    <div>
                                       <!--FEATURES-->
                                       <ul>
 
@@ -876,7 +914,7 @@ function randomGen($min, $max, $quantity)
                                               <li class="sc-product-variation">
                                                 <span class="a-list-product">
                                                   <span class="a-size-small a-text-bold"><b><?= ucwords($features[$f]) ?>: </b></span>
-                                                  <span class="a-size-small" style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
+                                                  <span class="a-size-small" style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #111111;padding-top:0px;padding-bottom:0px;background-color:<?= $rowfeature_name[$features[$f] . '_name'] ?>;font-size:12px;"></span>
                                                 </span>
                                               </li>
                                             <?php
@@ -923,7 +961,7 @@ function randomGen($min, $max, $quantity)
                                   <div style="width:100%;float: left;text-align: left;">
                                     <div class="row" style="margin-left: 0px;float: left;margin-right: 0px;">
                                       <div class="col-md-6 full-size-cart-store-div" style="padding: 0px;margin-left: 20px;width: 200px;">
-                                        <p style="z-index: 1;text-align:left;margin-top: 35px;">
+                                        <p style="z-index: 1;text-align:left;margin-top: 5px;">
                                           <span style='font-family: arial;color:#006904;font-weight: bold;text-decoration: none;font-size: 12px'>
                                             You Save &#8377; <span id="save_s<?= $store_id . "i" . $product_description_id ?>" style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"><?= $save ?></span>
                                             (<span style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px" id="off_s<?= $store_id . "i" . $product_description_id ?>"><?= $off ?></span>%)
@@ -988,11 +1026,11 @@ function randomGen($min, $max, $quantity)
                                       </div>
                                     </div>
                                   </div>
-                                  <div style="padding: 0px;position: absolute;top: 200px;right: 30px;width: fit-content;">
+                                  <div style="padding: 0px;position: absolute;top: 180px;right: 30px;width: fit-content;">
                                     <div class="div-wrapper" style="text-align: left;padding: 0px;margin:0px;height: 40px;grid-gap: 0px;">
                                       <div class="btn_sub_q" style="padding: 0px;margin: 0px;margin-left: 2px;">
                                         <button
-                                          style="background-color: #02171e;-webkit-box-shadow: inset 0px 0px 15px 3px #02171e;box-shadow: inset 0px 0px 15px 3px #02171e;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #02171e;color: white;font-size: 18px;border-radius: 5px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;"
+                                          style="background-color: #000000;-webkit-box-shadow: inset 0px 0px 15px 3px #000000;box-shadow: inset 0px 0px 15px 3px #000000;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #000000;color: white;font-size: 18px;border-radius: 5px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;"
                                           type="button" id="sub_s<?= $store_id . "i" . $product_description_id ?>"
                                           onclick="sub_product_all('<?= $store_id ?>','<?= $product_description_id ?>','<?= $t_mrp ?>')">-
                                         </button>
@@ -1000,7 +1038,7 @@ function randomGen($min, $max, $quantity)
                                       <div style="padding: 0px;margin: 0px;">
                                         <button
                                           id="btn_s<?= $store_id . "i" . $product_description_id ?>"="button"
-                                          style="width: 100%;min-width: 50px;height: 40px;font-weight: bold;font-size: 14px;background-color: white;outline: none;border-color:#02171e;padding: 0"
+                                          style="width: 100%;min-width: 50px;height: 40px;font-weight: bold;font-size: 14px;background-color: white;outline: none;border-color:#000000;padding: 0"
                                           onclick="$(this).hide();if($(this).html()<10){$('#sel_s<?= $store_id . "i" . $product_description_id ?>').show();}else{$('#qnty_s<?= $store_id . "i" . $product_description_id ?>').show();}">
                                           <?= $row1['quantity'] ?>
                                         </button>
@@ -1099,7 +1137,7 @@ function randomGen($min, $max, $quantity)
                                       </div>
                                       <div class="btn_add_q" style="padding: 0px;margin: 0px;">
                                         <button
-                                          style="background-color: #02171e;-webkit-box-shadow: inset 0px 0px 15px 3px #02171e;box-shadow: inset 0px 0px 15px 3px #02171e;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #02171e;color: white;font-size: 18px;border-radius: 5px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;"
+                                          style="background-color: #000000;-webkit-box-shadow: inset 0px 0px 15px 3px #000000;box-shadow: inset 0px 0px 15px 3px #000000;width: 100%;min-width: 30px;height: 40px;font-weight: bold;border-color: #000000;color: white;font-size: 18px;border-radius: 5px;border-top-left-radius: 0px;border-bottom-left-radius: 0px;"
                                           id="add_s<?= $store_id . "i" . $product_description_id ?>"
                                           onclick="add_product_all('<?= $store_id ?>','<?= $product_description_id ?>','<?= $t_mrp ?>')"
                                           type="button">+
@@ -1110,7 +1148,7 @@ function randomGen($min, $max, $quantity)
                                 </div>
                                 <div style="width: 100%">
                                   <div>
-                                    <p class="product-subtotal" style="margin-left: 0px;float: left;font-weight: bold;width:100%">Price
+                                    <p class="product-subtotal" style="margin-left: 0px;float: left;font-weight: bold;width:100%;">Price
                                       <span class="amount">&#8377;
                                         <span id="price_s<?= $store_id . "i" . $product_description_id ?>"><?= $row2['price'] ?></span>
                                         <span>/-</span> (1 Qty)
@@ -1123,7 +1161,17 @@ function randomGen($min, $max, $quantity)
                                     <button
                                       type="button"
                                       title="Add to wish list"
-                                      style="width: 47%;height: 40px;border-radius: 5px;background-color: #000000;border: 0px solid #999;outline: none;font-weight: bold;color: white;float: left;"
+                                      style="width: 47%;
+                                        height: 40px;
+                                        border-radius: 5px;
+                                        background-color: #243539;
+                                        -webkit-box-shadow: inset 0px 0px 15px 3px #4c7279ff;
+                                        box-shadow: inset 0px 0px 15px 3px #4c7279ff;
+                                        border: 1px solid #413f3f;
+                                        outline: none;
+                                        font-weight: bold;
+                                        color: white;
+                                        float: left;"
                                       data-toggle="modal"
                                       data-target="#avail_wishlist"
                                       onclick="wishlist_check_store_select(<?= $product_description_id ?>,<?= $store_id ?>)">Wishlist <i style="color: red" class="fa fa-heart"></i>
@@ -1131,7 +1179,17 @@ function randomGen($min, $max, $quantity)
                                     <button
                                       type="button"
                                       title="Remove this product"
-                                      style="width: 47%;height: 40px;float: right;border: none;border-color: #fff;color: #fff;background-color: #c70000;outline: none;border-radius: 5px;"
+                                      style="width: 47%;
+                                        height: 40px;
+                                        float: right;
+                                        border: none;
+                                        border-color: #fff;
+                                        color: #fff;
+                                        background-color: #530000;
+                                        -webkit-box-shadow: inset 0px 0px 5px 3px #6f0202ff;
+                                        box-shadow: inset 0px 0px 5px 3px #6f0202ff;
+                                        outline: none;
+                                        border-radius: 5px;"
                                       class="remove"
                                       onclick="remove_product('<?= $store_id ?>','<?= $product_description_id ?>')"
                                       href="#"><b>Remove</b> <i class="fas fa-trash-alt"></i>
@@ -1140,6 +1198,7 @@ function randomGen($min, $max, $quantity)
                                 </div>
                               </div>
                             </div>
+                            <hr class="make_divc" style="margin-top: 40px;border-color: darkgrey !important;">
                           </div>
                       <?php
                           $product_cnt++;
@@ -1147,7 +1206,6 @@ function randomGen($min, $max, $quantity)
                       }
                       ?>
                     </div>
-                    <hr class="make_divc" style="margin-top: 40px;">
                     <?php
                     $id = $_SESSION['id'];
                     $sql = "select sum(product_details.price*cart.quantity) as subtotal from cart
@@ -1160,7 +1218,7 @@ function randomGen($min, $max, $quantity)
                     ));
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
                     ?>
-                    <div class="cart-collaterals" style="margin: 0px;padding: 0px;background: black;border-radius: 10px;">
+                    <div class="cart-collaterals" style="margin: 0px;padding: 0px;background: #0a0a0a;border-radius: 10px;">
                       <div class="cart_totals shadow_all_none" style="width: 100%;margin:0px;padding: 0px;padding-top: 0px;">
                         <div class="row">
                           <div class="col-md-12" style="float:right;">
@@ -1173,24 +1231,25 @@ function randomGen($min, $max, $quantity)
                           <div class="col-md-12">
                             <div class="row">
                               <div class="div-wrapper"
-                                style="padding-left: 15px;color:white;padding-right: 15px;grid-gap: 0px;padding-top: 20px;">
+                                style="padding-left: 15px;color:white;padding-right: 15px;grid-gap: 0px;padding-top: 20px;display: grid !important;grid-auto-flow: column !important; max-width:800px;">
                                 <div style="padding: 10px;">
                                   <button
                                     type="button"
-                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;float: left;border: 0px;background: #696969;"
+                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;float: left;border: 1px solid #413f3f;background: #061d22;"
                                     onclick="updatecart()"
                                     name="update_cart"
-                                    class="btn-primary btn button">
+                                    class="update-cart-button btn-primary btn button">
                                     <i class="fas fa-upload fa-lg"></i> UPDATE CART
                                   </button>
                                 </div>
                                 <div style="padding: 10px;">
                                   <button
                                     type="button"
-                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;border: 0px;float: right;background: #696969;"
+                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;border: 1px solid #929292;float: right;background: #006904;"
                                     onclick="go()"
                                     name="proceed"
-                                    class="checkout-button btn btn-primary button alt wc-forward"><i class="fa fa-check-square-o fa-lg"></i> CHECKOUT
+                                    class="checkout-button btn-primary btn button alt wc-forward">
+                                    <i class="fa fa-check-square-o fa-lg"></i> CHECKOUT
                                   </button>
                                 </div>
                               </div>
@@ -1232,8 +1291,8 @@ function randomGen($min, $max, $quantity)
     ?>
       <div class="row emp_cart">
         <div class="product-content-right">
-          <center><img style="justify-content: center;" class="sidebar-title" src="../../images/logo/cart-empty.png">
-            <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #005549">
+          <center><img style="justify-content: center;padding-bottom: 20px;margin-bottom: 0px" height="400" class="sidebar-title" src="../../images/logo/cart-empty.png">
+            <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #56c57d">
               Your Cart is Empty
             </h2>
           </center>
@@ -1242,7 +1301,7 @@ function randomGen($min, $max, $quantity)
       <div class="element_grid">
         <div class="shadow_b">
           <hr style="padding: 0;margin:0;">
-          <div class="scrollmenu bl_product_scroll  <?= $color[$rancolor1] ?>" style="background-color: #fff">
+          <div class="scrollmenu bl_product_scroll  <?= $color[$rancolor1] ?>" style="background-color: #101010">
             <?php
             $row = $pdo->query(
               "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
@@ -1267,7 +1326,7 @@ function randomGen($min, $max, $quantity)
         <div class="shadow_b">
 
           <hr style="padding: 0;margin:0;">
-          <div class="scrollmenu mui_product_scroll <?= $color[$rancolor2] ?> " style="background-color: #fff">
+          <div class="scrollmenu mui_product_scroll <?= $color[$rancolor2] ?> " style="background-color: #101010">
             <?php
             $row = $pdo->query(
               "select product_description.product_description_id,product.product_id,product.product_name,category.category_name,category.category_id from product
@@ -1312,9 +1371,9 @@ function randomGen($min, $max, $quantity)
           position: relative;
           height: max-content;
           margin: auto;
-          margin-top: 10px;
+          margin-top: 5px;
           display: block;
-          background: #FFFFFF;
+          background: #101010;
           box-shadow: 1px 1px 3px rgb(0 0 0 / 10%);
         }
 
@@ -1337,20 +1396,24 @@ function randomGen($min, $max, $quantity)
           position: relative;
           height: 250px;
           width: 200px;
-          background: white;
-          color: #000;
+          background: #101010;
+          color: darkgrey;
         }
 
         .products-all-in-one img {
           margin: auto;
           display: block;
-          background: white;
+          background: #101010;
           image-rendering: auto;
           image-rendering: crisp-edges;
           width: auto;
           max-width: 170px;
           height: auto;
           max-height: 180px;
+        }
+
+        .product_img {
+          width: -webkit-fill-available;
         }
 
         .difhed {
@@ -1475,7 +1538,7 @@ function randomGen($min, $max, $quantity)
             if ($isready != 0 && is_null($isready) == false) {
       ?>
         <!-- new -->
-        <div class="container" style="width: 100%;background-color: #fff;margin-top: 15px;">
+        <div class="container" style="width: 100%;background-color: #101010;margin-top: 15px;">
           <div class="row">
             <div class="col-md-12" style="padding:0;">
               <div class="cart-collaterals">
@@ -1483,12 +1546,12 @@ function randomGen($min, $max, $quantity)
                   <h2 style="padding-left:15px;padding-right:15px;">You may be interested in...</h2>
                   <h4
                     class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
-                    style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
+                    style="border-left: 5px solid <?= $bgcolor[$rancolor1] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: #101010;font-weight:normal;border-bottom: #333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;border-bottom-left-radius: 0;color: darkgrey;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
                     Explore <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
                     <span style="float: right;margin-right: 5px;margin-top: -4px;">
                       <button
                         type="button"
-                        style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor1] ?>;padding: 11px auto;font-size: 12px;"
+                        style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor1] ?>;display: flex;align-items: center;font-size: 12px;"
                         name="proceed"
                         class="checkout-button button alt wc-forward">
                         <a href="../Product/products_viewall.php?category_id=<?= $cat_id1 ?>" style="color:<?= $c2 ?>;">View all</a>
@@ -1519,7 +1582,7 @@ function randomGen($min, $max, $quantity)
                           class="products-all-in-one"
                           title="<?= $row['product_name'] ?>"
                           onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
-                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                          <div style="display: flex;justify-content: center;height: 200px;width:100%;background: #101010;text-align: center;">
                             <img class="image" align="middle" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                           </div>
                           <?php
@@ -1561,12 +1624,12 @@ function randomGen($min, $max, $quantity)
             ?>
               <h4
                 class="show_cat_list_main tb-padding sidebar-title cart_empty_show_cat"
-                style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: white;font-weight:normal;border-bottom:#333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;color: black;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
+                style="border-left: 5px solid <?= $bgcolor[$rancolor2] ?>;border-top-left-radius: 10px;text-align: left;padding-bottom: 10px;padding-top: 10px;background-color: #101010;font-weight: normal;border-bottom: #333;margin-bottom: -5px;margin-top: 13px;border-top-right-radius: 10px;border-bottom-left-radius: 0;color: darkgrey;text-transform: capitalize;padding-left: 10px; overflow: hidden;font-size: 18px;">
                 Explore <i style="color: #ff5722;" class="fa fa-arrow-right"></i>
                 <span style="float: right;margin-right: 5px;margin-top: -4px;">
                   <button
                     type="button"
-                    style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor2] ?>;padding: 11px auto;font-size: 12px;"
+                    style="max-width: 150px;height: 30px;font-weight: bold;border-top-right-radius: 10px;background-color: <?= $bgcolor[$rancolor2] ?>;display: flex;align-items: center;font-size: 12px;"
                     name="proceed"
                     class="checkout-button button alt wc-forward">
                     <a href="../Product/products_viewall.php?category_id=<?= $cat_id2 ?>" style="color:<?= $c2 ?>;">View all</a>
@@ -1602,7 +1665,7 @@ function randomGen($min, $max, $quantity)
                       class="products-all-in-one"
                       title="<?= $row['product_name'] ?>"
                       onclick="location.href='../Product/single.php?id=<?= $row['product_description_id'] ?>'">
-                      <div style="display: flex;justify-content: center;height: 200px;width:100%;background: white;text-align: center;">
+                      <div style="display: flex;justify-content: center;height: 200px;width:100%;background: #101010;text-align: center;">
                         <img class="image" align="middle" src="../../images/<?= $row['category_id'] ?>/<?= $row['product_description_id'] ?>.jpg">
                       </div>
                       <?php
