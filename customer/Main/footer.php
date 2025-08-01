@@ -487,7 +487,7 @@
                       id="mobile"
                       name="mobile"
                       placeholder="Email ID"
-                      style="background-color: #151515;border-color: darkgrey !important;"
+                      style="background-color: #151515;color: darkgrey;border-color: darkgrey !important;"
                       required>
                     <input type="hidden" id="valchg">
                   </div>
@@ -505,7 +505,7 @@
                         placeholder="Enter  Password"
                         name="password"
                         id="pwd"
-                        style="background-color: #151515;border-color: darkgrey !important;"
+                        style="background-color: #151515;color: darkgrey;border-color: darkgrey !important;"
                         required>
                     </div>
                   </div>

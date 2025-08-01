@@ -1112,7 +1112,7 @@ if ($result_cnt == 0) {
                   </div>
                 </div>
               </div>
-              <hr class="make_divb">
+              <hr class="make_divb" style="border-color: #656565 !important;">
               <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #151515;padding:0;">
                 <!--FILTER-->
                 <div class="col-md-3 sidebar_divider no_margin" style="padding:0;padding-bottom: 0px;margin-top:10px;border-radius: 5px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff));">

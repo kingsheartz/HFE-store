@@ -1073,7 +1073,7 @@ a.w3_agile_vimeo:hover {
 .login-form-grids {
   width: 45%;
   padding: 3em;
-  background: #F7F7F9;
+  background: #151515;
   margin: 3em auto 0;
 }
 
@@ -1170,7 +1170,7 @@ a.w3_agile_vimeo:hover {
 
 .login-form-grids h5, .login-form-grids h6 {
   font-size: 1em;
-  color: #212121;
+  color: darkgrey;
   text-transform: uppercase;
   margin: 0 0 2em;
 }

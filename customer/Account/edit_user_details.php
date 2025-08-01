@@ -4,49 +4,48 @@ session_start();
 
 // Check if session exists and has valid ID
 if (!isset($_SESSION['id'])) {
-    // Set error message in session
-    $_SESSION['error_msg'] = "Your session has expired. Please login again.";
-    header("location:../Account/login.php");
-    exit();
+  // Set error message in session
+  $_SESSION['error_msg'] = "Your session has expired. Please login again.";
+  header("location:../Account/login.php");
+  exit();
 }
 
 require "../Main/header.php";
 
 try {
-    // Get user ID from session or query parameter
-    if (isset($_SESSION['id'])) {
-        $id = $_SESSION['id'];
-    } else if (isset($_GET['id'])) {
-        $id = $_GET['id'];
-    } else {
-        throw new Exception("User ID not found");
-    }
+  // Get user ID from session or query parameter
+  if (isset($_SESSION['id'])) {
+    $id = $_SESSION['id'];
+  } else if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+  } else {
+    throw new Exception("User ID not found");
+  }
 
-    // Validate that ID is numeric
-    if (!is_numeric($id)) {
-        throw new Exception("Invalid user ID");
-    }
+  // Validate that ID is numeric
+  if (!is_numeric($id)) {
+    throw new Exception("Invalid user ID");
+  }
 
-    // Fetch user details
-    $usersql = 'SELECT * FROM customers WHERE customer_id = :id';
-    $userstmt = $pdo->prepare($usersql);
-    $userstmt->execute(['id' => $id]);
-    $userrow = $userstmt->fetch(PDO::FETCH_ASSOC);
+  // Fetch user details
+  $usersql = 'SELECT * FROM customers WHERE customer_id = :id';
+  $userstmt = $pdo->prepare($usersql);
+  $userstmt->execute(['id' => $id]);
+  $userrow = $userstmt->fetch(PDO::FETCH_ASSOC);
 
-    if (!$userrow) {
-        throw new Exception("Your session has expired. Please login again.");
-    }
+  if (!$userrow) {
+    throw new Exception("Your session has expired. Please login again.");
+  }
 
-    // Fetch delivery details
-    $susersql = 'SELECT * FROM customer_delivery_details WHERE type="permanent" AND customer_id = :id';
-    $suserstmt = $pdo->prepare($susersql);
-    $suserstmt->execute(['id' => $id]);
-    $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
-
+  // Fetch delivery details
+  $susersql = 'SELECT * FROM customer_delivery_details WHERE type="permanent" AND customer_id = :id';
+  $suserstmt = $pdo->prepare($susersql);
+  $suserstmt->execute(['id' => $id]);
+  $suserrow = $suserstmt->fetch(PDO::FETCH_ASSOC);
 } catch (Exception $e) {
-    $_SESSION['error_msg'] = $e->getMessage();
-    header("location:../Main/hfe.php");
-    exit();
+  $_SESSION['error_msg'] = $e->getMessage();
+  header("location:../Main/hfe.php");
+  exit();
 }
 ?>
 <style type="text/css">
@@ -105,6 +104,15 @@ try {
 
   .invalid {
     background-color: #ffdddd !important;
+  }
+
+  .login-form-grids input[type="email"],
+  .login-form-grids input[type="tel"],
+  .login-form-grids textarea,
+  .login-form-grids input[type="text"],
+  .login-form-grids input[type="password"],
+  .login-form-grids input[type="text"] {
+    background-color: rgba(0,0,0,0.35);
   }
 
   @media (min-width: 992px) {
@@ -171,11 +179,11 @@ try {
         <div class="login-form-grids" style="border-top: 10px solid #139b3b;border-radius: 5px;width: 100%">
           <div class="account-details pi account-details-active">
             <h5><i class="fa fa-info-circle fa-lg"></i>&nbsp;profile information
-              <span id='succeeded' style="float: right;background-color: green;border-radius: 5px;color:white">&nbsp;
+              <span id='succeeded' style="float: right;background-color: green;border-radius: 5px;color: white">&nbsp;
                 <i class="fa fa-check" style="color: orange;text-shadow: 1px 2px 3px grey"></i>
                 <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey">verified &nbsp;</i>
               </span>
-              <span id='pending' style="display: none;float: right;background-color: white;border: 1px solid black;border-radius: 5px;color:white">&nbsp;
+              <span id='pending' style="display: none;float: right;background-color: white;border: 1px solid black;border-radius: 5px;color: white">&nbsp;
                 <i class="fa fa-close" style="color: red;text-shadow: 1px 2px 3px grey"></i>
                 <i style="text-transform: capitalize;font-size: 12px;color: black;text-shadow: 1px 2px 3px grey">pending &nbsp;</i>
               </span>
@@ -208,7 +216,7 @@ try {
                     onclick="dis_fn()"
                     onmouseover="$(this).css('background-color','#0c66cc')"
                     onmouseleave="$(this).css('background-color','#0c77cc')"
-                    style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;"
+                    style="color: white;background-color: #0c77cc;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;"
                     class="btn btn-default search_btn"
                     type="button">
                     <span class="fa fa-edit"></span>
@@ -219,7 +227,7 @@ try {
                     onclick="reset_fn()"
                     onmouseover="$(this).css('background-color','#bb0000')"
                     onmouseleave="$(this).css('background-color','red')"
-                    style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
+                    style="color: white;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
                     class="btn btn-default search_btn"
                     type="button">
                     <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -230,7 +238,7 @@ try {
                     onclick="dis_fn()"
                     onmouseover="$(this).css('background-color','#4f994f')"
                     onmouseleave="$(this).css('background-color','#07C103')"
-                    style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;"
+                    style="color: white;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;"
                     class="btn btn-default search_btn"
                     type="button">
                     <span class="fa fa-check"></span>
@@ -262,7 +270,7 @@ try {
                     onclick="dis_ln()"
                     onmouseover="$(this).css('background-color','#0c66cc')"
                     onmouseleave="$(this).css('background-color','#0c77cc')"
-                    style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px"
+                    style="color: white;background-color: #0c77cc;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px"
                     class="btn btn-default search_btn"
                     type="button">
                     <span class="fa fa-edit"></span>
@@ -273,7 +281,7 @@ try {
                     onclick="reset_ln()"
                     onmouseover="$(this).css('background-color','#bb0000')"
                     onmouseleave="$(this).css('background-color','red')"
-                    style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
+                    style="color: white;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
                     class="btn btn-default search_btn"
                     type="button">
                     <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -284,7 +292,7 @@ try {
                     onclick="dis_ln()"
                     onmouseover="$(this).css('background-color','#4f994f')"
                     onmouseleave="$(this).css('background-color','#07C103')"
-                    style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;"
+                    style="color: white;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;"
                     class="btn btn-default search_btn"
                     type="button">
                     <span class="fa fa-check"></span>
@@ -315,7 +323,7 @@ try {
                     onclick="dis_ph()"
                     onmouseover="$(this).css('background-color','#0c66cc')"
                     onmouseleave="$(this).css('background-color','#0c77cc')"
-                    style="color:white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px"
+                    style="color:white;background-color: #0c77cc;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px"
                     class="btn btn-default search_btn"
                     type="button">
                     <span class="fa fa-edit"></span>
@@ -326,7 +334,7 @@ try {
                     onclick="reset_ph()"
                     onmouseover="$(this).css('background-color','#bb0000')"
                     onmouseleave="$(this).css('background-color','red')"
-                    style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
+                    style="color: white;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
                     class="btn btn-default search_btn"
                     type="button">
                     <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -337,7 +345,7 @@ try {
                     onclick="dis_ph()"
                     onmouseover="$(this).css('background-color','#4f994f')"
                     onmouseleave="$(this).css('background-color','#07C103')"
-                    style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;"
+                    style="color: white;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;"
                     class="btn btn-default search_btn"
                     type="button">
                     <span class="fa fa-check"></span>
@@ -373,7 +381,7 @@ try {
                         onclick="dis_pin()"
                         onmouseover="$(this).css('background-color','#0c66cc')"
                         onmouseleave="$(this).css('background-color','#0c77cc')"
-                        style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px"
+                        style="color: white;background-color: #0c77cc;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px"
                         class="btn btn-default search_btn"
                         type="button">
                         <span class="fa fa-edit"></span>
@@ -384,7 +392,7 @@ try {
                         onclick="user_update_locate()"
                         onmouseover="$(this).css('background-color','#ee8126')"
                         onmouseleave="$(this).css('background-color','#139b3b')"
-                        style="color: white;background-color:#139b3b;padding-top:10px;padding-bottom: 10px;outline: none;"
+                        style="color: white;background-color: #139b3b;padding-top: 10px;padding-bottom: 10px;outline: none;"
                         class="btn btn-default search_btn"
                         type="button">
                         <span class="fa fa-search"></span>
@@ -395,7 +403,7 @@ try {
                         onclick="reset_pin()"
                         onmouseover="$(this).css('background-color','#bb0000')"
                         onmouseleave="$(this).css('background-color','red')"
-                        style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
+                        style="color: white;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
                         class="btn btn-default search_btn"
                         type="button">
                         <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -424,7 +432,7 @@ try {
                           onclick="regsetlocation()"
                           onmouseover="$(this).css('background-color','#4f994f')"
                           onmouseleave="$(this).css('background-color','#07C103')"
-                          style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;"
+                          style="color: white;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;"
                           class="btn btn-default search_btn popuptext pin"
                           type="button">
                           <span class="fa fa-check"></span>
@@ -453,7 +461,7 @@ try {
                   onclick="dis_add()"
                   id="dis_add"
                   class="fa fa-sm fa-edit"
-                  style="position: absolute;right: 0;top: 0;color: white;background-color:#0c77cc;padding: 4px;"
+                  style="position: absolute;right: 0;top: 0;color: white;background-color: #0c77cc;padding: 4px;"
                   onmouseover="$(this).css('background-color','#0c66cc')"
                   onmouseleave="$(this).css('background-color','#0c77cc')">
                 </span>
@@ -461,7 +469,7 @@ try {
                   onclick="reset_add()"
                   id="hide_add"
                   class="fa fa-sm fa-close"
-                  style="display: none;position: absolute;right: 0;top: 0;color: white;background-color:red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
+                  style="display: none;position: absolute;right: 0;top: 0;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
                   onmouseover="$(this).css('background-color','#bb0000')"
                   onmouseleave="$(this).css('background-color','red')">
                 </span>
@@ -469,7 +477,7 @@ try {
                   onclick="dis_add()"
                   id="hide_add1"
                   class="fa fa-check"
-                  style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color:#07C103;padding: 3px;"
+                  style="display: none;position: absolute;right: 0;top: 23px;color: white;background-color: #07C103;padding: 3px;"
                   onmouseover="$(this).css('background-color','#4f994f')"
                   onmouseleave="$(this).css('background-color','#07C103')">
                 </span>
@@ -486,12 +494,12 @@ try {
               <i class="fa fa-info-circle fa-lg"></i>&nbsp;
               Login information
               <span id='succeeded1'
-                style="float: right;background-color: green;border-radius: 5px;color:white">&nbsp;
+                style="float: right;background-color: green;border-radius: 5px;color: white">&nbsp;
                 <i class="fa fa-check" style="color: orange;text-shadow: 1px 2px 3px grey"></i>
                 <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey"> verified &nbsp;</i>
               </span>
               <span id='pending1'
-                style="display: none;float: right;background-color: white;border: 1px solid black;border-radius: 5px;color:white">&nbsp;
+                style="display: none;float: right;background-color: white;border: 1px solid black;border-radius: 5px;color: white">&nbsp;
                 <i class="fa fa-close" style="color: red;text-shadow: 1px 2px 3px grey"></i>
                 <i style="text-transform: capitalize;font-size: 12px;color: black;text-shadow: 1px 2px 3px grey"> pending &nbsp;</i>
               </span>
@@ -519,7 +527,7 @@ try {
                   onclick="dis_mail()"
                   onmouseover="$(this).css('background-color','#0c66cc')"
                   onmouseleave="$(this).css('background-color','#0c77cc')"
-                  style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px"
+                  style="color: white;background-color: #0c77cc;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px"
                   class="btn btn-default search_btn"
                   type="button">
                   <span class="fa fa-edit"></span>
@@ -530,7 +538,7 @@ try {
                   onclick="reset_mail()"
                   onmouseover="$(this).css('background-color','#bb0000')"
                   onmouseleave="$(this).css('background-color','red')"
-                  style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
+                  style="color: white;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
                   class="btn btn-default search_btn"
                   type="button">
                   <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -541,7 +549,7 @@ try {
                   onclick="dis_mail()"
                   onmouseover="$(this).css('background-color','#4f994f')"
                   onmouseleave="$(this).css('background-color','#07C103')"
-                  style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;"
+                  style="color: white;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;"
                   class="btn btn-default search_btn"
                   type="button">
                   <span class="fa fa-check"></span>
@@ -583,7 +591,7 @@ try {
                   onclick="reset_pass3()"
                   onmouseover="$(this).css('background-color','#bb0000')"
                   onmouseleave="$(this).css('background-color','red')"
-                  style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
+                  style="color: white;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
                   class="btn btn-default search_btn"
                   type="button">
                   <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -594,7 +602,7 @@ try {
                   onclick="dis_pass3()"
                   onmouseover="$(this).css('background-color','#4f994f')"
                   onmouseleave="$(this).css('background-color','#07C103')"
-                  style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;"
+                  style="color: white;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;"
                   class="btn btn-default search_btn"
                   type="button">
                   <span class="fa fa-check"></span>
@@ -664,12 +672,12 @@ try {
               <h6 style="margin-top: 0px !important;"><i
                   class="fa fa-info-circle fa-lg"></i>&nbsp;Delivery Address
                 <span id='succeeded2'
-                  style="float: right;background-color: green;border-radius: 5px;color:white">&nbsp;
+                  style="float: right;background-color: green;border-radius: 5px;color: white">&nbsp;
                   <i class="fa fa-check" style="color: orange;text-shadow: 1px 2px 3px grey"></i>
                   <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey"> verified &nbsp;</i>
                 </span>
                 <span id='pending2'
-                  style="display: none;float: right;background-color: white;border: 1px solid black;border-radius: 5px;color:white">&nbsp;
+                  style="display: none;float: right;background-color: white;border: 1px solid black;border-radius: 5px;color: white">&nbsp;
                   <i class="fa fa-close" style="color: red;text-shadow: 1px 2px 3px grey"></i>
                   <i style="text-transform: capitalize;font-size: 12px;color: black;text-shadow: 1px 2px 3px grey"> pending &nbsp;</i>
                 </span>
@@ -705,7 +713,7 @@ try {
                       onclick="dis_sfn()"
                       onmouseover="$(this).css('background-color','#0c66cc')"
                       onmouseleave="$(this).css('background-color','#0c77cc')"
-                      style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;margin-top: 25px;"
+                      style="color: white;background-color: #0c77cc;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-edit"></span>
@@ -716,7 +724,7 @@ try {
                       onclick="reset_sfn()"
                       onmouseover="$(this).css('background-color','#bb0000')"
                       onmouseleave="$(this).css('background-color','red')"
-                      style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;margin-top: 25px;"
+                      style="color: white;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -727,7 +735,7 @@ try {
                       onclick="dis_sfn()"
                       onmouseover="$(this).css('background-color','#4f994f')"
                       onmouseleave="$(this).css('background-color','#07C103')"
-                      style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;margin-top: 25px;"
+                      style="color: white;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-check"></span>
@@ -765,7 +773,7 @@ try {
                       onclick="dis_sln()"
                       onmouseover="$(this).css('background-color','#0c66cc')"
                       onmouseleave="$(this).css('background-color','#0c77cc')"
-                      style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;margin-top: 25px;"
+                      style="color: white;background-color: #0c77cc;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-edit"></span>
@@ -776,7 +784,7 @@ try {
                       onclick="reset_sln()"
                       onmouseover="$(this).css('background-color','#bb0000')"
                       onmouseleave="$(this).css('background-color','red')"
-                      style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;margin-top: 25px;"
+                      style="color: white;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -787,7 +795,7 @@ try {
                       onclick="dis_sln()"
                       onmouseover="$(this).css('background-color','#4f994f')"
                       onmouseleave="$(this).css('background-color','#07C103')"
-                      style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;margin-top: 25px;"
+                      style="color: white;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-check"></span>
@@ -823,7 +831,7 @@ try {
                     <button onclick="dis_sph()"
                       onmouseover="$(this).css('background-color','#0c66cc')"
                       onmouseleave="$(this).css('background-color','#0c77cc')"
-                      style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;margin-top: 25px;"
+                      style="color: white;background-color: #0c77cc;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-edit"></span>
@@ -834,7 +842,7 @@ try {
                       onclick="reset_sph()"
                       onmouseover="$(this).css('background-color','#bb0000')"
                       onmouseleave="$(this).css('background-color','red')"
-                      style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;margin-top: 25px;"
+                      style="color: white;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -845,7 +853,7 @@ try {
                       onclick="dis_sph()"
                       onmouseover="$(this).css('background-color','#4f994f')"
                       onmouseleave="$(this).css('background-color','#07C103')"
-                      style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;margin-top: 25px;"
+                      style="color: white;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-check"></span>
@@ -884,7 +892,7 @@ try {
                       onclick="dis_s2ph()"
                       onmouseover="$(this).css('background-color','#0c66cc')"
                       onmouseleave="$(this).css('background-color','#0c77cc')"
-                      style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;margin-top: 25px;"
+                      style="color: white;background-color: #0c77cc;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-edit"></span>
@@ -895,7 +903,7 @@ try {
                       onclick="reset_s2ph()"
                       onmouseover="$(this).css('background-color','#bb0000')"
                       onmouseleave="$(this).css('background-color','red')"
-                      style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;margin-top: 25px;"
+                      style="color: white;background-color: red;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -906,7 +914,7 @@ try {
                       onclick="dis_s2ph()"
                       onmouseover="$(this).css('background-color','#4f994f')"
                       onmouseleave="$(this).css('background-color','#07C103')"
-                      style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;margin-top: 25px;"
+                      style="color: white;background-color: #07C103;padding-top: 10px;padding-bottom: 10px;outline: none;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-check"></span>
@@ -943,14 +951,14 @@ try {
                       onclick="dis_sadd()"
                       id="dis_sadd"
                       class="fa fa-sm fa-edit"
-                      style="position: absolute;right: 0;top: 0;color: white;background-color:#0c77cc;padding: 4px;"
+                      style="position: absolute;right: 0;top: 0;color: white;background-color: #0c77cc;padding: 4px;"
                       onmouseover="$(this).css('background-color','#0c66cc')"
                       onmouseleave="$(this).css('background-color','#0c77cc')">
                     </span>
                     <span onclick="reset_sadd()"
                       id="hide_sadd"
                       class="fa fa-sm fa-close"
-                      style="display: none;position: absolute;right: 0;top: 0;color: white;background-color:red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
+                      style="display: none;position: absolute;right: 0;top: 0;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
                       onmouseover="$(this).css('background-color','#bb0000')"
                       onmouseleave="$(this).css('background-color','red')">
                     </span>
@@ -958,7 +966,7 @@ try {
                       onclick="dis_sadd()"
                       id="hide_sadd1"
                       class="fa fa-check"
-                      style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color:#07C103;padding: 3px;"
+                      style="display: none;position: absolute;right: 0;top: 23px;color: white;background-color: #07C103;padding: 3px;"
                       onmouseover="$(this).css('background-color','#4f994f')"
                       onmouseleave="$(this).css('background-color','#07C103')">
                     </span>
@@ -973,7 +981,7 @@ try {
                   <label
                     class=""
                     for="shipping_postcode"
-                    style="font-weight: normal;text-transform: capitalize;color:#9e9e9e;font-size:12px;">
+                    style="font-weight: normal;text-transform: capitalize;color: #9e9e9e;font-size: 12px;">
                     Postcode
                     <abbr title="required" class="required" style="color: #c50505">*</abbr>
                   </label>
@@ -998,7 +1006,7 @@ try {
                       onclick="dis_spin()"
                       onmouseover="$(this).css('background-color','#0c66cc')"
                       onmouseleave="$(this).css('background-color','#0c77cc')"
-                      style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;margin-top: 25px;"
+                      style="color: white;background-color: #0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;outline: none;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-edit"></span>
@@ -1009,7 +1017,7 @@ try {
                       onclick="reset_spin()"
                       onmouseover="$(this).css('background-color','#bb0000')"
                       onmouseleave="$(this).css('background-color','red')"
-                      style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;margin-top: 25px;"
+                      style="color: white;background-color: red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-close" style="margin-left: -18px;"></span>
@@ -1020,7 +1028,7 @@ try {
                       onclick="dis_spin()"
                       onmouseover="$(this).css('background-color','#4f994f')"
                       onmouseleave="$(this).css('background-color','#07C103')"
-                      style="color: white;background-color:#07C103;padding-top:10px;padding-bottom: 10px;outline: none;margin-top: 25px;"
+                      style="color: white;background-color: #07C103;padding-top:10px;padding-bottom: 10px;outline: none;margin-top: 25px;"
                       class="btn btn-default search_btn"
                       type="button">
                       <span class="fa fa-check"></span>
@@ -1059,7 +1067,7 @@ try {
             href="../Main/hfe.php"
             onmouseover="$(this).css('background-color','#0c66cc')"
             onmouseleave="$(this).css('background-color','#139b3b')"
-            style="color: white;background-color:#139b3b;">
+            style="color: white;background-color: #139b3b;">
             Home
           </a>
         </div>

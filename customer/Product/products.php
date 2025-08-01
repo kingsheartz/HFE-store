@@ -1060,7 +1060,7 @@ if ($result_cnt == 0) {
                 </div>
               </div>
             </div>
-            <hr class="make_divb">
+            <hr class="make_divb" style="border-color: #656565 !important;">
             <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #151515;padding: 0;color: darkgrey">
               <!--FILTER-->
               <div class="col-md-3 sidebar_divider no_margin" style="padding:0;padding-bottom: 0px;margin-top:10px;border-radius: 5px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff));">
@@ -1126,7 +1126,7 @@ if ($result_cnt == 0) {
                         aria-expanded="false"
                         aria-controls="cat-filter-mob"
                         class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;"
                         onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
                         Categories
                         <i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i>
@@ -1176,7 +1176,7 @@ if ($result_cnt == 0) {
                           aria-expanded="false"
                           aria-controls="brand-filter-mob"
                           class="font-weight-bold side-nav-filters"
-                          style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                          style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;"
                           onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
                           Brands
                           <i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i>
@@ -1220,7 +1220,7 @@ if ($result_cnt == 0) {
                       aria-expanded="false"
                       aria-controls="rating-filter-mob"
                       class="font-weight-bold side-nav-filters"
-                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;"
                       onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
                       Rating
                       <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i>
@@ -1308,7 +1308,7 @@ if ($result_cnt == 0) {
                       aria-expanded="false"
                       aria-controls="mob-pricing-filter"
                       class="font-weight-bold side-nav-filters"
-                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;"
                       onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
                       Price
                       <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i>
@@ -1408,7 +1408,7 @@ if ($result_cnt == 0) {
                           aria-expanded="false"
                           aria-controls="cat-filter"
                           class="font-weight-bold side-nav-filters"
-                          style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                          style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;"
                           onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
                           Categories
                           <i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i>
@@ -1457,7 +1457,7 @@ if ($result_cnt == 0) {
                             aria-expanded="false"
                             aria-controls="brand-filter"
                             class="font-weight-bold side-nav-filters"
-                            style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                            style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;"
                             onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
                             Brands
                             <i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i>
@@ -1501,7 +1501,7 @@ if ($result_cnt == 0) {
                         aria-expanded="false"
                         aria-controls="rating-filter"
                         class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;"
                         onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
                         Rating
                         <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i>
@@ -1572,7 +1572,7 @@ if ($result_cnt == 0) {
                         aria-expanded="false"
                         aria-controls="pricing-filter"
                         class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;"
                         onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
                         Price
                         <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i>
