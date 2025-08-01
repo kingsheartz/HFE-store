@@ -1317,7 +1317,7 @@ if (isset($product_description_id)) {
                     class=""
                     id="input_apk_link"
                     placeholder="URL to share"
-                    value="http://localhost:81/HFE-Store-Renewed/HFE-Store-website/extras/APK/RELEASE/HFE-Store_version_high.apk"
+                    value="http://localhost:81/HFE-store/extras/APK/RELEASE/HFE-Store_version_high.apk"
                     name=""
                     required=" "
                     style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline-color: #e59700;">
@@ -1442,11 +1442,11 @@ if (isset($product_description_id)) {
 
   function copyapklink(n) {
     if (n == 1) {
-      var link = "http://localhost:81/HFE-Store-Renewed/HFE-Store-website/extras/APK/RELEASE/HFE-Store_version_high.apk";
+      var link = "http://localhost:81/HFE-store/extras/APK/RELEASE/HFE-Store_version_high.apk";
     } else if (n == 2) {
-      var link = "http://localhost:81/HFE-Store-Renewed/HFE-Store-website/extras/APK/RELEASE/HFE-Store_version_low.apk";
+      var link = "http://localhost:81/HFE-store/extras/APK/RELEASE/HFE-Store_version_low.apk";
     } else {
-      var link = "http://localhost:81/HFE-Store-Renewed/HFE-Store-website/extras/APK/RELEASE/HFE-Store_version_low.apk";
+      var link = "http://localhost:81/HFE-store/extras/APK/RELEASE/HFE-Store_version_low.apk";
     }
     $('#input_apk_link').val(link);
     ///////////WHATSAPP///////////
@@ -1573,7 +1573,7 @@ if (isset($product_description_id)) {
     ///////////WHATSAPP///////////
     $('.whatsapp').html('');
     var wa_content = '<div style="margin:auto;width: 30px;height: 30px;background-color: darkgreen;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" data-action="share/whatsapp/share" \
-    href="https://api.whatsapp.com/send?text=See this product :- http://localhost:81/HFE-Store-Renewed/HFE-Store-website/customer/Product/single.php?id=' + code[1] + '"><i class="fa fa-whatsapp fa-lg" style="color: white;"></i></a></div><p>Whatsapp</p>';
+    href="https://api.whatsapp.com/send?text=See this product :- http://localhost:81/HFE-store/customer/Product/single.php?id=' + code[1] + '"><i class="fa fa-whatsapp fa-lg" style="color: white;"></i></a></div><p>Whatsapp</p>';
     $('.whatsapp').html(wa_content);
   }
 

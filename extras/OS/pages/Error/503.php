@@ -73,7 +73,7 @@
       <b>KinGsHearTz</b> 1.0
     </div>
     <strong>Copyright &copy; 2020 <a
-        href="http://localhost:81/HFE-Store-Renewed/HFE-Store-website">HFE-Store</a>.</strong> All rights reserved.
+        href="http://localhost:81/HFE-store">HFE-Store</a>.</strong> All rights reserved.
   </footer>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">
