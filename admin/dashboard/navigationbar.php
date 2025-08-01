@@ -328,7 +328,7 @@
             <a class="nav-link" href="message.php"><i class="fa fa-comments"></i><span class="uppernum1"><?= $row1['COUNT(*)'] ?></span>Chat</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.php"><i class="fa fa-power-off"></i>Log Out</a>
+            <a class="nav-link" href="../account/login.php"><i class="fa fa-power-off"></i>Log Out</a>
           </li>
         </ul>
       </div>
