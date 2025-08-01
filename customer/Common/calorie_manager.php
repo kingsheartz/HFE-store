@@ -5,6 +5,8 @@ require_once dirname(__DIR__, 2) . '/includes/logger.php';
 
 global $pdo;
 
+$method = $_SERVER['REQUEST_METHOD'];
+
 if (!isset($_SESSION['id'])) {
   log_message("Unauthorized access attempt to calorie manager.");
   echo json_encode(["status" => "error", "message" => "Unauthorized access"]);
@@ -60,7 +62,7 @@ if (isset($_POST['calory_history']) && isset($_POST['customer_id']) && isset($_P
   $date = $_POST['date'] && !empty($_POST['date']) ? $_POST['date'] : date('Y-m-d');
   $customer_id = $_POST['customer_id'];
 
-  $sql = 'SELECT food_item, calories, date_logged FROM calories WHERE customer_id = ? ';
+  $sql = 'SELECT calories_id, food_item, calories, date_logged FROM calories WHERE customer_id = ? ';
 
   if (isset($_POST['date']) && !empty($_POST['date'])) {
     $sql = $sql . 'AND date_logged = ?';
@@ -144,5 +146,16 @@ if (isset($_POST['loadWeekChart']) && isset($_POST['customer_id'])) {
   }
 
   echo json_encode(["labels" => $labels, "values" => $values]);
+  exit;
+}
+
+if ($method === 'DELETE' && isset($_GET['calories_id'])) {
+  $stmt = $pdo->prepare("DELETE FROM calories WHERE calories_id = ?");
+  $stmt->execute([$_GET['calories_id']]);
+
+  echo json_encode([
+    "status" => "deleted",
+    "message" => "Calorie has been successfully deleted."
+  ]);
   exit;
 }

@@ -244,6 +244,18 @@ require "header.php";
   #save-goal:active {
     transform: translateY(0);
   }
+
+  .del-calorie {
+    padding: 5px;
+    border-radius: 5px;
+    color: darkgrey;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .del-calorie:hover {
+    color: darkgrey;
+    background-color: #8b0000ff;
+  }
 </style>
 
 <div class="calories-outer-container">
@@ -366,7 +378,7 @@ require "header.php";
                   } else {
                     const totalCalories = res.reduce((sum, entry) => sum + entry.calories, 0);
                     res.forEach(entry => {
-                      html += `<li>${entry.food_item} - ${entry.calories} cal</li>`;
+                      html += `<li>${entry.food_item} - ${entry.calories} cal <i class="fa fa-trash float-right del-calorie" onclick=deleteCalories(${entry.calories_id})></i></li>`;
                     });
 
                     $('#food-list').html(html);
@@ -400,6 +412,22 @@ require "header.php";
                   Swal.fire('Success', res.message, 'success');
                   $('#food-item').val('');
                   $('#calories').val('');
+                  renderCalorieTracker();
+                } else {
+                  Swal.fire('Error', res.message, 'error');
+                }
+              }
+            });
+          }
+
+          function deleteCalories(calories_id) {
+            $.ajax({
+              url: '../Common/calorie_manager.php?calories_id=' + calories_id,
+              method: 'DELETE',
+              success: function(response) {
+                const res = JSON.parse(response);
+                if (res.status === 'deleted') {
+                  Swal.fire('Deleted', res.message, 'success');
                   renderCalorieTracker();
                 } else {
                   Swal.fire('Error', res.message, 'error');
