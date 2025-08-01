@@ -1462,7 +1462,7 @@ if (isset($product_description_id)) {
 <!------------------------------------------------------------------------------------------------------------------------------>
 <!--SHARE WISHLIST-->
 <!-- Modal -->
-<div class="modal fade" id="myModal_share_item" role="dialog" onclose="$('.yw').click();" style="height: 95%;">
+<div class="modal fade" id="myModal_share_product" role="dialog" onclose="$('.yw').click();" style="height: 95%;">
   <div class="modal-dialog modal-m" style="background-color: white;border-radius: 7px;">
     <!-- Modal content-->
     <div class="modal-content">

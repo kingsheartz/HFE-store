@@ -365,7 +365,7 @@ $rowcount = $row_single_div['checksingle'];
           <h2><i class="fa fa-edit"></i> Manage List </h2>
           <br>
           <h3 style="color: #139b3b;display: flex;" class="div-wrapper">
-            <div><img src="../../images/logo/wishlist2.png" style="max-height: 45px;"></div>
+            <div><img src="../../images/logo/wishlist2.png" style="max-height: 65px;"></div>
             <div style="display: flex;align-items: center;"><?= $update_setting_row['list_name'] ?>
               <div class="wishlist_cnt">(<?= $rowcount ?>)</div>
             </div>
@@ -904,7 +904,7 @@ $rowcount = $row_single_div['checksingle'];
             </div>
             <div class="col-md-4 small" id="small_screen" style="margin:0px;padding: 0px"></div>
             <center style="margin-bottom:0px;margin-top: 0px;">
-              <h4>Need more ?<a href="../Main/hfe.php"> Start adding!</a></h4>
+              <h4>Need more ?<a href="../Main/hfe.php" style="color: #139b3b"> Start adding!</a></h4>
             </center>
           <?php
           } else {
@@ -949,12 +949,11 @@ $rowcount = $row_single_div['checksingle'];
             <div class="row emp_cart">
               <div class="product-content-right">
                 <center>
-                  <img style="justify-content: center;max-height: 288px;" class="sidebar-title" src="../../images/logo/wishlist.png">
-                  <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #c50505">
-                    Your Wish
-                    List is Empty
+                  <img style="justify-content: center;max-height: 288px;" class="sidebar-title" src="../../images/logo/wishlist3.png">
+                  <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #139b3b">
+                    Your Wish List is Empty
                   </h2>
-                  <h4>No items in your wishlist.<a href="../Main/hfe.php">Start adding!</a></h4>
+                  <h4>No items in your wishlist.<a href="../Main/hfe.php" style="color: #139b3b"> Start adding!</a></h4>
                 </center>
               </div>
               <div class="element_grid">

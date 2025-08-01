@@ -102,6 +102,16 @@ require "../Main/header.php";
     margin: 0;
   }
 
+  .img_wishlist_div {
+    padding: 10px !important;
+    background-color: rgba(0, 0, 0, 0.35);
+    padding: 5px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-top: 20px;
+    border: 3px solid #101010;
+  }
+
   @media (max-width: 710px) {
     .your_wishlist_large {
       display: none !important;
@@ -202,9 +212,8 @@ require "../Main/header.php";
 <div style="background: url(../../images/logo/check1.jpg);">
   <div style="background-color: rgba(0,0,0,.65);">
     <center>
-      <div class="img_wishlist_div"
-        style="background-color: rgba(255,255,255);padding: 30px;display: inline-block;border-radius: 50%;margin-top: 20px;border:3px solid black">
-        <img class="img_wishlist" src="../../images/logo/wishlist2.png" style="max-width: 100px;">
+      <div class="img_wishlist_div">
+        <img class="img_wishlist" src="../../images/logo/wishlist2.png" style="max-width: 150px;">
       </div>
       <h2 style="display: none;" class="create_wishlist_head">
         <a href="#" style="color: #000;font-size: 1.5em">
@@ -684,8 +693,8 @@ require "../Main/header.php";
       <div class="modal-body">
         <center>
           <div
-            style="background-color: rgba(255,255,255);padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid black;">
-            <img src="../../images/logo/wishlist1.png" style="max-width: 80px;">
+            style="background-color: #101010;padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid black;">
+            <img src="../../images/logo/wishlist1.png" style="margin-left: -10px;max-height: 120px;">
             <span class="fa fa-plus fa-lg" style="margin-left: -10px;"></span>
           </div>
         </center>
@@ -792,8 +801,8 @@ require "../Main/header.php";
       <div class="modal-body">
         <center>
           <div
-            style="background-color: #151515;padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid darkgrey;">
-            <img src="../../images/logo/wishlist1.png" style="max-width: 80px;">
+            style="background-color: #101010;padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid #454545;">
+            <img src="../../images/logo/wishlist1.png" style="margin-left: -10px;max-width: 120px;">
             <span class="fa fa-share fa-lg" style="margin-left: -10px;color: darkgrey;"></span>
           </div>
         </center>
