@@ -142,9 +142,8 @@ log_message("Payment page data used: " . json_encode([
     }
     data_used = {
       "placeorder": 1,
-      "customer_id": 1,
+      "customer_id": user_id,
       "user": user,
-      "user_id": user_id,
       "order_notes": order_notes,
       "pdt_cnt": pdt_cnt,
       "total_amt": total_amt
@@ -331,11 +330,6 @@ log_message("Payment page data used: " . json_encode([
     padding: 5% 5%;
   }
 
-  #upi-options {
-    display: table;
-    width: 100%;
-  }
-
   .ui-opt,
   .pay-select {
     display: none;
@@ -380,7 +374,8 @@ log_message("Payment page data used: " . json_encode([
     if (document.getElementById(top).style.display == "none") {
       document.getElementById(top).style.display = "block"
       document.getElementById(right).style.display = "none"
-      document.getElementById(disp).style.display = "block"
+      document.getElementById(disp).style.display = "table"
+      document.getElementById(disp).style.width = "100%"
     } else {
       document.getElementById(right).style.display = "block"
       document.getElementById(top).style.display = "none"
@@ -400,7 +395,7 @@ log_message("Payment page data used: " . json_encode([
       <div class="heading">
         <img src="..\..\images\payment-icons\icons8-UPI-32.png"> UPI
         <i class="fa fa-angle-right" id="cat-right-UPI" style="float: right; font-size:30px;"></i>
-        <i class="fa fa-angle-up " id="cat-down-UPI" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
+        <i class="fa fa-angle-down " id="cat-down-UPI" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
       </div>
       <ul id="upi-options" class="ui-opt" background-color="#000">
         <li class="li-opt">
@@ -426,7 +421,7 @@ log_message("Payment page data used: " . json_encode([
       <div class="heading">
         <img src="..\..\images\payment-icons\icons8-card-32.png"> Cards
         <i class="fa fa-angle-right" id="cat-right-cards" style="float: right; font-size:30px;"></i>
-        <i class="fa fa-angle-up " id="cat-down-cards" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
+        <i class="fa fa-angle-down " id="cat-down-cards" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
       </div>
       <ul id="card-options" class="ui-opt" background-color="#000">
         <li class="li-opt">
@@ -448,23 +443,23 @@ log_message("Payment page data used: " . json_encode([
       <div class="heading">
         <img src="..\..\images\payment-icons\icons8-bank-building-32.png"> Net banking
         <i class="fa fa-angle-right " id="cat-right-bank" style="float: right; font-size:30px;"></i>
-        <i class="fa fa-angle-up" id="cat-down-bank" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
+        <i class="fa fa-angle-down" id="cat-down-bank" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
       </div>
       <ul id="net-banking-options" class="ui-opt" background-color="#000">
         <li class="li-opt">
-          <img src="..\..\images\payment-icons\sbi-logo-33234.png" style="width: 40%; height: 40%;" class="icon-img">
+          <img src="..\..\images\payment-icons\sbi-logo-33234.png" class="icon-img">
           <span class="upi-span">SBI bank</span>
         </li>
         <li class="li-opt">
-          <img src="..\..\images\payment-icons\IBN.png" style="width: 40%; height: 40%;" class="icon-img">
+          <img src="..\..\images\payment-icons\IBN.png" class="icon-img">
           <span class="upi-span">ICICI bank</span>
         </li>
         <li class="li-opt">
-          <img src="..\..\images\payment-icons\KOTAKBANK.NS.png" style="width: 40%; height: 40%;" class="icon-img">
+          <img src="..\..\images\payment-icons\KOTAKBANK.NS.png" class="icon-img">
           <span class="upi-span">Kotak</span>
         </li>
         <li class="li-opt">
-          <img src="..\..\images\payment-icons\AXISBANK.BO.png" style="width: 40%; height: 40%;" class="icon-img">
+          <img src="..\..\images\payment-icons\AXISBANK.BO.png" class="icon-img">
           <span class="upi-span">Axis</span>
         </li>
       </ul>
@@ -474,7 +469,7 @@ log_message("Payment page data used: " . json_encode([
       <div class="heading">
         <img src="..\..\images\payment-icons\icons8-installment-plan-32.png"> EMI
         <i class="fa fa-angle-right " id="cat-right-emi" style="float: right; font-size:30px;"></i>
-        <i class="fa fa-angle-up" id="cat-down-emi" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
+        <i class="fa fa-angle-down" id="cat-down-emi" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
       </div>
       <div class="pay-select" id="emi-options">
         <select>
@@ -487,7 +482,7 @@ log_message("Payment page data used: " . json_encode([
       <div class="heading">
         <img src="..\..\images\payment-icons\icons8-wallet-32.png"> Wallet
         <i class="fa fa-angle-right " id="cat-right-wallet" style="float: right; font-size:30px;"></i>
-        <i class="fa fa-angle-up " id="cat-down-wallet" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
+        <i class="fa fa-angle-down " id="cat-down-wallet" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
       </div>
       <ul id="wallet-options" class="ui-opt" background-color="#000">
         <li class="li-opt"><img src="..\..\images\payment-icons\icons8-google-pay-32.png" class="icon-img">
@@ -506,7 +501,7 @@ log_message("Payment page data used: " . json_encode([
       <div class="heading">
         <img src="..\..\images\payment-icons\icons8-time-32.png"> Pay Later
         <i class="fa fa-angle-right" id="cat-right-pay" style="float: right; font-size:30px;"></i>
-        <i class="fa fa-angle-up" id="cat-down-pay" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
+        <i class="fa fa-angle-down" id="cat-down-pay" style="float: right;display: none; font-size:30px;border-bottom:none;"></i>
       </div>
       <div class="pay-select" id="pay-later-options">
         <select>
