@@ -7,13 +7,13 @@ global $pdo;
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   log_message('Unauthorized access attempt to BMI calculator.');
   echo json_encode(['status' => 'error', 'message' => 'Unauthorized access']);
   exit;
 }
 
-$customer_id = $_SESSION['id'] ?? null;
+$customer_id = $_SESSION['hfe_id'] ?? null;
 
 if (!$customer_id) {
   echo json_encode(['error' => 'User not logged in']);

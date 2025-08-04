@@ -128,7 +128,7 @@ require "head.php";
       }
     </style>
     <?php
-    $id = $_SESSION['id'];
+    $id = $_SESSION['hfe_id'];
     require "pdo.php";
     if (isset($_POST['status']) || isset($_POST['hours'])) {
       $st = $_POST['status'];

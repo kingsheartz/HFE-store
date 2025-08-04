@@ -168,7 +168,7 @@ require "head.php";
     <div id="printarea">
       <?php
       require "pdo.php";
-      $id = $_SESSION['id'];
+      $id = $_SESSION['hfe_id'];
       $query = "SELECT *  FROM new_orders
                 JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
                 JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id

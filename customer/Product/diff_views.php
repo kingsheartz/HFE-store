@@ -183,12 +183,12 @@ require "../Main/header.php";
         ORDER BY CAST(SUM(product_keys.views) AS UNSIGNED) DESC
         LIMIT $offset, $no_of_records_per_page"
       );
-    } else if (isset($_SESSION['id'], $_GET['recent'])) {
+    } else if (isset($_SESSION['hfe_id'], $_GET['recent'])) {
       $total_pages_sql = $pdo->query(
         "SELECT views, product_keys.product_description_id FROM product_keys
         INNER JOIN product_description ON product_keys.product_description_id = product_description.product_description_id
         INNER JOIN product ON product.product_id = product_description.product_id
-        WHERE customer_id = " . $_SESSION['id'] . "
+        WHERE customer_id = " . $_SESSION['hfe_id'] . "
         GROUP BY product_description_id
         ORDER BY CAST(product_keys.date_of_preview AS UNSIGNED) DESC"
       );
@@ -196,21 +196,21 @@ require "../Main/header.php";
         "SELECT views, product_keys.product_description_id FROM product_keys
         INNER JOIN product_description ON product_keys.product_description_id = product_description.product_description_id
         INNER JOIN product ON product.product_id = product_description.product_id
-        WHERE customer_id = " . $_SESSION['id'] . "
+        WHERE customer_id = " . $_SESSION['hfe_id'] . "
         GROUP BY product_description_id
         ORDER BY CAST(product_keys.date_of_preview AS UNSIGNED) DESC
         LIMIT $offset, $no_of_records_per_page"
       );
-    } else if (isset($_SESSION['id'], $_GET['prev'])) {
+    } else if (isset($_SESSION['hfe_id'], $_GET['prev'])) {
       $total_pages_sql = $pdo->query(
         "SELECT product_description_id
         FROM product_keys
-        WHERE rating = 0 AND ordered_cnt > 0 AND review = '0' AND customer_id = " . $_SESSION['id']
+        WHERE rating = 0 AND ordered_cnt > 0 AND review = '0' AND customer_id = " . $_SESSION['hfe_id']
       );
       $viewstmt = $pdo->query(
         "SELECT product_description_id
         FROM product_keys
-        WHERE rating = 0 AND ordered_cnt > 0 AND review = '0' AND customer_id = " . $_SESSION['id'] . "
+        WHERE rating = 0 AND ordered_cnt > 0 AND review = '0' AND customer_id = " . $_SESSION['hfe_id'] . "
         LIMIT $offset, $no_of_records_per_page"
       );
     } else if (isset($_GET['topseller'])) {
@@ -257,9 +257,9 @@ require "../Main/header.php";
     }
     if (isset($_GET['popular'])) {
       $total_rows = $total_pages_sql->rowCount();
-    } else if (isset($_SESSION['id'], $_GET['recent'])) {
+    } else if (isset($_SESSION['hfe_id'], $_GET['recent'])) {
       $total_rows = $total_pages_sql->rowCount();
-    } else if (isset($_SESSION['id'], $_GET['prev'])) {
+    } else if (isset($_SESSION['hfe_id'], $_GET['prev'])) {
       $total_rows = $total_pages_sql->rowCount();
     } else if (isset($_GET['topseller'])) {
       $total_rows = $total_pages_sql->rowCount();
@@ -345,7 +345,7 @@ require "../Main/header.php";
             </div>
           <?php
           }
-        } else if (isset($_SESSION['id'], $_GET['recent'])) {
+        } else if (isset($_SESSION['hfe_id'], $_GET['recent'])) {
           while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
             $product_desc_id = $view['product_description_id'];
             $res = $pdo->query(
@@ -395,7 +395,7 @@ require "../Main/header.php";
             </div>
           <?php
           }
-        } else if (isset($_SESSION['id'], $_GET['prev'])) {
+        } else if (isset($_SESSION['hfe_id'], $_GET['prev'])) {
           while ($view = $viewstmt->fetch(PDO::FETCH_ASSOC)) {
             $res = $pdo->query(
               "SELECT *

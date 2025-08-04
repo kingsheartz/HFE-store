@@ -408,7 +408,7 @@ require "head.php";
         }
       </script>
       <?php
-      $id = $_SESSION['id'];
+      $id = $_SESSION['hfe_id'];
       require "pdo.php";
       $query = "SELECT * FROM product
         JOIN product_description ON product.product_id=product_description.product_id

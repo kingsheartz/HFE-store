@@ -4,14 +4,14 @@ include "header.php";
 require_once '../vendor/autoload.php';
 require_once __DIR__ . '/config.php';
 
-if (!empty($_SESSION['_contact_form_error'])) {
-  $error = $_SESSION['_contact_form_error'];
-  unset($_SESSION['_contact_form_error']);
+if (!empty($_SESSION['hfe_contact_form_error'])) {
+  $error = $_SESSION['hfe_contact_form_error'];
+  unset($_SESSION['hfe_contact_form_error']);
 }
 
-if (!empty($_SESSION['_contact_form_success'])) {
+if (!empty($_SESSION['hfe_contact_form_success'])) {
   $success = true;
-  unset($_SESSION['_contact_form_success']);
+  unset($_SESSION['hfe_contact_form_success']);
 }
 ?>
 

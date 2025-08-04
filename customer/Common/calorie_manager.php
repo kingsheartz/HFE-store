@@ -7,7 +7,7 @@ global $pdo;
 
 $method = $_SERVER['REQUEST_METHOD'];
 
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   log_message("Unauthorized access attempt to calorie manager.");
   echo json_encode(["status" => "error", "message" => "Unauthorized access"]);
   exit;

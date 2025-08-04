@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   header("location:../Main/hfe.php");
 }
 require "../Main/header.php";
@@ -289,7 +289,7 @@ require "../Common/pdo.php";
     $.get("gethistorysearch.php", {
       "name": inputVal,
       'page_no': pageId,
-      "id": <?= $_SESSION['id'] ?>
+      "id": <?= $_SESSION['hfe_id'] ?>
     }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
@@ -307,7 +307,7 @@ require "../Common/pdo.php";
     var inputVal = $('#order_search').val();
     $.get("gethistorysearch.php", {
       name: inputVal,
-      id: <?= $_SESSION['id'] ?>
+      id: <?= $_SESSION['hfe_id'] ?>
     }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
@@ -327,7 +327,7 @@ require "../Common/pdo.php";
     $.get("gethistorysearch.php", {
       "name": inputVal,
       'page_no': pageId,
-      "id": <?= $_SESSION['id'] ?>
+      "id": <?= $_SESSION['hfe_id'] ?>
     }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();

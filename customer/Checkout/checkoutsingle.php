@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   header("location:../Main/hfe.php");
 }
 if (isset($_GET['store_id'], $_GET['product_description_id'])) {
@@ -11,7 +11,7 @@ if (isset($_GET['store_id'], $_GET['product_description_id'])) {
   return;
 }
 require "../Main/header.php";
-$uid = $_SESSION['id'];
+$uid = $_SESSION['hfe_id'];
 $sql = "select category.category_id,product_description.product_description_id,store.store_id,product.product_name,product_details.price from product_details
         inner join product_description on product_description.product_description_id=product_details.product_description_id
         inner join product on product_description.product_id=product.product_id
@@ -527,7 +527,7 @@ $t_mrp = $mrprow['price'];
                   $mrp_chrg = 0;
                   $service_chrg = 0;
                   $base = 0;
-                  $uid = $_SESSION['id'];
+                  $uid = $_SESSION['hfe_id'];
                   $sql = "select p.product_id,id.product_description_id,p.product_name,pd.price,p.price as mrp ,st.store_id from product_details pd
                           inner join product_description id on id.product_description_id=pd.product_description_id
                           inner join product p on p.product_id=id.product_id
@@ -1083,7 +1083,7 @@ require "../Main/footer.php";
       var order_type = document.getElementById('order_s' + '<?= $store_id . "i" . $idid ?>').value;
       var idid = "<?= $idid ?>";
       var store_id = "<?= $store_id ?>";
-      var uid = "<?= $_SESSION['id'] ?>";
+      var uid = "<?= $_SESSION['hfe_id'] ?>";
       var total_amt = document.getElementById('total_s' + '<?= $store_id . "i" . $idid ?>').innerHTML;
       var data = {
         "buynow_placeorder": 1,
@@ -1250,13 +1250,13 @@ require "../Main/footer.php";
       }
       //PIN check
       else {
-        var uid = "<?= $_SESSION['id'] ?>";
+        var uid = "<?= $_SESSION['hfe_id'] ?>";
         var quantity = document.getElementById('btn_s<?= $store_id . "i" . $idid ?>').innerHTML;
         //1=booking;2=cash_on_delivery
         var order_type = document.getElementById('order_s' + '<?= $store_id . "i" . $idid ?>').value;
         var idid = "<?= $idid ?>";
         var store_id = "<?= $store_id ?>";
-        var uid = "<?= $_SESSION['id'] ?>";
+        var uid = "<?= $_SESSION['hfe_id'] ?>";
         var total_amt = document.getElementById('total_s' + '<?= $store_id . "i" . $idid ?>').innerHTML;
         var data = {
           "buynow_placeorder": 1,

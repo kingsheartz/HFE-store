@@ -205,7 +205,7 @@
         <h3>Profile</h3>
         <ul class="info">
           <?php
-          if (isset($_SESSION['name'])) {
+          if (isset($_SESSION['hfe_name'])) {
           ?>
             <li>
               <a href="../Cart/cart.php">My Cart</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -215,7 +215,7 @@
             </li>
           <?php
           }
-          if (!isset($_SESSION['name'])) {
+          if (!isset($_SESSION['hfe_name'])) {
           ?>
             <li>
               <a href="../Account/login.php">Login</a><i class="fa fa-chevron-right" aria-hidden="true"></i>
@@ -758,8 +758,8 @@ if (isset($product_description_id)) {
 <!-- Detail about lists-->
 <!--ADD TO WISHLIST-->
 <?php
-if (isset($_SESSION['id'])) {
-  $result = $pdo->query("select * from wishlist where customer_id=" . $_SESSION['id']);
+if (isset($_SESSION['hfe_id'])) {
+  $result = $pdo->query("select * from wishlist where customer_id=" . $_SESSION['hfe_id']);
   $status = 0;
 ?>
   <div id="avail_wishlist" tabindex="-1" role="dialog" aria-labelledby="store_title" class="modal fade modal-xl hidescroll" style="height: 90%;">
@@ -2097,7 +2097,7 @@ if (isset($product_description_id)) {
       return " ";
     }
     <?php
-    if (isset($_SESSION['id']) && !isset($_SESSION['cart_count'])) {
+    if (isset($_SESSION['hfe_id']) && !isset($_SESSION['hfe_cart_count'])) {
     ?>
       var email = getCookie("HFE_email");
       var pass = getCookie("HFE_password");
@@ -2142,14 +2142,14 @@ if (isset($product_description_id)) {
       }
     <?php
     }
-    if (isset($_SESSION['id']) && !isset($_SESSION['cart_count'])) {
+    if (isset($_SESSION['hfe_id']) && !isset($_SESSION['hfe_cart_count'])) {
     ?>
       //CART COUNT
       $.ajax({
         url: "../Common/functions.php", //passing page info
         data: {
           "cartcnt": 1,
-          "user": "<?= $_SESSION['id'] ?>"
+          "user": "<?= $_SESSION['hfe_id'] ?>"
         }, //form data
         type: "post", //post data
         dataType: "json", //datatype=json format

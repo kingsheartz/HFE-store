@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION['id'])) {
+if (isset($_SESSION['hfe_id'])) {
   header("location:../Main/hfe.php");
 }
 
@@ -126,11 +126,11 @@ require "../Main/header.php";
       <div class="login-form-grids animated wow slideInUp" data-wow-delay=".5s" style="border-top: 0px; border-radius: 10px;">
         <form name="login_form">
           <?php
-          if (isset($_SESSION['errorlogin'])) {
+          if (isset($_SESSION['hfe_errorlogin'])) {
           ?>
-            <div class="alert alert-danger"><?= $_SESSION['errorlogin'] ?></div>
+            <div class="alert alert-danger"><?= $_SESSION['hfe_errorlogin'] ?></div>
           <?php
-            unset($_SESSION['errorlogin']);
+            unset($_SESSION['hfe_errorlogin']);
           }
           ?>
           <input type="email" name="email" id="email" placeholder="Email Address" required=" ">

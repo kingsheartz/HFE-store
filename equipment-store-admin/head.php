@@ -45,18 +45,18 @@ session_start();
 if (isset($_GET['id'])) {
   require "pdo.php";
 
-  $_SESSION['id'] = $_GET['id'];
-  $nw = $_SESSION['id'];
+  $_SESSION['hfe_id'] = $_GET['id'];
+  $nw = $_SESSION['hfe_id'];
   $qu = "SELECT username, store_id from store_admin where id=$nw";
   $st = $pdo->query($qu);
   $r = $st->fetch(PDO::FETCH_ASSOC);
 
   if ($r) {
-    $_SESSION['id'] = $r['store_id'];
-    $_SESSION['username'] = $r['username'];
+    $_SESSION['hfe_id'] = $r['store_id'];
+    $_SESSION['hfe_username'] = $r['username'];
   }
 }
-if (!isset($_SESSION['username'])) {
+if (!isset($_SESSION['hfe_username'])) {
   die("<div style='width: 100%;display: flex;flex-wrap: wrap;margin-right: -0.75rem;margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50px'>
         <a href='../customer/Account/login.php'><img class='img-responsive' src='images/logo/loginerr.png'></a>
       </div>");

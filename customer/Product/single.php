@@ -2,12 +2,12 @@
 require '../Main/header.php';
 require "../../db.php";
 $product_description_id = $_GET['id'];
-if (isset($_GET['id'], $_SESSION['id'])) {
+if (isset($_GET['id'], $_SESSION['hfe_id'])) {
   $check = $pdo->query(
     "SELECT product_description_id
     FROM product_keys
     WHERE product_description_id = " . $_GET['id'] . "
-    AND customer_id = " . $_SESSION['id']
+    AND customer_id = " . $_SESSION['hfe_id']
   );
   if ($check->rowCount() > 0) {
     $viewedsql = $pdo->prepare(
@@ -25,7 +25,7 @@ if (isset($_GET['id'], $_SESSION['id'])) {
     );
     $date = date("Y\-m\-d");
     $viewedsql->execute(array(
-      ':uid' => $_SESSION['id'],
+      ':uid' => $_SESSION['hfe_id'],
       ':idid' => $_GET['id'],
       ':dop' => $date
     ));
@@ -1903,13 +1903,13 @@ function randomGen($min, $max, $quantity)
                 //customer REVIEW
                 //-------------------------------------------------------------------------------------------------------------------
                 $myreview = 0;
-                if (isset($_SESSION['id'])) {
+                if (isset($_SESSION['hfe_id'])) {
                   $myreviewstmt = $pdo->query(
                     "SELECT ordered_cnt, review, rating, date_of_review as date, customers.first_name, customers.last_name
                     FROM product_keys
                     JOIN customers ON customers.customer_id = product_keys.customer_id
                     WHERE product_description_id = " . $_GET['id'] . "
-                    AND product_keys.customer_id = " . $_SESSION['id']
+                    AND product_keys.customer_id = " . $_SESSION['hfe_id']
                   );
                   $myreviewcount = $myreviewstmt->rowCount();
                   echo "<h4 style='margin-top:20px;'>Customer Reviews: " . $myreviewcount . "</h4>";
@@ -1988,7 +1988,7 @@ function randomGen($min, $max, $quantity)
                         FROM product_keys
                         JOIN customers ON customers.customer_id = product_keys.customer_id
                         WHERE product_description_id = " . $_GET['id'] . "
-                        AND product_keys.customer_id = " . $_SESSION['id'] . "
+                        AND product_keys.customer_id = " . $_SESSION['hfe_id'] . "
                         AND product_keys.ordered_cnt > 0"
                       );
                       $checkbuycnt = $checkbuysql->rowCount();
@@ -2014,8 +2014,8 @@ function randomGen($min, $max, $quantity)
                             <div class="clearfix"> </div>
                             <label class="form-label" for="reviewinput">Write a review <i class="fas fa-pen"></i>
                               <?php
-                              if (isset($_SESSION['id'])) {
-                                $checkbuysql = $pdo->query("select rating,review from product_keys where product_description_id=" . $_GET['id'] . " and customer_id=" . $_SESSION['id']);
+                              if (isset($_SESSION['hfe_id'])) {
+                                $checkbuysql = $pdo->query("select rating,review from product_keys where product_description_id=" . $_GET['id'] . " and customer_id=" . $_SESSION['hfe_id']);
                                 $checkbuy = $checkbuysql->fetch(PDO::FETCH_ASSOC);
                                 if ($checkbuy) {
                                   if ($checkbuy['rating'] != 0 && $checkbuy['ordered_cnt'] > 1 && $checkbuy['ordered_cnt'] != "0") {
@@ -2094,7 +2094,7 @@ function randomGen($min, $max, $quantity)
                 }
                 //customer REVIEW
                 //--------------------------------------------------------------------------------------------------------------------
-                if (isset($_SESSION['id'])) {
+                if (isset($_SESSION['hfe_id'])) {
                   ?>
                   <script>
                     function maxchar() {
@@ -2107,7 +2107,7 @@ function randomGen($min, $max, $quantity)
                       $('#std_loader').show();
                       $('#customer_reviewed_already').hide();
                       var product_description_id = <?= $_GET['id'] ?>;
-                      var customer_id = <?= $_SESSION['id'] ?>;
+                      var customer_id = <?= $_SESSION['hfe_id'] ?>;
                       $.ajax({
                         url: "../Common/functions.php", //passing page info
                         data: {
@@ -2166,7 +2166,7 @@ function randomGen($min, $max, $quantity)
                       if (getSelectedValue != null) {
                         var noofstars = getSelectedValue.value;
                         var product_description_id = <?= $_GET['id'] ?>;
-                        var customer_id = <?= $_SESSION['id'] ?>;
+                        var customer_id = <?= $_SESSION['hfe_id'] ?>;
                         $('.real_btn').hide();
                         $('.load_btn').show();
                         $.ajax({
@@ -2224,7 +2224,7 @@ function randomGen($min, $max, $quantity)
 
                     function canceledit() {
                       var product_description_id = <?= $_GET['id'] ?>;
-                      var customer_id = <?= $_SESSION['id'] ?>;
+                      var customer_id = <?= $_SESSION['hfe_id'] ?>;
                       $.ajax({
                         url: "../Common/functions.php", //passing page info
                         data: {
@@ -2350,13 +2350,13 @@ function randomGen($min, $max, $quantity)
                   <?php
                 }
                 //PUBLIC REVIEW
-                if (isset($_SESSION['id'])) {
+                if (isset($_SESSION['hfe_id'])) {
                   $reviewstmt = $pdo->query(
                     "SELECT product_keys.ordered_cnt, product_keys.review, rating, customers.first_name, customers.last_name, date_of_review as date
                     FROM product_keys
                     JOIN customers ON customers.customer_id = product_keys.customer_id
                     WHERE product_description_id = " . $_GET['id'] . "
-                    AND product_keys.customer_id NOT IN (" . $_SESSION['id'] . ")
+                    AND product_keys.customer_id NOT IN (" . $_SESSION['hfe_id'] . ")
                     AND rating > 0
                     AND review != '0'
                     AND product_keys.ordered_cnt > 0
@@ -2792,7 +2792,7 @@ function randomGen($min, $max, $quantity)
       </div>
       <!-- //new -->
       <?php
-      if (isset($_SESSION['id'])) {
+      if (isset($_SESSION['hfe_id'])) {
       ?>
         <!-- new -->
         <div class="newproducts-w3agile" style="padding:0;padding-top:10px;">
@@ -2804,7 +2804,7 @@ function randomGen($min, $max, $quantity)
             "SELECT views ,product_keys.product_description_id FROM product_keys
             JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
             JOIN product ON product.product_id=product_description.product_id
-            WHERE customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC"
+            WHERE customer_id=" . $_SESSION['hfe_id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC"
           );
           $isready = $ran->rowCount();
           if ($isready != 0 && is_null($isready) == false) {

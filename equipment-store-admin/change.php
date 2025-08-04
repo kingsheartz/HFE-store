@@ -1055,7 +1055,7 @@ require "head.php";
             </span><br>
             <div class="row">
               <?php
-              $id = $_SESSION['id'];
+              $id = $_SESSION['hfe_id'];
               $query = "SELECT * FROM product  JOIN product_description ON product.product_id=product_description.product_id JOIN product_details ON product_details.product_description_id=product_description.product_description_id where product_description.product_id=$it and product_details.store_id=$id";
               $st = $pdo->query($query);
               $tr = $st->rowCount();

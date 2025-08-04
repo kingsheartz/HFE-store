@@ -2,7 +2,7 @@
 require "pdo.php";
 
 session_start();
-$id = $_SESSION['id'];
+$id = $_SESSION['hfe_id'];
 
 $stmt = $pdo->query(
   "SELECT *  FROM new_orders

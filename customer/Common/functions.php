@@ -29,7 +29,7 @@ if (isset($_POST['checkname'])) {
   /*
     if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['name']) == 0) {
     $response['status']="error";
-     //$_SESSION['error']="First name is not valid!";
+     //$_SESSION['hfe_error']="First name is not valid!";
     }
    */ else {
     $response['status'] = "success";
@@ -40,7 +40,7 @@ if (isset($_POST['checkname'])) {
 if (isset($_POST['checkmail'])) {
   if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $response['status'] = "error";
-    //$_SESSION['error']="Email is not valid!";
+    //$_SESSION['hfe_error']="Email is not valid!";
   } else {
     $response['status'] = "success";
   }
@@ -64,8 +64,8 @@ if (isset($_POST['feedback'])) {
 }
 //-----------------Newsletter updation------------------------------------------------------------------------------------------
 if (isset($_POST['nlmailcheck'])) {
-  if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
+  if (isset($_SESSION['hfe_id'])) {
+    $id = $_SESSION['hfe_id'];
     $sql = "SELECT email FROM customers WHERE customer_id=:customer_id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
@@ -108,10 +108,10 @@ if (isset($_POST['register'])) {
   $long = $_POST['longitude'];
   if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $response['status'] = "error2";
-    $_SESSION['error'] = "Email is not valid!";
+    $_SESSION['hfe_error'] = "Email is not valid!";
   } else if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['first_name']) == 0) {
     $response['status'] = "error3";
-    $_SESSION['reg_error'] = "First name is not valid!";
+    $_SESSION['hfe_reg_error'] = "First name is not valid!";
   } else {
     $sql = "SELECT email FROM customers WHERE email='$email'";
     $stmt = $pdo->query($sql);
@@ -121,10 +121,10 @@ if (isset($_POST['register'])) {
     $row1 = $stmt1->fetch(PDO::FETCH_ASSOC);
     if ($row) {
       $response['status'] = "error";
-      $_SESSION['reg_error'] = "Account already exists";
+      $_SESSION['hfe_reg_error'] = "Account already exists";
     } else if ($row1) {
       $response['status'] = "error1";
-      $_SESSION['reg_error'] = "Phone number already exists";
+      $_SESSION['hfe_reg_error'] = "Phone number already exists";
     } else {
       $uniqid = uniqid();
       //EMAIL SENDING//
@@ -391,7 +391,7 @@ if (isset($_POST['register'])) {
       $mail->AltBody = 'HTML messaging not supported'; // If html emails is not supported by the receiver, show this body
       if (!$mail->send()) {
         $response['status'] = "error4";
-        $_SESSION['reg_error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
+        $_SESSION['hfe_reg_error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
         //echo "Mailer Error: " . $mail->ErrorInfo;
       } else {
         $sql = "INSERT INTO customers (first_name,last_name,phone,pincode,location,latitude,longitude,address,newsletter_status,email,password,activation_code)values(:first_name,:last_name,:phone,:pin,:location,:lat,:long,:address,:newsletter_status,:email,:password,:activation_code)";
@@ -456,7 +456,7 @@ if (isset($_POST['register'])) {
           ));
         }
         $response['status'] = "success";
-        $_SESSION['reg_success'] = "success";
+        $_SESSION['hfe_reg_success'] = "success";
       }
       //EMAIL SENDING//
     }
@@ -467,7 +467,7 @@ if (isset($_POST['register'])) {
 //-----------------------------------------------------------------------------------------------------------
 //update_customer_details//
 if (isset($_POST['update_customer_details'])) {
-  $customer_id = $_SESSION['id'];
+  $customer_id = $_SESSION['hfe_id'];
   $first_name = $_POST['first_name'];
   $last_name = $_POST['last_name'];
   $phone = $_POST['phone'];
@@ -510,10 +510,10 @@ if (isset($_POST['update_customer_details'])) {
   }
   if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['first_name']) == 0) {
     $response['status'] = "error3";
-    $_SESSION['error'] = "First name is not valid!";
+    $_SESSION['hfe_error'] = "First name is not valid!";
   } else if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
     $response['status'] = "error2";
-    $_SESSION['error'] = "Email is not valid!";
+    $_SESSION['hfe_error'] = "Email is not valid!";
   } else {
     if ($rowmail) {
       if (strcmp($current_mail, $row['email']) != 0) {
@@ -1049,7 +1049,7 @@ if (isset($_POST['update_customer_details'])) {
       $mail->AltBody = 'HTML messaging not supported'; // If html emails is not supported by the receiver, show this body
       if (!$mail->send()) {
         $response['status'] = "error4";
-        $_SESSION['reg_error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
+        $_SESSION['hfe_reg_error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
         //echo "Mailer Error: " . $mail->ErrorInfo;
       } else {
         $sql = "UPDATE customers set first_name=:first_name,last_name=:last_name,phone=:phone,pincode=:pin,location=:location,latitude=:lat,longitude=:long,address=:address,password=:password,activation_code=:activation_code WHERE customer_id=:customer_id";
@@ -1144,11 +1144,11 @@ if(isset($_POST['register'])){
 	$long=$_POST['longitude'];
 	if (!filter_var($_POST['email'], FILTER_VALIDATE_EMAIL)) {
 		$response['status']="error2";
-		$_SESSION['error']="Email is not valid!";
+		$_SESSION['hfe_error']="Email is not valid!";
 	}
 	else if (preg_match('/^[a-zA-Z0-9]+$/', $_POST['first_name']) == 0) {
 		$response['status']="error3";
-		$_SESSION['error']="First name is not valid!";
+		$_SESSION['hfe_error']="First name is not valid!";
 	}
 	else{
 		$sql="SELECT email FROM customers WHERE email='$email'";
@@ -1159,11 +1159,11 @@ if(isset($_POST['register'])){
 		$row1=$stmt1->fetch(PDO::FETCH_ASSOC);
 		if($row){
 			$response['status']="error";
-			$_SESSION['error']="Account already exists";
+			$_SESSION['hfe_error']="Account already exists";
 		}
 		else if ($row1) {
 			$response['status']="error1";
-			$_SESSION['error']="Phone number already exists";
+			$_SESSION['hfe_error']="Phone number already exists";
 		}
 		else{
 			$sql="INSERT INTO customers (first_name,last_name,phone,pincode,location,latitude,longitude,address,newsletter_status,email,password,activation_code)values(:first_name,:last_name,:phone,:pin,:location,:lat,:long,:address,:newsletter_status,:email,:password,:activation_code)";
@@ -1499,7 +1499,7 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
           $mail->AltBody = 'HTML messaging not supported'; // If html emails is not supported by the receiver, show this body
           if (!$mail->send()) {
             $response['status'] = "error4";
-            $_SESSION['error'] = "Email can't Send";
+            $_SESSION['hfe_error'] = "Email can't Send";
             //echo "Mailer Error: " . $mail->ErrorInfo;
           }
           //EMAIL SENDING//
@@ -1825,7 +1825,7 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
           );
           if (!$mail->send()) {
             $response['status'] = "error4";
-            $_SESSION['error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
+            $_SESSION['hfe_error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
             //echo "Mailer Error: " . $mail->ErrorInfo;
           }
           //EMAIL SENDING//
@@ -1855,17 +1855,17 @@ if (isset($_POST['login'])) {
     log_message("login::" . "Login Attempt:: Customer:" . json_encode($row) . ", Store Admin: " . json_encode($row2));
     if ($row && $row2) {
       if (($row2['activation_code'] != 'activated') && ($row['activation_code'] != 'activated')) {
-        $_SESSION['errorlogin'] = "Check and verify your email";
+        $_SESSION['hfe_errorlogin'] = "Check and verify your email";
         $response['status'] = "error1";
       } else {
         if ((password_verify($_POST['password'], $row2['password'])) && (password_verify($_POST['password'], $row['password']))) {
           $emailcasecheck2 = strcmp($row2['email'], $_POST['email']);
           $emailcasecheck1 = strcmp($row['email'], $_POST['email']);
           if ($emailcasecheck1 == 0 && $emailcasecheck2 == 0) {
-            $_SESSION['sname'] = $row2['username'];
-            $_SESSION['sid'] = $row2['id'];
-            $_SESSION['name'] = $row['first_name'];
-            $_SESSION['id'] = $row['customer_id'];
+            $_SESSION['hfe_sname'] = $row2['username'];
+            $_SESSION['hfe_sid'] = $row2['id'];
+            $_SESSION['hfe_name'] = $row['first_name'];
+            $_SESSION['hfe_id'] = $row['customer_id'];
             if (isset($_COOKIE[$hfeEmail])) {
               setcookie($hfeEmail, NULL, time() - 3600, "/");
               setcookie($hfePass, NULL, time() - 3600, "/");
@@ -1885,7 +1885,7 @@ if (isset($_POST['login'])) {
             $response['id'] = $row2['id'];
           } else {
             // store-user admin check 1
-            $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
+            $_SESSION['hfe_errorlogin'] = "Incorrect Email ID or Password";
             if (isset($_COOKIE[$hfeEmail])) {
               setcookie($hfeEmail, NULL, time() - 3600, "/");
               setcookie($hfePass, NULL, time() - 3600, "/");
@@ -1894,7 +1894,7 @@ if (isset($_POST['login'])) {
           }
         } else {
           // store-user admin check 2
-          $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
+          $_SESSION['hfe_errorlogin'] = "Incorrect Email ID or Password";
           if (isset($_COOKIE[$hfeEmail])) {
             setcookie($hfeEmail, NULL, time() - 3600, "/");
             setcookie($hfePass, NULL, time() - 3600, "/");
@@ -1904,14 +1904,14 @@ if (isset($_POST['login'])) {
       }
     } else if ($row2) {
       if ($row2['activation_code'] != 'activated') {
-        $_SESSION['errorlogin'] = "Check and verify your email";
+        $_SESSION['hfe_errorlogin'] = "Check and verify your email";
         $response['status'] = "error1";
       } else {
         if (password_verify($_POST['password'], $row2['password'])) {
           $emailcasecheck = strcmp($row2['email'], $_POST['email']);
           if ($emailcasecheck == 0) {
-            $_SESSION['sname'] = $row2['username'];
-            $_SESSION['sid'] = $row2['id'];
+            $_SESSION['hfe_sname'] = $row2['username'];
+            $_SESSION['hfe_sid'] = $row2['id'];
             if (isset($_COOKIE[$hfeEmail])) {
               setcookie($hfeEmail, NULL, time() - 3600, "/");
               setcookie($hfePass, NULL, time() - 3600, "/");
@@ -1926,7 +1926,7 @@ if (isset($_POST['login'])) {
           }
         } else {
           // Store user admin check
-          $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
+          $_SESSION['hfe_errorlogin'] = "Incorrect Email ID or Password";
           if (isset($_COOKIE[$hfeEmail])) {
             setcookie($hfeEmail, NULL, time() - 3600, "/");
             setcookie($hfePass, NULL, time() - 3600, "/");
@@ -1937,14 +1937,14 @@ if (isset($_POST['login'])) {
     } else if ($row) {
       if ($row['activation_code'] != 'activated') {
         log_message("login:: Need Activation " . $row['first_name']);
-        $_SESSION['errorlogin'] = "Check and verify your email";
+        $_SESSION['hfe_errorlogin'] = "Check and verify your email";
         $response['status'] = "error1";
       } else {
         if (password_verify($_POST['password'], $row['password'])) {
           $emailcasecheck = strcmp($row['email'], $_POST['email']);
           if ($emailcasecheck == 0) {
-            $_SESSION['name'] = $row['first_name'];
-            $_SESSION['id'] = $row['customer_id'];
+            $_SESSION['hfe_name'] = $row['first_name'];
+            $_SESSION['hfe_id'] = $row['customer_id'];
             if (isset($_COOKIE[$hfeEmail])) {
               setcookie($hfeEmail, NULL, time() - 3600, "/");
               setcookie($hfePass, NULL, time() - 3600, "/");
@@ -1961,7 +1961,7 @@ if (isset($_POST['login'])) {
             log_message("login:: Success " . $row['first_name'] . " Response: " . json_encode($response));
           } else {
             // Customer admin check
-            $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
+            $_SESSION['hfe_errorlogin'] = "Incorrect Email ID or Password";
             if (isset($_COOKIE[$hfeEmail])) {
               setcookie($hfeEmail, NULL, time() - 3600, "/");
               setcookie($hfePass, NULL, time() - 3600, "/");
@@ -1970,7 +1970,7 @@ if (isset($_POST['login'])) {
             log_message("login:: Invalid credential: Customer/ Admin => " . $row['first_name'] . " Response: " . json_encode($response));
           }
         } else {
-          $_SESSION['errorlogin'] = "Incorrect Password";
+          $_SESSION['hfe_errorlogin'] = "Incorrect Password";
           if (isset($_COOKIE[$email])) {
             setcookie($email, NULL, time() - 3600, "/");
             setcookie($pass, NULL, time() - 3600, "/");
@@ -1980,7 +1980,7 @@ if (isset($_POST['login'])) {
         }
       }
     } else {
-      $_SESSION['errorlogin'] = "You are not registered yet";
+      $_SESSION['hfe_errorlogin'] = "You are not registered yet";
       $response['status'] = "errornotfound";
     }
     header('Content-type: application/json');
@@ -2007,8 +2007,8 @@ if (isset($_POST['userexists'])) {
       $emailcasecheck = strcmp($row['email'], $_POST['email']);
       if (password_verify($_POST['password'], $row['password'])) {
         if ($emailcasecheck == 0) {
-          $_SESSION['name'] = $row['first_name'];
-          $_SESSION['id'] = $row['customer_id'];
+          $_SESSION['hfe_name'] = $row['first_name'];
+          $_SESSION['hfe_id'] = $row['customer_id'];
         } else {
           if (isset($_COOKIE[$hfeEmail])) {
             setcookie($hfeEmail, NULL, time() - 3600, "/");
@@ -2025,14 +2025,14 @@ if (isset($_POST['userexists'])) {
     }
     if ($row2) {
       if ($row2['activation_code'] != 'activated') {
-        $_SESSION['errorlogin'] = "Check and verify your email";
+        $_SESSION['hfe_errorlogin'] = "Check and verify your email";
         $response['status'] = "error1";
       } else {
         if (password_verify($_POST['password'], $row2['password'])) {
           $emailcasecheck = strcmp($row2['email'], $_POST['email']);
           if ($emailcasecheck == 0) {
-            $_SESSION['sname'] = $row2['username'];
-            $_SESSION['sid'] = $row2['id'];
+            $_SESSION['hfe_sname'] = $row2['username'];
+            $_SESSION['hfe_sid'] = $row2['id'];
           } else {
             if (isset($_COOKIE[$hfeEmail])) {
               setcookie($hfeEmail, NULL, time() - 3600, "/");
@@ -2061,7 +2061,7 @@ if (isset($_POST['userexists'])) {
 //Locate customers
 if (isset($_POST['location_access'])) {
   $loc = $_POST['location'];
-  $_SESSION['location'] = $loc;
+  $_SESSION['hfe_location'] = $loc;
   $response['data'] = $loc;
   $response['status'] = "success";
   echo json_encode($response);
@@ -2103,8 +2103,8 @@ if (isset($_POST['price'])) {
 //-----------------------------------------------------------------------------------------------------------
 //CART ENTRY && UPDATE
 if (isset($_POST['cart'])) {
-  if (isset($_POST['cart'], $_POST['product_description_id'], $_POST['store_id'], $_SESSION['name'])) {
-    $id = $_SESSION['id'];
+  if (isset($_POST['cart'], $_POST['product_description_id'], $_POST['store_id'], $_SESSION['hfe_name'])) {
+    $id = $_SESSION['hfe_id'];
     //checking if is it available
     $sql = "SELECT * FROM product_details
             INNER JOIN product_description ON product_description.product_description_id=product_details.product_description_id
@@ -2191,7 +2191,7 @@ if (isset($_POST['cart'])) {
 //COMPLETED 1
 //-----------------QUANTITY CHECK------------------------------------------------------------------------------------------
 if (isset($_POST['check_quantity'])) {
-  $id = $_SESSION['id'];
+  $id = $_SESSION['hfe_id'];
   $sql = "SELECT * FROM product_details
           INNER JOIN product_description ON product_description.product_description_id=product_details.product_description_id
           WHERE product_description.product_description_id=:product_description_id AND store_id=:store_id";
@@ -2220,7 +2220,7 @@ if (isset($_POST['check_quantity'])) {
 }
 //-----------------ITEM UPDATE------------------------------------------------------------------------------------------
 if (isset($_POST['update_cart_product'])) {
-  $id = $_SESSION['id'];
+  $id = $_SESSION['hfe_id'];
   $cartcnt = cntcart($id);
   $response['cartcnt'] = $cartcnt;
   $sql = "SELECT * FROM cart WHERE product_description_id=:product_description_id AND store_id=:store_id AND customer_id=:customer_id";
@@ -2370,7 +2370,7 @@ if (isset($_POST['update_cart_product'])) {
 //-----------------ITEM UPDATE------------------------------------------------------------------------------------------
 //-----------------CART UPDATE------------------------------------------------------------------------------------------
 if (isset($_POST['update_user_cart'])) {
-  $id = $_SESSION['id'];
+  $id = $_SESSION['hfe_id'];
   $cartcnt = cntcart($id);
   $response['cartcnt'] = $cartcnt;
   $sql = "SELECT * FROM cart WHERE product_description_id=:product_description_id AND store_id=:store_id AND customer_id=:customer_id";
@@ -2519,7 +2519,7 @@ if (isset($_POST['update_user_cart'])) {
 }
 //-----------------CART REMOVE ITEM------------------------------------------------------------------------------------------
 if (isset($_POST['remove_product'])) {
-  $id = $_SESSION['id'];
+  $id = $_SESSION['hfe_id'];
   $sql = "SELECT * FROM cart WHERE product_description_id=:product_description_id AND store_id=:store_id AND customer_id=:customer_id";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(array(
@@ -2584,7 +2584,7 @@ if (isset($_POST['cartcnt'])) {
   $stmtcart = $pdo->query($sqlcart);
   $rowcart = $stmtcart->fetch(PDO::FETCH_ASSOC);
   $response['status'] = "success";
-  $_SESSION['cart_count'] = $rowcart['cartcnt'];
+  $_SESSION['hfe_cart_count'] = $rowcart['cartcnt'];
   $response['cartcnt'] = $rowcart['cartcnt'];
   echo json_encode($response);
 }
@@ -2595,7 +2595,7 @@ function cntcart($uid)
   $sqlcart = "SELECT COUNT(cart_id) AS cartcnt FROM cart WHERE customer_id=$id";
   $stmtcart = $pdo->query($sqlcart);
   $rowcart = $stmtcart->fetch(PDO::FETCH_ASSOC);
-  $_SESSION['cart_count'] = $rowcart['cartcnt'];
+  $_SESSION['hfe_cart_count'] = $rowcart['cartcnt'];
   return $rowcart['cartcnt'];
 }
 //----------------------------------ADVANCED LOG IN AUTOMATION---------------------------------------------------------
@@ -2617,7 +2617,7 @@ if (isset($_POST['adlogin'])) {
       log_message("adlogin::" . "Login Attempt:: Customer:" . json_encode($row['email']) . ", Store Admin: " . json_encode($row2['email']));
       if (($row2['activation_code'] != 'activated') && ($row['activation_code'] != 'activated')) {
         log_message("adlogin::" . "Customer Login Attempt - Activation code not activated");
-        $_SESSION['errorlogin'] = "Check and verify your email";
+        $_SESSION['hfe_errorlogin'] = "Check and verify your email";
         $response['status'] = "error1";
       } else {
         if ((password_verify($_POST['password'], $row2['password'])) && (password_verify($_POST['password'], $row['password']))) {
@@ -2629,10 +2629,10 @@ if (isset($_POST['adlogin'])) {
           if ($emailcasecheck1 == 0 && $emailcasecheck2 == 0) {
             log_message("adlogin::" . "Customer Login Attempt - Successful Login");
 
-            $_SESSION['sname'] = $row2['username'];
-            $_SESSION['sid'] = $row2['id'];
-            $_SESSION['name'] = $row['first_name'];
-            $_SESSION['id'] = $row['customer_id'];
+            $_SESSION['hfe_sname'] = $row2['username'];
+            $_SESSION['hfe_sid'] = $row2['id'];
+            $_SESSION['hfe_name'] = $row['first_name'];
+            $_SESSION['hfe_id'] = $row['customer_id'];
 
             if (isset($_COOKIE[$hfeEmail])) {
               setcookie($hfeEmail, NULL, time() - 3600, "/");
@@ -2654,7 +2654,7 @@ if (isset($_POST['adlogin'])) {
             $response['id'] = $row2['id'];
           }
         } else {
-          $_SESSION['errorlogin'] = "Incorrect Email ID or Password";
+          $_SESSION['hfe_errorlogin'] = "Incorrect Email ID or Password";
 
           if (isset($_COOKIE[$hfeEmail])) {
             setcookie($hfeEmail, NULL, time() - 3600, "/");
@@ -2672,8 +2672,8 @@ if (isset($_POST['adlogin'])) {
       if (password_verify($_POST['password'], $row2['password'])) {
         $emailcasecheck = strcmp($row2['email'], $_POST['email']);
         if ($emailcasecheck == 0) {
-          $_SESSION['sname'] = $row2['username'];
-          $_SESSION['sid'] = $row2['id'];
+          $_SESSION['hfe_sname'] = $row2['username'];
+          $_SESSION['hfe_sid'] = $row2['id'];
           if (isset($_COOKIE[$hfeEmail])) {
             setcookie($hfeEmail, NULL, time() - 3600, "/");
             setcookie($hfePass, NULL, time() - 3600, "/");
@@ -2692,7 +2692,7 @@ if (isset($_POST['adlogin'])) {
           $response['id'] = $row2['id'];
         }
       } else {
-        $_SESSION['error'] = "Incorrect Email ID or Password";
+        $_SESSION['hfe_error'] = "Incorrect Email ID or Password";
         if (isset($_COOKIE[$hfeEmail])) {
           setcookie($hfeEmail, NULL, time() - 3600, "/");
           setcookie($hfePass, NULL, time() - 3600, "/");
@@ -2701,14 +2701,14 @@ if (isset($_POST['adlogin'])) {
       }
     } else if ($row) {
       if ($row['activation_code'] != 'activated') {
-        $_SESSION['error'] = "Check and verify your email";
+        $_SESSION['hfe_error'] = "Check and verify your email";
         $response['status'] = "error1";
       } else {
         if (password_verify($_POST['password'], $row['password'])) {
           $emailcasecheck = strcmp($row['email'], $_POST['email']);
           if ($emailcasecheck == 0) {
-            $_SESSION['name'] = $row['first_name'];
-            $_SESSION['id'] = $row['customer_id'];
+            $_SESSION['hfe_name'] = $row['first_name'];
+            $_SESSION['hfe_id'] = $row['customer_id'];
             $email = "HFE_email";
             $pass = "HFE_password";
             if ($remember == 1) {
@@ -2734,7 +2734,7 @@ if (isset($_POST['adlogin'])) {
               $response['status'] = "success";
             }
           } else {
-            $_SESSION['error'] = "Incorrect Email ID or Password";
+            $_SESSION['hfe_error'] = "Incorrect Email ID or Password";
             if (isset($_COOKIE[$hfeEmail])) {
               setcookie($hfeEmail, NULL, time() - 3600, "/");
               setcookie($hfePass, NULL, time() - 3600, "/");
@@ -2742,7 +2742,7 @@ if (isset($_POST['adlogin'])) {
             $response['status'] = "error";
           }
         } else {
-          $_SESSION['error'] = "Incorrect Password";
+          $_SESSION['hfe_error'] = "Incorrect Password";
           if (isset($_COOKIE[$hfeEmail])) {
             setcookie($hfeEmail, NULL, time() - 3600, "/");
             setcookie($hfePass, NULL, time() - 3600, "/");
@@ -2751,7 +2751,7 @@ if (isset($_POST['adlogin'])) {
         }
       }
     } else {
-      $_SESSION['error'] = "You are not registered yet";
+      $_SESSION['hfe_error'] = "You are not registered yet";
       $response['status'] = "errornotfound";
     }
   }
@@ -2774,15 +2774,15 @@ if (isset($_POST['forgotlogin'])) {
     $otp = rand(100000, 999999);
     if ($row) {
       if ($row['activation_code'] != 'activated') {
-        $_SESSION['error'] = "Check and verify your email";
+        $_SESSION['hfe_error'] = "Check and verify your email";
         $response['status'] = "error1";
       } else {
-        $_SESSION['forgot_pass_email'] = $emailget;
+        $_SESSION['hfe_forgot_pass_email'] = $emailget;
         $first_name = $row['first_name'];
         $emailcasecheck = strcmp($row['email'], $_POST['email']);
         if ($emailcasecheck == 0) {
-          $_SESSION['name'] = $row['first_name'];
-          $_SESSION['id'] = $row['customer_id'];
+          $_SESSION['hfe_name'] = $row['first_name'];
+          $_SESSION['hfe_id'] = $row['customer_id'];
           $email = "HFE_email";
           $pass = "HFE_password";
           if (isset($_COOKIE[$email])) {
@@ -3057,7 +3057,7 @@ if (isset($_POST['forgotlogin'])) {
           $mail->AltBody = 'HTML messaging not supported'; // If html emails is not supported by the receiver, show this body
           if (!$mail->send()) {
             $response['status'] = "error4";
-            $_SESSION['error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
+            $_SESSION['hfe_error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
             //echo "Mailer Error: " . $mail->ErrorInfo;
           } else {
             $sqlu = "UPDATE customers set password_reset=:otp,attempt=1 WHERE email=:email";
@@ -3072,7 +3072,7 @@ if (isset($_POST['forgotlogin'])) {
           //EMAIL SENDING//
         } //end email check
         else {
-          $_SESSION['error'] = "Incorrect Email ID";
+          $_SESSION['hfe_error'] = "Incorrect Email ID";
           if (isset($_COOKIE[$email])) {
             setcookie($email, NULL, time() - 3600, "/");
             setcookie($pass, NULL, time() - 3600, "/");
@@ -3335,7 +3335,7 @@ if (isset($_POST['forgotlogin'])) {
         );
         if (!$mail->send()) {
           $response['status'] = "error4";
-          $_SESSION['error'] = "Email can't Send";
+          $_SESSION['hfe_error'] = "Email can't Send";
           //echo "Mailer Error: " . $mail->ErrorInfo;
         } else {
           $sqlsa = "UPDATE store_admin set password_reset=:otp,attempt=1 WHERE email=:email";
@@ -3351,7 +3351,7 @@ if (isset($_POST['forgotlogin'])) {
         $response['otp'] = $otp;
       } //end emailcasecheck
       else {
-        $_SESSION['error'] = "Incorrect Email ID";
+        $_SESSION['hfe_error'] = "Incorrect Email ID";
         if (isset($_COOKIE[$email])) {
           setcookie($email, NULL, time() - 3600, "/");
           setcookie($pass, NULL, time() - 3600, "/");
@@ -3360,7 +3360,7 @@ if (isset($_POST['forgotlogin'])) {
       }
     } //end row2
     else {
-      $_SESSION['error'] = "You are not registered yet";
+      $_SESSION['hfe_error'] = "You are not registered yet";
       $response['status'] = "errornotfound";
     }
   }
@@ -3508,7 +3508,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
       $shipping_postcode = $pin;
       $sql = "SELECT customer_delivery_details_id FROM customer_delivery_details WHERE customer_id=:customer_id AND type='permanent'";
       $stmt = $pdo->prepare($sql);
-      $stmt->execute(array(':customer_id' => $_SESSION['id']));
+      $stmt->execute(array(':customer_id' => $_SESSION['hfe_id']));
       $row_uddid = $stmt->fetch(PDO::FETCH_ASSOC);
       $uddid = $row_uddid['customer_delivery_details_id']; //USER DELIVERY DETAILS ID
     }
@@ -3533,7 +3533,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
         ':type' => $type,
         ':address' => $shipping_address_1
       ));
-      $sql = "SELECT max(customer_delivery_details_id) AS maxuddid FROM customer_delivery_details WHERE customer_id=" . $_SESSION['id'];
+      $sql = "SELECT max(customer_delivery_details_id) AS maxuddid FROM customer_delivery_details WHERE customer_id=" . $_SESSION['hfe_id'];
       $stmt = $pdo->query($sql);
       $row_uddid = $stmt->fetch(PDO::FETCH_ASSOC);
       $uddid = $row_uddid['maxuddid']; //USER DELIVERY DETAILS ID
@@ -3565,7 +3565,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
   //TEMPERORY
   $sql = "SELECT product_details.product_details_id,cart.order_type,cart.quantity,cart.total_amt FROM cart JOIN product_description ON cart.product_description_id=product_description.product_description_id JOIN product_details ON product_details.product_description_id=product_description.product_description_id WHERE cart.store_id=product_details.store_id AND customer_id=:customer_id";
   $stmt_cart = $pdo->prepare($sql);
-  $stmt_cart->execute(array(':customer_id' => $_SESSION['id']));
+  $stmt_cart->execute(array(':customer_id' => $_SESSION['hfe_id']));
   while ($row_cart = $stmt_cart->fetch(PDO::FETCH_ASSOC)) {
     //INSERT INTO NEW ORDERED PRODUCTS
     $sql = "INSERT INTO new_ordered_products (new_orders_id,product_details_id,order_type,item_quantity,total_amt,delivery_status)values(:noid,:pdid,:order_type,:item_quantity,:total_amt,'pending')";
@@ -3614,7 +3614,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
     ));
     while ($placerow_i = $placestmt_i->fetch(PDO::FETCH_ASSOC)) {
       /////////////ADD AS ORDERED///////////
-      $check = $pdo->query('SELECT ordered_cnt,product_description_id FROM product_keys WHERE product_description_id=' . $placerow_i['product_description_id'] . ' AND customer_id=' . $_SESSION['id']);
+      $check = $pdo->query('SELECT ordered_cnt,product_description_id FROM product_keys WHERE product_description_id=' . $placerow_i['product_description_id'] . ' AND customer_id=' . $_SESSION['hfe_id']);
       if ($check->rowCount() > 0) {
         $checkrow = $check->fetch(PDO::FETCH_ASSOC);
         if (is_null($checkrow['ordered_cnt']) || $checkrow < 1) {
@@ -3628,7 +3628,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
         $date = date("Y\-m\-d");
         $viewedsql->execute(array(
           ':oc' => $placerow_i['quantity'],
-          ':uid' => $_SESSION['id'],
+          ':uid' => $_SESSION['hfe_id'],
           ':idid' => $placerow_i['product_description_id'],
           ':dop' => $date
         ));
@@ -3650,7 +3650,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
     }
     $store_cnt[$j] = $k;
   }
-  $sqldel = "DELETE FROM cart WHERE customer_id=" . $_SESSION['id'];
+  $sqldel = "DELETE FROM cart WHERE customer_id=" . $_SESSION['hfe_id'];
   $stmtdel = $pdo->query($sqldel);
   /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //EMAIL SENDING//
@@ -3965,7 +3965,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
   );
   if (!$mail->send()) {
     $response['status'] = "error";
-    $_SESSION['error'] = "Email can't Send";
+    $_SESSION['hfe_error'] = "Email can't Send";
     //echo "Mailer Error: " . $mail->ErrorInfo;
   }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -4594,7 +4594,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
     );
     if (!$mail->send()) {
       $response['status'] = "error";
-      $_SESSION['error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
+      $_SESSION['hfe_error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
       //echo "Mailer Error: " . $mail->ErrorInfo;
     }
   }
@@ -4613,14 +4613,14 @@ if (isset($_POST['del_list'])) {
   $stmt = $pdo->prepare($sql);
   $stmt->execute(array(
     ':wid' => $_POST['wishlist_id'],
-    ':uid' => $_SESSION['id']
+    ':uid' => $_SESSION['hfe_id']
   ));
   $sql = "DELETE FROM wishlist_items WHERE wishlist_id=:wid";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(array(':wid' => $_POST['wishlist_id']));
   $sql1 = "SELECT count(wishlist_id) AS cntlist FROM wishlist WHERE customer_id=:uid";
   $stmt1 = $pdo->prepare($sql1);
-  $stmt1->execute(array(':uid' => $_SESSION['id']));
+  $stmt1->execute(array(':uid' => $_SESSION['hfe_id']));
   $row1 = $stmt1->fetch(PDO::FETCH_ASSOC);
   $response['rem_list'] = $row1['cntlist'];
   $response['del_list'] = $_POST['wishlist_id'];
@@ -4646,13 +4646,13 @@ if (isset($_POST['create_list'])) {
   $stmt->execute(array(
     ':list_name' => htmlentities($_POST['listname']),
     ':share' => $uniqid,
-    ':customer_id' => $_SESSION['id'],
+    ':customer_id' => $_SESSION['hfe_id'],
     ':list_description' => htmlentities($_POST['listdescription']),
     ':privacy' => $_POST['privacy'],
     ':date' => $date,
     ':time' => $time
   ));
-  $sql_cnt_wid = 'SELECT count(wishlist_id) AS widcnt FROM wishlist WHERE customer_id=' . $_SESSION['id'];
+  $sql_cnt_wid = 'SELECT count(wishlist_id) AS widcnt FROM wishlist WHERE customer_id=' . $_SESSION['hfe_id'];
   $stmt_cnt_wid = $pdo->query($sql_cnt_wid);
   $row_cnt_wid = $stmt_cnt_wid->fetch(PDO::FETCH_ASSOC);
   $sql_wid = 'SELECT max(wishlist_id) AS maxcnt FROM wishlist';
@@ -4679,7 +4679,7 @@ if (isset($_POST['update_list'])) {
   $stmt = $pdo->prepare($sql);
   $stmt->execute(array(
     ':list_name' => htmlentities($_POST['listname']),
-    ':customer_id' => $_SESSION['id'],
+    ':customer_id' => $_SESSION['hfe_id'],
     ':list_description' => htmlentities($_POST['listdescription']),
     ':privacy' => $_POST['privacy'],
     ':date' => $date,
@@ -4693,9 +4693,9 @@ if (isset($_POST['update_list'])) {
 //-----------------------------------------------------------------------------------------------------------
 //WISHLIST ENTRY && UPDATE
 if (isset($_POST['addtowishlist'])) {
-  if (isset($_SESSION['id'])) {
-    $_SESSION['wishlist_store_id'] = $_POST['store_id'];
-    $_SESSION['wishlist_product_description_id'] = $_POST['product_description_id'];
+  if (isset($_SESSION['hfe_id'])) {
+    $_SESSION['hfe_wishlist_store_id'] = $_POST['store_id'];
+    $_SESSION['hfe_wishlist_product_description_id'] = $_POST['product_description_id'];
     $response['status'] = 'success';
   } else {
     $response['status'] = 'error';
@@ -4706,24 +4706,24 @@ if (isset($_POST['addtowishlist'])) {
 //-----------------------------------------------------------------------------------------------------------
 //WISHLIST ID FETCH AND ENTER INTO DB
 if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
-  if (isset($_SESSION['wishlist_product_description_id'], $_SESSION['wishlist_store_id'])) {
-    $id = $_SESSION['id'];
+  if (isset($_SESSION['hfe_wishlist_product_description_id'], $_SESSION['hfe_wishlist_store_id'])) {
+    $id = $_SESSION['hfe_id'];
     //checking if is it available
     $sql = "SELECT * FROM product_details
             INNER JOIN product_description ON product_description.product_description_id=product_details.product_description_id
             WHERE product_description.product_description_id=:product_description_id AND store_id=:store_id";
     $stmt = $pdo->prepare($sql);
     $stmt->execute(array(
-      ':product_description_id' => $_SESSION['wishlist_product_description_id'],
-      'store_id' => $_SESSION['wishlist_store_id']
+      ':product_description_id' => $_SESSION['hfe_wishlist_product_description_id'],
+      'store_id' => $_SESSION['hfe_wishlist_store_id']
     ));
     $row = $stmt->fetch(PDO::FETCH_ASSOC);
     $qnty = $row['quantity'];
     $sql3 = "SELECT * FROM wishlist_items INNER JOIN wishlist ON wishlist.wishlist_id=wishlist_items.wishlist_id WHERE wishlist_items.product_description_id=:product_description_id AND wishlist_items.store_id=:store_id AND wishlist.customer_id=:customer_id AND wishlist.wishlist_id = :wishlist_id";
     $stmt3 = $pdo->prepare($sql3);
     $stmt3->execute(array(
-      ':product_description_id' => $_SESSION['wishlist_product_description_id'],
-      'store_id' => $_SESSION['wishlist_store_id'],
+      ':product_description_id' => $_SESSION['hfe_wishlist_product_description_id'],
+      'store_id' => $_SESSION['hfe_wishlist_store_id'],
       ':customer_id' => $id,
       ':wishlist_id' => $_POST['wishlist_id']
     ));
@@ -4731,8 +4731,8 @@ if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
     $sqlp = "SELECT price FROM product_details WHERE product_description_id=:product_description_id AND store_id=:store_id";
     $stmtp = $pdo->prepare($sqlp);
     $stmtp->execute(array(
-      ':product_description_id' => $_SESSION['wishlist_product_description_id'],
-      'store_id' => $_SESSION['wishlist_store_id']
+      ':product_description_id' => $_SESSION['hfe_wishlist_product_description_id'],
+      'store_id' => $_SESSION['hfe_wishlist_store_id']
     ));
     $rowp = $stmtp->fetch(PDO::FETCH_ASSOC);
     $price = $rowp['price'];
@@ -4751,8 +4751,8 @@ if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
         ':price' => $price,
         ':date' => $date,
         ':time' => $time,
-        ':product_description_id' => $_SESSION['wishlist_product_description_id'],
-        'store_id' => $_SESSION['wishlist_store_id'],
+        ':product_description_id' => $_SESSION['hfe_wishlist_product_description_id'],
+        'store_id' => $_SESSION['hfe_wishlist_store_id'],
         ':wishlist_id' => $_POST['wishlist_id']
       ));
       $response['status'] = "success1";
@@ -4764,8 +4764,8 @@ if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
         ':total' => $price,
         ':date' => $date,
         ':time' => $time,
-        ':product_description_id' => $_SESSION['wishlist_product_description_id'],
-        'store_id' => $_SESSION['wishlist_store_id']
+        ':product_description_id' => $_SESSION['hfe_wishlist_product_description_id'],
+        'store_id' => $_SESSION['hfe_wishlist_store_id']
       ));
       $response['status'] = "success";
     }
@@ -4777,7 +4777,7 @@ if (isset($_POST['fetchedwishlistid'], $_POST['wishlist_id'])) {
 }
 //-----------------WISHLIST REMOVE ITEM--------------------------------------------------------------------------------------
 if (isset($_POST['wishlist_remove_item'])) {
-  $id = $_SESSION['id'];
+  $id = $_SESSION['hfe_id'];
   $sql = "SELECT * FROM wishlist_items WHERE wishlist_items_id=:wi_id";
   $stmt = $pdo->prepare($sql);
   $stmt->execute(array(
@@ -4813,7 +4813,7 @@ function wishlist_item_count($wish_id)
   $wishlist_cnt = "SELECT count(wishlist_items.wishlist_id) AS product_count FROM wishlist_items JOIN wishlist ON wishlist_items.wishlist_id=wishlist.wishlist_id WHERE wishlist.customer_id=:id AND wishlist_items.wishlist_id=:wid ";
   $wishlist_cnt_stmt = $pdo->prepare($wishlist_cnt);
   $wishlist_cnt_stmt->execute(array(
-    ':id' => $_SESSION['id'],
+    ':id' => $_SESSION['hfe_id'],
     ':wid' => $wish_id
   ));
   $wishlist_cnt_row = $wishlist_cnt_stmt->fetch(PDO::FETCH_ASSOC);
@@ -4823,8 +4823,8 @@ function wishlist_item_count($wish_id)
 //-----------------WISHLIST COUNT ITEM-------------------------------------------------------------------------------------
 //-----------------BUY NOW ITEM------------------------------------------------------------------------------------------
 if (isset($_POST['buynow_product'])) {
-  if (isset($_SESSION['id'])) {
-    $id = $_SESSION['id'];
+  if (isset($_SESSION['hfe_id'])) {
+    $id = $_SESSION['hfe_id'];
     //checking if is it available
     $sql = "SELECT * FROM product_details
             INNER JOIN product_description ON product_description.product_description_id=product_details.product_description_id
@@ -4842,7 +4842,7 @@ if (isset($_POST['buynow_product'])) {
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       if ($row) {
         $response['status'] = "success";
-        $_SESSION['id'] = $id;
+        $_SESSION['hfe_id'] = $id;
       } else {
         $response['status'] = "error2";
       }
@@ -4893,7 +4893,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
       $shipping_postcode = $pin;
       $sql = "SELECT customer_delivery_details_id FROM customer_delivery_details WHERE customer_id=:customer_id AND type='permanent'";
       $stmt = $pdo->prepare($sql);
-      $stmt->execute(array(':customer_id' => $_SESSION['id']));
+      $stmt->execute(array(':customer_id' => $_SESSION['hfe_id']));
       $row_uddid = $stmt->fetch(PDO::FETCH_ASSOC);
       $uddid = $row_uddid['customer_delivery_details_id']; //USER DELIVERY DETAILS ID
     }
@@ -4918,14 +4918,14 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
         ':type' => $type,
         ':address' => $shipping_address_1
       ));
-      $sql = "SELECT max(customer_delivery_details_id) AS maxuddid FROM customer_delivery_details WHERE customer_id=" . $_SESSION['id'];
+      $sql = "SELECT max(customer_delivery_details_id) AS maxuddid FROM customer_delivery_details WHERE customer_id=" . $_SESSION['hfe_id'];
       $stmt = $pdo->query($sql);
       $row_uddid = $stmt->fetch(PDO::FETCH_ASSOC);
       $uddid = $row_uddid['maxuddid']; //USER DELIVERY DETAILS ID
     }
   }
   /////////////ADD AS ORDERED///////////
-  $check = $pdo->query('SELECT ordered_cnt,product_description_id FROM product_keys WHERE product_description_id=' . $_POST['idid'] . ' AND customer_id=' . $_SESSION['id']);
+  $check = $pdo->query('SELECT ordered_cnt,product_description_id FROM product_keys WHERE product_description_id=' . $_POST['idid'] . ' AND customer_id=' . $_SESSION['hfe_id']);
   if ($check->rowCount() > 0) {
     $checkrow = $check->fetch(PDO::FETCH_ASSOC);
     if (is_null($checkrow['ordered_cnt']) || $checkrow < 1) {
@@ -4939,7 +4939,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
     $date = date("Y\-m\-d");
     $viewedsql->execute(array(
       ':oc' => $_POST['pdt_cnt'],
-      ':uid' => $_SESSION['id'],
+      ':uid' => $_SESSION['hfe_id'],
       ':idid' => $_POST['idid'],
       ':dop' => $date
     ));
@@ -5488,7 +5488,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
   );
   if (!$mail->send()) {
     $response['status'] = "error";
-    $_SESSION['error'] = "Email can't Send";
+    $_SESSION['hfe_error'] = "Email can't Send";
     //echo "Mailer Error: " . $mail->ErrorInfo;
   }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -5817,7 +5817,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
     );
     if (!$mail->send()) {
       $response['status'] = "error";
-      $_SESSION['error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
+      $_SESSION['hfe_error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
       //echo "Mailer Error: " . $mail->ErrorInfo;
     }
   }
@@ -8845,7 +8845,7 @@ if (isset($_POST['cancel_customer_rated']) && $_POST['cancel_customer_rated'] ==
 if (isset($_POST['check_mul']) && $_POST['check_mul'] == 1) {
   if (isset($_POST['key'])) {
     //CLEAR CART TEMP OF THIS USER
-    $sql_del = "DELETE FROM cart_temp WHERE customer_id=" . $_SESSION['id'];
+    $sql_del = "DELETE FROM cart_temp WHERE customer_id=" . $_SESSION['hfe_id'];
     $stmt_del = $pdo->query($sql_del);
     for ($i = 0; $i < count($_POST['key']); $i++) {
       $split = explode('_', $_POST['key'][$i]['type']);
@@ -8859,7 +8859,7 @@ if (isset($_POST['check_mul']) && $_POST['check_mul'] == 1) {
         echo $idid.PHP_EOL;
       */
       //RETRIEVING SELECTED CART ID'S
-      $sql = "SELECT cart_id FROM cart WHERE store_id=" . $sid . " AND product_description_id=" . $idid . " AND customer_id=" . $_SESSION['id'];
+      $sql = "SELECT cart_id FROM cart WHERE store_id=" . $sid . " AND product_description_id=" . $idid . " AND customer_id=" . $_SESSION['hfe_id'];
       $stmt = $pdo->query($sql);
       $row = $stmt->fetch(PDO::FETCH_ASSOC);
       //CART ID
@@ -8878,7 +8878,7 @@ if (isset($_POST['check_mul']) && $_POST['check_mul'] == 1) {
         $stmt = $pdo->prepare($sql);
         $stmt->execute(array(
           ':cid' => $cid,
-          ':uid' => $_SESSION['id']
+          ':uid' => $_SESSION['hfe_id']
         ));
         $response['status'] = "success";
       }
@@ -8925,7 +8925,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
       $shipping_postcode = $pin;
       $sql = "SELECT customer_delivery_details_id FROM customer_delivery_details WHERE customer_id=:customer_id AND type='permanent'";
       $stmt = $pdo->prepare($sql);
-      $stmt->execute(array(':customer_id' => $_SESSION['id']));
+      $stmt->execute(array(':customer_id' => $_SESSION['hfe_id']));
       $row_uddid = $stmt->fetch(PDO::FETCH_ASSOC);
       $uddid = $row_uddid['customer_delivery_details_id']; //USER DELIVERY DETAILS ID
     }
@@ -8950,7 +8950,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
         ':type' => $type,
         ':address' => $shipping_address_1
       ));
-      $sql = "SELECT max(customer_delivery_details_id) AS maxuddid FROM customer_delivery_details WHERE customer_id=" . $_SESSION['id'];
+      $sql = "SELECT max(customer_delivery_details_id) AS maxuddid FROM customer_delivery_details WHERE customer_id=" . $_SESSION['hfe_id'];
       $stmt = $pdo->query($sql);
       $row_uddid = $stmt->fetch(PDO::FETCH_ASSOC);
       $uddid = $row_uddid['maxuddid']; //USER DELIVERY DETAILS ID
@@ -8986,7 +8986,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
           JOIN product_details ON product_details.product_description_id=product_description.product_description_id
           WHERE cart.store_id=product_details.store_id AND cart_temp.customer_id=:customer_id";
   $stmt_cart = $pdo->prepare($sql);
-  $stmt_cart->execute(array(':customer_id' => $_SESSION['id']));
+  $stmt_cart->execute(array(':customer_id' => $_SESSION['hfe_id']));
   while ($row_cart = $stmt_cart->fetch(PDO::FETCH_ASSOC)) {
     $sql = "INSERT INTO new_ordered_products (new_orders_id,product_details_id,order_type,item_quantity,total_amt,delivery_status)values(:noid,:pdid,:order_type,:item_quantity,:total_amt,'pending')";
     $stmt = $pdo->prepare($sql);
@@ -9039,7 +9039,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
     ));
     while ($placerow_i = $placestmt_i->fetch(PDO::FETCH_ASSOC)) {
       /////////////ADD AS ORDERED///////////
-      $check = $pdo->query('SELECT ordered_cnt,product_description_id FROM product_keys WHERE product_description_id=' . $placerow_i['product_description_id'] . ' AND customer_id=' . $_SESSION['id']);
+      $check = $pdo->query('SELECT ordered_cnt,product_description_id FROM product_keys WHERE product_description_id=' . $placerow_i['product_description_id'] . ' AND customer_id=' . $_SESSION['hfe_id']);
       if ($check->rowCount() > 0) {
         $checkrow = $check->fetch(PDO::FETCH_ASSOC);
         if (is_null($checkrow['ordered_cnt']) || $checkrow < 1) {
@@ -9053,7 +9053,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
         $date = date("Y\-m\-d");
         $viewedsql->execute(array(
           ':oc' => $placerow_i['quantity'],
-          ':uid' => $_SESSION['id'],
+          ':uid' => $_SESSION['hfe_id'],
           ':idid' => $placerow_i['product_description_id'],
           ':dop' => $date
         ));
@@ -9077,7 +9077,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
   }
   $sql = "SELECT cart_id FROM cart_temp WHERE customer_id=:customer_id";
   $stmt_cart = $pdo->prepare($sql);
-  $stmt_cart->execute(array(':customer_id' => $_SESSION['id']));
+  $stmt_cart->execute(array(':customer_id' => $_SESSION['hfe_id']));
   while ($row_cart = $stmt_cart->fetch(PDO::FETCH_ASSOC)) {
     $sqldel1 = "DELETE FROM cart WHERE cart_id=" . $row_cart['cart_id'];
     $stmtdel1 = $pdo->query($sqldel1);
@@ -9682,7 +9682,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
   );
   if (!$mail->send()) {
     $response['status'] = "error";
-    $_SESSION['error'] = "Email can't Send";
+    $_SESSION['hfe_error'] = "Email can't Send";
     //echo "Mailer Error: " . $mail->ErrorInfo;
   }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -10300,7 +10300,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
     );
     if (!$mail->send()) {
       $response['status'] = "error";
-      $_SESSION['error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
+      $_SESSION['hfe_error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
       //echo "Mailer Error: " . $mail->ErrorInfo;
     }
   }
@@ -10331,7 +10331,7 @@ if (isset($_POST['cancel_product'])) {
             WHERE customers.customer_id=:customer_id AND new_ordered_products.new_ordered_products_id=:nopid ";
   $statement = $pdo->prepare($query);
   $statement->execute(array(
-    ':customer_id' => $_SESSION['id'],
+    ':customer_id' => $_SESSION['hfe_id'],
     ':nopid' => $nopid
   ));
   $row = $statement->fetch(PDO::FETCH_ASSOC);
@@ -10346,7 +10346,7 @@ if (isset($_POST['cancel_product'])) {
     echo "Order_id : ".$order_id." | product_details_id : ".$pid." | product_qnty : ".$product_qnty." | pre_tot : ".$prev_order_tot_amt." | new_tot : ".$new_order_tot_amt;
   */
   $pdtupdatestmt = $pdo->query("UPDATE product_details set quantity=quantity+" . $product_qnty . " WHERE product_details_id=" . $pid);
-  $sql = $pdo->query("UPDATE product_keys set ordered_cnt=ordered_cnt-" . $product_qnty . " WHERE product_description_id=" . $idid . " AND customer_id=" . $_SESSION['id']);
+  $sql = $pdo->query("UPDATE product_keys set ordered_cnt=ordered_cnt-" . $product_qnty . " WHERE product_description_id=" . $idid . " AND customer_id=" . $_SESSION['hfe_id']);
   $chkpendstmt = $pdo->query("UPDATE new_ordered_products set delivery_status='cancelled' WHERE new_ordered_products_id=" . $nopid);
   $customer_firstnm = $row['fn'];
   $customer_lastnm = $row['ln'];
@@ -10945,7 +10945,7 @@ if (isset($_POST['cancel_product'])) {
   );
   if (!$mail->send()) {
     $response['status'] = "error";
-    $_SESSION['error'] = "Email can't Send";
+    $_SESSION['hfe_error'] = "Email can't Send";
     //echo "Mailer Error: " . $mail->ErrorInfo;
   }
   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -11533,7 +11533,7 @@ if (isset($_POST['cancel_product'])) {
   );
   if (!$mail->send()) {
     $response['status'] = "error";
-    $_SESSION['error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
+    $_SESSION['hfe_error'] = "An error occurred while trying to send your message: " . $mail->ErrorInfo;
     //echo "Mailer Error: " . $mail->ErrorInfo;
   }
   $response['status'] = "success";

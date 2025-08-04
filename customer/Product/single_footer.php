@@ -207,7 +207,7 @@
         <h3>Profile</h3>
         <ul class="info">
           <?php
-          if (isset($_SESSION['name'])) {
+          if (isset($_SESSION['hfe_name'])) {
           ?>
             <li>
               <a href="../Cart/cart.php">My Cart</a>
@@ -219,7 +219,7 @@
             </li>
           <?php
           }
-          if (!isset($_SESSION['name'])) {
+          if (!isset($_SESSION['hfe_name'])) {
           ?>
             <li>
               <a href="../Account/login.php">Login</a>
@@ -923,10 +923,10 @@ if (isset($product_description_id)) {
 <!--------------------------------------------------------------------------------------------------------------------------------->
 <!-- Detail about lists--><!--ADD TO WISHLIST-->
 <?php
-if (isset($product_description_id, $_SESSION['id'])) {
+if (isset($product_description_id, $_SESSION['hfe_id'])) {
   $result = $pdo->query(
     "SELECT * FROM wishlist
-    WHERE customer_id = " . $_SESSION['id']
+    WHERE customer_id = " . $_SESSION['hfe_id']
   );
   $status = 0;
 ?>
@@ -2686,7 +2686,7 @@ if (isset($product_description_id)) {
       return " ";
     }
     <?php
-    if (!isset($_SESSION['id'])) {
+    if (!isset($_SESSION['hfe_id'])) {
     ?>
       var email = getCookie("HFE_email");
       var pass = getCookie("HFE_password");
@@ -2731,14 +2731,14 @@ if (isset($product_description_id)) {
       }
     <?php
     }
-    if (isset($_SESSION['id'])) {
+    if (isset($_SESSION['hfe_id'])) {
     ?>
       //CART COUNT
       $.ajax({
         url: "../Common/functions.php", //passing page info
         data: {
           "cartcnt": 1,
-          "user": "<?= $_SESSION['id'] ?>"
+          "user": "<?= $_SESSION['hfe_id'] ?>"
         }, //form data
         type: "post", //post data
         dataType: "json", //datatype=json format

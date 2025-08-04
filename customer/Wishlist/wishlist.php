@@ -321,14 +321,14 @@ require "../Main/header.php";
       <div class="your_wishlist">
         <div class="your_wishlist_large">
           <?php
-          if (isset($_SESSION['id'])) {
+          if (isset($_SESSION['hfe_id'])) {
             $sql_check = 'select count(wishlist_id) as cnt from wishlist where customer_id=:customer_id';
             $stmt_check = $pdo->prepare($sql_check);
-            $stmt_check->execute(array(':customer_id' => $_SESSION['id']));
+            $stmt_check->execute(array(':customer_id' => $_SESSION['hfe_id']));
             $row_check = $stmt_check->fetch(PDO::FETCH_ASSOC);
             $sql_wish = 'select * FROM wishlist WHERE customer_id=:customer_id';
             $stmt_wish = $pdo->prepare($sql_wish);
-            $stmt_wish->execute(array(':customer_id' => $_SESSION['id']));
+            $stmt_wish->execute(array(':customer_id' => $_SESSION['hfe_id']));
             if ($row_check['cnt'] > 0) {
           ?>
               <div class="container" style="margin-top: 50px;">
@@ -433,11 +433,11 @@ require "../Main/header.php";
           <?php
           $sql_check = 'select count(wishlist_id) as cnt from wishlist where customer_id=:customer_id';
           $stmt_check = $pdo->prepare($sql_check);
-          $stmt_check->execute(array(':customer_id' => $_SESSION['id']));
+          $stmt_check->execute(array(':customer_id' => $_SESSION['hfe_id']));
           $row_check = $stmt_check->fetch(PDO::FETCH_ASSOC);
           $sql_wish = 'select * FROM wishlist WHERE customer_id=:customer_id';
           $stmt_wish = $pdo->prepare($sql_wish);
-          $stmt_wish->execute(array(':customer_id' => $_SESSION['id']));
+          $stmt_wish->execute(array(':customer_id' => $_SESSION['hfe_id']));
           if ($row_check['cnt'] > 0) {
           ?>
             <div class="container" style="margin-top: 50px;">

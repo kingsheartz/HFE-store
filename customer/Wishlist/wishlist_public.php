@@ -308,8 +308,8 @@ require "../Main/header.php";
     <div class="row" style="margin: 0px;background-color: #151515;">
       <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%">
         <?php
-        if (isset($_SESSION['id'])) {
-          $id = $_SESSION['id'];
+        if (isset($_SESSION['hfe_id'])) {
+          $id = $_SESSION['hfe_id'];
         }
         $sqlc = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid";
         $stmtc = $pdo->prepare($sqlc);

@@ -86,20 +86,20 @@ require "../Common/cookie.php";
   }
 </style>
 <?php
-//if(isset($_SESSION['id'])){
+//if(isset($_SESSION['hfe_id'])){
 ?>
 <script>
   $(document).ready(function() {
     //DELETE THIS COOKIE//document.cookie = "cookieset=; expires=Thu, 01 Jan 1970 00:00:00 UTC; ";
     if (getCookieset('cookieset') !== "y") {
       <?php
-      if (isset($_SESSION['id'])) {
+      if (isset($_SESSION['hfe_id'])) {
       ?>
         $.ajax({
           url: "../Common/functions.php", //passing page info
           data: {
             "getcookie": 1,
-            "userid": <?= $_SESSION['id'] ?>
+            "userid": <?= $_SESSION['hfe_id'] ?>
           }, //form data
           type: "post", //post data
           dataType: "json", //datatype=json format
@@ -184,11 +184,11 @@ require "../Common/cookie.php";
       interval: 3000 // Auto slide every 3 seconds
     });
     <?php
-    if (isset($_SESSION['error_msg'])) {
+    if (isset($_SESSION['hfe_error_msg'])) {
     ?>
       swal({
         title: "Error",
-        text: "<?= $_SESSION['error_msg'] ?>",
+        text: "<?= $_SESSION['hfe_error_msg'] ?>",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -196,7 +196,7 @@ require "../Common/cookie.php";
         location.href = '../Account/logout.php';
       });
     <?php
-      unset($_SESSION['error_msg']);
+      unset($_SESSION['hfe_error_msg']);
     }
     ?>
   });
@@ -698,8 +698,8 @@ require "../Common/cookie.php";
       </div>
       <!-- what we promise -->
       <?php
-      if (isset($_SESSION['id'])) {
-        $presql = "select product_description_id from product_keys WHERE rating=0 AND ordered_cnt>0 AND review= '0' and customer_id=" . $_SESSION['id'];
+      if (isset($_SESSION['hfe_id'])) {
+        $presql = "select product_description_id from product_keys WHERE rating=0 AND ordered_cnt>0 AND review= '0' and customer_id=" . $_SESSION['hfe_id'];
         $prest = $pdo->query($presql);
         $precnt = $prest->rowCount();
         if ($precnt > 0) {

@@ -2,8 +2,8 @@
 try{
 	$pdo=new PDO("mysql:host=localhost;port=3306;dbname=HFE-Store","root","");
 	$pdo->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
-	$_SESSION['success']="Connected successfully";
+	$_SESSION['hfe_success']="Connected successfully";
 }catch(PDOException $e){
-	$_SESSION['error']="OOPS !!! CONNECTION CAN'T BE ESTABLISHED";
+	$_SESSION['hfe_error']="OOPS !!! CONNECTION CAN'T BE ESTABLISHED";
 }
 ?>

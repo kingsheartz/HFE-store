@@ -43,7 +43,7 @@ require "head.php";
       }
     </style>
     <?php
-    $id = $_SESSION['id'];
+    $id = $_SESSION['hfe_id'];
     require "pdo.php";
     echo "<script>var id=$id</script>";
     $stmt = $pdo->query(

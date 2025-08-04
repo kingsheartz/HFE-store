@@ -1,6 +1,6 @@
 <?php
 session_start();
-// if (!isset($_SESSION['forgot_pass_email'])) {
+// if (!isset($_SESSION['hfe_forgot_pass_email'])) {
 //   header('location:forgot-password-v2.html');
 //   return;
 // }
@@ -166,7 +166,7 @@ session_start();
       $('.background_loader').show();
       $('.std_loader').show();
 
-      var email = "<?= $_SESSION['forgot_pass_email'] ?>";
+      var email = "<?= $_SESSION['hfe_forgot_pass_email'] ?>";
 
       $.ajax({
         url: "../../../../customer/Common/functions.php", //passing page info

@@ -1167,12 +1167,12 @@ if (session_status() === PHP_SESSION_NONE) {
                         </a>
                       </li>
                       <?php
-                      if (isset($_SESSION['name'])) {
+                      if (isset($_SESSION['hfe_name'])) {
                       ?>
                         <li class="userdiv" style="float: right;">
-                          <form action="../Account/registered.php" title="<?= $_SESSION['name'] ?>" method="post" class="last" onclick="openNav()">
+                          <form action="../Account/registered.php" title="<?= $_SESSION['hfe_name'] ?>" method="post" class="last" onclick="openNav()">
                             <button class="w3view-cart usericon " type="button" name="submit" value="">
-                              <span id="location"><?= strtoupper(substr($_SESSION['name'], 0, 1)); ?></span>
+                              <span id="location"><?= strtoupper(substr($_SESSION['hfe_name'], 0, 1)); ?></span>
                             </button>
                           </form>
                         </li>
@@ -1207,8 +1207,8 @@ if (session_status() === PHP_SESSION_NONE) {
                               <div class="shopcart">
                                 <div id="sm-cartcnt" class="crt-count">
                                   <?php
-                                  if (isset($_SESSION['cart_count'])) {
-                                    echo $_SESSION['cart_count'];
+                                  if (isset($_SESSION['hfe_cart_count'])) {
+                                    echo $_SESSION['hfe_cart_count'];
                                   } else {
                                     echo "0";
                                   }
@@ -1234,7 +1234,7 @@ if (session_status() === PHP_SESSION_NONE) {
                             <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
                           </button>
                           <span id="location">
-                            <?php if (isset($_SESSION['location'])) { ?>You<?php } ?>
+                            <?php if (isset($_SESSION['hfe_location'])) { ?>You<?php } ?>
                           </span>
                         </form>
                       </li>
@@ -1280,10 +1280,10 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
                 <?php
-                if (isset($_SESSION['sid'])) {
+                if (isset($_SESSION['hfe_sid'])) {
                 ?>
                   <li id="shopactive">
-                    <a href="../../equipment-store-admin/index.php?id=<?= $_SESSION['sid'] ?>" style="display:flex;align-items:center;justify-content:center;">
+                    <a href="../../equipment-store-admin/index.php?id=<?= $_SESSION['hfe_sid'] ?>" style="display:flex;align-items:center;justify-content:center;">
                       <i class="fas fa-lg fa-store" style="font-size:16px;"></i> &nbsp; Store
                     </a>
                   </li>
@@ -1302,12 +1302,12 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
 
                 <?php
-                if (isset($_SESSION['name'])) {
+                if (isset($_SESSION['hfe_name'])) {
                 ?>
                   <li class="profilediv">
                     <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
                       <button class=" usericon " type="button" name="submit" value="">
-                        <span><?= strtoupper(substr($_SESSION['name'], 0, 1)); ?></span>
+                        <span><?= strtoupper(substr($_SESSION['hfe_name'], 0, 1)); ?></span>
                       </button>
                     </form>
                   </li>
@@ -1320,7 +1320,7 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                   <ul class="dropdown-menu" style="border:1px solid rgb(55, 55, 55);padding: 0px; background-color: #000 !important; color:white !important;">
                     <?php
-                    if (!isset($_SESSION['id'])) {
+                    if (!isset($_SESSION['hfe_id'])) {
                     ?>
                       <a href="../Account/login.php">
                         <li
@@ -1342,7 +1342,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         </li>
                       </a>
                     <?php
-                    } else if (isset($_SESSION['id'])) {
+                    } else if (isset($_SESSION['hfe_id'])) {
                     ?>
                       <a href="../Order/myorders.php">
                         <li
@@ -1418,8 +1418,8 @@ if (session_status() === PHP_SESSION_NONE) {
                         <div class="shopcart">
                           <div id="lg-cartcnt" class="crt-count">
                             <?php
-                            if (isset($_SESSION['cart_count'])) {
-                              echo $_SESSION['cart_count'];
+                            if (isset($_SESSION['hfe_cart_count'])) {
+                              echo $_SESSION['hfe_cart_count'];
                             } else {
                               echo "0";
                             }
@@ -1443,7 +1443,7 @@ if (session_status() === PHP_SESSION_NONE) {
                   </form>
                 </li>
                 <?php
-                if (!isset($_SESSION['name'])) {
+                if (!isset($_SESSION['hfe_name'])) {
                 ?>
                   <li class="logindiv" title="Login">
                     <a class="loginicon" href="#myModal" data-toggle="modal" data-dismiss="modal">
@@ -1510,9 +1510,9 @@ if (session_status() === PHP_SESSION_NONE) {
         <span style="font-family: arial;font-weight: bold;font-size: 22px;">
           Hello,
           <?php
-          if (isset($_SESSION['name'])) {
+          if (isset($_SESSION['hfe_name'])) {
           ?>
-            <span><?= $_SESSION['name'] ?></span>
+            <span><?= $_SESSION['hfe_name'] ?></span>
           <?php
           } else {
           ?>
@@ -1557,7 +1557,7 @@ if (session_status() === PHP_SESSION_NONE) {
       <i class="fa fa-sm fa-cog" style="color:white "></i> Help & Settings
     </a>
     <?php
-    if (isset($_SESSION['id'])) {
+    if (isset($_SESSION['hfe_id'])) {
     ?>
       <a class="side_nav_content_head" href="../Account/edit_user_details.php">My Account</a>
       <a class="side_nav_content_head" href="../Order/myorders.php">My orders</a>
@@ -1567,7 +1567,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <a class="side_nav_content_head" href="../Main/about.php">About</a>
     <a class="side_nav_content_head" href="../Main/contact.php">Contact</a>
     <?php
-    if (!isset($_SESSION['id'])) {
+    if (!isset($_SESSION['hfe_id'])) {
     ?>
       <a
         class="side_nav_content_head"

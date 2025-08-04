@@ -9,7 +9,7 @@ require "head.php";
     ?>
     <?php
     require "pdo.php";
-    $id = $_SESSION['id'];
+    $id = $_SESSION['hfe_id'];
     ?>
     <style type="text/css">
       #close {

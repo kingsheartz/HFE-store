@@ -2,14 +2,14 @@
 require_once '../vendor/autoload.php';
 function redirectWithError($error)
 {
-  $_SESSION['_contact_form_error'] = $error;
+  $_SESSION['hfe_contact_form_error'] = $error;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   echo "Error: " . $error;
   die();
 }
 function redirectSuccess()
 {
-  $_SESSION['_contact_form_success'] = true;
+  $_SESSION['hfe_contact_form_success'] = true;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   echo "Product added  successfully!";
   die();

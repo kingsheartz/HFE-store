@@ -21,5 +21,5 @@ $mail->msgHTML("fghgfeygfyewgyuwgrywrytr"); //$mail->msgHTML(file_get_contents('
 $mail->AltBody = 'HTML messaging not supported'; // If html emails is not supported by the receiver, show this body
 if (!$mail->send()) {
   $response['status'] = "error4";
-  $_SESSION['error'] = "Email can't Send";
+  $_SESSION['hfe_error'] = "Email can't Send";
 }

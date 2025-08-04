@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   header("location:hfe.php");
 }
 require "header.php";
@@ -304,7 +304,7 @@ require "header.php";
         // Save to server
         $.post('../Common/bmi_api.php', {
           save_bmi: 1,
-          customer_id: "<?= $_SESSION['id'] ?>",
+          customer_id: "<?= $_SESSION['hfe_id'] ?>",
           weight,
           height,
           bmi: bmiRounded
@@ -340,7 +340,7 @@ require "header.php";
       }
 
       function loadBMIHistory() {
-        const customer_id = "<?= $_SESSION['id'] ?>";
+        const customer_id = "<?= $_SESSION['hfe_id'] ?>";
         const date = $('#bmi-date').val();
 
         $.post('../Common/bmi_api.php', {
@@ -364,7 +364,7 @@ require "header.php";
       }
 
       function loadBMIChart() {
-        const customer_id = "<?= $_SESSION['id'] ?>";
+        const customer_id = "<?= $_SESSION['hfe_id'] ?>";
 
         $.post('../Common/bmi_api.php', {
           load_bmi_chart: 1,

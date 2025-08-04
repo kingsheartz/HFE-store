@@ -675,7 +675,7 @@ function randomGen($min, $max, $quantity)
     }
   }
   <?php
-  if (isset($_SESSION['id'])) {
+  if (isset($_SESSION['hfe_id'])) {
   ?>
 
     function check_mul() {
@@ -684,7 +684,7 @@ function randomGen($min, $max, $quantity)
         data: {
           "check_mul": 1,
           "key": filter,
-          "user": <?= $_SESSION['id'] ?>
+          "user": <?= $_SESSION['hfe_id'] ?>
         }, //form data
         type: "post", //post data
         dataType: "json", //datatype=json format
@@ -783,11 +783,11 @@ function randomGen($min, $max, $quantity)
     <div class="row" style="margin: 0px;">
       <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%;display: list-item;">
         <script>
-          console.log("Session ID:: <?php echo $_SESSION['id']; ?>");
+          console.log("Session ID:: <?php echo $_SESSION['hfe_id']; ?>");
         </script>
         <?php
-        if (isset($_SESSION['id'])) {
-          $id = $_SESSION['id'];
+        if (isset($_SESSION['hfe_id'])) {
+          $id = $_SESSION['hfe_id'];
           $sqlc = "select * from cart where customer_id=:id";
           $stmtc = $pdo->prepare($sqlc);
           $stmtc->execute(array(
@@ -803,7 +803,7 @@ function randomGen($min, $max, $quantity)
                   <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;">
                     <div class="shop_table cart" style="background-color: #111111;">
                       <?php
-                      $id = $_SESSION['id'];
+                      $id = $_SESSION['hfe_id'];
                       $sql1 = "select * from cart where customer_id=:id order by product_description_id";
                       $stmt1 = $pdo->prepare($sql1);
                       $stmt1->execute(array(
@@ -1207,7 +1207,7 @@ function randomGen($min, $max, $quantity)
                       ?>
                     </div>
                     <?php
-                    $id = $_SESSION['id'];
+                    $id = $_SESSION['hfe_id'];
                     $sql = "select sum(product_details.price*cart.quantity) as subtotal from cart
                             inner join product_description on product_description.product_description_id=cart.product_description_id
                             inner join product_details on product_details.product_description_id=cart.product_description_id
@@ -1531,7 +1531,7 @@ function randomGen($min, $max, $quantity)
               JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
               join product on product.product_id=product_description.product_id
               join product_details on product_description.product_description_id=product_details.product_description_id
-              where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.views as UNSIGNED) DESC"
+              where customer_id=" . $_SESSION['hfe_id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.views as UNSIGNED) DESC"
             );
             $isready = $viewstmt->rowCount();
 
@@ -1617,7 +1617,7 @@ function randomGen($min, $max, $quantity)
               "SELECT views ,product_keys.product_description_id from product_keys
               JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
               JOIN product ON product.product_id=product_description.product_id
-              WHERE customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC"
+              WHERE customer_id=" . $_SESSION['hfe_id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC"
             );
             $isready = $ran->rowCount();
             if ($isready != 0 && is_null($isready) == false) {

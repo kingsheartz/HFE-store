@@ -1,7 +1,7 @@
 <?php
 session_start();
 require '..\..\db.php';
-unset($_SESSION['admin']);
+unset($_SESSION['hfe_admin']);
 
 if (isset($_POST['user']) || isset($_POST['pass'])) {
   $query = "SELECT * from admin";
@@ -10,7 +10,7 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
   $row = $statement->fetch(PDO::FETCH_ASSOC);
 
   if ($_POST['user'] != $row['username'] && !(password_verify($_POST['pass'], $row['password']))) {
-    $_SESSION['error'] = "<script>$('#psin').show();
+    $_SESSION['hfe_error'] = "<script>$('#psin').show();
     $('#psin2').hide();
     $('#usin').show();
     $('#usin2').hide();
@@ -20,7 +20,7 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
     return;
   }
   if ($_POST['user'] != $row['username']) {
-    $_SESSION['error'] = "<script>$('#usin').show();
+    $_SESSION['hfe_error'] = "<script>$('#usin').show();
     $('#usin2').hide();
     $('#errorms').text('Incorrect User Name');
     $('#errorms').show();</script>";
@@ -28,7 +28,7 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
     return;
   }
   if (!(password_verify($_POST['pass'], $row['password']))) {
-    $_SESSION['error'] = "<script>$('#psin').show();
+    $_SESSION['hfe_error'] = "<script>$('#psin').show();
     $('#psin2').hide();
     $('#errorms').text('Incorrect Password');
     $('#errorms').show();</script>";
@@ -36,7 +36,7 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
     return;
   }
   if ($_POST['user'] == $row['username'] && password_verify($_POST['pass'], $row['password'])) {
-    $_SESSION['admin'] = "1";
+    $_SESSION['hfe_admin'] = "1";
     header('Location:../dashboard/main.php');
   }
 }
@@ -115,9 +115,9 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
       </div>
       <span id="errorms">
         <?php
-        if (isset($_SESSION['error'])) {
-          echo $_SESSION['error'];
-          unset($_SESSION['error']);
+        if (isset($_SESSION['hfe_error'])) {
+          echo $_SESSION['hfe_error'];
+          unset($_SESSION['hfe_error']);
         }
         ?>
       </span>

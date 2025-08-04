@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   header("location:hfe.php");
 }
 require "header.php";
@@ -348,7 +348,7 @@ require "header.php";
               date = new Date().toISOString().split('T')[0]; // Use today's date if no custom date is selected
             }
 
-            const customer_id = "<?= $_SESSION['id'] ?>";
+            const customer_id = "<?= $_SESSION['hfe_id'] ?>";
 
             $.ajax({
               url: '../Common/calorie_manager.php',
@@ -402,7 +402,7 @@ require "header.php";
               url: '../Common/calorie_manager.php',
               method: 'POST',
               data: {
-                customer_id: "<?= $_SESSION['id'] ?>",
+                customer_id: "<?= $_SESSION['hfe_id'] ?>",
                 food_item,
                 calories
               },
@@ -438,7 +438,7 @@ require "header.php";
 
           function saveGoal() {
             const goal = $('#goal_input').val();
-            const customer_id = "<?= $_SESSION['id'] ?>";
+            const customer_id = "<?= $_SESSION['hfe_id'] ?>";
 
             $.post('../Common/calorie_manager.php', {
               saveGoal: 1,
@@ -452,7 +452,7 @@ require "header.php";
           }
 
           function checkGoalStatus() {
-            const customer_id = "<?= $_SESSION['id'] ?>";
+            const customer_id = "<?= $_SESSION['hfe_id'] ?>";
 
             $.post('../Common/calorie_manager.php', {
               checkGoalStatus: 1,
@@ -465,7 +465,7 @@ require "header.php";
           }
 
           function loadWeekChart() {
-            const customer_id = "<?= $_SESSION['id'] ?>";
+            const customer_id = "<?= $_SESSION['hfe_id'] ?>";
 
             $.post('../Common/calorie_manager.php', {
               loadWeekChart: 1,

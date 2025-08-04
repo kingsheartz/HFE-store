@@ -34,7 +34,7 @@
 
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) {
+if (!isset($_SESSION['hfe_admin'])) {
   die("<div style='width: 100%;
           display: flex;
           flex-wrap: wrap;

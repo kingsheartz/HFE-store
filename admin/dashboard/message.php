@@ -13,7 +13,7 @@ include "header.php";
       $("#chatphp").click();
     </script>
     <?php
-    unset($_SESSION['name']);
+    unset($_SESSION['hfe_name']);
 
     if (isset($_POST['status'])) {
       $sql = "UPDATE chats SET stat=1 where rname='admin' AND uname='" . $_GET['name'] . "'";
@@ -443,10 +443,10 @@ include "header.php";
                 $statement = $pdo->prepare($query1);
                 $statement->execute(array(':name' => $_GET['name']));
                 $row1 = $statement->fetch(PDO::FETCH_ASSOC);
-                $_SESSION['name'] = $row1['username'];
+                $_SESSION['hfe_name'] = $row1['username'];
               ?>
                 <span class="conimg"><i class="fa fa-user-circle-o" style="color:white;"></i></span>
-                <h4><?= $_SESSION['name'] ?></h4>
+                <h4><?= $_SESSION['hfe_name'] ?></h4>
               <?php
               }
               ?>
@@ -494,13 +494,13 @@ include "header.php";
           <form id="myform" method="POST" style="overflow-y: scroll;">
             <div class="inner_div" id="chathist">
               <?php
-              if (isset($_SESSION['name'])) {
+              if (isset($_SESSION['hfe_name'])) {
               ?>
-                <input type="hidden" id="rname" name="rname" value="<?= $_SESSION['name'] ?>">
+                <input type="hidden" id="rname" name="rname" value="<?= $_SESSION['hfe_name'] ?>">
                 <input type="hidden" id="uname" name="uname" value="admin">
                 <?php
                 require 'pdo.php';
-                $c = $_SESSION['name'];
+                $c = $_SESSION['hfe_name'];
                 $query = "SELECT * FROM chats where (uname='$c' and rname='admin') or (uname='admin' and rname='$c') order by dt";
                 $run = $pdo->query($query);
                 $i = 0;

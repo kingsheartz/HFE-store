@@ -1,13 +1,13 @@
 <?php
 session_start();
 
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   header("location:../Main/hfe.php");
 }
 
 require "../Main/header.php";
 
-$uid = $_SESSION['id'];
+$uid = $_SESSION['hfe_id'];
 $sql = "SELECT category.category_id,product_description.product_description_id,cart.quantity,cart.store_id,product.product_name,product_details.price FROM cart
         INNER JOIN cart_temp ON cart_temp.cart_id=cart.cart_id
         INNER JOIN product_description ON cart.product_description_id=product_description.product_description_id
@@ -398,7 +398,7 @@ $pdt_cnt = $stmt->rowCount();
                   $mrp_chrg = 0;
                   $service_chrg = 0;
                   $base = 0;
-                  $uid = $_SESSION['id'];
+                  $uid = $_SESSION['hfe_id'];
                   $sql = "select DISTINCT c.cart_id,i.product_id,id.product_description_id,i.product_name,pd.price,i.price as mrp,c.quantity,c.total_amt from cart c
                             inner join cart_temp ct on ct.cart_id=c.cart_id
                             inner join product_description id on c.product_description_id=id.product_description_id
@@ -730,7 +730,7 @@ require "../Main/footer.php";
       toastr.error('Require billing details!!!')
       return;
     } else if (checkBox_user.checked == true) {
-      var uid = "<?= $_SESSION['id'] ?>";
+      var uid = "<?= $_SESSION['hfe_id'] ?>";
       var pdt_cnt = "<?= $pdt_cnt ?>";
       var total_amt = "<?= $total_amt ?>";
       var data = {
@@ -895,7 +895,7 @@ require "../Main/footer.php";
       }
       //PIN check
       else {
-        var uid = "<?= $_SESSION['id'] ?>";
+        var uid = "<?= $_SESSION['hfe_id'] ?>";
         var pdt_cnt = "<?= $pdt_cnt ?>";
         var total_amt = "<?= $total_amt ?>";
         var data = {
