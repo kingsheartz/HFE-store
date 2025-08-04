@@ -184,7 +184,7 @@ require "head.php";
       $statement->execute();
       $product = $statement->rowCount();
       if ($product == 0) {
-        echo '<center><img src="images/sad.png" height="400px" width="400px"><h3>No Orders Yet.....</h3></center><br><br>';
+        echo '<center><img src="images/no-order.png" height="400px" width="400px"><h3>No Orders Yet.....</h3></center><br><br>';
       } else {
         $uid = 0;
         $lk = 0;

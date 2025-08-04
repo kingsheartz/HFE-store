@@ -460,7 +460,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .side_nav_content_end {
-      border-bottom: 2px solid #337ab7;
+      border-bottom: 2px solid #139b3b;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
       padding-bottom: 10px;

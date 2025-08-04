@@ -949,8 +949,8 @@ $rowcount = $row_single_div['checksingle'];
             <div class="row emp_cart">
               <div class="product-content-right">
                 <center>
-                  <img style="justify-content: center;max-height: 288px;" class="sidebar-title" src="../../images/logo/wishlist3.png">
-                  <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #139b3b">
+                  <img style="justify-content: center;max-height: 288px;" class="sidebar-title" src="../../images/logo/wishlist-empty.png">
+                  <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #e0d9f3">
                     Your Wish List is Empty
                   </h2>
                   <h4>No items in your wishlist.<a href="../Main/hfe.php" style="color: #139b3b"> Start adding!</a></h4>
