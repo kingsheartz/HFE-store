@@ -1035,7 +1035,7 @@ include "header.php";
             data: dataString,
             contentType: false,
             cache: false,
-            processData: true,
+            processData: false,
             success: function() {
               console.log('success');
               $("#" + x).html("<div id='message'></div>");
