@@ -357,7 +357,7 @@ if (isset($_POST['register'])) {
         $mail->SMTPSecure = 'tls'; // ssl is deprecated
         $mail->SMTPAuth = true;
         $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
-        $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
+        $mail->Password = "zoqvnbgcszvohhqe"; // Applicaton password
         $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
         $mail->addAddress($_POST['email'],$_POST['first_name'] ); // to email and name
         $mail->Subject = $subject;
@@ -1015,7 +1015,7 @@ if (isset($_POST['update_customer_details'])) {
         $mail->SMTPSecure = 'tls'; // ssl is deprecated
         $mail->SMTPAuth = true;
         $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
-        $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
+        $mail->Password = "zoqvnbgcszvohhqe"; // Applicaton password
         $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
         $mail->addAddress($row['email'],$_POST['first_name'] ); // to email and name
         $mail->Subject = $subject;
@@ -1190,7 +1190,7 @@ if(isset($_POST['register'])){
 				$headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
 				// Update the activation variable below
 				//$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
-				$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+				$activate_link = 'http://localhost/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
 				$message = '<html><body style="background-color:rgba(255,255,255,255.85);padding:20px;"><center>';
 				$message .= '<img src="https://falconsinfoworld.000webhostapp.com/HFE-Store/images/logo/logo-horizontal.png"><br>';
 				$message .= '<h3 style="color:#059DF9">Hi Govind, HFE-Store Welcomes You</h3><br></center>';
@@ -1244,7 +1244,7 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
           $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
           // Update the activation variable below
           //$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-          //$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+          //$activate_link = 'http://localhost/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
           //$activate_link = 'https://HFE-Store.epizy.com/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
           $activate_link = getBaseURL();
           $message = '
@@ -1465,7 +1465,7 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
             $mail->SMTPSecure = 'tls'; // ssl is deprecated
             $mail->SMTPAuth = true;
             $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
-            $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
+            $mail->Password = "zoqvnbgcszvohhqe"; // Applicaton password
             $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
             $mail->addAddress($email,$first_name ); // to email and name
             $mail->Subject = $subject;
@@ -1571,7 +1571,7 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
           $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
           // Update the activation variable below
           //$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-          //$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+          //$activate_link = 'http://localhost/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
           //$activate_link = 'https://HFE-Store.epizy.com/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
           $activate_link = getBaseURL();
           $message = '
@@ -1791,7 +1791,7 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
             $mail->SMTPSecure = 'tls'; // ssl is deprecated
             $mail->SMTPAuth = true;
             $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
-            $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
+            $mail->Password = "zoqvnbgcszvohhqe"; // Applicaton password
             $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
             $mail->addAddress($email,$first_name ); // to email and name
             $mail->Subject = $subject;
@@ -3023,7 +3023,7 @@ if (isset($_POST['forgotlogin'])) {
             $mail->SMTPSecure = 'tls'; // ssl is deprecated
             $mail->SMTPAuth = true;
             $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
-            $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
+            $mail->Password = "zoqvnbgcszvohhqe"; // Applicaton password
             $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
             $mail->addAddress($_POST['email'],$first_name ); // to email and name
             $mail->Subject = $subject;
@@ -3473,7 +3473,7 @@ if (isset($_POST['recoverlogin'])) {
   header('Content-type: application/json');
   echo json_encode($response);
 }
-//http://localhost/MY%20WEBSITES/HFE-Store/extras/OS/pages/FRL/recover-password-v2.php?otp=123456
+//http://localhost/HFE-Store/extras/OS/pages/FRL/recover-password-v2.php?otp=123456
 //------------------------------------------------------------------------------------------------------------------------------------------
 //------------------------------------------------------------------------------------------------------------------------------------------
 //-----------------------------------------------------------------------------------------------------------
@@ -3931,7 +3931,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
     $mail->SMTPSecure = 'tls'; // ssl is deprecated
     $mail->SMTPAuth = true;
     $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
-    $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
+    $mail->Password = "zoqvnbgcszvohhqe"; // Applicaton password
     $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
     $mail->addAddress($email,$first_name ); // to email and name
     $mail->Subject = $subject;
@@ -4560,7 +4560,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
       $mail->SMTPSecure = 'tls'; // ssl is deprecated
       $mail->SMTPAuth = true;
       $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
-      $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
+      $mail->Password = "zoqvnbgcszvohhqe"; // Applicaton password
       $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
       $mail->addAddress( $store_array[$l]['email'],$store_array[$l]['store_name'] ); // to email and name
       $mail->Subject = $subject;
@@ -5454,7 +5454,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
     $mail->SMTPSecure = 'tls'; // ssl is deprecated
     $mail->SMTPAuth = true;
     $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
-    $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
+    $mail->Password = "zoqvnbgcszvohhqe"; // Applicaton password
     $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
     $mail->addAddress($email,$first_name ); // to email and name
     $mail->Subject = $subject;
@@ -5783,7 +5783,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
       $mail->SMTPSecure = 'tls'; // ssl is deprecated
       $mail->SMTPAuth = true;
       $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
-      $mail->Password = "lgjlpnjvlbdjlskh"; // Applicaton password
+      $mail->Password = "zoqvnbgcszvohhqe"; // Applicaton password
       $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
       $mail->addAddress( $store_array[$l]['email'],$store_array[$l]['store_name'] ); // to email and name
       $mail->Subject = $subject;

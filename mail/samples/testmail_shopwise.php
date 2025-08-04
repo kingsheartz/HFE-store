@@ -1,5 +1,7 @@
 <?php
 require_once "../../pdo.php";
+require dirname(__DIR__, 2) . '/utils/getBaseURL.php';
+
 $customer_id = $_GET['id'];
 
 $placesql_u = "select* from customers where customer_id=:customer_id";
@@ -196,7 +198,7 @@ for ($l = 0; $l < $i; $l++) {
                               <tr>
                                 <td valign="top" align="left">
                                   <p style="padding-left:15px;margin-bottom:10px"> <a
-                                      href="http://localhost:81/HFE-store/customer/Orders/yourorders.php?id=<?= $customer_id ?>"
+                                      href="<?= getBaseUrl() ?>customer/Orders/yourorders.php?id=<?= $customer_id ?>"
                                       style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
                                       rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button"
                                         style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">View
