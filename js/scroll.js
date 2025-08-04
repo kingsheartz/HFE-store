@@ -1,5 +1,5 @@
 //-------------------------------------SCROLL WITH DRAG----------------------------------------------------------------------->
-//////////////////////////////////////////////BODY LOTION//////////////////////////////////////////////////////////////////////
+// ---------------------------------------------BODY LOTION---------------------------------------------------------------------/
 let isDown = false;
 let startX;
 let scrollLeft;
@@ -28,7 +28,7 @@ if (document.querySelector(".bl_item_scroll") != null) {
     console.log(walk);
   });
 }
-//////////////////////////////////////////////MAKE UP ITEMS//////////////////////////////////////////////////////////////////////
+// ---------------------------------------------MAKE UP ITEMS---------------------------------------------------------------------/
 if (document.querySelector(".mui_item_scroll") != null) {
   const muislider = document.querySelector(".mui_item_scroll");
   muislider.addEventListener("mousedown", (e) => {
@@ -54,7 +54,7 @@ if (document.querySelector(".mui_item_scroll") != null) {
     console.log(walk);
   });
 }
-//////////////////////////////////////////////TOP CATEGORY//////////////////////////////////////////////////////////////////////
+// ---------------------------------------------TOP CATEGORY---------------------------------------------------------------------/
 if (document.querySelector(".cat_item_scroll") != null) {
   const slider = document.querySelector(".cat_item_scroll");
   slider.addEventListener("mousedown", (e) => {

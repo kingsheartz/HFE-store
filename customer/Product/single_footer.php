@@ -455,9 +455,8 @@
     </div>
   </div>
 </div>
-<!--/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-   ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-   //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////----->
+<!----------------------------------------------------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------->
 <!-- Detail about shops--><!--ADD TO CART-->
 <script>
   console.log("Detail about shops")
@@ -1277,8 +1276,8 @@ if (isset($product_description_id)) {
 <!----------------------------------------------------------------------------------------------------------------------------->
 <!----------------------------------------------------------------------------------------------------------------------------->
 <!----------------------------------------------------------------------------------------------------------------------------->
-<!--///////////////////////////SHARE APK////////////////////////////////////////////////////////////////////////////////-->
-<!------------------------------------------------------------------------------------------------------------------------------>
+<!----------------------------------SHARE APK---------------------------------------------------------------------------------->
+<!----------------------------------------------------------------------------------------------------------------------------->
 <!--SHARE APK-->
 <!-- Modal -->
 <div class="modal fade" id="myModal_share_apk" role="dialog" onclose="$('.yw').click();" style="height: 95%;">
@@ -1449,7 +1448,7 @@ if (isset($product_description_id)) {
       var link = "http://localhost:81/HFE-store/extras/APK/RELEASE/HFE-Store_version_low.apk";
     }
     $('#input_apk_link').val(link);
-    ///////////WHATSAPP///////////
+    // ----------WHATSAPP--------- //
     $('.whatsapp_apk').html('');
     var wa_content = '<div style="margin-left:15px;width: 30px;height: 30px;background-color: darkgreen;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a class="wlink" target="_blank" data-action="share/whatsapp/share" href="https://api.whatsapp.com/send?text=Download Apk Now :- ' + link + '">\
       <i class="fa fa-whatsapp fa-lg" style="color: white;"></i></a></div><p>Whatsapp</p>';
@@ -1458,7 +1457,7 @@ if (isset($product_description_id)) {
 </script>
 <!------------------------------------------------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------------------------------------------------>
-<!--///////////////////////////SHARE WISHLIST////////////////////////////////////////////////////////////////////////////////-->
+<!-----------------------------SHARE WISHLIST----------------------------------------------------------------------------------->
 <!------------------------------------------------------------------------------------------------------------------------------>
 <!--SHARE WISHLIST-->
 <!-- Modal -->
@@ -1564,13 +1563,13 @@ if (isset($product_description_id)) {
   function copylink(wid, link) {
     $('#input_link').val(link);
     var code = link.split("=");
-    /////////FACEBOOK////////////
+    // ---------FACEBOOK---------- //
     $('.facebook').html('');
     var fb_content = '<div class="fb-share-button"  data-href="' + link + '" data-layout="button_count" data-size="small" style="margin:auto;width: 30px;height: 30px;background-color: #395693;border-radius:3px;\
       display: flex;align-items: center;justify-content: center;"><a target="_blank" href="https://www.facebook.com/sharer/sharer.php?u=https%3A%2F%2FHFE-Store.ml%2Fsingle.php%3Fid%3D' + code[1] + '&amp;src=sdkpreparse" class="fb-xfbml-parse-ignore">\
         <i class="fa fa-facebook fa-lg" style="color: white;"></i></a></div><p>Facebook</p>';
     $('.facebook').html(fb_content);
-    ///////////WHATSAPP///////////
+    // ---------WHATSAPP--------- //
     $('.whatsapp').html('');
     var wa_content = '<div style="margin:auto;width: 30px;height: 30px;background-color: darkgreen;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" data-action="share/whatsapp/share" \
     href="https://api.whatsapp.com/send?text=See this product :- http://localhost:81/HFE-store/customer/Product/single.php?id=' + code[1] + '"><i class="fa fa-whatsapp fa-lg" style="color: white;"></i></a></div><p>Whatsapp</p>';
@@ -1709,7 +1708,7 @@ if (isset($product_description_id)) {
 <!-----------------------------------------SINGLE JSS----------------------------------------------------------------->
 <!-----------------------------------------SINGLE JSS----------------------------------------------------------------->
 <script type="text/javascript">
-  //////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------//
   var capson_warning = document.getElementsByClassName("capson_warning");
   var password_field = document.getElementsByClassName('password_fields');
   for (var i = 0; i < password_field.length; i++) {
@@ -1723,7 +1722,7 @@ if (isset($product_description_id)) {
       }
     });
   }
-  //////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------//
   $('.tab-pane').on('click', function() {
     $('.tab-pane').css('border', '0px none');
     $('.tab-pane').css('border-bottom', '1px solid transparent');
@@ -1783,7 +1782,7 @@ if (isset($product_description_id)) {
   $('#side_nav_bar_lock').click(function() {
     closeNav();
   });
-  ////////////////////////////////BREAK SIDE NAV EVENT/////////////////////////////////////////////////////////////////////////////////////////
+  // ---------------BREAK SIDE NAV EVENT--------------------------//
   $('#list_enda').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
@@ -1915,7 +1914,7 @@ if (isset($product_description_id)) {
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endj").css("display", "block");
   });
-  //////////////////////////////////BREAK SIDE NAV EVENT/////////////////////////////////////////////////////////////////////////////////
+  // ------------------BREAK SIDE NAV EVENT-------------------- //
   var dropdown = document.getElementsByClassName("dropdown-btn");
   var i;
   for (i = 0; i < dropdown.length; i++) {
@@ -1965,9 +1964,9 @@ if (isset($product_description_id)) {
 <!-- added script for new template -->
 <!-- Latest jQuery form server -->
 <!------------------------------------------------------------>
-<!--/////////////////////START-303///END-833/////////////////////////////////////////-->
-<!----------THIS IS FROM HEADER ------------------->
-<!--///////////////////////////////////////////////////////////////-->
+<!-------------------START-303 - END-833---------------------->
+<!-------------------THIS IS FROM HEADER --------------------->
+<!------------------------------------------------------------>
 <script src="https://cdn.jsdelivr.net/gh/vast-engineering/jquery-popup-overlay@2/jquery.popupoverlay.min.js"></script>
 <script type="text/javascript">
   jQuery.fn.putCursorAtEnd = function() {
@@ -2059,8 +2058,8 @@ if (isset($product_description_id)) {
       $("#display2").hide();
     }
   }
-  /*/////////////////////////////////MODAL SIGN IN//////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+  /*---------------------------------MODAL SIGN IN--------------------------------------------------------------------------------*/
+  /*------------------------------------------------------------------------------------------------------------------------------*/
   function signup() {
     location.href = "../Account/registered.php";
     return;
@@ -2287,8 +2286,8 @@ if (isset($product_description_id)) {
     //    echo $fourRandomDigit;
     //
     ?>
-  /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+  /*------------------------------------------------------------------------------------------------------------------------------*/
+  /*------------------------------------------------------------------------------------------------------------------------------*/
 </script>
 <!-- //navigation -->
 <!-- navigation -->
@@ -2571,11 +2570,11 @@ if (isset($product_description_id)) {
         }
       }
     }); //closing ajax
-    ////////////////////////////////////////////////////////////////////////////////////////
+    // ---------------------------------------------------------------------------------------/
     dis_locate();
     $('#update_user_details').show();
     document.getElementById("location").innerHTML = "You";
-    ///////////////////////////////////////////////////////////////////////////////////////
+    // ---------------------------------------------------------------------------------------/
     $("#popup2").hide();
     $("#popup2_background").hide();
     $("#popup2_wrapper").hide();
@@ -2892,9 +2891,9 @@ if (isset($product_description_id)) {
   }, 1000);
 </script>
 <!------------------------------------------------------------>
-<!--/////////////////////START-303///END-833/////////////////////////////////////////-->
-<!----------THIS IS FROM HEADER ------------------->
-<!--///////////////////////////////////////////////////////////////-->
+<!-------------------START-303 - END-833---------------------->
+<!-----------------THIS IS FROM HEADER ----------------------->
+<!------------------------------------------------------------>
 <!-- Scroll->Drag -->
 <script src="../../js/scroll.js"></script>
 <!-- jQuery sticky menu -->
@@ -2908,13 +2907,13 @@ if (isset($product_description_id)) {
 <!-- Slider -->
 <script type="text/javascript" src="../../js/bxslider.min.js"></script>
 <script type="text/javascript" src="../../js/script.slider.js"></script>
-<!-- Bootstrap Core JavaScript ///IMPORTANT///-->
+<!-- Bootstrap Core JavaScript - IMPORTANT----->
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/skdslider.min.js"></script>
 <link href="../../css/skdslider.css" rel="stylesheet">
-<!--/////////////////////START-303///END-833/////////////////////////////////////////-->
-<!----------THIS IS FROM HEADER ------------------->
-<!--///////////////////////////////////////////////////////////////-->
+<!-------------------START-303 - END-833---------------------->
+<!-----------------THIS IS FROM HEADER ----------------------->
+<!------------------------------------------------------------>
 <!------------------------------------------------------------>
 <!-- //main slider-banner -->
 <!-- coc -->
