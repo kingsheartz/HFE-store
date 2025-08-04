@@ -50,7 +50,7 @@ if (isset($_GET['product'])) {
 
   .bg-overlay {
     width: 100%;
-    background: rgba(0, 0, 0, 0.90);
+    padding-bottom: 15px;
   }
 
   .wrapper {
@@ -1036,7 +1036,7 @@ if ($result_cnt == 0) {
     </div>
   </div>
   <!-- //breadcrumbs -->
-  <div class="container" style="padding-top:50px;padding-bottom:50px;margin: 0;width: 100%;background-color: #181818ff;">
+  <div class="container" style="padding-top:15px;padding-bottom:15px;margin: 0;width: 100%;background-color: #181818ff;">
   <?php
 } else {
   ?>
