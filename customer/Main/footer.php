@@ -451,7 +451,7 @@
   }
 </script>
 <div class="modal fade" id="myModal" role="dialog" style="width: 100%; height:100% ;background-color: rgba(0,0,0,0.80);">
-  <div class="modal-dialog" style="width: 70%;height: 70%;">
+  <div class="modal-dialog" style="width: 70%;height: 70%;display: flex;justify-content: center;">
     <!-- Modal content-->
     <div class="modal-content" style="width: 70%;height:70%;background-color:white;">
       <div class="modal-header" style="padding: 0px;min-height: 0px;border:0px;background-color: currentColor;">

@@ -361,7 +361,7 @@ require dirname(__DIR__, 2) . '/utils/getBaseURL.php';
 <!------------------------------------------------------------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------------------------------------------------------------>
 <div class="modal fade" id="myModal" role="dialog" style="width: 100%; height:100% ;background-color: rgba(0,0,0,.80) !important;">
-  <div class="modal-dialog" style="width: 70%;height: 70%;">
+  <div class="modal-dialog" style="width: 70%;height: 70%;display: flex;justify-content: center;">
     <!-- Modal content-->
     <div class="modal-header" style="padding: 0px;min-height: 0px;border:0px;background-color: currentColor;">
       <div class="modal-header" style="padding: 0px;min-height: 0px;border:0px;">
