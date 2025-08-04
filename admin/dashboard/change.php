@@ -1043,8 +1043,9 @@ include "header.php";
                 .hide()
                 .fadeIn(1500, function() {
                   $("#message").append(
-                    "<div class='alert alert-success'>Product Updated \
-                        <button onclick='location.reload()' style='background: green;padding: 5px;border: none;color: white;border-radius: 5px;height: 30px;display: block;margin: auto;'>Refresh</button></div>"
+                    "<div class='alert alert-success'>Product Updated\
+                      <button onclick='location.reload()' style='background: green;padding: 5px;border: none;color: white;border-radius: 5px;height: 30px;display: block;margin: auto;'>Refresh</button>\
+                    </div>"
                   );
                 });
             },

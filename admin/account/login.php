@@ -45,14 +45,44 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
 <head>
   <title>Health care & Fitness</title>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, user-scalable=no">
+  <link href="images/logo/favicon.png" rel="icon" />
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <link rel="stylesheet" type="text/css" href="css/login-style.css">
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.10.0/css/all.min.css" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
 </head>
+<style>
+  body {
+    overflow-x: hidden;
+    height: 100%;
+    width: 100%;
+    background-image: url('../images/logo/admin-bk.jpg') !important;
+    background-position: center !important;
+    background-attachment: fixed !important;
+    background-repeat: no-repeat !important;
+    background-size: cover !important;
+  }
 
+  .row {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-right: -0.75rem;
+    margin-left: -0.75rem;
+    position: relative;
+    z-index: 100;
+    padding: 0;
+  }
+
+  input {
+    max-height: 45px !important;
+  }
+</style>
 <script>
   if (window.history.replaceState) {
     window.history.replaceState(null, null, window.location.href);
@@ -92,7 +122,6 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
         return false;
       }
     });
-
   }
 
   function change() {
@@ -103,10 +132,6 @@ if (isset($_POST['user']) || isset($_POST['pass'])) {
     $('#errorms').hide();
   }
 </script>
-<div class="bck">
-  <div class="back-bd-as col-sm-5 ">
-  </div>
-</div>
 <div class="row justify-content-center">
   <div class="card col-sm-5 ">
     <form method="post" name="logfrm" id="logfrm">
