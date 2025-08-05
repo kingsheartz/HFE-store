@@ -52,7 +52,7 @@ require "head.php";
         outline: none;
         height: 32px;
         padding: 5px 40px;
-        border: 1px solid #CCCCCC;
+        border: 1px solid rgb(121, 121, 121);
         font-size: 14px;
         border-radius: 20px;
       }

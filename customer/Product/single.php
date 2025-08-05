@@ -198,7 +198,7 @@ function randomGen($min, $max, $quantity)
   .tabcontentsingle {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(121, 121, 121);
     border-top: none;
   }
 

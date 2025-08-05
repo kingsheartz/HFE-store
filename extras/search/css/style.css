@@ -127,7 +127,7 @@ input[type="button"], #PPMiniCart .minicart-submit, .w3ls_vegetables ul li a, in
   font-size: 12px;
   color: #999;
   outline: none;
-  border: 1px solid #cccccc;
+  border: 1px solid rgb(121, 121, 121);
   background: none;
   -webkit-appearance: none;
   transition: 0.5s all;
@@ -1045,7 +1045,7 @@ a.w3_agile_vimeo:hover {
 
 .breadcrumb1 li span {
     left: 0em;
-    padding-right: 1em;
+    padding-right: 5px;
     color: #139b3b;
 }
 
