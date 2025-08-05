@@ -436,7 +436,7 @@ require "../Common/pdo.php";
   $order_cnt = $stmt_order_cnt->rowCount();
   if ($order_cnt == 0) {
     echo '<center>
-            <img src="../../images/logo/no-order.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" >
+            <img src="../../images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" >
             <h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Orders Yet...</h2>
           </center><br/ ><br/ >';
   } else {

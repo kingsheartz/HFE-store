@@ -1908,7 +1908,8 @@ function randomGen($min, $max, $quantity)
                     "SELECT ordered_cnt, review, rating, date_of_review as date, customers.first_name, customers.last_name
                     FROM product_keys
                     JOIN customers ON customers.customer_id = product_keys.customer_id
-                    WHERE product_description_id = " . $_GET['id'] . "
+                    WHERE rating > 0
+                    AND product_description_id = " . $_GET['id'] . "
                     AND product_keys.customer_id = " . $_SESSION['hfe_id']
                   );
                   $myreviewcount = $myreviewstmt->rowCount();
@@ -2015,7 +2016,7 @@ function randomGen($min, $max, $quantity)
                             <label class="form-label" for="reviewinput">Write a review <i class="fas fa-pen"></i>
                               <?php
                               if (isset($_SESSION['hfe_id'])) {
-                                $checkbuysql = $pdo->query("select rating,review from product_keys where product_description_id=" . $_GET['id'] . " and customer_id=" . $_SESSION['hfe_id']);
+                                $checkbuysql = $pdo->query("select rating, review, ordered_cnt from product_keys where product_description_id=" . $_GET['id'] . " and customer_id=" . $_SESSION['hfe_id']);
                                 $checkbuy = $checkbuysql->fetch(PDO::FETCH_ASSOC);
                                 if ($checkbuy) {
                                   if ($checkbuy['rating'] != 0 && $checkbuy['ordered_cnt'] > 1 && $checkbuy['ordered_cnt'] != "0") {
@@ -2026,13 +2027,12 @@ function randomGen($min, $max, $quantity)
                                 }
                               }
                               ?>
-                              <span id="charnow" style="color:rgb(0, 97, 0);padding-left:10px">0</span>/
-                              <span style="color:rgb(0, 97, 0)">500</span>
+                              <span id="charnow" style="color:rgb(0, 97, 0);padding-left:10px">0</span> / <span style="color:rgb(0, 97, 0)">500</span>
                             </label>
                             <div class="form-group input-field" style="width: 100%;margin-top:0;">
                               <textarea
                                 maxlength="500"
-                                style="width:100%;outline:#139b3b"
+                                style="max-width: 550px;width: -webkit-fill-available;outline: #139b3b; background-color: #101010; border-radius: 5px;"
                                 title="Maximum character count is 500"
                                 rows="4"
                                 oninput="$(this).removeClass('invalid');"
@@ -2045,7 +2045,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="dis_add()"
                                 id="dis_add"
                                 class="fa fa-sm fa-edit"
-                                style="position: absolute;right: 0;top: 0;color: white;background-color: #0c77cc;padding: 4px;"
+                                style="position: relative;right: 26px;top: -87px;color: white;background-color: #0c77cc;padding: 4px;"
                                 onmouseover="$(this).css('background-color','#0c66cc')"
                                 onmouseleave="$(this).css('background-color','#0c77cc')">
                               </span>
@@ -2053,7 +2053,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="reset_add()"
                                 id="hide_add"
                                 class="fa fa-sm fa-close"
-                                style="display: none;position: absolute;right: 0;top: 0;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
+                                style="display: none;position: relative;right: 25px;top: -87px;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
                                 onmouseover="$(this).css('background-color','#bb0000')"
                                 onmouseleave="$(this).css('background-color','red')">
                               </span>
@@ -2061,7 +2061,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="dis_ok()"
                                 id="hide_add1"
                                 class="fa fa-check"
-                                style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color: #07C103;padding: 3px;"
+                                style="display:none;position: relative;right: 50px;top: -63px;color: white;background-color: #07C103;padding: 4px 3.5px;"
                                 onmouseover="$(this).css('background-color','#4f994f')"
                                 onmouseleave="$(this).css('background-color','#07C103')">
                               </span>
@@ -2444,7 +2444,8 @@ function randomGen($min, $max, $quantity)
                     }
                   }
                 } else {
-                  echo "<img src='../../images/logo/no-review.png' style='max-height:150px;max-width:250px'><p><i class='fa fa-frown fa-lg' style='color:#000000;background-color: #ffff00;border-radius:50%'></i> No other reviews on this product..! </p>";
+                  $noReviewImages = ['no-review.png', 'no-review-found.png'];
+                  echo "<img src='../../images/logo/" . $noReviewImages[rand(0, 1)] . "' style='max-height:150px;max-width:250px'><p><i class='fa fa-frown fa-lg' style='color:#000000;background-color: #ffff00;border-radius:50%'></i> No other reviews on this product..! </p>";
                 }
                 ?>
               </div>

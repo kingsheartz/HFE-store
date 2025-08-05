@@ -1272,7 +1272,7 @@ if (isset($_REQUEST["name"])) {
   // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //NAME CNT
   if ($getordercnt == 0) {
-    $result_con .= '<center><img src="../../images/logo/no-order.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Orders Found...</h2></center><br><br>';
+    $result_con .= '<center><img src="../../images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Orders Found...</h2></center><br><br>';
   }
 }
 $response['paging'] = $dynamic_paging;

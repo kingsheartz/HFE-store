@@ -6557,7 +6557,7 @@ if (isset($_POST['filter_cat_a'])) {
 
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -7064,7 +7064,7 @@ if (isset($_POST['filter_cat_b'])) {
   // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -7459,7 +7459,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
   //------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -7841,7 +7841,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
   // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -8239,7 +8239,7 @@ if (isset($_POST['filter_item_a'])) {
   //------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -8629,7 +8629,7 @@ if (isset($_POST['filter_item_b'])) {
   // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -8721,21 +8721,21 @@ if (isset($_POST['edit_customer_rated']) && $_POST['edit_customer_rated'] == 1) 
   for ($i = 5; $i > 0; $i--) {
     if ($i == $rating) {
       $update_data .= '<input type="radio" id="star' . $i . '" name="rate" value="' . $i . '" checked/>
-              <label for="star' . $i . '" title="text">' . $i . ' stars</label>';
+                      <label for="star' . $i . '" title="text">' . $i . ' stars</label>';
     } else {
       $update_data .= '<input type="radio" id="star' . $i . '" name="rate" value="' . $i . '" />
-              <label for="star' . $i . '" title="text">' . $i . ' stars</label>';
+                      <label for="star' . $i . '" title="text">' . $i . ' stars</label>';
     }
   }
   $update_data .= '
     </div>
     <div class="clearfix"></div>
-    <label class="form-label" for="reviewinput">edit your review <i class="fas fa-pen"></i><span style="color:red" onclick="canceledit()">&nbsp;Cancel</span><span id="charnow" style="color:rgb(0, 97, 0);padding-left:10px">' . strlen($review) . '</span>/<span style="color:rgb(0, 97, 0)">500</span></label>
-    <div class="form-group input-field" style="width: 100%;margin-top:0;">
-      <textarea maxlength="500" style="width:100%;outline:#139b3b" title="Maximum character count is 500" rows="4" onkeyup="changed_details();maxchar()" onfocus="dis_add();" onblur="dis_add()" id="reviewinput" placeholder="" >' . $review . '</textarea>
-      <span onclick="dis_add()" id="dis_add" class="fa fa-sm fa-edit" style="position: absolute;right: 0;top: 0;color: white;background-color:#0c77cc;padding: 4px;" onmouseover="$(this).css(\'background-color\',\'#0c66cc\')" onmouseleave="$(this).css(\'background-color\',\'#0c77cc\')"></span>
-      <span onclick="reset_add()" id="hide_add" class="fa fa-sm fa-close" style="display: none;position: absolute;right: 0;top: 0;color: white;background-color:red;padding: 5px;padding-top: 4px;padding-bottom: 4px;" onmouseover="$(this).css(\'background-color\',\'#bb0000\')" onmouseleave="$(this).css(\'background-color\',\'red\')"></span>
-      <span onclick="dis_ok()" id="hide_add1" class="fa fa-check" style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color:#07C103;padding: 3px;" onmouseover="$(this).css(\'background-color\',\'#4f994f\')" onmouseleave="$(this).css(\'background-color\',\'#07C103\')"></span>
+    <label class="form-label" for="reviewinput">edit your review <i class="fas fa-pen"></i><span style="color:red" onclick="canceledit()">&nbsp;Cancel</span><span id="charnow" style="color:rgb(0, 97, 0);padding-left:10px">' . strlen($review) . '</span> / <span style="color:rgb(0, 97, 0)">500</span></label>
+    <div class="form-group input-field" style="width: 100%;margin-top: 0;">
+      <textarea maxlength="500" style="max-width: 550px;width: -webkit-fill-available;outline: #139b3b; background-color: #101010; border-radius: 5px;" title="Maximum character count is 500" rows="4" onkeyup="changed_details();maxchar()" onfocus="dis_add();" onblur="dis_add()" id="reviewinput" placeholder="" >' . $review . '</textarea>
+      <span onclick="dis_add()" id="dis_add" class="fa fa-sm fa-edit" style="position: relative;right: 26px;top: -87px;color: white;background-color: #0c77cc;padding: 4px;" onmouseover="$(this).css(\'background-color\',\'#0c66cc\')" onmouseleave="$(this).css(\'background-color\',\'#0c77cc\')"></span>
+      <span onclick="reset_add()" id="hide_add" class="fa fa-sm fa-close" style="display: none;position: relative;right: 25px;top: -87px;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;" onmouseover="$(this).css(\'background-color\',\'#bb0000\')" onmouseleave="$(this).css(\'background-color\',\'red\')"></span>
+      <span onclick="dis_ok()" id="hide_add1" class="fa fa-check" style="display:none;position: relative;right: 50px;top: -63px;color: white;background-color: #07C103;padding: 4px 3.5px;" onmouseover="$(this).css(\'background-color\',\'#4f994f\')" onmouseleave="$(this).css(\'background-color\',\'#07C103\')"></span>
     </div>
     <div id="add_customer_review" style="display: none;">
       <input class="shadow_b real_btn" type="button" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #410041), color-stop(1, #4f0063)) !important;color:white;border-radius:3px" onclick="ratethisnow()"  value="Submit">
