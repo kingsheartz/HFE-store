@@ -269,7 +269,7 @@
   </div>
   <div class="footer-copy">
     <div class="container">
-      <p>© 2025 HFE. All rights reserved | <a id="me" onmouseover="$('#me').css('color','#139b3b')" onmouseleave="$('#me').css('color','#139b3b')" href="www.HFE-Store.com">Govind</a></p>
+      <p>© 2025 HFE. All rights reserved | <a id="me" onmouseover="$('#me').css('color','#139b3b')" onmouseleave="$('#me').css('color','#139b3b')" href="">Govind</a></p>
     </div>
   </div>
 </div>
@@ -562,46 +562,45 @@ if (isset($product_description_id)) {
 ?>
   <div id="avail_stores" tabindex="-1" role="dialog" aria-labelledby="store_title" class="modal modal-xl hidescroll" style="height: 90%;">
     <div class="modal-dialog modal-xl" style="height: 90%;">
-      <div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
+      <div class="modal-content" style="height: 90%;opacity: 0.95;">
         <div class="modal-overlay" id="modal-overlay">
-          <div class="modal-header shadow_b" style="background-color: #337ab7;color: white">
+          <div class="modal-header shadow_b" style="background-color: #156a53;color: white">
             <button type="button" class="close" data-dismiss="modal" style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
             <h3 id="store_title" class="modal-title">Available Stores</h3>
           </div>
         </div>
-        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
-          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
+        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px;">
+          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: #101010;"><br>
             <table
               id="store"
               cellspacing="50px"
               cellpadding="20px"
               width="100%"
               class="single_product_info" border="5px"
-              style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+              style="overflow-x: scroll;border: 5px ;border-radius: 10px;background-color: #151515; color: #efefef;">
               <?php
               $rows = $result->rowCount();
               if (!is_null($rows) && $rows > 0) {
               ?>
-                <tr
-                  style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
+                <tr style="border: 0px;border-color: transparent;">
                   <td colspan="9">
                     <button
                       type="button"
                       onclick="sortTable(3)"
-                      style="float: left;color: white;background-color: #F08200;border-radius: 5px;border:#ffffff"
+                      style="float: left;color: white;background-color: #154739;border-radius: 5px;border: #ffffff"
                       name="button">
                       Sort by Distance
                     </button>
                     <button
                       type="button"
                       onclick="sortTable(2)"
-                      style="float: left;color: white;background-color: #F08200;margin-left:3px;border-radius: 5px;border:#ffffff"
+                      style="float: left;color: white;background-color: #154739;margin-left: 3px;border-radius: 5px;border: #ffffff"
                       name="button">
                       Sort by Price
                     </button>
                   </td>
                 </tr>
-                <tr style="background-color: #22374e;color: white">
+                <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #101010)) !important;color: white;">
                   <th style="border: none;" class="view_avail_stores">Select</th>
                   <th style="border: none;" class="view_avail_stores">Store Name </th>
                   <th style="border: none;" class="view_avail_stores">Price </th>
@@ -612,7 +611,7 @@ if (isset($product_description_id)) {
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                   $store_id = $row['store_id'];
                 ?>
-                  <tr>
+                  <tr style="border-color: black;">
                     <td style="padding: 0px;margin: 0px;">
                       <input
                         type="checkbox"
@@ -623,21 +622,20 @@ if (isset($product_description_id)) {
                         value="<?= $row['store_id'] ?>">
                       <button
                         id="btn<?= $row['store_id'] ?>"
-                        style="display: none;height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none; "
+                        style="display: none;height: 45px;width: 45px;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;"
                         class="element_cart">
                         <i class="fa fa-check"></i>
-                        <i class="fas fa-store"></i>
                       </button>
                     </td>
-                    <td style="background-color: white" class="view_avail_stores"><?= $row['store_name'] ?></td>
-                    <td style="background-color: white" class="view_avail_stores">&#8377;<?= $row['price'] ?></td>
-                    <td style="background-color: white" class="view_avail_stores" id="c<?= $store_id ?>"></td>
+                    <td class="view_avail_stores"><?= $row['store_name'] ?></td>
+                    <td class="view_avail_stores">&#8377;<?= $row['price'] ?></td>
+                    <td class="view_avail_stores" id="c<?= $store_id ?>"></td>
                     <td>
                       <form action="https://maps.google.com/maps" method="get" target="_blank">
                         <input type="hidden" name="saddr" id="dadd1" value="" />
                         <input type="hidden" name="daddr1" value="<?= $row['latitude'] ?>,<?= $row['longitude'] ?>" />
-                        <button type="submit" style="color: white;background-color: #337ab7;border-radius: 50px;width: 20px; outline: none;">
-                          <i class="fas fa-paper-plane" style="display: flex; justify-content: center;"></i>
+                        <button type="submit" style="color: white;background-color: #156a53;border-radius: 50px;width: 20px; outline: none;">
+                          <i class="fas fa-directions" style="display: flex; justify-content: center;"></i>
                         </button>
                       </form>
                     </td>
@@ -659,7 +657,7 @@ if (isset($product_description_id)) {
               }
               ?>
             </table>
-            <div class="m-sing" id="per" style="background-color: #f2f2f2;color:black;padding-top: 7px;padding-bottom: 7px;">
+            <div class="m-sing" id="per" style="background-color: #101010;color: darkgrey;padding-top: 7px;padding-bottom: 7px;">
               <div class="px-3">
                 <h4 class="m-sing">
                   <span style='font-family: arial;color:#07C103;font-weight: bold;text-decoration: none;font-size:15px'>
@@ -732,14 +730,14 @@ if (isset($product_description_id)) {
                   ?>
                 </h4>
                 <button
-                  style="height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none; "
+                  style="height: 45px;width: 100%;border-color: darkgrey;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #101010), color-stop(1, #151515)) !important;color: white;border-radius: 7px;outline: none; "
                   onclick="check_store_select()">
-                  <i class="fa fa-cart-plus"></i>&nbsp;ADD TO CART
+                  <i class="fa fa-cart-plus"></i>&nbsp; ADD TO CART
                 </button>
               </div>
             </div>
           </div>
-          <div class="modal-footer" style="background-color: white">
+          <div class="modal-footer" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #151515)) !important;">
             <button type="button" class="btn btn-default" data-dismiss="modal" style="outline: none;font-size: 1.2em;">
               Close <i style="color: red" class="fa fa-times-circle"></i>
             </button>
@@ -764,15 +762,15 @@ if (isset($_SESSION['hfe_id'])) {
 ?>
   <div id="avail_wishlist" tabindex="-1" role="dialog" aria-labelledby="store_title" class="modal fade modal-xl hidescroll" style="height: 90%;">
     <div class="modal-dialog modal-xl" style="height: 90%;">
-      <div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
+      <div class="modal-content" style="height: 90%;opacity: 0.95;">
         <div class="modal-overlay" id="modal-overlay">
-          <div class="modal-header shadow_b" style="background-color: #337ab7;color: white">
+          <div class="modal-header shadow_b" style="background-color: #156a53;color: white">
             <button type="button" class="close" data-dismiss="modal" style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
             <h3 id="store_title" class="modal-title">Your Wishlists</h3>
           </div>
         </div>
-        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
-          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
+        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px;">
+          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: #101010;"><br>
             <table
               id="list_wishlist"
               cellspacing="50px"
@@ -780,12 +778,12 @@ if (isset($_SESSION['hfe_id'])) {
               width="100%"
               class="single_product_info"
               border="5px"
-              style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+              style="overflow-x: scroll;border: 5px ;border-radius: 10px;background-color: #151515; color: #efefef;">
               <?php
               $rows = $result->rowCount();
               if (!is_null($rows) && $rows > 0) {
               ?>
-                <tr style="background-color: #22374e;color: white">
+                <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #101010)) !important;color: white;">
                   <th style="border: none;" class="view_avail_stores">Select</th>
                   <th style="border: none;" class="view_avail_stores">List Name </th>
                   <th style="border: none;" class="view_avail_stores">Privacy </th>
@@ -799,33 +797,33 @@ if (isset($_SESSION['hfe_id'])) {
                   $stmt_wish1->execute(array(':wish_id' => $row['wishlist_id']));
                   $row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
                 ?>
-                  <tr>
+                  <tr style="border-color: black;">
                     <td style="padding: 0px;margin: 0px;">
                       <button
                         class="real_btn"
                         id="list_btn<?= $row['wishlist_id'] ?>"
-                        style="display:none;height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none;"
+                        style="display: none;height: 45px;width: 45px;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;"
                         onclick="wishlist_check_list_select(<?= $row['wishlist_id'] ?>)">
                         Add <i class="fa fa-heart"></i>
                       </button>
                       <button
                         class="load_btn"
-                        style="height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none;">
+                        style="height: 45px;width: 45px;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;">
                         <i class="fa fa-refresh fa-spin"></i> <i class="fa fa-heart"></i>
                       </button>
                     </td>
-                    <td style="background-color: white" class="view_avail_stores"><?= $row['list_name'] ?></td>
-                    <td style="background-color: white" class="view_avail_stores"><?= $row['privacy'] ?></td>
-                    <!--<td id="Q<?= $store_id ?>"><? //=$row['quantity']
+                    <td class="view_avail_stores"><?= $row['list_name'] ?></td>
+                    <td class="view_avail_stores"><?= $row['privacy'] ?></td>
+                    <!--<td id="Q<?= $store_id ?>"><? //=$row['quantity'] 
                                                     ?></td>-->
-                    <td style="background-color: white" id="wish_cnt_<?= $row['wishlist_id'] ?>" class="view_avail_stores">
+                    <td id="wish_cnt_<?= $row['wishlist_id'] ?>" class="view_avail_stores">
                       <?= $row_wish1['item_count'] ?>
                     </td>
                     <?php
                     $dateofcreate = explode('-', $row['date']);
                     $day = $dateofcreate[1] . "/" . $dateofcreate[2] . "/" . substr($dateofcreate[0], 2);
                     ?>
-                    <td style="background-color: white" class="view_avail_stores"><?= $day ?></td>
+                    <td class="view_avail_stores"><?= $day ?></td>
                   </tr>
                 <?php
                 }
@@ -844,7 +842,7 @@ if (isset($_SESSION['hfe_id'])) {
               ?>
             </table>
           </div>
-          <div class="modal-footer" style="background-color: white">
+          <div class="modal-footer" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #151515)) !important;">
             <button
               type="button"
               class="btn btn-default"
@@ -881,17 +879,23 @@ if (isset($product_description_id)) {
   );
   $status = 0;
 ?>
-  <div id="avail_stores_buy" tabindex="-1" role="dialog" aria-labelledby="store_title" class="modal modal-xl hidescroll" style="height: 90%;">
+  <div
+    id="avail_stores_buy"
+    tabindex="-1"
+    role="dialog"
+    aria-labelledby="store_title"
+    class="modal modal-xl hidescroll"
+    style="height: 90%;">
     <div class="modal-dialog modal-xl" style="height: 90%;">
-      <div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
+      <div class="modal-content" style="height: 90%;opacity: 0.95;">
         <div class="modal-overlay" id="modal-overlay">
-          <div class="modal-header shadow_b" style="background-color: #337ab7;color: white">
+          <div class="modal-header shadow_b" style="background-color: #156a53;color: white">
             <button type="button" class="close" data-dismiss="modal" style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
             <h3 id="store_title" class="modal-title">Available Stores</h3>
           </div>
         </div>
-        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
-          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
+        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px;">
+          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: #101010"><br>
             <table
               id="store_buynow"
               cellspacing="50px"
@@ -899,30 +903,30 @@ if (isset($product_description_id)) {
               width="100%"
               class="single_product_info"
               border="5px"
-              style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+              style="overflow-x: scroll;border: 5px ;border-radius: 10px;background-color: #151515; color: #efefef;">
               <?php
               $rows = $result->rowCount();
               if (!is_null($rows) && $rows > 0) {
               ?>
-                <tr style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
+                <tr style="border: 0px;border-color: transparent;">
                   <td colspan="9">
                     <button
                       type="button"
                       onclick="sortTable(3)"
-                      style="float: left;color: white;background-color: #F08200;border-radius: 5px;border:#ffffff"
+                      style="float: left;color: white;background-color: #154739;border-radius: 5px;border: #ffffff"
                       name="button">
                       Sort by Distance
                     </button>
                     <button
                       type="button"
                       onclick="sortTable(2)"
-                      style="float: left;color: white;background-color: #F08200;margin-left:3px;border-radius: 5px;border:#ffffff"
+                      style="float: left;color: white;background-color: #154739;margin-left: 3px;border-radius: 5px;border: #ffffff"
                       name="button">
                       Sort by Price
                     </button>
                   </td>
                 </tr>
-                <tr style="background-color: #22374e;color: white">
+                <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #101010)) !important;color: white;">
                   <th style="border: none;" class="view_avail_stores">Select</th>
                   <th style="border: none;" class="view_avail_stores">Store Name </th>
                   <th style="border: none;" class="view_avail_stores">Price </th>
@@ -933,7 +937,7 @@ if (isset($product_description_id)) {
                 while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
                   $store_id = $row['store_id'];
                 ?>
-                  <tr>
+                  <tr style="border-color: black;">
                     <td style="padding: 0px;margin: 0px;">
                       <input
                         type="checkbox"
@@ -943,24 +947,24 @@ if (isset($product_description_id)) {
                         value="<?= $row['store_id'] ?>">
                       <button
                         id="buynow_btn<?= $row['store_id'] ?>"
-                        style="display: none;height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none; "
+                        style="display: none;height: 45px;width: 45px;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;"
                         class="element_cart3"
                         type="button">
-                        <i class="fa fa-check"></i> <i class="fas fa-store"></i>
+                        <i class="fas fa-store"></i>
                       </button>
                     </td>
-                    <td style="background-color: white" class="view_avail_stores"><?= $row['store_name'] ?></td>
-                    <td style="background-color: white" class="view_avail_stores">&#8377;<?= $row['price'] ?>
+                    <td class="view_avail_stores"><?= $row['store_name'] ?></td>
+                    <td class="view_avail_stores">&#8377;<?= $row['price'] ?>
                     </td>
                     <!--<td id="Q<?= $store_id ?>"><? //=$row['quantity']
                                                     ?></td>-->
-                    <td style="background-color: white" class="view_avail_stores" id="b<?= $store_id ?>"></td>
+                    <td class="view_avail_stores" id="b<?= $store_id ?>"></td>
                     <td>
                       <form action="https://maps.google.com/maps" method="get" target="_blank">
                         <input type="hidden" name="saddr" id="buynow_daddr" value="" />
                         <input type="hidden" name="daddr" value="<?= $row['latitude'] ?>,<?= $row['longitude'] ?>" />
-                        <button type="submit" style="color: white;background-color: #337ab7;border-radius: 50px;width: 20px; outline: none;">
-                          <i class="fas fa-paper-plane" style="display: flex; justify-content: center;"></i>
+                        <button type="submit" style="color: white;background-color: #156a53;border-radius: 50px;width: 20px; outline: none;">
+                          <i class="fas fa-directions" style="display: flex; justify-content: center;"></i>
                         </button>
                       </form>
                     </td>
@@ -981,8 +985,7 @@ if (isset($product_description_id)) {
               }
               ?>
             </table>
-            <div class="m-sing" id="per3"
-              style="background-color: #f2f2f2;color:black;padding-top: 7px;padding-bottom: 7px;;">
+            <div class="m-sing" id="per3" style="background-color: #101010;color: darkgrey;padding-top: 7px;padding-bottom: 7px;">
               <div class="px-3">
                 <h4 class="m-sing">
                   <span style='font-family: arial;color:#07C103;font-weight: bold;text-decoration: none;font-size: 15px'>
@@ -1051,20 +1054,21 @@ if (isset($product_description_id)) {
                   }
                   ?>
                 </h4>
-                <button class="buynow_btn"
-                  style="height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none;"
+                <button
+                  class="buynow_btn"
+                  style="height: 45px;width: 100%;border-color: darkgrey;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #101010), color-stop(1, #151515)) !important;color: white;border-radius: 7px;outline: none;"
                   onclick="buynow_place_order_select()"
                   class="element_cart"
                   type="button"
                   data-dismiss="modal"
                   data-toggle="modal"
                   data-target="#avail_buynow">
-                  PLACE ORDER&nbsp;<i class="fa fa-shopping-bag"></i>
+                  PLACE ORDER&nbsp; <i class="fa fa-shopping-bag"></i>
                 </button>
               </div>
             </div>
           </div>
-          <div class="modal-footer" style="background-color: white">
+          <div class="modal-footer" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #151515)) !important;">
             <button
               type="button"
               class="btn btn-default"

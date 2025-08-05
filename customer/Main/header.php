@@ -756,6 +756,8 @@ if (session_status() === PHP_SESSION_NONE) {
       width: 100% !important;
       background-color: #050505;
       padding-top: 0px;
+      display: flex;
+      justify-content: center;
     }
 
     li#lg_side_active>a>span {

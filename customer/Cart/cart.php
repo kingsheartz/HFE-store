@@ -949,7 +949,7 @@ function randomGen($min, $max, $quantity)
                                     <div class="row" style="margin-left: 0px;float: left;margin-right: 0px;">
                                       <div class="col-md-6 full-size-cart-store-div" style="padding: 0px;margin-left: 20px;width: 200px;">
                                         <p style="z-index: 1;text-align:left;margin-top: 5px;">
-                                          <span style='font-family: arial;color:#006904;font-weight: bold;text-decoration: none;font-size: 12px'>
+                                          <span style='font-family: arial;color: #006904;font-weight: bold;text-decoration: none;font-size: 12px'>
                                             You Save &#8377; <span id="save_s<?= $store_id . "i" . $product_description_id ?>" style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"><?= $save ?></span>
                                             (<span style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px" id="off_s<?= $store_id . "i" . $product_description_id ?>"><?= $off ?></span>%)
                                           </span>
@@ -966,7 +966,7 @@ function randomGen($min, $max, $quantity)
                                         </p>
                                         <p style="margin-top:10px;">
                                           <select
-                                            style="outline: none;border:none;background-color:#006904;color: white;padding: 5px;border-radius: 3px;padding-top: 1px;padding-bottom: 1px; "
+                                            style="outline: none;border:none;background-color: #006904;color: white;padding: 5px;border-radius: 3px;padding-top: 1px;padding-bottom: 1px; "
                                             id="order_s<?= $store_id . "i" . $product_description_id ?>">
                                             <option
                                               selected=""
@@ -980,7 +980,7 @@ function randomGen($min, $max, $quantity)
                                             if ($preord['order_preference'] == 1) {
                                             ?>
                                               <option
-                                                style="background-color: white;color:#006904;font-weight: bold;text-align: center; "
+                                                style="background-color: white;color: #006904;font-weight: bold;text-align: center; "
                                                 value="1">Booking
                                               </option>
                                             <?php
@@ -988,7 +988,7 @@ function randomGen($min, $max, $quantity)
                                               $ord_typ = "Delivery";
                                             ?>
                                               <option
-                                                style="background-color: white;color:#006904;font-weight: bold;text-align: center;"
+                                                style="background-color: white;color: #006904;font-weight: bold;text-align: center;"
                                                 value="2">Delivery
                                               </option>
                                             <?php
@@ -996,11 +996,11 @@ function randomGen($min, $max, $quantity)
                                               $ord_typ = "Delivery";
                                             ?>
                                               <option
-                                                style="background-color: white;color:#006904;font-weight: bold;text-align: center; "
+                                                style="background-color: white;color: #006904;font-weight: bold;text-align: center; "
                                                 value="1">Booking
                                               </option>
                                               <option
-                                                style="background-color: white;color:#006904;font-weight: bold;text-align: center;"
+                                                style="background-color: white;color: #006904;font-weight: bold;text-align: center;"
                                                 value="2">Delivery
                                               </option>
                                             <?php

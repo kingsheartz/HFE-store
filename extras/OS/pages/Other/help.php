@@ -491,9 +491,9 @@ $(document).ready(function(){
 
 background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #337ab7), color-stop(1, #01728e)) !important;
 
-background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;
+background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;
 
-background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;
+background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;
 
 $('#background_loader').show();
 $('#std_loader').show();

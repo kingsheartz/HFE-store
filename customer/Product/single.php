@@ -1183,11 +1183,11 @@ function randomGen($min, $max, $quantity)
                 }
               });
             /*
-                                  var qnty=document.getElementById("Q"+id+"").innerHTML;
-                                  if(qnty!=0){
-                                    document.getElementById("Q"+id+"").innerHTML="";
-                                    document.getElementById("Q"+id+"").innerHTML=qnty-1;
-                                  }*/
+            var qnty=document.getElementById("Q"+id+"").innerHTML;
+            if(qnty!=0){
+              document.getElementById("Q"+id+"").innerHTML="";
+              document.getElementById("Q"+id+"").innerHTML=qnty-1;
+            }*/
             var qnty = document.getElementById("dis_qnty").innerHTML;
             if (qnty != 0) {
               document.getElementById("dis_qnty").innerHTML = "";
@@ -1694,7 +1694,7 @@ function randomGen($min, $max, $quantity)
                                 <span id="oldpriceofproduct" style="display: none;">
                                   <span id="org" class="m-sing pricetag"></span>
                                   <del>
-                                    <small><span style="color: #6d6d6d;font-size: 16px;">&#8377;<?= $mrp ?></span></small>
+                                    <small><span style="color: #b1b1b1;font-size: 16px;">&#8377;<?= $mrp ?></span></small>
                                   </del>
                                 </span>
                               </h2>

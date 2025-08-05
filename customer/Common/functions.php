@@ -133,25 +133,25 @@ if (isset($_POST['register'])) {
       $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
       $activate_link = getBaseURL() . 'customer/Common/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
       $message = '
-        <table style="width:100%!important">
+        <table style="width: 100%!important">
           <tbody>
             <tr style="" width="834px" height="60" background="' . getImageURL() . 'images/logo/log2.jpg" align="center">
               <td>
-                <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
+                <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width: 600px!important;text-align:center;margin: 0 auto">
                   <tbody>
                     <tr>
                       <td>
-                        <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                        <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                           <tbody>
                             <tr>
-                              <td style="width:35%;text-align:left">
-                                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                  <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height:40px" class="CToWUd">
+                              <td style="width: 35%;text-align:left">
+                                <a style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                  <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height: 40px" class="CToWUd">
                                 </a>
                               </td>
-                              <td style="width:60%;text-align:right;padding-top:5px">
-                                <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">
-                                  Activation <span style="font-weight:bold">Required</span>
+                              <td style="width: 60%;text-align:right;padding-top: 5px">
+                                <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal">
+                                  Activation <span style="font-weight: bold">Required</span>
                                 </p>
                               </td>
                             </tr>
@@ -166,50 +166,50 @@ if (isset($_POST['register'])) {
             </tr>
             <tr>
               <td>
-                <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border:1px solid #bbb;">
+                <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border: 1px solid #bbb;">
                   <tbody>
                     <tr>
                       <td align="center" valign="top" bgcolor="#fff">
-                        <table border="0" cellpadding="0" cellspacing="0" style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;">
+                        <table border="0" cellpadding="0" cellspacing="0" style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;">
                           <tbody>
                             <tr>
                               <td align="left">
                                 <table width="370" border="0" cellpadding="0" cellspacing="0" align="left">
                                   <tbody>
                                     <tr>
-                                      <td valign="top"> <p style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px">Hi <span style="font-weight:bold;color:#191919"> ' . $first_name . " " . $last_name . ',</span> </p> <p style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px">Your Account has been created.</p> </td>
+                                      <td valign="top"> <p style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px">Hi <span style="font-weight: bold;color: #191919"> ' . $first_name . " " . $last_name . ',</span> </p> <p style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px">Your Account has been created.</p> </td>
                                     </tr>
                                   </tbody>
                                   </table>
                                   <table width="230" border="0" cellpadding="0" cellspacing="0" align="right">
                                   <tbody>
                                     <tr>
-                                      <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Activation code : <span style="font-weight:bold;color:#000">' . $uniqid . '</span> </p></td>
+                                      <td valign="top"> <p style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787">Activation code : <span style="font-weight: bold;color: #000">' . $uniqid . '</span> </p></td>
                                     </tr>
                                   </tbody>
                                 </table>
                               </td>
                             </tr>
                             <tr>
-                              <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
+                              <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
                                 <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                   <tbody>
                                     <tr>
-                                      <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Your Account is created successfully  by <b>' . date("F j") . "," . date("Y") . '</b> and below is given your activation code (button) for activating your newly created account.You are one step away from sign in to our world of shopping </p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Please click the following verify button to activate your account .</p> </td>
+                                      <td align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px;text-align: justify;">Your Account is created successfully  by <b>' . date("F j") . "," . date("Y") . '</b> and below is given your activation code (button) for activating your newly created account.You are one step away from sign in to our world of shopping </p><p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px">Please click the following verify button to activate your account .</p> </td>
                                     </tr>
                                   </tbody>
                                 </table>
                                 <table width="350" border="0" cellpadding="0" cellspacing="0" align="left">
                                   <tbody>
                                     <tr>
-                                      <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold">Verification code</span><span style="display:inline-block;font-family:Arial;font-size:12px;font-weight:700;color:#139b3b;display:inline-block">' . $uniqid . '</span></p> </td>
+                                      <td valign="top"> <p style="padding-left: 15px;font-family:Arial;font-size: 12px;line-height: 1.58;margin-bottom: 20px;margin-top: 0;padding-top: 2px"><span style="display:inline-block;width: 167px;color: #212121;font-weight: bold">Verification code</span><span style="display:inline-block;font-family:Arial;font-size: 12px;font-weight: 700;color: #139b3b;display:inline-block">' . $uniqid . '</span></p> </td>
                                     </tr>
                                   </tbody>
                                 </table>
                                 <table width="235" border="0" cellpadding="0" cellspacing="0" align="right">
                                   <tbody>
                                     <tr>
-                                      <td valign="top" align="left"> <p style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size:12px;color:#212121">' . $email . '</span> </p> </td>
+                                      <td valign="top" align="left"> <p style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size: 12px;color: #212121">' . $email . '</span> </p> </td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -217,8 +217,8 @@ if (isset($_POST['register'])) {
                                   <tbody>
                                     <tr>
                                       <td valign="top" align="left">
-                                        <p style="padding-left:15px;margin-bottom:10px"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">Verify Account</button> </a> </p>
-                                        <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: The <b>\'Verify Account\'</b> code/button will be de-activate once it is clicked and after activating your account , it won\'t be required anymore .Thanks for your support and also for being a member of our family .</p>
+                                        <p style="padding-left: 15px;margin-bottom: 10px"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none">Verify Account</button> </a> </p>
+                                        <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;text-align: justify;"> Note: The <b>\'Verify Account\'</b> code/button will be de-activate once it is clicked and after activating your account , it won\'t be required anymore .Thanks for your support and also for being a member of our family .</p>
                                       </td>
                                     </tr>
                                   </tbody>
@@ -230,18 +230,18 @@ if (isset($_POST['register'])) {
                         <table width="640">
                           <tr>
                             <td>
-                              <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;"> if you\'re having trouble clicking the' . " \"<b>Verify Account</b>\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . '  .</p>
+                              <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;"> if you\'re having trouble clicking the' . " \"<b>Verify Account</b>\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . '  .</p>
                             </td>
                           </tr>
                         </table>
-                        <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                        <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                           <tbody>
                             <tr>
                               <td align="left">
-                                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:18px">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 18px">
                                   <tbody>
                                     <tr>
-                                      <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                      <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -249,10 +249,10 @@ if (isset($_POST['register'])) {
                             </tr>
                             <tr>
                               <td>
-                                <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;background:#ffffff">
+                                <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;background: #ffffff">
                                   <tbody>
-                                    <tr style="color:#212121">
-                                      <td align="left" valign="top" style="color:#212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px">Hope to see you again soon.</p>  <br> </td>
+                                    <tr style="color: #212121">
+                                      <td align="left" valign="top" style="color: #212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px">Hope to see you again soon.</p>  <br> </td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -260,10 +260,10 @@ if (isset($_POST['register'])) {
                             </tr>
                             <tr>
                               <td>
-                                <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:14px">
+                                <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 14px">
                                   <tbody>
                                     <tr>
-                                      <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"></td>
+                                      <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"></td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -271,7 +271,7 @@ if (isset($_POST['register'])) {
                             </tr>
                           </tbody>
                         </table>
-                        <table width="100%" style="background-color: #02171e;width:100%;text-align:center;margin:0px;margin-top:32px" >
+                        <table width="100%" style="background-color: #02171e;width: 100%;text-align:center;margin: 0px;margin-top: 32px" >
                           <tr>
                             <td>
                               <table width="600" align="center" style="background-color:  #02171e">
@@ -280,9 +280,9 @@ if (isset($_POST['register'])) {
                                       <table style="background-color: ">
                                         <tbody>
                                           <tr>
-                                          <td style="width:15%;text-align:left;padding-top:5px"></td>
-                                          <td style="width:75%;text-align:left;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#139b3b;text-decoration:none;outline:none;font-weight:bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
-                                          <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
+                                          <td style="width: 15%;text-align:left;padding-top: 5px"></td>
+                                          <td style="width: 75%;text-align:left;font-family:Arial;color: #fff"> &#169; 2020 <a style="color: #139b3b;text-decoration:none;outline:none;font-weight: bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
+                                          <td style="width: 10%;text-align:right"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top: 10px" class="CToWUd"> </a> </td>
                                           </tr>
                                         </tbody>
                                       </table>
@@ -292,14 +292,14 @@ if (isset($_POST['register'])) {
                             </td>
                           </tr>
                         </table>
-                        <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                        <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                           <tbody>
                             <tr>
                               <td align="left">
-                                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:0px">
+                                <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px">
                                   <tbody>
                                     <tr>
-                                      <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                      <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                     </tr>
                                   </tbody>
                                 </table>
@@ -307,21 +307,21 @@ if (isset($_POST['register'])) {
                             </tr>
                             <tr>
                               <td>
-                                <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:0px">
+                                <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 0px">
                                   <tbody>
                                     <tr>
-                                      <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"></td>
+                                      <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"></td>
                                     </tr>
                                     <tr>
                                       <td>
-                                        <table width="100%" cellspacing="0" cellpadding="0" style="margin:0 auto;width:600px;max-width:600px;margin-top:14px">
+                                        <table width="100%" cellspacing="0" cellpadding="0" style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px">
                                           <tbody>
                                             <tr>
-                                              <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                              <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                                 <table>
                                                   <tbody>
                                                     <tr>
-                                                      <td> <p style="font-family:Arial;font-size:10px;color:#878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
+                                                      <td> <p style="font-family:Arial;font-size: 10px;color: #878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
                                                     </tr>
                                                   </tbody>
                                                 </table>
@@ -538,7 +538,7 @@ if (isset($_POST['update_customer_details'])) {
       $activate_link = getBaseURL() . 'customer/Common/functions.php?emailupdateverified=1&emailcurrent=' . $row['email'] . '&emailnew=' . $_POST['email'] . '&code=' . $uniqid . '&id=' . $customer_id;
       $cancel = getBaseURL() . 'customer/Common/functions.php?emailupdateverified=0&emailcurrent=' . $row['email'] . '&emailnew=' . $_POST['email'] . '&code=' . $uniqid;
       $message = '
-        <table style="width:100%!important">
+        <table style="width: 100%!important">
           <tbody>
             <tr width="834px" height="60" background="' . getImageURL() . 'images/logo/log2.jpg" align="center">
               <td>
@@ -547,17 +547,17 @@ if (isset($_POST['update_customer_details'])) {
                   cellspacing="0"
                   cellpadding="0"
                   height="60"
-                  style="width:600px!important;text-align:center;margin:0 auto"
+                  style="width: 600px!important;text-align:center;margin: 0 auto"
                 >
                   <tbody>
                     <tr>
                       <td>
-                        <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                        <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                           <tbody>
                             <tr>
-                              <td style="width:35%;text-align:left">
+                              <td style="width: 35%;text-align:left">
                                 <a
-                                  style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                  style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                   href="' . getBaseURL() . '"
                                   rel="noreferrer"
                                   target="_blank"
@@ -567,16 +567,16 @@ if (isset($_POST['update_customer_details'])) {
                                     border="0"
                                     src="' . getImageURL() . 'images/logo/logo-horizontal.png"
                                     alt="HFE-Store.ml"
-                                    style="border:none;height:40px"
+                                    style="border:none;height: 40px"
                                     class="CToWUd"
                                   />
                                 </a>
                               </td>
-                              <td style="width:60%;text-align:right;padding-top:5px">
+                              <td style="width: 60%;text-align:right;padding-top: 5px">
                                 <p
-                                  style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal"
+                                  style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal"
                                 >
-                                  Account details <span style="font-weight:bold">Updated</span>
+                                  Account details <span style="font-weight: bold">Updated</span>
                                 </p>
                               </td>
                             </tr>
@@ -598,7 +598,7 @@ if (isset($_POST['update_customer_details'])) {
                   cellpadding="0"
                   cellspacing="0"
                   bgcolor="#f5f5f5"
-                  style="border:1px solid #bbb;"
+                  style="border: 1px solid #bbb;"
                 >
                   <tbody>
                     <tr>
@@ -607,7 +607,7 @@ if (isset($_POST['update_customer_details'])) {
                           border="0"
                           cellpadding="0"
                           cellspacing="0"
-                          style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;"
+                          style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;"
                         >
                           <tbody>
                             <tr>
@@ -617,15 +617,15 @@ if (isset($_POST['update_customer_details'])) {
                                     <tr>
                                       <td valign="top">
                                         <p
-                                          style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px"
+                                          style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px"
                                         >
                                           Hi
-                                          <span style="font-weight:bold;color:#191919">
+                                          <span style="font-weight: bold;color: #191919">
                                             ' . $first_name . " " . $last_name . ',</span
                                           >
                                         </p>
                                         <p
-                                          style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px"
+                                          style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px"
                                         >
                                           Your Account has been updated.
                                         </p>
@@ -638,18 +638,18 @@ if (isset($_POST['update_customer_details'])) {
                                     <tr>
                                       <td valign="top">
                                         <p
-                                          style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787"
+                                          style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787"
                                         >
                                           Customer ID
-                                          <span style="font-weight:bold;color:#000"
+                                          <span style="font-weight: bold;color: #000"
                                             >OSUID' . sprintf('%06d', $customer_id) . '</span
                                           >
                                         </p>
                                         <p
-                                          style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px"
+                                          style="font-family:Arial;font-size: 11px;color: #878787;line-height: 1.22;text-align:right;padding-top: 0px"
                                         >
                                           Email
-                                          <span style="font-weight:bold;color:#000"
+                                          <span style="font-weight: bold;color: #000"
                                             >' . $row['email'] . '</span
                                           >
                                         </p>
@@ -663,14 +663,14 @@ if (isset($_POST['update_customer_details'])) {
                               <td
                                 border="1"
                                 align="left"
-                                style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
+                                style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
                               >
                                 <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                   <tbody>
                                     <tr>
                                       <td align="left">
                                         <p
-                                          style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;"
+                                          style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px;"
                                         >
                                           Your Account is requested an email updation from ' . $row['email']
         . ' to ' . $email . ' by
@@ -679,7 +679,7 @@ if (isset($_POST['update_customer_details'])) {
                                           your updated email.
                                         </p>
                                         <p
-                                          style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"
+                                          style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px"
                                         >
                                           Please click the following verify button to verify your email .
                                         </p>
@@ -692,13 +692,13 @@ if (isset($_POST['update_customer_details'])) {
                                     <tr>
                                       <td valign="top">
                                         <p
-                                          style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"
+                                          style="padding-left: 15px;font-family:Arial;font-size: 12px;line-height: 1.58;margin-bottom: 20px;margin-top: 0;padding-top: 2px"
                                         >
                                           <span
-                                            style="display:inline-block;width:167px;color:#212121;font-weight: bold"
+                                            style="display:inline-block;width: 167px;color: #212121;font-weight: bold"
                                             >Verification code</span
                                           ><span
-                                            style="display:inline-block;font-family:Arial;font-size:12px;font-weight:700;color:#139b3b;display:inline-block"
+                                            style="display:inline-block;font-family:Arial;font-size: 12px;font-weight: 700;color: #139b3b;display:inline-block"
                                             >' . $uniqid . '</span
                                           >
                                         </p>
@@ -712,43 +712,43 @@ if (isset($_POST['update_customer_details'])) {
                                   cellpadding="0"
                                   cellspacing="0"
                                   align="left"
-                                  style="margin-top: -20px;margin-bottom:10px;"
+                                  style="margin-top: -20px;margin-bottom: 10px;"
                                 >
                                   <tbody>
                                     <tr>
                                       <td valign="top" align="left">
-                                        <p style="padding-left:15px;margin-bottom:10px">
+                                        <p style="padding-left: 15px;margin-bottom: 10px">
                                           <a
                                             href="' . $activate_link . '"
-                                            style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
+                                            style="background-color:rgb(41,121,251);color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none"
                                             rel="noreferrer"
                                             target="_blank"
                                             data-saferedirecturl=""
                                           >
                                             <button
                                               type="button"
-                                              style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none"
+                                              style="background-color:rgb(41,121,251);color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none"
                                             >
                                               Verify Email
                                             </button>
                                           </a>
                                           <a
                                             href="' . $cancel . '"
-                                            style="background-color:rgb(251,21,51);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none;margin-left: 20px;"
+                                            style="background-color:rgb(251,21,51);color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none;margin-left: 20px;"
                                             rel="noreferrer"
                                             target="_blank"
                                             data-saferedirecturl=""
                                           >
                                             <button
                                               type="button"
-                                              style="background-color:rgb(251,21,5);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none"
+                                              style="background-color:rgb(251,21,5);color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none"
                                             >
                                               No Thanks
                                             </button>
                                           </a>
                                         </p>
                                         <p
-                                          style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"
+                                          style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;text-align: justify;"
                                         >
                                           Note:
                                           <span style="color:red"
@@ -771,7 +771,7 @@ if (isset($_POST['update_customer_details'])) {
                           <tr>
                             <td>
                               <p
-                                style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;"
+                                style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;"
                               >
                                 if you\'re having trouble clicking the' . " \"<b>Verify Account</b>\" " . '
                                 button,copy and paste the URL below into your web browser : ' .
@@ -785,7 +785,7 @@ if (isset($_POST['update_customer_details'])) {
                           width="600"
                           cellpadding="0"
                           cellspacing="0"
-                          style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                          style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                         >
                           <tbody>
                             <tr>
@@ -795,13 +795,13 @@ if (isset($_POST['update_customer_details'])) {
                                   border="0"
                                   cellpadding="0"
                                   cellspacing="0"
-                                  style="margin-top:18px"
+                                  style="margin-top: 18px"
                                 >
                                   <tbody>
                                     <tr>
                                       <td
                                         height="1"
-                                        style="background-color:#f0f0f0;font-size:0px;line-height:0px"
+                                        style="background-color: #f0f0f0;font-size: 0px;line-height: 0px"
                                         bgcolor="#f0f0f0"
                                       ></td>
                                     </tr>
@@ -815,17 +815,17 @@ if (isset($_POST['update_customer_details'])) {
                                   width="100%"
                                   cellspacing="0"
                                   cellpadding="0"
-                                  style="width:600px;max-width:600px;background:#ffffff"
+                                  style="width: 600px;max-width: 600px;background: #ffffff"
                                 >
                                   <tbody>
-                                    <tr style="color:#212121">
+                                    <tr style="color: #212121">
                                       <td
                                         align="left"
                                         valign="top"
-                                        style="color:#212121;border-bottom:solid 1px #f0f0f0"
+                                        style="color: #212121;border-bottom:solid 1px #f0f0f0"
                                       >
                                         <p
-                                          style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px"
+                                          style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px"
                                         >
                                           Hope to see you again soon.
                                         </p>
@@ -842,14 +842,14 @@ if (isset($_POST['update_customer_details'])) {
                                   width="100%"
                                   cellspacing="0"
                                   cellpadding="0"
-                                  style="width:600px;max-width:600px;margin-top:14px"
+                                  style="width: 600px;max-width: 600px;margin-top: 14px"
                                 >
                                   <tbody>
                                     <tr>
                                       <td
                                         align="left"
                                         valign="top"
-                                        style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                        style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                       ></td>
                                     </tr>
                                   </tbody>
@@ -860,7 +860,7 @@ if (isset($_POST['update_customer_details'])) {
                         </table>
                         <table
                           width="100%"
-                          style="background-color: #02171e;width:100%;text-align:center;margin:0px;margin-top:32px"
+                          style="background-color: #02171e;width: 100%;text-align:center;margin: 0px;margin-top: 32px"
                         >
                           <tr>
                             <td>
@@ -870,20 +870,20 @@ if (isset($_POST['update_customer_details'])) {
                                     <table style="background-color: ">
                                       <tbody>
                                         <tr>
-                                          <td style="width:15%;text-align:left;padding-top:5px"></td>
+                                          <td style="width: 15%;text-align:left;padding-top: 5px"></td>
                                           <td
-                                            style="width:75%;text-align:left;font-family:Arial;color: #fff"
+                                            style="width: 75%;text-align:left;font-family:Arial;color: #fff"
                                           >
                                             &#169; 2020
                                             <a
-                                              style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
+                                              style="color: #027cd8;text-decoration:none;outline:none;font-weight: bold"
                                               href=""
                                               >HFE-Store</a
                                             >. All rights reserved
                                           </td>
-                                          <td style="width:10%;text-align:right">
+                                          <td style="width: 10%;text-align:right">
                                             <a
-                                              style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                              style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                               href=""
                                               rel="noreferrer"
                                               target="_blank"
@@ -894,7 +894,7 @@ if (isset($_POST['update_customer_details'])) {
                                                 height="24"
                                                 src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png"
                                                 alt="Flipkart.com"
-                                                style="border:none;margin-top:10px"
+                                                style="border:none;margin-top: 10px"
                                                 class="CToWUd"
                                               />
                                             </a>
@@ -913,7 +913,7 @@ if (isset($_POST['update_customer_details'])) {
                           width="600"
                           cellpadding="0"
                           cellspacing="0"
-                          style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                          style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                         >
                           <tbody>
                             <tr>
@@ -923,13 +923,13 @@ if (isset($_POST['update_customer_details'])) {
                                   border="0"
                                   cellpadding="0"
                                   cellspacing="0"
-                                  style="margin-top:0px"
+                                  style="margin-top: 0px"
                                 >
                                   <tbody>
                                     <tr>
                                       <td
                                         height="1"
-                                        style="background-color:#f0f0f0;font-size:0px;line-height:0px"
+                                        style="background-color: #f0f0f0;font-size: 0px;line-height: 0px"
                                         bgcolor="#f0f0f0"
                                       ></td>
                                     </tr>
@@ -943,14 +943,14 @@ if (isset($_POST['update_customer_details'])) {
                                   width="100%"
                                   cellspacing="0"
                                   cellpadding="0"
-                                  style="width:600px;max-width:600px;margin-top:0px"
+                                  style="width: 600px;max-width: 600px;margin-top: 0px"
                                 >
                                   <tbody>
                                     <tr>
                                       <td
                                         align="left"
                                         valign="top"
-                                        style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                        style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                       ></td>
                                     </tr>
                                     <tr>
@@ -959,21 +959,21 @@ if (isset($_POST['update_customer_details'])) {
                                           width="100%"
                                           cellspacing="0"
                                           cellpadding="0"
-                                          style="margin:0 auto;width:600px;max-width:600px;margin-top:14px"
+                                          style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px"
                                         >
                                           <tbody>
                                             <tr>
                                               <td
                                                 align="left"
                                                 valign="top"
-                                                style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                                style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                               >
                                                 <table>
                                                   <tbody>
                                                     <tr>
                                                       <td>
                                                         <p
-                                                          style="font-family:Arial;font-size:10px;color:#878787"
+                                                          style="font-family:Arial;font-size: 10px;color: #878787"
                                                         >
                                                           This email was sent from a notification-only
                                                           address that cannot accept incoming email. Please
@@ -1191,12 +1191,12 @@ if(isset($_POST['register'])){
 				// Update the activation variable below
 				//$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
 				$activate_link = 'http://localhost/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-				$message = '<html><body style="background-color:rgba(255,255,255,255.85);padding:20px;"><center>';
+				$message = '<html><body style="background-color:rgba(255,255,255,255.85);padding: 20px;"><center>';
 				$message .= '<img src="https://falconsinfoworld.000webhostapp.com/HFE-Store/images/logo/logo-horizontal.png"><br>';
-				$message .= '<h3 style="color:#059DF9">Hi Govind, HFE-Store Welcomes You</h3><br></center>';
-				$message .= '<h3 style="color:#FF8A00;text-align:margin-left">You are one step away from sign in to our world of shopping </h3>';
+				$message .= '<h3 style="color: #059DF9">Hi Govind, HFE-Store Welcomes You</h3><br></center>';
+				$message .= '<h3 style="color: #FF8A00;text-align:margin-left">You are one step away from sign in to our world of shopping </h3>';
 				$message .= '<p>Please click the following verify email button to activate your account</p><br>';
-				$message .= ' <a style="margin-left:26%" href="'.$activate_link.'"><button style="background-color:rgba(0,0,0,85);color:white;border-radius:7px;">Verify Email</button></a><br>';
+				$message .= ' <a style="margin-left: 26%" href="'.$activate_link.'"><button style="background-color:rgba(0,0,0,85);color:white;border-radius: 7px;">Verify Email</button></a><br>';
 				$message .= '<br><p>Regards,</p>';
 				$message .= '<p>HFE-Store</p><br>';
 				$message .= '<br><p>if you\'re having trouble clicking the'." \"Verify Email\" ".' button,copy and paste the URL below into your web browser : '.$activate_link.' </p><br><br><br><br>';
@@ -1248,23 +1248,23 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
           //$activate_link = 'https://HFE-Store.epizy.com/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
           $activate_link = getBaseURL();
           $message = '
-            <table style="width:100%!important">
+            <table style="width: 100%!important">
               <tbody>
                 <tr style="" width="834px" height="60" background="' . getImageURL() . 'images/logo/log2.jpg" align="center">
                   <td>
-                    <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
+                    <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width: 600px!important;text-align:center;margin: 0 auto">
                       <tbody>
                         <tr>
                           <td>
-                            <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                            <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                               <tbody>
                                 <tr>
-                                  <td style="width:35%;text-align:left">
-                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                      <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height:40px" class="CToWUd">
+                                  <td style="width: 35%;text-align:left">
+                                    <a style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                      <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height: 40px" class="CToWUd">
                                     </a>
                                   </td>
-                                  <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Account <span style="font-weight:bold">Activated</span></p> </td>
+                                  <td style="width: 60%;text-align:right;padding-top: 5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal">Account <span style="font-weight: bold">Activated</span></p> </td>
                                 </tr>
                                 <tr></tr>
                               </tbody>
@@ -1277,19 +1277,19 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                 </tr>
                 <tr>
                   <td>
-                    <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border:1px solid #bbb;">
+                    <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border: 1px solid #bbb;">
                       <tbody>
                         <tr>
                           <td align="center" valign="top" bgcolor="#fff">
-                            <table border="0" cellpadding="0" cellspacing="0" style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;">
+                            <table border="0" cellpadding="0" cellspacing="0" style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;">
                               <tbody>
                                 <tr>
                                   <td align="left">
                                     <table width="370" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px">Hi
-                                            <span style="font-weight:bold;color:#191919"> ' . $first_name . " " . $last_name . ',</span> </p> <p style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px">Your Account has been activated.</p>
+                                          <td valign="top"> <p style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px">Hi
+                                            <span style="font-weight: bold;color: #191919"> ' . $first_name . " " . $last_name . ',</span> </p> <p style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px">Your Account has been activated.</p>
                                           </td>
                                         </tr>
                                       </tbody>
@@ -1297,39 +1297,39 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                                     <table width="230" border="0" cellpadding="0" cellspacing="0" align="right">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Customer ID : <span style="font-weight:bold;color:#000">' . $customer_id . '</span> </p></td>
+                                          <td valign="top"> <p style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787">Customer ID : <span style="font-weight: bold;color: #000">' . $customer_id . '</span> </p></td>
                                         </tr>
                                       </tbody>
                                     </table>
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
+                                  <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
                                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Hi ' . $first_name . ', HFE-Store Welcomes You. Your Account is activated successfully  by <b>' . date("F j") . "," . date("Y") . '</b>. You are now became a member of our family.Enjoy shopping with us.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Please click the following button to open your door to our world of shopping .</p> </td>
+                                          <td align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px;text-align: justify;">Hi ' . $first_name . ', HFE-Store Welcomes You. Your Account is activated successfully  by <b>' . date("F j") . "," . date("Y") . '</b>. You are now became a member of our family.Enjoy shopping with us.</p><p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px">Please click the following button to open your door to our world of shopping .</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="350" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">HFE-Store</button> </a></span></p> </td>
+                                          <td valign="top"> <p style="padding-left: 15px;font-family:Arial;font-size: 12px;line-height: 1.58;margin-bottom: 20px;margin-top: 0;padding-top: 2px"><span style="display:inline-block;width: 167px;color: #212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none">HFE-Store</button> </a></span></p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="235" border="0" cellpadding="0" cellspacing="0" align="right">
                                       <tbody>
                                         <tr>
-                                          <td valign="top" align="left"> <p style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size:12px;color:#212121">' . $email . '</span> </p> </td>
+                                          <td valign="top" align="left"> <p style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size: 12px;color: #212121">' . $email . '</span> </p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top" align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: The \'<b>HFE-Store</b>\' button will send you to our website .Thanks for your support and also for being a member of our family .</p> </td>
+                                          <td valign="top" align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;text-align: justify;"> Note: The \'<b>HFE-Store</b>\' button will send you to our website .Thanks for your support and also for being a member of our family .</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1339,17 +1339,17 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                             </table>
                             <table width="640">
                               <tr>
-                                <td><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;"> if you\'re having trouble clicking the' . " \"Verify Account\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . '  .</p></td>
+                                <td><p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;"> if you\'re having trouble clicking the' . " \"Verify Account\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . '  .</p></td>
                               </tr>
                             </table>
-                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                               <tbody>
                                 <tr>
                                   <td align="left">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:18px">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 18px">
                                       <tbody>
                                         <tr>
-                                          <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                          <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1357,10 +1357,10 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;background:#ffffff">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;background: #ffffff">
                                       <tbody>
-                                        <tr style="color:#212121">
-                                          <td align="left" valign="top" style="color:#212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px">Hope to see you again soon.</p>  <br> </td>
+                                        <tr style="color: #212121">
+                                          <td align="left" valign="top" style="color: #212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px">Hope to see you again soon.</p>  <br> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1368,10 +1368,10 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:14px">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 14px">
                                       <tbody>
                                         <tr>
-                                          <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"></td>
+                                          <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"></td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1379,7 +1379,7 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                                 </tr>
                               </tbody>
                             </table>
-                            <table width="100%" style="background-color: #02171e;width:100%;text-align:center;margin:0px;margin-top:32px" >
+                            <table width="100%" style="background-color: #02171e;width: 100%;text-align:center;margin: 0px;margin-top: 32px" >
                               <tr>
                                 <td>
                                   <table width="600" align="center" style="background-color:  #02171e">
@@ -1388,9 +1388,9 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                                         <table style="background-color: ">
                                           <tbody>
                                             <tr>
-                                              <td style="width:15%;text-align:left;padding-top:5px"></td>
-                                              <td style="width:75%;text-align:left;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#139b3b;text-decoration:none;outline:none;font-weight:bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
-                                              <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
+                                              <td style="width: 15%;text-align:left;padding-top: 5px"></td>
+                                              <td style="width: 75%;text-align:left;font-family:Arial;color: #fff"> &#169; 2020 <a style="color: #139b3b;text-decoration:none;outline:none;font-weight: bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
+                                              <td style="width: 10%;text-align:right"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top: 10px" class="CToWUd"> </a> </td>
                                             </tr>
                                           </tbody>
                                         </table>
@@ -1400,14 +1400,14 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                                 </td>
                               </tr>
                             </table>
-                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                               <tbody>
                                 <tr>
                                   <td align="left">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:0px">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px">
                                       <tbody>
                                         <tr>
-                                          <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                          <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1415,21 +1415,21 @@ if (isset($_GET['email'], $_GET['code'], $_GET['emailverified'])) {
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:0px">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 0px">
                                       <tbody>
                                         <tr>
-                                          <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"></td>
+                                          <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"></td>
                                         </tr>
                                         <tr>
                                           <td>
-                                            <table width="100%" cellspacing="0" cellpadding="0" style="margin:0 auto;width:600px;max-width:600px;margin-top:14px">
+                                            <table width="100%" cellspacing="0" cellpadding="0" style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px">
                                               <tbody>
                                                 <tr>
-                                                  <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                                  <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                                     <table>
                                                       <tbody>
                                                         <tr>
-                                                          <td> <p style="font-family:Arial;font-size:10px;color:#878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
+                                                          <td> <p style="font-family:Arial;font-size: 10px;color: #878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
                                                         </tr>
                                                       </tbody>
                                                     </table>
@@ -1575,23 +1575,23 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
           //$activate_link = 'https://HFE-Store.epizy.com/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
           $activate_link = getBaseURL();
           $message = '
-            <table style="width:100%!important">
+            <table style="width: 100%!important">
               <tbody>
                 <tr style="" width="834px" height="60" background="' . getImageURL() . 'images/logo/log2.jpg" align="center">
                   <td>
-                    <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
+                    <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width: 600px!important;text-align:center;margin: 0 auto">
                       <tbody>
                         <tr>
                           <td>
-                            <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                            <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                               <tbody>
                                 <tr>
-                                  <td style="width:35%;text-align:left">
-                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                      <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height:40px" class="CToWUd">
+                                  <td style="width: 35%;text-align:left">
+                                    <a style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                      <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height: 40px" class="CToWUd">
                                     </a>
                                   </td>
-                                  <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Email <span style="font-weight:bold">Verified</span></p> </td>
+                                  <td style="width: 60%;text-align:right;padding-top: 5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal">Email <span style="font-weight: bold">Verified</span></p> </td>
                                 </tr>
                                 <tr></tr>
                               </tbody>
@@ -1604,58 +1604,58 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                 </tr>
                 <tr>
                   <td>
-                    <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border:1px solid #bbb;">
+                    <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border: 1px solid #bbb;">
                       <tbody>
                         <tr>
                           <td align="center" valign="top" bgcolor="#fff">
-                            <table border="0" cellpadding="0" cellspacing="0" style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;">
+                            <table border="0" cellpadding="0" cellspacing="0" style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;">
                               <tbody>
                                 <tr>
                                   <td align="left">
                                     <table width="370" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px">Hi
-                                          <span style="font-weight:bold;color:#191919"> ' . $first_name . " " . $last_name . ',</span> </p> <p style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px">Your Email has been verified.</p> </td>
+                                          <td valign="top"> <p style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px">Hi
+                                          <span style="font-weight: bold;color: #191919"> ' . $first_name . " " . $last_name . ',</span> </p> <p style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px">Your Email has been verified.</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="230" border="0" cellpadding="0" cellspacing="0" align="right">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Customer ID : <span style="font-weight:bold;color:#000">OSUID' . sprintf('%06d', $customer_id) . '</span> </p></td>
+                                          <td valign="top"> <p style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787">Customer ID : <span style="font-weight: bold;color: #000">OSUID' . sprintf('%06d', $customer_id) . '</span> </p></td>
                                         </tr>
                                       </tbody>
                                     </table>
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
+                                  <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
                                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Hi ' . $first_name . ', HFE-Store Welcomes You. Your Email id (' . $_GET['emailnew'] . ') is verified successfully  by <b>' . date("F j") . "," . date("Y") . '</b>. Enjoy shopping with us.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Please click the following button to open your door to our world of shopping .</p> </td>
+                                          <td align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px;text-align: justify;">Hi ' . $first_name . ', HFE-Store Welcomes You. Your Email id (' . $_GET['emailnew'] . ') is verified successfully  by <b>' . date("F j") . "," . date("Y") . '</b>. Enjoy shopping with us.</p><p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px">Please click the following button to open your door to our world of shopping .</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="350" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">HFE-Store</button> </a></span></p> </td>
+                                          <td valign="top"> <p style="padding-left: 15px;font-family:Arial;font-size: 12px;line-height: 1.58;margin-bottom: 20px;margin-top: 0;padding-top: 2px"><span style="display:inline-block;width: 167px;color: #212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none">HFE-Store</button> </a></span></p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="235" border="0" cellpadding="0" cellspacing="0" align="right">
                                       <tbody>
                                         <tr>
-                                          <td valign="top" align="left"> <p style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size:12px;color:#212121">' . $email . '</span> </p> </td>
+                                          <td valign="top" align="left"> <p style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size: 12px;color: #212121">' . $email . '</span> </p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top" align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: The \'<b>HFE-Store</b>\' button will send you to our website .Thanks for your support and also for being a member of our family .</p> </td>
+                                          <td valign="top" align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;text-align: justify;"> Note: The \'<b>HFE-Store</b>\' button will send you to our website .Thanks for your support and also for being a member of our family .</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1665,17 +1665,17 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                             </table>
                             <table width="640">
                               <tr>
-                                <td><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;"> if you\'re having trouble clicking the' . " \"Verify Account\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . '  .</p></td>
+                                <td><p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;"> if you\'re having trouble clicking the' . " \"Verify Account\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . '  .</p></td>
                               </tr>
                             </table>
-                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                               <tbody>
                                 <tr>
                                   <td align="left">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:18px">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 18px">
                                       <tbody>
                                         <tr>
-                                          <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                          <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1683,10 +1683,10 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;background:#ffffff">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;background: #ffffff">
                                       <tbody>
-                                        <tr style="color:#212121">
-                                          <td align="left" valign="top" style="color:#212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px">Hope to see you again soon.</p>  <br> </td>
+                                        <tr style="color: #212121">
+                                          <td align="left" valign="top" style="color: #212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px">Hope to see you again soon.</p>  <br> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1694,10 +1694,10 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:14px">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 14px">
                                       <tbody>
                                         <tr>
-                                          <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"></td>
+                                          <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"></td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1705,7 +1705,7 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                                 </tr>
                               </tbody>
                             </table>
-                            <table width="100%" style="background-color: #02171e;width:100%;text-align:center;margin:0px;margin-top:32px" >
+                            <table width="100%" style="background-color: #02171e;width: 100%;text-align:center;margin: 0px;margin-top: 32px" >
                               <tr>
                                 <td>
                                   <table width="600" align="center" style="background-color:  #02171e">
@@ -1714,9 +1714,9 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                                         <table style="background-color: ">
                                           <tbody>
                                             <tr>
-                                              <td style="width:15%;text-align:left;padding-top:5px"></td>
-                                              <td style="width:75%;text-align:left;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#139b3b;text-decoration:none;outline:none;font-weight:bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
-                                              <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
+                                              <td style="width: 15%;text-align:left;padding-top: 5px"></td>
+                                              <td style="width: 75%;text-align:left;font-family:Arial;color: #fff"> &#169; 2020 <a style="color: #139b3b;text-decoration:none;outline:none;font-weight: bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
+                                              <td style="width: 10%;text-align:right"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top: 10px" class="CToWUd"> </a> </td>
                                             </tr>
                                           </tbody>
                                         </table>
@@ -1726,14 +1726,14 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                                 </td>
                               </tr>
                             </table>
-                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                               <tbody>
                                 <tr>
                                   <td align="left">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:0px">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px">
                                       <tbody>
                                         <tr>
-                                          <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                          <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -1741,21 +1741,21 @@ if (isset($_GET['emailnew'], $_GET['code'], $_GET['emailupdateverified'], $_GET[
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:0px">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 0px">
                                       <tbody>
                                         <tr>
-                                          <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"></td>
+                                          <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"></td>
                                         </tr>
                                         <tr>
                                           <td>
-                                            <table width="100%" cellspacing="0" cellpadding="0" style="margin:0 auto;width:600px;max-width:600px;margin-top:14px">
+                                            <table width="100%" cellspacing="0" cellpadding="0" style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px">
                                               <tbody>
                                                 <tr>
-                                                  <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                                  <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                                     <table>
                                                       <tbody>
                                                         <tr>
-                                                          <td> <p style="font-family:Arial;font-size:10px;color:#878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
+                                                          <td> <p style="font-family:Arial;font-size: 10px;color: #878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
                                                         </tr>
                                                       </tbody>
                                                     </table>
@@ -2798,23 +2798,23 @@ if (isset($_POST['forgotlogin'])) {
           $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
           $activate_link = getBaseURL() . 'extras/OS/pages/FRL/OTP-v2.php?otp=' . $otp;
           $message = '
-            <table style="width:100%!important">
+            <table style="width: 100%!important">
               <tbody>
                 <tr style="" width="834px" height="60" background="' . getImageURL() . 'images/logo/log2.jpg" align="center">
                   <td>
-                    <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
+                    <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width: 600px!important;text-align:center;margin: 0 auto">
                       <tbody>
                         <tr>
                           <td>
-                            <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                            <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                               <tbody>
                                 <tr>
-                                  <td style="width:35%;text-align:left">
-                                    <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                      <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height:40px" class="CToWUd">
+                                  <td style="width: 35%;text-align:left">
+                                    <a style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                      <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height: 40px" class="CToWUd">
                                     </a>
                                   </td>
-                                  <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Reissuing <span style="font-weight:bold">Password</span></p> </td>
+                                  <td style="width: 60%;text-align:right;padding-top: 5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal">Reissuing <span style="font-weight: bold">Password</span></p> </td>
                                 </tr>
                                 <tr></tr>
                               </tbody>
@@ -2827,65 +2827,65 @@ if (isset($_POST['forgotlogin'])) {
                 </tr>
                 <tr>
                   <td>
-                    <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border:1px solid #bbb;">
+                    <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border: 1px solid #bbb;">
                       <tbody>
                         <tr>
                           <td align="center" valign="top" bgcolor="#fff">
-                            <table border="0" cellpadding="0" cellspacing="0" style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;">
+                            <table border="0" cellpadding="0" cellspacing="0" style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;">
                               <tbody>
                                 <tr>
                                   <td align="left">
                                     <table width="370" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px">Hi
-                                          <span style="font-weight:bold;color:#191919"> ' . $first_name . " " . $row['last_name'] . ',</span> </p> <p style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px">OTP generated for password recovery.</p> </td>
+                                          <td valign="top"> <p style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px">Hi
+                                          <span style="font-weight: bold;color: #191919"> ' . $first_name . " " . $row['last_name'] . ',</span> </p> <p style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px">OTP generated for password recovery.</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="230" border="0" cellpadding="0" cellspacing="0" align="right">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Customer ID : <span style="font-weight:bold;color:#000">' . $row['customer_id'] . '</span> </p></td>
+                                          <td valign="top"> <p style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787">Customer ID : <span style="font-weight: bold;color: #000">' . $row['customer_id'] . '</span> </p></td>
                                         </tr>
                                       </tbody>
                                     </table>
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
+                                  <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
                                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Seems like you lost your key to our world of shopping .One time OTP for recovering your password is generated below .Enjoy shopping with us.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"> .Please click the  click the following button to reset your password .</p> </td>
+                                          <td align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px;text-align: justify;">Seems like you lost your key to our world of shopping .One time OTP for recovering your password is generated below .Enjoy shopping with us.</p><p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px"> .Please click the  click the following button to reset your password .</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="170" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">Verify OTP</button> </a></span></p> </td>
+                                          <td valign="top"> <p style="padding-left: 15px;font-family:Arial;font-size: 12px;line-height: 1.58;margin-bottom: 20px;margin-top: 0;padding-top: 2px"><span style="display:inline-block;width: 167px;color: #212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none">Verify OTP</button> </a></span></p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="180" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top" align="left"> <p style="margin-top:5px;padding-left:12px;line-height:1.46;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:center;color:#212121">OTP</span> <br> <span style="font-family:Arial;font-size:18px;color:#027cd8;font-weight:bold">' . $otp . '</span> </p> </td>
+                                          <td valign="top" align="left"> <p style="margin-top: 5px;padding-left: 12px;line-height: 1.46;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:center;color: #212121">OTP</span> <br> <span style="font-family:Arial;font-size: 18px;color: #027cd8;font-weight: bold">' . $otp . '</span> </p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="235" border="0" cellpadding="0" cellspacing="0" align="right">
                                       <tbody>
                                         <tr>
-                                          <td valign="top" align="left"> <p style="margin-top:5px;padding-left:12px;line-height:1.56;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size:12px;color:#212121">' . $row['email'] . '</span> </p> </td>
+                                          <td valign="top" align="left"> <p style="margin-top: 5px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size: 12px;color: #212121">' . $row['email'] . '</span> </p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
                                     <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                       <tbody>
                                         <tr>
-                                          <td valign="top" align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: if you didn\'t request a password reset , you can ignore this email .Your password will not be changed  .</p> </td>
+                                          <td valign="top" align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;text-align: justify;"> Note: if you didn\'t request a password reset , you can ignore this email .Your password will not be changed  .</p> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -2896,18 +2896,18 @@ if (isset($_POST['forgotlogin'])) {
                             <table width="640">
                               <tr>
                                 <td>
-                                  <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;"> if you\'re having trouble clicking the' . " \"Verify OTP\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . '  .</p>
+                                  <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;"> if you\'re having trouble clicking the' . " \"Verify OTP\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . '  .</p>
                                 </td>
                               </tr>
                             </table>
-                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                               <tbody>
                                 <tr>
                                   <td align="left">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:18px">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 18px">
                                       <tbody>
                                         <tr>
-                                          <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                          <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -2915,10 +2915,10 @@ if (isset($_POST['forgotlogin'])) {
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;background:#ffffff">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;background: #ffffff">
                                       <tbody>
-                                        <tr style="color:#212121">
-                                          <td align="left" valign="top" style="color:#212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px">Hope to see you again soon.</p>  <br> </td>
+                                        <tr style="color: #212121">
+                                          <td align="left" valign="top" style="color: #212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px">Hope to see you again soon.</p>  <br> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -2926,10 +2926,10 @@ if (isset($_POST['forgotlogin'])) {
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:14px">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 14px">
                                       <tbody>
                                         <tr>
-                                          <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"></td>
+                                          <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"></td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -2937,7 +2937,7 @@ if (isset($_POST['forgotlogin'])) {
                                 </tr>
                               </tbody>
                             </table>
-                            <table width="100%" style="background-color: #02171e;width:100%;text-align:center;margin:0px;margin-top:32px" >
+                            <table width="100%" style="background-color: #02171e;width: 100%;text-align:center;margin: 0px;margin-top: 32px" >
                               <tr>
                                 <td>
                                   <table width="600" align="center" style="background-color:  #02171e">
@@ -2946,9 +2946,9 @@ if (isset($_POST['forgotlogin'])) {
                                         <table style="background-color: ">
                                           <tbody>
                                             <tr>
-                                              <td style="width:15%;text-align:left;padding-top:5px"></td>
-                                              <td style="width:75%;text-align:left;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#139b3b;text-decoration:none;outline:none;font-weight:bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
-                                              <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
+                                              <td style="width: 15%;text-align:left;padding-top: 5px"></td>
+                                              <td style="width: 75%;text-align:left;font-family:Arial;color: #fff"> &#169; 2020 <a style="color: #139b3b;text-decoration:none;outline:none;font-weight: bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
+                                              <td style="width: 10%;text-align:right"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top: 10px" class="CToWUd"> </a> </td>
                                             </tr>
                                           </tbody>
                                         </table>
@@ -2958,14 +2958,14 @@ if (isset($_POST['forgotlogin'])) {
                                 </td>
                               </tr>
                             </table>
-                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                            <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                               <tbody>
                                 <tr>
                                   <td align="left">
-                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:0px">
+                                    <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px">
                                       <tbody>
                                         <tr>
-                                        <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                        <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -2973,21 +2973,21 @@ if (isset($_POST['forgotlogin'])) {
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:0px">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 0px">
                                       <tbody>
                                         <tr>
-                                          <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"></td>
+                                          <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"></td>
                                         </tr>
                                         <tr>
                                           <td>
-                                            <table width="100%" cellspacing="0" cellpadding="0" style="margin:0 auto;width:600px;max-width:600px;margin-top:14px">
+                                            <table width="100%" cellspacing="0" cellpadding="0" style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px">
                                               <tbody>
                                                 <tr>
-                                                  <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                                  <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                                     <table>
                                                       <tbody>
                                                         <tr>
-                                                          <td> <p style="font-family:Arial;font-size:10px;color:#878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
+                                                          <td> <p style="font-family:Arial;font-size: 10px;color: #878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
                                                         </tr>
                                                       </tbody>
                                                     </table>
@@ -3096,23 +3096,23 @@ if (isset($_POST['forgotlogin'])) {
         $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
         $activate_link = getBaseURL() . 'extras/OS/pages/FRL/OTP-v2.php?otp=' . $otp;
         $message = '
-          <table style="width:100%!important">
+          <table style="width: 100%!important">
             <tbody>
               <tr style="" width="834px" height="60" background="' . getImageURL() . 'images/logo/log2.jpg" align="center">
                 <td>
-                  <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
+                  <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width: 600px!important;text-align:center;margin: 0 auto">
                     <tbody>
                       <tr>
                         <td>
-                          <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                          <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                             <tbody>
                               <tr>
-                                <td style="width:35%;text-align:left">
-                                  <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                    <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height:40px" class="CToWUd">
+                                <td style="width: 35%;text-align:left">
+                                  <a style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                    <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height: 40px" class="CToWUd">
                                   </a>
                                 </td>
-                                <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Reissuing <span style="font-weight:bold">Password</span></p> </td>
+                                <td style="width: 60%;text-align:right;padding-top: 5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal">Reissuing <span style="font-weight: bold">Password</span></p> </td>
                               </tr>
                               <tr></tr>
                             </tbody>
@@ -3125,65 +3125,65 @@ if (isset($_POST['forgotlogin'])) {
               </tr>
               <tr>
                 <td>
-                  <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border:1px solid #bbb;">
+                  <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border: 1px solid #bbb;">
                     <tbody>
                       <tr>
                         <td align="center" valign="top" bgcolor="#fff">
-                          <table border="0" cellpadding="0" cellspacing="0" style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;">
+                          <table border="0" cellpadding="0" cellspacing="0" style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;">
                             <tbody>
                               <tr>
                                 <td align="left">
                                   <table width="370" border="0" cellpadding="0" cellspacing="0" align="left">
                                     <tbody>
                                       <tr>
-                                        <td valign="top"> <p style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px">Hi
-                                        <span style="font-weight:bold;color:#191919"> ' . $row2['username'] . ',</span> </p> <p style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px">OTP generated for password recovery.</p> </td>
+                                        <td valign="top"> <p style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px">Hi
+                                        <span style="font-weight: bold;color: #191919"> ' . $row2['username'] . ',</span> </p> <p style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px">OTP generated for password recovery.</p> </td>
                                       </tr>
                                     </tbody>
                                   </table>
                                   <table width="230" border="0" cellpadding="0" cellspacing="0" align="right">
                                     <tbody>
                                       <tr>
-                                        <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Store ID : <span style="font-weight:bold;color:#000">OSSID' . sprintf('%06d', $row2['id']) . '</span> </p></td>
+                                        <td valign="top"> <p style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787">Store ID : <span style="font-weight: bold;color: #000">OSSID' . sprintf('%06d', $row2['id']) . '</span> </p></td>
                                       </tr>
                                     </tbody>
                                   </table>
                                 </td>
                               </tr>
                               <tr>
-                                <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
+                                <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
                                   <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                     <tbody>
                                       <tr>
-                                        <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px;text-align: justify;">Seems like you lost your key to your HFE-Store ' . $row2['store_name'] . ' .One time OTP for recovering your password is generated below .Enjoy shopping with us.</p><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"> .Please click the  click the following button to reset your password .</p> </td>
+                                        <td align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px;text-align: justify;">Seems like you lost your key to your HFE-Store ' . $row2['store_name'] . ' .One time OTP for recovering your password is generated below .Enjoy shopping with us.</p><p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px"> .Please click the  click the following button to reset your password .</p> </td>
                                       </tr>
                                     </tbody>
                                   </table>
                                   <table width="170" border="0" cellpadding="0" cellspacing="0" align="left">
                                     <tbody>
                                       <tr>
-                                        <td valign="top"> <p style="padding-left:15px;font-family:Arial;font-size:12px;line-height:1.58;margin-bottom:20px;margin-top:0;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none">Verify OTP</button> </a></span></p> </td>
+                                        <td valign="top"> <p style="padding-left: 15px;font-family:Arial;font-size: 12px;line-height: 1.58;margin-bottom: 20px;margin-top: 0;padding-top: 2px"><span style="display:inline-block;width: 167px;color: #212121;font-weight: bold"><a href="' . $activate_link . '" style="background-color:rgb(41,121,251);color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none" rel="noreferrer" target="_blank" data-saferedirecturl=""> <button type="button" style="background-color:rgb(41,121,251);color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none">Verify OTP</button> </a></span></p> </td>
                                       </tr>
                                     </tbody>
                                   </table>
                                   <table width="180" border="0" cellpadding="0" cellspacing="0" align="left">
                                     <tbody>
                                       <tr>
-                                        <td valign="top" align="left"> <p style="margin-top:5px;padding-left:12px;line-height:1.46;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:center;color:#212121">OTP</span> <br> <span style="font-family:Arial;font-size:18px;color:#027cd8;font-weight:bold">' . $otp . '</span> </p> </td>
+                                        <td valign="top" align="left"> <p style="margin-top: 5px;padding-left: 12px;line-height: 1.46;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:center;color: #212121">OTP</span> <br> <span style="font-family:Arial;font-size: 18px;color: #027cd8;font-weight: bold">' . $otp . '</span> </p> </td>
                                       </tr>
                                     </tbody>
                                   </table>
                                   <table width="235" border="0" cellpadding="0" cellspacing="0" align="right">
                                     <tbody>
                                       <tr>
-                                        <td valign="top" align="left"> <p style="margin-top:5px;padding-left:12px;line-height:1.56;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size:12px;color:#212121">' . $row2['email'] . '</span> </p> </td>
+                                        <td valign="top" align="left"> <p style="margin-top: 5px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size: 12px;color: #212121">' . $row2['email'] . '</span> </p> </td>
                                       </tr>
                                     </tbody>
                                   </table>
                                   <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                     <tbody>
                                       <tr>
-                                        <td valign="top" align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: if you didn\'t request a password reset , you can ignore this email .Your password will not be changed  .</p> </td>
+                                        <td valign="top" align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;text-align: justify;"> Note: if you didn\'t request a password reset , you can ignore this email .Your password will not be changed  .</p> </td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -3194,18 +3194,18 @@ if (isset($_POST['forgotlogin'])) {
                           <table width="640">
                               <tr>
                                 <td>
-                                  <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;"> if you\'re having trouble clicking the' . " \"Verify OTP\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . '  .</p>
+                                  <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;"> if you\'re having trouble clicking the' . " \"Verify OTP\" " . ' button,copy and paste the URL below into your web browser : ' . $activate_link . '  .</p>
                                 </td>
                               </tr>
                           </table>
-                          <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                          <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                             <tbody>
                               <tr>
                                 <td align="left">
-                                  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:18px">
+                                  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 18px">
                                     <tbody>
                                       <tr>
-                                        <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                        <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -3213,10 +3213,10 @@ if (isset($_POST['forgotlogin'])) {
                               </tr>
                               <tr>
                                 <td>
-                                  <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;background:#ffffff">
+                                  <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;background: #ffffff">
                                     <tbody>
-                                      <tr style="color:#212121">
-                                        <td align="left" valign="top" style="color:#212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px">Hope to see you again soon.</p>  <br> </td>
+                                      <tr style="color: #212121">
+                                        <td align="left" valign="top" style="color: #212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px">Hope to see you again soon.</p>  <br> </td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -3224,10 +3224,10 @@ if (isset($_POST['forgotlogin'])) {
                               </tr>
                               <tr>
                                 <td>
-                                  <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:14px">
+                                  <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 14px">
                                     <tbody>
                                       <tr>
-                                        <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"></td>
+                                        <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"></td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -3235,7 +3235,7 @@ if (isset($_POST['forgotlogin'])) {
                               </tr>
                             </tbody>
                           </table>
-                          <table width="100%" style="background-color: #02171e;width:100%;text-align:center;margin:0px;margin-top:32px" >
+                          <table width="100%" style="background-color: #02171e;width: 100%;text-align:center;margin: 0px;margin-top: 32px" >
                             <tr>
                               <td>
                                 <table width="600" align="center" style="background-color:  #02171e">
@@ -3244,9 +3244,9 @@ if (isset($_POST['forgotlogin'])) {
                                       <table style="background-color: ">
                                         <tbody>
                                           <tr>
-                                            <td style="width:10%;text-align:left;padding-top:5px"></td>
-                                            <td style="width:75%;text-align:left;font-family:Arial;color: #fff"> &#169; 2020 <a style="color:#139b3b;text-decoration:none;outline:none;font-weight:bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
-                                            <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
+                                            <td style="width: 10%;text-align:left;padding-top: 5px"></td>
+                                            <td style="width: 75%;text-align:left;font-family:Arial;color: #fff"> &#169; 2020 <a style="color: #139b3b;text-decoration:none;outline:none;font-weight: bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
+                                            <td style="width: 10%;text-align:right"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top: 10px" class="CToWUd"> </a> </td>
                                             </tr>
                                         </tbody>
                                       </table>
@@ -3256,14 +3256,14 @@ if (isset($_POST['forgotlogin'])) {
                               </td>
                             </tr>
                           </table>
-                          <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                          <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                             <tbody>
                               <tr>
                                 <td align="left">
-                                  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:0px">
+                                  <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 0px">
                                     <tbody>
                                       <tr>
-                                        <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                        <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                       </tr>
                                     </tbody>
                                   </table>
@@ -3271,21 +3271,21 @@ if (isset($_POST['forgotlogin'])) {
                               </tr>
                               <tr>
                                 <td>
-                                  <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:0px">
+                                  <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 0px">
                                     <tbody>
                                       <tr>
-                                        <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"></td>
+                                        <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"></td>
                                       </tr>
                                       <tr>
                                         <td>
-                                          <table width="100%" cellspacing="0" cellpadding="0" style="margin:0 auto;width:600px;max-width:600px;margin-top:14px">
+                                          <table width="100%" cellspacing="0" cellpadding="0" style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px">
                                             <tbody>
                                               <tr>
-                                                <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                                <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                                   <table>
                                                     <tbody>
                                                       <tr>
-                                                        <td> <p style="font-family:Arial;font-size:10px;color:#878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
+                                                        <td> <p style="font-family:Arial;font-size: 10px;color: #878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
                                                       </tr>
                                                     </tbody>
                                                   </table>
@@ -3663,23 +3663,23 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
   //------------------------------------------------------------------------------------------------------------------------------------
   //------------------------------------------------------------------------------------------------------------------------------------
   $message1 = '
-    <table style="width:100%!important">
+    <table style="width: 100%!important">
       <tbody>
         <tr background="' . getImageURL() . 'images/logo/log2.jpg" width="834px" height="60">
           <td>
-            <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
+            <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width: 600px!important;text-align:center;margin: 0 auto">
               <tbody>
                 <tr>
                   <td>
-                    <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                    <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                       <tbody>
                         <tr>
-                          <td style="width:35%;text-align:left">
-                            <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                              <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height:40px" class="CToWUd">
+                          <td style="width: 35%;text-align:left">
+                            <a style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                              <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height: 40px" class="CToWUd">
                             </a>
                           </td>
-                          <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Order <span style="font-weight:bold">Processed</span></p> </td>
+                          <td style="width: 60%;text-align:right;padding-top: 5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal">Order <span style="font-weight: bold">Processed</span></p> </td>
                         </tr>
                         <tr></tr>
                       </tbody>
@@ -3692,19 +3692,19 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
         </tr>
         <tr>
           <td>
-            <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border:1px solid #bbb">
+            <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border: 1px solid #bbb">
               <tbody>
                 <tr>
                   <td align="center" valign="top" bgcolor="#fff">
-                    <table border="0" cellpadding="0" cellspacing="0" style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;">
+                    <table border="0" cellpadding="0" cellspacing="0" style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;">
                       <tbody>
                         <tr>
                           <td align="left">
                             <table width="370" border="0" cellpadding="0" cellspacing="0" align="left">
                               <tbody>
                                 <tr>
-                                  <td valign="top"> <p style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px">Hi
-                                    <span style="font-weight:bold;color:#191919"> ' . $first_name . " " . $last_name . ',</span> </p> <p style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px">Your Order has been successfully processed.</p>
+                                  <td valign="top"> <p style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px">Hi
+                                    <span style="font-weight: bold;color: #191919"> ' . $first_name . " " . $last_name . ',</span> </p> <p style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px">Your Order has been successfully processed.</p>
                                   </td>
                                 </tr>
                               </tbody>
@@ -3712,18 +3712,18 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                               <table width="230" border="0" cellpadding="0" cellspacing="0" align="right">
                               <tbody>
                                 <tr>
-                                  <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Customer ID <span style="font-weight:bold;color:#000">OSUID' . sprintf('%06d', $customer_id) . '</span> </p> <p style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px">Order ID <span style="font-weight:bold;color:#000">HFEID' . sprintf('%06d', $noid) . '</span> </p> </td>
+                                  <td valign="top"> <p style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787">Customer ID <span style="font-weight: bold;color: #000">OSUID' . sprintf('%06d', $customer_id) . '</span> </p> <p style="font-family:Arial;font-size: 11px;color: #878787;line-height: 1.22;text-align:right;padding-top: 0px">Order ID <span style="font-weight: bold;color: #000">HFEID' . sprintf('%06d', $noid) . '</span> </p> </td>
                                 </tr>
                               </tbody>
                             </table>
                           </td>
                         </tr>
                         <tr>
-                          <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
+                          <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
                             <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                               <tbody>
                                 <tr>
-                                  <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Your order for the below listed item(s) is processed successfully  by <b>' . date("F j") . " , " . date("Y") . '</b> and will be available for you to purchase at specific shops mentioned below . </p> </td>
+                                  <td align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px">Your order for the below listed item(s) is processed successfully  by <b>' . date("F j") . " , " . date("Y") . '</b> and will be available for you to purchase at specific shops mentioned below . </p> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -3731,24 +3731,24 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                               <tbody>
                                 <tr>
                                   <td valign="top">
-                                    <p style="padding-left:15px;font-family:Arial;font-size:14px;line-height:1.58;margin-bottom:30px;margin-top:15;padding-top:2px">
-                                      <span style="display:inline-block;width:167px;color:#212121">Total amount</span>
-                                      <span style="display:inline-block;font-family:Arial;font-size:15px;font-weight:700;color:#139b3b;display:inline-block">Rs. ' . $total_bill . '</span></p>
+                                    <p style="padding-left: 15px;font-family:Arial;font-size: 14px;line-height: 1.58;margin-bottom: 30px;margin-top: 15;padding-top: 2px">
+                                      <span style="display:inline-block;width: 167px;color: #212121">Total amount</span>
+                                      <span style="display:inline-block;font-family:Arial;font-size: 15px;font-weight: 700;color: #139b3b;display:inline-block">Rs. ' . $total_bill . '</span></p>
                                   </td>
                                 </tr>
                                 <tr>
                                   <td valign="top">
-                                    <p style="padding-left:15px;margin-bottom:10px;margin-top: 0px;">
+                                    <p style="padding-left: 15px;margin-bottom: 10px;margin-top: 0px;">
                                       <a 
                                         href="' . getBaseURL() . 'customer/Order/myorders.php?id=' . $customer_id . '" 
-                                        style="background-color:#139b3b;color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" 
+                                        style="background-color: #139b3b;color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none" 
                                         rel="noreferrer" 
                                         target="_blank" 
                                         data-saferedirecturl=""
                                       > 
                                         <button 
                                           type="button" 
-                                          style="background-color:#139b3b;color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none"
+                                          style="background-color: #139b3b;color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none"
                                         >
                                           View Order Status
                                         </button>
@@ -3761,21 +3761,21 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                             <table width="235" border="0" cellpadding="0" cellspacing="0" align="right">
                               <tbody>
                                 <tr>
-                                  <td valign="top" align="left"> <p style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121">Delivery Address</span>
-                                    <br> <span style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121">' . $shipping_first_name . " " . $shipping_last_name . '</span>
-                                    <br> <span style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121">' . $shipping_address_1 . '</span>
-                                    <br> <span style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121">' . $shipping_postcode . '</span></p> <br>
+                                  <td valign="top" align="left"> <p style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121">Delivery Address</span>
+                                    <br> <span style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121">' . $shipping_first_name . " " . $shipping_last_name . '</span>
+                                    <br> <span style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121">' . $shipping_address_1 . '</span>
+                                    <br> <span style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121">' . $shipping_postcode . '</span></p> <br>
                                   </td>
                                 </tr>
                                 <tr>
-                                  <td valign="top" align="left"> <p style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size:12px;color:#212121">' . $email . '</span> </p> </td>
+                                  <td valign="top" align="left"> <p style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size: 12px;color: #212121">' . $email . '</span> </p> </td>
                                 </tr>
                               </tbody>
                             </table>
                             <table width="600" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-top: 0px;">
                               <tbody>
                                   <tr>
-                                    <td valign="top" align="left"><p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"> Note: If you do not collect your items (booked) from specified shop with in specified period of time(varies according to the items) , your order will be cancelled.
+                                    <td valign="top" align="left"><p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;text-align: justify;"> Note: If you do not collect your items (booked) from specified shop with in specified period of time(varies according to the items) , your order will be cancelled.
                                       In case this items will be removed from your cart and moved to wishlist .Thereafter you need to purchase it again as per as your needs. </p>
                                     </td>
                                   </tr>
@@ -3788,13 +3788,13 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
   log_message('Data Array: ' . json_encode($store_array));
   for ($l = 0; $l < $i; $l++) {
     $store_total = 0;
-    $message1 .= '  <table style="background-color: #02171e;width:100%;text-align:center" align="center">
+    $message1 .= '  <table style="background-color: #02171e;width: 100%;text-align:center" align="center">
                       <tr>
                         <td>
                           <table width="600" align="center">
                             <tr colspan="2" >
                               <td>
-                                <h4 style="padding:5px;margin:0px;background-color: #02171e;color: white;padding-top: 8px;padding-bottom: 25px;font-family:Arial">
+                                <h4 style="padding: 5px;margin: 0px;background-color: #02171e;color: white;padding-top: 8px;padding-bottom: 25px;font-family:Arial">
                                   <span style="float:left;">Opening hours : ' . $store_array[$l]['opening_hours'] . '</span>
                                   <span style="float:right;">Store : ' . $store_array[$l]['store_name'] . '</span><br>
                                   <span style="float:left;">status : ' . $store_array[$l]['status'] . '</span>
@@ -3809,14 +3809,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                     </table>';
     for ($m = 0; $m < $store_cnt[$l]; $m++) {
       $message1 .= '
-                    <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                    <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                       <tbody>
                         <tr>
                           <td align="left">
                             <table width="120" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-bottom: 15px;">
                               <tbody>
                                 <tr>
-                                  <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="' . getBaseURL() . 'customer/Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="' . getImageURL() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
+                                  <td valign="middle" width="120" align="center"> <a style="color: #027cd8;text-decoration:none;outline:none;color: #fff;font-size: 13px" href="' . getBaseURL() . 'customer/Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="' . getImageURL() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width: 125px;max-height: 125px;margin-top: 20px" class="CToWUd"> </a> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -3824,11 +3824,11 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                               <tbody>
                                 <tr>
                                   <td valign="top" align="left">
-                                    <p style="margin-bottom:13px;margin-top:20px"> <a href="" style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#139b3b;text-decoration:none!important;word-spacing:0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Total: &#8377; ' . $store_array[$l]['product_total_amt'][$m] . '</p>';
+                                    <p style="margin-bottom: 13px;margin-top: 20px"> <a href="" style="font-family:Arial;font-size: 14.5px;font-weight: bold;font-style:normal;font-stretch:normal;line-height: 1.43;color: #139b3b;text-decoration:none!important;word-spacing: 0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
+                                    <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
+                                    <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
+                                    <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
+                                    <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Total: &#8377; ' . $store_array[$l]['product_total_amt'][$m] . '</p>';
       $store_total += $store_array[$l]['product_total_amt'][$m];
       $message1 .= '
                                   </td>
@@ -3839,20 +3839,20 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                         </tr>
                       </tbody>
                     </table>
-                    <hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;">';
+                    <hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;">';
     }
-    $message1 .= '  <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;font-weight:bold;line-height:12px">Total amount to be Paid @' . $store_array[$l]['store_name'] . ': &#8377; ' . $store_total . '</p>
-                    <hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;">';
+    $message1 .= '  <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;font-weight: bold;line-height: 12px">Total amount to be Paid @' . $store_array[$l]['store_name'] . ': &#8377; ' . $store_total . '</p>
+                    <hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;">';
   }
   $message1 .= '
-                    <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                    <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                       <tbody>
                         <tr>
                           <td align="left">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:18px">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 18px">
                               <tbody>
                                 <tr>
-                                <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -3860,10 +3860,10 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                         </tr>
                         <tr>
                           <td>
-                            <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;background:#ffffff">
+                            <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;background: #ffffff">
                               <tbody>
-                                <tr style="color:#212121">
-                                <td align="left" valign="top" style="color:#212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px">Hope to see you again soon.</p>  <br> </td>
+                                <tr style="color: #212121">
+                                <td align="left" valign="top" style="color: #212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px">Hope to see you again soon.</p>  <br> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -3871,16 +3871,16 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                         </tr>
                         <tr>
                           <td>
-                            <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:14px">
+                            <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 14px">
                               <tbody>
                                 <tr>
-                                  <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                  <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                     <table>
                                       <tbody>
                                         <tr>
-                                          <td style="width:15%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="' . getBaseURL() . '"><img  border="0" src="' . getImageURL() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 70px;" class="CToWUd"> </a> </td>
-                                          <td style="width:75%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#139b3b;text-decoration:none;outline:none;font-weight:bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
-                                          <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
+                                          <td style="width: 15%;text-align:left;padding-top: 5px"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="' . getBaseURL() . '"><img  border="0" src="' . getImageURL() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 70px;" class="CToWUd"> </a> </td>
+                                          <td style="width: 75%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color: #139b3b;text-decoration:none;outline:none;font-weight: bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
+                                          <td style="width: 10%;text-align:right"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top: 10px" class="CToWUd"> </a> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -3888,14 +3888,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="margin:0 auto;width:600px;max-width:600px;margin-top:14px">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px">
                                       <tbody>
                                         <tr>
-                                          <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                          <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                             <table>
                                               <tbody>
                                                 <tr>
-                                                  <td> <p style="font-family:Arial;font-size:10px;color:#878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
+                                                  <td> <p style="font-family:Arial;font-size: 10px;color: #878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
                                                 </tr>
                                               </tbody>
                                             </table>
@@ -3983,7 +3983,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
     $storerecieve = $storerecieve_row['storerecieve'];
     $store_total = 0;
     $message2 = '
-      <table style="width:100%!important">
+      <table style="width: 100%!important">
         <tbody>
           <tr background="' . getImageURL() . 'images/logo/log2.jpg" width="834px" height="60">
             <td>
@@ -3992,17 +3992,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                 cellspacing="0"
                 cellpadding="0"
                 height="60"
-                style="width:600px!important;text-align:center;margin:0 auto"
+                style="width: 600px!important;text-align:center;margin: 0 auto"
               >
                 <tbody>
                   <tr>
                     <td>
-                      <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                      <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                         <tbody>
                           <tr>
-                            <td style="width:35%;text-align:left">
+                            <td style="width: 35%;text-align:left">
                               <a
-                                style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                 href="' . getBaseURL() . '"
                                 rel="noreferrer"
                                 target="_blank"
@@ -4012,16 +4012,16 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                   border="0"
                                   src="' . getImageURL() . 'images/logo/logo-horizontal.png"
                                   alt="HFE-Store.ml"
-                                  style="border:none;height:40px"
+                                  style="border:none;height: 40px"
                                   class="CToWUd"
                                 />
                               </a>
                             </td>
-                            <td style="width:60%;text-align:right;padding-top:5px">
+                            <td style="width: 60%;text-align:right;padding-top: 5px">
                               <p
-                                style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal"
+                                style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal"
                               >
-                                Order <span style="font-weight:bold">Requested</span>
+                                Order <span style="font-weight: bold">Requested</span>
                               </p>
                             </td>
                           </tr>
@@ -4043,7 +4043,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                 cellpadding="0"
                 cellspacing="0"
                 bgcolor="#f5f5f5"
-                style="border:1px solid #bbb"
+                style="border: 1px solid #bbb"
               >
                 <tbody>
                   <tr>
@@ -4052,7 +4052,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                         border="0"
                         cellpadding="0"
                         cellspacing="0"
-                        style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;"
+                        style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;"
                       >
                         <tbody>
                           <tr>
@@ -4062,15 +4062,15 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                   <tr>
                                     <td valign="top">
                                       <p
-                                        style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px"
+                                        style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px"
                                       >
                                         Hi
-                                        <span style="font-weight:bold;color:#191919">
+                                        <span style="font-weight: bold;color: #191919">
                                           ' . $store_array[$l]['username'] . ',</span
                                         >
                                       </p>
                                       <p
-                                        style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px"
+                                        style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px"
                                       >
                                         Order has been requested.
                                       </p>
@@ -4083,16 +4083,16 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                   <tr>
                                     <td valign="top">
                                       <p
-                                        style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787"
+                                        style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787"
                                       >
                                         Store ID
-                                        <span style="font-weight:bold;color:#000">OSSID' . sprintf('%06d', $store_array[$l]['store_id']) . '</span>
+                                        <span style="font-weight: bold;color: #000">OSSID' . sprintf('%06d', $store_array[$l]['store_id']) . '</span>
                                       </p>
                                       <p
-                                        style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px"
+                                        style="font-family:Arial;font-size: 11px;color: #878787;line-height: 1.22;text-align:right;padding-top: 0px"
                                       >
                                         Order ID
-                                        <span style="font-weight:bold;color:#000">HFEID' . sprintf('%06d', $noid) . '</span>
+                                        <span style="font-weight: bold;color: #000">HFEID' . sprintf('%06d', $noid) . '</span>
                                       </p>
                                     </td>
                                   </tr>
@@ -4104,14 +4104,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                             <td
                               border="1"
                               align="left"
-                              style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
+                              style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
                             >
                               <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                 <tbody>
                                   <tr>
                                     <td align="left">
                                       <p
-                                        style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"
+                                        style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px"
                                       >
                                         Below listed item(s) are requested by the customer by
                                         <b>' . date("F j") . " , " . date("Y") . '</b> from your store
@@ -4127,32 +4127,32 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                   <tr>
                                     <td valign="top">
                                       <p
-                                        style="padding-left:15px;font-family:Arial;font-size:14px;line-height:1.58;margin-bottom:30px;margin-top:15;padding-top:2px"
+                                        style="padding-left: 15px;font-family:Arial;font-size: 14px;line-height: 1.58;margin-bottom: 30px;margin-top: 15;padding-top: 2px"
                                       >
-                                        <span style="display:inline-block;width:167px;color:#212121">Total amount</span>';
+                                        <span style="display:inline-block;width: 167px;color: #212121">Total amount</span>';
 
     for ($m = 0; $m < $store_cnt[$l]; $m++) {
       $store_total += (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
     }
 
     $message2 .=  '
-                                        <span style="display:inline-block;font-family:Arial;font-size:15px;font-weight:700;color:#139b3b;display:inline-block">Rs. ' . $store_total . '</span>
+                                        <span style="display:inline-block;font-family:Arial;font-size: 15px;font-weight: 700;color: #139b3b;display:inline-block">Rs. ' . $store_total . '</span>
                                       </p>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td valign="top">
-                                      <p style="padding-left:15px;margin-bottom:10px;margin-top: 0px;">
+                                      <p style="padding-left: 15px;margin-bottom: 10px;margin-top: 0px;">
                                         <a
                                           href="' . getBaseURL() . 'customer/Order/myorders.php?id=' . $customer_id . '"
-                                          style="background-color:#139b3b;color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
+                                          style="background-color: #139b3b;color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none"
                                           rel="noreferrer"
                                           target="_blank"
                                           data-saferedirecturl=""
                                         >
                                           <button
                                             type="button"
-                                            style="background-color:#139b3b;color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none"
+                                            style="background-color: #139b3b;color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none"
                                           >
                                             View Order Status
                                           </button>
@@ -4167,25 +4167,25 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                   <tr>
                                     <td valign="top" align="left">
                                       <p
-                                        style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                        style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                       >
                                         <span
-                                          style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                          style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                           >Delivery Address</span
                                         >
                                         <br />
                                         <span
-                                          style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                          style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                           >' . $shipping_first_name . " " . $shipping_last_name . '</span
                                         >
                                         <br />
                                         <span
-                                          style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                          style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                           >' . $shipping_address_1 . '</span
                                         >
                                         <br />
                                         <span
-                                          style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                          style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                           >' . $shipping_postcode . '</span
                                         >
                                       </p>
@@ -4195,14 +4195,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                   <tr>
                                     <td valign="top" align="left">
                                       <p
-                                        style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                        style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                       >
                                         <span
-                                          style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                          style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                           >Email updates sent to</span
                                         >
                                         <br />
-                                        <span style="font-family:Arial;font-size:12px;color:#212121"
+                                        <span style="font-family:Arial;font-size: 12px;color: #212121"
                                           >' . $email . '</span
                                         >
                                       </p>
@@ -4228,7 +4228,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                       </table>';
     $message2 .= '
                       <table
-                        style="background-color: #02171e;width:100%;text-align:center"
+                        style="background-color: #02171e;width: 100%;text-align:center"
                         align="center"
                       >
                         <tr>
@@ -4237,27 +4237,27 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                               <tr colspan="2">
                                 <td>
                                   <h4
-                                    style="padding:5px;margin:0px;background-color: #02171e;color: white;padding-top: 0px;padding-bottom: 0px;font-family:Arial"
+                                    style="padding: 5px;margin: 0px;background-color: #02171e;color: white;padding-top: 0px;padding-bottom: 0px;font-family:Arial"
                                   >
                                     <table width="100%" cellspacing="10px">
                                       <tr>
                                         <td>
-                                          <span style="color:#fff;float:left"
+                                          <span style="color: #fff;float:left"
                                             >Customer name : ' . $first_name . " " . $last_name . '</span
                                           >
                                         </td>
                                         <td>
-                                          <span style="color:#fff;float:right">Ph : ' . $phone . '</span>
+                                          <span style="color: #fff;float:right">Ph : ' . $phone . '</span>
                                         </td>
                                       </tr>
                                       <tr>
                                         <td>
-                                          <span style="color:#fff;float:left"
+                                          <span style="color: #fff;float:left"
                                             >Customer id : OSUID' . sprintf('%06d', $customer_id) . '</span
                                           >
                                         </td>
                                         <td>
-                                          <span style="color:#fff;float:right">' . $email . '</span>
+                                          <span style="color: #fff;float:right">' . $email . '</span>
                                         </td>
                                       </tr>';
     $message2 .= '
@@ -4289,7 +4289,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                         width="600"
                         cellpadding="0"
                         cellspacing="0"
-                        style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                        style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                       >
                         <tbody>
                           <tr>
@@ -4306,7 +4306,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                   <tr>
                                     <td valign="middle" width="120" align="center">
                                       <a
-                                        style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px"
+                                        style="color: #027cd8;text-decoration:none;outline:none;color: #fff;font-size: 13px"
                                         href="' . getBaseURL() . 'customer/Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '"
                                         rel="noreferrer"
                                         target="_blank"
@@ -4316,7 +4316,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                           border="0"
                                           src="' . getImageURL() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
                                           alt="' . $store_array[$l]['product_name'][$m] . '"
-                                          style="border:none;max-width:125px;max-height:125px;margin-top:20px"
+                                          style="border:none;max-width: 125px;max-height: 125px;margin-top: 20px"
                                           class="CToWUd"
                                         />
                                       </a>
@@ -4328,10 +4328,10 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                 <tbody>
                                   <tr>
                                     <td valign="top" align="left">
-                                      <p style="margin-bottom:13px;margin-top:20px">
+                                      <p style="margin-bottom: 13px;margin-top: 20px">
                                         <a
                                           href=""
-                                          style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#139b3b;text-decoration:none!important;word-spacing:0.2em"
+                                          style="font-family:Arial;font-size: 14.5px;font-weight: bold;font-style:normal;font-stretch:normal;line-height: 1.43;color: #139b3b;text-decoration:none!important;word-spacing: 0.2em"
                                           rel="noreferrer"
                                           target="_blank"
                                           data-saferedirecturl=""
@@ -4340,22 +4340,22 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                         >
                                       </p>
                                       <p
-                                        style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                        style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                       >
                                         Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
                                       </p>
                                       <p
-                                        style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                        style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                       >
                                         Qty: ' . $store_array[$l]['item_quantity'][$m] . '
                                       </p>
                                       <p
-                                        style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                        style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                       >
                                         Order type: ' . $store_array[$l]['product_ordertype'][$m] . '
                                       </p>
                                       <p
-                                        style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                        style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                       >
                                         Total: &#8377; ' . (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '
                                       </p>';
@@ -4370,17 +4370,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                         </tbody>
                       </table>
                       <hr
-                        style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;"
+                        style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;"
                       />';
     }
     $message2 .= '
                       <p
-                        style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;font-weight:bold;line-height:12px"
+                        style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;font-weight: bold;line-height: 12px"
                       >
                         Total amount : &#8377; ' . $store_total . '
                       </p>
                       <hr
-                        style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;"
+                        style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;"
                       />';
     $message2 .= '
                       <table
@@ -4388,7 +4388,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                         width="600"
                         cellpadding="0"
                         cellspacing="0"
-                        style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                        style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                       >
                         <tbody>
                           <tr>
@@ -4398,13 +4398,13 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                 border="0"
                                 cellpadding="0"
                                 cellspacing="0"
-                                style="margin-top:18px"
+                                style="margin-top: 18px"
                               >
                                 <tbody>
                                   <tr>
                                     <td
                                       height="1"
-                                      style="background-color:#f0f0f0;font-size:0px;line-height:0px"
+                                      style="background-color: #f0f0f0;font-size: 0px;line-height: 0px"
                                       bgcolor="#f0f0f0"
                                     ></td>
                                   </tr>
@@ -4418,17 +4418,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                 width="100%"
                                 cellspacing="0"
                                 cellpadding="0"
-                                style="width:600px;max-width:600px;background:#ffffff"
+                                style="width: 600px;max-width: 600px;background: #ffffff"
                               >
                                 <tbody>
-                                  <tr style="color:#212121">
+                                  <tr style="color: #212121">
                                     <td
                                       align="left"
                                       valign="top"
-                                      style="color:#212121;border-bottom:solid 1px #f0f0f0"
+                                      style="color: #212121;border-bottom:solid 1px #f0f0f0"
                                     >
                                       <p
-                                        style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px"
+                                        style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px"
                                       >
                                         Hope to see you again soon.
                                       </p>
@@ -4445,21 +4445,21 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                 width="100%"
                                 cellspacing="0"
                                 cellpadding="0"
-                                style="width:600px;max-width:600px;margin-top:14px"
+                                style="width: 600px;max-width: 600px;margin-top: 14px"
                               >
                                 <tbody>
                                   <tr>
                                     <td
                                       align="left"
                                       valign="top"
-                                      style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                      style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                     >
                                       <table>
                                         <tbody>
                                           <tr>
-                                            <td style="width:15%;text-align:left;padding-top:5px">
+                                            <td style="width: 15%;text-align:left;padding-top: 5px">
                                               <a
-                                                style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                                style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                                 href="' . getBaseURL() . '"
                                                 ><img
                                                   border="0"
@@ -4470,17 +4470,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                                 />
                                               </a>
                                             </td>
-                                            <td style="width:75%;text-align:left;font-family:Arial">
+                                            <td style="width: 75%;text-align:left;font-family:Arial">
                                               &#169; 2020
                                               <a
-                                                style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
+                                                style="color: #027cd8;text-decoration:none;outline:none;font-weight: bold"
                                                 href=""
                                                 >HFE-Store</a
                                               >. All rights reserved
                                             </td>
-                                            <td style="width:10%;text-align:right">
+                                            <td style="width: 10%;text-align:right">
                                               <a
-                                                style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                                style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                                 href=""
                                                 rel="noreferrer"
                                                 target="_blank"
@@ -4491,7 +4491,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                                   height="24"
                                                   src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png"
                                                   alt="Flipkart.com"
-                                                  style="border:none;margin-top:10px"
+                                                  style="border:none;margin-top: 10px"
                                                   class="CToWUd"
                                                 />
                                               </a>
@@ -4507,21 +4507,21 @@ if (isset($_POST['customer_id'], $_POST['placeorder'])) {
                                         width="100%"
                                         cellspacing="0"
                                         cellpadding="0"
-                                        style="margin:0 auto;width:600px;max-width:600px;margin-top:14px"
+                                        style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px"
                                       >
                                         <tbody>
                                           <tr>
                                             <td
                                               align="left"
                                               valign="top"
-                                              style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                              style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                             >
                                               <table>
                                                 <tbody>
                                                   <tr>
                                                     <td>
                                                       <p
-                                                        style="font-family:Arial;font-size:10px;color:#878787"
+                                                        style="font-family:Arial;font-size: 10px;color: #878787"
                                                       >
                                                         This email was sent from a notification-only
                                                         address that cannot accept incoming email. Please
@@ -5051,7 +5051,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
   // ------------------------------------------------------------------------------------------------------------------------------------/
   // ------------------------------------------------------------------------------------------------------------------------------------/
   $message1 = '
-    <table style="width:100%!important">
+    <table style="width: 100%!important">
       <tbody>
         <tr background="' . getImageURL() . 'images/logo/log2.jpg" width="834px" height="60">
           <td>
@@ -5060,17 +5060,17 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
               cellspacing="0"
               cellpadding="0"
               height="60"
-              style="width:600px!important;text-align:center;margin:0 auto"
+              style="width: 600px!important;text-align:center;margin: 0 auto"
             >
               <tbody>
                 <tr>
                   <td>
-                    <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                    <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                       <tbody>
                         <tr>
-                          <td style="width:35%;text-align:left">
+                          <td style="width: 35%;text-align:left">
                             <a
-                              style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                              style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                               href="' . getBaseURL() . '"
                               rel="noreferrer"
                               target="_blank"
@@ -5080,16 +5080,16 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 border="0"
                                 src="' . getImageURL() . 'images/logo/logo-horizontal.png"
                                 alt="HFE-Store.ml"
-                                style="border:none;height:40px"
+                                style="border:none;height: 40px"
                                 class="CToWUd"
                               />
                             </a>
                           </td>
-                          <td style="width:60%;text-align:right;padding-top:5px">
+                          <td style="width: 60%;text-align:right;padding-top: 5px">
                             <p
-                              style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal"
+                              style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal"
                             >
-                              Order <span style="font-weight:bold">Processed</span>
+                              Order <span style="font-weight: bold">Processed</span>
                             </p>
                           </td>
                         </tr>
@@ -5111,7 +5111,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
               cellpadding="0"
               cellspacing="0"
               bgcolor="#f5f5f5"
-              style="border:1px solid #bbb"
+              style="border: 1px solid #bbb"
             >
               <tbody>
                 <tr>
@@ -5120,7 +5120,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                       border="0"
                       cellpadding="0"
                       cellspacing="0"
-                      style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;"
+                      style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;"
                     >
                       <tbody>
                         <tr>
@@ -5130,15 +5130,15 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px"
+                                      style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px"
                                     >
                                       Hi
-                                      <span style="font-weight:bold;color:#191919">
+                                      <span style="font-weight: bold;color: #191919">
                                         ' . $first_name . " " . $last_name . ',</span
                                       >
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px"
+                                      style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px"
                                     >
                                       Your Order has been successfully processed.
                                     </p>
@@ -5151,18 +5151,18 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787"
+                                      style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787"
                                     >
                                       Customer ID
-                                      <span style="font-weight:bold;color:#000"
+                                      <span style="font-weight: bold;color: #000"
                                         >OSUID' . sprintf('%06d', $customer_id) . '</span
                                       >
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px"
+                                      style="font-family:Arial;font-size: 11px;color: #878787;line-height: 1.22;text-align:right;padding-top: 0px"
                                     >
                                       Order ID
-                                      <span style="font-weight:bold;color:#000"
+                                      <span style="font-weight: bold;color: #000"
                                         >HFEID' . sprintf('%06d', $noid) . '</span
                                       >
                                     </p>
@@ -5176,14 +5176,14 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                           <td
                             border="1"
                             align="left"
-                            style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
+                            style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
                           >
                             <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                               <tbody>
                                 <tr>
                                   <td align="left">
                                     <p
-                                      style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"
+                                      style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px"
                                     >
                                       Your order for the below listed item(s) is processed successfully
                                       by <b>' . date("F j") . " , " . date("Y") . '</b> and will be
@@ -5198,12 +5198,12 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="padding-left:15px;font-family:Arial;font-size:14px;line-height:1.58;margin-bottom:30px;margin-top:15;padding-top:2px"
+                                      style="padding-left: 15px;font-family:Arial;font-size: 14px;line-height: 1.58;margin-bottom: 30px;margin-top: 15;padding-top: 2px"
                                     >
-                                      <span style="display:inline-block;width:167px;color:#212121"
+                                      <span style="display:inline-block;width: 167px;color: #212121"
                                         >Total amount</span
                                       ><span
-                                        style="display:inline-block;font-family:Arial;font-size:15px;font-weight:700;color:#139b3b;display:inline-block"
+                                        style="display:inline-block;font-family:Arial;font-size: 15px;font-weight: 700;color: #139b3b;display:inline-block"
                                         >Rs. ' . $total_bill . '</span
                                       >
                                     </p>
@@ -5211,17 +5211,17 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 </tr>
                                 <tr>
                                   <td valign="top">
-                                    <p style="padding-left:15px;margin-bottom:10px;margin-top: 0px;">
+                                    <p style="padding-left: 15px;margin-bottom: 10px;margin-top: 0px;">
                                       <a
                                         href="' . getBaseURL() . 'customer/Order/myorders.php?id=' . $customer_id . '"
-                                        style="background-color:#139b3b;color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
+                                        style="background-color: #139b3b;color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none"
                                         rel="noreferrer"
                                         target="_blank"
                                         data-saferedirecturl=""
                                       >
                                         <button
                                           type="button"
-                                          style="background-color:#139b3b;color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none"
+                                          style="background-color: #139b3b;color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none"
                                         >
                                           View Order Status
                                         </button>
@@ -5236,25 +5236,25 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                      style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                     >
                                       <span
-                                        style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                        style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                         >Delivery Address</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >' . $shipping_first_name . " " . $shipping_last_name . '</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >' . $shipping_address_1 . '</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >' . $shipping_postcode . '</span
                                       >
                                     </p>
@@ -5264,14 +5264,14 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                      style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                     >
                                       <span
-                                        style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                        style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                         >Email updates sent to</span
                                       >
                                       <br />
-                                      <span style="font-family:Arial;font-size:12px;color:#212121"
+                                      <span style="font-family:Arial;font-size: 12px;color: #212121"
                                         >' . $email . '</span
                                       >
                                     </p>
@@ -5291,7 +5291,7 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"
+                                      style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;text-align: justify;"
                                     >
                                       Note: If you do not collect your items (booked) from specified
                                       shop with in specified period of time(varies according to the
@@ -5310,13 +5310,13 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
   for ($l = 0; $l < $i; $l++) {
     $store_total = 0;
     $message1 .= '
-                    <table style="background-color: #02171e;width:100%;text-align:center" align="center">
+                    <table style="background-color: #02171e;width: 100%;text-align:center" align="center">
                       <tr>
                         <td>
                           <table width="600" align="center">
                             <tr colspan="2" >
                               <td>
-                                <h4 style="padding:5px;margin:0px;background-color: #02171e;color: white;padding-top: 8px;padding-bottom: 25px;font-family:Arial">
+                                <h4 style="padding: 5px;margin: 0px;background-color: #02171e;color: white;padding-top: 8px;padding-bottom: 25px;font-family:Arial">
                                   <span style="float:left;">Opening hours : ' . $store_array[$l]['opening_hours'] . '</span>
                                   <span style="float:right;">Store : ' . $store_array[$l]['store_name'] . '</span><br>
                                   <span style="float:left;">status : ' . $store_array[$l]['status'] . '</span>
@@ -5331,14 +5331,14 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                     </table>';
     for ($m = 0; $m < $store_cnt[$l]; $m++) {
       $message1 .= '
-                    <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                    <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                       <tbody>
                         <tr>
                           <td align="left">
                             <table width="120" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-bottom: 15px;">
                               <tbody>
                                 <tr>
-                                  <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="' . getBaseURL() . 'customer/Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="' . getImageURL() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
+                                  <td valign="middle" width="120" align="center"> <a style="color: #027cd8;text-decoration:none;outline:none;color: #fff;font-size: 13px" href="' . getBaseURL() . 'customer/Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="' . getImageURL() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width: 125px;max-height: 125px;margin-top: 20px" class="CToWUd"> </a> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -5346,11 +5346,11 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                               <tbody>
                                 <tr>
                                   <td valign="top" align="left">
-                                    <p style="margin-bottom:13px;margin-top:20px"> <a href="" style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#139b3b;text-decoration:none!important;word-spacing:0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
-                                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Total: &#8377; ' . $store_array[$l]['product_total_amt'][$m] . '</p>';
+                                    <p style="margin-bottom: 13px;margin-top: 20px"> <a href="" style="font-family:Arial;font-size: 14.5px;font-weight: bold;font-style:normal;font-stretch:normal;line-height: 1.43;color: #139b3b;text-decoration:none!important;word-spacing: 0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
+                                    <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
+                                    <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
+                                    <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
+                                    <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Total: &#8377; ' . $store_array[$l]['product_total_amt'][$m] . '</p>';
       $store_total += $store_array[$l]['product_total_amt'][$m];
       $message1 .= '
                                   </td>
@@ -5361,21 +5361,21 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                         </tr>
                       </tbody>
                     </table>
-                    <hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;">';
+                    <hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;">';
     }
     $message1 .= '
-                    <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;font-weight:bold;line-height:12px">Total amount to be Paid @' . $store_array[$l]['store_name'] . ': &#8377; ' . $store_total . '</p>
-                    <hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;">';
+                    <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;font-weight: bold;line-height: 12px">Total amount to be Paid @' . $store_array[$l]['store_name'] . ': &#8377; ' . $store_total . '</p>
+                    <hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;">';
   }
   $message1 .= '
-                    <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                    <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                       <tbody>
                         <tr>
                           <td align="left">
-                            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:18px">
+                            <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 18px">
                               <tbody>
                                 <tr>
-                                  <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                  <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                 </tr>
                               </tbody>
                             </table>
@@ -5383,10 +5383,10 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                         </tr>
                         <tr>
                           <td>
-                            <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;background:#ffffff">
+                            <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;background: #ffffff">
                               <tbody>
-                                <tr style="color:#212121">
-                                  <td align="left" valign="top" style="color:#212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px">Hope to see you again soon.</p>  <br> </td>
+                                <tr style="color: #212121">
+                                  <td align="left" valign="top" style="color: #212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px">Hope to see you again soon.</p>  <br> </td>
                                 </tr>
                               </tbody>
                             </table>
@@ -5394,16 +5394,16 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                         </tr>
                         <tr>
                           <td>
-                            <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:14px">
+                            <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 14px">
                               <tbody>
                                 <tr>
-                                  <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                  <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                     <table>
                                       <tbody>
                                         <tr>
-                                          <td style="width:15%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="' . getBaseURL() . '"><img  border="0" src="' . getImageURL() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 70px;" class="CToWUd"> </a> </td>
-                                          <td style="width:75%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#139b3b;text-decoration:none;outline:none;font-weight:bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
-                                          <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
+                                          <td style="width: 15%;text-align:left;padding-top: 5px"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="' . getBaseURL() . '"><img  border="0" src="' . getImageURL() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 70px;" class="CToWUd"> </a> </td>
+                                          <td style="width: 75%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color: #139b3b;text-decoration:none;outline:none;font-weight: bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
+                                          <td style="width: 10%;text-align:right"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top: 10px" class="CToWUd"> </a> </td>
                                         </tr>
                                       </tbody>
                                     </table>
@@ -5411,14 +5411,14 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 </tr>
                                 <tr>
                                   <td>
-                                    <table width="100%" cellspacing="0" cellpadding="0" style="margin:0 auto;width:600px;max-width:600px;margin-top:14px">
+                                    <table width="100%" cellspacing="0" cellpadding="0" style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px">
                                       <tbody>
                                         <tr>
-                                          <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                          <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                             <table>
                                               <tbody>
                                                 <tr>
-                                                  <td> <p style="font-family:Arial;font-size:10px;color:#878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
+                                                  <td> <p style="font-family:Arial;font-size: 10px;color: #878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
                                                 </tr>
                                               </tbody>
                                             </table>
@@ -5506,23 +5506,23 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
     $storerecieve = $storerecieve_row['storerecieve'];
     $store_total = 0;
     $message2 = '
-      <table style="width:100%!important">
+      <table style="width: 100%!important">
         <tbody>
           <tr background="' . getImageURL() . 'images/logo/log2.jpg" width="834px" height="60">
             <td>
-              <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width:600px!important;text-align:center;margin:0 auto">
+              <table width="100%" cellspacing="0" cellpadding="0" height="60" style="width: 600px!important;text-align:center;margin: 0 auto">
                 <tbody>
                     <tr>
                       <td>
-                        <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                        <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                           <tbody>
                             <tr>
-                              <td style="width:35%;text-align:left">
-                                <a style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
-                                  <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height:40px" class="CToWUd">
+                              <td style="width: 35%;text-align:left">
+                                <a style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="' . getBaseURL() . '" rel="noreferrer" target="_blank" data-saferedirecturl="">
+                                  <img border="0"  src="' . getImageURL() . 'images/logo/logo-horizontal.png" alt="HFE-Store.ml" style="border:none;height: 40px" class="CToWUd">
                                 </a>
                               </td>
-                              <td style="width:60%;text-align:right;padding-top:5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal">Order <span style="font-weight:bold">Requested</span></p> </td>
+                              <td style="width: 60%;text-align:right;padding-top: 5px"> <p style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal">Order <span style="font-weight: bold">Requested</span></p> </td>
                             </tr>
                             <tr></tr>
                           </tbody>
@@ -5535,19 +5535,19 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
           </tr>
           <tr>
             <td>
-              <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border:1px solid #bbb">
+              <table border="0" width="100%" height="100%" cellpadding="0" cellspacing="0" bgcolor="#f5f5f5" style="border: 1px solid #bbb">
                 <tbody>
                   <tr>
                     <td align="center" valign="top" bgcolor="#fff">
-                      <table border="0" cellpadding="0" cellspacing="0" style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;">
+                      <table border="0" cellpadding="0" cellspacing="0" style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;">
                         <tbody>
                           <tr>
                             <td align="left">
                               <table width="370" border="0" cellpadding="0" cellspacing="0" align="left">
                                 <tbody>
                                   <tr>
-                                    <td valign="top"> <p style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px">Hi
-                                      <span style="font-weight:bold;color:#191919"> ' . $store_array[$l]['username'] . ',</span> </p> <p style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px"> Order has been requested.</p>
+                                    <td valign="top"> <p style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px">Hi
+                                      <span style="font-weight: bold;color: #191919"> ' . $store_array[$l]['username'] . ',</span> </p> <p style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px"> Order has been requested.</p>
                                     </td>
                                   </tr>
                                 </tbody>
@@ -5555,18 +5555,18 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                               <table width="230" border="0" cellpadding="0" cellspacing="0" align="right">
                                 <tbody>
                                   <tr>
-                                    <td valign="top"> <p style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787">Store ID <span style="font-weight:bold;color:#000">OSSID' . sprintf('%06d', $store_array[$l]['store_id']) . '</span> </p> <p style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px">Order ID <span style="font-weight:bold;color:#000">HFEID' . sprintf('%06d', $noid) . '</span> </p> </td>
+                                    <td valign="top"> <p style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787">Store ID <span style="font-weight: bold;color: #000">OSSID' . sprintf('%06d', $store_array[$l]['store_id']) . '</span> </p> <p style="font-family:Arial;font-size: 11px;color: #878787;line-height: 1.22;text-align:right;padding-top: 0px">Order ID <span style="font-weight: bold;color: #000">HFEID' . sprintf('%06d', $noid) . '</span> </p> </td>
                                   </tr>
                                 </tbody>
                               </table>
                             </td>
                           </tr>
                           <tr>
-                            <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
+                            <td border="1" align="left" style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e">
                               <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                 <tbody>
                                   <tr>
-                                    <td align="left"> <p style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px">Below listed item(s) are requested by the customer  by <b>' . date("F j") . " , " . date("Y") . '</b> from your store <b>' . $store_array[$l]['store_name'] . '</b>. Thanks for your cooperation with us and also wishing you best with your sales . </p> </td>
+                                    <td align="left"> <p style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px">Below listed item(s) are requested by the customer  by <b>' . date("F j") . " , " . date("Y") . '</b> from your store <b>' . $store_array[$l]['store_name'] . '</b>. Thanks for your cooperation with us and also wishing you best with your sales . </p> </td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -5574,22 +5574,22 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 <tbody>
                                   <tr>
                                   <td valign="top">
-                                    <p style="padding-left:15px;font-family:Arial;font-size:14px;line-height:1.58;margin-bottom:30px;margin-top:15;padding-top:2px"><span style="display:inline-block;width:167px;color:#212121">Total amount</span><span style="display:inline-block;font-family:Arial;font-size:15px;font-weight:700;color:#139b3b;display:inline-block">Rs. ' . $total_bill . '</span></p>
+                                    <p style="padding-left: 15px;font-family:Arial;font-size: 14px;line-height: 1.58;margin-bottom: 30px;margin-top: 15;padding-top: 2px"><span style="display:inline-block;width: 167px;color: #212121">Total amount</span><span style="display:inline-block;font-family:Arial;font-size: 15px;font-weight: 700;color: #139b3b;display:inline-block">Rs. ' . $total_bill . '</span></p>
                                   </td>
                                   </tr>
                                   <tr>
                                     <td valign="top">
-                                      <p style="padding-left:15px;margin-bottom:10px;margin-top: 0px;"> 
+                                      <p style="padding-left: 15px;margin-bottom: 10px;margin-top: 0px;"> 
                                         <a 
                                           href="' . getBaseURL() . 'customer/Order/myorders.php?id=' . $customer_id . '" 
-                                          style="background-color:#139b3b;color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none" 
+                                          style="background-color: #139b3b;color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none" 
                                           rel="noreferrer" 
                                           target="_blank" 
                                           data-saferedirecturl=""
                                         > 
                                           <button 
                                             type="button" 
-                                            style="background-color:#139b3b;color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none"
+                                            style="background-color: #139b3b;color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none"
                                           >
                                             View Order Status
                                           </button>
@@ -5602,14 +5602,14 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                               <table width="235" border="0" cellpadding="0" cellspacing="0" align="right">
                                 <tbody>
                                   <tr>
-                                    <td valign="top" align="left"> <p style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121">Delivery Address</span>
-                                      <br> <span style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121">' . $shipping_first_name . " " . $shipping_last_name . '</span>
-                                      <br> <span style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121">' . $shipping_address_1 . '</span>
-                                      <br> <span style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121">' . $shipping_postcode . '</span></p> <br>
+                                    <td valign="top" align="left"> <p style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121">Delivery Address</span>
+                                      <br> <span style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121">' . $shipping_first_name . " " . $shipping_last_name . '</span>
+                                      <br> <span style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121">' . $shipping_address_1 . '</span>
+                                      <br> <span style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121">' . $shipping_postcode . '</span></p> <br>
                                     </td>
                                   </tr>
                                   <tr>
-                                    <td valign="top" align="left"> <p style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"><span style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size:12px;color:#212121">' . $email . '</span> </p> </td>
+                                    <td valign="top" align="left"> <p style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"><span style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121">Email updates sent to</span> <br> <span style="font-family:Arial;font-size: 12px;color: #212121">' . $email . '</span> </p> </td>
                                   </tr>
                                 </tbody>
                               </table>
@@ -5619,28 +5619,28 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                 </tbody>
                               </table>';
     $message2 /* Append data */ .= '
-                              <table style="background-color: #02171e;width:100%;text-align:center" align="center">
+                              <table style="background-color: #02171e;width: 100%;text-align:center" align="center">
                                 <tr>
                                   <td>
                                     <table width="600" align="center">
                                       <tr colspan="2" >
                                         <td>
-                                          <h4 style="padding:5px;margin:0px;background-color: #02171e;color: white;padding-top: 0px;padding-bottom: 0px;font-family:Arial">
+                                          <h4 style="padding: 5px;margin: 0px;background-color: #02171e;color: white;padding-top: 0px;padding-bottom: 0px;font-family:Arial">
                                             <table width="100%" cellspacing="10px">
                                               <tr>
                                                 <td>
-                                                  <span style="color:#fff;float:left">Customer name : ' . $first_name . " " . $last_name . '</span>
+                                                  <span style="color: #fff;float:left">Customer name : ' . $first_name . " " . $last_name . '</span>
                                                 </td>
                                                 <td>
-                                                  <span style="color:#fff;float:right">Ph : ' . $phone . '</span>
+                                                  <span style="color: #fff;float:right">Ph : ' . $phone . '</span>
                                                 </td>
                                               </tr>
                                               <tr>
                                                 <td>
-                                                  <span style="color:#fff;float:left">Customer id : OSUID' . sprintf('%06d', $customer_id) . '</span>
+                                                  <span style="color: #fff;float:left">Customer id : OSUID' . sprintf('%06d', $customer_id) . '</span>
                                                 </td>
                                                 <td>
-                                                  <span style="color:#fff;float:right">' . $email . '</span>
+                                                  <span style="color: #fff;float:right">' . $email . '</span>
                                                 </td>
                                               </tr>';
     $message2 /* Append data */  .= '
@@ -5663,14 +5663,14 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
       $store_array[$l]['product_ordertype'][$m];
       $store_array[$l]['product_total_amt'][$m];
       $message2 .= '
-                              <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                              <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                                 <tbody>
                                   <tr>
                                       <td align="left">
                                         <table width="120" border="0" cellpadding="0" cellspacing="0" align="left" style="margin-bottom: 15px;">
                                           <tbody>
                                             <tr>
-                                              <td valign="middle" width="120" align="center"> <a style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px" href="' . getBaseURL() . 'customer/Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="' . getImageURL() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width:125px;max-height:125px;margin-top:20px" class="CToWUd"> </a> </td>
+                                              <td valign="middle" width="120" align="center"> <a style="color: #027cd8;text-decoration:none;outline:none;color: #fff;font-size: 13px" href="' . getBaseURL() . 'customer/Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" src="' . getImageURL() . 'images/' . $store_array[$l]['product_category_id'][$m] . '/' . $store_array[$l]['product_description_id'][$m] . '.jpg" alt="' . $store_array[$l]['product_name'][$m] . '" style="border:none;max-width: 125px;max-height: 125px;margin-top: 20px" class="CToWUd"> </a> </td>
                                             </tr>
                                           </tbody>
                                         </table>
@@ -5678,11 +5678,11 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                           <tbody>
                                             <tr>
                                               <td valign="top" align="left">
-                                                <p style="margin-bottom:13px;margin-top:20px"> <a href="" style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#139b3b;text-decoration:none!important;word-spacing:0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
-                                                <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
-                                                <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
-                                                <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
-                                                <p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px">Total: &#8377; ' . (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '</p>';
+                                                <p style="margin-bottom: 13px;margin-top: 20px"> <a href="" style="font-family:Arial;font-size: 14.5px;font-weight: bold;font-style:normal;font-stretch:normal;line-height: 1.43;color: #139b3b;text-decoration:none!important;word-spacing: 0.2em" rel="noreferrer" target="_blank" data-saferedirecturl=""> ' . $store_array[$l]['product_name'][$m] . '</a> </p>
+                                                <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
+                                                <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Qty: ' . $store_array[$l]['item_quantity'][$m] . '</p>
+                                                <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Order type: ' . $store_array[$l]['product_ordertype'][$m] . '</p>
+                                                <p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px">Total: &#8377; ' . (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '</p>';
       $store_total += (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
       $message2 .= '</td>
                                           </tr>
@@ -5692,18 +5692,18 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                   </tr>
                                 </tbody>
                               </table>
-                              <hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;">';
+                              <hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;">';
     }
-    $message2 .= '<p style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;font-weight:bold;line-height:12px">Total amount : &#8377; ' . $store_total . '</p><hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;">';
+    $message2 .= '<p style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;font-weight: bold;line-height: 12px">Total amount : &#8377; ' . $store_total . '</p><hr style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;">';
     $message2 .= '
-                              <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px">
+                              <table border="0" width="600" cellpadding="0" cellspacing="0" style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px">
                                 <tbody>
                                   <tr>
                                     <td align="left">
-                                      <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top:18px">
+                                      <table width="100%" border="0" cellpadding="0" cellspacing="0" style="margin-top: 18px">
                                         <tbody>
                                           <tr>
-                                            <td height="1" style="background-color:#f0f0f0;font-size:0px;line-height:0px" bgcolor="#f0f0f0"></td>
+                                            <td height="1" style="background-color: #f0f0f0;font-size: 0px;line-height: 0px" bgcolor="#f0f0f0"></td>
                                           </tr>
                                         </tbody>
                                       </table>
@@ -5711,10 +5711,10 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                   </tr>
                                   <tr>
                                     <td>
-                                      <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;background:#ffffff">
+                                      <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;background: #ffffff">
                                         <tbody>
-                                          <tr style="color:#212121">
-                                            <td align="left" valign="top" style="color:#212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px">Hope to see you again soon.</p>  <br> </td>
+                                          <tr style="color: #212121">
+                                            <td align="left" valign="top" style="color: #212121;border-bottom:solid 1px #f0f0f0"> <p style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px">Hope to see you again soon.</p>  <br> </td>
                                           </tr>
                                         </tbody>
                                       </table>
@@ -5722,16 +5722,16 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                   </tr>
                                   <tr>
                                     <td>
-                                      <table width="100%" cellspacing="0" cellpadding="0" style="width:600px;max-width:600px;margin-top:14px">
+                                      <table width="100%" cellspacing="0" cellpadding="0" style="width: 600px;max-width: 600px;margin-top: 14px">
                                         <tbody>
                                           <tr>
-                                            <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                            <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                               <table>
                                                 <tbody>
                                                   <tr>
-                                                    <td style="width:15%;text-align:left;padding-top:5px"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="' . getBaseURL() . '"><img  border="0" src="' . getImageURL() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 70px;" class="CToWUd"> </a> </td>
-                                                    <td style="width:75%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color:#139b3b;text-decoration:none;outline:none;font-weight:bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
-                                                    <td style="width:10%;text-align:right"> <a style="text-decoration:none;outline:none;color:#ffffff;font-size:13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top:10px" class="CToWUd"> </a> </td>
+                                                    <td style="width: 15%;text-align:left;padding-top: 5px"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="' . getBaseURL() . '"><img  border="0" src="' . getImageURL() . 'images/logo/logo.png" alt="HFE-Store.ml" style="border:none;width: 70px;" class="CToWUd"> </a> </td>
+                                                    <td style="width: 75%;text-align:left;font-family:Arial"> &#169; 2020 <a style="color: #139b3b;text-decoration:none;outline:none;font-weight: bold" href="">Health & Fitness Equipment Store</a>. All rights reserved  </td>
+                                                    <td style="width: 10%;text-align:right"> <a style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px" href="" rel="noreferrer" target="_blank" data-saferedirecturl=""> <img border="0" height="24" src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png" alt="Flipkart.com" style="border:none;margin-top: 10px" class="CToWUd"> </a> </td>
                                                   </tr>
                                                 </tbody>
                                               </table>
@@ -5739,14 +5739,14 @@ if (isset($_POST['customer_id'], $_POST['buynow_placeorder'])) {
                                           </tr>
                                           <tr>
                                             <td>
-                                              <table width="100%" cellspacing="0" cellpadding="0" style="margin:0 auto;width:600px;max-width:600px;margin-top:14px">
+                                              <table width="100%" cellspacing="0" cellpadding="0" style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px">
                                                 <tbody>
                                                   <tr>
-                                                    <td align="left" valign="top" style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent">
+                                                    <td align="left" valign="top" style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent">
                                                       <table>
                                                         <tbody>
                                                           <tr>
-                                                            <td> <p style="font-family:Arial;font-size:10px;color:#878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
+                                                            <td> <p style="font-family:Arial;font-size: 10px;color: #878787">This email was sent from a notification-only address that cannot accept incoming email. Please do not reply to this message.</p> </td>
                                                           </tr>
                                                         </tbody>
                                                       </table>
@@ -5843,7 +5843,31 @@ if (isset($_POST['storefinder'])) {
   $message = "";
   while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $store_id = $row['store_id'];
-    $message .= '<tr class="store_rows"><td style="padding: 0px;margin: 0px;"><input type="checkbox" id="check' . $row['store_id'] . '" name="SELECT" class="sel_store" onclick="pricing(' . $row['store_id'] . "," . $product_description_id . ');$(\'.sel_store\').not(this).prop(\'checked\', false);" value="' . $row['store_id'] . '"><button id="btn' . $row['store_id'] . '" style="display: none;height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none; " class="element_cart real_btn' . $row['store_id'] . '"><i class="fa fa-check"></i> <i class="fas fa-store" ></i></button><button style="display: none;height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none; " class="element_cart load_btn' . $row['store_id'] . '"><i class="fa fa-refresh fa-spin"></i> <i class="fas fa-store" ></i></button></td><td style="background-color: white" class="view_avail_stores">' . $row['store_name'] . '</td><td style="background-color: white" class="view_avail_stores">&#8377;' . $row['price'] . '</td><td style="background-color: white" class="view_avail_stores" onclick="getLocationa();" id="c' . $store_id . '"><span onclick="$(this).hide()"><i class="fa fa-calculator"></i> Get</span></td><td><form action="https://maps.google.com/maps" method="get" target="_blank"> <input type="hidden" name="saddr" id="daddr1" value=""  /><input type="hidden" name="daddr1" value="' . $row['latitude'] . ',' . $row['longitude'] . '" /><button type="submit" style="color: white;background-color: #337ab7;border-radius: 50px;width: 20px; outline: none;"><i class="fas fa-paper-plane" style="display: flex; justify-content: center;"></i></button></form></td></tr>';
+    $message .= '<tr class="store_rows" style="border-color: black;">
+                  <td style="padding: 0px;margin: 0px;">
+                    <input type="checkbox" id="check' . $row['store_id'] . '" name="SELECT" class="sel_store" onclick="pricing(' . $row['store_id'] . "," . $product_description_id . ');$(\'.sel_store\').not(this).prop(\'checked\', false);" value="' . $row['store_id'] . '">
+                    <button id="btn' . $row['store_id'] . '" style="display: none;height: 45px;width: 100%;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none; " class="element_cart real_btn' . $row['store_id'] . '">
+                      <i class="fa fa-check"></i>
+                    </button>
+                    <button style="display: none;height: 45px;width: 100%;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;" class="element_cart load_btn' . $row['store_id'] . '">
+                      <i class="fa fa-refresh fa-spin"></i> <i class="fas fa-store" ></i>
+                    </button>
+                  </td>
+                  <td class="view_avail_stores">' . $row['store_name'] . '</td>
+                  <td class="view_avail_stores">&#8377;' . $row['price'] . '</td>
+                  <td class="view_avail_stores" onclick="getLocationa();" id="c' . $store_id . '">
+                    <span onclick="$(this).hide()"><i class="fa fa-calculator"></i> Get</span>
+                  </td>
+                  <td>
+                    <form action="https://maps.google.com/maps" method="get" target="_blank">
+                      <input type="hidden" name="saddr" id="daddr1" value=""  />
+                      <input type="hidden" name="daddr1" value="' . $row['latitude'] . ',' . $row['longitude'] . '" />
+                      <button type="submit" style="color: white;background-color: #156a53;border-radius: 50px;width: 20px; outline: none;">
+                        <i class="fas fa-directions" style="display: flex; justify-content: center;"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>';
     $status = 1;
   }
   $response['avail'] = $status;
@@ -5888,19 +5912,12 @@ if (isset($_POST['pricefinder'])) {
       ':store_id' => $_POST['store_id']
     ));
     $rowfeatures = $stmtfeatures->fetch(PDO::FETCH_ASSOC);
-    $rowfeatures['f0'] = json_decode(json_encode($rowfeatures['size'] ?? null));
-    $rowfeatures['f1'] = json_decode(json_encode($rowfeatures['color'] ?? null));
-    $rowfeatures['f2'] = json_decode(json_encode($rowfeatures['weight'] ?? null));
-    $rowfeatures['f3'] = json_decode(json_encode($rowfeatures['flavour'] ?? null));
-    $rowfeatures['f4'] = json_decode(json_encode($rowfeatures['processor'] ?? null));
-    $rowfeatures['f5'] = json_decode(json_encode($rowfeatures['display'] ?? null));
-    $rowfeatures['f6'] = json_decode(json_encode($rowfeatures['battery'] ?? null));
-    $rowfeatures['f7'] = json_decode(json_encode($rowfeatures['internal_storage'] ?? null));
-    $rowfeatures['f8'] = json_decode(json_encode($rowfeatures['brand'] ?? null));
-    $rowfeatures['f9'] = json_decode(json_encode($rowfeatures['material'] ?? null));
-    $features = array('size', 'color', 'weight', 'flavour', 'processor', 'display', 'battery', 'internal_storage', 'brand', 'material', 'price', 'quantity');
+    $rowfeatures['f0'] = $rowfeatures['size'];
+    $rowfeatures['f1'] = $rowfeatures['weight'];
+    $rowfeatures['f2'] = $rowfeatures['brand'];
+    $features = array('size', 'weight', 'brand', 'price', 'quantity');
     $f = 0;
-    while ($f < 10) {
+    while ($f < 3) {
       if (!is_null($rowfeatures['f' . $f]) && $rowfeatures['f' . $f] != 0 && $features[$f] != "0") {
         if ($features[$f] != 'weight') {
           $sqlfeature_name = "SELECT " . $features[$f] . '_name FROM ' . $features[$f] . ' WHERE ' . $features[$f] . '_id=' . (int) $rowfeatures['f' . $f];
@@ -5911,7 +5928,7 @@ if (isset($_POST['pricefinder'])) {
                       <span class="a-list-item" style="text-decoration: none;font-weight:normal;padding: 0px;font-size: 14px;">
                         <span class="a-size-small a-text-bold" style="text-decoration: none;padding: 0px;font-weight:normal;">' . ucwords($features[$f]) . ' :&nbsp; </span>';
         if ($features[$f] == "color") {
-          $message .= '<span class="a-size-small" style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:' . $rowfeature_name[$features[$f] . '_name'] . ';font-size:12px;"></span>';
+          $message .= '<span class="a-size-small" style="text-decoration: none;font-weight:normal;width: 10px;height: 0px !important;padding-right: 7px;padding-left: 7px;border: 1px solid #000;padding-top: 0px;padding-bottom: 0px;background-color:' . $rowfeature_name[$features[$f] . '_name'] . ';font-size: 12px;"></span>';
         } else if ($features[$f] == "weight") {
           $message .= '<span class="a-size-small" style="text-decoration: none;font-weight:normal;padding: 0px;">' . $rowfeatures['f2'] . '</span>';
         } else {
@@ -5949,7 +5966,30 @@ if (isset($_POST['wishlist_storefinder'])) {
   $message = "";
   while ($row = $result->fetch(PDO::FETCH_ASSOC)) {
     $store_id = $row['store_id'];
-    $message .= '<tr class="wishlist_store_rows"><td style="padding: 0px;margin: 0px;"><input type="checkbox" id="wishlist_check' . $row['store_id'] . '" name="SELECT" class="sel_store2" onclick="wishlist_pricing(' . $row['store_id'] . "," . $product_description_id . ');$(\'.sel_store2\').not(this).prop(\'checked\', false);" value="' . $row['store_id'] . '"><button id="wishlist_btn' . $row['store_id'] . '" style="display: none;height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none; "  class="element_cart2" type="button"><i class="fa fa-check"></i> <i class="fas fa-store" ></i></button><button style="display: none;height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none; " class="element_cart load_btn' . $row['store_id'] . '"><i class="fa fa-refresh fa-spin"></i> <i class="fas fa-store" ></i></button></td><td style="background-color: white" class="view_avail_stores">' . $row['store_name'] . '</td><td style="background-color: white" class="view_avail_stores">&#8377;' . $row['price'] . '</td><td style="background-color: white" onclick="getLocationb();" class="view_avail_stores" id="w' . $store_id . '"><span onclick="$(this).hide()"><i class="fa fa-calculator"></i> Get</span></td><td><form action="https://maps.google.com/maps" method="get" target="_blank"><input type="hidden" name="saddr" id="wishlist_daddr" value="" /><input type="hidden" name="daddr1" value="' . $row['latitude'] . ',' . $row['longitude'] . '"  /><button type="submit" style="color: white;background-color: #337ab7;border-radius: 50px;width: 20px; outline: none;"><i class="fas fa-paper-plane" style="display: flex; justify-content: center;"></i></button></form></td></tr>';
+    $message .= '<tr class="wishlist_store_rows" style="border-color: black;">
+                  <td style="padding: 0px;margin: 0px;">
+                    <input type="checkbox" id="wishlist_check' . $row['store_id'] . '" name="SELECT" class="sel_store2" onclick="wishlist_pricing(' . $row['store_id'] . "," . $product_description_id . ');$(\'.sel_store2\').not(this).prop(\'checked\', false);" value="' . $row['store_id'] . '">
+                    <button id="wishlist_btn' . $row['store_id'] . '" style="display: none;height: 45px;width: 45px;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none; "  class="element_cart2" type="button">
+                      <i class="fa fa-check"></i> 
+                    </button>
+                    <button style="display: none;height: 45px;width: 100%;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;" class="element_cart load_btn' . $row['store_id'] . '">
+                      <i class="fa fa-refresh fa-spin"></i> <i class="fas fa-store" ></i>
+                    </button>
+                  </td>
+                  <td class="view_avail_stores">' . $row['store_name'] . '</td>
+                  <td class="view_avail_stores">&#8377;' . $row['price'] . '</td>
+                  <td onclick="getLocationb();" class="view_avail_stores" id="w' . $store_id . '">
+                    <span onclick="$(this).hide()"><i class="fa fa-calculator"></i> Get</span>
+                  </td>
+                  <td>
+                    <form action="https://maps.google.com/maps" method="get" target="_blank"><input type="hidden" name="saddr" id="wishlist_daddr" value="" />
+                      <input type="hidden" name="daddr1" value="' . $row['latitude'] . ',' . $row['longitude'] . '"  />
+                      <button type="submit" style="color: white;background-color: #156a53;border-radius: 50px;width: 20px; outline: none;">
+                        <i class="fas fa-directions" style="display: flex; justify-content: center;"></i>
+                      </button>
+                    </form>
+                  </td>
+                </tr>';
     $status = 1;
   }
   $response['avail'] = $status;
@@ -5995,19 +6035,12 @@ if (isset($_POST['wishlist_pricefinder'])) {
       ':store_id' => $sid
     ));
     $rowfeatures = $stmtfeatures->fetch(PDO::FETCH_ASSOC);
-    $rowfeatures['f0'] = json_decode(json_encode($rowfeatures['size']) ?? null);
-    $rowfeatures['f1'] = json_decode(json_encode($rowfeatures['color']) ?? null);
-    $rowfeatures['f2'] = json_decode(json_encode($rowfeatures['weight']) ?? null);
-    $rowfeatures['f3'] = json_decode(json_encode($rowfeatures['flavour']) ?? null);
-    $rowfeatures['f4'] = json_decode(json_encode($rowfeatures['processor']) ?? null);
-    $rowfeatures['f5'] = json_decode(json_encode($rowfeatures['display']) ?? null);
-    $rowfeatures['f6'] = json_decode(json_encode($rowfeatures['battery']) ?? null);
-    $rowfeatures['f7'] = json_decode(json_encode($rowfeatures['internal_storage']) ?? null);
-    $rowfeatures['f8'] = json_decode(json_encode($rowfeatures['brand']) ?? null);
-    $rowfeatures['f9'] = json_decode(json_encode($rowfeatures['material']) ?? null);
-    $features = array('size', 'color', 'weight', 'flavour', 'processor', 'display', 'battery', 'internal_storage', 'brand', 'material', 'price', 'quantity');
+    $rowfeatures['f0'] = $rowfeatures['size'];
+    $rowfeatures['f1'] = $rowfeatures['weight'];
+    $rowfeatures['f2'] = $rowfeatures['brand'];
+    $features = array('size', 'weight', 'brand', 'price', 'quantity');
     $f = 0;
-    while ($f < 10) {
+    while ($f < 3) {
       if (!is_null($rowfeatures['f' . $f]) && $rowfeatures['f' . $f] != 0 && $features[$f] != "0") {
         if ($features[$f] != 'weight') {
           $sqlfeature_name = "SELECT " . $features[$f] . '_name FROM ' . $features[$f] . ' WHERE ' . $features[$f] . '_id=' . (int) $rowfeatures['f' . $f];
@@ -6018,7 +6051,7 @@ if (isset($_POST['wishlist_pricefinder'])) {
                       <span class="a-list-item" style="text-decoration: none;font-weight:normal;padding: 0px;font-size: 14px;">
                         <span class="a-size-small a-text-bold" style="text-decoration: none;padding: 0px;font-weight:normal;">' . ucwords($features[$f]) . ' :&nbsp; </span>';
         if ($features[$f] == "color") {
-          $message .= '<span class="a-size-small" style="text-decoration: none;font-weight:normal;width:10px;height:0px !important;padding-right: 7px;padding-left: 7px;border:1px solid #000;padding-top:0px;padding-bottom:0px;background-color:' . $rowfeature_name[$features[$f] . '_name'] . ';font-size:12px;"></span>';
+          $message .= '<span class="a-size-small" style="text-decoration: none;font-weight:normal;width: 10px;height: 0px !important;padding-right: 7px;padding-left: 7px;border: 1px solid #000;padding-top: 0px;padding-bottom: 0px;background-color:' . $rowfeature_name[$features[$f] . '_name'] . ';font-size: 12px;"></span>';
         } else if ($features[$f] == "weight") {
           $message .= '<span class="a-size-small" style="text-decoration: none;font-weight:normal;padding: 0px;">' . $rowfeatures['f2'] . '</span>';
         } else {
@@ -6269,7 +6302,7 @@ if (isset($_POST['filter_cat_a'])) {
       }
       $discount = $row['mrp'] - $row['price'];
       $dynamic_content .= "
-        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-6 offset-md-0 offset-sm-1 dynamic-content' style='height: 340px;margin:0px;padding:8px;padding-top:0px;'>
+        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-6 offset-md-0 offset-sm-1 dynamic-content' style='height: 340px;margin: 0px;padding: 8px;padding-top: 0px;'>
           <div class='flip-box'>
             <div class='flip-box-inner' >
               <div class='flip-box-front'>
@@ -6278,7 +6311,7 @@ if (isset($_POST['filter_cat_a'])) {
                     <!--NAME--><br>
                     <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
                     <!--DESCRIPTION-->
-                    <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color:#0b8a00'> View more </span></div>
+                    <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color: #0b8a00'> View more </span></div>
                     <!--RATING-->
                     <div class=' align-products-center product'> ";
       $starsql = "SELECT ROUND(AVG(product_keys.rating),0) AS avgrate FROM product_keys
@@ -6288,7 +6321,7 @@ if (isset($_POST['filter_cat_a'])) {
       $starrow = $startstmt->fetch(PDO::FETCH_ASSOC);
       $stars = round($starrow['avgrate']);
       if ($stars == "" || $stars == 0 || is_null($stars)) {
-        $dynamic_content .= "<span style='color:#ff2222'>no rating</span>";
+        $dynamic_content .= "<span style='color: #ff2222'>no rating</span>";
       } else {
         for ($i = 0; $i < 5; $i++) {
           if ($i < $stars) {
@@ -6304,9 +6337,9 @@ if (isset($_POST['filter_cat_a'])) {
                               <div class='h6 font-weight-bold' style='font-size: 12px;display: flex;justify-content: center;align-items: center;'><i class='fas fa-store'></i>
                                 <span>" . $row['store_name'] . "</span>
                               </div>
-                              <div class=' align-items-center justify-content-between pt-3 flex-column' style='position: absolute;bottom:8px;display:flex;align-items: center;justify-content: center;text-align: center;width:100%'>
+                              <div class=' align-items-center justify-content-between pt-3 flex-column' style='position: absolute;bottom: 8px;display: flex;align-items: center;justify-content: center;text-align: center;width: 100%'>
                                 <div class='h6 font-weight-bold' style='font-size: 16px;display: flex;justify-content: center;align-items: center;'>&#8377; <span>" . $row['price'] . "</span><small style='color: #0b8a00;'>&nbsp;Saves(&#8377;<span>" . $discount . " </span>)</small></div>
-                                <div class='text-muted rebate' style='font-size: 9px;display:flex;justify-content: flex-start;align-items: flex-start;'>MRP <del>&#8377; " . $row['mrp'] . "</del></div>
+                                <div class='text-muted rebate' style='font-size: 9px;display: flex;justify-content: flex-start;align-items: flex-start;'>MRP <del>&#8377; " . $row['mrp'] . "</del></div>
                               </div>
                           </div>
                         </div>
@@ -6318,7 +6351,7 @@ if (isset($_POST['filter_cat_a'])) {
                           <!--NAME-->
                           <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
                           <!--DESCRIPTION-->
-                          <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color:#0b8a00'> View more </span></div>
+                          <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color: #0b8a00'> View more </span></div>
                           <!--RATING-->
                           <div class='d-flex align-items-center product'> ";
       $starsql = "SELECT ROUND(AVG(product_keys.rating),0) AS avgrate FROM product_keys
@@ -6328,7 +6361,7 @@ if (isset($_POST['filter_cat_a'])) {
       $starrow = $startstmt->fetch(PDO::FETCH_ASSOC);
       $stars = round($starrow['avgrate']);
       if ($stars == "" || $stars == 0 || is_null($stars)) {
-        $dynamic_content .= "<span style='color:#ff2222'>no rating</span>";
+        $dynamic_content .= "<span style='color: #ff2222'>no rating</span>";
       } else {
         for ($i = 0; $i < 5; $i++) {
           if ($i < $stars) {
@@ -6340,14 +6373,14 @@ if (isset($_POST['filter_cat_a'])) {
       }
       $dynamic_content .= "</div>";
       $save = ($row['mrp'] != 0) ? round(($row['mrp'] - (int) $row['price']) / $row['mrp'] * 100) : 0;
-      $dynamic_content .= "<div class='d-flex align-items-center justify-content-between pt-3' style='margin-bottom: 5px;padding-left:0px !important'>
+      $dynamic_content .= "<div class='d-flex align-items-center justify-content-between pt-3' style='margin-bottom: 5px;padding-left: 0px !important'>
                             <!--PRICE-->
                             <div class='d-flex flex-column'  style='float: left;align-items:flex-start;justify-content: flex-start;display: flex;'>
-                              <div class='h6 font-weight-bold' style='font-size:15px;font-weight:bold;display: flex;margin-left'>&#8377; <span>" . $row['price'] . "</span><small style='color: #0b8a00;font-weight:bold'>&nbsp;(<span style='font-size:10px;'>" . $save . "%</span> off)</small></div>
+                              <div class='h6 font-weight-bold' style='font-size: 15px;font-weight: bold;display: flex;margin-left'>&#8377; <span>" . $row['price'] . "</span><small style='color: #0b8a00;font-weight: bold'>&nbsp;(<span style='font-size: 10px;'>" . $save . "%</span> off)</small></div>
                               <div class='text-muted rebate'>MRP <del>&#8377; " . $row['mrp'] . "</del></div>
                             </div>
                             <!--VIEW ITEM-->
-                            <div class='btn-pdt_pg btn-primary-pdt_pg' onclick='location.href=\"../Product/single.php?id=" . $row['product_description_id'] . "\"' alt='" . $product_name . "' style='cursor:pointer;padding: 5px;padding-top:2px;padding-bottom:2px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b8a00), color-stop(1, #006d12)) !important;'>
+                            <div class='btn-pdt_pg btn-primary-pdt_pg' onclick='location.href=\"../Product/single.php?id=" . $row['product_description_id'] . "\"' alt='" . $product_name . "' style='cursor:pointer;padding: 5px;padding-top: 2px;padding-bottom: 2px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b8a00), color-stop(1, #006d12)) !important;'>
                               View <i class='fas fa-eye '></i>
                             </div>
                           </div>
@@ -6360,7 +6393,7 @@ if (isset($_POST['filter_cat_a'])) {
                             <i style='color: #D70000;display: flex;align-items: center;justify-content: center;margin-left: 50%;' class='fas fa-cart-plus mr-2 fa-lg mr-2'></i>
                           </div>
                           <!--WISH LIST-->
-                          <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' onclick='wishlist_storefinder(" . $row['product_description_id'] . ")' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 30px;height:35px;position: absolute;top: 10px;right: 10px;justify-content: center;border-radius: 50%;background-color: #D70000;border-color: #D70000'>
+                          <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' onclick='wishlist_storefinder(" . $row['product_description_id'] . ")' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 30px;height: 35px;position: absolute;top: 10px;right: 10px;justify-content: center;border-radius: 50%;background-color: #D70000;border-color: #D70000'>
                             <i style='color: #ffffff;display: flex;align-items: center;justify-content: center;margin-left: 50%;font-size: 16px' class='fas fa-heart mr-2'></i>
                           </div>
                         </div>
@@ -6527,7 +6560,7 @@ if (isset($_POST['filter_cat_a'])) {
   $records = $pdo->query($sql);
   $totalRecords = $records->rowCount();
   $totalPage = ceil($totalRecords / $limit);
-  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom:0px;right:0px;'><ul class='pagination justify-content-center' style='margin:0px 0'>";
+  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom: 0px;right: 0px;'><ul class='pagination justify-content-center' style='margin: 0px 0'>";
   if ($page_no <= $totalPage && $page_no > 1) {
     $prev = $page_no - 1;
     $output .= "<li class='page-item'><a  class='page-link' id='$prev' href=''>Prev</a></li>";
@@ -6557,7 +6590,7 @@ if (isset($_POST['filter_cat_a'])) {
 
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width: 100%;justify-content: center;max-width: 300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -6780,7 +6813,7 @@ if (isset($_POST['filter_cat_b'])) {
         $description2 = $row['description'] . "... ";
       }
       $discount = $row['mrp'] - $row['price'];
-      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">';
+      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin: 0px;padding: 8px;padding-bottom: 0px;padding-top: 0px;">';
       $query = "SELECT size,weight,brand FROM product_details
                 JOIN product_description ON product_details.product_description_id=product_description.product_description_id
                 JOIN product ON product.product_id=product_description.product_id
@@ -6793,27 +6826,27 @@ if (isset($_POST['filter_cat_b'])) {
       ));
       $row_feature = $statement->fetch(PDO::FETCH_ASSOC);
       $dynamic_content .= '
-        <div class="order-single" style="margin: 0;padding: 0;background-color: #151515;width:100%;height:100%;border-bottom: 1px solid #666;">
+        <div class="order-single" style="margin: 0;padding: 0;background-color: #151515;width: 100%;height: 100%;border-bottom: 1px solid #666;">
           <div class="col-sm-3 col-xs-3" style="background-color: #151515" onclick=\'location.href="' . getBaseURL() . 'customer/Product/single.php?id=' . $row['product_description_id'] . '"\'>
             <table>
-              <tr style="padding-bottom:30px;"></tr>
+              <tr style="padding-bottom: 30px;"></tr>
               <tr>
                 <td>
                   <div style="height: 70px;width: 100%">
-                    <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="' . getImageURL() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
+                    <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top: 30px " class="img-responsive" src="' . getImageURL() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
                   </div>
                 </td>
               </tr>
             </table>
           </div>
-          <div class="col-sm-9 col-xs-9" style="padding:0px;">
-            <table width="100%" style="padding:0px;margin:0px;">
-              <tr><td><div style="width: 100%;text-align: left;color: darkgrey;font-weight:bold;font-size:20px;padding-top:30px">' . $row['product_name'] . '</div></td></tr>
+          <div class="col-sm-9 col-xs-9" style="padding: 0px;">
+            <table width="100%" style="padding: 0px;margin: 0px;">
+              <tr><td><div style="width: 100%;text-align: left;color: darkgrey;font-weight: bold;font-size: 20px;padding-top: 30px">' . $row['product_name'] . '</div></td></tr>
             </table>
-            <div class="col-sm-12 col-xs-12" style="padding:0px;">
-              <div class="col-sm-7 col-xs-7" style="min-height:200px;padding:0;">
-                <table width="100%" style="padding:0px;margin:0px;">
-                  <tr  style="padding-top:10px;"><td colspan="2"><div style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size:14px;padding-top:30px;padding-bottom:10px"></div></td> </tr>';
+            <div class="col-sm-12 col-xs-12" style="padding: 0px;">
+              <div class="col-sm-7 col-xs-7" style="min-height: 200px;padding: 0;">
+                <table width="100%" style="padding: 0px;margin: 0px;">
+                  <tr  style="padding-top: 10px;"><td colspan="2"><div style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size: 14px;padding-top: 30px;padding-bottom: 10px"></div></td> </tr>';
       if ($row_feature['size'] != 0) {
         $query1 = "SELECT * FROM size WHERE size_id=" . $row_feature['size'];
         $st1 = $pdo->query($query1);
@@ -6854,7 +6887,7 @@ if (isset($_POST['filter_cat_b'])) {
                 </table>
               </div>
               <div class="col-sm-5 col-xs-5">
-                <table width="100%" style="padding:0px;margin:0px;">';
+                <table width="100%" style="padding: 0px;margin: 0px;">';
       $save = ($row['mrp'] != 0) ? round(($row['mrp'] - (int) $row['price']) / $row['mrp'] * 100) : 0;
       $dynamic_content .= '
                   <tr>
@@ -6863,10 +6896,10 @@ if (isset($_POST['filter_cat_b'])) {
                     </td>
                   </tr>
                   <tr class="div-wrapper dw">
-                    <td class="cust_details" style="font-size:24px;font-weight:bold" align="right"><i class=\'fa fa-rupee-sign\'></i>' . $row['price'] . ' </td>
+                    <td class="cust_details" style="font-size: 24px;font-weight: bold" align="right"><i class=\'fa fa-rupee-sign\'></i>' . $row['price'] . ' </td>
                   </tr>
                   <tr>
-                    <td class="cust_details" style="font-size:14px;font-weight:normal" align="right"><del><i class=\'fa fa-rupee-sign\'></i> ' . $row['mrp'] . '</del> <span style="color: #119904;font-weight:bold">' . $save . '% off</span></td>
+                    <td class="cust_details" style="font-size: 14px;font-weight:normal" align="right"><del><i class=\'fa fa-rupee-sign\'></i> ' . $row['mrp'] . '</del> <span style="color: #119904;font-weight: bold">' . $save . '% off</span></td>
                   </tr>
                 </table>
               </div>
@@ -7033,7 +7066,7 @@ if (isset($_POST['filter_cat_b'])) {
   $records = $pdo->query($sql);
   $totalRecords = $records->rowCount();
   $totalPage = ceil($totalRecords / $limit);
-  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom:0px;right:0px;'><ul class='pagination justify-content-center' style='margin:0px 0'>";
+  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom: 0px;right: 0px;'><ul class='pagination justify-content-center' style='margin: 0px 0'>";
   if ($page_no <= $totalPage && $page_no > 1) {
     $prev = $page_no - 1;
     $output .= "<li class='page-item'><a  class='page-link' id='$prev' href=''>Prev</a></li>";
@@ -7064,7 +7097,7 @@ if (isset($_POST['filter_cat_b'])) {
   // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width: 100%;justify-content: center;max-width: 300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -7242,7 +7275,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
         $description2 = $row['description'] . "... ";
       }
       $discount = $row['mrp'] - $row['price'];
-      $dynamic_content .= "<div class='col-lg-3 col-md-4 col-sm-4 col-xs-6 offset-md-0 offset-sm-1 dynamic-content' style='height: 340px;margin:0px;padding:8px;padding-top:0px;'>
+      $dynamic_content .= "<div class='col-lg-3 col-md-4 col-sm-4 col-xs-6 offset-md-0 offset-sm-1 dynamic-content' style='height: 340px;margin: 0px;padding: 8px;padding-top: 0px;'>
             <div class='flip-box'>
               <div class='flip-box-inner' >
                 <div class='flip-box-front'>
@@ -7251,7 +7284,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
                       <!--NAME--><br>
                       <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
                       <!--DESCRIPTION-->
-                      <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color:#0b8a00'> View more </span></div>
+                      <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color: #0b8a00'> View more </span></div>
                       <!--RATING-->
                       <div class=' align-items-center product'> ";
       $starsql = "SELECT ROUND(AVG(product_keys.rating),0) AS avgrate FROM product_keys
@@ -7261,7 +7294,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
       $starrow = $startstmt->fetch(PDO::FETCH_ASSOC);
       $stars = round($starrow['avgrate']);
       if ($stars == "" || $stars == 0 || is_null($stars)) {
-        $dynamic_content .= "<span style='color:#ff2222'>no rating</span>";
+        $dynamic_content .= "<span style='color: #ff2222'>no rating</span>";
       } else {
         for ($i = 0; $i < 5; $i++) {
           if ($i < $stars) {
@@ -7278,9 +7311,9 @@ if (isset($_POST['filter_sub_cat_a'])) {
                             <div class='h6 font-weight-bold' style='font-size: 12px;display: flex;justify-content: center;align-items: center;'><i class='fas fa-store'></i>
                                 <span>" . $row['store_name'] . "</span>
                             </div>
-                            <div class=' align-items-center justify-content-between pt-3 flex-column' style='position: absolute;bottom:8px;display:flex;align-items: center;justify-content: center;text-align: center;width:100%'>
+                            <div class=' align-items-center justify-content-between pt-3 flex-column' style='position: absolute;bottom: 8px;display: flex;align-items: center;justify-content: center;text-align: center;width: 100%'>
                                 <div class='h6 font-weight-bold' style='font-size: 16px;display: flex;justify-content: center;align-items: center;'>&#8377; <span>" . $row['price'] . "</span><small style='color: #0b8a00;'>&nbsp;Saves(&#8377;<span>" . $discount . " </span>)</small></div>
-                                <div class='text-muted rebate' style='font-size: 9px;display:flex;justify-content: flex-start;align-items: flex-start;'>MRP <del>&#8377; " . $row['mrp'] . "</del></div>
+                                <div class='text-muted rebate' style='font-size: 9px;display: flex;justify-content: flex-start;align-items: flex-start;'>MRP <del>&#8377; " . $row['mrp'] . "</del></div>
                             </div>
                           </div>
                         </div>
@@ -7292,7 +7325,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
                           <!--NAME-->
                           <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
                           <!--DESCRIPTION-->
-                          <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color:#0b8a00'> View more </span></div>
+                          <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color: #0b8a00'> View more </span></div>
                           <!--RATING-->
                           <div class='d-flex align-items-center product'> ";
       $starsql = "SELECT ROUND(AVG(product_keys.rating),0) AS avgrate FROM product_keys
@@ -7302,7 +7335,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
       $starrow = $startstmt->fetch(PDO::FETCH_ASSOC);
       $stars = round($starrow['avgrate']);
       if ($stars == "" || $stars == 0 || is_null($stars)) {
-        $dynamic_content .= "<span style='color:#ff2222'>no rating</span>";
+        $dynamic_content .= "<span style='color: #ff2222'>no rating</span>";
       } else {
         for ($i = 0; $i < 5; $i++) {
           if ($i < $stars) {
@@ -7315,27 +7348,27 @@ if (isset($_POST['filter_sub_cat_a'])) {
       $dynamic_content .= "</div>";
       $save = round(($row['mrp'] - (int) $row['price']) / $row['mrp'] * 100);
       $dynamic_content .= "
-                  <div class='d-flex align-items-center justify-content-between pt-3' style='margin-bottom: 5px;padding-left:0px !important'>
+                  <div class='d-flex align-items-center justify-content-between pt-3' style='margin-bottom: 5px;padding-left: 0px !important'>
                       <!--PRICE-->
                       <div class='d-flex flex-column'  style='float: left;align-items:flex-start;justify-content: flex-start;display: flex;'>
-                        <div class='h6 font-weight-bold' style='font-size:15px;font-weight:bold;display: flex;margin-left'>&#8377; <span>" . $row['price'] . "</span><small style='color: #0b8a00;font-weight:bold'>&nbsp;(<span style='font-size:10px;'>" . $save . "%</span> off)</small></div>
+                        <div class='h6 font-weight-bold' style='font-size: 15px;font-weight: bold;display: flex;margin-left'>&#8377; <span>" . $row['price'] . "</span><small style='color: #0b8a00;font-weight: bold'>&nbsp;(<span style='font-size: 10px;'>" . $save . "%</span> off)</small></div>
                         <div class='text-muted rebate'>MRP <del>&#8377; " . $row['mrp'] . "</del></div>
                       </div>
                       <!--VIEW ITEM-->
-                      <div class='btn-pdt_pg btn-primary-pdt_pg' onclick='location.href=\"../Product/single.php?id=" . $row['product_description_id'] . "\"' alt='" . $product_name . "' style='cursor:pointer;padding: 5px;padding-top:2px;padding-bottom:2px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b8a00), color-stop(1, #006d12)) !important;'>
+                      <div class='btn-pdt_pg btn-primary-pdt_pg' onclick='location.href=\"../Product/single.php?id=" . $row['product_description_id'] . "\"' alt='" . $product_name . "' style='cursor:pointer;padding: 5px;padding-top: 2px;padding-bottom: 2px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b8a00), color-stop(1, #006d12)) !important;'>
                         View <i class='fas fa-eye '></i>
                       </div>
                   </div>
                   <!--ADD TO CART-->
-                  <div class='btn btn-primary btn-lg ' onclick='storefinder(" . $row['product_description_id'] . ")'  type='button' name='submit' data-toggle='modal' data-target='#avail_stores' style='width: 96%;border-radius: 4px;bottom:5px;left:5px;position: absolute;padding: 3px 12px;background-color: #28a745'>
+                  <div class='btn btn-primary btn-lg ' onclick='storefinder(" . $row['product_description_id'] . ")'  type='button' name='submit' data-toggle='modal' data-target='#avail_stores' style='width: 96%;border-radius: 4px;bottom: 5px;left: 5px;position: absolute;padding: 3px 12px;background-color: #28a745'>
                     <i class='fas fa-plus mr-2'></i> Add to Cart
                   </div>
                   <!--CART ICON-->
-                  <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 38px;height:38px;position: absolute;justify-content: center;border-radius: 50%;bottom:25px;left:5px;'>
+                  <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 38px;height: 38px;position: absolute;justify-content: center;border-radius: 50%;bottom: 25px;left: 5px;'>
                     <i style='color: #D70000;display: flex;align-items: center;justify-content: center;margin-left: 50%;' class='fas fa-cart-plus mr-2 fa-lg mr-2'></i>
                   </div>
                   <!--WISH LIST-->
-                  <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' onclick='wishlist_storefinder(" . $row['product_description_id'] . ")' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 30px;height:35px;position: absolute;top: 10px;right: 10px;justify-content: center;border-radius: 50%;background-color: #D70000;border-color: #D70000'>
+                  <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' onclick='wishlist_storefinder(" . $row['product_description_id'] . ")' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 30px;height: 35px;position: absolute;top: 10px;right: 10px;justify-content: center;border-radius: 50%;background-color: #D70000;border-color: #D70000'>
                     <i style='color: #ffffff ;display: flex;align-items: center;justify-content: center;margin-left: 50%;font-size: 16px' class='fas fa-heart mr-2'></i>
                   </div>
                 </div>
@@ -7428,7 +7461,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
   $records = $pdo->query($sql);
   $totalRecords = $records->rowCount();
   $totalPage = ceil($totalRecords / $limit);
-  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom:0px;right:0px;'><ul class='pagination justify-content-center' style='margin:0px 0'>";
+  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom: 0px;right: 0px;'><ul class='pagination justify-content-center' style='margin: 0px 0'>";
   if ($page_no <= $totalPage && $page_no > 1) {
     $prev = $page_no - 1;
     $output .= "<li class='page-item'><a  class='page-link' id='$prev' href=''>Prev</a></li>";
@@ -7459,7 +7492,7 @@ if (isset($_POST['filter_sub_cat_a'])) {
   //------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width: 100%;justify-content: center;max-width: 300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -7622,7 +7655,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
         $description2 = $row['description'] . "... ";
       }
       $discount = $row['mrp'] - $row['price'];
-      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">';
+      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin: 0px;padding: 8px;padding-bottom: 0px;padding-top: 0px;">';
       $query = "SELECT size,weight,brand FROM product_details
       JOIN product_description ON product_details.product_description_id=product_description.product_description_id
       JOIN product ON product.product_id=product_description.product_id
@@ -7635,29 +7668,29 @@ if (isset($_POST['filter_sub_cat_b'])) {
       ));
       $row_feature = $statement->fetch(PDO::FETCH_ASSOC);
       $dynamic_content .= '
-        <div class="order-single" style="margin:0;padding:0;background-color: #151515;width: 100%;height: 100%;border-bottom: 1px solid #666;">
+        <div class="order-single" style="margin: 0;padding: 0;background-color: #151515;width: 100%;height: 100%;border-bottom: 1px solid #666;">
           <div class="col-sm-3 col-xs-3" style="background-color: #151515" onclick=\'location.href="' . getBaseURL() . 'customer/Product/single.php?id=' . $row['product_description_id'] . '"\'>
             <table>
-              <tr style="padding-bottom:30px;"></tr>
+              <tr style="padding-bottom: 30px;"></tr>
               <tr>
                   <td>
                       <div style="height: 70px;width: 100%">
-                          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="' . getImageURL() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
+                          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top: 30px " class="img-responsive" src="' . getImageURL() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
                       </div>
                   </td>
               </tr>
             </table>
           </div>
-          <div class="col-sm-9 col-xs-9" style="padding:0px;">
+          <div class="col-sm-9 col-xs-9" style="padding: 0px;">
             <table >
-              <tr><td><div style="width: 100%;text-align: left;color: darkgrey;font-weight:bold;font-size:20px;padding-top:30px">' . $row['product_name'] . '</div></td></tr>
+              <tr><td><div style="width: 100%;text-align: left;color: darkgrey;font-weight: bold;font-size: 20px;padding-top: 30px">' . $row['product_name'] . '</div></td></tr>
             </table>
-            <div class="col-sm-12 col-xs-12" style="padding:0px;">
-              <div class="col-sm-7 col-xs-7" style="min-height:200px;padding:0;">
-                <table width="100%" style="padding:0px;margin:0px;">
-                  <tr  style="padding-top:10px;">
+            <div class="col-sm-12 col-xs-12" style="padding: 0px;">
+              <div class="col-sm-7 col-xs-7" style="min-height: 200px;padding: 0;">
+                <table width="100%" style="padding: 0px;margin: 0px;">
+                  <tr  style="padding-top: 10px;">
                     <td colspan="2">
-                      <div style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size:14px;padding-top:30px;padding-bottom:10px"></div>
+                      <div style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size: 14px;padding-top: 30px;padding-bottom: 10px"></div>
                     </td>
                   </tr>';
       if ($row_feature['size'] != 0) {
@@ -7706,7 +7739,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
                 </table>
               </div>
               <div class="col-sm-5 col-xs-5">
-                <table width="100%" style="padding:0px;margin:0px;">';
+                <table width="100%" style="padding: 0px;margin: 0px;">';
       $save = ($row['mrp'] != 0) ? round(($row['mrp'] - (int) $row['price']) / $row['mrp'] * 100) : 0;
       $dynamic_content .= '
                   <tr>
@@ -7715,10 +7748,10 @@ if (isset($_POST['filter_sub_cat_b'])) {
                     </td>
                   </tr>
                   <tr class="div-wrapper dw">
-                    <td class="cust_details" style="font-size:24px;font-weight:bold" align="right"><i class=\'fa fa-rupee-sign\'></i>' . $row['price'] . ' </td>
+                    <td class="cust_details" style="font-size: 24px;font-weight: bold" align="right"><i class=\'fa fa-rupee-sign\'></i>' . $row['price'] . ' </td>
                   </tr>
                   <tr>
-                    <td class="cust_details" style="font-size:14px;font-weight:normal" align="right"><del><i class=\'fa fa-rupee-sign\'></i> ' . $row['mrp'] . '</del> <span style="color: #119904;font-weight:bold">' . $save . '% off</span></td>
+                    <td class="cust_details" style="font-size: 14px;font-weight:normal" align="right"><del><i class=\'fa fa-rupee-sign\'></i> ' . $row['mrp'] . '</del> <span style="color: #119904;font-weight: bold">' . $save . '% off</span></td>
                   </tr>
                 </table>
               </div>
@@ -7810,7 +7843,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
   $records = $pdo->query($sql);
   $totalRecords = $records->rowCount();
   $totalPage = ceil($totalRecords / $limit);
-  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom:0px;right:0px;'><ul class='pagination justify-content-center' style='margin:0px 0'>";
+  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom: 0px;right: 0px;'><ul class='pagination justify-content-center' style='margin: 0px 0'>";
   if ($page_no <= $totalPage && $page_no > 1) {
     $prev = $page_no - 1;
     $output .= "<li class='page-item'><a  class='page-link' id='$prev' href=''>Prev</a></li>";
@@ -7841,7 +7874,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
   // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width: 100%;justify-content: center;max-width: 300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -8023,7 +8056,7 @@ if (isset($_POST['filter_item_a'])) {
       }
       $discount = $row['mrp'] - $row['price'];
       $dynamic_content .= "
-        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-6 offset-md-0 offset-sm-1 dynamic-content' style='height: 340px;margin:0px;padding:8px;padding-top:0px;'>
+        <div class='col-lg-3 col-md-4 col-sm-4 col-xs-6 offset-md-0 offset-sm-1 dynamic-content' style='height: 340px;margin: 0px;padding: 8px;padding-top: 0px;'>
           <div class='flip-box'>
             <div class='flip-box-inner' >
               <div class='flip-box-front'>
@@ -8032,7 +8065,7 @@ if (isset($_POST['filter_item_a'])) {
                     <!--NAME--><br>
                     <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
                     <!--DESCRIPTION-->
-                    <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color:#0b8a00'> View more </span></div>
+                    <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color: #0b8a00'> View more </span></div>
                     <!--RATING-->
                     <div class=' align-items-center product'> ";
       $starsql = "SELECT ROUND(AVG(product_keys.rating),0) AS avgrate FROM product_keys
@@ -8042,7 +8075,7 @@ if (isset($_POST['filter_item_a'])) {
       $starrow = $startstmt->fetch(PDO::FETCH_ASSOC);
       $stars = round($starrow['avgrate']);
       if ($stars == "" || $stars == 0 || is_null($stars)) {
-        $dynamic_content .= "<span style='color:#ff2222'>no rating</span>";
+        $dynamic_content .= "<span style='color: #ff2222'>no rating</span>";
       } else {
         for ($i = 0; $i < 5; $i++) {
           if ($i < $stars) {
@@ -8058,9 +8091,9 @@ if (isset($_POST['filter_item_a'])) {
                             <div class='h6 font-weight-bold' style='font-size: 12px;display: flex;justify-content: center;align-items: center;'><i class='fas fa-store'></i>
                                 <span>" . $row['store_name'] . "</span>
                             </div>
-                            <div class=' align-items-center justify-content-between pt-3 flex-column' style='position: absolute;bottom:8px;display:flex;align-items: center;justify-content: center;text-align: center;width:100%'>
+                            <div class=' align-items-center justify-content-between pt-3 flex-column' style='position: absolute;bottom: 8px;display: flex;align-items: center;justify-content: center;text-align: center;width: 100%'>
                               <div class='h6 font-weight-bold' style='font-size: 16px;display: flex;justify-content: center;align-items: center;'>&#8377; <span>" . $row['price'] . "</span><small style='color: #0b8a00;'>&nbsp;Saves(&#8377;<span>" . $discount . " </span>)</small></div>
-                              <div class='text-muted rebate' style='font-size: 9px;display:flex;justify-content: flex-start;align-items: flex-start;'>MRP <del>&#8377; " . $row['mrp'] . "</del></div>
+                              <div class='text-muted rebate' style='font-size: 9px;display: flex;justify-content: flex-start;align-items: flex-start;'>MRP <del>&#8377; " . $row['mrp'] . "</del></div>
                             </div>
                           </div>
                         </div>
@@ -8072,7 +8105,7 @@ if (isset($_POST['filter_item_a'])) {
                             <!--NAME-->
                             <h6 class='font-weight-bold pt-1'><center>" . $product_name . "</center></h6>
                             <!--DESCRIPTION-->
-                            <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color:#0b8a00'> View more </span></div>
+                            <div class='text-muted description' style='font-size: 10px;'>" . $description2 . "<span style='color: #0b8a00'> View more </span></div>
                             <!--RATING-->
                             <div class='d-flex align-items-center product'> ";
       $starsql = "SELECT ROUND(AVG(product_keys.rating),0) AS avgrate FROM product_keys
@@ -8082,7 +8115,7 @@ if (isset($_POST['filter_item_a'])) {
       $starrow = $startstmt->fetch(PDO::FETCH_ASSOC);
       $stars = round($starrow['avgrate']);
       if ($stars == "" || $stars == 0 || is_null($stars)) {
-        $dynamic_content .= "<span style='color:#ff2222'>no rating</span>";
+        $dynamic_content .= "<span style='color: #ff2222'>no rating</span>";
       } else {
         for ($i = 0; $i < 5; $i++) {
           if ($i < $stars) {
@@ -8094,27 +8127,27 @@ if (isset($_POST['filter_item_a'])) {
       }
       $dynamic_content .= "</div>";
       $save = round(($row['mrp'] - (int) $row['price']) / $row['mrp'] * 100);
-      $dynamic_content .= "<div class='d-flex align-items-center justify-content-between pt-3' style='margin-bottom: 5px;padding-left:0px !important'>
+      $dynamic_content .= "<div class='d-flex align-items-center justify-content-between pt-3' style='margin-bottom: 5px;padding-left: 0px !important'>
                               <!--PRICE-->
                               <div class='d-flex flex-column'  style='float: left;align-items:flex-start;justify-content: flex-start;display: flex;'>
-                                <div class='h6 font-weight-bold' style='font-size:15px;font-weight:bold;display: flex;margin-left'>&#8377; <span>" . $row['price'] . "</span><small style='color: #0b8a00;font-weight:bold'>&nbsp;(<span style='font-size:10px;'>" . $save . "%</span> off)</small></div>
+                                <div class='h6 font-weight-bold' style='font-size: 15px;font-weight: bold;display: flex;margin-left'>&#8377; <span>" . $row['price'] . "</span><small style='color: #0b8a00;font-weight: bold'>&nbsp;(<span style='font-size: 10px;'>" . $save . "%</span> off)</small></div>
                                 <div class='text-muted rebate'>MRP <del>&#8377; " . $row['mrp'] . "</del></div>
                               </div>
                               <!--VIEW ITEM-->
-                              <div class='btn-pdt_pg btn-primary-pdt_pg' onclick='location.href=\"../Product/single.php?id=" . $row['product_description_id'] . "\"' alt='" . $product_name . "' style='cursor:pointer;padding: 5px;padding-top:2px;padding-bottom:2px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b8a00), color-stop(1, #006d12)) !important;'>
+                              <div class='btn-pdt_pg btn-primary-pdt_pg' onclick='location.href=\"../Product/single.php?id=" . $row['product_description_id'] . "\"' alt='" . $product_name . "' style='cursor:pointer;padding: 5px;padding-top: 2px;padding-bottom: 2px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b8a00), color-stop(1, #006d12)) !important;'>
                                 View <i class='fas fa-eye '></i>
                               </div>
                             </div>
                             <!--ADD TO CART-->
-                            <div class='btn btn-primary btn-lg ' onclick='storefinder(" . $row['product_description_id'] . ")'  type='button' name='submit' data-toggle='modal' data-target='#avail_stores' style='width: 96%;border-radius: 4px;bottom:5px;left:5px;position: absolute;padding: 3px 12px;background-color: #28a745'>
+                            <div class='btn btn-primary btn-lg ' onclick='storefinder(" . $row['product_description_id'] . ")'  type='button' name='submit' data-toggle='modal' data-target='#avail_stores' style='width: 96%;border-radius: 4px;bottom: 5px;left: 5px;position: absolute;padding: 3px 12px;background-color: #28a745'>
                               <i class='fas fa-plus mr-2'></i> Add to Cart
                             </div>
                             <!--CART ICON-->
-                            <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 38px;height:38px;position: absolute;justify-content: center;border-radius: 50%;bottom:25px;left:5px;'>
+                            <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 38px;height: 38px;position: absolute;justify-content: center;border-radius: 50%;bottom: 25px;left: 5px;'>
                               <i style='color: #D70000;display: flex;align-items: center;justify-content: center;margin-left: 50%;' class='fas fa-cart-plus mr-2 fa-lg mr-2'></i>
                             </div>
                             <!--WISH LIST-->
-                            <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' onclick='wishlist_storefinder(" . $row['product_description_id'] . ")' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 30px;height:35px;position: absolute;top: 10px;right: 10px;justify-content: center;border-radius: 50%;background-color: #D70000;border-color: #D70000'>
+                            <div class='btn btn-default btn-lg btn-flat' type='button' name='submit' onclick='wishlist_storefinder(" . $row['product_description_id'] . ")' data-toggle='modal' data-target='#avail_stores_wishlist' style='width: 30px;height: 35px;position: absolute;top: 10px;right: 10px;justify-content: center;border-radius: 50%;background-color: #D70000;border-color: #D70000'>
                               <i style='color: #ffffff ;display: flex;align-items: center;justify-content: center;margin-left: 50%;font-size: 16px' class='fas fa-heart mr-2'></i>
                             </div>
                         </div>
@@ -8207,7 +8240,7 @@ if (isset($_POST['filter_item_a'])) {
   $records = $pdo->query($sql);
   $totalRecords = $records->rowCount();
   $totalPage = ceil($totalRecords / $limit);
-  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom:0px;right:0px;'><ul class='pagination justify-content-center' style='margin:0px 0'>";
+  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom: 0px;right: 0px;'><ul class='pagination justify-content-center' style='margin: 0px 0'>";
   //echo $totalPage;
   if ($page_no <= $totalPage && $page_no >= 2) {
     $prev = $page_no - 1;
@@ -8239,7 +8272,7 @@ if (isset($_POST['filter_item_a'])) {
   //------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width: 100%;justify-content: center;max-width: 300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -8422,7 +8455,7 @@ if (isset($_POST['filter_item_b'])) {
         $description2 = $row['description'] . "... ";
       }
       $discount = $row['mrp'] - $row['price'];
-      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">';
+      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin: 0px;padding: 8px;padding-bottom: 0px;padding-top: 0px;">';
       $query = "SELECT size,weight,brand FROM product_details
                 JOIN product_description ON product_details.product_description_id=product_description.product_description_id
                 JOIN product ON product.product_id=product_description.product_id
@@ -8437,24 +8470,24 @@ if (isset($_POST['filter_item_b'])) {
       $dynamic_content .= '<div class="order-single" style="margin: 0;padding: 0;background-color: #151515;width: 100%;height: 100%;border-bottom: 1px solid #666;">
 <div class="col-sm-3 col-xs-3" style="background-color: #151515" onclick=\'location.href="' . getBaseURL() . 'customer/Product/single.php?id=' . $row['product_description_id'] . '"\'>
   <table>
-    <tr style="padding-bottom:30px;"></tr>
+    <tr style="padding-bottom: 30px;"></tr>
     <tr>
       <td>
         <div style="height: 70px;width: 100%">
-          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top:30px " class="img-responsive" src="' . getImageURL() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
+          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top: 30px " class="img-responsive" src="' . getImageURL() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
         </div>
       </td>
     </tr>
   </table>
 </div>
-<div class="col-sm-9 col-xs-9" style="padding:0px;">
+<div class="col-sm-9 col-xs-9" style="padding: 0px;">
   <table >
-    <tr><td><div style="width: 100%;text-align: left;color: darkgrey;font-weight:bold;font-size:20px;padding-top:30px">' . $row['product_name'] . '</div></td></tr>
+    <tr><td><div style="width: 100%;text-align: left;color: darkgrey;font-weight: bold;font-size: 20px;padding-top: 30px">' . $row['product_name'] . '</div></td></tr>
   </table>
-  <div class="col-sm-12 col-xs-12" style="padding:0px;">
-  <div class="col-sm-7 col-xs-7" style="min-height:200px;padding:0;">
-    <table width="100%" style="padding:0px;margin:0px;">
-      <tr  style="padding-top:10px;"><td colspan="2"><div style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size:14px;padding-top:30px;padding-bottom:10px"></div></td> </tr>';
+  <div class="col-sm-12 col-xs-12" style="padding: 0px;">
+  <div class="col-sm-7 col-xs-7" style="min-height: 200px;padding: 0;">
+    <table width="100%" style="padding: 0px;margin: 0px;">
+      <tr  style="padding-top: 10px;"><td colspan="2"><div style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size: 14px;padding-top: 30px;padding-bottom: 10px"></div></td> </tr>';
       if ($row_feature['size'] != 0) {
         $query1 = "SELECT * FROM size WHERE size_id=" . $row_feature['size'];
         $st1 = $pdo->query($query1);
@@ -8497,7 +8530,7 @@ if (isset($_POST['filter_item_b'])) {
   </table>
 </div>
 <div class="col-sm-5 col-xs-5">
-  <table width="100%" style="padding:0px;margin:0px;">';
+  <table width="100%" style="padding: 0px;margin: 0px;">';
       $save = ($row['mrp'] != 0) ? round(($row['mrp'] - (int) $row['price']) / $row['mrp'] * 100) : 0;
       $dynamic_content .= '<tr>
         <td align="right">
@@ -8505,8 +8538,8 @@ if (isset($_POST['filter_item_b'])) {
             </td>
     </tr>
     <tr class="div-wrapper dw">
-      <td class="cust_details" style="font-size:24px;font-weight:bold" align="right"><i class=\'fa fa-rupee-sign\'></i>' . $row['price'] . ' </td></tr>
-      <td class="cust_details" style="font-size:14px;font-weight:normal" align="right"><del><i class=\'fa fa-rupee-sign\'></i> ' . $row['mrp'] . '</del> <span style="color: #119904;font-weight:bold">' . $save . '% off</span></td>
+      <td class="cust_details" style="font-size: 24px;font-weight: bold" align="right"><i class=\'fa fa-rupee-sign\'></i>' . $row['price'] . ' </td></tr>
+      <td class="cust_details" style="font-size: 14px;font-weight:normal" align="right"><del><i class=\'fa fa-rupee-sign\'></i> ' . $row['mrp'] . '</del> <span style="color: #119904;font-weight: bold">' . $save . '% off</span></td>
     </tr>
   </table>
 </div>
@@ -8598,7 +8631,7 @@ if (isset($_POST['filter_item_b'])) {
   $records = $pdo->query($sql);
   $totalRecords = $records->rowCount();
   $totalPage = ceil($totalRecords / $limit);
-  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom:0px;right:0px;'><ul class='pagination justify-content-center' style='margin:0px 0'>";
+  $output = "<div class='container'><div class='col-12'><nav class='numbering' style='position:relative;bottom: 0px;right: 0px;'><ul class='pagination justify-content-center' style='margin: 0px 0'>";
   if ($page_no <= $totalPage && $page_no > 1) {
     $prev = $page_no - 1;
     $output .= "<li class='page-item'><a  class='page-link' id='$prev' href=''>Prev</a></li>";
@@ -8629,7 +8662,7 @@ if (isset($_POST['filter_item_b'])) {
   // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //$response['pages']=$output;
   if ($dynamic_content == "" || is_null($dynamic_content)) {
-    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $dynamic_content .= '<center><img src="' . getImageURL() . 'images/logo/no-order-found.png" style="width: 100%;justify-content: center;max-width: 300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
@@ -8674,9 +8707,9 @@ if (isset($_POST['customer_rated']) && $_POST['customer_rated'] == 1) {
   $customer_date_of_review = $myreviewrow['date'];
   $customer_firstletter = substr($customer_firstnm, 0, 1);
   $add_data = "";
-  $add_data .= ' <section id="customer_reviewed_already" style="margin-top:20px;">
+  $add_data .= ' <section id="customer_reviewed_already" style="margin-top: 20px;">
     <div class="div-wrapper" style="width:max-content">
-    <div style="height:20px;width:20px;border-radius:50%;background-color: ' . $bgcolor[$rancolor1] . ';display:flex;align-items:center;justify-content:center;color: ' . $c1 . '">' . $customer_firstletter . '</div>
+    <div style="height: 20px;width: 20px;border-radius: 50%;background-color: ' . $bgcolor[$rancolor1] . ';display: flex;align-items:center;justify-content:center;color: ' . $c1 . '">' . $customer_firstletter . '</div>
     <p>' . $customer_firstnm . " " . $customer_lastnm . '</p>
     </div>
     <div class="div-wrapper" style="width:max-content">';
@@ -8715,8 +8748,8 @@ if (isset($_POST['edit_customer_rated']) && $_POST['edit_customer_rated'] == 1) 
   $review = $checkbuy['review'];
   $update_data = "";
   $update_data .= '
-  <div id="editoraddreview" style="margin:0;padding:0;">
-    <h3 style="margin-top:20px;">Edit your review</h3>
+  <div id="editoraddreview" style="margin: 0;padding: 0;">
+    <h3 style="margin-top: 20px;">Edit your review</h3>
     <div class="rate">';
   for ($i = 5; $i > 0; $i--) {
     if ($i == $rating) {
@@ -8730,7 +8763,7 @@ if (isset($_POST['edit_customer_rated']) && $_POST['edit_customer_rated'] == 1) 
   $update_data .= '
     </div>
     <div class="clearfix"></div>
-    <label class="form-label" for="reviewinput">edit your review <i class="fas fa-pen"></i><span style="color:red" onclick="canceledit()">&nbsp;Cancel</span><span id="charnow" style="color:rgb(0, 97, 0);padding-left:10px">' . strlen($review) . '</span> / <span style="color:rgb(0, 97, 0)">500</span></label>
+    <label class="form-label" for="reviewinput">edit your review <i class="fas fa-pen"></i><span style="color:red" onclick="canceledit()">&nbsp;Cancel</span><span id="charnow" style="color:rgb(0, 97, 0);padding-left: 10px">' . strlen($review) . '</span> / <span style="color:rgb(0, 97, 0)">500</span></label>
     <div class="form-group input-field" style="width: 100%;margin-top: 0;">
       <textarea maxlength="500" style="max-width: 550px;width: -webkit-fill-available;outline: #139b3b; background-color: #101010; border-radius: 5px;" title="Maximum character count is 500" rows="4" onkeyup="changed_details();maxchar()" onfocus="dis_add();" onblur="dis_add()" id="reviewinput" placeholder="" >' . $review . '</textarea>
       <span onclick="dis_add()" id="dis_add" class="fa fa-sm fa-edit" style="position: relative;right: 26px;top: -87px;color: white;background-color: #0c77cc;padding: 4px;" onmouseover="$(this).css(\'background-color\',\'#0c66cc\')" onmouseleave="$(this).css(\'background-color\',\'#0c77cc\')"></span>
@@ -8738,8 +8771,8 @@ if (isset($_POST['edit_customer_rated']) && $_POST['edit_customer_rated'] == 1) 
       <span onclick="dis_ok()" id="hide_add1" class="fa fa-check" style="display:none;position: relative;right: 50px;top: -63px;color: white;background-color: #07C103;padding: 4px 3.5px;" onmouseover="$(this).css(\'background-color\',\'#4f994f\')" onmouseleave="$(this).css(\'background-color\',\'#07C103\')"></span>
     </div>
     <div id="add_customer_review" style="display: none;">
-      <input class="shadow_b real_btn" type="button" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #410041), color-stop(1, #4f0063)) !important;color:white;border-radius:3px" onclick="ratethisnow()"  value="Submit">
-      <button class="shadow_b load_btn" style="display:none;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #410041), color-stop(1, #4f0063)) !important;color:white;border-radius:3px" type="button" ><i class="fa fa-refresh fa-spin"></i>&nbsp;Submit</button>
+      <input class="shadow_b real_btn" type="button" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #410041), color-stop(1, #4f0063)) !important;color:white;border-radius: 3px" onclick="ratethisnow()"  value="Submit">
+      <button class="shadow_b load_btn" style="display:none;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #410041), color-stop(1, #4f0063)) !important;color:white;border-radius: 3px" type="button" ><i class="fa fa-refresh fa-spin"></i>&nbsp;Submit</button>
     </div>
   </div>
   <div class="clearfix"></div>';
@@ -8775,9 +8808,9 @@ if (isset($_POST['cancel_customer_rated']) && $_POST['cancel_customer_rated'] ==
   $customer_date_of_review = $myreviewrow['date'];
   $customer_firstletter = substr($customer_firstnm, 0, 1);
   $add_data = "";
-  $add_data .= ' <section id="customer_reviewed_already" style="margin-top:20px;">
+  $add_data .= ' <section id="customer_reviewed_already" style="margin-top: 20px;">
     <div class="div-wrapper" style="width:max-content">
-    <div style="height:20px;width:20px;border-radius:50%;background-color: ' . $bgcolor[$rancolor1] . ';display:flex;align-products:center;justify-content:center;color: ' . $c1 . '">' . $customer_firstletter . '</div>
+    <div style="height: 20px;width: 20px;border-radius: 50%;background-color: ' . $bgcolor[$rancolor1] . ';display: flex;align-products:center;justify-content:center;color: ' . $c1 . '">' . $customer_firstletter . '</div>
     <p>' . $customer_firstnm . " " . $customer_lastnm . '</p>
     </div>
     <div class="div-wrapper" style="width:max-content">';
@@ -9061,7 +9094,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
   // ------------------------------------------------------------------------------------------------------------------------------------------
   // ------------------------------------------------------------------------------------------------------------------------------------------
   $message1 = '
-    <table style="width:100%!important">
+    <table style="width: 100%!important">
       <tbody>
         <tr background="' . getImageURL() . 'images/logo/log2.jpg" width="834px" height="60">
           <td>
@@ -9070,17 +9103,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
               cellspacing="0"
               cellpadding="0"
               height="60"
-              style="width:600px!important;text-align:center;margin:0 auto"
+              style="width: 600px!important;text-align:center;margin: 0 auto"
             >
               <tbody>
                 <tr>
                   <td>
-                    <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                    <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                       <tbody>
                         <tr>
-                          <td style="width:35%;text-align:left">
+                          <td style="width: 35%;text-align:left">
                             <a
-                              style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                              style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                               href="' . getBaseURL() . '"
                               rel="noreferrer"
                               target="_blank"
@@ -9090,16 +9123,16 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 border="0"
                                 src="' . getImageURL() . 'images/logo/logo-horizontal.png"
                                 alt="HFE-Store.ml"
-                                style="border:none;height:40px"
+                                style="border:none;height: 40px"
                                 class="CToWUd"
                               />
                             </a>
                           </td>
-                          <td style="width:60%;text-align:right;padding-top:5px">
+                          <td style="width: 60%;text-align:right;padding-top: 5px">
                             <p
-                              style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal"
+                              style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal"
                             >
-                              Order <span style="font-weight:bold">Processed</span>
+                              Order <span style="font-weight: bold">Processed</span>
                             </p>
                           </td>
                         </tr>
@@ -9121,7 +9154,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
               cellpadding="0"
               cellspacing="0"
               bgcolor="#f5f5f5"
-              style="border:1px solid #bbb"
+              style="border: 1px solid #bbb"
             >
               <tbody>
                 <tr>
@@ -9130,7 +9163,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                       border="0"
                       cellpadding="0"
                       cellspacing="0"
-                      style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;"
+                      style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;"
                     >
                       <tbody>
                         <tr>
@@ -9140,13 +9173,13 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px"
+                                      style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px"
                                     >
                                       Hi
-                                      <span style="font-weight:bold;color:#191919">' . $first_name . " " . $last_name . ',</span>
+                                      <span style="font-weight: bold;color: #191919">' . $first_name . " " . $last_name . ',</span>
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px"
+                                      style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px"
                                     >
                                       Your Order has been successfully processed.
                                     </p>
@@ -9159,16 +9192,16 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787"
+                                      style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787"
                                     >
                                       Customer ID
-                                      <span style="font-weight:bold;color:#000">OSUID' . sprintf('%06d', $customer_id) . '</span>
+                                      <span style="font-weight: bold;color: #000">OSUID' . sprintf('%06d', $customer_id) . '</span>
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px"
+                                      style="font-family:Arial;font-size: 11px;color: #878787;line-height: 1.22;text-align:right;padding-top: 0px"
                                     >
                                       Order ID
-                                      <span style="font-weight:bold;color:#000">HFEID' . sprintf('%06d', $noid) . '</span>
+                                      <span style="font-weight: bold;color: #000">HFEID' . sprintf('%06d', $noid) . '</span>
                                     </p>
                                   </td>
                                 </tr>
@@ -9180,14 +9213,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                           <td
                             border="1"
                             align="left"
-                            style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
+                            style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
                           >
                             <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                               <tbody>
                                 <tr>
                                   <td align="left">
                                     <p
-                                      style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"
+                                      style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px"
                                     >
                                       Your order for the below listed product(s) is processed successfully
                                       by <b>' . date("F j") . " , " . date("Y") . '</b> and will be
@@ -9202,11 +9235,11 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="padding-left:15px;font-family:Arial;font-size:14px;line-height:1.58;margin-bottom:30px;margin-top:15;padding-top:2px"
+                                      style="padding-left: 15px;font-family:Arial;font-size: 14px;line-height: 1.58;margin-bottom: 30px;margin-top: 15;padding-top: 2px"
                                     >
-                                      <span style="display:inline-block;width:167px;color:#212121">Total amount</span
+                                      <span style="display:inline-block;width: 167px;color: #212121">Total amount</span
                                       ><span
-                                        style="display:inline-block;font-family:Arial;font-size:15px;font-weight:700;color:#139b3b;display:inline-block"
+                                        style="display:inline-block;font-family:Arial;font-size: 15px;font-weight: 700;color: #139b3b;display:inline-block"
                                         >Rs. ' . $total_bill . '</span
                                       >
                                     </p>
@@ -9214,17 +9247,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 </tr>
                                 <tr>
                                   <td valign="top">
-                                    <p style="padding-left:15px;margin-bottom:10px;margin-top: 0px;">
+                                    <p style="padding-left: 15px;margin-bottom: 10px;margin-top: 0px;">
                                       <a
                                         href="' . getBaseURL() . 'customer/Order/myorders.php?id=' . $customer_id . '"
-                                        style="background-color:#139b3b;color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
+                                        style="background-color: #139b3b;color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none"
                                         rel="noreferrer"
                                         target="_blank"
                                         data-saferedirecturl=""
                                       >
                                         <button
                                           type="button"
-                                          style="background-color:#139b3b;color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none"
+                                          style="background-color: #139b3b;color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none"
                                         >
                                           View Order Status
                                         </button>
@@ -9239,25 +9272,25 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                      style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                     >
                                       <span
-                                        style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                        style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                         >Delivery Address</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >' . $shipping_first_name . " " . $shipping_last_name . '</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >' . $shipping_address_1 . '</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >' . $shipping_postcode . '</span
                                       >
                                     </p>
@@ -9267,14 +9300,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                      style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                     >
                                       <span
-                                        style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                        style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                         >Email updates sent to</span
                                       >
                                       <br />
-                                      <span style="font-family:Arial;font-size:12px;color:#212121"
+                                      <span style="font-family:Arial;font-size: 12px;color: #212121"
                                         >' . $email . '</span
                                       >
                                     </p>
@@ -9294,7 +9327,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"
+                                      style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;text-align: justify;"
                                     >
                                       Note: If you do not collect your items (booked) from specified
                                       shop with in specified period of time(varies according to the
@@ -9315,7 +9348,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
     $store_total = 0;
     $message1 .= '
                     <table
-                      style="background-color: #02171e;width:100%;text-align:center"
+                      style="background-color: #02171e;width: 100%;text-align:center"
                       align="center"
                     >
                       <tr>
@@ -9324,7 +9357,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                             <tr colspan="2">
                               <td>
                                 <h4
-                                  style="padding:5px;margin:0px;background-color: #02171e;color: white;padding-top: 8px;padding-bottom: 25px;font-family:Arial"
+                                  style="padding: 5px;margin: 0px;background-color: #02171e;color: white;padding-top: 8px;padding-bottom: 25px;font-family:Arial"
                                 >
                                   <span style="float:left;"
                                     >Opening hours : ' . $store_array[$l]['opening_hours'] . '</span
@@ -9354,7 +9387,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                       width="600"
                       cellpadding="0"
                       cellspacing="0"
-                      style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                      style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                     >
                       <tbody>
                         <tr>
@@ -9371,7 +9404,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 <tr>
                                   <td valign="middle" width="120" align="center">
                                     <a
-                                      style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px"
+                                      style="color: #027cd8;text-decoration:none;outline:none;color: #fff;font-size: 13px"
                                       href="' . getBaseURL() . 'customer/Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '"
                                       rel="noreferrer"
                                       target="_blank"
@@ -9381,7 +9414,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                         border="0"
                                         src="' . getImageURL() . 'images/' . $store_array[$l]['product_category_id'][$m] .  '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
                                         alt="' . $store_array[$l]['product_name'][$m] . '"
-                                        style="border:none;max-width:125px;max-height:125px;margin-top:20px"
+                                        style="border:none;max-width: 125px;max-height: 125px;margin-top: 20px"
                                         class="CToWUd"
                                       />
                                     </a>
@@ -9393,10 +9426,10 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                               <tbody>
                                 <tr>
                                   <td valign="top" align="left">
-                                    <p style="margin-bottom:13px;margin-top:20px">
+                                    <p style="margin-bottom: 13px;margin-top: 20px">
                                       <a
                                         href=""
-                                        style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#139b3b;text-decoration:none!important;word-spacing:0.2em"
+                                        style="font-family:Arial;font-size: 14.5px;font-weight: bold;font-style:normal;font-stretch:normal;line-height: 1.43;color: #139b3b;text-decoration:none!important;word-spacing: 0.2em"
                                         rel="noreferrer"
                                         target="_blank"
                                         data-saferedirecturl=""
@@ -9405,22 +9438,22 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                       >
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Qty: ' . $store_array[$l]['item_quantity'][$m] . '
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Order type: ' . $store_array[$l]['product_ordertype'][$m] . '
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Total: &#8377; ' . $store_array[$l]['product_total_amt'][$m] . '
                                     </p>';
@@ -9437,18 +9470,18 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                       </tbody>
                     </table>
                     <hr
-                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;"
+                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;"
                     />
                     ';
     }
     $message1 .= '
                     <p
-                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;font-weight:bold;line-height:12px"
+                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;font-weight: bold;line-height: 12px"
                     >
                       Total amount to be Paid @' . $store_array[$l]['store_name'] . ': &#8377; ' . $store_total . '
                     </p>
                     <hr
-                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;"
+                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;"
                     />
                     ';
   }
@@ -9459,7 +9492,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                       width="600"
                       cellpadding="0"
                       cellspacing="0"
-                      style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                      style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                     >
                       <tbody>
                         <tr>
@@ -9469,13 +9502,13 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                               border="0"
                               cellpadding="0"
                               cellspacing="0"
-                              style="margin-top:18px"
+                              style="margin-top: 18px"
                             >
                               <tbody>
                                 <tr>
                                   <td
                                     height="1"
-                                    style="background-color:#f0f0f0;font-size:0px;line-height:0px"
+                                    style="background-color: #f0f0f0;font-size: 0px;line-height: 0px"
                                     bgcolor="#f0f0f0"
                                   ></td>
                                 </tr>
@@ -9489,17 +9522,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                               width="100%"
                               cellspacing="0"
                               cellpadding="0"
-                              style="width:600px;max-width:600px;background:#ffffff"
+                              style="width: 600px;max-width: 600px;background: #ffffff"
                             >
                               <tbody>
-                                <tr style="color:#212121">
+                                <tr style="color: #212121">
                                   <td
                                     align="left"
                                     valign="top"
-                                    style="color:#212121;border-bottom:solid 1px #f0f0f0"
+                                    style="color: #212121;border-bottom:solid 1px #f0f0f0"
                                   >
                                     <p
-                                      style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px"
+                                      style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px"
                                     >
                                       Hope to see you again soon.
                                     </p>
@@ -9516,21 +9549,21 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                               width="100%"
                               cellspacing="0"
                               cellpadding="0"
-                              style="width:600px;max-width:600px;margin-top:14px"
+                              style="width: 600px;max-width: 600px;margin-top: 14px"
                             >
                               <tbody>
                                 <tr>
                                   <td
                                     align="left"
                                     valign="top"
-                                    style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                    style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                   >
                                     <table>
                                       <tbody>
                                         <tr>
-                                          <td style="width:15%;text-align:left;padding-top:5px">
+                                          <td style="width: 15%;text-align:left;padding-top: 5px">
                                             <a
-                                              style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                              style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                               href="' . getBaseURL() . '"
                                               ><img
                                                 border="0"
@@ -9541,17 +9574,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                               />
                                             </a>
                                           </td>
-                                          <td style="width:75%;text-align:left;font-family:Arial">
+                                          <td style="width: 75%;text-align:left;font-family:Arial">
                                             &#169; 2020
                                             <a
-                                              style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
+                                              style="color: #027cd8;text-decoration:none;outline:none;font-weight: bold"
                                               href=""
                                               >HFE-Store</a
                                             >. All rights reserved
                                           </td>
-                                          <td style="width:10%;text-align:right">
+                                          <td style="width: 10%;text-align:right">
                                             <a
-                                              style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                              style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                               href=""
                                               rel="noreferrer"
                                               target="_blank"
@@ -9562,7 +9595,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                                 height="24"
                                                 src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png"
                                                 alt="Flipkart.com"
-                                                style="border:none;margin-top:10px"
+                                                style="border:none;margin-top: 10px"
                                                 class="CToWUd"
                                               />
                                             </a>
@@ -9578,21 +9611,21 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                       width="100%"
                                       cellspacing="0"
                                       cellpadding="0"
-                                      style="margin:0 auto;width:600px;max-width:600px;margin-top:14px"
+                                      style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px"
                                     >
                                       <tbody>
                                         <tr>
                                           <td
                                             align="left"
                                             valign="top"
-                                            style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                            style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                           >
                                             <table>
                                               <tbody>
                                                 <tr>
                                                   <td>
                                                     <p
-                                                      style="font-family:Arial;font-size:10px;color:#878787"
+                                                      style="font-family:Arial;font-size: 10px;color: #878787"
                                                     >
                                                       This email was sent from a notification-only
                                                       address that cannot accept incoming email. Please
@@ -9666,7 +9699,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
     $storerecieve = $storerecieve_row['storerecieve'];
     $store_total = 0;
     $message2 = '
-      <table style="width:100%!important">
+      <table style="width: 100%!important">
         <tbody>
           <tr background="' . getImageURL() . 'images/logo/log2.jpg" width="834px" height="60">
             <td>
@@ -9675,17 +9708,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                 cellspacing="0"
                 cellpadding="0"
                 height="60"
-                style="width:600px!important;text-align:center;margin:0 auto"
+                style="width: 600px!important;text-align:center;margin: 0 auto"
               >
                 <tbody>
                   <tr>
                     <td>
-                      <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                      <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                         <tbody>
                           <tr>
-                            <td style="width:35%;text-align:left">
+                            <td style="width: 35%;text-align:left">
                               <a
-                                style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                 href="' . getBaseURL() . '"
                                 rel="noreferrer"
                                 target="_blank"
@@ -9695,16 +9728,16 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                   border="0"
                                   src="' . getImageURL() . 'images/logo/logo-horizontal.png"
                                   alt="HFE-Store.ml"
-                                  style="border:none;height:40px"
+                                  style="border:none;height: 40px"
                                   class="CToWUd"
                                 />
                               </a>
                             </td>
-                            <td style="width:60%;text-align:right;padding-top:5px">
+                            <td style="width: 60%;text-align:right;padding-top: 5px">
                               <p
-                                style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal"
+                                style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal"
                               >
-                                Order <span style="font-weight:bold">Requested</span>
+                                Order <span style="font-weight: bold">Requested</span>
                               </p>
                             </td>
                           </tr>
@@ -9726,7 +9759,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                 cellpadding="0"
                 cellspacing="0"
                 bgcolor="#f5f5f5"
-                style="border:1px solid #bbb"
+                style="border: 1px solid #bbb"
               >
                 <tbody>
                   <tr>
@@ -9735,7 +9768,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                         border="0"
                         cellpadding="0"
                         cellspacing="0"
-                        style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;"
+                        style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;"
                       >
                         <tbody>
                           <tr>
@@ -9745,13 +9778,13 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                   <tr>
                                     <td valign="top">
                                       <p
-                                        style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px"
+                                        style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px"
                                       >
                                         Hi
-                                        <span style="font-weight:bold;color:#191919">' . $store_array[$l]['username'] . ',</span>
+                                        <span style="font-weight: bold;color: #191919">' . $store_array[$l]['username'] . ',</span>
                                       </p>
                                       <p
-                                        style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px"
+                                        style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px"
                                       >
                                         Order has been requested.
                                       </p>
@@ -9764,17 +9797,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                   <tr>
                                     <td valign="top">
                                       <p
-                                        style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787"
+                                        style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787"
                                       >
                                         Store ID
-                                        <span style="font-weight:bold;color:#000">OSSID' . sprintf('%06d', $store_array[$l]['store_id']) . '</span
+                                        <span style="font-weight: bold;color: #000">OSSID' . sprintf('%06d', $store_array[$l]['store_id']) . '</span
                                         >
                                       </p>
                                       <p
-                                        style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px"
+                                        style="font-family:Arial;font-size: 11px;color: #878787;line-height: 1.22;text-align:right;padding-top: 0px"
                                       >
                                         Order ID
-                                        <span style="font-weight:bold;color:#000">HFEID' . sprintf('%06d', $noid) . '</span>
+                                        <span style="font-weight: bold;color: #000">HFEID' . sprintf('%06d', $noid) . '</span>
                                       </p>
                                     </td>
                                   </tr>
@@ -9786,14 +9819,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                             <td
                               border="1"
                               align="left"
-                              style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
+                              style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
                             >
                               <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                                 <tbody>
                                   <tr>
                                     <td align="left">
                                       <p
-                                        style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"
+                                        style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px"
                                       >
                                         Below listed item(s) are requested by the customer by
                                         <b>' . date("F j") . " , " . date("Y") . '</b> from your store
@@ -9809,33 +9842,33 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                   <tr>
                                     <td valign="top">
                                       <p
-                                        style="padding-left:15px;font-family:Arial;font-size:14px;line-height:1.58;margin-bottom:30px;margin-top:15;padding-top:2px"
+                                        style="padding-left: 15px;font-family:Arial;font-size: 14px;line-height: 1.58;margin-bottom: 30px;margin-top: 15;padding-top: 2px"
                                       >
-                                        <span style="display:inline-block;width:167px;color:#212121">Total amount</span>';
+                                        <span style="display:inline-block;width: 167px;color: #212121">Total amount</span>';
 
     for ($m = 0; $m < $store_cnt[$l]; $m++) {
       $store_total += (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m];
     }
 
     $message2 .=  '
-                                        <span style="display:inline-block;font-family:Arial;font-size:15px;font-weight:700;color:#139b3b;display:inline-block">Rs. ' . $store_total . '</span
+                                        <span style="display:inline-block;font-family:Arial;font-size: 15px;font-weight: 700;color: #139b3b;display:inline-block">Rs. ' . $store_total . '</span
                                         >
                                       </p>
                                     </td>
                                   </tr>
                                   <tr>
                                     <td valign="top">
-                                      <p style="padding-left:15px;margin-bottom:10px;margin-top: 0px;">
+                                      <p style="padding-left: 15px;margin-bottom: 10px;margin-top: 0px;">
                                         <a
                                           href="' . getBaseURL() . 'customer/Order/myorders.php?id=' . $customer_id . '"
-                                          style="background-color:#139b3b;color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
+                                          style="background-color: #139b3b;color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none"
                                           rel="noreferrer"
                                           target="_blank"
                                           data-saferedirecturl=""
                                         >
                                           <button
                                             type="button"
-                                            style="background-color:#139b3b;color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none"
+                                            style="background-color: #139b3b;color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none"
                                           >
                                             View Order Status
                                           </button>
@@ -9850,25 +9883,25 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                   <tr>
                                     <td valign="top" align="left">
                                       <p
-                                        style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                        style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                       >
                                         <span
-                                          style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                          style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                           >Delivery Address</span
                                         >
                                         <br />
                                         <span
-                                          style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                          style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                           >' . $shipping_first_name . " " . $shipping_last_name . '</span
                                         >
                                         <br />
                                         <span
-                                          style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                          style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                           >' . $shipping_address_1 . '</span
                                         >
                                         <br />
                                         <span
-                                          style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                          style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                           >PIN - ' . $shipping_postcode . '</span
                                         >
                                       </p>
@@ -9878,14 +9911,14 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                   <tr>
                                     <td valign="top" align="left">
                                       <p
-                                        style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                        style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                       >
                                         <span
-                                          style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                          style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                           >Email updates sent to</span
                                         >
                                         <br />
-                                        <span style="font-family:Arial;font-size:12px;color:#212121">' . $email . '</span
+                                        <span style="font-family:Arial;font-size: 12px;color: #212121">' . $email . '</span
                                         >
                                       </p>
                                     </td>
@@ -9904,7 +9937,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                               </table>';
     $message2 .= '
                               <table
-                                style="background-color: #02171e;width:100%;text-align:center"
+                                style="background-color: #02171e;width: 100%;text-align:center"
                                 align="center"
                               >
                                 <tr>
@@ -9913,23 +9946,23 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                       <tr colspan="2">
                                         <td>
                                           <h4
-                                            style="padding:5px;margin:0px;background-color: #02171e;color: white;padding-top: 0px;padding-bottom: 0px;font-family:Arial"
+                                            style="padding: 5px;margin: 0px;background-color: #02171e;color: white;padding-top: 0px;padding-bottom: 0px;font-family:Arial"
                                           >
                                             <table width="100%" cellspacing="10px">
                                               <tr>
                                                 <td>
-                                                  <span style="color:#fff;float:left">Customer name : ' . $first_name . " " . $last_name . '</span>
+                                                  <span style="color: #fff;float:left">Customer name : ' . $first_name . " " . $last_name . '</span>
                                                 </td>
                                                 <td>
-                                                  <span style="color:#fff;float:right">Ph : ' . $phone . '</span>
+                                                  <span style="color: #fff;float:right">Ph : ' . $phone . '</span>
                                                 </td>
                                               </tr>
                                               <tr>
                                                 <td>
-                                                  <span style="color:#fff;float:left">Customer id : OSUID' . sprintf('%06d', $customer_id) . '</span>
+                                                  <span style="color: #fff;float:left">Customer id : OSUID' . sprintf('%06d', $customer_id) . '</span>
                                                 </td>
                                                 <td>
-                                                  <span style="color:#fff;float:right">' . $email . '</span>
+                                                  <span style="color: #fff;float:right">' . $email . '</span>
                                                 </td>
                                               </tr>';
     $message2 .= '
@@ -9961,7 +9994,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 width="600"
                                 cellpadding="0"
                                 cellspacing="0"
-                                style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                                style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                               >
                                 <tbody>
                                   <tr>
@@ -9978,7 +10011,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                           <tr>
                                             <td valign="middle" width="120" align="center">
                                               <a
-                                                style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px"
+                                                style="color: #027cd8;text-decoration:none;outline:none;color: #fff;font-size: 13px"
                                                 href="' . getBaseURL() . 'customer/Product/single.php?id=' . $store_array[$l]['product_description_id'][$m] . '"
                                                 rel="noreferrer"
                                                 target="_blank"
@@ -9988,7 +10021,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                                   border="0"
                                                   src="' . getImageURL() . 'images/' . $store_array[$l]['product_category_id'][$m] .  '/' . $store_array[$l]['product_description_id'][$m] . '.jpg"
                                                   alt="' . $store_array[$l]['product_name'][$m] . '"
-                                                  style="border:none;max-width:125px;max-height:125px;margin-top:20px"
+                                                  style="border:none;max-width: 125px;max-height: 125px;margin-top: 20px"
                                                   class="CToWUd"
                                                 />
                                               </a>
@@ -10006,10 +10039,10 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                         <tbody>
                                           <tr>
                                             <td valign="top" align="left">
-                                              <p style="margin-bottom:13px;margin-top:20px">
+                                              <p style="margin-bottom: 13px;margin-top: 20px">
                                                 <a
                                                   href=""
-                                                  style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#139b3b;text-decoration:none!important;word-spacing:0.2em"
+                                                  style="font-family:Arial;font-size: 14.5px;font-weight: bold;font-style:normal;font-stretch:normal;line-height: 1.43;color: #139b3b;text-decoration:none!important;word-spacing: 0.2em"
                                                   rel="noreferrer"
                                                   target="_blank"
                                                   data-saferedirecturl=""
@@ -10018,22 +10051,22 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                                 >
                                               </p>
                                               <p
-                                                style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                                style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                               >
                                                 Price: &#8377; ' . $store_array[$l]['product_price'][$m] . ' <span><del style="color: #6d6d6d;">&#8377; ' . $store_array[$l]['product_mrp'][$m] . ' </del></span></p>
                                               </p>
                                               <p
-                                                style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                                style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                               >
                                                 Qty: ' . $store_array[$l]['item_quantity'][$m] . '
                                               </p>
                                               <p
-                                                style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                                style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                               >
                                                 Order type: ' . $store_array[$l]['product_ordertype'][$m] . '
                                               </p>
                                               <p
-                                                style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                                style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                               >
                                                 Total: &#8377; ' . (int) $store_array[$l]['item_quantity'][$m] * (int) $store_array[$l]['product_price'][$m] . '
                                               </p>';
@@ -10050,18 +10083,18 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 </tbody>
                               </table>
                               <hr
-                                style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;"
+                                style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;"
                               />
                               ';
     }
     $message2 .= '
                               <p
-                                style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;font-weight:bold;line-height:12px"
+                                style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;font-weight: bold;line-height: 12px"
                               >
                                 Total amount : &#8377; ' . $store_total . '
                               </p>
                               <hr
-                                style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;"
+                                style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;"
                               />
                               ';
     $message2 .= '
@@ -10070,7 +10103,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                 width="600"
                                 cellpadding="0"
                                 cellspacing="0"
-                                style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                                style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                               >
                                 <tbody>
                                   <tr>
@@ -10080,13 +10113,13 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                         border="0"
                                         cellpadding="0"
                                         cellspacing="0"
-                                        style="margin-top:18px"
+                                        style="margin-top: 18px"
                                       >
                                         <tbody>
                                           <tr>
                                             <td
                                               height="1"
-                                              style="background-color:#f0f0f0;font-size:0px;line-height:0px"
+                                              style="background-color: #f0f0f0;font-size: 0px;line-height: 0px"
                                               bgcolor="#f0f0f0"
                                             ></td>
                                           </tr>
@@ -10100,17 +10133,17 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                         width="100%"
                                         cellspacing="0"
                                         cellpadding="0"
-                                        style="width:600px;max-width:600px;background:#ffffff"
+                                        style="width: 600px;max-width: 600px;background: #ffffff"
                                       >
                                         <tbody>
-                                          <tr style="color:#212121">
+                                          <tr style="color: #212121">
                                             <td
                                               align="left"
                                               valign="top"
-                                              style="color:#212121;border-bottom:solid 1px #f0f0f0"
+                                              style="color: #212121;border-bottom:solid 1px #f0f0f0"
                                             >
                                               <p
-                                                style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px"
+                                                style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px"
                                               >
                                                 Hope to see you again soon.
                                               </p>
@@ -10127,21 +10160,21 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                         width="100%"
                                         cellspacing="0"
                                         cellpadding="0"
-                                        style="width:600px;max-width:600px;margin-top:14px"
+                                        style="width: 600px;max-width: 600px;margin-top: 14px"
                                       >
                                         <tbody>
                                           <tr>
                                             <td
                                               align="left"
                                               valign="top"
-                                              style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                              style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                             >
                                               <table>
                                                 <tbody>
                                                   <tr>
-                                                    <td style="width:15%;text-align:left;padding-top:5px">
+                                                    <td style="width: 15%;text-align:left;padding-top: 5px">
                                                       <a
-                                                        style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                                        style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                                         href="' . getBaseURL() . '"
                                                         ><img
                                                           border="0"
@@ -10153,18 +10186,18 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                                       </a>
                                                     </td>
                                                     <td
-                                                      style="width:75%;text-align:left;font-family:Arial"
+                                                      style="width: 75%;text-align:left;font-family:Arial"
                                                     >
                                                       &#169; 2020
                                                       <a
-                                                        style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
+                                                        style="color: #027cd8;text-decoration:none;outline:none;font-weight: bold"
                                                         href=""
                                                         >HFE-Store</a
                                                       >. All rights reserved
                                                     </td>
-                                                    <td style="width:10%;text-align:right">
+                                                    <td style="width: 10%;text-align:right">
                                                       <a
-                                                        style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                                        style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                                         href=""
                                                         rel="noreferrer"
                                                         target="_blank"
@@ -10175,7 +10208,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                                           height="24"
                                                           src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png"
                                                           alt="Flipkart.com"
-                                                          style="border:none;margin-top:10px"
+                                                          style="border:none;margin-top: 10px"
                                                           class="CToWUd"
                                                         />
                                                       </a>
@@ -10191,21 +10224,21 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
                                                 width="100%"
                                                 cellspacing="0"
                                                 cellpadding="0"
-                                                style="margin:0 auto;width:600px;max-width:600px;margin-top:14px"
+                                                style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px"
                                               >
                                                 <tbody>
                                                   <tr>
                                                     <td
                                                       align="left"
                                                       valign="top"
-                                                      style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                                      style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                                     >
                                                       <table>
                                                         <tbody>
                                                           <tr>
                                                             <td>
                                                               <p
-                                                                style="font-family:Arial;font-size:10px;color:#878787"
+                                                                style="font-family:Arial;font-size: 10px;color: #878787"
                                                               >
                                                                 This email was sent from a
                                                                 notification-only address that cannot
@@ -10283,7 +10316,7 @@ if (isset($_POST['customer_id'], $_POST['placeorder_mul'])) {
 //CANCEL PRODUCT
 if (isset($_POST['cancel_product'])) {
   $nopid = $_POST['nopid'];
-  $query = "SELECT customers.first_name AS fn,customers.last_name AS ln,customer_delivery_details.customer_id,customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,color,weight,flavour,processor,display,battery,internal_storage,brand,material,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.item_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store_admin.email AS storemail,store_admin.username,store.store_id,store.store_name,store.opening_hours,store.status,store_admin.phone,product.price AS mrp,product_description.product_description_id,category.category_id,product.product_name FROM new_orders
+  $query = "SELECT customers.first_name AS fn,customers.last_name AS ln,customer_delivery_details.customer_id,customer_delivery_details.first_name,customer_delivery_details.last_name,customer_delivery_details.phone,customer_delivery_details.address,customer_delivery_details.pincode,customers.email,new_orders.new_orders_id,new_orders.order_quantity,new_orders.sub_total,new_orders.order_date,size,weight,brand,new_ordered_products.order_type,new_ordered_products.new_ordered_products_id,new_ordered_products.item_quantity,new_ordered_products.total_amt,new_ordered_products.delivery_status,product_details.product_details_id,product_details.price,store_admin.email AS storemail,store_admin.username,store.store_id,store.store_name,store.opening_hours,store.status,store_admin.phone,product.price AS mrp,product_description.product_description_id,category.category_id,product.product_name FROM new_orders
             JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
             JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
             JOIN customers ON customers.customer_id=customer_delivery_details.customer_id
@@ -10330,7 +10363,7 @@ if (isset($_POST['cancel_product'])) {
   // ------------------------------------------------------------------------------------------------------------------------------------------
   // ------------------------------------------------------------------------------------------------------------------------------------------
   $message1 = '
-    <table style="width:100%!important">
+    <table style="width: 100%!important">
       <tbody>
         <tr background="' . getImageURL() . 'images/logo/log2.jpg" width="834px" height="60">
           <td>
@@ -10339,17 +10372,17 @@ if (isset($_POST['cancel_product'])) {
               cellspacing="0"
               cellpadding="0"
               height="60"
-              style="width:600px!important;text-align:center;margin:0 auto"
+              style="width: 600px!important;text-align:center;margin: 0 auto"
             >
               <tbody>
                 <tr>
                   <td>
-                    <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                    <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                       <tbody>
                         <tr>
-                          <td style="width:35%;text-align:left">
+                          <td style="width: 35%;text-align:left">
                             <a
-                              style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                              style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                               href="' . getBaseURL() . '"
                               rel="noreferrer"
                               target="_blank"
@@ -10359,16 +10392,16 @@ if (isset($_POST['cancel_product'])) {
                                 border="0"
                                 src="' . getImageURL() . 'images/logo/logo-horizontal.png"
                                 alt="HFE-Store.ml"
-                                style="border:none;height:40px"
+                                style="border:none;height: 40px"
                                 class="CToWUd"
                               />
                             </a>
                           </td>
-                          <td style="width:60%;text-align:right;padding-top:5px">
+                          <td style="width: 60%;text-align:right;padding-top: 5px">
                             <p
-                              style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal"
+                              style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal"
                             >
-                              Order <span style="font-weight:bold">Cancelled</span>
+                              Order <span style="font-weight: bold">Cancelled</span>
                             </p>
                           </td>
                         </tr>
@@ -10390,7 +10423,7 @@ if (isset($_POST['cancel_product'])) {
               cellpadding="0"
               cellspacing="0"
               bgcolor="#f5f5f5"
-              style="border:1px solid #bbb"
+              style="border: 1px solid #bbb"
             >
               <tbody>
                 <tr>
@@ -10399,7 +10432,7 @@ if (isset($_POST['cancel_product'])) {
                       border="0"
                       cellpadding="0"
                       cellspacing="0"
-                      style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;"
+                      style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;"
                     >
                       <tbody>
                         <tr>
@@ -10409,15 +10442,15 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px"
+                                      style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px"
                                     >
                                       Hi
-                                      <span style="font-weight:bold;color:#191919">
+                                      <span style="font-weight: bold;color: #191919">
                                         ' . $customer_firstnm . " " . $customer_lastnm . ',</span
                                       >
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px"
+                                      style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px"
                                     >
                                       Your Order has been cancelled.
                                     </p>
@@ -10430,18 +10463,18 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787"
+                                      style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787"
                                     >
                                       Customer ID
-                                      <span style="font-weight:bold;color:#000"
+                                      <span style="font-weight: bold;color: #000"
                                         >OSUID' . sprintf('%06d', $customer_id) . '</span
                                       >
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px"
+                                      style="font-family:Arial;font-size: 11px;color: #878787;line-height: 1.22;text-align:right;padding-top: 0px"
                                     >
                                       Order ID
-                                      <span style="font-weight:bold;color:#000">' . $order_id . '</span>
+                                      <span style="font-weight: bold;color: #000">' . $order_id . '</span>
                                     </p>
                                   </td>
                                 </tr>
@@ -10453,14 +10486,14 @@ if (isset($_POST['cancel_product'])) {
                           <td
                             border="1"
                             align="left"
-                            style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
+                            style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
                           >
                             <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                               <tbody>
                                 <tr>
                                   <td align="left">
                                     <p
-                                      style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"
+                                      style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px"
                                     >
                                       Your order for the below listed item(s) is cancelled successfully
                                       by <b>' . date("F j") . " , " . date("Y") . '</b> and your updated
@@ -10476,12 +10509,12 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="padding-left:15px;font-family:Arial;font-size:14px;line-height:1.58;margin-bottom:30px;margin-top:15;padding-top:2px"
+                                      style="padding-left: 15px;font-family:Arial;font-size: 14px;line-height: 1.58;margin-bottom: 30px;margin-top: 15;padding-top: 2px"
                                     >
-                                      <span style="display:inline-block;width:167px;color:#212121"
+                                      <span style="display:inline-block;width: 167px;color: #212121"
                                         >Total amount</span
                                       ><span
-                                        style="display:inline-block;font-family:Arial;font-size:15px;font-weight:700;color:#139b3b;display:inline-block"
+                                        style="display:inline-block;font-family:Arial;font-size: 15px;font-weight: 700;color: #139b3b;display:inline-block"
                                         >Rs. ' . $new_order_tot_amt . '</span
                                       >
                                     </p>
@@ -10489,17 +10522,17 @@ if (isset($_POST['cancel_product'])) {
                                 </tr>
                                 <tr>
                                   <td valign="top">
-                                    <p style="padding-left:15px;margin-bottom:10px;margin-top: 0px;">
+                                    <p style="padding-left: 15px;margin-bottom: 10px;margin-top: 0px;">
                                       <a
                                         href="' . getBaseURL() . 'customer/Order/myorders.php?id=' . $customer_id . '"
-                                        style="background-color:#139b3b;color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
+                                        style="background-color: #139b3b;color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none"
                                         rel="noreferrer"
                                         target="_blank"
                                         data-saferedirecturl=""
                                       >
                                         <button
                                           type="button"
-                                          style="background-color:#139b3b;color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none"
+                                          style="background-color: #139b3b;color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none"
                                         >
                                           View Order Status
                                         </button>
@@ -10514,25 +10547,25 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                      style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                     >
                                       <span
-                                        style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                        style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                         >Delivery Address</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >' . $first_name . " " . $last_name . '</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >' . $row['address'] . '</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >PIN - ' . $row['pincode'] . '</span
                                       >
                                     </p>
@@ -10542,14 +10575,14 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                      style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                     >
                                       <span
-                                        style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                        style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                         >Email updates sent to</span
                                       >
                                       <br />
-                                      <span style="font-family:Arial;font-size:12px;color:#212121"
+                                      <span style="font-family:Arial;font-size: 12px;color: #212121"
                                         >' . $row['email'] . '</span
                                       >
                                     </p>
@@ -10569,7 +10602,7 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;padding-bottom:2px;line-height:19px;padding-right:10px;text-align: justify;"
+                                      style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;padding-bottom: 2px;line-height: 19px;padding-right: 10px;text-align: justify;"
                                     >
                                       Note: If you do not collect your items (booked) from specified
                                       shop with in specified period of time(varies according to the
@@ -10588,7 +10621,7 @@ if (isset($_POST['cancel_product'])) {
                     ';
   $message1 .= '
                     <table
-                      style="background-color: #02171e;width:100%;text-align:center"
+                      style="background-color: #02171e;width: 100%;text-align:center"
                       align="center"
                     >
                       <tr>
@@ -10597,7 +10630,7 @@ if (isset($_POST['cancel_product'])) {
                             <tr colspan="2">
                               <td>
                                 <h4
-                                  style="padding:5px;margin:0px;background-color: #02171e;color: white;padding-top: 8px;padding-bottom: 25px;font-family:Arial"
+                                  style="padding: 5px;margin: 0px;background-color: #02171e;color: white;padding-top: 8px;padding-bottom: 25px;font-family:Arial"
                                 >
                                   <span style="float:left;"
                                     >Opening hours : ' . $row['opening_hours'] . '</span
@@ -10621,7 +10654,7 @@ if (isset($_POST['cancel_product'])) {
                       width="600"
                       cellpadding="0"
                       cellspacing="0"
-                      style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                      style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                     >
                       <tbody>
                         <tr>
@@ -10638,7 +10671,7 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="middle" width="120" align="center">
                                     <a
-                                      style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px"
+                                      style="color: #027cd8;text-decoration:none;outline:none;color: #fff;font-size: 13px"
                                       href="' . getBaseURL() . 'customer/Product/single.php?id=' . $idid . '"
                                       rel="noreferrer"
                                       target="_blank"
@@ -10648,7 +10681,7 @@ if (isset($_POST['cancel_product'])) {
                                         border="0"
                                         src="' . getImageURL() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg"
                                         alt="' . $row['product_name'] . '"
-                                        style="border:none;max-width:125px;max-height:125px;margin-top:20px"
+                                        style="border:none;max-width: 125px;max-height: 125px;margin-top: 20px"
                                         class="CToWUd"
                                       />
                                     </a>
@@ -10660,10 +10693,10 @@ if (isset($_POST['cancel_product'])) {
                               <tbody>
                                 <tr>
                                   <td valign="top" align="left">
-                                    <p style="margin-bottom:13px;margin-top:20px">
+                                    <p style="margin-bottom: 13px;margin-top: 20px">
                                       <a
                                         href=""
-                                        style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#139b3b;text-decoration:none!important;word-spacing:0.2em"
+                                        style="font-family:Arial;font-size: 14.5px;font-weight: bold;font-style:normal;font-stretch:normal;line-height: 1.43;color: #139b3b;text-decoration:none!important;word-spacing: 0.2em"
                                         rel="noreferrer"
                                         target="_blank"
                                         data-saferedirecturl=""
@@ -10672,22 +10705,22 @@ if (isset($_POST['cancel_product'])) {
                                       >
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Price: &#8377; ' . $row['price'] . '
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Qty: ' . $row['item_quantity'] . '
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Order type: ' . $row['order_type'] . '
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Total: &#8377; ' . $product_tot_amt . '
                                     </p>
@@ -10702,18 +10735,18 @@ if (isset($_POST['cancel_product'])) {
                       </tbody>
                     </table>
                     <hr
-                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;"
+                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;"
                     />
                     ';
   $message1 .= '
                     <p
-                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;font-weight:bold;line-height:12px"
+                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;font-weight: bold;line-height: 12px"
                     >
                       Total amount to be Paid @' . $row['store_name'] . ': &#8377; ' .
     $new_order_tot_amt . '
                     </p>
                     <hr
-                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;"
+                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;"
                     />
                     ';
   $message1 .= '
@@ -10722,7 +10755,7 @@ if (isset($_POST['cancel_product'])) {
                       width="600"
                       cellpadding="0"
                       cellspacing="0"
-                      style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                      style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                     >
                       <tbody>
                         <tr>
@@ -10732,13 +10765,13 @@ if (isset($_POST['cancel_product'])) {
                               border="0"
                               cellpadding="0"
                               cellspacing="0"
-                              style="margin-top:18px"
+                              style="margin-top: 18px"
                             >
                               <tbody>
                                 <tr>
                                   <td
                                     height="1"
-                                    style="background-color:#f0f0f0;font-size:0px;line-height:0px"
+                                    style="background-color: #f0f0f0;font-size: 0px;line-height: 0px"
                                     bgcolor="#f0f0f0"
                                   ></td>
                                 </tr>
@@ -10752,17 +10785,17 @@ if (isset($_POST['cancel_product'])) {
                               width="100%"
                               cellspacing="0"
                               cellpadding="0"
-                              style="width:600px;max-width:600px;background:#ffffff"
+                              style="width: 600px;max-width: 600px;background: #ffffff"
                             >
                               <tbody>
-                                <tr style="color:#212121">
+                                <tr style="color: #212121">
                                   <td
                                     align="left"
                                     valign="top"
-                                    style="color:#212121;border-bottom:solid 1px #f0f0f0"
+                                    style="color: #212121;border-bottom:solid 1px #f0f0f0"
                                   >
                                     <p
-                                      style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px"
+                                      style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px"
                                     >
                                       Hope to see you again soon.
                                     </p>
@@ -10779,21 +10812,21 @@ if (isset($_POST['cancel_product'])) {
                               width="100%"
                               cellspacing="0"
                               cellpadding="0"
-                              style="width:600px;max-width:600px;margin-top:14px"
+                              style="width: 600px;max-width: 600px;margin-top: 14px"
                             >
                               <tbody>
                                 <tr>
                                   <td
                                     align="left"
                                     valign="top"
-                                    style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                    style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                   >
                                     <table>
                                       <tbody>
                                         <tr>
-                                          <td style="width:15%;text-align:left;padding-top:5px">
+                                          <td style="width: 15%;text-align:left;padding-top: 5px">
                                             <a
-                                              style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                              style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                               href="' . getBaseURL() . '"
                                               ><img
                                                 border="0"
@@ -10804,17 +10837,17 @@ if (isset($_POST['cancel_product'])) {
                                               />
                                             </a>
                                           </td>
-                                          <td style="width:75%;text-align:left;font-family:Arial">
+                                          <td style="width: 75%;text-align:left;font-family:Arial">
                                             &#169; 2020
                                             <a
-                                              style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
+                                              style="color: #027cd8;text-decoration:none;outline:none;font-weight: bold"
                                               href=""
                                               >HFE-Store</a
                                             >. All rights reserved
                                           </td>
-                                          <td style="width:10%;text-align:right">
+                                          <td style="width: 10%;text-align:right">
                                             <a
-                                              style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                              style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                               href=""
                                               rel="noreferrer"
                                               target="_blank"
@@ -10825,7 +10858,7 @@ if (isset($_POST['cancel_product'])) {
                                                 height="24"
                                                 src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png"
                                                 alt="Flipkart.com"
-                                                style="border:none;margin-top:10px"
+                                                style="border:none;margin-top: 10px"
                                                 class="CToWUd"
                                               />
                                             </a>
@@ -10841,21 +10874,21 @@ if (isset($_POST['cancel_product'])) {
                                       width="100%"
                                       cellspacing="0"
                                       cellpadding="0"
-                                      style="margin:0 auto;width:600px;max-width:600px;margin-top:14px"
+                                      style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px"
                                     >
                                       <tbody>
                                         <tr>
                                           <td
                                             align="left"
                                             valign="top"
-                                            style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                            style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                           >
                                             <table>
                                               <tbody>
                                                 <tr>
                                                   <td>
                                                     <p
-                                                      style="font-family:Arial;font-size:10px;color:#878787"
+                                                      style="font-family:Arial;font-size: 10px;color: #878787"
                                                     >
                                                       This email was sent from a notification-only
                                                       address that cannot accept incoming email. Please
@@ -10919,7 +10952,7 @@ if (isset($_POST['cancel_product'])) {
   $subject = 'Requested service cancelled by a user';
   $activate_link = '' . getBaseURL() . 'equipment-store-admin/index.php?id=' . $row['store_id'];
   $message2 = '
-    <table style="width:100%!important">
+    <table style="width: 100%!important">
       <tbody>
         <tr background="' . getImageURL() . 'images/logo/log2.jpg" width="834px" height="60">
           <td>
@@ -10928,17 +10961,17 @@ if (isset($_POST['cancel_product'])) {
               cellspacing="0"
               cellpadding="0"
               height="60"
-              style="width:600px!important;text-align:center;margin:0 auto"
+              style="width: 600px!important;text-align:center;margin: 0 auto"
             >
               <tbody>
                 <tr>
                   <td>
-                    <table style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;">
+                    <table style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;">
                       <tbody>
                         <tr>
-                          <td style="width:35%;text-align:left">
+                          <td style="width: 35%;text-align:left">
                             <a
-                              style="color:#027cd8;text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                              style="color: #027cd8;text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                               href="' . getBaseURL() . '"
                               rel="noreferrer"
                               target="_blank"
@@ -10948,16 +10981,16 @@ if (isset($_POST['cancel_product'])) {
                                 border="0"
                                 src="' . getImageURL() . 'images/logo/logo-horizontal.png"
                                 alt="HFE-Store.ml"
-                                style="border:none;height:40px"
+                                style="border:none;height: 40px"
                                 class="CToWUd"
                               />
                             </a>
                           </td>
-                          <td style="width:60%;text-align:right;padding-top:5px">
+                          <td style="width: 60%;text-align:right;padding-top: 5px">
                             <p
-                              style="color:rgba(255,255,255,0.8);font-family:Arial;font-size:16px;text-align:right;color:#ffffff;font-style:normal;font-stretch:normal"
+                              style="color:rgba(255,255,255,0.8);font-family:Arial;font-size: 16px;text-align:right;color: #ffffff;font-style:normal;font-stretch:normal"
                             >
-                              Order <span style="font-weight:bold">Cancelled</span>
+                              Order <span style="font-weight: bold">Cancelled</span>
                             </p>
                           </td>
                         </tr>
@@ -10979,7 +11012,7 @@ if (isset($_POST['cancel_product'])) {
               cellpadding="0"
               cellspacing="0"
               bgcolor="#f5f5f5"
-              style="border:1px solid #bbb"
+              style="border: 1px solid #bbb"
             >
               <tbody>
                 <tr>
@@ -10988,7 +11021,7 @@ if (isset($_POST['cancel_product'])) {
                       border="0"
                       cellpadding="0"
                       cellspacing="0"
-                      style="width:640px;max-width:640px;padding-right:20px;padding-left:20px;background-color:#fff;padding-top:5px;padding-bottom: 15px;"
+                      style="width: 640px;max-width: 640px;padding-right: 20px;padding-left: 20px;background-color: #fff;padding-top: 5px;padding-bottom: 15px;"
                     >
                       <tbody>
                         <tr>
@@ -10998,15 +11031,15 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="font-family:Arial;color:#878787;font-size:12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top:7px;line-height:.85;padding-top:0px"
+                                      style="font-family:Arial;color: #878787;font-size: 12px;font-weight:normal;font-style:normal;font-stretch:normal;margin-top: 7px;line-height:.85;padding-top: 0px"
                                     >
                                       Hi
-                                      <span style="font-weight:bold;color:#191919">
+                                      <span style="font-weight: bold;color: #191919">
                                         ' . $row['username'] . ',</span
                                       >
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-size:12px;color:#878787;line-height:1.22;padding-top:0px;margin-top:0px"
+                                      style="font-family:Arial;font-size: 12px;color: #878787;line-height: 1.22;padding-top: 0px;margin-top: 0px"
                                     >
                                       Order has been cancelled.
                                     </p>
@@ -11019,18 +11052,18 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="font-family:Arial;color:#747474;font-size:11px;font-weight:normal;text-align:right;font-style:normal;line-height:1.1;font-stretch:normal;margin-top:7px;padding-top:0px;color:#878787"
+                                      style="font-family:Arial;color: #747474;font-size: 11px;font-weight:normal;text-align:right;font-style:normal;line-height: 1.1;font-stretch:normal;margin-top: 7px;padding-top: 0px;color: #878787"
                                     >
                                       Store ID
-                                      <span style="font-weight:bold;color:#000"
+                                      <span style="font-weight: bold;color: #000"
                                         >OSSID' . sprintf('%06d', $row['store_id']) . '</span
                                       >
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-size:11px;color:#878787;line-height:1.22;text-align:right;padding-top:0px"
+                                      style="font-family:Arial;font-size: 11px;color: #878787;line-height: 1.22;text-align:right;padding-top: 0px"
                                     >
                                       Order ID
-                                      <span style="font-weight:bold;color:#000">' . $order_id . '</span>
+                                      <span style="font-weight: bold;color: #000">' . $order_id . '</span>
                                     </p>
                                   </td>
                                 </tr>
@@ -11042,14 +11075,14 @@ if (isset($_POST['cancel_product'])) {
                           <td
                             border="1"
                             align="left"
-                            style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius:2px;padding-top:10px;padding-bottom:5x;border-color:#6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
+                            style="background-color:rgba(245,245,245,0.5);background:rgba(245,245,245,0.5);border:.5px solid #6ed49e;border-radius: 2px;padding-top: 10px;padding-bottom: 5x;border-color: #6ed49e;border-width:.08em;border-style:solid;border:.08em solid #6ed49e"
                           >
                             <table width="600" border="0" cellpadding="0" cellspacing="0" align="left">
                               <tbody>
                                 <tr>
                                   <td align="left">
                                     <p
-                                      style="font-family:Arial;font-size:12px;text-align:left;color:#212121;padding-left:15px;padding-top:0px;line-height:1.62;padding-right:10px"
+                                      style="font-family:Arial;font-size: 12px;text-align:left;color: #212121;padding-left: 15px;padding-top: 0px;line-height: 1.62;padding-right: 10px"
                                     >
                                       Below listed item(s) are cancelled by the customer by
                                       <b>' . date("F j") . " , " . date("Y") . '</b> from your store
@@ -11065,12 +11098,12 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top">
                                     <p
-                                      style="padding-left:15px;font-family:Arial;font-size:14px;line-height:1.58;margin-bottom:30px;margin-top:15;padding-top:2px"
+                                      style="padding-left: 15px;font-family:Arial;font-size: 14px;line-height: 1.58;margin-bottom: 30px;margin-top: 15;padding-top: 2px"
                                     >
-                                      <span style="display:inline-block;width:167px;color:#212121"
+                                      <span style="display:inline-block;width: 167px;color: #212121"
                                         >Total amount</span
                                       ><span
-                                        style="display:inline-block;font-family:Arial;font-size:15px;font-weight:700;color:#139b3b;display:inline-block"
+                                        style="display:inline-block;font-family:Arial;font-size: 15px;font-weight: 700;color: #139b3b;display:inline-block"
                                         >Rs. ' . $new_order_tot_amt . '</span
                                       >
                                     </p>
@@ -11078,17 +11111,17 @@ if (isset($_POST['cancel_product'])) {
                                 </tr>
                                 <tr>
                                   <td valign="top">
-                                    <p style="padding-left:15px;margin-bottom:10px;margin-top: 0px;">
+                                    <p style="padding-left: 15px;margin-bottom: 10px;margin-top: 0px;">
                                       <a
                                         href="' . getBaseURL() . 'customer/Order/myorders.php?id=' . $customer_id . '"
-                                        style="background-color:#139b3b;color:#fff;padding:8px 16px 7px 16px;border:0px;font-size:14px;display:inline-block;margin-top:10px;border-radius:2px;text-decoration:none"
+                                        style="background-color: #139b3b;color: #fff;padding: 8px 16px 7px 16px;border: 0px;font-size: 14px;display:inline-block;margin-top: 10px;border-radius: 2px;text-decoration:none"
                                         rel="noreferrer"
                                         target="_blank"
                                         data-saferedirecturl=""
                                       >
                                         <button
                                           type="button"
-                                          style="background-color:#139b3b;color:#fff;border:0px;font-size:14px;border-radius:2px;text-decoration:none"
+                                          style="background-color: #139b3b;color: #fff;border: 0px;font-size: 14px;border-radius: 2px;text-decoration:none"
                                         >
                                           View Order Status
                                         </button>
@@ -11103,25 +11136,25 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                      style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                     >
                                       <span
-                                        style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                        style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                         >Delivery Address</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >' . $first_name . " " . $last_name . '</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >' . $row['address'] . '</span
                                       >
                                       <br />
                                       <span
-                                        style="font-family:Arial;text-transform:capitalize;font-size:12px;color:#212121"
+                                        style="font-family:Arial;text-transform:capitalize;font-size: 12px;color: #212121"
                                         >PIN - ' . $row['pincode'] . '</span
                                       >
                                     </p>
@@ -11131,14 +11164,14 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="top" align="left">
                                     <p
-                                      style="margin-top:0px;padding-left:12px;line-height:1.56;margin-bottom:0"
+                                      style="margin-top: 0px;padding-left: 12px;line-height: 1.56;margin-bottom: 0"
                                     >
                                       <span
-                                        style="font-family:Arial;font-size:14px;font-weight:bold;text-align:left;color:#212121"
+                                        style="font-family:Arial;font-size: 14px;font-weight: bold;text-align:left;color: #212121"
                                         >Email updates sent to</span
                                       >
                                       <br />
-                                      <span style="font-family:Arial;font-size:12px;color:#212121"
+                                      <span style="font-family:Arial;font-size: 12px;color: #212121"
                                         >' . $row['storemail'] . '</span
                                       >
                                     </p>
@@ -11165,7 +11198,7 @@ if (isset($_POST['cancel_product'])) {
                     ';
   $message2 .= '
                     <table
-                      style="background-color: #02171e;width:100%;text-align:center"
+                      style="background-color: #02171e;width: 100%;text-align:center"
                       align="center"
                     >
                       <tr>
@@ -11174,23 +11207,23 @@ if (isset($_POST['cancel_product'])) {
                             <tr colspan="2">
                               <td>
                                 <h4
-                                  style="padding:5px;margin:0px;background-color: #02171e;color: white;padding-top: 0px;padding-bottom: 0px;font-family:Arial"
+                                  style="padding: 5px;margin: 0px;background-color: #02171e;color: white;padding-top: 0px;padding-bottom: 0px;font-family:Arial"
                                 >
                                   <table width="100%" cellspacing="10px">
                                     <tr>
                                       <td>
-                                        <span style="color:#fff;float:left">Customer name : ' . $customer_firstnm . " " . $customer_lastnm . '</span>
+                                        <span style="color: #fff;float:left">Customer name : ' . $customer_firstnm . " " . $customer_lastnm . '</span>
                                       </td>
                                       <td>
-                                        <span style="color:#fff;float:right">Ph : ' . $row['phone'] . '</span>
+                                        <span style="color: #fff;float:right">Ph : ' . $row['phone'] . '</span>
                                       </td>
                                     </tr>
                                     <tr>
                                       <td>
-                                        <span style="color:#fff;float:left">Customer id : OSUID' . sprintf('%06d', $customer_id) . '</span>
+                                        <span style="color: #fff;float:left">Customer id : OSUID' . sprintf('%06d', $customer_id) . '</span>
                                       </td>
                                       <td>
-                                        <span style="color:#fff;float:right">' . $row['email'] . '</span>
+                                        <span style="color: #fff;float:right">' . $row['email'] . '</span>
                                       </td>
                                     </tr>
                                     ';
@@ -11210,7 +11243,7 @@ if (isset($_POST['cancel_product'])) {
                       width="600"
                       cellpadding="0"
                       cellspacing="0"
-                      style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                      style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                     >
                       <tbody>
                         <tr>
@@ -11227,7 +11260,7 @@ if (isset($_POST['cancel_product'])) {
                                 <tr>
                                   <td valign="middle" width="120" align="center">
                                     <a
-                                      style="color:#027cd8;text-decoration:none;outline:none;color:#fff;font-size:13px"
+                                      style="color: #027cd8;text-decoration:none;outline:none;color: #fff;font-size: 13px"
                                       href="' . getBaseURL() . 'customer/Product/single.php?id=' . $idid . '"
                                       rel="noreferrer"
                                       target="_blank"
@@ -11237,7 +11270,7 @@ if (isset($_POST['cancel_product'])) {
                                         border="0"
                                         src="' . getImageURL() . 'images/' . $row['category_id'] .  '/' . $idid . '.jpg"
                                         alt="' . $row['product_name'] . '"
-                                        style="border:none;max-width:125px;max-height:125px;margin-top:20px"
+                                        style="border:none;max-width: 125px;max-height: 125px;margin-top: 20px"
                                         class="CToWUd"
                                       />
                                     </a>
@@ -11249,10 +11282,10 @@ if (isset($_POST['cancel_product'])) {
                               <tbody>
                                 <tr>
                                   <td valign="top" align="left">
-                                    <p style="margin-bottom:13px;margin-top:20px">
+                                    <p style="margin-bottom: 13px;margin-top: 20px">
                                       <a
                                         href=""
-                                        style="font-family:Arial;font-size:14.5px;font-weight:bold;font-style:normal;font-stretch:normal;line-height:1.43;color:#139b3b;text-decoration:none!important;word-spacing:0.2em"
+                                        style="font-family:Arial;font-size: 14.5px;font-weight: bold;font-style:normal;font-stretch:normal;line-height: 1.43;color: #139b3b;text-decoration:none!important;word-spacing: 0.2em"
                                         rel="noreferrer"
                                         target="_blank"
                                         data-saferedirecturl=""
@@ -11261,22 +11294,22 @@ if (isset($_POST['cancel_product'])) {
                                       >
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Price: &#8377; ' . $row['price'] . '
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Qty: ' . $row['item_quantity'] . '
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Order type: ' . $row['order_type'] . '
                                     </p>
                                     <p
-                                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;line-height:12px"
+                                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;line-height: 12px"
                                     >
                                       Total: &#8377; ' . (int) $row['item_quantity'] * (int) $row['price'] . '
                                     </p>
@@ -11291,17 +11324,17 @@ if (isset($_POST['cancel_product'])) {
                       </tbody>
                     </table>
                     <hr
-                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;"
+                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;"
                     />
                     ';
   $message2 .= '
                     <p
-                      style="font-family:Arial;font-style:normal;font-size:12px;font-stretch:normal;color:#212121;font-weight:bold;line-height:12px"
+                      style="font-family:Arial;font-style:normal;font-size: 12px;font-stretch:normal;color: #212121;font-weight: bold;line-height: 12px"
                     >
                       Total amount : &#8377; ' . $new_order_tot_amt . '
                     </p>
                     <hr
-                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color:#E0E0E0 !important;"
+                      style="border: 3px solid #E0E0E0 !important;margin: 0px;padding: 0px;color: #E0E0E0 !important;background-color: #E0E0E0 !important;"
                     />
                     ';
   $message2 .= '
@@ -11310,7 +11343,7 @@ if (isset($_POST['cancel_product'])) {
                       width="600"
                       cellpadding="0"
                       cellspacing="0"
-                      style="padding-right:20px;padding-left:20px;background-color:#fff;width:640px;max-width:640px"
+                      style="padding-right: 20px;padding-left: 20px;background-color: #fff;width: 640px;max-width: 640px"
                     >
                       <tbody>
                         <tr>
@@ -11320,13 +11353,13 @@ if (isset($_POST['cancel_product'])) {
                               border="0"
                               cellpadding="0"
                               cellspacing="0"
-                              style="margin-top:18px"
+                              style="margin-top: 18px"
                             >
                               <tbody>
                                 <tr>
                                   <td
                                     height="1"
-                                    style="background-color:#f0f0f0;font-size:0px;line-height:0px"
+                                    style="background-color: #f0f0f0;font-size: 0px;line-height: 0px"
                                     bgcolor="#f0f0f0"
                                   ></td>
                                 </tr>
@@ -11340,17 +11373,17 @@ if (isset($_POST['cancel_product'])) {
                               width="100%"
                               cellspacing="0"
                               cellpadding="0"
-                              style="width:600px;max-width:600px;background:#ffffff"
+                              style="width: 600px;max-width: 600px;background: #ffffff"
                             >
                               <tbody>
-                                <tr style="color:#212121">
+                                <tr style="color: #212121">
                                   <td
                                     align="left"
                                     valign="top"
-                                    style="color:#212121;border-bottom:solid 1px #f0f0f0"
+                                    style="color: #212121;border-bottom:solid 1px #f0f0f0"
                                   >
                                     <p
-                                      style="font-family:Arial;font-size:14px;font-weight:bold;line-height:1.86;color:#212121;margin-top:22px"
+                                      style="font-family:Arial;font-size: 14px;font-weight: bold;line-height: 1.86;color: #212121;margin-top: 22px"
                                     >
                                       Hope to see you again soon.
                                     </p>
@@ -11367,21 +11400,21 @@ if (isset($_POST['cancel_product'])) {
                               width="100%"
                               cellspacing="0"
                               cellpadding="0"
-                              style="width:600px;max-width:600px;margin-top:14px"
+                              style="width: 600px;max-width: 600px;margin-top: 14px"
                             >
                               <tbody>
                                 <tr>
                                   <td
                                     align="left"
                                     valign="top"
-                                    style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                    style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                   >
                                     <table>
                                       <tbody>
                                         <tr>
-                                          <td style="width:15%;text-align:left;padding-top:5px">
+                                          <td style="width: 15%;text-align:left;padding-top: 5px">
                                             <a
-                                              style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                              style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                               href="' . getBaseURL() . '"
                                               ><img
                                                 border="0"
@@ -11392,17 +11425,17 @@ if (isset($_POST['cancel_product'])) {
                                               />
                                             </a>
                                           </td>
-                                          <td style="width:75%;text-align:left;font-family:Arial">
+                                          <td style="width: 75%;text-align:left;font-family:Arial">
                                             &#169; 2020
                                             <a
-                                              style="color:#027cd8;text-decoration:none;outline:none;font-weight:bold"
+                                              style="color: #027cd8;text-decoration:none;outline:none;font-weight: bold"
                                               href=""
                                               >HFE-Store</a
                                             >. All rights reserved
                                           </td>
-                                          <td style="width:10%;text-align:right">
+                                          <td style="width: 10%;text-align:right">
                                             <a
-                                              style="text-decoration:none;outline:none;color:#ffffff;font-size:13px"
+                                              style="text-decoration:none;outline:none;color: #ffffff;font-size: 13px"
                                               href=""
                                               rel="noreferrer"
                                               target="_blank"
@@ -11413,7 +11446,7 @@ if (isset($_POST['cancel_product'])) {
                                                 height="24"
                                                 src="https://ci6.googleusercontent.com/proxy/3QE9kvI6a_sNZY1yz9h1e9UTtBEe6bvUPfsokYVFhigLrmrCJxcv1_CZk0b5cJWyTHa1prcEfHSGUl1QMcg36fPaTs0H7MVxDk0pgC8ujoEedjfg26Rdff_eNArN9_s=s0-d-e1-ft#http://img6a.flixcart.com/www/promos/new/20160910-183744-google-play-min.png"
                                                 alt="Flipkart.com"
-                                                style="border:none;margin-top:10px"
+                                                style="border:none;margin-top: 10px"
                                                 class="CToWUd"
                                               />
                                             </a>
@@ -11429,21 +11462,21 @@ if (isset($_POST['cancel_product'])) {
                                       width="100%"
                                       cellspacing="0"
                                       cellpadding="0"
-                                      style="margin:0 auto;width:600px;max-width:600px;margin-top:14px"
+                                      style="margin: 0 auto;width: 600px;max-width: 600px;margin-top: 14px"
                                     >
                                       <tbody>
                                         <tr>
                                           <td
                                             align="left"
                                             valign="top"
-                                            style="color:#2c2c2c;line-height:20px;font-weight:300;background-color:transparent"
+                                            style="color: #2c2c2c;line-height: 20px;font-weight: 300;background-color:transparent"
                                           >
                                             <table>
                                               <tbody>
                                                 <tr>
                                                   <td>
                                                     <p
-                                                      style="font-family:Arial;font-size:10px;color:#878787"
+                                                      style="font-family:Arial;font-size: 10px;color: #878787"
                                                     >
                                                       This email was sent from a notification-only
                                                       address that cannot accept incoming email. Please

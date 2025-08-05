@@ -265,7 +265,7 @@
   </div>
   <div class="footer-copy">
     <div class="container">
-      <p>© 2025 HFE. All rights reserved | <a id="me" onmouseover="$('#me').css('color','#139b3b')" onmouseleave="$('#me').css('color','#139b3b')" href="www.HFE-Store.com">Govind</a></p>
+      <p>© 2025 HFE. All rights reserved | <a id="me" onmouseover="$('#me').css('color','#139b3b')" onmouseleave="$('#me').css('color','#139b3b')" href="">Govind</a></p>
     </div>
   </div>
 </div>
@@ -360,25 +360,25 @@
                       <div
                         onclick="$('.apk').removeClass('selected');$(this).addClass('selected');copyapklink(1)"
                         class="apk"
-                        style="margin-left:20px;width: 30px;height: 30px;background-color: #1da1f2;border-radius:3px;display: flex;align-items: center;justify-content: center;">
+                        style="margin-left:20px;width: 30px;height: 30px;background-color: #1da1f2;border-radius: 3px;display: flex;align-items: center;justify-content: center;">
                         <i class="fa fa-mobile fa-lg" style="color: white;"></i>
                       </div>
-                      <p><i class="fa fa-arrow-up" style="color:#348f00"></i> Android 9</p>
+                      <p><i class="fa fa-arrow-up" style="color: #348f00"></i> Android 9</p>
                     </td>
                     <td class="social-share " style="text-align: left;">
                       <div
                         onclick="$('.apk').removeClass('selected');$(this).addClass('selected');copyapklink(2)"
                         class="apk"
-                        style="margin-left:20px;width: 30px;height: 30px;background-color: #0077af;border-radius:3px;display: flex;align-items: center;justify-content: center;">
+                        style="margin-left: 20px;width: 30px;height: 30px;background-color: #0077af;border-radius: 3px;display: flex;align-items: center;justify-content: center;">
                         <i class="fa fa-mobile fa-lg" style="color: white;"></i>
                       </div>
-                      <p><i class="fa fa-arrow-up" style="color:#348f00"></i> Android 6.1</p>
+                      <p><i class="fa fa-arrow-up" style="color: #348f00"></i> Android 6.1</p>
                     </td>
                     <td class="social-share" style="text-align: center;">
                       <div
                         class="downloadapk"
                         onclick="downloadapk()"
-                        style="margin:auto;width: max-content;height: 30px;background-color: #ff6600;border-radius:3px;display: flex;align-items: center;justify-content: center;padding-left:20px;padding-right:20px">
+                        style="margin:auto;width: max-content;height: 30px;background-color: #ff6600;border-radius: 3px;display: flex;align-items: center;justify-content: center;padding-left: 20px;padding-right: 20px">
                         <i class="fa fa-download fa-lg" style="color: white;"> Download</i>
                       </div>
                       <p></p>
@@ -567,40 +567,40 @@
   class="modal modal-xl hidescroll"
   style="height: 90%;position:fixed">
   <div class="modal-dialog modal-xl" style="height: 90%;">
-    <div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
+    <div class="modal-content" style="height: 90%;opacity: 0.95;">
       <div class="modal-overlay" id="modal-overlay">
-        <div class="modal-header shadow_b" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;color: white">
+        <div class="modal-header shadow_b" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;color: white">
           <button type="button" class="close" data-dismiss="modal" style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
           <h3 id="store_title" class="modal-title">Available Stores</h3>
         </div>
       </div>
-      <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
-        <div class="model-body" id="multi_store_listing" style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
+      <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px;">
+        <div class="model-body" id="multi_store_listing" style="overflow-x: scroll;margin-top: 50px;background-color: #101010"><br>
           <table
             id="store"
             cellspacing="50px"
             cellpadding="20px"
             width="100%"
             class="single_product_info" border="5px"
-            style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+            style="overflow-x: scroll;border: 5px ;border-radius: 10px;background-color: #151515; color: #efefef;">
             <tbody>
-              <tr style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
+              <tr style="border: 0px;border-color: transparent;">
                 <td colspan="9">
                   <button
                     type="button"
                     onclick="sortTable(3)"
-                    style="float: left;color: white;background-color: #F08200;border-radius: 5px;border:#ffffff"
+                    style="float: left;color: white;background-color: #154739;border-radius: 5px;border: #ffffff"
                     name="button">Sort by Distance
                   </button>
                   <button
                     type="button"
                     onclick="sortTable(2)"
-                    style="float: left;color: white;background-color: #F08200;margin-left:3px;border-radius: 5px;border:#ffffff"
+                    style="float: left;color: white;background-color: #154739;margin-left: 3px;border-radius: 5px;border: #ffffff"
                     name="button">Sort by Price
                   </button>
                 </td>
               </tr>
-              <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white">
+              <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #101010)) !important;color: white;">
                 <th style="border: none;text-align:center" class="view_avail_stores">Select</th>
                 <th style="border: none;text-align:center" class="view_avail_stores">Store Name </th>
                 <th style="border: none;text-align:center" class="view_avail_stores">Price </th>
@@ -617,10 +617,10 @@
               </div>
             </tbody>
           </table>
-          <div class="m-sing" id="per" style="background-color: #f2f2f2;color:black;padding-top: 7px;padding-bottom: 7px;;">
+          <div class="m-sing" id="per" style="background-color: #101010;color: darkgrey;padding-top: 7px;padding-bottom: 7px;">
             <div class="px-3">
               <h4 class="m-sing">
-                <span style='font-family: arial;color:#07C103;font-weight: bold;text-decoration: none;font-size:15px'>
+                <span style='font-family: arial;color: #07C103;font-weight: bold;text-decoration: none;font-size: 15px'>
                   You Save &#8377;
                   <span id="save" style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px"></span>
                   (<span style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px" id="off"></span>%)
@@ -644,14 +644,14 @@
                 <input type="hidden" value="" id="idid_keeper" />
               </h4>
               <button
-                style="height: 45px;width:100%;border-color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white;border-radius:7px;outline: none; "
+                style="height: 45px;width: 100%;border-color: darkgrey;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #101010), color-stop(1, #151515)) !important;color: white;border-radius: 7px;outline: none;"
                 onclick="check_store_select()">
-                <i class="fa fa-cart-plus"></i>&nbsp;ADD TO CART
+                <i class="fa fa-cart-plus"></i>&nbsp; ADD TO CART
               </button>
             </div>
           </div>
         </div>
-        <div class="modal-footer" style=" background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;">
+        <div class="modal-footer" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #151515)) !important;">
           <button
             type="button"
             class="btn btn-default"
@@ -677,9 +677,9 @@
   class="modal fade modal-xl hidescroll"
   style="height: 90%;">
   <div class="modal-dialog modal-xl" style="height: 90%;">
-    <div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
+    <div class="modal-content" style="height: 90%;opacity: 0.95;">
       <div class="modal-overlay" id="modal-overlay">
-        <div class="modal-header shadow_b" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;color: white">
+        <div class="modal-header shadow_b" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;color: white">
           <button
             type="button"
             class="close"
@@ -689,8 +689,8 @@
           <h3 id="store_title" class="modal-title">Available Stores</h3>
         </div>
       </div>
-      <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
-        <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
+      <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px;">
+        <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: #101010;"><br>
           <table
             id="wishlist_store"
             cellspacing="50px"
@@ -698,25 +698,25 @@
             width="100%"
             class="single_product_info"
             border="5px"
-            style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+            style="overflow-x: scroll;border: 5px ;border-radius: 10px;background-color: #151515; color: #efefef;">
             <tbody>
-              <tr style="border-left:white;border-right:white;border-top:white;border-left:none;border:0px;border-top: none;border-right: none;">
+              <tr style="border: 0px;border-color: transparent;">
                 <td colspan="9">
                   <button
                     type="button"
                     onclick="sortTable(3)"
-                    style="float: left;color: white;background-color: #F08200;border-radius: 5px;border:#ffffff"
+                    style="float: left;color: white;background-color: #154739;border-radius: 5px;border: #ffffff"
                     name="button">Sort by Distance
                   </button>
                   <button
                     type="button"
                     onclick="sortTable(2)"
-                    style="float: left;color: white;background-color: #F08200;margin-left:3px;border-radius: 5px;border:#ffffff"
+                    style="float: left;color: white;background-color: #154739;margin-left: 3px;border-radius: 5px;border: #ffffff"
                     name="button">Sort by Price
                   </button>
                 </td>
               </tr>
-              <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;color: white">
+              <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #101010)) !important;color: white;">
                 <th style="border: none;text-align:center" class="view_avail_stores">Select</th>
                 <th style="border: none;text-align:center" class="view_avail_stores">Store Name </th>
                 <th style="border: none;text-align:center" class="view_avail_stores">Price </th>
@@ -733,10 +733,10 @@
               </div>
             </tbody>
           </table>
-          <div class="m-sing" id="per2" style="background-color: #f2f2f2;color:black;padding-top: 7px;padding-bottom: 7px;;">
+          <div class="m-sing" id="per2" style="background-color: #101010;color: darkgrey;padding-top: 7px;padding-bottom: 7px;">
             <div class="px-3">
               <h4 class="m-sing">
-                <span style='font-family: arial;color:#07C103;font-weight: bold;text-decoration: none;font-size:15px'>
+                <span style='font-family: arial;color: #07C103;font-weight: bold;text-decoration: none;font-size: 15px'>
                   You Save &#8377;
                   <span id="save2" style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px"></span>
                   (<span style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px" id="off2"></span>%)
@@ -761,7 +761,7 @@
               </h4>
               <button
                 class="wishlist_btn"
-                style="height: 45px;width:100%;border-color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important; color: white;border-radius:7px;outline: none;"
+                style="height: 45px;width: 100%;border-color: darkgrey;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #101010), color-stop(1, #151515)) !important;color: white;border-radius: 7px;outline: none;"
                 onclick="wishlist_check_store_select()"
                 class="element_cart"
                 type="button"
@@ -773,7 +773,7 @@
             </div>
           </div>
         </div>
-        <div class="modal-footer" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #007ab7), color-stop(1, #01728e)) !important;">
+        <div class="modal-footer" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #151515)) !important;">
           <button
             type="button"
             class="btn btn-default"
@@ -803,9 +803,9 @@ if (isset($_SESSION['hfe_id'])) {
     class="modal fade modal-xl hidescroll"
     style="height: 90%;">
     <div class="modal-dialog modal-xl" style="height: 90%;">
-      <div class="modal-content" style="height: 90%;" style="border-bottom-left-radius: 10px">
+      <div class="modal-content" style="height: 90%;opacity: 0.95;">
         <div class="modal-overlay" id="modal-overlay">
-          <div class="modal-header shadow_b" style="background-color: #337ab7;color: white">
+          <div class="modal-header shadow_b" style="background-color: #156a53;color: white">
             <button
               type="button"
               class="close"
@@ -814,8 +814,8 @@ if (isset($_SESSION['hfe_id'])) {
             <h3 id="store_title" class="modal-title">Your Wishlists</h3>
           </div>
         </div>
-        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
-          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
+        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px;">
+          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: #101010;"><br>
             <table
               id="list_wishlist"
               cellspacing="50px"
@@ -823,12 +823,12 @@ if (isset($_SESSION['hfe_id'])) {
               width="100%"
               class="single_product_info"
               border="5px"
-              style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+              style="overflow-x: scroll;border: 5px ;border-radius: 10px;background-color: #151515; color: #efefef;">
               <?php
               $rows = $result->rowCount();
               if (!is_null($rows) && $rows > 0) {
               ?>
-                <tr style="background-color: #22374e;color: white">
+                <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #101010)) !important;color: white;">
                   <th style="border: none;" class="view_avail_stores">Select</th>
                   <th style="border: none;" class="view_avail_stores">List Name </th>
                   <th style="border: none;" class="view_avail_stores">Privacy </th>
@@ -842,29 +842,29 @@ if (isset($_SESSION['hfe_id'])) {
                   $stmt_wish1->execute(array(':wish_id' => $row['wishlist_id']));
                   $row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
                 ?>
-                  <tr>
+                  <tr style="border-color: black;">
                     <td style="padding: 0px;margin: 0px;">
                       <button
                         id="list_btn<?= $row['wishlist_id'] ?>"
-                        style="height: 45px;width:100%;border-color: white;background-color:#006904;color: white;border-radius:7px;outline: none;display:unset; "
+                        style="height: 45px;width: 45px;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;display: unset;"
                         onclick="wishlist_check_list_select(<?= $row['wishlist_id'] ?>)">
                         Add <i class="fa fa-heart"></i>
                       </button>
                     </td>
-                    <td style="background-color: white" class="view_avail_stores">
+                    <td class="view_avail_stores">
                       <?= $row['list_name'] ?>
                     </td>
-                    <td style="background-color: white" class="view_avail_stores">
+                    <td class="view_avail_stores">
                       <?= $row['privacy'] ?>
                     </td>
-                    <td style="background-color: white" id="wish_cnt_<?= $row['wishlist_id'] ?>" class="view_avail_stores">
+                    <td id="wish_cnt_<?= $row['wishlist_id'] ?>" class="view_avail_stores">
                       <?= $row_wish1['item_count'] ?>
                     </td>
                     <?php
                     $dateofcreate = explode('-', $row['date']);
                     $day = $dateofcreate[1] . "/" . $dateofcreate[2] . "/" . substr($dateofcreate[0], 2);
                     ?>
-                    <td style="background-color: white" class="view_avail_stores"><?= $day ?></td>
+                    <td class="view_avail_stores"><?= $day ?></td>
                   </tr>
                 <?php
                 }
@@ -873,9 +873,9 @@ if (isset($_SESSION['hfe_id'])) {
               if ($status == 0) {
                 ?>
                 <br>
-                <div style="display:flex;justify-content:center;align-items:center">
-                  <img src="../../images/logo/wishlist1.png" style="max-height:150px;width:auto;clear:both">
-                  <h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No result found</h3>
+                <div style="display: flex;justify-content: enter;align-items: center">
+                  <img src="../../images/logo/wishlist1.png" style="max-height: 150px;width: auto;clear: both">
+                  <h3 style="clear: both;font-size: 20px">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
               <?php
@@ -883,14 +883,14 @@ if (isset($_SESSION['hfe_id'])) {
               ?>
             </table>
           </div>
-          <div class="modal-footer" style="background-color: white">
+          <div class="modal-footer" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #151515)) !important;">
             <button
               type="button"
               class="btn btn-default"
               data-dismiss="modal"
               data-toggle="modal"
               data-target="#avail_stores_wishlist"
-              style="outline: none;font-size: 1.2em;float:left;background-color:#22374e">
+              style="outline: none;font-size: 1.2em;float: left;background-color: #22374e">
               <i style="color: #fff" class="fa fa-arrow-left fa-lg"></i>
             </button>
             <button

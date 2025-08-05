@@ -502,7 +502,7 @@ require "../Main/header.php";
                             onclick="regsetlocation()"
                             onmouseover="$(this).css('background-color','#4f994f')"
                             onmouseleave="$(this).css('background-color','#006904')"
-                            style="color: white;background-color:#006904;padding-top:10px;padding-bottom: 10px;outline: none;"
+                            style="color: white;background-color: #006904;padding-top: 10px;padding-bottom: 10px;outline: none;"
                             class="btn btn-default search_btn popuptext pin"
                             type="button">
                             <span class="fa fa-check"></span>
