@@ -1,7 +1,7 @@
 
 <?php
 
-require "pdo.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 
 $stmt = $pdo->query("select * from product");
 $rows = array();

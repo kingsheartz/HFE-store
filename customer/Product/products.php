@@ -1,6 +1,7 @@
 <?php
 require "../Main/header.php";
-require "../../db.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
+
 if (isset($_GET['product'])) {
   $nm = strtolower($_GET['product']);
   $res = $pdo->query(
@@ -1646,7 +1647,6 @@ if ($result_cnt == 0) {
                   <div class="container py-3" style="padding:0px;">
                     <div class="row" style="margin:0;padding-top:0px !important">
                       <?php
-                      require "../Common/pdo.php";
                       if (isset($_GET['product'])) {
                         $nm = $_GET['product'];
                         $res = $pdo->query(

@@ -302,7 +302,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
         <div class="col-md-12">
           <div class="form-group">
             <?php
-            require "..\..\db.php";
+            require dirname(__DIR__, 2) . '/db/pdo.php';
             $query = "SELECT max(product_id) FROM product ";
             $stmt = $pdo->query($query);
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
@@ -372,7 +372,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
           </style>
 
           <?php
-          require "..\..\db.php";
+          require dirname(__DIR__, 2) . '/db/pdo.php';
           ?>
           <!--features-->
           <script type="text/javascript">

@@ -1,5 +1,6 @@
 <?php
-require "../Common/pdo.php";
+require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
+
 if (isset($_GET['wishlist_id'])) {
   $wishlist_id = $_GET['wishlist_id'];
   $sqlc1 = "SELECT customer_id from wishlist WHERE wishlist_id=:wid";

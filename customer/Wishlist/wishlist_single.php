@@ -5,8 +5,10 @@ if (isset($_GET['wishlist_id'])) {
   header("location:../Wishlist/wishlist.php");
   return;
 }
+
 require "../Main/header.php";
-require "../Common/pdo.php";
+require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
+
 $update_setting_sql = 'SELECT* FROM wishlist WHERE wishlist_id= ' . $wishlist_id;
 $update_setting_stmt = $pdo->query($update_setting_sql);
 $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);

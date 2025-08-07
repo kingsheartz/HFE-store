@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/pdo.php';
+require_once dirname(__DIR__, 2) . '/db/pdo.php';
 require_once dirname(__DIR__, 2) . '/includes/logger.php';
 
 global $pdo;

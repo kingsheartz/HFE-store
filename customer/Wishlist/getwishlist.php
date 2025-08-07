@@ -1,5 +1,6 @@
 <?php
-require "../Common/pdo.php";
+require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
+
 if (isset($_REQUEST["name"])) {
   $data = array(
     ':name' => "%" . $_GET['name'] . "%"

@@ -7,7 +7,7 @@
 <?php
 /* Attempt MySQL server connection. Assuming you are running MySQL
 server with default setting (user 'root' with no password) */
-require "pdo.php";
+require dirname(__DIR__, 1) . '/db/pdo.php';
 // Attempt search query execution
 try {
   if (isset($_REQUEST["term"])) {

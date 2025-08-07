@@ -926,7 +926,7 @@ include "header.php";
       }
     </style>
     <?php
-    require "../../db.php";
+    require dirname(__DIR__, 2) . '/db/pdo.php';
 
     if (isset($_POST['cid'])) {
       echo "cid SET";
@@ -1107,7 +1107,7 @@ include "header.php";
       isset($_POST['pr_id']) || isset($_POST['im_url']) || isset($_POST['name']) ||
       isset($_POST['price']) || isset($_POST['description'])
     ) {
-      require '../../db.php';
+      require dirname(__DIR__, 2) . '/db/pdo.php';
       $pr = $_POST['pr_id'];
       $img = $_POST['im_url'];
       $itna = $_POST['name'];

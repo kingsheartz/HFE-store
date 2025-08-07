@@ -929,7 +929,7 @@ require "head.php";
       }
     </style>
     <?php
-    require "pdo.php";
+    require dirname(__DIR__, 1) . '/db/pdo.php';
     if (isset($_POST['check_id'])) {
       if (isset($_POST['update_data'])) {
         $it_id = $_POST['check_id'];
@@ -1039,7 +1039,7 @@ require "head.php";
       isset($_POST['price']) ||
       isset($_POST['description'])
     ) {
-      require 'pdo.php';
+      require dirname(__DIR__, 1) . '/db/pdo.php';;
       $pr = $_POST['pr_id'];
       $img = $_POST['im_url'];
       $itna = $_POST['name'];

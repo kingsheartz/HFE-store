@@ -1,5 +1,5 @@
 <?php
-require_once "../../pdo.php";
+require_once dirname(__DIR__, 2) . '/db/pdo.php';
 require dirname(__DIR__, 2) . '/utils/getBaseURL.php';
 
 $customer_id = $_GET['id'];

@@ -8,8 +8,9 @@ if (isset($_GET['nopid'])) {
 } else {
   header('location:../Main/hfe.php');
 }
+
+require_once $_SERVER['DOCUMENT_ROOT'].'/db/pdo.php';
 require "../Main/header.php";
-require "../Common/pdo.php";
 ?>
 <!-- breadcrumbs -->
 <style type="text/css">

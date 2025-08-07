@@ -90,7 +90,7 @@ include "header.php";
       }
     </style>
     <?php
-    require "pdo.php";
+    require dirname(__DIR__, 2) . '/db/pdo.php';
     if (isset($_POST['pass'])) {
       $r = password_hash($_POST['pass'], PASSWORD_DEFAULT);
       $query = "UPDATE admin SET password='$r' WHERE admin_id=1";

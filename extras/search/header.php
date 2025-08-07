@@ -185,7 +185,7 @@
 
           if (isset($_POST['Search'])) {
             if (strlen($_POST['Search']) > 0) {
-              require "pdo.php";
+              require dirname(__DIR__, 2) . '/db/pdo.php';
               $sub = $_POST['Search'];
               $r6 = $pdo->query("select item_id from item where item_name='$sub'");
               $id6 = $r6->fetch(PDO::FETCH_ASSOC);

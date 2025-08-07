@@ -404,7 +404,7 @@ require "head.php";
     </script>
     <?php
     $id = $_SESSION['hfe_id'];
-    require "pdo.php";
+    require dirname(__DIR__, 1) . '/db/pdo.php';
     $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id
               where product_description.product_description_id NOT IN
               (SELECT product_description_id FROM product_details where store_id=$id )

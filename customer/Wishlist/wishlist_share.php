@@ -1,5 +1,6 @@
 <?php
-require "../Common/pdo.php";
+require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
+
 if (isset($_GET['sharelink'])) {
   $link = $_GET['sharelink'];
   $sqlchk = "SELECT privacy FROM wishlist WHERE share_link=:link";

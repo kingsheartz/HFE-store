@@ -1,6 +1,6 @@
 <?php
 require "../Main/header.php";
-require "../../db.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 
 //Generate Dynamic Loading
 function randomGen($min, $max, $quantity)

@@ -1024,7 +1024,7 @@ if (session_status() === PHP_SESSION_NONE) {
                               style="position: absolute;display: none;background-color: #CACACA !important">
                               <li><a href="#0">All</a></li>
                               <?php
-                              require "../../db.php";
+                              require dirname(__DIR__, 2) . '/db/pdo.php';
                               $sql = $pdo->query("select category_id,category_name from category");
                               while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                               ?>
@@ -1116,7 +1116,7 @@ if (session_status() === PHP_SESSION_NONE) {
                               style="position: absolute;display: none;background-color: #CACACA !important">
                               <li><a href="#all">All</a></li>
                               <?php
-                              require "../../db.php";
+                              require dirname(__DIR__, 2) . '/db/pdo.php';
                               $sql = $pdo->query("select category_id,category_name from category");
                               while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                               ?>
@@ -1530,7 +1530,7 @@ if (session_status() === PHP_SESSION_NONE) {
       <i class="fa fa-sm fa-shopping-cart" style="color:white "></i> Shop By Category
     </a>
     <?php
-    require "../../db.php";
+    require dirname(__DIR__, 2) . '/db/pdo.php';
     $query11 = "SELECT * from  category";
     $st11 = $pdo->query($query11);
     while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {

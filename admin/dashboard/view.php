@@ -405,7 +405,7 @@ include "header.php";
         }
       </script>
       <?php
-      require "../../db.php";
+      require dirname(__DIR__, 2) . '/db/pdo.php';
       $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id  GROUP BY product_description.product_id ORDER BY product_description.product_description_id DESC LIMIT 8";
       $st = $pdo->query($query);
       $ct = 'ab';

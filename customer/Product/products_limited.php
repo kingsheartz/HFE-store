@@ -1,6 +1,7 @@
 <?php
 require "../Main/header.php";
-require "../../db.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
+
 if (isset($_GET['product'])) {
   $nm = strtolower($_GET['product']);
   $res = $pdo->query(

@@ -650,7 +650,7 @@ if (isset($product_description_id)) {
                 <br>
                 <div style="display:flex;justify-content:center;align-items:center">
                   <img src="../../images/logo/not-avail.png" style="max-height:150px;width:auto;clear:both">
-                  <h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No result found</h3>
+                  <h3 style="clear: both;font-size: 20px;color: darkgrey">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
               <?php
@@ -660,16 +660,16 @@ if (isset($product_description_id)) {
             <div class="m-sing" id="per" style="background-color: #101010;color: darkgrey;padding-top: 7px;padding-bottom: 7px;">
               <div class="px-3">
                 <h4 class="m-sing">
-                  <span style='font-family: arial;color:#07C103;font-weight: bold;text-decoration: none;font-size:15px'>
+                  <span style='font-family: arial;color: #07C103;font-weight: bold;text-decoration: none;font-size: 15px'>
                     You Save &#8377;
                     <span id="save" style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px"></span>
                     (<span style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px" id="off"></span>%)
                   </span>
                   <br><br>
-                  <li style="font-weight:normal;font-size: 14px;">Item remaing : <span style="text-decoration: none;font-weight:normal;font-family:arial" id="dis_qnty"></span> only</li>
-                  <li style="font-weight: normal;font-size: 14px;">Availability : <span style="text-decoration: none;font-weight:normal;" id="dis_avail"></span></li>
-                  <li style="font-weight:normal;font-size: 14px;">Status : <span style="text-decoration: none;font-weight:normal;" id="dis_sts"></span></li>
-                  <li style="font-weight:normal;font-size: 14px;">Address : <span style="text-decoration: none;font-weight:normal;" id="dis_add"></span></li>
+                  <li style="font-weight: normal;font-size: 14px;">Item remaing : <span style="text-decoration: none;font-weight: normal;font-family: arial" id="dis_qnty"></span> only</li>
+                  <li style="font-weight: normal;font-size: 14px;">Availability : <span style="text-decoration: none;font-weight: normal;" id="dis_avail"></span></li>
+                  <li style="font-weight: normal;font-size: 14px;">Status : <span style="text-decoration: none;font-weight: normal;" id="dis_sts"></span></li>
+                  <li style="font-weight: normal;font-size: 14px;">Address : <span style="text-decoration: none;font-weight: normal;" id="dis_add"></span></li>
                   <?php
                   $sqlfeatures = "select * from product_description where product_description.product_description_id=:product_description_id";
                   $stmtfeatures = $pdo->prepare($sqlfeatures);
@@ -834,7 +834,7 @@ if (isset($_SESSION['hfe_id'])) {
                 <br>
                 <div style="display:flex;justify-content:center;align-items:center">
                   <img src="../../images/logo/wishlist1.png" style="max-height:150px;width:auto;clear:both">
-                  <h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No result found</h3>
+                  <h3 style="clear: both;font-size: 20px;color: darkgrey">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
               <?php
@@ -978,7 +978,7 @@ if (isset($product_description_id)) {
                 <br>
                 <div style="display:flex;justify-content:center;align-items:center">
                   <img src="../../images/logo/not-avail.png" style="max-height:150px;width:auto;clear:both">
-                  <h3 style="clear:both;font-size:20px">&nbsp;&nbsp;No result found</h3>
+                  <h3 style="clear: both;font-size: 20px;color: darkgrey">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
               <?php
@@ -988,7 +988,7 @@ if (isset($product_description_id)) {
             <div class="m-sing" id="per3" style="background-color: #101010;color: darkgrey;padding-top: 7px;padding-bottom: 7px;">
               <div class="px-3">
                 <h4 class="m-sing">
-                  <span style='font-family: arial;color:#07C103;font-weight: bold;text-decoration: none;font-size: 15px'>
+                  <span style='font-family: arial;color: #07C103;font-weight: bold;text-decoration: none;font-size: 15px'>
                     You Save &#8377;
                     <span id="save3" style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px"></span>
                     (<span style="text-decoration: none;font-weight: bold;color: #07C103;padding-left: 0px" id="off3"></span>%)

@@ -313,7 +313,7 @@
   }
 </style>
 <?php
-require "pdo.php";
+require dirname(__DIR__, 1) . '/db/pdo.php';
 if (isset($_POST['product_description_id'])) {
   $x = $_POST['product_description_id'];
   $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id WHERE product_description.product_description_id=$x";

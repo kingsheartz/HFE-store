@@ -15,7 +15,7 @@ function redirectSuccess()
   die();
 }
 session_start();
-require "../../db.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 if (isset($_POST['desc_id'])) {
   if (isset($_POST['upload_image'])) {
     $it = $_POST['desc_id'];

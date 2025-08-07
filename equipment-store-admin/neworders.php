@@ -167,7 +167,7 @@ require "head.php";
     </div>
     <div id="printarea">
       <?php
-      require "pdo.php";
+      require dirname(__DIR__, 1) . '/db/pdo.php';
       $id = $_SESSION['hfe_id'];
       $query = "SELECT *  FROM new_orders
                 JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id

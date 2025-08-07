@@ -16,7 +16,7 @@ function redirectSuccess()
 }
 session_start();
 if (isset($_POST['add'])) {
-  require "..\..\db.php";
+  require dirname(__DIR__, 2) . '/db/pdo.php';
   if (empty($_POST['item_name'])) {
     redirectWithError("Please enter product name in the form.");
   }

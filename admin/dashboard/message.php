@@ -25,7 +25,7 @@ include "header.php";
       /* Attempt MySQL server connection. Assuming
       you are running MySQL server with default
       setting (user 'root' with no password) */
-      require 'pdo.php';
+      require dirname(__DIR__, 2) . '/db/pdo.php';;
       // Escape user inputs for security
       $un = $_REQUEST['uname'];
       $rn = $_REQUEST['rname'];
@@ -408,7 +408,7 @@ include "header.php";
         </div>
         <div class="collapse navbar-collapse" id="myNavbar2">
           <?php
-          require "pdo.php";
+          require dirname(__DIR__, 2) . '/db/pdo.php';
           $query = $pdo->query("SELECT username FROM store_admin");
           $cn = 0;
           while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
@@ -499,7 +499,7 @@ include "header.php";
                 <input type="hidden" id="rname" name="rname" value="<?= $_SESSION['hfe_name'] ?>">
                 <input type="hidden" id="uname" name="uname" value="admin">
                 <?php
-                require 'pdo.php';
+                require dirname(__DIR__, 2) . '/db/pdo.php';;
                 $c = $_SESSION['hfe_name'];
                 $query = "SELECT * FROM chats where (uname='$c' and rname='admin') or (uname='admin' and rname='$c') order by dt";
                 $run = $pdo->query($query);

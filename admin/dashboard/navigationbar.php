@@ -306,7 +306,7 @@
         <i class="fas fa-align-justify"></i>
       </button>
       <?php
-      require "../../db.php";
+      require dirname(__DIR__, 2) . '/db/pdo.php';
       $query = "SELECT COUNT(*) FROM product_details join product_description on product_details.product_description_id=product_description.product_description_id join product on product.product_id=product_description.product_description_id  JOIN store on store.store_id=product_details.store_id WHERE  product_details.permission=0";
       $statement = $pdo->prepare($query);
       $statement->execute();

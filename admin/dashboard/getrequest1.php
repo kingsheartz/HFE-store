@@ -1,5 +1,5 @@
 <?php
-require "pdo.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 
 $method = $_SERVER['REQUEST_METHOD'];
 

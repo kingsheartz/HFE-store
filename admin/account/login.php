@@ -1,6 +1,6 @@
 <?php
 session_start();
-require '..\..\db.php';
+require dirname(__DIR__, 2) . '/db/pdo.php';
 unset($_SESSION['hfe_admin']);
 
 if (isset($_POST['user']) || isset($_POST['pass'])) {

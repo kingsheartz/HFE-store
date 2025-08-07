@@ -275,7 +275,7 @@
         <i class="fas fa-align-justify"></i>
       </button>
       <?php
-      require "pdo.php";
+      require dirname(__DIR__, 1) . '/db/pdo.php';
       $id = $_SESSION['hfe_id'];
       $stmt = $pdo->query(
         "SELECT *  FROM new_orders

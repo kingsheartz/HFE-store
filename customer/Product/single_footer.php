@@ -585,7 +585,7 @@ if (isset($product_description_id)) {
                 <br>
                 <div style="display:flex;justify-content:center;align-items:center">
                   <img src="../../images/logo/not-avail.png" style="max-height: 150px;width: auto;clear: both">
-                  <h3 style="clear: both;font-size: 20px">&nbsp;&nbsp;No result found</h3>
+                  <h3 style="clear: both;font-size: 20px;color: darkgrey">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
               <?php
@@ -806,7 +806,7 @@ if (isset($product_description_id)) {
                 <br>
                 <div style="display:flex;justify-content:center;align-items:center">
                   <img src="../../images/logo/not-avail.png" style="max-height: 150px;width: auto;clear: both">
-                  <h3 style="clear: both;font-size: 20px">&nbsp;&nbsp;No result found</h3>
+                  <h3 style="clear: both;font-size: 20px;color: darkgrey">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
               <?php
@@ -1166,7 +1166,7 @@ if (isset($product_description_id)) {
                 <br>
                 <div style="display:flex;justify-content:center;align-items:center">
                   <img src="../../images/logo/not-avail.png" style="max-height: 150px;width: auto;clear: both">
-                  <h3 style="clear: both;font-size: 20px">&nbsp;&nbsp;No result found</h3>
+                  <h3 style="clear: both;font-size: 20px;color: darkgrey">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
               <?php

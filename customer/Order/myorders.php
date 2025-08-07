@@ -3,8 +3,9 @@ session_start();
 if (!isset($_SESSION['hfe_id'])) {
   header("location:../Main/hfe.php");
 }
+
+require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
 require "../Main/header.php";
-require "../Common/pdo.php";
 ?>
 <!-- breadcrumbs -->
 <style type="text/css">

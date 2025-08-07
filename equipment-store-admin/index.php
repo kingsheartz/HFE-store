@@ -26,7 +26,7 @@ require "head.php";
             <div class="well-box">
               <div class="well-text ">
                 <?php
-                require "pdo.php";
+                require dirname(__DIR__, 1) . '/db/pdo.php';
                 //no of categories
                 $cat = $pdo->query("select distinct category_name from category");
                 $catn = $cat->rowCount();

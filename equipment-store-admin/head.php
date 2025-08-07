@@ -43,7 +43,7 @@
 <?php
 session_start();
 if (isset($_GET['id'])) {
-  require "pdo.php";
+  require dirname(__DIR__, 1) . '/db/pdo.php';
 
   $_SESSION['hfe_id'] = $_GET['id'];
   $nw = $_SESSION['hfe_id'];

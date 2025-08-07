@@ -1,5 +1,5 @@
 <?php
-require "../Common/pdo.php";
+require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
 require "../Main/header.php";
 ?>
 

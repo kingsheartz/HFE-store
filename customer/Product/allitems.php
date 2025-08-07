@@ -1,5 +1,5 @@
 <?php
-require "../Common/pdo.php";
+require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
 require "../Main/header.php";
 ?>
 <style type="text/css">
@@ -194,7 +194,7 @@ require "../Main/header.php";
     <h3 style="text-transform:capitalize;font-weight:bold;text-align:center">Top New</h3>
   <?php
   }
-  require "../Common/pdo.php";
+
   $query11 = "SELECT * from  category";
   $st11 = $pdo->query($query11);
   while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {

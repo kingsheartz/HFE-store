@@ -4,7 +4,7 @@ require_once __DIR__ . '/functions.php';
 require_once __DIR__ . '/config.php';
 require dirname(__DIR__, 2) . '/utils/getBaseURL.php';
 require dirname(__DIR__, 2) . '/utils/getImageURL.php';
-require 'pdo.php';
+require dirname(__DIR__, 2) . '/db/pdo.php';;
 session_start();
 /*
 try{

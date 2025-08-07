@@ -1,5 +1,6 @@
 <?php
-require "../../../../customer/Common/pdo.php";
+require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
+
 if (isset($_GET['otp'])) {
   $otp = $_GET['otp'];
 } else {

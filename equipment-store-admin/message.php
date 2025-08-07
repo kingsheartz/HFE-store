@@ -15,7 +15,7 @@ require "head.php";
       $("#chatphp").click();
     </script>
     <?php
-    require 'pdo.php';
+    require dirname(__DIR__, 1) . '/db/pdo.php';;
     if (isset($_POST['status'])) {
       $sql = "UPDATE chats SET stat=1 where rname='" . $_SESSION['hfe_username'] . "' AND uname='admin'";
       $st = $pdo->prepare($sql);
@@ -428,7 +428,7 @@ require "head.php";
         </div>
         <div class="collapse navbar-collapse" id="myNavbar2">
           <?php
-          require "pdo.php";
+          require dirname(__DIR__, 1) . '/db/pdo.php';
           $query = $pdo->query("SELECT username FROM admin");
           $cn = 0;
           while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
@@ -512,7 +512,7 @@ require "head.php";
               <input type="hidden" id="rname" name="rname" value="admin">
               <input type="hidden" id="uname" name="uname" value="<?= $_SESSION['hfe_username'] ?>">
               <?php
-              require 'pdo.php';
+              require dirname(__DIR__, 1) . '/db/pdo.php';;
               $c = $_SESSION['hfe_username'];
               $query = "SELECT * FROM chats where (uname='$c' and rname='admin') or (uname='admin' and rname='$c')";
               $run = $pdo->query($query);

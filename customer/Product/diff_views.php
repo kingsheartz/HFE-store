@@ -1,4 +1,5 @@
 <?php
+require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
 require "../Main/header.php";
 ?>
 <style>
@@ -139,7 +140,6 @@ require "../Main/header.php";
   <div class="col-12 products-right  card">
     <div class="card-header">
       <?php
-      require "../Common/pdo.php";
       if (isset($_GET['popular'])) {
         $head = "Popular Products";
       } else if (isset($_GET['recent'])) {
@@ -159,7 +159,6 @@ require "../Main/header.php";
     </div>
     <hr />
     <?php
-    require "../Common/pdo.php";
     if (isset($_GET['pageno'])) {
       $pageno = $_GET['pageno'];
     } else {

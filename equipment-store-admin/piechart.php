@@ -1,5 +1,5 @@
 <?php
-require "pdo.php";
+require dirname(__DIR__, 1) . '/db/pdo.php';
 session_start();
 $id =
     $_SESSION['hfe_id'];

@@ -250,7 +250,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
       }
     </style>
     <?php
-    require "..\..\db.php";
+    require dirname(__DIR__, 2) . '/db/pdo.php';
     ?>
     <script type="text/javascript">
       function showupda(x) {
@@ -412,7 +412,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
       isset($_POST['uppr_id']) || isset($_POST['upim_url']) || isset($_POST['upname']) ||
       isset($_POST['upprice']) || isset($_POST['updescription'])
     ) {
-      require '..\..\db.php';
+      require dirname(__DIR__, 2) . '/db/pdo.php';
       $pr = $_POST['uppr_id'];
       $img = $_POST['upim_url'];
       $itna = $_POST['upname'];

@@ -1,5 +1,5 @@
 <?php
-require "../Common/pdo.php";
+require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
 
 header("Access-Control-Allow-Origin: GET");
 header("Content-Type: application/json");

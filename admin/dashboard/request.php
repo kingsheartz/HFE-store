@@ -14,7 +14,7 @@ include "header.php";
 
     <body>
       <?php
-      require "..\..\db.php";
+      require dirname(__DIR__, 2) . '/db/pdo.php';
       ?>
       <div class="table1">
         <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;">

@@ -1,6 +1,6 @@
 <?php
 session_start();
-require_once __DIR__ . '/pdo.php';
+require_once dirname(__DIR__, 2) . '/db/pdo.php';
 require_once dirname(__DIR__, 2) . '/includes/logger.php';
 require_once dirname(__DIR__, 2) . '/utils/getBaseURL.php';
 require_once dirname(__DIR__, 2) . '/utils/getImageURL.php';
@@ -11,11 +11,11 @@ require_once $_SERVER['DOCUMENT_ROOT'].'/mail/contactform/vendor/autoload.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/mail/contactform/functions.php';
 require_once $_SERVER['DOCUMENT_ROOT'].'/mail/contactform/config.php';
 */
-//K
+
 require_once '../../mail/contactform/vendor/autoload.php';
 require_once '../../mail/contactform/functions.php';
 require_once '../../mail/contactform/config.php';
-//K
+
 //Email smtp access
 //use PHPMailer\PHPMailer\PHPMailer;
 //use PHPMailer\PHPMailer\Exception;
@@ -1126,7 +1126,7 @@ if (isset($_POST['update_customer_details'])) {
 //EMAIL SENDING LOCALHOST MAIL() FUNCTION
 /*
 session_start();
-require_once "pdo.php";
+require_once dirname(__DIR__, 2) . '/db/pdo.php';
 //error_reporting(E_ALL);
 //ini_set('display_errors', 1);
 //set_error_handler("var_dump");
@@ -2590,7 +2590,6 @@ if (isset($_POST['cartcnt'])) {
 }
 function cntcart($uid)
 {
-  require "../Common/pdo.php";
   $id = $uid;
   $sqlcart = "SELECT COUNT(cart_id) AS cartcnt FROM cart WHERE customer_id=$id";
   $stmtcart = $pdo->query($sqlcart);
@@ -4809,7 +4808,6 @@ if (isset($_POST['wishlist_remove_item'])) {
 //-----------------WISHLIST COUNT------------------------------------------------------------------------------------------
 function wishlist_item_count($wish_id)
 {
-  require "../Common/pdo.php";
   $wishlist_cnt = "SELECT count(wishlist_items.wishlist_id) AS product_count FROM wishlist_items JOIN wishlist ON wishlist_items.wishlist_id=wishlist.wishlist_id WHERE wishlist.customer_id=:id AND wishlist_items.wishlist_id=:wid ";
   $wishlist_cnt_stmt = $pdo->prepare($wishlist_cnt);
   $wishlist_cnt_stmt->execute(array(

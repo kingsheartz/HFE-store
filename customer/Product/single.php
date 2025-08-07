@@ -1,6 +1,6 @@
 <?php
 require '../Main/header.php';
-require "../../db.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 $product_description_id = $_GET['id'];
 if (isset($_GET['id'], $_SESSION['hfe_id'])) {
   $check = $pdo->query(

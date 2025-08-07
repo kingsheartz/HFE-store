@@ -1,5 +1,5 @@
 <?php
-require "../../db.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 
 if (isset($_POST['size'])) {
   $s = $_POST['size'];
