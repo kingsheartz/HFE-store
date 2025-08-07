@@ -1,5 +1,5 @@
 <?php
-require dirname(__DIR__, 1) . "/Common/pdo.php";
+require dirname(__DIR__, 2) . "/db/pdo.php";
 require_once dirname(__DIR__, 2) . '/utils/getBaseURL.php';
 
 if (isset($_GET['sharelink'])) {

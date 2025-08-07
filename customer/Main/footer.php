@@ -564,7 +564,7 @@ if (isset($product_description_id)) {
     <div class="modal-dialog modal-xl" style="height: 90%;">
       <div class="modal-content" style="height: 90%;opacity: 0.95;">
         <div class="modal-overlay" id="modal-overlay">
-          <div class="modal-header shadow_b" style="background-color: #156a53;color: white">
+          <div class="modal-header shadow_b" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;color: white">
             <button type="button" class="close" data-dismiss="modal" style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
             <h3 id="store_title" class="modal-title">Available Stores</h3>
           </div>
@@ -649,7 +649,7 @@ if (isset($product_description_id)) {
                 ?>
                 <br>
                 <div style="display:flex;justify-content:center;align-items:center">
-                  <img src="../../images/logo/not-avail.png" style="max-height:150px;width:auto;clear:both">
+                  <img src="../../images/logo/not-available-in-store.png" style="max-height:150px;width:auto;clear:both">
                   <h3 style="clear: both;font-size: 20px;color: darkgrey">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
@@ -757,7 +757,7 @@ if (isset($_SESSION['hfe_id'])) {
     <div class="modal-dialog modal-xl" style="height: 90%;">
       <div class="modal-content" style="height: 90%;opacity: 0.95;">
         <div class="modal-overlay" id="modal-overlay">
-          <div class="modal-header shadow_b" style="background-color: #156a53;color: white">
+          <div class="modal-header shadow_b" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;color: white">
             <button type="button" class="close" data-dismiss="modal" style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
             <h3 id="store_title" class="modal-title">Your Wishlists</h3>
           </div>
@@ -791,24 +791,22 @@ if (isset($_SESSION['hfe_id'])) {
                   $row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
                 ?>
                   <tr style="border-color: black;">
-                    <td style="padding: 0px;margin: 0px;">
+                    <td style="padding: 10px;margin: 0px;">
                       <button
                         class="real_btn"
                         id="list_btn<?= $row['wishlist_id'] ?>"
-                        style="display: none;height: 45px;width: 45px;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;"
+                        style="display: none;height: 45px;width: 45px;border-color: white;background-color: #a10046ff;color: white;border-radius: 7px;outline: none;"
                         onclick="wishlist_check_list_select(<?= $row['wishlist_id'] ?>)">
                         Add <i class="fa fa-heart"></i>
                       </button>
                       <button
                         class="load_btn"
-                        style="height: 45px;width: 45px;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;">
+                        style="height: 45px;width: 45px;border-color: white;background-color: #a10046ff;color: white;border-radius: 7px;outline: none;">
                         <i class="fa fa-refresh fa-spin"></i> <i class="fa fa-heart"></i>
                       </button>
                     </td>
                     <td class="view_avail_stores"><?= $row['list_name'] ?></td>
                     <td class="view_avail_stores"><?= $row['privacy'] ?></td>
-                    <!--<td id="Q<?= $store_id ?>"><? //=$row['quantity'] 
-                                                    ?></td>-->
                     <td id="wish_cnt_<?= $row['wishlist_id'] ?>" class="view_avail_stores">
                       <?= $row_wish1['item_count'] ?>
                     </td>
@@ -882,7 +880,7 @@ if (isset($product_description_id)) {
     <div class="modal-dialog modal-xl" style="height: 90%;">
       <div class="modal-content" style="height: 90%;opacity: 0.95;">
         <div class="modal-overlay" id="modal-overlay">
-          <div class="modal-header shadow_b" style="background-color: #156a53;color: white">
+          <div class="modal-header shadow_b" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;color: white">
             <button type="button" class="close" data-dismiss="modal" style="outline: none;background-color: white;opacity: unset;color: red;margin-top: 0px;font-size: 2.3em;border-radius: 5px;padding-left:5px;padding-right: 5px; ">&times;</button>
             <h3 id="store_title" class="modal-title">Available Stores</h3>
           </div>

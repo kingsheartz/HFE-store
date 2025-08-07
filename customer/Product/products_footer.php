@@ -726,7 +726,7 @@
               <div id="wishlist_multi_store_response" style="display:none">
                 <br>
                 <div style="display:flex;justify-content:center;align-items:center">
-                  <img src="../../images/logo/not-avail.png" style="max-height:150px;width:auto;clear:both">
+                  <img src="../../images/logo/not-available-in-store.png" style="max-height:150px;width:auto;clear:both">
                   <h3 style="clear: both;font-size: 20px;color: darkgrey">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
@@ -805,7 +805,7 @@ if (isset($_SESSION['hfe_id'])) {
     <div class="modal-dialog modal-xl" style="height: 90%;">
       <div class="modal-content" style="height: 90%;opacity: 0.95;">
         <div class="modal-overlay" id="modal-overlay">
-          <div class="modal-header shadow_b" style="background-color: #156a53;color: white">
+          <div class="modal-header shadow_b" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;color: white">
             <button
               type="button"
               class="close"
@@ -843,10 +843,10 @@ if (isset($_SESSION['hfe_id'])) {
                   $row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
                 ?>
                   <tr style="border-color: black;">
-                    <td style="padding: 0px;margin: 0px;">
+                    <td style="padding: 10px;margin: 0px;">
                       <button
                         id="list_btn<?= $row['wishlist_id'] ?>"
-                        style="height: 45px;width: 45px;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;display: unset;"
+                        style="height: 45px;width: 45px;border-color: white;background-color: #a10046ff;color: white;border-radius: 7px;outline: none;display: unset;"
                         onclick="wishlist_check_list_select(<?= $row['wishlist_id'] ?>)">
                         Add <i class="fa fa-heart"></i>
                       </button>

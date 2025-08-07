@@ -805,7 +805,7 @@ if (isset($product_description_id)) {
                 ?>
                 <br>
                 <div style="display:flex;justify-content:center;align-items:center">
-                  <img src="../../images/logo/not-avail.png" style="max-height: 150px;width: auto;clear: both">
+                  <img src="../../images/logo/not-available.png" style="max-height: 150px;width: auto;clear: both">
                   <h3 style="clear: both;font-size: 20px;color: darkgrey">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
@@ -940,11 +940,9 @@ if (isset($product_description_id, $_SESSION['hfe_id'])) {
     class="modal fade modal-xl hidescroll"
     style="height: 90%;">
     <div class="modal-dialog modal-xl" style="height: 90%;">
-      <div class="modal-content" style="height: 90%;">
+      <div class="modal-content" style="height: 90%;opacity: 0.95;">
         <div class="modal-overlay" id="modal-overlay">
-          <div
-            class="modal-header shadow_b"
-            style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;color: white">
+          <div class="modal-header shadow_b" style="background-color: #156a53;color: white">
             <button
               type="button"
               class="close"
@@ -962,8 +960,8 @@ if (isset($product_description_id, $_SESSION['hfe_id'])) {
             <h3 id="store_title" class="modal-title">Your Wishlists</h3>
           </div>
         </div>
-        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px">
-          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: white"><br>
+        <div class="modal-guts scroll_handle_orange" style="border-bottom-left-radius: 10px;">
+          <div class="model-body " style="overflow-x: scroll;margin-top: 50px;background-color: #101010"><br>
             <table
               id="list_wishlist"
               cellspacing="50px"
@@ -971,12 +969,12 @@ if (isset($product_description_id, $_SESSION['hfe_id'])) {
               width="100%"
               class="single_product_info"
               border="5px"
-              style="overflow-x: scroll;border: 5px ;border-radius: 10px;">
+              style="overflow-x: scroll;border: 5px ;border-radius: 10px;background-color: #151515; color: #efefef;">
               <?php
               $rows = $result->rowCount();
               if (!is_null($rows) && $rows > 0) {
               ?>
-                <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;color: white">
+                <tr style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #101010)) !important;color: white;">
                   <th style="border: none;" class="view_avail_stores">Select</th>
                   <th style="border: none;" class="view_avail_stores">List Name </th>
                   <th style="border: none;" class="view_avail_stores">Privacy </th>
@@ -990,11 +988,11 @@ if (isset($product_description_id, $_SESSION['hfe_id'])) {
                   $stmt_wish1->execute(array(':wish_id' => $row['wishlist_id']));
                   $row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
                 ?>
-                  <tr>
-                    <td style="padding: 0px;margin: 0px;">
+                  <tr style="border-color: black;">
+                    <td style="padding: 10px;margin: 0px;">
                       <button
                         id="list_btn<?= $row['wishlist_id'] ?>"
-                        style="height: 45px;width: 100%;border-color: white;background-color: #156a53;color: white;border-radius: 7px;outline: none;display:unset; "
+                        style="height: 45px;width: 45px;border-color: white;background-color: #a10046ff;color: white;border-radius: 7px;outline: none;"
                         onclick="wishlist_check_list_select(<?= $row['wishlist_id'] ?>)">Add <i class="fa fa-heart"></i>
                       </button>
                     </td>
@@ -1026,7 +1024,7 @@ if (isset($product_description_id, $_SESSION['hfe_id'])) {
               ?>
             </table>
           </div>
-          <div class="modal-footer" style="background-color: white">
+          <div class="modal-footer" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #151515)) !important;">
             <button
               type="button"
               class="btn btn-default"
@@ -1165,7 +1163,7 @@ if (isset($product_description_id)) {
                 ?>
                 <br>
                 <div style="display:flex;justify-content:center;align-items:center">
-                  <img src="../../images/logo/not-avail.png" style="max-height: 150px;width: auto;clear: both">
+                  <img src="../../images/logo/not-available-in-store.png" style="max-height: 150px;width: auto;clear: both">
                   <h3 style="clear: both;font-size: 20px;color: darkgrey">&nbsp;&nbsp;No result found</h3>
                 </div>
                 <br>
