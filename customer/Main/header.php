@@ -752,7 +752,8 @@ if (session_status() === PHP_SESSION_NONE) {
       overflow-y: visible;
     }
 
-    div#mobile_menu {
+    div#mobile_menu.collapse.in,
+    div#mobile_menu.collapsing {
       width: 100% !important;
       background-color: #050505;
       padding-top: 0px;
@@ -1304,23 +1305,22 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
 
                 <?php
-                if (isset($_SESSION['hfe_name'])) {
+                $hfe_user_component = isset($_SESSION['hfe_name'])
+                  ? '<span>' . strtoupper(substr($_SESSION['hfe_name'], 0, 1)) . '</span>'
+                  : '<span><i class="fas fa-user"></i></span>';
                 ?>
-                  <li class="profilediv">
-                    <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
-                      <button class=" usericon " type="button" name="submit" value="">
-                        <span><?= strtoupper(substr($_SESSION['hfe_name'], 0, 1)); ?></span>
-                      </button>
-                    </form>
-                  </li>
-                <?php
-                }
-                ?>
-                <li class="profile-popup">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="display:flex;align-items:center;justify-content:center;">
-                    <span class="glyphicon glyphicon-user" style="font-size:16px;"></span> Profile <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu" style="border:1px solid rgb(55, 55, 55);padding: 0px; background-color: #000 !important; color:white !important;">
+                <li class="profilediv">
+                  <button class="dropdown-toggle usericon" data-toggle="dropdown" type="button" name="submit" value="">
+                    <?= $hfe_user_component ?>
+                  </button>
+                  <ul
+                    class="dropdown-menu"
+                    style="
+                      border: 1px solid rgb(55, 55, 55);
+                      padding: 0px;
+                      background-color: #000 !important;
+                      color:white !important;
+                      margin-left: -106px;">
                     <?php
                     if (!isset($_SESSION['hfe_id'])) {
                     ?>
@@ -1328,7 +1328,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fa fa-sign-in" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> Login </span>
                         </li>
@@ -1338,7 +1338,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fa fa-user-plus" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> Sign Up </span>
                         </li>
@@ -1350,7 +1350,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-shopping-bag" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> My Orders</span>
                         </li>
@@ -1360,7 +1360,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-history" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> Order
                             history</span>
@@ -1371,7 +1371,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-user-cog" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> Change
                             details</span>
@@ -1382,7 +1382,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-power-off" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> Log out</span>
                         </li>
