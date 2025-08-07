@@ -7,7 +7,7 @@ if (isset($_GET['wishlist_id'])) {
 }
 
 require "../Main/header.php";
-require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
+require dirname(__DIR__, 2) . '/db/pdo.php';
 
 $update_setting_sql = 'SELECT* FROM wishlist WHERE wishlist_id= ' . $wishlist_id;
 $update_setting_stmt = $pdo->query($update_setting_sql);

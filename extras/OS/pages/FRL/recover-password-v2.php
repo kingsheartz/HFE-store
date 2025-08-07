@@ -1,5 +1,5 @@
 <?php
-require $_SERVER['DOCUMENT_ROOT'] . '/db/pdo.php';
+require dirname(__DIR__, 4) . '/db/pdo.php';
 
 if (isset($_GET['otp'])) {
   $otp = $_GET['otp'];

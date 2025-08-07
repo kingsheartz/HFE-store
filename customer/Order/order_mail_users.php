@@ -1,5 +1,5 @@
 <?php
-require_once $_SERVER['DOCUMENT_ROOT'].'/db/pdo.php';
+require_once dirname(__DIR__, 2) . '/db/pdo.php';
 
 $user_id = $_GET['id'];
 $placesql_u = "select* from customers where customer_id=:user_id";

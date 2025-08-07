@@ -9,7 +9,7 @@ if (isset($_GET['nopid'])) {
   header('location:../Main/hfe.php');
 }
 
-require_once $_SERVER['DOCUMENT_ROOT'].'/db/pdo.php';
+require_once dirname(__DIR__, 2) . '/db/pdo.php';
 require "../Main/header.php";
 ?>
 <!-- breadcrumbs -->
