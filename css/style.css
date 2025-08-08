@@ -1178,6 +1178,7 @@ a.w3_agile_vimeo:hover {
 .footer-botm {
   background: #393737;
   padding: 16px 0;
+  width: 100% !important;
 }
 
 .downloadapk {
@@ -3422,6 +3423,12 @@ h3.agileits-icons-title {
 
   button.btn.btn-default.search {
     margin-top: -1px;
+  }
+}
+
+@media(max-width:768px) {
+  .w3_footer_grid.logo {
+    display: none !important;
   }
 }
 

@@ -112,12 +112,12 @@ require dirname(__DIR__, 2) . '/utils/getBaseURL.php';
   @media(max-width: 767px) {
     .col-sm-3.w3_footer_grid {
       height: 200px;
-      width: 50%;
+      width: 33.33%;
     }
 
     .col-sm-3.w3_footer_grid>h3,
     .col-sm-3.w3_footer_grid>ul {
-      padding-left: 30%;
+      padding-left: 15px;
     }
 
     .col-sm-3.w3_footer_grid>h3 {
@@ -172,7 +172,7 @@ require dirname(__DIR__, 2) . '/utils/getBaseURL.php';
   <link rel="stylesheet" href="../../css/font-awesome.min.css">
   <div class="container">
     <div class="w3_footer_grids">
-      <div class="col-sm-3 w3_footer_grid">
+      <div class="col-sm-3 w3_footer_grid logo">
         <img src="../../images/logo/logo.png" alt=" " class="img-responsive">
       </div>
       <div class="col-sm-3 w3_footer_grid">

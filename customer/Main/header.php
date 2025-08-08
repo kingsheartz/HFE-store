@@ -1300,7 +1300,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
                 <li id="contactactive">
                   <a href="../Main/contact.php" style="display:flex;align-items:center;justify-content:center;">
-                    <i class="fa fa-lg fa-users" style="font-size:16px;"></i> &nbsp; Contact Us
+                    <i class="fas fa-lg fa-address-card" style="font-size:16px;"></i> &nbsp; Contact Us
                   </a>
                 </li>
 
