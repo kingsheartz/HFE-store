@@ -832,8 +832,7 @@ function randomGen($min, $max, $quantity)
                           $off = round(($save * 100) / $total);
                       ?>
                           <div class="cross-sells">
-                            <div class="each-product" style="padding: 0px;padding-top: 10px;width: 100%;background-color: #111111"
-                              class="tbl_s<?= $store_id . "i" . $product_description_id ?>">
+                            <div class="each-product tbl_s<?= $store_id . "i" . $product_description_id ?>" style="padding: 0px;padding-top: 10px;width: 100%;background-color: #111111">
                               <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0" style="padding: 0px;">
                                 <input
                                   id="check_s<?= $store_id . "i" . $product_description_id ?>"
