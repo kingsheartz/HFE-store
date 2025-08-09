@@ -310,8 +310,8 @@ require "head.php";
         }
       }
     </script>
-    <div class="col-sm-12" style="background: #5d5d5d78;margin-top: 100px;">
-      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:10px;">
+    <div class="div-status" style="background: #5d5d5d78;margin-top: 100px;">
+      <h4 style="margin-top: 30px;margin-bottom:50px;border-bottom:  1px solid#E3E3E3;padding:20px;">
         <i
           class="fas fa-user-edit"
           style="font-size: 24px;padding-right: 12px"

@@ -23,9 +23,10 @@ include "header.php";
       }
 
       .modal-header1 {
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #cd07ff), color-stop(1, #a900ff)) !important;
+        background: #18222f;
         color: white;
         padding: 15px;
+        border-bottom: 1px solid #333;
       }
 
       .modal-title1 {
@@ -35,7 +36,9 @@ include "header.php";
 
       .modal-body1 {
         position: relative;
-        padding: 15px;
+        padding: 15px !important;
+        height: 210px !important;
+        background: #18222f !important;
       }
 
       .modal-content1 {
@@ -74,19 +77,18 @@ include "header.php";
 
       button.btn.btn-primary {
         width: 100%;
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #cd07ff), color-stop(1, #a900ff)) !important;
       }
 
       #eye,
       #eye2 {
         position: absolute;
-        top: 0;
-        right: 0;
-        font-size: 24px;
+        top: 6px;
+        right: 3px;
+        font-size: 14px;
         padding: 2px;
         height: 30px;
-        background: black;
-        color: white;
+        background: #00000000;
+        color: #100f0f;
       }
     </style>
     <?php
@@ -113,7 +115,7 @@ include "header.php";
         }
       }
     </script>
-    <form id="pass" method="post" style="justify-content: center;display:flex">
+    <form id="pass" method="post" style="justify-content: center;display:flex; margin-top:100px;">
       <div class="col-sm-5" id="myModal" tabindex="-1" role="dialog">
         <div class="modal-dialog1" role="document">
           <div class="modal-content1">

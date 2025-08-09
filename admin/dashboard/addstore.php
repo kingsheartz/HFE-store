@@ -191,6 +191,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
         border-radius: 5px;
         color: white;
         margin-bottom: 50px;
+        margin-left: 15px;
       }
 
       body {
@@ -216,7 +217,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
       }
 
       .input-class {
-        width: 100%;
+        max-width: 550px;
         position: relative;
       }
 
@@ -322,6 +323,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
         border-radius: 5px;
         background: #646464 !important;
         color: white;
+        max-width: 550px !important;
       }
 
       .input-class i {
@@ -558,10 +560,9 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
                   <i class="fa fa-volume-control-phone" style="color: #777"></i>
                 </div>
               </div>
-
-              <center>
-                <button title="Add store" class="btn btn-primary btn-block" style="background-color: #139b3b;width: 75%;">Add Store</button>
-              </center>
+              <hr />
+              <br />
+              <button title="Add store" class="btn btn-primary btn-block" style="background-color: #139b3b;max-width: 550px;">Add Store</button>
             </form>
           </div>
         </div>

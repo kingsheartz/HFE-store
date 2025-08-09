@@ -1047,7 +1047,8 @@ require "head.php";
       $price = $_POST['price'];
       $it = $_POST['item_id'];
     ?>
-      <div class="pr1" style="margin-top: 120px;">
+      <div class="pr1" style="margin-top: 100px;
+    margin-left: 15px;">
         <div class="proupda ">
           <div class="newupdation">
             <span>

@@ -51,10 +51,8 @@ include "header.php";
     ?>
     <style>
       #chat-cont {
-        background: white;
         margin: 0 auto;
         font-size: 0;
-        border-radius: 5px;
         overflow: hidden;
       }
 
@@ -67,19 +65,16 @@ include "header.php";
       }
 
       main header {
-        height: 70px;
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #360c88), color-stop(1, #6f0c79)) !important;
+        height: 30px;
+        background: #2b2a2ab0;
       }
 
       main header>* {
         vertical-align: top;
         width: 100%;
         padding: .7rem 1rem;
-        margin: 0;
-        display: flex;
-        -webkit-box-align: start;
-        align-items: flex-start;
-        height: 70px;
+        text-transform: capitalize;
+        color: white;
       }
 
       main header img:first-child {
@@ -110,14 +105,12 @@ include "header.php";
         list-style-type: none;
         position: relative;
         overflow: auto;
-        height: 330px;
-        background: url(images/backgr.jpg);
+        height: 370px;
+        background: url(../images/backgr.jpg);
         background-position: center;
         background-repeat: no-repeat;
         background-size: cover;
         position: relative;
-        border-top: 2px solid #fff;
-        border-bottom: 2px solid #fff;
       }
 
       main .triangle {
@@ -134,19 +127,20 @@ include "header.php";
       }
 
       main .message {
-        padding: 10px;
+        padding: 2px;
         float: left;
         min-width: 100px;
         max-width: 200px;
         color: #000;
         margin-left: 15px;
-        background-color: #58b666;
+        background-color: #2c2e2dd6;
         position: relative;
         display: -webkit-inline-box;
         text-align: left;
         border-radius: 5px;
         clear: both;
-        padding-bottom: 20px;
+        padding-bottom: 2px;
+        font-size: 12px;
       }
 
       main .triangle1 {
@@ -164,12 +158,12 @@ include "header.php";
       }
 
       main .message1 {
-        padding: 10px;
-        padding-bottom: 20px;
+        padding: 2px;
+        padding-bottom: 2px;
         min-width: 100px;
         max-width: 200px;
         margin-right: 15px;
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #ff9800), color-stop(1, #ff9800)) !important;
+        background: #4e75f67e !important;
         float: right;
         position: relative;
         display: -webkit-inline-box;
@@ -181,7 +175,17 @@ include "header.php";
       main footer {
         height: 85px;
         padding: 20px 30px 10px 20px;
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #360c88), color-stop(1, #6f0c79)) !important;
+        background: #232324de;
+      }
+
+      textarea#textarea {
+        white-space: pre-line;
+        height: 34px;
+        background: rgba(0, 0, 0, 0.39);
+        border: 0px;
+        border-radius: 5px;
+        font-size: 12px;
+        color: white;
       }
 
       #myBtn {
@@ -192,30 +196,32 @@ include "header.php";
         border: none;
         color: white;
         border-radius: 50%;
-        font-size: 24px;
+        font-size: 14px;
         padding: 8px;
         float: right;
-        padding-right: 15px;
-        padding-left: 15px;
+        padding-right: 10px;
+        padding-left: 10px;
         right: 20px;
       }
 
+
       #myBtn:disabled {
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #360c88), color-stop(1, #1a001d)) !important;
+        background: gray;
         color: white;
       }
 
       .date {
-        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #2f2a2a), color-stop(1, #3c3636)) !important;
+        background: #555 !important;
         clear: both;
         color: #fff;
         position: relative;
         margin: auto;
         display: block;
-        width: 300px;
+        width: 200px;
         text-align: center;
-        border-radius: 5px;
+        border-radius: 10px;
         padding: 2px;
+        font-size: 12px;
       }
 
       .navbar-toggle .icon-bar {
@@ -234,9 +240,9 @@ include "header.php";
       #myNavbar2>.connect:hover,
       #myNavbar2>.connect:active {
         text-decoration: none;
-        background-color: #E5E5E5;
-        border-left: 4px solid #FF9600;
-        border-right: 4px solid #FF9600;
+        background-color: #1e1d1d6a;
+        border-left: 4px solid #ffffff65;
+        border-right: 4px solid #ffffff65;
       }
 
       #myNavbar2>.connect:focus i,
@@ -353,7 +359,7 @@ include "header.php";
 
       .spdat {
         color: white;
-        font-size: 10px;
+        font-size: 8px;
         clear: both;
         position: absolute;
         bottom: 0;
@@ -367,6 +373,27 @@ include "header.php";
 
       .dark .date {
         background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #000000), color-stop(1, #000000)) !important;
+      }
+
+      .dark main .triangle {
+        border-color: transparent transparent #222 transparent;
+      }
+
+      .dark main .message {
+        background-color: #222;
+      }
+
+
+      .dark main .triangle1 {
+        border-color: transparent transparent #666 transparent;
+      }
+
+      .dark main .message1 {
+        background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #666), color-stop(1, #666)) !important;
+      }
+
+      .dark main .message1 div {
+        background-color: #666 !important;
       }
 
       .textarea-container {
@@ -390,21 +417,39 @@ include "header.php";
         line-height: 1.4;
         overflow-y: auto;
       }
+
+      .uppernum3 {
+        float: right;
+        border-radius: 15px;
+        background-color: #00AF6F;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        top: -30px;
+        position: relative;
+      }
+
+      .connect-header {
+        height: 50px;
+        padding: 10px;
+        background-color: #004895e8 !important;
+      }
+
+      #contact {
+        background-color: #1c1f2273;
+        min-height: 485px !important;
+      }
     </style>
-    <div id="chat">
-      <div class="newhed">New Chats</div>
-      <div class="switch">Dark mode:
-        <button class="inner-switch">OFF</button>
-      </div>
+    <div id="chat" class="table1">
+      <h4>New Chats</h4>
       <div id="contact" class="col-sm-3">
         <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar2">
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
           <span class="icon-bar"></span>
         </button>
-        <div class="connect" style="background: #000000;text-align: center;">
-          <span><i class="fa fa-user-circle-o"></i></span>
-          <h6 style="color:white;font-size:16px">CONTACTS</h6>
+        <div class="connect-header" style="background: #000000;text-align: center;">
+          <h6 style="color:white;">CHATS</h6>
         </div>
         <div class="collapse navbar-collapse" id="myNavbar2">
           <?php
@@ -413,20 +458,17 @@ include "header.php";
           $cn = 0;
           while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
             $cn++;
+            $query1 = "SELECT COUNT(*) FROM chats WHERE uname='" . $row['username'] . "' AND stat=0";
+            $statement1 = $pdo->prepare($query1);
+            $statement1->execute();
+            $row1 = $statement1->fetch(PDO::FETCH_ASSOC);
           ?>
             <div id="<?= $row['username'] ?>" class="connect" onclick="getfile('<?= $row['username'] ?>')">
-              <span class="conimg">
-                <i id="<?= $row['username'] ?><?= $cn ?>" class="fa fa-user-circle-o"></i>
-                <span class="uppernum3">
-                  <?php
-                  $query1 = "SELECT COUNT(*) FROM chats WHERE uname='" . $row['username'] . "' AND stat=0";
-                  $statement1 = $pdo->prepare($query1);
-                  $statement1->execute();
-                  $row1 = $statement1->fetch(PDO::FETCH_ASSOC);
-                  ?> <?= $row1['COUNT(*)'] ?>
-                </span>
-              </span>
-              <h6><?= $row['username'] ?></h6>
+
+              <h6>
+                <?= $row['username'] ?>
+              </h6>
+              <span class="uppernum3"><?= $row1['COUNT(*)'] ?></span>
             </div>
           <?php
           }
@@ -445,8 +487,7 @@ include "header.php";
                 $row1 = $statement->fetch(PDO::FETCH_ASSOC);
                 $_SESSION['hfe_name'] = $row1['username'];
               ?>
-                <span class="conimg"><i class="fa fa-user-circle-o" style="color:white;"></i></span>
-                <h4><?= $_SESSION['hfe_name'] ?></h4>
+                <?= $_SESSION['hfe_name'] ?>
               <?php
               }
               ?>
@@ -520,13 +561,12 @@ include "header.php";
                     $i = 5;
                     $first = $row;
                   ?>
-                    <div id="triangle1" class="triangle1"></div>
                     <div id="message1" class="message1">
                       <div style="color: white;float: right;padding: 0;width: 100%;">
                         <pre><?php echo trim($row['msg']); ?></pre>
                       </div>
                       <div class="spdat">
-                        <i style="font-size:16px;margin-right:4px" class="fa fa-clock"></i><?php echo $date[1]; ?>
+                        <i style="font-size:9px;margin-right:4px" class="fa fa-clock"></i><?php echo $date[1]; ?>
                       </div>
                     </div>
                     <br /><br />
@@ -534,26 +574,24 @@ include "header.php";
                   } else {
                     if ($row['uname'] != $first['uname']) {
                     ?>
-                      <div id="triangle" class="triangle"></div>
                       <div id="message" class="message">
                         <div style="color: white;float: right;padding: 0;width: 100%;">
                           <pre><?php echo trim($row['msg']); ?></pre>
                         </div>
                         <div class="spdat">
-                          <i style="font-size:16px;margin-right:4px" class="fa fa-clock"></i><?php echo $date[1]; ?>
+                          <i style="font-size:9px;margin-right:4px" class="fa fa-clock"></i><?php echo $date[1]; ?>
                         </div>
                       </div>
                       <br /><br />
                     <?php
                     } else {
                     ?>
-                      <div id="triangle1" class="triangle1"></div>
                       <div id="message1" class="message1">
                         <div style="color: white;float: right;padding: 0;width: 100%;">
                           <pre><?php echo trim($row['msg']); ?></pre>
                         </div>
                         <div class="spdat">
-                          <i style="font-size:16px;margin-right:4px" class="fa fa-clock"></i><?php echo $date[1]; ?>
+                          <i style="font-size:9px;margin-right:4px" class="fa fa-clock"></i><?php echo $date[1]; ?>
                         </div>
                       </div>
                       <br /><br />
@@ -618,7 +656,7 @@ include "header.php";
                 onChange={handleChange}
                 onkeyup="change()"></textarea>
               <button id="myBtn" disabled name="submit" type="submit">
-                <i class="fa fa-arrow-right"></i>
+                <i class="fa fa-paper-plane"></i>
               </button>
             </footer>
           </form>
@@ -629,13 +667,13 @@ include "header.php";
     require 'foot.php';
     ?>
     <script>
-			const textarea = document.getElementById("textarea");
+      const textarea = document.getElementById("textarea");
       const footer = document.getElementById("footer");
 
       textarea.addEventListener("input", function() {
         this.style.height = "auto"; // Reset height
         this.style.height = Math.min(this.scrollHeight - 20, 160) + "px"; // Set new height
-				footer.style.height = ((this.scrollHeight > 165) ? 205 : Math.max(this.scrollHeight + 20, 85)) + "px";
+        footer.style.height = ((this.scrollHeight > 165) ? 205 : Math.max(this.scrollHeight + 20, 85)) + "px";
       });
 
       $(".inner-switch").on("click", function() {

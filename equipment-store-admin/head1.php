@@ -1,7 +1,7 @@
 <style>
   #sidebar {
     padding: 15px;
-    width: fit-content;
+    width: 250px;
     background: #152230;
     position: relative;
     left: 0;
@@ -43,14 +43,14 @@
   }
 
   .nav_text {
-    margin-right: 50px;
+    margin-right: 10px;
   }
 
   #content {
     position: relative;
-    right: 20px;
-    left: 20px;
-    width: 80%;
+    padding-right: 30px;
+    padding-left: 0px;
+    width: 100%;
   }
 
   .row {
@@ -59,17 +59,16 @@
 
   .navbar {
     position: fixed;
-    width: 100%;
+    width: -webkit-fill-available;
     z-index: 20;
     background: #152230;
-    margin-left: -20px;
     box-shadow: 0px 1px 0px #3c3c3c;
     border-radius: 0px !important;
   }
 
   .container-fluid {
     display: inline-flex;
-    width: -webkit-fill-available;
+    width: 100%;
     height: 51px;
   }
 
@@ -87,7 +86,9 @@
     font-family: 'Lucida Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
     font-weight: 400;
     z-index: 100;
-    float: inline-end;
+    float: right;
+    display: inline-flex;
+    position: relative;
   }
 
   li.nav-item {
@@ -96,7 +97,7 @@
 
   #sidebar.active {
     min-width: 80px;
-    max-width: 80px;
+    max-width: 100px;
     text-align: center;
   }
 
@@ -121,15 +122,17 @@
   }
 
   #sidebar.active ul li a {
-    padding: 20px 10px;
-    text-align: center;
+    padding: 0;
+    width: 80% !important;
+    text-align: left;
     font-size: 0.85em;
+    display: inline-grid;
   }
 
   #sidebar.active ul li a i {
     margin-right: 0;
     display: block;
-    background-color: black;
+    background-color: transparent;
     font-size: 1.8em;
     margin-bottom: 5px;
   }
@@ -161,9 +164,24 @@
     text-align: center;
   }
 
+  #sidebar.active ul li a i.fa-angle-right {
+    position: relative;
+    top: -35px;
+    right: 0px;
+    float: right;
+  }
+
+  #sidebar.active ul li a>span.icons {
+    position: relative;
+    top: 0px;
+    left: 0px;
+  }
+
   div#navbarSupportedContent {
-    width: 83%;
+    width: 100%;
     font-size: 12px;
+    padding: 0;
+    margin-right: -10px;
   }
 
   .list-unstyled {
@@ -181,7 +199,7 @@
   <div class="sidebar-header">
     <h3>
       <div class="text">
-        <p style=" height: 62px;vertical-align: -webkit-baseline-middle;margin-left: -15px;margin-right: -15px;display: -webkit-box;text-align: left;padding: 5px;box-shadow: 0px 1px 0px #3c3c3c;">
+        <p style=" height: 63px;vertical-align: -webkit-baseline-middle;margin-left: -15px;margin-right: -15px;display: -webkit-box;text-align: left;padding: 5px;box-shadow: 0px 1px 0px #3c3c3c;">
           <img class="img-responsive" style="height:47px;" src="..\images/logo\logo.png" />
         <div style=" margin: 0px;position: absolute;top: 15px;left: 70px;">HFE</div>
         </p>
@@ -264,16 +282,7 @@
         <i class="fas fa-align-left"></i>
         <span></span>
       </button>
-      <button
-        class="btn btn-dark d-inline-block d-lg-none ml-auto  visible-xs"
-        type="button"
-        data-toggle="collapse"
-        data-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation">
-        <i class="fas fa-align-justify"></i>
-      </button>
+
       <?php
       require dirname(__DIR__, 1) . '/db/pdo.php';
       $id = $_SESSION['hfe_id'];
@@ -296,7 +305,7 @@
       $statement1->execute();
       $row1 = $statement1->fetch(PDO::FETCH_ASSOC);
       ?>
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div id="navbarSupportedContent">
         <ul class="nav navbar-nav ml-auto">
           <li class="nav-item active">
             <a class="nav-link" href="index.php">
