@@ -2002,7 +2002,7 @@ function randomGen($min, $max, $quantity)
                         $isorder = $checkbuy['ordered_cnt'];
                         if ($isorder != 0) {
                       ?>
-                          <div id="editoraddreview" style="margin:0;padding:0;">
+                          <div id="editoraddreview" style="margin:0;padding:0;width: 100%;max-width: 550px;">
                             <h3 style="margin-top:20px;">Rate this product</h3>
                             <div class="rate">
                               <input type="radio" id="star5" name="rate" value="5" />
@@ -2049,7 +2049,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="dis_add()"
                                 id="dis_add"
                                 class="fa fa-sm fa-edit"
-                                style="position: relative;right: 26px;top: -87px;color: white;background-color: #0c77cc;padding: 4px;"
+                                style="position: absolute;right: 0px;top: 0px;color: white;background-color: #0c77cc;padding: 4px;"
                                 onmouseover="$(this).css('background-color','#0c66cc')"
                                 onmouseleave="$(this).css('background-color','#0c77cc')">
                               </span>
@@ -2057,7 +2057,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="reset_add()"
                                 id="hide_add"
                                 class="fa fa-sm fa-close"
-                                style="display: none;position: relative;right: 25px;top: -87px;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
+                                style="display: none;position: absolute;right: 0px;top: 0px;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
                                 onmouseover="$(this).css('background-color','#bb0000')"
                                 onmouseleave="$(this).css('background-color','red')">
                               </span>
@@ -2065,7 +2065,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="dis_ok()"
                                 id="hide_add1"
                                 class="fa fa-check"
-                                style="display:none;position: relative;right: 50px;top: -63px;color: white;background-color: #07C103;padding: 4px 3.5px;"
+                                style="display:none;position: absolute;right: 0px;top: 23px;color: white;background-color: #07C103;padding: 4px 3.5px;"
                                 onmouseover="$(this).css('background-color','#4f994f')"
                                 onmouseleave="$(this).css('background-color','#07C103')">
                               </span>
