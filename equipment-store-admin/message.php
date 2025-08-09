@@ -15,9 +15,9 @@ require "head.php";
       $("#chatphp").click();
     </script>
     <?php
-    require 'pdo.php';
+    require dirname(__DIR__, 1) . '/db/pdo.php';;
     if (isset($_POST['status'])) {
-      $sql = "UPDATE chats SET stat=1 where rname='" . $_SESSION['username'] . "' AND uname='admin'";
+      $sql = "UPDATE chats SET stat=1 where rname='" . $_SESSION['hfe_username'] . "' AND uname='admin'";
       $st = $pdo->prepare($sql);
       $st->execute();
     }
@@ -452,12 +452,12 @@ require "head.php";
         </div>
         <div class="collapse navbar-collapse" id="myNavbar2">
           <?php
-          require "pdo.php";
+          require dirname(__DIR__, 1) . '/db/pdo.php';
           $query = $pdo->query("SELECT username FROM admin");
           $cn = 0;
           while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
             $cn++;
-            $query1 = "SELECT COUNT(*) FROM chats WHERE uname='admin' AND rname='" . $_SESSION['username'] . "' AND stat=0";
+            $query1 = "SELECT COUNT(*) FROM chats WHERE uname='admin' AND rname='" . $_SESSION['hfe_username'] . "' AND stat=0";
             $statement1 = $pdo->prepare($query1);
             $statement1->execute();
             $row1 = $statement1->fetch(PDO::FETCH_ASSOC);
@@ -484,9 +484,9 @@ require "head.php";
                 $statement = $pdo->prepare($query1);
                 $statement->execute(array(':name' => $_GET['name']));
                 $row1 = $statement->fetch(PDO::FETCH_ASSOC);
-                $_SESSION['username'] = $row1['username'];
+                $_SESSION['hfe_username'] = $row1['username'];
               ?>
-                <?= $_SESSION['username'] ?>
+                <?= $_SESSION['hfe_username'] ?>
               <?php
               }
               ?>
@@ -533,10 +533,10 @@ require "head.php";
           <form id="myform" method="POST" style="overflow-y: scroll;">
             <div class="inner_div" id="chathist">
               <input type="hidden" id="rname" name="rname" value="admin">
-              <input type="hidden" id="uname" name="uname" value="<?= $_SESSION['username'] ?>">
+              <input type="hidden" id="uname" name="uname" value="<?= $_SESSION['hfe_username'] ?>">
               <?php
-              require 'pdo.php';
-              $c = $_SESSION['username'];
+              require dirname(__DIR__, 1) . '/db/pdo.php';;
+              $c = $_SESSION['hfe_username'];
               $query = "SELECT * FROM chats where (uname='$c' and rname='admin') or (uname='admin' and rname='$c')";
               $run = $pdo->query($query);
               $i = 0;

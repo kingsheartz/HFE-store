@@ -1,10 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   header("location:../Main/hfe.php");
 }
+
+require dirname(__DIR__, 2) . '/db/pdo.php';
 require "../Main/header.php";
-require "../Common/pdo.php";
 ?>
 <!-- breadcrumbs -->
 <style type="text/css">
@@ -289,7 +290,7 @@ require "../Common/pdo.php";
     $.get("gethistorysearch.php", {
       "name": inputVal,
       'page_no': pageId,
-      "id": <?= $_SESSION['id'] ?>
+      "id": <?= $_SESSION['hfe_id'] ?>
     }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
@@ -307,7 +308,7 @@ require "../Common/pdo.php";
     var inputVal = $('#order_search').val();
     $.get("gethistorysearch.php", {
       name: inputVal,
-      id: <?= $_SESSION['id'] ?>
+      id: <?= $_SESSION['hfe_id'] ?>
     }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
@@ -327,7 +328,7 @@ require "../Common/pdo.php";
     $.get("gethistorysearch.php", {
       "name": inputVal,
       'page_no': pageId,
-      "id": <?= $_SESSION['id'] ?>
+      "id": <?= $_SESSION['hfe_id'] ?>
     }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
@@ -351,7 +352,7 @@ require "../Common/pdo.php";
               style="width: 100%;margin: 0px;z-index: 0;border-radius: 3px;border-top-right-radius: 0px;border-bottom-right-radius: 0px;outline: none;">
             <span id="" class="input-group-btn">
               <button id="ord_srch" onclick="dispsrch()"
-                style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #002b41), color-stop(1, #004f63)) !important;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"
+                style="color: white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;padding-top:10px;padding-bottom: 10px;outline: none;border-radius: 0;border-bottom-right-radius: 3px;border-top-right-radius: 3px;"
                 class="btn btn-default search_btn" type="button"><span class="fa fa-search"></span></button>
             </span>
           </div>

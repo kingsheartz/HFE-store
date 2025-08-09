@@ -52,7 +52,7 @@ require "head.php";
         outline: none;
         height: 32px;
         padding: 5px 40px;
-        border: 1px solid #CCCCCC;
+        border: 1px solid rgb(121, 121, 121);
         font-size: 14px;
         border-radius: 20px;
       }
@@ -401,7 +401,7 @@ require "head.php";
       }
     </script>
     <?php
-    require "pdo.php";
+    require dirname(__DIR__, 1) . '/db/pdo.php';
     $query11 = "SELECT * from  category";
     $st11 = $pdo->query($query11);
     while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {

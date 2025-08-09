@@ -1,5 +1,6 @@
 <?php
-require "../Common/pdo.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
+
 if (isset($_REQUEST["name"])) {
   $data = array(
     ':name' => "%" . $_GET['name'] . "%"

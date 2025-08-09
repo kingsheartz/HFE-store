@@ -87,7 +87,7 @@
       var link = "../../extras/APK/RELEASE/HFE-Store_version_low.apk";
     }
     $('#input_apk_link').val(link);
-    ///////////WHATSAPP///////////
+    // ---------WHATSAPP---------
     $('.whatsapp_apk').html('');
     var wa_content = '<div style="margin-left:15px;width: 30px;height: 30px;background-color: darkgreen;border-radius:3px;display: flex;align-items: center;justify-content: center;"><a target="_blank" data-action="share/whatsapp/share" href="https://api.whatsapp.com/send?text=Download Apk Now :- ' + link + '"><i class="fa fa-whatsapp fa-lg" style="color: white;"></i></a></div><p>Whatsapp</p>';
     $('.whatsapp_apk').html(wa_content);
@@ -129,7 +129,7 @@
   $('#side_nav_bar_lock').click(function() {
     closeNav();
   });
-  ////////////////////////////////BREAK SIDE NAV EVENT/////////////////////////////////////////////////////////////////////////////////////////
+  /*-------------------BREAK SIDE NAV EVENT----------------------------*/
   $('#list_enda').click(function() {
     $("#side_cat_list_enda").css("display", "none");
     $("#side_cat_list_endb").css("display", "none");
@@ -261,7 +261,7 @@
     $("#side_cat_list_end_default").css("display", "none");
     $("#side_cat_list_endj").css("display", "block");
   });
-  //////////////////////////////////BREAK SIDE NAV EVENT/////////////////////////////////////////////////////////////////////////////////
+  /*-------------------BREAK SIDE NAV EVENT----------------------------*/
   var dropdown = document.getElementsByClassName("dropdown-btn");
   var i;
   for (i = 0; i < dropdown.length; i++) {
@@ -311,12 +311,12 @@
 <!-- added script for new template -->
 <!-- Latest jQuery form server -->
 <!------------------------------------------------------------>
-<!--/////////////////////START-303///END-833/////////////////////////////////////////-->
+<!--------------------START-303---END-833--------------------->
 <!----------THIS IS FROM HEADER ------------------->
-<!--///////////////////////////////////////////////////////////////-->
+<!------------------------------------------------------------>
 <script src="https://cdn.jsdelivr.net/gh/vast-engineering/jquery-popup-overlay@2/jquery.popupoverlay.min.js"></script>
 <script type="text/javascript">
-  ////////////CAPSLOCK FINDER//////////////////////////////////////////////////
+  /*----------------CAPSLOCK FINDER--------------------------*/
   var capson_warning = document.getElementsByClassName("capson_warning");
   var password_field = document.getElementsByClassName('password_fields');
   for (var i = 0; i < password_field.length; i++) {
@@ -330,7 +330,7 @@
       }
     });
   }
-  //////////////////////////////////////////////////////////////
+  /*-------------------------------------------------------*/
   $(document).mouseup(function(e) {
     if ($(e.target).closest(".mobcategory").length === 0) {
       $(".mobcategory").hide();
@@ -353,7 +353,7 @@
       $(".mobcategory").hide();
     });
   });
-  //////////////////////////////////////////////////////////////
+
   //MOBILE MENU
   $(function() {
     $("#mobile-menu").click(function() {
@@ -361,7 +361,7 @@
     });
   })
   //MOBILE MENU
-  //////////////////////////////////////////////////////////////
+
   jQuery.fn.putCursorAtEnd = function() {
     return this.each(function() {
       // Cache references
@@ -451,8 +451,7 @@
       $("#display2").hide();
     }
   }
-  /*/////////////////////////////////MODAL SIGN IN//////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+  /*---------------------MODAL SIGN ------------------------------*/
   function signup() {
     location.href = "../Account/registered.php";
     return;
@@ -674,13 +673,10 @@
       }); //closing ajax
     }
   }
-  //<?php
-    //    $fourRandomDigit = mt_rand(1000,9999);
-    //    echo $fourRandomDigit;
-    //
-    ?>
-  /*////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////*/
+  <?php
+  //    $fourRandomDigit = mt_rand(1000,9999);
+  //    echo $fourRandomDigit;
+  ?>
 </script>
 <!-- //navigation -->
 <!-- navigation -->
@@ -821,16 +817,16 @@
   }
   /*find latitude and longitude with postal code and postoffice*/
   /*
-	   var address=document.getElementById('po_list').value;
-	   var post="https://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+address+"";
-	   var xmlhttp = new XMLHttpRequest();
-	   xmlhttp.onreadystatechange = function() {
-			   if (this.readyState == 4 && this.status == 200) {
-			   locate = JSON.parse(this.responseText);
-		   }
-	   };
-	   xmlhttp.open("GET", post , true);
-	   xmlhttp.send();
+    var address=document.getElementById('po_list').value;
+    var post="https://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+address+"";
+    var xmlhttp = new XMLHttpRequest();
+    xmlhttp.onreadystatechange = function() {
+        if (this.readyState == 4 && this.status == 200) {
+        locate = JSON.parse(this.responseText);
+      }
+    };
+    xmlhttp.open("GET", post , true);
+    xmlhttp.send();
    */
   /*working*/
   //REGISTER LOCATION & PIN
@@ -963,35 +959,33 @@
         }
       }
     }); //closing ajax
-    ////////////////////////////////////////////////////////////////////////////////////////
+
     dis_locate();
     //$('#update_user_details').show();
     document.getElementById("location").innerHTML = "You";
-    ///////////////////////////////////////////////////////////////////////////////////////
     $("#popup2").hide();
     $("#popup2_background").hide();
     $("#popup2_wrapper").hide();
     /*find latitude and longitude with postal code and postoffice*/
     /*
-		   var address=document.getElementById('po_list').value;
-		   var post="https://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+address+"";
-		   var xmlhttp = new XMLHttpRequest();
-		   xmlhttp.onreadystatechange = function() {
-				   if (this.readyState == 4 && this.status == 200) {
-				   locate = JSON.parse(this.responseText);
-			   }
-		   };
-		   xmlhttp.open("GET", post , true);
-		   xmlhttp.send();
-	   */
+      var address=document.getElementById('po_list').value;
+      var post="https://api.positionstack.com/v1/forward?access_key=02d2fe0121d695587c3ea6ec300a8a8e&query="+address+"";
+      var xmlhttp = new XMLHttpRequest();
+      xmlhttp.onreadystatechange = function() {
+          if (this.readyState == 4 && this.status == 200) {
+          locate = JSON.parse(this.responseText);
+        }
+      };
+      xmlhttp.open("GET", post , true);
+      xmlhttp.send();
+	  */
     /*working*/
   }
 </script>
-<!--//////////////////////END-833///START-303/////////////////////////////////////-->
+<!-----------------END-833---START-303------------->
 <!----------THIS IS FROM HEADER ------------------->
-<!--///////////////////////////////////////////////////////////////-->
-<!-------------------------------------------------------------------- >
-	<!-- Bootstrap JS form CDN -->
+<!------------------------------------------------ >
+<!---- Bootstrap JS form CDN ---->
 <script type="text/javascript">
   $('#myModal').on('show.bs.modal', function(event) {
     $('#myModal').modal('handleUpdate');
@@ -1000,14 +994,16 @@
     $('myModal2').modal('handleUpdate');
   });
   /*
-  		$('avail_stores').on('show.bs.model',function (event){
-  			$('#avail_stores').modal('handleUpdate') ;
-  		});
+    $('avail_stores').on('show.bs.model',function (event){
+      $('#avail_stores').modal('handleUpdate') ;
+    });
    */
 </script>
-<!-- start-smoth-scrolling --><!--
+<!-- start-smoth-scrolling -->
+<!--
 	<script type="text/javascript" src="../../js/move-top.js"></script>
-	<script type="text/javascript" src="../../js/easing.js"></script>-->
+	<script type="text/javascript" src="../../js/easing.js"></script>
+-->
 <!--ending of added script -->
 <!-- top-header and slider -->
 <!-- here stars scrolling icon -->
@@ -1081,16 +1077,16 @@
   }
   //AUTO LOG IN
   $(document).ready(function() {
-    /*/////////////////////////////HIDDING LOADER//////////////////////////////////////////////
-    	setTimeout(() => {
-    	const loader = document.querySelector(".loader");
-    	const loader1 = document.querySelector(".loader1");
-    	const loader2 = document.querySelector(".loader2");
-    	loader.className += " hidden";
-    	loader1.className += " hidden";
-    	loader2.className += " hidden";
-    	  }, 3000);
-    /*/ ////////////////////////////HIDDING LOADER//////////////////////////////////////////////
+    /*---------------HIDDING LOADER--------------------------
+        setTimeout(() => {
+        const loader = document.querySelector(".loader");
+        const loader1 = document.querySelector(".loader1");
+        const loader2 = document.querySelector(".loader2");
+        loader.className += " hidden";
+        loader1.className += " hidden";
+        loader2.className += " hidden";
+      }, 3000);
+    ----------------HIDDING LOADER--------------------------*/
     function getCookie(name) {
       // Split cookie string and get all individual name=value pairs in an array
       var cookieArr = document.cookie.split(";");
@@ -1108,7 +1104,7 @@
       return " ";
     }
     <?php
-    if (isset($_SESSION['id']) && !isset($_SESSION['cart_count'])) {
+    if (isset($_SESSION['hfe_id']) && !isset($_SESSION['hfe_cart_count'])) {
     ?>
       var email = getCookie("HFE_email");
       var pass = getCookie("HFE_password");
@@ -1153,14 +1149,14 @@
       }
     <?php
     }
-    if (isset($_SESSION['id']) && !isset($_SESSION['cart_count'])) {
+    if (isset($_SESSION['hfe_id']) && !isset($_SESSION['hfe_cart_count'])) {
     ?>
       //CART COUNT
       $.ajax({
         url: "../Common/functions.php", //passing page info
         data: {
           "cartcnt": 1,
-          "user": "<?= $_SESSION['id'] ?>"
+          "user": "<?= $_SESSION['hfe_id'] ?>"
         }, //form data
         type: "post", //post data
         dataType: "json", //datatype=json format
@@ -1310,9 +1306,7 @@
   }
 </script>
 <!------------------------------------------------------------>
-<!--/////////////////////START-303///END-833/////////////////////////////////////////-->
-<!----------THIS IS FROM HEADER ------------------->
-<!--///////////////////////////////////////////////////////////////-->
+<!-------------------THIS IS FROM HEADER --------------------->
 <!-- Scroll->Drag -->
 <!-- jQuery sticky menu -->
 <script src="../../js/owl.carousel.min.js"></script>
@@ -1325,13 +1319,11 @@
 <!-- Slider -->
 <script type="text/javascript" src="../../js/bxslider.min.js"></script>
 <script type="text/javascript" src="../../js/script.slider.js"></script>
-<!-- Bootstrap Core JavaScript ///IMPORTANT///-->
+<!-- Bootstrap Core JavaScript ---IMPORTANT----->
 <script src="../../js/bootstrap.min.js"></script>
 <script src="../../js/skdslider.min.js"></script>
 <link href="../../css/skdslider.css" rel="stylesheet">
-<!--/////////////////////START-303///END-833/////////////////////////////////////////-->
-<!----------THIS IS FROM HEADER ------------------->
-<!--///////////////////////////////////////////////////////////////-->
+<!------------------THIS IS FROM HEADER ---------------------->
 <!------------------------------------------------------------>
 <!-- //main slider-banner -->
 <!-- coc -->
@@ -1353,10 +1345,10 @@
     timer: 3000
   });
   /*
-  	Toast.fire({
-  		icon: 'error',
-  		title: ' Enter your OTP !!! '
-  	})
+    Toast.fire({
+      icon: 'error',
+      title: ' Enter your OTP !!! '
+    })
   */
 </script>
 <!-- SweetAlert -->

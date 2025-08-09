@@ -320,7 +320,7 @@
   }
 </style>
 <?php
-require "pdo.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 if (isset($_POST['product_description_id'])) {
   $x = $_POST['product_description_id'];
   $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id
@@ -393,77 +393,11 @@ if (isset($_POST['product_description_id'])) {
                   </tr>
                 <?php
                 }
-                if ($row['color'] != 0) {
-                  $query1 = "SELECT * FROM color where color_id=" . $row['color'];
-                  $st1 = $pdo->query($query1);
-                  $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
-                  <tr>
-                    <th>Color</th>
-                    <td><?= $row['color'] ?></td>
-                  </tr>
-                <?php
-                }
                 if ($row['weight'] != 0) {
                 ?>
                   <tr>
                     <th>Weight</th>
                     <td><?= $row['weight'] ?></td>
-                  </tr>
-                <?php
-                }
-                if ($row['flavour'] != 0) {
-                  $query1 = "SELECT * FROM flavour where flavour_id=" . $row['flavour'];
-                  $st1 = $pdo->query($query1);
-                  $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
-                  <tr>
-                    <th>Flavour</th>
-                    <td><?= $row1['flavour_name'] ?></td>
-                  </tr>
-                <?php
-                }
-                if ($row['processor'] != 0) {
-                  $query1 = "SELECT * FROM processor where processor_id=" . $row['processor'];
-                  $st1 = $pdo->query($query1);
-                  $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
-                  <tr>
-                    <th>Processor</th>
-                    <td><?= $row1['processor_name'] ?></td>
-                  </tr>
-                <?php
-                }
-                if ($row['display'] != 0) {
-                  $query1 = "SELECT * FROM display where display_id=" . $row['display'];
-                  $st1 = $pdo->query($query1);
-                  $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
-                  <tr>
-                    <th>Display</th>
-                    <td><?= $row1['display_name'] ?></td>
-                  </tr>
-                <?php
-                }
-                if ($row['battery'] != 0) {
-                  $query1 = "SELECT * FROM battery where battery_id=" . $row['battery'];
-                  $st1 = $pdo->query($query1);
-                  $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
-                  <tr>
-                    <th>Battery</th>
-                    <td><?= $row1['battery_name'] ?></td>
-                  </tr>
-                <?php
-                }
-                if ($row['internal_storage'] != 0) {
-                  $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row['internal_storage'];
-                  $st1 = $pdo->query($query1);
-                  $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
-                  <tr>
-                    <th>Internal Storage</th>
-                    <td><?= $row1['internal_storage_name'] ?></td>
                   </tr>
                 <?php
                 }
@@ -475,17 +409,6 @@ if (isset($_POST['product_description_id'])) {
                   <tr>
                     <th>Brand</th>
                     <td><?= $row1['brand_name'] ?></td>
-                  </tr>
-                <?php
-                }
-                if ($row['material'] != 0) {
-                  $query1 = "SELECT * FROM material where material_id=" . $row['material'];
-                  $st1 = $pdo->query($query1);
-                  $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-                ?>
-                  <tr>
-                    <th>Material</th>
-                    <td><?= $row1['material_name'] ?></td>
                   </tr>
                 <?php
                 }

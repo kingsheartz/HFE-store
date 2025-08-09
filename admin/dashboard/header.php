@@ -52,13 +52,16 @@
 
 <?php
 session_start();
-if (!isset($_SESSION['admin'])) {
+if (!isset($_SESSION['hfe_admin'])) {
   die("<div style='width: 100%;
-display: flex;
-flex-wrap: wrap;
-margin-right: -0.75rem;
-margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50px'>
-<a href='login.php'><img class='img-responsive' src='images/logo/loginerr.png'></a></div>");
+          display: flex;
+          flex-wrap: wrap;
+          margin-right: -0.75rem;
+          margin-left: -0.75rem;justify-content:center;padding-top:50px;padding-bottom:50px'>
+          <a href='../account/login.php'>
+            <img class='img-responsive' src='../images/logo/loginerr.png'>
+          </a>
+        </div>");
 }
 ?>
 <style>

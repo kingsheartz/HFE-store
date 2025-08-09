@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   header("location:hfe.php");
 }
 require "header.php";
@@ -209,6 +209,19 @@ require "header.php";
   #history-status button:active {
     transform: translateY(0);
   }
+
+
+  .del-bmi {
+    padding: 5px;
+    border-radius: 5px;
+    color: darkgrey;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .del-bmi:hover {
+    color: darkgrey;
+    background-color: #8b0000ff;
+  }
 </style>
 
 <div class="bmi-outer-container">
@@ -266,6 +279,11 @@ require "header.php";
     <script>
       let bmiChartInstance = null;
 
+      function renderBMI() {
+        loadBMIHistory();
+        loadBMIChart();
+      }
+
       function calculateBMI() {
         const weight = parseFloat($('#bmi-weight').val());
         const height = parseFloat($('#bmi-height').val());
@@ -286,7 +304,7 @@ require "header.php";
         // Save to server
         $.post('../Common/bmi_api.php', {
           save_bmi: 1,
-          customer_id: "<?= $_SESSION['id'] ?>",
+          customer_id: "<?= $_SESSION['hfe_id'] ?>",
           weight,
           height,
           bmi: bmiRounded
@@ -298,6 +316,22 @@ require "header.php";
         });
       }
 
+      function deleteBMI(bmi_id) {
+        $.ajax({
+          url: '../Common/bmi_api.php?bmi_id=' + bmi_id,
+          method: 'DELETE',
+          success: function(response) {
+            const res = JSON.parse(response);
+            if (res.status === 'deleted') {
+              Swal.fire('Deleted', res.message, 'success');
+              renderBMI();
+            } else {
+              Swal.fire('Error', res.message, 'error');
+            }
+          }
+        });
+      }
+
       function getBMIStatus(bmi) {
         if (bmi < 18.5) return "Underweight";
         else if (bmi < 24.9) return "Normal";
@@ -306,7 +340,7 @@ require "header.php";
       }
 
       function loadBMIHistory() {
-        const customer_id = "<?= $_SESSION['id'] ?>";
+        const customer_id = "<?= $_SESSION['hfe_id'] ?>";
         const date = $('#bmi-date').val();
 
         $.post('../Common/bmi_api.php', {
@@ -321,7 +355,7 @@ require "header.php";
             html = `<li>${data?.message}</li>`;
           } else {
             data?.forEach(entry => {
-              html += `<li>${entry.date_logged}: BMI ${entry.bmi} - ${getBMIStatus(entry.bmi)}</li>`;
+              html += `<li>${entry.date_logged}: BMI ${entry.bmi} - ${getBMIStatus(entry.bmi)} <i class="fa fa-trash float-right del-bmi" onclick=deleteBMI(${entry.bmi_id})></i></li>`;
             });
           }
 
@@ -330,7 +364,7 @@ require "header.php";
       }
 
       function loadBMIChart() {
-        const customer_id = "<?= $_SESSION['id'] ?>";
+        const customer_id = "<?= $_SESSION['hfe_id'] ?>";
 
         $.post('../Common/bmi_api.php', {
           load_bmi_chart: 1,

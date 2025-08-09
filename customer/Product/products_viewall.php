@@ -1,4 +1,5 @@
 <?php
+require dirname(__DIR__, 2) . '/db/pdo.php';
 require "../Main/header.php";
 ?>
 <style>
@@ -140,7 +141,6 @@ require "../Main/header.php";
   <div class="col-12 products-right card">
     <div class="card-header">
       <?php
-      require "../Common/pdo.php";
       if (isset($_GET['product'])) {
         $nm = ucwords($_GET['product']);
         $res1 = $pdo->query(
@@ -164,7 +164,6 @@ require "../Main/header.php";
     </div>
     <hr />
     <?php
-    require "../Common/pdo.php";
     if (isset($_GET['pageno'])) {
       $pageno = $_GET['pageno'];
     } else {

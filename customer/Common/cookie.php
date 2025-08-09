@@ -37,11 +37,11 @@
   }
 
   input:checked+.slider {
-    background-color: #2196F3;
+    background-color: #139b3b;
   }
 
   input:focus+.slider {
-    box-shadow: 0 0 1px #2196F3;
+    box-shadow: 0 0 1px #139b3b;
   }
 
   input:checked+.slider:before {
@@ -81,7 +81,7 @@
 
   function setcookie(val) {
     <?php
-    if (isset($_SESSION['id'])) {
+    if (isset($_SESSION['hfe_id'])) {
     ?>
       if (val == 1) {
         var pc = 1;
@@ -112,7 +112,7 @@
           "pc": pc,
           "fc": fc,
           "tc": tc,
-          "userid": <?= $_SESSION['id'] ?>
+          "userid": <?= $_SESSION['hfe_id'] ?>
         }, //form data
         type: "post", //post data
         dataType: "json", //datatype=json format
@@ -151,18 +151,18 @@
 </script>
 <!-- Modal -->
 <div class="modal fade" id="cookiemodal" tabindex="-1" data-keyboard="false" data-backdrop="static" role="dialog"
-  aria-labelledby="myModalLabel" style="height:max-content">
+  aria-labelledby="myModalLabel" style="height: max-content">
   <div class="modal-dialog modal-lg mod_th" role="document"
-    style="background-color:white;border-radius:5px;height:max-content">
+    style="background-color: rgba(0,0,0,0.95);color: darkgrey;border-radius: 5px;height: max-content">
     <div class="modal-content">
       <div class="modal-header">
         <button type="button" class="close" style="margin-top:5px" data-dismiss="modal" aria-label="Close">
-          <span aria-hidden="true">�</span>
+          <span aria-hidden="true" style="color: #ffffff"><i class="fa fa-question-circle"></i></span>
         </button>
         <h3 class="modal-title" id="myModalLabel"><b>Cookie Setting</b></h3>
       </div>
       <div class="modal-body">
-        <p style="font-size:14px;color:rgb(44, 44, 44)">
+        <p style="font-size: 14px;color: #858383">
           When you visit any of our websites, it may store or retrieve information on your browser, mostly in the form
           of cookies. This information might be about you, your preferences or your device and is mostly used to make
           the site work as you expect it to. The information does not usually directly identify you, but it can give you
@@ -192,10 +192,10 @@
         </label><br>
       </div>
       <div class="modal-footer">
-        <button type="button" class="btn btn btn-primary" style="font-size:14px" onclick="setcookie(2)"
+        <button type="button" class="btn btn btn-primary" style="font-size:14px;background-color: #052642;color: darkgrey;" onclick="setcookie(2)"
           data-dismiss="modal">Confirm my choices</button>
         <!--<button type="button" class="btn btn btn-success small-cookie-accept" style="font-size:14px" data-dismiss="modal">Accept all cookies</button>-->
-        <button type="button" class="btn btn-orange" data-dismiss="modal"> Cancel</button>
+        <button type="button" class="btn btn-orange" data-dismiss="modal" style="background-color: #451f1e;border-color: #d43f3a;color: darkgrey;"> Cancel</button>
       </div>
     </div>
   </div>

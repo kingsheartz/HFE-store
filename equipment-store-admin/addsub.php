@@ -8,8 +8,8 @@ require "head.php";
     include "head1.php";
     ?>
     <?php
-    require "pdo.php";
-    $id = $_SESSION['id'];
+    require dirname(__DIR__, 1) . '/db/pdo.php';
+    $id = $_SESSION['hfe_id'];
     ?>
     <style type="text/css">
       #close {
@@ -599,7 +599,7 @@ require "head.php";
       }
     </style>
     <?php
-    require "pdo.php";
+    require dirname(__DIR__, 1) . '/db/pdo.php';
     if (isset($_POST['it_id']) || isset($_POST['price']) || isset($_POST['quantity']) || isset($_POST['pref'])) {
       if (isset($_POST['update_data'])) {
         $it_id = $_POST['it_id'];
@@ -711,7 +711,7 @@ require "head.php";
     </script>
     <?php
     if (isset($_POST['pr_id']) || isset($_POST['im_url']) || isset($_POST['name']) || isset($_POST['description'])) {
-      require 'pdo.php';
+      require dirname(__DIR__, 1) . '/db/pdo.php';;
       $pr = $_POST['pr_id'];
       $img = $_POST['im_url'];
       $itna = $_POST['name'];

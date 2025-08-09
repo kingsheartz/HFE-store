@@ -1,5 +1,5 @@
 <?php
-require "pdo.php";
+require dirname(__DIR__, 1) . '/db/pdo.php';
 session_start();
 if (isset($_POST['dl_id'])) {
   $DELETE = $_POST['dl_id'];
@@ -13,7 +13,7 @@ if (isset($_POST['dl_id'])) {
 if (isset($_POST['addnm'])) {
   $data = array(
     ':title' => $_POST['addnm'],
-    ':st_id' => $_SESSION['id']
+    ':st_id' => $_SESSION['hfe_id']
   );
   $query = "INSERT INTO to_do_list_store (title,add_date,store_id) VALUES (:title,NOW(),:st_id)";
   $statement = $pdo->prepare($query);

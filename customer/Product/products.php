@@ -1,15 +1,17 @@
 <?php
 require "../Main/header.php";
-require "../../db.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
+
 if (isset($_GET['product'])) {
   $nm = strtolower($_GET['product']);
+  $condition = 'product.product_name LIKE \'%' . $nm . '%\'';
   $res = $pdo->query(
     "SELECT category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
 		INNER JOIN product_description ON product_description.product_id=product.product_id
 		INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
 		INNER JOIN store ON product_details.store_id=store.store_id
 		INNER JOIN category ON category.category_id=product.category_id
-		where product.product_name like \"%$nm%\" GROUP BY product_description.product_description_id"
+		WHERE product.product_name LIKE \"%$nm%\" GROUP BY product_description.product_description_id"
   );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
   if ($row2) {
@@ -18,13 +20,14 @@ if (isset($_GET['product'])) {
   }
 } else if (isset($_GET['category_id'])) {
   $cat = $_GET['category_id'];
+  $condition = 'category_id=' . $cat;
   $res = $pdo->query(
-    "SELECT category.category_name,store.store_id,store.store_name ,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
+    "SELECT category.category_name,store.store_id,store.store_name,product.product_id,product.price as 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id from product
     INNER JOIN product_description ON product_description.product_id=product.product_id
     INNER JOIN product_details ON product_details.product_description_id=product_description.product_description_id
     INNER JOIN store ON product_details.store_id=store.store_id
     INNER JOIN category ON category.category_id=product.category_id
-    where category.category_id=$cat GROUP BY product.product_id"
+    WHERE category.category_id=$cat GROUP BY product.product_id"
   );
   $row2 = $res->fetch(PDO::FETCH_ASSOC);
   if ($row2) {
@@ -45,7 +48,7 @@ if (isset($_GET['product'])) {
 
   .bg-overlay {
     width: 100%;
-    background: rgba(0, 0, 0, 0.90);
+    padding-bottom: 15px;
   }
 
   .wrapper {
@@ -62,6 +65,10 @@ if (isset($_GET['product'])) {
   .pagination>li>a,
   .pagination>li>span {
     color: #139b3b;
+  }
+
+  .product-content-right img {
+    height: 260px;
   }
 
   @media screen and (max-width: 991px) {
@@ -83,7 +90,7 @@ if (isset($_GET['product'])) {
   }
 </style>
 <script>
-  ///////////////////////////////RESIZE UPTO 635 FLOW CTRLS TO GRID PAGE #SMALL DEVICE PURPOSE/////////////
+  // ------------------------------RESIZE UPTO 635 FLOW CTRLS TO GRID PAGE #SMALL DEVICE PURPOSE------------/
   if ($(window).width() < 635) {
     <?php
     if (isset($_GET['product'])) {
@@ -97,7 +104,7 @@ if (isset($_GET['product'])) {
     }
     ?>
   }
-  ///////////////////////////////RESIZE UPTO 635 FLOW CTRLS TO GRID PAGE #SMALL DEVICE PURPOSE/////////////
+  // ------------------------------RESIZE UPTO 635 FLOW CTRLS TO GRID PAGE #SMALL DEVICE PURPOSE------------/
   $(window).resize(function() {
     if ($(window).width() < 635) {
       <?php
@@ -113,7 +120,7 @@ if (isset($_GET['product'])) {
       ?>
     }
   });
-  ///////////////////////////////RESIZE UPTO 635 FLOW CTRLS TO GRID PAGE #SMALL DEVICE PURPOSE/////////////
+  // ------------------------------RESIZE UPTO 635 FLOW CTRLS TO GRID PAGE #SMALL DEVICE PURPOSE------------/
 </script>
 <!--------------------------------------------------------------------------------------------------------------------------------------------------->
 <!--------------------------------------------------------------------------------------------------------------------------------------------------->
@@ -324,18 +331,18 @@ if (isset($_GET['product'])) {
       }
     }
   }
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
   //ITEM START HERE
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
   <?php
   if (isset($_GET['product'])) {
   ?>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
     var filter = [];
     var page_id = 1;
     // Pagination code
@@ -379,6 +386,7 @@ if (isset($_GET['product'])) {
           if (data.status == 'success') {
             $("#table-data").html(data.content).show();
             $("#dynamic-paging").html(data.output).show();
+            $(".green-label").html(data.count).show();
             $('.background_loader').hide();
             $('.std_text2').hide();
             return;
@@ -473,6 +481,7 @@ if (isset($_GET['product'])) {
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
+              $(".green-label").html(data.count).show();
               $('.background_loader').hide();
               $('.std_text2').hide();
               return;
@@ -518,6 +527,7 @@ if (isset($_GET['product'])) {
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
+              $(".green-label").html(data.count).show();
               $('.background_loader').hide();
               $('.std_text2').hide();
               return;
@@ -576,8 +586,8 @@ if (isset($_GET['product'])) {
         $('#' + val).prop('disabled', false); //enabling radio
         $('#' + val).prop('checked', false); //check radio
         $('#' + val).prop('disabled', true); //disabling radio
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // ------------------------------------------------------------------------------------------------------------------------
+        // ------------------------------------------------------------------------------------------------------------------------
         //REMOVING THE TAGS WITH VALUE OF THE KEY
         console.log('Before removing object from an array -> ' + JSON.stringify(filter));
         var removeIndex = filter.map(function(item) {
@@ -587,8 +597,8 @@ if (isset($_GET['product'])) {
         filter.splice(removeIndex, 1);
         console.log('After removing object from an array -> ' + JSON.stringify(filter));
         //REMOVING THE TAGS WITH VALUE OF THE KEY
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // ------------------------------------------------------------------------------------------------------------------------
+        // ------------------------------------------------------------------------------------------------------------------------
         console.log(filter)
         $(".table-data").empty();
         $("#dynamic-paging").empty();
@@ -611,6 +621,7 @@ if (isset($_GET['product'])) {
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
+              $(".green-label").html(data.count).show();
               $('.background_loader').hide();
               $('.std_text2').hide();
               return;
@@ -636,25 +647,25 @@ if (isset($_GET['product'])) {
         }); //closing ajax
       }
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
   <?php
   }
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
   //ITEM ENDS HERE
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
   else if (isset($_GET['category_id'])) {
   ?>
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
     var filter = [];
     var page_id = 1;
     // Pagination code
@@ -698,6 +709,7 @@ if (isset($_GET['product'])) {
           if (data.status == 'success') {
             $("#table-data").html(data.content).show();
             $("#dynamic-paging").html(data.output).show();
+            $(".green-label").html(data.count).show();
             $('.background_loader').hide();
             $('.std_text2').hide();
             return;
@@ -792,6 +804,7 @@ if (isset($_GET['product'])) {
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
+              $(".green-label").html(data.count).show();
               $('.background_loader').hide();
               $('.std_text2').hide();
               return;
@@ -837,6 +850,7 @@ if (isset($_GET['product'])) {
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
+              $(".green-label").html(data.count).show();
               $('.background_loader').hide();
               $('.std_text2').hide();
               return;
@@ -895,8 +909,8 @@ if (isset($_GET['product'])) {
         $('#' + val).prop('disabled', false); //enabling radio
         $('#' + val).prop('checked', false); //check radio
         $('#' + val).prop('disabled', true); //disabling radio
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // ------------------------------------------------------------------------------------------------------------------------
+        // ------------------------------------------------------------------------------------------------------------------------
         //REMOVING THE TAGS WITH VALUE OF THE KEY
         console.log('Before removing object from an array -> ' + JSON.stringify(filter));
         var removeIndex = filter.map(function(item) {
@@ -906,8 +920,8 @@ if (isset($_GET['product'])) {
         filter.splice(removeIndex, 1);
         console.log('After removing object from an array -> ' + JSON.stringify(filter));
         //REMOVING THE TAGS WITH VALUE OF THE KEY
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-        ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+        // ------------------------------------------------------------------------------------------------------------------------
+        // ------------------------------------------------------------------------------------------------------------------------
         console.log(filter)
         $(".table-data").empty();
         $("#dynamic-paging").empty();
@@ -930,6 +944,7 @@ if (isset($_GET['product'])) {
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
+              $(".green-label").html(data.count).show();
               $('.background_loader').hide();
               $('.std_text2').hide();
               return;
@@ -955,17 +970,17 @@ if (isset($_GET['product'])) {
         }); //closing ajax
       }
     }
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
+    // ------------------------------------------------------------------------------------------------------------------------------------------//
   <?php
   }
   ?>
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------------------//
 </script>
 <!--------------------------------------------------------------------------------------------------------------->
 <script type='text/javascript' src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js'></script>
@@ -983,7 +998,7 @@ if ($result_cnt == 0) {
     </div>
   </div>
   <!-- //breadcrumbs -->
-  <div class="container" style="padding-top:50px;padding-bottom:50px;margin: 0;width: 100%;background-color: #181818ff;">
+  <div class="container" style="padding-top:15px;padding-bottom:15px;margin: 0;width: 100%;background-color: #181818ff;">
   <?php
 } else {
   ?>
@@ -994,7 +1009,7 @@ if ($result_cnt == 0) {
           <li>
             <a href="../Main/hfe.php"><span class="glyphicon glyphicon-home" aria-hidden="true"></span>Home</a>
           </li>
-          <li class="active"><span class='fa fa-search pr-1'></span>Search results</li>
+          <li class="active"><span class='fa fa-search pr-1'></span>Results</li>
         </ol>
       </div>
     </div>
@@ -1026,7 +1041,7 @@ if ($result_cnt == 0) {
                 <?php
                 if (isset($_GET['product'])) {
                 ?>
-                  <div class="h3" style="font-family: 'Poppins', sans-serif"><span class='fa fa-search pr-1'></span> Search results</div>
+                  <div class="h3" style="font-family: 'Poppins', sans-serif"><span class='fa fa-search pr-1'></span> Results</div>
                 <?php
                 } else {
                 ?>
@@ -1035,6 +1050,7 @@ if ($result_cnt == 0) {
                 }
                 ?>
                 <div class="ml-auto d-flex align-items-center views">
+                  <span class="green-label px-md-2 px-1"><?= $result_cnt ?></span> <span class="text-muted">Products</span>
                   <?php
                   if (isset($_GET['product'])) {
                   ?>
@@ -1056,15 +1072,14 @@ if ($result_cnt == 0) {
                     <span class="fas fa-list-ul text-success"></span>
                     <span class="px-md-2 px-1">List view</span>
                   </span>
-                  <span class="green-label px-md-2 px-1"><?= $result_cnt ?></span> <span class="text-muted">Products</span>
                 </div>
               </div>
             </div>
-            <hr class="make_divb">
-            <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: #151515;padding: 0;color: darkgrey">
+            <hr class="make_divb" style="border-color: #656565 !important;">
+            <div class="col-md-12 col-sm-12 col-xs-12" style="background-color: rgba(0, 0, 0, 0.25);padding: 0;color: darkgrey">
               <!--FILTER-->
-              <div class="col-md-3 sidebar_divider no_margin" style="padding:0;padding-bottom: 0px;margin-top:10px;border-radius: 5px;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff));">
-                <div class="container" style="margin:0;padding:0;padding-top: 15px;padding-bottom: 15px;width: 100%;height: auto;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;">
+              <div class="col-md-3 sidebar_divider no_margin" style="padding:0;padding-bottom: 0px;margin-top:10px;border-radius: 5px;background-color: rgba(0, 0, 0, 0.05);">
+                <div class="container" style="margin:0;padding:0;padding-top: 15px;padding-bottom: 15px;width: 100%;height: auto;background-color: rgba(0, 0, 0, 0.05) !important;">
                   <div class="text-muted filter-label" style="padding-left: 15px;color:#ddd !important;font-size:20px;">
                     <b>Filters</b>
                   </div>
@@ -1080,10 +1095,10 @@ if ($result_cnt == 0) {
                   </div>
                 </div>
                 <div style="clear: both;"></div>
-                <hr style="margin-top: 0px;margin-bottom: -10px;">
+                <hr style="margin-top: 0px;margin-bottom: -10px;border-top: 1px solid rgb(121, 121, 121);">
                 <div class="filters" style="margin-right:0px;">
                   <button
-                    style="display: block;border-color:#004123ff;outline:#139b3b;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;margin-bottom:0px;height:40px;border-radius:5px"
+                    style="display: block;border-color:#004123ff;outline:#139b3b;background-color: rgba(0, 0, 0, 0.25) !important;margin-bottom:0px;height:40px;border-radius:5px"
                     class="btn-pdt_pg btn-success"
                     type="button"
                     data-toggle="collapse"
@@ -1099,7 +1114,7 @@ if ($result_cnt == 0) {
                   <div class="d-lg-flex align-items-lg-center pt-2 small-sort-select" style="padding-bottom: 5px;margin-top: -15px;">
                     <!--LABEL TICKES-->
                     <!--<div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2"> <label class="tick">Farm <input type="checkbox" checked="checked"> <span class="check"></span> </label> <span class="text-success px-2 count"> 328</span> </div>-->
-                    <div class="checkbox bg-light border" style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;width:100% !important;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;border-radius: 5px;">
+                    <div class="checkbox bg-light border" style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;width:100% !important;background-color: rgba(0, 0, 0, 0.25) !important;border-radius: 5px;">
                       <select
                         id="mobsortall"
                         class="frm-field required sect"
@@ -1113,9 +1128,9 @@ if ($result_cnt == 0) {
                     </div>
                   </div>
                   <?php
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
 
                   if (isset($_GET['category_id'])) {
                   ?>
@@ -1126,7 +1141,7 @@ if ($result_cnt == 0) {
                         aria-expanded="false"
                         aria-controls="cat-filter-mob"
                         class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                        style="width: 100%;color:white;background-color: rgba(0, 0, 0, 0.25) !important;"
                         onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
                         Categories
                         <i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i>
@@ -1137,9 +1152,9 @@ if ($result_cnt == 0) {
                     </div>
                     <?php
                   }
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
 
                   if (isset($_GET['category_id'])  || isset($_GET['product'])) {
                     if (isset($_GET['product'])) {
@@ -1176,7 +1191,7 @@ if ($result_cnt == 0) {
                           aria-expanded="false"
                           aria-controls="brand-filter-mob"
                           class="font-weight-bold side-nav-filters"
-                          style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                          style="width: 100%;color:white;background-color: rgba(0, 0, 0, 0.25) !important;"
                           onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
                           Brands
                           <i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i>
@@ -1189,7 +1204,7 @@ if ($result_cnt == 0) {
                             <li
                               onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
                               class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
-                              style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;color:#ddd ">
+                              style="background-color: rgba(0, 0, 0, 0.25) !important;color:#ddd ">
                               <label class="options" style="display:flex;justify-content:center;align-items:center;margin-top:3px;">
                                 <span class="val-getbrand-<?= $getbrand_row['brand_id'] ?>"><?= $getbrand_row['brand_name'] ?></span>
                                 <input
@@ -1209,9 +1224,9 @@ if ($result_cnt == 0) {
                   <?php
                     }
                   }
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
                   ?>
                   <div class="py-3 side-nav-filters-head">
                     <h5
@@ -1220,7 +1235,7 @@ if ($result_cnt == 0) {
                       aria-expanded="false"
                       aria-controls="rating-filter-mob"
                       class="font-weight-bold side-nav-filters"
-                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                      style="width: 100%;color:white;background-color: rgba(0, 0, 0, 0.25) !important;"
                       onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
                       Rating
                       <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i>
@@ -1285,14 +1300,13 @@ if ($result_cnt == 0) {
                     </form>
                   </div>
                   <?php
-                  $pricesql = $pdo->query(
-                    "SELECT product_details.price FROM product_details
+                  $pricesql = "SELECT product_details.price FROM product_details
                     JOIN product_description ON product_description.product_description_id=product_details.product_description_id
                     JOIN product ON product_description.product_id=product.product_id
-                    WHERE category_id=$cat_id"
-                  );
+                    WHERE " . $condition;
+                  $pricestmt = $pdo->query($pricesql);
                   $pricecnt = 0;
-                  while ($pricerow = $pricesql->fetch(PDO::FETCH_ASSOC)) {
+                  while ($pricerow = $pricestmt->fetch(PDO::FETCH_ASSOC)) {
                     $pricearray[$pricecnt] = $pricerow['price'];
                     $pricecnt++;
                   }
@@ -1308,7 +1322,7 @@ if ($result_cnt == 0) {
                       aria-expanded="false"
                       aria-controls="mob-pricing-filter"
                       class="font-weight-bold side-nav-filters"
-                      style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
+                      style="width: 100%;color:white;background-color: rgba(0, 0, 0, 0.25) !important;"
                       onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
                       Price
                       <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i>
@@ -1316,115 +1330,108 @@ if ($result_cnt == 0) {
                     </h5>
                     <form class=" pricing collapse range-field my-5" id="mob-pricing-filter" style="margin:5px !important">
                       <div class="div-wrapper">
+                        <?php
+                        // Ensure numbers are integers
+                        $minprice = (int) preg_replace('/[^\d]/', '', $minprice);
+                        $maxprice = (int) preg_replace('/[^\d]/', '', $maxprice);
+
+                        // Decide step dynamically (e.g., nearest power of 10 or fixed fraction of range)
+                        $range = $maxprice - $minprice;
+                        if ($range <= 100) {
+                          $step = 10;
+                        } elseif ($range <= 1000) {
+                          $step = 50;
+                        } elseif ($range <= 5000) {
+                          $step = 100;
+                        } else {
+                          $step = 500;
+                        }
+
+                        // Function to build options
+                        function buildPriceOptions($start, $end, $step)
+                        {
+                          $html = '';
+                          for ($price = $start; $price <= $end; $price += $step) {
+                            $html .= "<option value='{$price}'>" . number_format($price) . "</option>";
+                          }
+                          return $html;
+                        }
+                        ?>
                         <label>
                           <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
+                          <!-- Min Price -->
                           <select style="width: 100%;height:40px" class="min-price" id="mob-min-price" onchange="sortandfilter('getprice','price')">
-                            <option><?= $minprice ?></option>
-                            <?php
-                            $divident = 10;
-                            for ($j = 1; $j < $minpricelen; $j++) {
-                              $divident .= 0;
-                            }
-                            ?>
-                            <?php
-                            $divident = (int) $divident;
-                            $cnt = $maxprice / $divident;
-                            for ($i = 1; $i < $cnt; $i++) {
-                              if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                                $pricelist = $divident * $i;
-                              }
-                            ?>
-                              <option><?= $pricelist ?></option>
-                            <?php
-                            }
-                            ?>
+                            <option value="<?= $minprice ?>"><?= number_format($minprice) ?></option>
+                            <?= buildPriceOptions($minprice, $maxprice - $step, $step); ?>
                           </select>
                         </label>
                         <label>
                           <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
+                          <!-- Max Price -->
                           <select style="width: 100%;height:40px" class="max-price" id="mob-max-price" onchange="sortandfilter('getprice','price')">
-                            <option><?= $maxprice ?></option>
-                            <?php
-                            $divident = 10;
-                            for ($j = 1; $j < $minpricelen; $j++) {
-                              $divident .= 0;
-                            }
-                            ?>
-                            <?php
-                            $divident = (int) $divident;
-                            $cnt = $maxprice / $divident;
-                            for ($i = 1; $i < $cnt; $i++) {
-                              if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                                $pricelist = $divident * $i;
-                              }
-                            ?>
-                              <option><?= $pricelist ?></option>
-                            <?php
-                            }
-                            ?>
+                            <option value="<?= $maxprice ?>"><?= number_format($maxprice) ?></option>
+                            <?= buildPriceOptions($minprice + $step, $maxprice, $step); ?>
                           </select>
                         </label>
                       </div>
                     </form>
                   </div>
                 </div>
-                <div class="content py-md-0 py-3" style="width: 100%;padding: 0px !important;">
-                  <section id="sidebar" style="width: 100%;">
-                    <!--DEFAULT FILTERS-->
-                    <div class=" align-items-lg-center pt-2" style="padding-bottom: 0px;margin-top:15px !important">
-                      <div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2" style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;">
-                        <select
-                          id="sortall"
-                          class="frm-field required sect"
-                          style="font-family: 'Poppins', sans-serif;height: 22px;font-size: 13px;display: flex;padding:0;border: none;width:100%;background-color: transparent;outline:none;color:white"
-                          onchange="sortandfilter('getsort','sort')">
-                          <option value="default">
-                            <i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting
-                          </option>
-                          <option value="high">
-                            <i class="fa fa-arrow-right" aria-hidden="true"></i>Price high to low
-                          </option>
-                          <option value="low">
-                            <i class="fa fa-arrow-right" aria-hidden="true"></i>Price low to high
-                          </option>
-                          <option value="view">
-                            <i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity
-                          </option>
-                        </select>
-                      </div>
+                <section id="sidebar" style="width: 100%;">
+                  <!--DEFAULT FILTERS-->
+                  <div class=" align-items-lg-center pt-2" style="padding-bottom: 10px;margin-top:15px !important">
+                    <div class="form-inline d-flex align-items-center my-2 checkbox bg-light border mx-lg-2" style="display: flex;align-items: center;justify-content: center;padding-left: 10px !important;background-color: rgba(0, 0, 0, 0.25) !important;">
+                      <select
+                        id="sortall"
+                        class="frm-field required sect"
+                        style="font-family: 'Poppins', sans-serif;height: 22px;font-size: 13px;display: flex;padding:0;border: none;width:100%;background-color: transparent;outline:none;color:white"
+                        onchange="sortandfilter('getsort','sort')">
+                        <option value="default">
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>Default sorting
+                        </option>
+                        <option value="high">
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>Price high to low
+                        </option>
+                        <option value="low">
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>Price low to high
+                        </option>
+                        <option value="view">
+                          <i class="fa fa-arrow-right" aria-hidden="true"></i>Sort by popularity
+                        </option>
+                      </select>
                     </div>
-                    <!--DEFAULT FILTERS-->
-                    <hr style="margin-top: 15px;margin-bottom: 1px;">
+                  </div>
+                  <!--DEFAULT FILTERS-->
+                  <?php
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  if (isset($_GET['category_id'])) {
+                  ?>
+                    <div class="py-3 side-nav-filters-head">
+                      <h5
+                        data-toggle="collapse"
+                        data-target="#cat-filter"
+                        aria-expanded="false"
+                        aria-controls="cat-filter"
+                        class="font-weight-bold side-nav-filters"
+                        style="width: 100%;color:white;background-color: rgba(0, 0, 0, 0.25) !important;"
+                        onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
+                        Categories
+                        <i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i>
+                        <i class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px"></i>
+                      </h5>
+                      <ul id="cat-filter" class="list-group collapse" style="margin-bottom: 0px;">
+                      </ul>
+                    </div>
                     <?php
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    if (isset($_GET['category_id'])) {
-                    ?>
-                      <div class="py-3 side-nav-filters-head">
-                        <h5
-                          data-toggle="collapse"
-                          data-target="#cat-filter"
-                          aria-expanded="false"
-                          aria-controls="cat-filter"
-                          class="font-weight-bold side-nav-filters"
-                          style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
-                          onclick="if($('.cat-right').css('display')=='none'){$('.cat-right').show();$('.cat-down').hide();}else{$('.cat-right').hide();$('.cat-down').show();}">
-                          Categories
-                          <i class="fa fa-angle-down cat-right" style="float: right;padding-right:5px"></i>
-                          <i class="fa fa-angle-up cat-down" style="float: right;display: none;padding-right:5px"></i>
-                        </h5>
-                        <ul id="cat-filter" class="list-group collapse" style="margin-bottom: 0px;">
-                        </ul>
-                      </div>
-                      <?php
-                    }
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    if (isset($_GET['category_id']) || isset($_GET['product'])) {
-                      if (isset($_GET['product'])) {
-                        $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
+                  }
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  if (isset($_GET['category_id']) || isset($_GET['product'])) {
+                    if (isset($_GET['product'])) {
+                      $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
                                     INNER JOIN product_description ON product_description.product_id=product.product_id
                                     INNER JOIN brand ON product_description.brand=brand.brand_id
                                     INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
@@ -1432,12 +1439,12 @@ if ($result_cnt == 0) {
                                     INNER JOIN store ON product_details.store_id=store.store_id
                                     INNER JOIN category ON category.category_id=product.category_id
                                     WHERE product.product_name LIKE '%" . $_GET['product'] . "%' GROUP BY brand.brand_name";
-                      } else if (isset($_GET['category_id'])) {
-                        if (isset($_GET['category_id'])) {
-                          $keeper = 'product.category_id';
-                          $brandval = $_GET['category_id'];
-                        }
-                        $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
+                    } else if (isset($_GET['category_id'])) {
+                      if (isset($_GET['category_id'])) {
+                        $keeper = 'product.category_id';
+                        $brandval = $_GET['category_id'];
+                      }
+                      $brandsql = "SELECT brand.brand_name,brand.brand_id FROM product
                                     INNER JOIN product_description ON product_description.product_id=product.product_id
                                     INNER JOIN brand ON product_description.brand=brand.brand_id
                                     INNER JOIN product_keys ON product_keys.product_description_id=product_description.product_description_id
@@ -1445,194 +1452,162 @@ if ($result_cnt == 0) {
                                     INNER JOIN store ON product_details.store_id=store.store_id
                                     INNER JOIN category ON category.category_id=product.category_id
                                     WHERE " . $keeper . " IN (" . $brandval . ") GROUP BY brand.brand_name";
-                      }
-                      $brandstmt = $pdo->query($brandsql);
-                      $brandcnt = $brandstmt->rowCount();
-                      if ($brandcnt > 0) {
-                      ?>
-                        <div class="py-3 side-nav-filters-head">
-                          <h5
-                            data-toggle="collapse"
-                            data-target="#brand-filter"
-                            aria-expanded="false"
-                            aria-controls="brand-filter"
-                            class="font-weight-bold side-nav-filters"
-                            style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
-                            onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
-                            Brands
-                            <i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i>
-                            <i class="fa fa-angle-up brand-down" style="float: right;display: none;padding-right:5px"></i>
-                          </h5>
-                          <ul id="brand-filter" class="list-group collapse" style="margin-bottom: 0px;">
-                            <?php
-                            while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
-                            ?>
-                              <li
-                                onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
-                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
-                                style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #000804ff)) !important;color:#ddd ">
-                                <label class="options" style="display:flex;justify-content:center;align-items:center;margin-top:3px;">
-                                  <span class="val-getbrand-<?= $getbrand_row['brand_id'] ?>"><?= $getbrand_row['brand_name'] ?></span>
-                                  <input
-                                    value="<?= $getbrand_row['brand_id'] ?>"
-                                    id="getbrand-<?= $getbrand_row['brand_id'] ?>"
-                                    type="radio"
-                                    disabled
-                                    name="radio-getbrand-<?= $getbrand_row['brand_id'] ?>">
-                                  <span class="checkmark"></span>
-                                </label>
-                              </li>
-                            <?php
-                            }
-                            ?>
-                          </ul>
-                        </div>
-                    <?php
-                      }
                     }
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+                    $brandstmt = $pdo->query($brandsql);
+                    $brandcnt = $brandstmt->rowCount();
+                    if ($brandcnt > 0) {
                     ?>
-                    <div class="py-3 side-nav-filters-head">
-                      <h5
-                        data-toggle="collapse"
-                        data-target="#rating-filter"
-                        aria-expanded="false"
-                        aria-controls="rating-filter"
-                        class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
-                        onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
-                        Rating
-                        <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i>
-                        <i class="fa fa-angle-up rating-down" style="float: right;display: none;padding-right:5px"></i>
-                      </h5>
-                      <form class="rating collapse" id="rating-filter">
-                        <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-5','star')">
-                          <label class="tick">
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <input type="checkbox" id="getstar-5" disabled value="5">
-                            <span class="check"></span>
-                          </label>
-                        </div>
-                        <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-4','star')">
-                          <label class="tick">
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star px-1 text-muted"></span>
-                            <input type="checkbox" id="getstar-4" disabled value="4">
-                            <span class="check"></span>
-                          </label>
-                        </div>
-                        <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-3','star')">
-                          <label class="tick">
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star px-1 text-muted"></span>
-                            <span class="fas fa-star px-1 text-muted"></span>
-                            <input type="checkbox" id="getstar-3" disabled value="3">
-                            <span class="check"></span>
-                          </label>
-                        </div>
-                        <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-2','star')">
-                          <label class="tick">
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star px-1 text-muted"></span>
-                            <span class="fas fa-star px-1 text-muted"></span>
-                            <span class="fas fa-star px-1 text-muted"></span>
-                            <input type="checkbox" id="getstar-2" disabled value="2">
-                            <span class="check"></span>
-                          </label>
-                        </div>
-                        <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-1','star')">
-                          <label class="tick">
-                            <span class="fas fa-star"></span>
-                            <span class="fas fa-star px-1 text-muted"></span>
-                            <span class="fas fa-star px-1 text-muted"></span>
-                            <span class="fas fa-star px-1 text-muted"></span>
-                            <span class="fas fa-star px-1 text-muted"></span>
-                            <input type="checkbox" id="getstar-1" disabled value="1">
-                            <span class="check"></span>
-                          </label>
-                        </div>
-                      </form>
-                    </div>
-                    <div class="py-3 side-nav-filters-head">
-                      <h5
-                        data-toggle="collapse"
-                        data-target="#pricing-filter"
-                        aria-expanded="false"
-                        aria-controls="pricing-filter"
-                        class="font-weight-bold side-nav-filters"
-                        style="width: 100%;color:white;background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #004123ff), color-stop(1, #01222b)) !important;"
-                        onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
-                        Price
-                        <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i>
-                        <i class="fa fa-angle-up pricing-down" style="float: right;display: none;padding-right:5px"></i>
-                      </h5>
-                      <form class=" pricing collapse range-field my-5" id="pricing-filter" style="margin:5px !important">
-                        <div class="div-wrapper">
-                          <label>
-                            <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
-                            <select style="width: 100%;height:35px" class="min-price" id="min-price" onchange="sortandfilter('getprice','price')">
-                              <option><?= $minprice ?></option>
-                              <?php
-                              $divident = 10;
-                              for ($j = 1; $j < $minpricelen; $j++) {
-                                $divident .= 0;
-                              }
-                              ?>
-                              <?php
-                              $divident = (int) $divident;
-                              $cnt = $maxprice / $divident;
-                              for ($i = 1; $i < $cnt; $i++) {
-                                if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                                  $pricelist = $divident * $i;
-                                }
-                              ?>
-                                <option><?= $pricelist ?></option>
-                              <?php
-                              }
-                              ?>
-                            </select>
-                          </label>
-                          <label>
-                            <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
-                            <select style="width: 100%;height:35px" class="max-price" id="max-price" onchange="sortandfilter('getprice','price')">
-                              <option><?= $maxprice ?></option>
-                              <?php
-                              $divident = 10;
-                              for ($j = 1; $j < $minpricelen; $j++) {
-                                $divident .= 0;
-                              }
-                              ?>
-                              <?php
-                              $divident = (int) $divident;
-                              $cnt = $maxprice / $divident;
-                              for ($i = 1; $i < $cnt; $i++) {
-                                if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                                  $pricelist = $divident * $i;
-                                }
-                              ?>
-                                <option><?= $pricelist ?></option>
-                              <?php
-                              }
-                              ?>
-                            </select>
-                          </label>
-                        </div>
-                      </form>
-                    </div>
-                  </section> <!-- Products Section -->
-                </div>
+                      <div class="py-3 side-nav-filters-head">
+                        <h5
+                          data-toggle="collapse"
+                          data-target="#brand-filter"
+                          aria-expanded="false"
+                          aria-controls="brand-filter"
+                          class="font-weight-bold side-nav-filters"
+                          style="width: 100%;color:white;background-color: rgba(0, 0, 0, 0.25) !important;"
+                          onclick="if($('.brand-right').css('display')=='none'){$('.brand-right').show();$('.brand-down').hide();}else{$('.brand-right').hide();$('.brand-down').show();}">
+                          Brands
+                          <i class="fa fa-angle-down brand-right" style="float: right;padding-right:5px"></i>
+                          <i class="fa fa-angle-up brand-down" style="float: right;display: none;padding-right:5px"></i>
+                        </h5>
+                        <ul id="brand-filter" class="list-group collapse" style="margin-bottom: 0px;">
+                          <?php
+                          while ($getbrand_row = $brandstmt->fetch(PDO::FETCH_ASSOC)) {
+                          ?>
+                            <li
+                              onclick="sortandfilter('getbrand-<?= $getbrand_row['brand_id'] ?>','brand')"
+                              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category brand-font  getbrand-<?= $getbrand_row['brand_id'] ?>"
+                              style="background-color: rgba(0, 0, 0, 0.25) !important;color:#ddd ">
+                              <label class="options" style="display:flex;justify-content:center;align-items:center;margin-top:3px;">
+                                <span class="val-getbrand-<?= $getbrand_row['brand_id'] ?>"><?= $getbrand_row['brand_name'] ?></span>
+                                <input
+                                  value="<?= $getbrand_row['brand_id'] ?>"
+                                  id="getbrand-<?= $getbrand_row['brand_id'] ?>"
+                                  type="radio"
+                                  disabled
+                                  name="radio-getbrand-<?= $getbrand_row['brand_id'] ?>">
+                                <span class="checkmark"></span>
+                              </label>
+                            </li>
+                          <?php
+                          }
+                          ?>
+                        </ul>
+                      </div>
+                  <?php
+                    }
+                  }
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  // ---------------------------------------------------------------------------------------------------------------------------------------------------------/
+                  ?>
+                  <div class="py-3 side-nav-filters-head">
+                    <h5
+                      data-toggle="collapse"
+                      data-target="#rating-filter"
+                      aria-expanded="false"
+                      aria-controls="rating-filter"
+                      class="font-weight-bold side-nav-filters"
+                      style="width: 100%;color:white;background-color: rgba(0, 0, 0, 0.25) !important;"
+                      onclick="if($('.rating-right').css('display')=='none'){$('.rating-right').show();$('.rating-down').hide();}else{$('.rating-right').hide();$('.rating-down').show();}">
+                      Rating
+                      <i class="fa fa-angle-down rating-right" style="float: right;padding-right:5px"></i>
+                      <i class="fa fa-angle-up rating-down" style="float: right;display: none;padding-right:5px"></i>
+                    </h5>
+                    <form class="rating collapse" id="rating-filter">
+                      <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-5','star')">
+                        <label class="tick">
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star"></span>
+                          <input type="checkbox" id="getstar-5" disabled value="5">
+                          <span class="check"></span>
+                        </label>
+                      </div>
+                      <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-4','star')">
+                        <label class="tick">
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star px-1 text-muted"></span>
+                          <input type="checkbox" id="getstar-4" disabled value="4">
+                          <span class="check"></span>
+                        </label>
+                      </div>
+                      <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-3','star')">
+                        <label class="tick">
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star px-1 text-muted"></span>
+                          <span class="fas fa-star px-1 text-muted"></span>
+                          <input type="checkbox" id="getstar-3" disabled value="3">
+                          <span class="check"></span>
+                        </label>
+                      </div>
+                      <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-2','star')">
+                        <label class="tick">
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star px-1 text-muted"></span>
+                          <span class="fas fa-star px-1 text-muted"></span>
+                          <span class="fas fa-star px-1 text-muted"></span>
+                          <input type="checkbox" id="getstar-2" disabled value="2">
+                          <span class="check"></span>
+                        </label>
+                      </div>
+                      <div class="form-inline star-font align-items-center py-2" onclick="sortandfilter('getstar-1','star')">
+                        <label class="tick">
+                          <span class="fas fa-star"></span>
+                          <span class="fas fa-star px-1 text-muted"></span>
+                          <span class="fas fa-star px-1 text-muted"></span>
+                          <span class="fas fa-star px-1 text-muted"></span>
+                          <span class="fas fa-star px-1 text-muted"></span>
+                          <input type="checkbox" id="getstar-1" disabled value="1">
+                          <span class="check"></span>
+                        </label>
+                      </div>
+                    </form>
+                  </div>
+                  <div class="py-3 side-nav-filters-head">
+                    <h5
+                      data-toggle="collapse"
+                      data-target="#pricing-filter"
+                      aria-expanded="false"
+                      aria-controls="pricing-filter"
+                      class="font-weight-bold side-nav-filters"
+                      style="width: 100%;color:white;background-color: rgba(0, 0, 0, 0.25) !important;"
+                      onclick="if($('.pricing-right').css('display')=='none'){$('.pricing-right').show();$('.pricing-down').hide();}else{$('.pricing-right').hide();$('.pricing-down').show();}">
+                      Price
+                      <i class="fa fa-angle-down pricing-right" style="float: right;padding-right:5px"></i>
+                      <i class="fa fa-angle-up pricing-down" style="float: right;display: none;padding-right:5px"></i>
+                    </h5>
+                    <form class=" pricing collapse range-field my-5" id="pricing-filter" style="margin:5px !important">
+                      <div class="div-wrapper">
+                        <label style="margin:5px !important;">
+                          <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
+                          <!-- Min Price -->
+                          <select style="width: 100%;height: 35px;color: #151515;" class="min-price" id="min-price" onchange="sortandfilter('getprice','price')">
+                            <option value="<?= $minprice ?>"><?= number_format($minprice) ?></option>
+                            <?= buildPriceOptions($minprice, $maxprice - $step, $step); ?>
+
+                          </select>
+                        </label>
+                        <label style="margin:5px !important;">
+                          <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
+                          <!-- Max Price -->
+                          <select style="width: 100%;height: 35px;color: #151515;" class="max-price" id="max-price" onchange="sortandfilter('getprice','price')">
+                            <option value="<?= $maxprice ?>"><?= number_format($maxprice) ?></option>
+                            <?= buildPriceOptions($minprice + $step, $maxprice, $step); ?>
+                          </select>
+                        </label>
+                      </div>
+                    </form>
+                  </div>
+                </section> <!-- Products Section -->
               </div>
               <!----------------------------------------------------------------------------------------------------------------------------------------------->
               <!----------------------------------------------------------------------------------------------------------------------------------------------->
@@ -1645,7 +1620,6 @@ if ($result_cnt == 0) {
                   <div class="container py-3" style="padding:0px;">
                     <div class="row" style="margin:0;padding-top:0px !important">
                       <?php
-                      require "../Common/pdo.php";
                       if (isset($_GET['product'])) {
                         $nm = $_GET['product'];
                         $res = $pdo->query(
@@ -1692,7 +1666,7 @@ if ($result_cnt == 0) {
                               $description2 = $row['description'] . "... ";
                             }
                           ?>
-                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">
+                            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="background-color: #151515;min-height: 280px;margin:0px;padding:8px;padding-bottom:0px;padding-top:0px;">
                               <?php
                               $query = "SELECT store.store_name, category.category_name,size,weight,brand FROM product_details
                                         JOIN product_description ON product_details.product_description_id=product_description.product_description_id
@@ -1871,8 +1845,8 @@ if ($result_cnt == 0) {
     require "../Product/products_footer.php";
     ?>
     <script>
-      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
       //STORE LISTING
       function storefinder(item_description_id) {
         $("#per").hide();
@@ -1916,8 +1890,8 @@ if ($result_cnt == 0) {
           }
         }); //closing ajax
       }
-      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
       function wishlist_storefinder(item_description_id) {
         $("#per2").hide();
         var idid = item_description_id;
@@ -1960,8 +1934,8 @@ if ($result_cnt == 0) {
           }
         }); //closing ajax
       }
-      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
       //PRICE AND CART SETTINGS
       function pricing(store, item_description_id) {
         var idid = item_description_id;
@@ -2027,8 +2001,8 @@ if ($result_cnt == 0) {
         }
       }
       //PRICE AND CART SETTINGS
-      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
       //PRICE AND CART SETTINGS WISHLIST
       function wishlist_pricing(store, item_description_id) {
         var idid = item_description_id;
@@ -2094,8 +2068,8 @@ if ($result_cnt == 0) {
         }
       }
       //PRICE AND CART SETTINGS  WISHLIST
-      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
       //WISHLIST ENTRY ITEMS
       function wishlist_check_store_select() {
         var tbl = document.getElementById("wishlist_store");
@@ -2161,9 +2135,9 @@ if ($result_cnt == 0) {
         }
       }
       //WISHLIST ENTRY ITEMS
-      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // ---------------------------------------------------------------------------------------------------------------------------------//
+      // ---------------------------------------------------------------------------------------------------------------------------------//
+      // ---------------------------------------------------------------------------------------------------------------------------------//
       function wishlist_check_list_select(wishlist_id) {
         $.ajax({
           url: "../Common/functions.php", //passing page info
@@ -2225,8 +2199,8 @@ if ($result_cnt == 0) {
           }
         }); //closing ajax
       }
-      //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
+      // ---------------------------------------------------------------------------------------------------------------------------------------------/
     </script>
     </body>
     <html>

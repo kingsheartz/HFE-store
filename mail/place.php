@@ -81,7 +81,7 @@ $from    = 'healthandfitnessequipmentstore@gmail.com';
 				$headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
 				// Update the activation variable below
 				//$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email=' . $_POST['email'] . '&code=' . $uniqid;
-				$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/functions.php?emailverified=1&email=govind.das279@gmail.com&code='.$uniqid;
+				$activate_link = 'http://localhost/HFE-Store/functions.php?emailverified=1&email=govind.das279@gmail.com&code='.$uniqid;
 				$message = '<html><body style="background-color:rgba(255,255,255,255.85);padding:20px;"><center>';
 				$message .= '<img src="https://falconsinfoworld.000webhostapp.com/HFE-Store/images/logo/logo-horizontal.png"><br>';
 				$message .= '<h3 style="color:#059DF9">Hi Govind, HFE-Store Welcomes You</h3><br></center>';
@@ -104,7 +104,7 @@ $subject = 'Account Activation Required';
 $headers = 'From: ' . $from . "\r\n" . 'Reply-To: ' . $from . "\r\n" . 'X-Mailer: PHP/' . phpversion() . "\r\n" . 'MIME-Version: 1.0' . "\r\n" . 'Content-Type: text/html; charset=UTF-8' . "\r\n";
 // Update the activation variable below
 //$activate_link = 'https://falconsinfoworld.000webhostapp.com/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
-//$activate_link = 'http://localhost/MY%20WEBSITES/HFE-Store/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
+//$activate_link = 'http://localhost/HFE-Store/functions.php?emailverified=1&email='.$_POST['email'].'&code='.$uniqid;
 $activate_link = 'http://HFE-Store.epizy.com/functions.php?emailverified=1&email=govind.das279@gmail.com&code=' . $uniqid;
 $message = '<html><body style="background-color:rgba(255,255,255,255.85);padding:20px;"><center>';
 //$message .= '<img src="https://falconsinfoworld.000webhostapp.com/HFE-Store/images/logo/logo-horizontal.png"><br>';
@@ -151,7 +151,7 @@ $mail->SMTPOptions = array(
 
 if (!$mail->send()) {
 	$response['status'] = "error4";
-	$_SESSION['error'] = "Email can't Send";
+	$_SESSION['hfe_error'] = "Email can't Send";
 	//echo "Mailer Error: " . $mail->ErrorInfo;
 }
 ?>

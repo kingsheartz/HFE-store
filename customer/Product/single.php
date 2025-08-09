@@ -1,13 +1,13 @@
 <?php
 require '../Main/header.php';
-require "../../db.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 $product_description_id = $_GET['id'];
-if (isset($_GET['id'], $_SESSION['id'])) {
+if (isset($_GET['id'], $_SESSION['hfe_id'])) {
   $check = $pdo->query(
     "SELECT product_description_id
     FROM product_keys
     WHERE product_description_id = " . $_GET['id'] . "
-    AND customer_id = " . $_SESSION['id']
+    AND customer_id = " . $_SESSION['hfe_id']
   );
   if ($check->rowCount() > 0) {
     $viewedsql = $pdo->prepare(
@@ -25,7 +25,7 @@ if (isset($_GET['id'], $_SESSION['id'])) {
     );
     $date = date("Y\-m\-d");
     $viewedsql->execute(array(
-      ':uid' => $_SESSION['id'],
+      ':uid' => $_SESSION['hfe_id'],
       ':idid' => $_GET['id'],
       ':dop' => $date
     ));
@@ -44,7 +44,7 @@ if ($ratecount != 0) {
   $rating = 0;
 }
 $n = 0;
-//CHANGE 1////////////////////////////////////////////////////////////////////////////////////////////////////////
+// CHANGE 1
 $sql = "SELECT * FROM product
         INNER JOIN product_description ON product_description.product_id = product.product_id
         INNER JOIN category ON category.category_id = product.category_id
@@ -149,6 +149,10 @@ function randomGen($min, $max, $quantity)
     .d-inline-block {
       display: inline-block !important;
     }
+
+    .img-example-left {
+      margin-left: 0px;
+    }
   }
 
   .product_share {
@@ -198,7 +202,7 @@ function randomGen($min, $max, $quantity)
   .tabcontentsingle {
     display: none;
     padding: 6px 12px;
-    border: 1px solid #ccc;
+    border: 1px solid rgb(121, 121, 121);
     border-top: none;
   }
 
@@ -489,7 +493,7 @@ function randomGen($min, $max, $quantity)
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .fixed-pos-left-container {
       min-height: max-content !important;
     }
@@ -935,9 +939,9 @@ function randomGen($min, $max, $quantity)
     $('.product-desc').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
     $('#partially_needed').css('min-height', $('.relative_div').outerHeight() + 30 + 'px');
   });
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //SCROLLING AND RESIZING EFFECTS
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
   $(window).scroll(function() {
     if ($(this).scrollTop() > 60) {
       if ($(window).width() > 825) {
@@ -1078,9 +1082,9 @@ function randomGen($min, $max, $quantity)
       }
     }
   });
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //SCROLLING AND RESIZING EFFECTS
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //showing onlt mrp at loading
   $(document).ready(function(f) {
     $("#per").hide();
@@ -1183,11 +1187,11 @@ function randomGen($min, $max, $quantity)
                 }
               });
             /*
-                                  var qnty=document.getElementById("Q"+id+"").innerHTML;
-                                  if(qnty!=0){
-                                    document.getElementById("Q"+id+"").innerHTML="";
-                                    document.getElementById("Q"+id+"").innerHTML=qnty-1;
-                                  }*/
+            var qnty=document.getElementById("Q"+id+"").innerHTML;
+            if(qnty!=0){
+              document.getElementById("Q"+id+"").innerHTML="";
+              document.getElementById("Q"+id+"").innerHTML=qnty-1;
+            }*/
             var qnty = document.getElementById("dis_qnty").innerHTML;
             if (qnty != 0) {
               document.getElementById("dis_qnty").innerHTML = "";
@@ -1637,9 +1641,9 @@ function randomGen($min, $max, $quantity)
                         <?php
                       }
                         ?>
-                        <!--//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-                  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
+                        <!-------------------------------------------------------------------------------------------------------------------------------------------->
                         <ul class="img-example-left" style="display: flex;">
                           <li style="margin-right: 5px;">
                             <div class="product-image-thumb active">
@@ -1694,7 +1698,7 @@ function randomGen($min, $max, $quantity)
                                 <span id="oldpriceofproduct" style="display: none;">
                                   <span id="org" class="m-sing pricetag"></span>
                                   <del>
-                                    <small><span style="color: #6d6d6d;font-size: 16px;">&#8377;<?= $mrp ?></span></small>
+                                    <small><span style="color: #b1b1b1;font-size: 16px;">&#8377;<?= $mrp ?></span></small>
                                   </del>
                                 </span>
                               </h2>
@@ -1897,19 +1901,20 @@ function randomGen($min, $max, $quantity)
                 <div id="edit_customer_reviewed"></div>
                 <?php
                 /*COLOR PICKER*/
-                $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-                $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+                $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_mediumvioletred', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
+                $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'mediumvioletred', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
                 $reviewlen = 0;
                 //customer REVIEW
                 //-------------------------------------------------------------------------------------------------------------------
                 $myreview = 0;
-                if (isset($_SESSION['id'])) {
+                if (isset($_SESSION['hfe_id'])) {
                   $myreviewstmt = $pdo->query(
                     "SELECT ordered_cnt, review, rating, date_of_review as date, customers.first_name, customers.last_name
                     FROM product_keys
                     JOIN customers ON customers.customer_id = product_keys.customer_id
-                    WHERE product_description_id = " . $_GET['id'] . "
-                    AND product_keys.customer_id = " . $_SESSION['id']
+                    WHERE rating > 0
+                    AND product_description_id = " . $_GET['id'] . "
+                    AND product_keys.customer_id = " . $_SESSION['hfe_id']
                   );
                   $myreviewcount = $myreviewstmt->rowCount();
                   echo "<h4 style='margin-top:20px;'>Customer Reviews: " . $myreviewcount . "</h4>";
@@ -1988,7 +1993,7 @@ function randomGen($min, $max, $quantity)
                         FROM product_keys
                         JOIN customers ON customers.customer_id = product_keys.customer_id
                         WHERE product_description_id = " . $_GET['id'] . "
-                        AND product_keys.customer_id = " . $_SESSION['id'] . "
+                        AND product_keys.customer_id = " . $_SESSION['hfe_id'] . "
                         AND product_keys.ordered_cnt > 0"
                       );
                       $checkbuycnt = $checkbuysql->rowCount();
@@ -1997,7 +2002,7 @@ function randomGen($min, $max, $quantity)
                         $isorder = $checkbuy['ordered_cnt'];
                         if ($isorder != 0) {
                       ?>
-                          <div id="editoraddreview" style="margin:0;padding:0;">
+                          <div id="editoraddreview" style="margin:0;padding:0;width: 100%;max-width: 550px;">
                             <h3 style="margin-top:20px;">Rate this product</h3>
                             <div class="rate">
                               <input type="radio" id="star5" name="rate" value="5" />
@@ -2014,8 +2019,8 @@ function randomGen($min, $max, $quantity)
                             <div class="clearfix"> </div>
                             <label class="form-label" for="reviewinput">Write a review <i class="fas fa-pen"></i>
                               <?php
-                              if (isset($_SESSION['id'])) {
-                                $checkbuysql = $pdo->query("select rating,review from product_keys where product_description_id=" . $_GET['id'] . " and customer_id=" . $_SESSION['id']);
+                              if (isset($_SESSION['hfe_id'])) {
+                                $checkbuysql = $pdo->query("select rating, review, ordered_cnt from product_keys where product_description_id=" . $_GET['id'] . " and customer_id=" . $_SESSION['hfe_id']);
                                 $checkbuy = $checkbuysql->fetch(PDO::FETCH_ASSOC);
                                 if ($checkbuy) {
                                   if ($checkbuy['rating'] != 0 && $checkbuy['ordered_cnt'] > 1 && $checkbuy['ordered_cnt'] != "0") {
@@ -2026,13 +2031,12 @@ function randomGen($min, $max, $quantity)
                                 }
                               }
                               ?>
-                              <span id="charnow" style="color:rgb(0, 97, 0);padding-left:10px">0</span>/
-                              <span style="color:rgb(0, 97, 0)">500</span>
+                              <span id="charnow" style="color:rgb(0, 97, 0);padding-left:10px">0</span> / <span style="color:rgb(0, 97, 0)">500</span>
                             </label>
                             <div class="form-group input-field" style="width: 100%;margin-top:0;">
                               <textarea
                                 maxlength="500"
-                                style="width:100%;outline:#139b3b"
+                                style="max-width: 550px;width: -webkit-fill-available;outline: #139b3b; background-color: #101010; border-radius: 5px;"
                                 title="Maximum character count is 500"
                                 rows="4"
                                 oninput="$(this).removeClass('invalid');"
@@ -2045,7 +2049,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="dis_add()"
                                 id="dis_add"
                                 class="fa fa-sm fa-edit"
-                                style="position: absolute;right: 0;top: 0;color: white;background-color: #0c77cc;padding: 4px;"
+                                style="position: absolute;right: 0px;top: 0px;color: white;background-color: #0c77cc;padding: 4px;"
                                 onmouseover="$(this).css('background-color','#0c66cc')"
                                 onmouseleave="$(this).css('background-color','#0c77cc')">
                               </span>
@@ -2053,7 +2057,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="reset_add()"
                                 id="hide_add"
                                 class="fa fa-sm fa-close"
-                                style="display: none;position: absolute;right: 0;top: 0;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
+                                style="display: none;position: absolute;right: 0px;top: 0px;color: white;background-color: red;padding: 5px;padding-top: 4px;padding-bottom: 4px;"
                                 onmouseover="$(this).css('background-color','#bb0000')"
                                 onmouseleave="$(this).css('background-color','red')">
                               </span>
@@ -2061,7 +2065,7 @@ function randomGen($min, $max, $quantity)
                                 onclick="dis_ok()"
                                 id="hide_add1"
                                 class="fa fa-check"
-                                style="display:none;position: absolute;right: 0;top: 23px;color: white;background-color: #07C103;padding: 3px;"
+                                style="display:none;position: absolute;right: 0px;top: 23px;color: white;background-color: #07C103;padding: 4px 3.5px;"
                                 onmouseover="$(this).css('background-color','#4f994f')"
                                 onmouseleave="$(this).css('background-color','#07C103')">
                               </span>
@@ -2094,7 +2098,7 @@ function randomGen($min, $max, $quantity)
                 }
                 //customer REVIEW
                 //--------------------------------------------------------------------------------------------------------------------
-                if (isset($_SESSION['id'])) {
+                if (isset($_SESSION['hfe_id'])) {
                   ?>
                   <script>
                     function maxchar() {
@@ -2107,7 +2111,7 @@ function randomGen($min, $max, $quantity)
                       $('#std_loader').show();
                       $('#customer_reviewed_already').hide();
                       var product_description_id = <?= $_GET['id'] ?>;
-                      var customer_id = <?= $_SESSION['id'] ?>;
+                      var customer_id = <?= $_SESSION['hfe_id'] ?>;
                       $.ajax({
                         url: "../Common/functions.php", //passing page info
                         data: {
@@ -2166,7 +2170,7 @@ function randomGen($min, $max, $quantity)
                       if (getSelectedValue != null) {
                         var noofstars = getSelectedValue.value;
                         var product_description_id = <?= $_GET['id'] ?>;
-                        var customer_id = <?= $_SESSION['id'] ?>;
+                        var customer_id = <?= $_SESSION['hfe_id'] ?>;
                         $('.real_btn').hide();
                         $('.load_btn').show();
                         $.ajax({
@@ -2224,7 +2228,7 @@ function randomGen($min, $max, $quantity)
 
                     function canceledit() {
                       var product_description_id = <?= $_GET['id'] ?>;
-                      var customer_id = <?= $_SESSION['id'] ?>;
+                      var customer_id = <?= $_SESSION['hfe_id'] ?>;
                       $.ajax({
                         url: "../Common/functions.php", //passing page info
                         data: {
@@ -2350,13 +2354,13 @@ function randomGen($min, $max, $quantity)
                   <?php
                 }
                 //PUBLIC REVIEW
-                if (isset($_SESSION['id'])) {
+                if (isset($_SESSION['hfe_id'])) {
                   $reviewstmt = $pdo->query(
                     "SELECT product_keys.ordered_cnt, product_keys.review, rating, customers.first_name, customers.last_name, date_of_review as date
                     FROM product_keys
                     JOIN customers ON customers.customer_id = product_keys.customer_id
                     WHERE product_description_id = " . $_GET['id'] . "
-                    AND product_keys.customer_id NOT IN (" . $_SESSION['id'] . ")
+                    AND product_keys.customer_id NOT IN (" . $_SESSION['hfe_id'] . ")
                     AND rating > 0
                     AND review != '0'
                     AND product_keys.ordered_cnt > 0
@@ -2444,7 +2448,8 @@ function randomGen($min, $max, $quantity)
                     }
                   }
                 } else {
-                  echo "<img src='../../images/logo/no-review.png' style='max-height:150px;max-width:250px'><p><i class='fa fa-frown fa-lg' style='color:#000000;background-color: #ffff00;border-radius:50%'></i> No other reviews on this product..! </p>";
+                  $noReviewImages = ['no-review.png', 'no-review-found.png'];
+                  echo "<img src='../../images/logo/" . $noReviewImages[rand(0, 1)] . "' style='max-height:150px;max-width:250px'><p><i class='fa fa-frown fa-lg' style='color:#000000;background-color: #ffff00;border-radius:50%'></i> No other reviews on this product..! </p>";
                 }
                 ?>
               </div>
@@ -2726,8 +2731,8 @@ function randomGen($min, $max, $quantity)
     WHERE product.category_id=" . $cat_id
   );
   /*COLOR PICKER*/
-  $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-  $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+  $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_mediumvioletred', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
+  $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'mediumvioletred', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
   $c1 = $c2 = 'white';
   do {
     $rancolor1 = array_rand($color, 1);
@@ -2792,19 +2797,19 @@ function randomGen($min, $max, $quantity)
       </div>
       <!-- //new -->
       <?php
-      if (isset($_SESSION['id'])) {
+      if (isset($_SESSION['hfe_id'])) {
       ?>
         <!-- new -->
         <div class="newproducts-w3agile" style="padding:0;padding-top:10px;">
           <h3>Recently Viewed</h3>
           <?php
-          //CHANGE 4////////////////////////////////////////////////////////////////////////////////////////////////////////
+          // CHANGE 4
 
           $ran = $pdo->query(
             "SELECT views ,product_keys.product_description_id FROM product_keys
             JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
             JOIN product ON product.product_id=product_description.product_id
-            WHERE customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC"
+            WHERE customer_id=" . $_SESSION['hfe_id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC"
           );
           $isready = $ran->rowCount();
           if ($isready != 0 && is_null($isready) == false) {
@@ -2881,7 +2886,7 @@ function randomGen($min, $max, $quantity)
                   $('input:checkbox').not(this).prop('checked', false);
                 });
               });
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              // ------------------------------------------------------------------------------------------------------------------------------
               function openhiddentab(evt, TabSingleName) {
                 var i, tabcontentsingle, tablinkssingle;
                 tabcontentsingle = document.getElementsByClassName("tabcontentsingle");
@@ -3000,8 +3005,8 @@ function randomGen($min, $max, $quantity)
                 }
               }
               //PRICE AND CART SETTINGS
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              // ---------------------------------------------------------------------------------------------------------------------------------------------/
+              // ---------------------------------------------------------------------------------------------------------------------------------------------/
               //PRICE AND CART SETTINGS WISHLIST
               function wishlist_pricing(store) {
                 var product_description_id = <?= $product_description_id ?>;
@@ -3066,8 +3071,8 @@ function randomGen($min, $max, $quantity)
                 }
               }
               //PRICE AND CART SETTINGS  WISHLIST
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              // ---------------------------------------------------------------------------------------------------------------------------------------------/
+              // ---------------------------------------------------------------------------------------------------------------------------------------------/
               //WISHLIST ENTRY productS
               function wishlist_check_store_select() {
                 console.log("wishlist_check_store_select");
@@ -3148,9 +3153,6 @@ function randomGen($min, $max, $quantity)
                 }
               }
               //WISHLIST ENTRY productS
-              ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
               function wishlist_check_list_select(wishlist_id) {
                 console.log("wishlist_check_list_select");
                 $.ajax({
@@ -3231,9 +3233,9 @@ function randomGen($min, $max, $quantity)
                   }
                 }); //closing ajax
               }
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              //PRICE AND CART SETTINGS /// BUY NOW ///
+              // ---------------------------------------------------------------------------------------------------------------------------------------------/
+              // ---------------------------------------------------------------------------------------------------------------------------------------------/
+              //PRICE AND CART SETTINGS --- BUY NOW ---
               function buynow_pricing(store) {
                 var product_description_id = <?= $product_description_id ?>;
                 var store_id = store;
@@ -3297,9 +3299,9 @@ function randomGen($min, $max, $quantity)
                 }
               }
               //PRICE AND CART SETTINGS BUY NOW
-              //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              // ---------------------------------------------------------------------------------------------------------------------------------//
+              // ---------------------------------------------------------------------------------------------------------------------------------//
+              // ---------------------------------------------------------------------------------------------------------------------------------//
               //BUY NOW product RESPONSE
               function buynow_place_order_select() {
                 console.log("buynow_place_order_select");
@@ -3397,8 +3399,8 @@ function randomGen($min, $max, $quantity)
                 }
               }
               //BUY NOW product RESPONSE
-              ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-              /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+              // ---------------------------------------------------------------------------------------------------------------------------------//
+              // ---------------------------------------------------------------------------------------------------------------------------------//
               //AVAILABLE STORE LISTING
               /*
               function display_store(){

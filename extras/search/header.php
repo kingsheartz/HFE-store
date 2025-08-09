@@ -170,7 +170,7 @@
         <div class="row">
           <div class="col-md-2 col-lg-2 col-sm-3 col-3">
             <div class="w3ls_logo_products_left">
-              <h1><a href="index.php"><img src="images/logo/logo.svg" height="50px" style="margin-left: 0px;"></a></h1>
+              <h1><a href="index.php"><img src="images/logo/logo-horizontal.png" height="50px" style="margin-left: 0px;"></a></h1>
             </div>
           </div>
 
@@ -185,7 +185,7 @@
 
           if (isset($_POST['Search'])) {
             if (strlen($_POST['Search']) > 0) {
-              require "pdo.php";
+              require dirname(__DIR__, 2) . '/db/pdo.php';
               $sub = $_POST['Search'];
               $r6 = $pdo->query("select item_id from item where item_name='$sub'");
               $id6 = $r6->fetch(PDO::FETCH_ASSOC);

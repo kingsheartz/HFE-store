@@ -929,7 +929,7 @@ require "head.php";
       }
     </style>
     <?php
-    require "pdo.php";
+    require dirname(__DIR__, 1) . '/db/pdo.php';
     if (isset($_POST['check_id'])) {
       if (isset($_POST['update_data'])) {
         $it_id = $_POST['check_id'];
@@ -1039,7 +1039,7 @@ require "head.php";
       isset($_POST['price']) ||
       isset($_POST['description'])
     ) {
-      require 'pdo.php';
+      require dirname(__DIR__, 1) . '/db/pdo.php';;
       $pr = $_POST['pr_id'];
       $img = $_POST['im_url'];
       $itna = $_POST['name'];
@@ -1056,7 +1056,7 @@ require "head.php";
             </span><br>
             <div class="row">
               <?php
-              $id = $_SESSION['id'];
+              $id = $_SESSION['hfe_id'];
               $query = "SELECT * FROM product  JOIN product_description ON product.product_id=product_description.product_id JOIN product_details ON product_details.product_description_id=product_description.product_description_id where product_description.product_id=$it and product_details.store_id=$id";
               $st = $pdo->query($query);
               $tr = $st->rowCount();

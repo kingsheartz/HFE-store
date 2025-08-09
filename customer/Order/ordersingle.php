@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   header("location:../Main/hfe.php");
 }
 if (isset($_GET['nopid'])) {
@@ -8,8 +8,9 @@ if (isset($_GET['nopid'])) {
 } else {
   header('location:../Main/hfe.php');
 }
+
+require dirname(__DIR__, 2) . '/db/pdo.php';
 require "../Main/header.php";
-require "../Common/pdo.php";
 ?>
 <!-- breadcrumbs -->
 <style type="text/css">
@@ -366,7 +367,7 @@ require "../Common/pdo.php";
               WHERE customers.customer_id=:customer_id and new_ordered_products.new_ordered_products_id=:nopid ";
     $statement = $pdo->prepare($query);
     $statement->execute(array(
-      ':customer_id' => $_SESSION['id'],
+      ':customer_id' => $_SESSION['hfe_id'],
       ':nopid' => $nopid
     ));
     $flag = 0;

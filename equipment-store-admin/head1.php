@@ -284,8 +284,8 @@
       </button>
 
       <?php
-      require "pdo.php";
-      $id = $_SESSION['id'];
+      require dirname(__DIR__, 1) . '/db/pdo.php';
+      $id = $_SESSION['hfe_id'];
       $stmt = $pdo->query(
         "SELECT *  FROM new_orders
         JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
@@ -300,7 +300,7 @@
         WHERE new_ordered_products.delivery_status='pending' and store.store_id=$id"
       );
       $stmtn = $stmt->rowCount();
-      $query1 = "SELECT COUNT(*) FROM chats WHERE rname='" . $_SESSION['username'] . "' AND stat=0";
+      $query1 = "SELECT COUNT(*) FROM chats WHERE rname='" . $_SESSION['hfe_username'] . "' AND stat=0";
       $statement1 = $pdo->prepare($query1);
       $statement1->execute();
       $row1 = $statement1->fetch(PDO::FETCH_ASSOC);

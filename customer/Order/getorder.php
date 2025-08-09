@@ -1,11 +1,11 @@
 <?php
-require "../Common/pdo.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 session_start();
 $result_con = "";
 $getordercnt = 0;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------/
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------/
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------/
 $limit = 1;
 if (isset($_GET['page_no'])) {
   $page_no = $_GET['page_no'];
@@ -13,9 +13,9 @@ if (isset($_GET['page_no'])) {
   $page_no = 1;
 }
 $offset = ($page_no - 1) * $limit;
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------/
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------/
+// ------------------------------------------------------------------------------------------------------------------------------------------------------------/
 if (isset($_REQUEST["name"])) {
   $data = array(
     ':name' => "%" . $_GET['name'] . "%"
@@ -141,57 +141,9 @@ if (isset($_REQUEST["name"])) {
                               <th class="cust_header2">Size : <span class="cust_details"> ' . $row1['size_name'] . '</span></th>
                             </tr>';
           }
-          if (json_encode($row['color'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM color where color_id=" . $row['color'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                                <th class="cust_header2 div-wrapper" style="display:flex">Color : <span class="cust_details"><span style="display:block;height:15px;width:15px;background-color:' . $row1['color_name'] . '"></span></span></th>
-                              </tr>';
-          }
           if (json_encode($row['weight'] ?? 0) != 0) {
             $result_con .= '<tr class="div-wrapper dw">
                               <th class="cust_header2">Weight : <span class="cust_details">' . $row['weight'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['flavour'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM flavour where flavour_id=" . $row['flavour'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Flavour : <span class="cust_details">' . $row1['flavour_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['processor'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM processor where processor_id=" . $row['processor'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Processor : <span class="cust_details">' . $row1['processor_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['display'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM display where display_id=" . $row['display'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Display : <span class="cust_details">' . $row1['display_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['battery'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM battery where battery_id=" . $row['battery'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Battery : <span class="cust_details">' . $row1['battery_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['internal_storage'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row['internal_storage'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Internal Storage : <span class="cust_details">' . $row1['internal_storage_name'] . '</span></th>
                             </tr>';
           }
           if (json_encode($row['brand'] ?? 0) != 0) {
@@ -200,14 +152,6 @@ if (isset($_REQUEST["name"])) {
             $row1 = $st1->fetch(PDO::FETCH_ASSOC);
             $result_con .= '<tr class="div-wrapper dw">
                               <th class="cust_header2">Brand : <span class="cust_details">' . $row1['brand_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['material'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM material where material_id=" . $row['material'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Material : <span class="cust_details">' . $row1['material_name'] . '</span></th>
                             </tr>';
           }
           $result_con .= '
@@ -318,15 +262,15 @@ if (isset($_REQUEST["name"])) {
       }
     }
   }
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
   else if (strlen($_GET['name']) > 0 && $_GET['filter'] != 'all') {
     $sql_order_cnt = "SELECT new_orders.new_orders_id ,new_orders.sub_total FROM new_orders
 											JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
@@ -438,57 +382,9 @@ if (isset($_REQUEST["name"])) {
                             <th class="cust_header2">Size : <span class="cust_details"> ' . $row1['size_name'] . '</span></th>
                             </tr>';
           }
-          if (json_encode($row['color'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM color where color_id=" . $row['color'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2 div-wrapper" style="display:flex">Color : <span class="cust_details"><span style="display:block;height:15px;width:15px;background-color:' . $row1['color_name'] . '"></span></span></th>
-                            </tr>';
-          }
           if (json_encode($row['weight'] ?? 0) != 0) {
             $result_con .= '<tr class="div-wrapper dw">
                               <th class="cust_header2">Weight : <span class="cust_details">' . $row['weight'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['flavour'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM flavour where flavour_id=" . $row['flavour'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Flavour : <span class="cust_details">' . $row1['flavour_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['processor'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM processor where processor_id=" . $row['processor'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Processor : <span class="cust_details">' . $row1['processor_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['display'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM display where display_id=" . $row['display'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Display : <span class="cust_details">' . $row1['display_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['battery'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM battery where battery_id=" . $row['battery'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Battery : <span class="cust_details">' . $row1['battery_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['internal_storage'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row['internal_storage'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Internal Storage : <span class="cust_details">' . $row1['internal_storage_name'] . '</span></th>
                             </tr>';
           }
           if (json_encode($row['brand'] ?? 0) != 0) {
@@ -497,14 +393,6 @@ if (isset($_REQUEST["name"])) {
             $row1 = $st1->fetch(PDO::FETCH_ASSOC);
             $result_con .= '<tr class="div-wrapper dw">
                               <th class="cust_header2">Brand : <span class="cust_details">' . $row1['brand_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['material'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM material where material_id=" . $row['material'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Material : <span class="cust_details">' . $row1['material_name'] . '</span></th>
                             </tr>';
           }
           $result_con .= '<tr class="div-wrapper dw">
@@ -614,12 +502,12 @@ if (isset($_REQUEST["name"])) {
       }
     }
   }
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
   if (strlen($_GET['name']) == 0 && $_GET['filter'] == "all") {
     $sql_order_cnt = "SELECT new_orders_id ,new_orders.sub_total FROM new_orders
 											JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
@@ -714,57 +602,9 @@ if (isset($_REQUEST["name"])) {
                             <th class="cust_header2">Size : <span class="cust_details"> ' . $row1['size_name'] . '</span></th>
                           </tr>';
           }
-          if (json_encode($row['color'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM color where color_id=" . $row['color'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                            <th class="cust_header2 div-wrapper" style="display:flex">Color : <span class="cust_details"><span style="display:block;height:15px;width:15px;background-color:' . $row1['color_name'] . '"></span></span></th>
-                          </tr>';
-          }
           if (json_encode($row['weight'] ?? 0) != 0) {
             $result_con .= '<tr class="div-wrapper dw">
                             <th class="cust_header2">Weight : <span class="cust_details">' . $row['weight'] . '</span></th>
-                          </tr>';
-          }
-          if (json_encode($row['flavour'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM flavour where flavour_id=" . $row['flavour'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                            <th class="cust_header2">Flavour : <span class="cust_details">' . $row1['flavour_name'] . '</span></th>
-                          </tr>';
-          }
-          if (json_encode($row['processor'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM processor where processor_id=" . $row['processor'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Processor : <span class="cust_details">' . $row1['processor_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['display'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM display where display_id=" . $row['display'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                            <th class="cust_header2">Display : <span class="cust_details">' . $row1['display_name'] . '</span></th>
-                          </tr>';
-          }
-          if (json_encode($row['battery'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM battery where battery_id=" . $row['battery'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                            <th class="cust_header2">Battery : <span class="cust_details">' . $row1['battery_name'] . '</span></th>
-                          </tr>';
-          }
-          if (json_encode($row['internal_storage'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row['internal_storage'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                            <th class="cust_header2">Internal Storage : <span class="cust_details">' . $row1['internal_storage_name'] . '</span></th>
                           </tr>';
           }
           if (json_encode($row['brand'] ?? 0) != 0) {
@@ -773,14 +613,6 @@ if (isset($_REQUEST["name"])) {
             $row1 = $st1->fetch(PDO::FETCH_ASSOC);
             $result_con .= '<tr class="div-wrapper dw">
                             <th class="cust_header2">Brand : <span class="cust_details">' . $row1['brand_name'] . '</span></th>
-                          </tr>';
-          }
-          if (json_encode($row['material'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM material where material_id=" . $row['material'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                            <th class="cust_header2">Material : <span class="cust_details">' . $row1['material_name'] . '</span></th>
                           </tr>';
           }
           $result_con .= '<tr class="div-wrapper dw">
@@ -890,12 +722,12 @@ if (isset($_REQUEST["name"])) {
       }
     }
   }
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
+  // ------------------------------------------------------------------------------------------------------------------------------//
   if (strlen($_GET['name']) == 0 && $_GET['filter'] != "all") {
     $sql_order_cnt = "SELECT new_orders.new_orders_id ,new_orders.sub_total FROM new_orders
 											JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
@@ -1003,57 +835,9 @@ if (isset($_REQUEST["name"])) {
                               <th class="cust_header2">Size : <span class="cust_details"> ' . $row1['size_name'] . '</span></th>
                             </tr>';
           }
-          if (json_encode($row['color'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM color where color_id=" . $row['color'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2 div-wrapper" style="display:flex">Color : <span class="cust_details"><span style="display:block;height:15px;width:15px;background-color:' . $row1['color_name'] . '"></span></span></th>
-                            </tr>';
-          }
           if (json_encode($row['weight'] ?? 0) != 0) {
             $result_con .= '<tr class="div-wrapper dw">
                               <th class="cust_header2">Weight : <span class="cust_details">' . $row['weight'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['flavour'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM flavour where flavour_id=" . $row['flavour'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Flavour : <span class="cust_details">' . $row1['flavour_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['processor'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM processor where processor_id=" . $row['processor'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Processor : <span class="cust_details">' . $row1['processor_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['display'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM display where display_id=" . $row['display'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Display : <span class="cust_details">' . $row1['display_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['battery'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM battery where battery_id=" . $row['battery'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Battery : <span class="cust_details">' . $row1['battery_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['internal_storage'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM internal_storage where internal_storage_id=" . $row['internal_storage'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Internal Storage : <span class="cust_details">' . $row1['internal_storage_name'] . '</span></th>
                             </tr>';
           }
           if (json_encode($row['brand'] ?? 0) != 0) {
@@ -1062,14 +846,6 @@ if (isset($_REQUEST["name"])) {
             $row1 = $st1->fetch(PDO::FETCH_ASSOC);
             $result_con .= '<tr class="div-wrapper dw">
                               <th class="cust_header2">Brand : <span class="cust_details">' . $row1['brand_name'] . '</span></th>
-                            </tr>';
-          }
-          if (json_encode($row['material'] ?? 0) != 0) {
-            $query1 = "SELECT * FROM material where material_id=" . $row['material'];
-            $st1 = $pdo->query($query1);
-            $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-            $result_con .= '<tr class="div-wrapper dw">
-                              <th class="cust_header2">Material : <span class="cust_details">' . $row1['material_name'] . '</span></th>
                             </tr>';
           }
           $result_con .= '<tr class="div-wrapper dw">
@@ -1179,8 +955,8 @@ if (isset($_REQUEST["name"])) {
       }
     }
   }
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
+  // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
   if (strlen($_GET['name']) > 0 && $_GET['filter'] == 'all') {
     $sqlcnt = "SELECT new_orders.new_orders_id ,new_orders.sub_total FROM new_orders
 							JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
@@ -1268,11 +1044,11 @@ if (isset($_REQUEST["name"])) {
     $dynamic_paging .= "<li class='page-item'><a class='page-link' id='$next' href=''>Next</a></li>";
   }
   $dynamic_paging .= "</ul></nav></div></div>";
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
+  // ------------------------------------------------------------------------------------------------------------------------------------------------------------/
   //NAME CNT
   if ($getordercnt == 0) {
-    $result_con .= '<center><img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Result Found...</h2></center><br><br>';
+    $result_con .= '<center><img src="../../images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" ><h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Orders Found...</h2></center><br><br>';
   }
 }
 $response['paging'] = $dynamic_paging;

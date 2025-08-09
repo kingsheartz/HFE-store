@@ -1,5 +1,5 @@
 <?php
-require dirname(__DIR__, 1) . "/Common/pdo.php";
+require dirname(__DIR__, 2) . "/db/pdo.php";
 require_once dirname(__DIR__, 2) . '/utils/getBaseURL.php';
 
 if (isset($_GET['sharelink'])) {
@@ -74,7 +74,7 @@ require "../Main/header.php";
     transition: .3s;
   }
 
-  /*///////////////////////////////////////////////////////////////*/
+  /*---------------------------------------------------------------*/
   /*CREATE WISHLIST*/
   .create_wishlist_table td {
     align-items: left;
@@ -100,6 +100,16 @@ require "../Main/header.php";
 
   .create_wishlist_table label {
     margin: 0;
+  }
+
+  .img_wishlist_div {
+    padding: 10px !important;
+    background-color: rgba(0, 0, 0, 0.35);
+    padding: 5px;
+    display: inline-block;
+    border-radius: 50%;
+    margin-top: 20px;
+    border: 3px solid #101010;
   }
 
   @media (max-width: 710px) {
@@ -187,7 +197,7 @@ require "../Main/header.php";
     display: inline-flex;
   }
 
-  /*///////////////////////////////////////////////////////////////*/
+  /*---------------------------------------------------------------*/
 </style>
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
@@ -202,9 +212,8 @@ require "../Main/header.php";
 <div style="background: url(../../images/logo/check1.jpg);">
   <div style="background-color: rgba(0,0,0,.65);">
     <center>
-      <div class="img_wishlist_div"
-        style="background-color: rgba(255,255,255);padding: 30px;display: inline-block;border-radius: 50%;margin-top: 20px;border:3px solid black">
-        <img class="img_wishlist" src="../../images/logo/wishlist2.png" style="max-width: 100px;">
+      <div class="img_wishlist_div">
+        <img class="img_wishlist" src="../../images/logo/wishlist2.png" style="max-width: 150px;">
       </div>
       <h2 style="display: none;" class="create_wishlist_head">
         <a href="#" style="color: #000;font-size: 1.5em">
@@ -225,7 +234,7 @@ require "../Main/header.php";
         </a>
       </h2>
       <!------------------------------------------------------------------------------------------------------------------------------>
-      <!--///////////////////////////////////WISHLIST SELECTION MENU LARGE//////////////////////////////////////////////////////////-->
+      <!-----------------------------------WISHLIST SELECTION MENU LARGE-------------------------------------------------------------->
       <!------------------------------------------------------------------------------------------------------------------------------>
       <div class="container  wl_menu_large" style="margin-top: 50px;">
         <div class="row" style="background-color: black;color: white;padding-bottom: 10px;">
@@ -259,7 +268,7 @@ require "../Main/header.php";
         </div>
       </div>
       <!------------------------------------------------------------------------------------------------------------------------------>
-      <!--///////////////////////////////////WISHLIST SELECTION MENU SMALL//////////////////////////////////////////////////////////-->
+      <!-------------------------------------WISHLIST SELECTION MENU SMALL------------------------------------------------------------>
       <!------------------------------------------------------------------------------------------------------------------------------>
       <div class="container   wl_menu_small" style="margin-top: 50px; display: none;">
         <div class="row" style="color: white;padding-bottom: 0px;">
@@ -306,20 +315,20 @@ require "../Main/header.php";
       </div>
       <!------------------------------------------------------------------------------------------------------------------------------>
       <!------------------------------------------------------------------------------------------------------------------------------>
-      <!--///////////////////////////////////YOUR WISHLIST//////////////////////////////////////////////////////////////////////////-->
+      <!-------------------------------------YOUR WISHLIST---------------------------------------------------------------------------->
       <!------------------------------------------------------------------------------------------------------------------------------>
       <!--YOUR WISHLIST-->
       <div class="your_wishlist">
         <div class="your_wishlist_large">
           <?php
-          if (isset($_SESSION['id'])) {
+          if (isset($_SESSION['hfe_id'])) {
             $sql_check = 'select count(wishlist_id) as cnt from wishlist where customer_id=:customer_id';
             $stmt_check = $pdo->prepare($sql_check);
-            $stmt_check->execute(array(':customer_id' => $_SESSION['id']));
+            $stmt_check->execute(array(':customer_id' => $_SESSION['hfe_id']));
             $row_check = $stmt_check->fetch(PDO::FETCH_ASSOC);
             $sql_wish = 'select * FROM wishlist WHERE customer_id=:customer_id';
             $stmt_wish = $pdo->prepare($sql_wish);
-            $stmt_wish->execute(array(':customer_id' => $_SESSION['id']));
+            $stmt_wish->execute(array(':customer_id' => $_SESSION['hfe_id']));
             if ($row_check['cnt'] > 0) {
           ?>
               <div class="container" style="margin-top: 50px;">
@@ -417,18 +426,18 @@ require "../Main/header.php";
           ?>
         </div>
         <!------------------------------------------------------------------------------------------------------------------------------>
-        <!--///////////////////////////////////YOUR WISHLIST SMALL//////////////////////////////////////////////////////////////////////////-->
+        <!-------------------------------------YOUR WISHLIST SMALL---------------------------------------------------------------------->
         <!------------------------------------------------------------------------------------------------------------------------------>
         <!--YOUR WISHLIST SMALL-->
         <div class="your_wishlist_small" style="display: none;">
           <?php
           $sql_check = 'select count(wishlist_id) as cnt from wishlist where customer_id=:customer_id';
           $stmt_check = $pdo->prepare($sql_check);
-          $stmt_check->execute(array(':customer_id' => $_SESSION['id']));
+          $stmt_check->execute(array(':customer_id' => $_SESSION['hfe_id']));
           $row_check = $stmt_check->fetch(PDO::FETCH_ASSOC);
           $sql_wish = 'select * FROM wishlist WHERE customer_id=:customer_id';
           $stmt_wish = $pdo->prepare($sql_wish);
-          $stmt_wish->execute(array(':customer_id' => $_SESSION['id']));
+          $stmt_wish->execute(array(':customer_id' => $_SESSION['hfe_id']));
           if ($row_check['cnt'] > 0) {
           ?>
             <div class="container" style="margin-top: 50px;">
@@ -440,7 +449,7 @@ require "../Main/header.php";
                     $stmt_wish1 = $pdo->prepare($sql_wish1);
                     $stmt_wish1->execute(array(':wish_id' => $row_wish['wishlist_id']));
                     $row_wish1 = $stmt_wish1->fetch(PDO::FETCH_ASSOC);
-                    ////////////////////////////////////////////////////////////////////////
+
                     if (strlen($row_wish['list_name']) < 15) {
                       $listname = $row_wish['list_name'];
                     } else {
@@ -527,7 +536,7 @@ require "../Main/header.php";
         </div>
       </div>
       <!------------------------------------------------------------------------------------------------------------------------------>
-      <!--///////////////SEARCH WISHLIST////////////////////////////////////////////////////////////////////////////////////////////-->
+      <!-----------------SEARCH WISHLIST---------------------------------------------------------------------------------------------->
       <!------------------------------------------------------------------------------------------------------------------------------>
       <!--SEARCH WISHLIST-->
       <script>
@@ -666,7 +675,7 @@ require "../Main/header.php";
   </div>
 </div>
 <!------------------------------------------------------------------------------------------------------------------------------>
-<!--///////////////////////////CREATE WISHLIST////////////////////////////////////////////////////////////////////////////////-->
+<!-----------------------------CREATE WISHLIST---------------------------------------------------------------------------------->
 <!------------------------------------------------------------------------------------------------------------------------------>
 <!--CREATE WISHLIST-->
 <!-- Modal -->
@@ -684,8 +693,8 @@ require "../Main/header.php";
       <div class="modal-body">
         <center>
           <div
-            style="background-color: rgba(255,255,255);padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid black;">
-            <img src="../../images/logo/wishlist1.png" style="max-width: 80px;">
+            style="background-color: #101010;padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid black;">
+            <img src="../../images/logo/wishlist1.png" style="margin-left: -10px;max-height: 120px;">
             <span class="fa fa-plus fa-lg" style="margin-left: -10px;"></span>
           </div>
         </center>
@@ -774,7 +783,7 @@ require "../Main/header.php";
 <!------------------------------------------------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------------------------------------------------>
 <!------------------------------------------------------------------------------------------------------------------------------>
-<!--///////////////////////////SHARE WISHLIST////////////////////////////////////////////////////////////////////////////////-->
+<!-----------------------------SHARE WISHLIST----------------------------------------------------------------------------------->
 <!------------------------------------------------------------------------------------------------------------------------------>
 <!--SHARE WISHLIST-->
 <!-- Modal -->
@@ -792,8 +801,8 @@ require "../Main/header.php";
       <div class="modal-body">
         <center>
           <div
-            style="background-color: #151515;padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid darkgrey;">
-            <img src="../../images/logo/wishlist1.png" style="max-width: 80px;">
+            style="background-color: #101010;padding: 10px;display: inline-block;border-radius: 50%;margin-top: 0px;border:3px solid #454545;">
+            <img src="../../images/logo/wishlist1.png" style="margin-left: -10px;max-width: 120px;">
             <span class="fa fa-share fa-lg" style="margin-left: -10px;color: darkgrey;"></span>
           </div>
         </center>

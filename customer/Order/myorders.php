@@ -1,10 +1,11 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   header("location:../Main/hfe.php");
 }
+
+require dirname(__DIR__, 2) . '/db/pdo.php';
 require "../Main/header.php";
-require "../Common/pdo.php";
 ?>
 <!-- breadcrumbs -->
 <style type="text/css">
@@ -314,7 +315,7 @@ require "../Common/pdo.php";
       url: "../Common/functions.php", //passing page info
       data: {
         "cartcnt": 1,
-        "user": "<?= $_SESSION['id'] ?>"
+        "user": "<?= $_SESSION['hfe_id'] ?>"
       }, //form data
       type: "post", //post data
       dataType: "json", //datatype=json format
@@ -346,7 +347,7 @@ require "../Common/pdo.php";
       name: inputVal,
       "filter": filter,
       'page_no': pageId,
-      "id": <?= $_SESSION['id'] ?>
+      "id": <?= $_SESSION['hfe_id'] ?>
     }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
@@ -368,7 +369,7 @@ require "../Common/pdo.php";
     $.get("getorder.php", {
       name: inputVal,
       'filter': filter,
-      id: <?= $_SESSION['id'] ?>
+      id: <?= $_SESSION['hfe_id'] ?>
     }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
@@ -389,7 +390,7 @@ require "../Common/pdo.php";
     $.get("getorder.php", {
       'name': inputVal,
       'filter': filter,
-      "id": <?= $_SESSION['id'] ?>
+      "id": <?= $_SESSION['hfe_id'] ?>
     }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
@@ -414,7 +415,7 @@ require "../Common/pdo.php";
       'name': inputVal,
       'filter': filter,
       'page_no': pageId,
-      "id": <?= $_SESSION['id'] ?>
+      "id": <?= $_SESSION['hfe_id'] ?>
     }).done(function(data) {
       $('#content_order').empty();
       $('#dynamic-paging').empty();
@@ -430,13 +431,13 @@ require "../Common/pdo.php";
   <?php
   $sql_order_cnt = "SELECT new_orders_id ,new_orders.sub_total FROM new_orders
 										JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
-										JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id where customer_delivery_details.customer_id=" . $_SESSION['id'];
+										JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id where customer_delivery_details.customer_id=" . $_SESSION['hfe_id'];
   $stmt_order_cnt = $pdo->prepare($sql_order_cnt);
   $stmt_order_cnt->execute();
   $order_cnt = $stmt_order_cnt->rowCount();
   if ($order_cnt == 0) {
     echo '<center>
-            <img src="../../images/logo/noorder.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" >
+            <img src="../../images/logo/no-order-found.png" style="width:100%;justify-content: center;max-width:300px;height:auto;" >
             <h2 class="noorder-title" style="text-align: center;color: #139b3b;display: inline-flex;font-weight: 600;">No Orders Yet...</h2>
           </center><br/ ><br/ >';
   } else {

@@ -13,7 +13,7 @@ include "header.php";
       $("#chatphp").click();
     </script>
     <?php
-    unset($_SESSION['name']);
+    unset($_SESSION['hfe_name']);
 
     if (isset($_POST['status'])) {
       $sql = "UPDATE chats SET stat=1 where rname='admin' AND uname='" . $_GET['name'] . "'";
@@ -25,7 +25,7 @@ include "header.php";
       /* Attempt MySQL server connection. Assuming
       you are running MySQL server with default
       setting (user 'root' with no password) */
-      require 'pdo.php';
+      require dirname(__DIR__, 2) . '/db/pdo.php';;
       // Escape user inputs for security
       $un = $_REQUEST['uname'];
       $rn = $_REQUEST['rname'];
@@ -453,7 +453,7 @@ include "header.php";
         </div>
         <div class="collapse navbar-collapse" id="myNavbar2">
           <?php
-          require "pdo.php";
+          require dirname(__DIR__, 2) . '/db/pdo.php';
           $query = $pdo->query("SELECT username FROM store_admin");
           $cn = 0;
           while ($row = $query->fetch(PDO::FETCH_ASSOC)) {
@@ -485,9 +485,9 @@ include "header.php";
                 $statement = $pdo->prepare($query1);
                 $statement->execute(array(':name' => $_GET['name']));
                 $row1 = $statement->fetch(PDO::FETCH_ASSOC);
-                $_SESSION['name'] = $row1['username'];
+                $_SESSION['hfe_name'] = $row1['username'];
               ?>
-                <?= $_SESSION['name'] ?>
+                <?= $_SESSION['hfe_name'] ?>
               <?php
               }
               ?>
@@ -535,13 +535,13 @@ include "header.php";
           <form id="myform" method="POST" style="overflow-y: scroll;">
             <div class="inner_div" id="chathist">
               <?php
-              if (isset($_SESSION['name'])) {
+              if (isset($_SESSION['hfe_name'])) {
               ?>
-                <input type="hidden" id="rname" name="rname" value="<?= $_SESSION['name'] ?>">
+                <input type="hidden" id="rname" name="rname" value="<?= $_SESSION['hfe_name'] ?>">
                 <input type="hidden" id="uname" name="uname" value="admin">
                 <?php
-                require 'pdo.php';
-                $c = $_SESSION['name'];
+                require dirname(__DIR__, 2) . '/db/pdo.php';;
+                $c = $_SESSION['hfe_name'];
                 $query = "SELECT * FROM chats where (uname='$c' and rname='admin') or (uname='admin' and rname='$c') order by dt";
                 $run = $pdo->query($query);
                 $i = 0;

@@ -1,6 +1,6 @@
 <?php
 // Include the database config file
-include_once 'pdo.php';
+include_once dirname(__DIR__, 2) . '/db/pdo.php';
 
 if (!empty($_POST["category_id"])) {
   // Fetch state data based on the specific country

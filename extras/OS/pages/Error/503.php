@@ -1,3 +1,7 @@
+<?php
+require dirname(__DIR__, 4) . '/utils/getBaseURL.php';
+?>
+
 <!DOCTYPE html>
 <html lang="en" style="width:100%;height:100%">
 
@@ -72,8 +76,7 @@
     <div class="float-right d-none d-sm-block">
       <b>KinGsHearTz</b> 1.0
     </div>
-    <strong>Copyright &copy; 2020 <a
-        href="http://localhost:81/HFE-Store-Renewed/HFE-Store-website">HFE-Store</a>.</strong> All rights reserved.
+    <strong>Copyright &copy; 2020 <a href="<?= getBaseUrl() ?>">HFE-Store</a>.</strong> All rights reserved.
   </footer>
   <!-- Control Sidebar -->
   <aside class="control-sidebar control-sidebar-dark">

@@ -5,8 +5,10 @@ if (isset($_GET['wishlist_id'])) {
   header("location:../Wishlist/wishlist.php");
   return;
 }
+
 require "../Main/header.php";
-require "../Common/pdo.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
+
 $update_setting_sql = 'SELECT* FROM wishlist WHERE wishlist_id= ' . $wishlist_id;
 $update_setting_stmt = $pdo->query($update_setting_sql);
 $update_setting_row = $update_setting_stmt->fetch(PDO::FETCH_ASSOC);
@@ -365,7 +367,7 @@ $rowcount = $row_single_div['checksingle'];
           <h2><i class="fa fa-edit"></i> Manage List </h2>
           <br>
           <h3 style="color: #139b3b;display: flex;" class="div-wrapper">
-            <div><img src="../../images/logo/wishlist2.png" style="max-height: 45px;"></div>
+            <div><img src="../../images/logo/wishlist2.png" style="max-height: 65px;"></div>
             <div style="display: flex;align-items: center;"><?= $update_setting_row['list_name'] ?>
               <div class="wishlist_cnt">(<?= $rowcount ?>)</div>
             </div>
@@ -594,8 +596,8 @@ $rowcount = $row_single_div['checksingle'];
           return array_slice($numbers, 0, $quantity);
         }
         //Generate Dynamic Loading
-        if (isset($_SESSION['id'])) {
-          $id = $_SESSION['id'];
+        if (isset($_SESSION['hfe_id'])) {
+          $id = $_SESSION['hfe_id'];
           $sqlc = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid";
           $stmtc = $pdo->prepare($sqlc);
           $stmtc->execute(array(
@@ -630,7 +632,7 @@ $rowcount = $row_single_div['checksingle'];
                 <div class="woocommerce" style="padding: 0;">
                   <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;width: 100%">
                     <?php
-                    $id = $_SESSION['id'];
+                    $id = $_SESSION['hfe_id'];
                     $sql1 = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid ORDER BY product_description_id";
                     $stmt1 = $pdo->prepare($sql1);
                     $stmt1->execute(array(
@@ -904,13 +906,13 @@ $rowcount = $row_single_div['checksingle'];
             </div>
             <div class="col-md-4 small" id="small_screen" style="margin:0px;padding: 0px"></div>
             <center style="margin-bottom:0px;margin-top: 0px;">
-              <h4>Need more ?<a href="../Main/hfe.php"> Start adding!</a></h4>
+              <h4>Need more ?<a href="../Main/hfe.php" style="color: #139b3b"> Start adding!</a></h4>
             </center>
           <?php
           } else {
             /*COLOR PICKER*/
-            $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-            $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+            $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_mediumvioletred', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
+            $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'mediumvioletred', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
             $c1 = $c2 = 'darkgrey';
             do {
               $rancolor1 = array_rand($color, 1);
@@ -949,12 +951,11 @@ $rowcount = $row_single_div['checksingle'];
             <div class="row emp_cart">
               <div class="product-content-right">
                 <center>
-                  <img style="justify-content: center;max-height: 288px;" class="sidebar-title" src="../../images/logo/wishlist.png">
-                  <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #c50505">
-                    Your Wish
-                    List is Empty
+                  <img style="justify-content: center;max-height: 288px;" class="sidebar-title" src="../../images/logo/wishlist-empty.png">
+                  <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #e0d9f3">
+                    Your Wish List is Empty
                   </h2>
-                  <h4>No items in your wishlist.<a href="../Main/hfe.php">Start adding!</a></h4>
+                  <h4>No items in your wishlist.<a href="../Main/hfe.php" style="color: #139b3b"> Start adding!</a></h4>
                 </center>
               </div>
               <div class="element_grid">
@@ -1313,9 +1314,9 @@ require "../Main/footer.php";
     document.getElementById("wishlist_description_input").readOnly = true;
     succeeded();
   }
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ------------------------------------------------------------------------------------------------------------------------------------------------------/
+  // ------------------------------------------------------------------------------------------------------------------------------------------------------/
+  // ------------------------------------------------------------------------------------------------------------------------------------------------------/
   //UPDATEALL CART
   function updatecart(idid, sid) {
     var product_description_id = idid;
@@ -1587,8 +1588,8 @@ require "../Main/footer.php";
   <?php
   }
   ?>
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ---------------------------------------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------------------------
   function sub_item_all(store_id, product_id, tmrp) {
     var store_id = store_id;
     var product_description_id = product_description_id;
@@ -1629,8 +1630,8 @@ require "../Main/footer.php";
     }
     total(store_id, product_description_id, mrp);
   }
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ---------------------------------------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------------------------
   //PRICE AND CART SETTINGS
   $(document).ready(function() {});
 

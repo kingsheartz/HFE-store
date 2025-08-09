@@ -59,7 +59,7 @@ require "header.php";
       </div>
 
       <?php
-      require "pdo.php";
+      require dirname(__DIR__, 2) . '/db/pdo.php';
       if (isset($_GET['item'])) {
         $nm = $_GET['item'];
         $res = $pdo->query("select * from item where item_name like '%$nm%'");

@@ -1,5 +1,6 @@
 <?php
-require "../../../../customer/Common/pdo.php";
+require dirname(__DIR__, 4) . '/db/pdo.php';
+
 if (isset($_GET['code']) && isset($_GET['email']) && isset($_GET['emailverified']) && $_GET['emailverified'] == 1) {
   $code = $_GET['code'];
   $email = $_GET['email'];
@@ -156,8 +157,6 @@ if (($row2) && ($row2['activation_code'] == $code)) {
   </script>
 
   <script type="text/javascript">
-    /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
     var capson_warning = document.getElementsByClassName("capson_warning");
     var password_field = document.getElementsByClassName('password_fields');
 

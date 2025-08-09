@@ -23,12 +23,12 @@ require "head.php";
           <div class="well-box">
             <div class="well-text ">
               <?php
-              require "pdo.php";
+              require dirname(__DIR__, 1) . '/db/pdo.php';
               //no of categories
               $cat = $pdo->query("select distinct category_name from category");
               $catn = $cat->rowCount();
               //no of products
-              $id = $_SESSION['id'];
+              $id = $_SESSION['hfe_id'];
               $pro = $pdo->query(
                 "SELECT * FROM product
                 JOIN product_description ON product.product_id=product_description.product_id
@@ -40,7 +40,7 @@ require "head.php";
               $new = $pdo->query("select  * from product where (added_date) in (select max(added_date) as date from product) ");
               $new_it = $new->rowCount();
               //new orders
-              $id = $_SESSION['id'];
+              $id = $_SESSION['hfe_id'];
               $stmt = $pdo->query(
                 "SELECT *  FROM new_orders
                 JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id

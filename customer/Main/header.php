@@ -277,6 +277,9 @@ if (session_status() === PHP_SESSION_NONE) {
     @media(max-width: 567px) {
       #popup2 {
         width: 100%;
+        align-items: center;
+        max-width: max-content;
+        margin: auto;
       }
     }
 
@@ -357,7 +360,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     .dropdown-menu li:hover {
       background-color: #02171e !important;
-      border-left: 4px solid #337ab7;
+      border-left: 4px solid #139b3b;
       padding: 0;
       color: white !important;
       border-bottom-left-radius: 3px;
@@ -460,7 +463,7 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .side_nav_content_end {
-      border-bottom: 2px solid #337ab7;
+      border-bottom: 2px solid #139b3b;
       border-bottom-right-radius: 5px;
       border-bottom-left-radius: 5px;
       padding-bottom: 10px;
@@ -752,10 +755,13 @@ if (session_status() === PHP_SESSION_NONE) {
       overflow-y: visible;
     }
 
-    div#mobile_menu {
+    div#mobile_menu.collapse.in,
+    div#mobile_menu.collapsing {
       width: 100% !important;
       background-color: #050505;
       padding-top: 0px;
+      display: flex;
+      justify-content: center;
     }
 
     li#lg_side_active>a>span {
@@ -782,8 +788,8 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .usericon {
-      background-color: #0072d357 !important;
-      border: 0px;
+      background-color: #012806 !important;
+      border: 1px solid #4cae4c;
       color: white;
       border-radius: 50%;
       font-size: 12px;
@@ -857,7 +863,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     }
 
-    @media(max-width:767px) {
+    @media(max-width:768px) {
       div#lg_top_ph_mail {
         width: 80rem !important;
       }
@@ -910,8 +916,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
     /*****************************************************************************************************************************/
     /*****************************************************************************************************************************/
-  </style>
-  <style>
     img[alt="www.000webhost.com"] {
       display: none;
     }
@@ -945,7 +949,7 @@ if (session_status() === PHP_SESSION_NONE) {
   </script>
 </head>
 
-<body id="strt" class="scroll_handle_orange hidescroll" style="overflow-x:hidden; width: 100%;padding: 0px;">
+<body id="strt" class="scroll_handle_orange hidescroll" style="width: 100%;padding: 0px;">
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v11.0" nonce="lJVMx4Fw"></script>
   <div id="show_online" style="padding: 3px;text-align: center;color: white;width: 100%;background-color: #489e07;display: none;font-weight: 400;font-size: 1.4rem ;font-family: Poppins, sans-serif">Online</div>
@@ -987,7 +991,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="headimg" style="padding: 0px;margin: 0px;left: 0px;right: 0px;"><!--#1-->
       <div class="container top"
         style="width:100%;padding-top: 12px;margin: 0px;left: 0px;right: 0px;padding-bottom: 5px;">
-        <div style="height: 100% ;width: 100%;display: block;margin: 0px;left: 0px;right: 0px">
+        <div style="height: 100%;width: 100%;display: block;margin: 0px;left: 0px;right: 0px">
           <div style="display: flex;">
             <div class="col-lg-2 col-md-2 col-sm-2 topli " style="float: left;"
               style="padding: 0px;margin: 0px;left: 0px;right: 0px">
@@ -1022,7 +1026,7 @@ if (session_status() === PHP_SESSION_NONE) {
                               style="position: absolute;display: none;background-color: #CACACA !important">
                               <li><a href="#0">All</a></li>
                               <?php
-                              require "../../db.php";
+                              require dirname(__DIR__, 2) . '/db/pdo.php';
                               $sql = $pdo->query("select category_id,category_name from category");
                               while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                               ?>
@@ -1114,7 +1118,7 @@ if (session_status() === PHP_SESSION_NONE) {
                               style="position: absolute;display: none;background-color: #CACACA !important">
                               <li><a href="#all">All</a></li>
                               <?php
-                              require "../../db.php";
+                              require dirname(__DIR__, 2) . '/db/pdo.php';
                               $sql = $pdo->query("select category_id,category_name from category");
                               while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
                               ?>
@@ -1167,12 +1171,12 @@ if (session_status() === PHP_SESSION_NONE) {
                         </a>
                       </li>
                       <?php
-                      if (isset($_SESSION['name'])) {
+                      if (isset($_SESSION['hfe_name'])) {
                       ?>
                         <li class="userdiv" style="float: right;">
-                          <form action="../Account/registered.php" title="<?= $_SESSION['name'] ?>" method="post" class="last" onclick="openNav()">
+                          <form action="../Account/registered.php" title="<?= $_SESSION['hfe_name'] ?>" method="post" class="last" onclick="openNav()">
                             <button class="w3view-cart usericon " type="button" name="submit" value="">
-                              <span id="location"><?= strtoupper(substr($_SESSION['name'], 0, 1)); ?></span>
+                              <span id="location"><?= strtoupper(substr($_SESSION['hfe_name'], 0, 1)); ?></span>
                             </button>
                           </form>
                         </li>
@@ -1207,8 +1211,8 @@ if (session_status() === PHP_SESSION_NONE) {
                               <div class="shopcart">
                                 <div id="sm-cartcnt" class="crt-count">
                                   <?php
-                                  if (isset($_SESSION['cart_count'])) {
-                                    echo $_SESSION['cart_count'];
+                                  if (isset($_SESSION['hfe_cart_count'])) {
+                                    echo $_SESSION['hfe_cart_count'];
                                   } else {
                                     echo "0";
                                   }
@@ -1233,9 +1237,6 @@ if (session_status() === PHP_SESSION_NONE) {
                           <button class="location_marker popup2_open" type="submit" name="submit" value="">
                             <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
                           </button>
-                          <span id="location">
-                            <?php if (isset($_SESSION['location'])) { ?>You<?php } ?>
-                          </span>
                         </form>
                       </li>
                     </ul>
@@ -1252,11 +1253,11 @@ if (session_status() === PHP_SESSION_NONE) {
 	</div>
 	</div>-->
     <!-- navigation -->
-    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 0px;background-color: #050505; border: 0px !important;">
+    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 0px;border: 0px !important;">
       <div class="container-fluid">
         <div class="row">
           <div style="padding: 0px">
-            <div class="navbar-header" style="background-color: #333;">
+            <div class="navbar-header" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #101010)) !important;">
               <button
                 class="navbar-toggle"
                 data-target="#mobile_menu"
@@ -1280,10 +1281,10 @@ if (session_status() === PHP_SESSION_NONE) {
                   </a>
                 </li>
                 <?php
-                if (isset($_SESSION['sid'])) {
+                if (isset($_SESSION['hfe_sid'])) {
                 ?>
                   <li id="shopactive">
-                    <a href="../../equipment-store-admin/index.php?id=<?= $_SESSION['sid'] ?>" style="display:flex;align-items:center;justify-content:center;">
+                    <a href="../../equipment-store-admin/index.php?id=<?= $_SESSION['hfe_sid'] ?>" style="display:flex;align-items:center;justify-content:center;">
                       <i class="fas fa-lg fa-store" style="font-size:16px;"></i> &nbsp; Store
                     </a>
                   </li>
@@ -1297,36 +1298,35 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
                 <li id="contactactive">
                   <a href="../Main/contact.php" style="display:flex;align-items:center;justify-content:center;">
-                    <i class="fa fa-lg fa-users" style="font-size:16px;"></i> &nbsp; Contact Us
+                    <i class="fas fa-lg fa-address-card" style="font-size:16px;"></i> &nbsp; Contact Us
                   </a>
                 </li>
 
                 <?php
-                if (isset($_SESSION['name'])) {
+                $hfe_user_component = isset($_SESSION['hfe_name'])
+                  ? '<span style="font-size: 20px">' . strtoupper(substr($_SESSION['hfe_name'], 0, 1)) . '</span>'
+                  : '<span><i class="fas fa-user"></i></span>';
                 ?>
-                  <li class="profilediv">
-                    <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
-                      <button class=" usericon " type="button" name="submit" value="">
-                        <span><?= strtoupper(substr($_SESSION['name'], 0, 1)); ?></span>
-                      </button>
-                    </form>
-                  </li>
-                <?php
-                }
-                ?>
-                <li class="profile-popup">
-                  <a href="#" class="dropdown-toggle" data-toggle="dropdown" style="display:flex;align-items:center;justify-content:center;">
-                    <span class="glyphicon glyphicon-user" style="font-size:16px;"></span> Profile <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu" style="border:1px solid rgb(55, 55, 55);padding: 0px; background-color: #000 !important; color:white !important;">
+                <li class="profilediv">
+                  <button class="dropdown-toggle usericon" data-toggle="dropdown" type="button" name="submit" value="">
+                    <?= $hfe_user_component ?>
+                  </button>
+                  <ul
+                    class="dropdown-menu"
+                    style="
+                      border: 1px solid rgb(55, 55, 55);
+                      padding: 0px;
+                      background-color: #000 !important;
+                      color:white !important;
+                      margin-left: -106px;">
                     <?php
-                    if (!isset($_SESSION['id'])) {
+                    if (!isset($_SESSION['hfe_id'])) {
                     ?>
                       <a href="../Account/login.php">
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fa fa-sign-in" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> Login </span>
                         </li>
@@ -1336,19 +1336,19 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fa fa-user-plus" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> Sign Up </span>
                         </li>
                       </a>
                     <?php
-                    } else if (isset($_SESSION['id'])) {
+                    } else if (isset($_SESSION['hfe_id'])) {
                     ?>
                       <a href="../Order/myorders.php">
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-shopping-bag" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> My Orders</span>
                         </li>
@@ -1358,7 +1358,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-history" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> Order
                             history</span>
@@ -1369,7 +1369,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-user-cog" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> Change
                             details</span>
@@ -1380,7 +1380,7 @@ if (session_status() === PHP_SESSION_NONE) {
                         <li
                           onmouseover="$(this).css('color','white')"
                           onmouseleave="$(this).css('background-color','black')"
-                          style="padding-bottom: 8px;padding-top: 8px;">&nbsp;
+                          style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-power-off" style="color: white;"></span>
                           <span style="font-family: arial;font-weight: 700; "> Log out</span>
                         </li>
@@ -1418,8 +1418,8 @@ if (session_status() === PHP_SESSION_NONE) {
                         <div class="shopcart">
                           <div id="lg-cartcnt" class="crt-count">
                             <?php
-                            if (isset($_SESSION['cart_count'])) {
-                              echo $_SESSION['cart_count'];
+                            if (isset($_SESSION['hfe_cart_count'])) {
+                              echo $_SESSION['hfe_cart_count'];
                             } else {
                               echo "0";
                             }
@@ -1443,7 +1443,7 @@ if (session_status() === PHP_SESSION_NONE) {
                   </form>
                 </li>
                 <?php
-                if (!isset($_SESSION['name'])) {
+                if (!isset($_SESSION['hfe_name'])) {
                 ?>
                   <li class="logindiv" title="Login">
                     <a class="loginicon" href="#myModal" data-toggle="modal" data-dismiss="modal">
@@ -1510,9 +1510,9 @@ if (session_status() === PHP_SESSION_NONE) {
         <span style="font-family: arial;font-weight: bold;font-size: 22px;">
           Hello,
           <?php
-          if (isset($_SESSION['name'])) {
+          if (isset($_SESSION['hfe_name'])) {
           ?>
-            <span><?= $_SESSION['name'] ?></span>
+            <span><?= $_SESSION['hfe_name'] ?></span>
           <?php
           } else {
           ?>
@@ -1528,7 +1528,7 @@ if (session_status() === PHP_SESSION_NONE) {
       <i class="fa fa-sm fa-shopping-cart" style="color:white "></i> Shop By Category
     </a>
     <?php
-    require "../../db.php";
+    require dirname(__DIR__, 2) . '/db/pdo.php';
     $query11 = "SELECT * from  category";
     $st11 = $pdo->query($query11);
     while ($row11 = $st11->fetch(PDO::FETCH_ASSOC)) {
@@ -1557,7 +1557,7 @@ if (session_status() === PHP_SESSION_NONE) {
       <i class="fa fa-sm fa-cog" style="color:white "></i> Help & Settings
     </a>
     <?php
-    if (isset($_SESSION['id'])) {
+    if (isset($_SESSION['hfe_id'])) {
     ?>
       <a class="side_nav_content_head" href="../Account/edit_user_details.php">My Account</a>
       <a class="side_nav_content_head" href="../Order/myorders.php">My orders</a>
@@ -1567,7 +1567,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <a class="side_nav_content_head" href="../Main/about.php">About</a>
     <a class="side_nav_content_head" href="../Main/contact.php">Contact</a>
     <?php
-    if (!isset($_SESSION['id'])) {
+    if (!isset($_SESSION['hfe_id'])) {
     ?>
       <a
         class="side_nav_content_head"

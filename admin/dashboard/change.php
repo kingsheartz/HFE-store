@@ -909,7 +909,7 @@ include "header.php";
       }
     </style>
     <?php
-    require "../../db.php";
+    require dirname(__DIR__, 2) . '/db/pdo.php';
 
     if (isset($_POST['cid'])) {
       echo "cid SET";
@@ -1018,7 +1018,7 @@ include "header.php";
             data: dataString,
             contentType: false,
             cache: false,
-            processData: true,
+            processData: false,
             success: function() {
               console.log('success');
               $("#" + x).html("<div id='message'></div>");
@@ -1026,8 +1026,9 @@ include "header.php";
                 .hide()
                 .fadeIn(1500, function() {
                   $("#message").append(
-                    "<div class='alert alert-success'>Product Updated \
-                        <button onclick='location.reload()' style='background: green;padding: 5px;border: none;color: white;border-radius: 5px;height: 30px;display: block;margin: auto;'>Refresh</button></div>"
+                    "<div class='alert alert-success'>Product Updated\
+                      <button onclick='location.reload()' style='background: green;padding: 5px;border: none;color: white;border-radius: 5px;height: 30px;display: block;margin: auto;'>Refresh</button>\
+                    </div>"
                   );
                 });
             },
@@ -1089,7 +1090,7 @@ include "header.php";
       isset($_POST['pr_id']) || isset($_POST['im_url']) || isset($_POST['name']) ||
       isset($_POST['price']) || isset($_POST['description'])
     ) {
-      require '../../db.php';
+      require dirname(__DIR__, 2) . '/db/pdo.php';
       $pr = $_POST['pr_id'];
       $img = $_POST['im_url'];
       $itna = $_POST['name'];

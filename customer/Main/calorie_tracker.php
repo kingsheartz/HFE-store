@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['id'])) {
+if (!isset($_SESSION['hfe_id'])) {
   header("location:hfe.php");
 }
 require "header.php";
@@ -244,6 +244,18 @@ require "header.php";
   #save-goal:active {
     transform: translateY(0);
   }
+
+  .del-calorie {
+    padding: 5px;
+    border-radius: 5px;
+    color: darkgrey;
+    transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+  }
+
+  .del-calorie:hover {
+    color: darkgrey;
+    background-color: #8b0000ff;
+  }
 </style>
 
 <div class="calories-outer-container">
@@ -336,7 +348,7 @@ require "header.php";
               date = new Date().toISOString().split('T')[0]; // Use today's date if no custom date is selected
             }
 
-            const customer_id = "<?= $_SESSION['id'] ?>";
+            const customer_id = "<?= $_SESSION['hfe_id'] ?>";
 
             $.ajax({
               url: '../Common/calorie_manager.php',
@@ -366,7 +378,7 @@ require "header.php";
                   } else {
                     const totalCalories = res.reduce((sum, entry) => sum + entry.calories, 0);
                     res.forEach(entry => {
-                      html += `<li>${entry.food_item} - ${entry.calories} cal</li>`;
+                      html += `<li>${entry.food_item} - ${entry.calories} cal <i class="fa fa-trash float-right del-calorie" onclick=deleteCalories(${entry.calories_id})></i></li>`;
                     });
 
                     $('#food-list').html(html);
@@ -390,7 +402,7 @@ require "header.php";
               url: '../Common/calorie_manager.php',
               method: 'POST',
               data: {
-                customer_id: "<?= $_SESSION['id'] ?>",
+                customer_id: "<?= $_SESSION['hfe_id'] ?>",
                 food_item,
                 calories
               },
@@ -408,9 +420,25 @@ require "header.php";
             });
           }
 
+          function deleteCalories(calories_id) {
+            $.ajax({
+              url: '../Common/calorie_manager.php?calories_id=' + calories_id,
+              method: 'DELETE',
+              success: function(response) {
+                const res = JSON.parse(response);
+                if (res.status === 'deleted') {
+                  Swal.fire('Deleted', res.message, 'success');
+                  renderCalorieTracker();
+                } else {
+                  Swal.fire('Error', res.message, 'error');
+                }
+              }
+            });
+          }
+
           function saveGoal() {
             const goal = $('#goal_input').val();
-            const customer_id = "<?= $_SESSION['id'] ?>";
+            const customer_id = "<?= $_SESSION['hfe_id'] ?>";
 
             $.post('../Common/calorie_manager.php', {
               saveGoal: 1,
@@ -424,7 +452,7 @@ require "header.php";
           }
 
           function checkGoalStatus() {
-            const customer_id = "<?= $_SESSION['id'] ?>";
+            const customer_id = "<?= $_SESSION['hfe_id'] ?>";
 
             $.post('../Common/calorie_manager.php', {
               checkGoalStatus: 1,
@@ -437,7 +465,7 @@ require "header.php";
           }
 
           function loadWeekChart() {
-            const customer_id = "<?= $_SESSION['id'] ?>";
+            const customer_id = "<?= $_SESSION['hfe_id'] ?>";
 
             $.post('../Common/calorie_manager.php', {
               loadWeekChart: 1,

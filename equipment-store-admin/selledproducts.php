@@ -43,8 +43,8 @@ require "head.php";
       }
     </style>
     <?php
-    $id = $_SESSION['id'];
-    require "pdo.php";
+    $id = $_SESSION['hfe_id'];
+    require dirname(__DIR__, 1) . '/db/pdo.php';
     echo "<script>var id=$id</script>";
     $stmt = $pdo->query(
       "SELECT sum(new_orders.sub_total)  FROM new_orders

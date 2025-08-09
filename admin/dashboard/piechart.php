@@ -1,5 +1,5 @@
 <?php
-require "pdo.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 session_start();
 $customer = $pdo->query(
   "select count(distinct customers.customer_id) as customer FROM new_orders

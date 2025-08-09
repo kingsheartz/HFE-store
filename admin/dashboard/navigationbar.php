@@ -309,7 +309,7 @@
         <span></span>
       </button>
       <?php
-      require "../../db.php";
+      require dirname(__DIR__, 2) . '/db/pdo.php';
       $query = "SELECT COUNT(*) FROM product_details join product_description on product_details.product_description_id=product_description.product_description_id join product on product.product_id=product_description.product_description_id  JOIN store on store.store_id=product_details.store_id WHERE  product_details.permission=0";
       $statement = $pdo->prepare($query);
       $statement->execute();
@@ -331,7 +331,7 @@
             <a class="nav-link" href="message.php"><i class="fa fa-comments"></i><span class="uppernum1"><?= $row1['COUNT(*)'] ?></span>Chat</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="login.php"><i class="fa fa-power-off"></i>Log Out</a>
+            <a class="nav-link" href="../account/login.php"><i class="fa fa-power-off"></i>Log Out</a>
           </li>
         </ul>
       </div>

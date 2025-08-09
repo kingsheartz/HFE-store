@@ -1,8 +1,8 @@
 <?php
-require "pdo.php";
+require dirname(__DIR__, 1) . '/db/pdo.php';
 session_start();
 $id =
-    $_SESSION['id'];
+    $_SESSION['hfe_id'];
 $customer = $pdo->query(
     "SELECT count(distinct customers.customer_id) as customer FROM new_orders
     JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id

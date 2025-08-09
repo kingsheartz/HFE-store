@@ -1,6 +1,6 @@
 <?php
 require "../Main/header.php";
-require "../../db.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 
 //Generate Dynamic Loading
 function randomGen($min, $max, $quantity)
@@ -448,10 +448,7 @@ function randomGen($min, $max, $quantity)
     $('.shop_thumbnail').css('max-height', $('.product_description_td').innerHeight() - 30 + 'px')
     $('.deselect').attr('checked', false);
   })
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //PRICE AND CART SETTINGS  WISHLIST
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   //WISHLIST ENTRY productS
   function wishlist_check_store_select(idid, store_id) {
     var product_description_id = idid;
@@ -493,9 +490,6 @@ function randomGen($min, $max, $quantity)
     }); //closing ajax
   }
   //WISHLIST ENTRY productS
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
   function wishlist_check_list_select(wishlist_id) {
     $(".background_loader").show();
     $(".std_loader").show();
@@ -583,8 +577,7 @@ function randomGen($min, $max, $quantity)
       }
     }); //closing ajax
   }
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
   var filter = [];
 
   function addorremove(checkbox) {
@@ -659,8 +652,6 @@ function randomGen($min, $max, $quantity)
         $('#sub_mul').html(subtot);
       }
       $('#sel_itcnt').html(checkempty);
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
       //REMOVING THE TAGS WITH VALUE OF THE KEY
       console.log('Before removing object from an array -> ' + JSON.stringify(filter));
       var removeIndex = filter.map(function(product) {
@@ -670,12 +661,10 @@ function randomGen($min, $max, $quantity)
       filter.splice(removeIndex, 1);
       console.log('After removing object from an array -> ' + JSON.stringify(filter));
       //REMOVING THE TAGS WITH VALUE OF THE KEY
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-      ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
     }
   }
   <?php
-  if (isset($_SESSION['id'])) {
+  if (isset($_SESSION['hfe_id'])) {
   ?>
 
     function check_mul() {
@@ -684,7 +673,7 @@ function randomGen($min, $max, $quantity)
         data: {
           "check_mul": 1,
           "key": filter,
-          "user": <?= $_SESSION['id'] ?>
+          "user": <?= $_SESSION['hfe_id'] ?>
         }, //form data
         type: "post", //post data
         dataType: "json", //datatype=json format
@@ -728,8 +717,6 @@ function randomGen($min, $max, $quantity)
     $('.checktobuy').attr('checked', false);
     console.log('After removing object from an array -> ' + JSON.stringify(filter));
   }
-  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 </script>
 <div class="side-arrow" style="position: fixed;bottom: 0px;height:148px;right:198px;z-index: 100;color:rgb(255, 255, 255);background-color: rgba(250, 245, 245, 0);padding:10px;border-top-left-radius: 10px;display: none;justify-content: center;align-products: center;">
   <div class="shadow_all_none" style="display: flex;justify-content: center;align-items: center;border-radius: 50%; background-color: rgb(1, 134, 187);width:35px;height:35px">
@@ -783,11 +770,11 @@ function randomGen($min, $max, $quantity)
     <div class="row" style="margin: 0px;">
       <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%;display: list-item;">
         <script>
-          console.log("Session ID:: <?php echo $_SESSION['id']; ?>");
+          console.log("Session ID:: <?php echo $_SESSION['hfe_id']; ?>");
         </script>
         <?php
-        if (isset($_SESSION['id'])) {
-          $id = $_SESSION['id'];
+        if (isset($_SESSION['hfe_id'])) {
+          $id = $_SESSION['hfe_id'];
           $sqlc = "select * from cart where customer_id=:id";
           $stmtc = $pdo->prepare($sqlc);
           $stmtc->execute(array(
@@ -803,7 +790,7 @@ function randomGen($min, $max, $quantity)
                   <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;">
                     <div class="shop_table cart" style="background-color: #111111;">
                       <?php
-                      $id = $_SESSION['id'];
+                      $id = $_SESSION['hfe_id'];
                       $sql1 = "select * from cart where customer_id=:id order by product_description_id";
                       $stmt1 = $pdo->prepare($sql1);
                       $stmt1->execute(array(
@@ -845,8 +832,7 @@ function randomGen($min, $max, $quantity)
                           $off = round(($save * 100) / $total);
                       ?>
                           <div class="cross-sells">
-                            <div class="each-product" style="padding: 0px;padding-top: 10px;width: 100%;background-color: #111111"
-                              class="tbl_s<?= $store_id . "i" . $product_description_id ?>">
+                            <div class="each-product tbl_s<?= $store_id . "i" . $product_description_id ?>" style="padding: 0px;padding-top: 10px;width: 100%;background-color: #111111">
                               <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0" style="padding: 0px;">
                                 <input
                                   id="check_s<?= $store_id . "i" . $product_description_id ?>"
@@ -962,7 +948,7 @@ function randomGen($min, $max, $quantity)
                                     <div class="row" style="margin-left: 0px;float: left;margin-right: 0px;">
                                       <div class="col-md-6 full-size-cart-store-div" style="padding: 0px;margin-left: 20px;width: 200px;">
                                         <p style="z-index: 1;text-align:left;margin-top: 5px;">
-                                          <span style='font-family: arial;color:#006904;font-weight: bold;text-decoration: none;font-size: 12px'>
+                                          <span style='font-family: arial;color: #006904;font-weight: bold;text-decoration: none;font-size: 12px'>
                                             You Save &#8377; <span id="save_s<?= $store_id . "i" . $product_description_id ?>" style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px"><?= $save ?></span>
                                             (<span style="text-decoration: none;font-weight: bold;color: #006904;padding-left: 0px" id="off_s<?= $store_id . "i" . $product_description_id ?>"><?= $off ?></span>%)
                                           </span>
@@ -979,7 +965,7 @@ function randomGen($min, $max, $quantity)
                                         </p>
                                         <p style="margin-top:10px;">
                                           <select
-                                            style="outline: none;border:none;background-color:#006904;color: white;padding: 5px;border-radius: 3px;padding-top: 1px;padding-bottom: 1px; "
+                                            style="outline: none;border:none;background-color: #006904;color: white;padding: 5px;border-radius: 3px;padding-top: 1px;padding-bottom: 1px; "
                                             id="order_s<?= $store_id . "i" . $product_description_id ?>">
                                             <option
                                               selected=""
@@ -993,7 +979,7 @@ function randomGen($min, $max, $quantity)
                                             if ($preord['order_preference'] == 1) {
                                             ?>
                                               <option
-                                                style="background-color: white;color:#006904;font-weight: bold;text-align: center; "
+                                                style="background-color: white;color: #006904;font-weight: bold;text-align: center; "
                                                 value="1">Booking
                                               </option>
                                             <?php
@@ -1001,7 +987,7 @@ function randomGen($min, $max, $quantity)
                                               $ord_typ = "Delivery";
                                             ?>
                                               <option
-                                                style="background-color: white;color:#006904;font-weight: bold;text-align: center;"
+                                                style="background-color: white;color: #006904;font-weight: bold;text-align: center;"
                                                 value="2">Delivery
                                               </option>
                                             <?php
@@ -1009,11 +995,11 @@ function randomGen($min, $max, $quantity)
                                               $ord_typ = "Delivery";
                                             ?>
                                               <option
-                                                style="background-color: white;color:#006904;font-weight: bold;text-align: center; "
+                                                style="background-color: white;color: #006904;font-weight: bold;text-align: center; "
                                                 value="1">Booking
                                               </option>
                                               <option
-                                                style="background-color: white;color:#006904;font-weight: bold;text-align: center;"
+                                                style="background-color: white;color: #006904;font-weight: bold;text-align: center;"
                                                 value="2">Delivery
                                               </option>
                                             <?php
@@ -1207,7 +1193,7 @@ function randomGen($min, $max, $quantity)
                       ?>
                     </div>
                     <?php
-                    $id = $_SESSION['id'];
+                    $id = $_SESSION['hfe_id'];
                     $sql = "select sum(product_details.price*cart.quantity) as subtotal from cart
                             inner join product_description on product_description.product_description_id=cart.product_description_id
                             inner join product_details on product_details.product_description_id=cart.product_description_id
@@ -1235,7 +1221,7 @@ function randomGen($min, $max, $quantity)
                                 <div style="padding: 10px;">
                                   <button
                                     type="button"
-                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;float: left;border: 1px solid #413f3f;background: #061d22;"
+                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;float: left;border: 1px solid #2e6da4;background: #061d22;"
                                     onclick="updatecart()"
                                     name="update_cart"
                                     class="update-cart-button btn-primary btn button">
@@ -1245,7 +1231,7 @@ function randomGen($min, $max, $quantity)
                                 <div style="padding: 10px;">
                                   <button
                                     type="button"
-                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;border: 1px solid #929292;float: right;background: #006904;"
+                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;float: right;background-color: #012806;border: 1px solid #4cae4c;"
                                     onclick="go()"
                                     name="proceed"
                                     class="checkout-button btn-primary btn button alt wc-forward">
@@ -1274,8 +1260,8 @@ function randomGen($min, $max, $quantity)
     <?php
           } else {
             /*COLOR PICKER*/
-            $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-            $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+            $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_mediumvioletred', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
+            $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'mediumvioletred', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
             $c1 = $c2 = 'white';
             do {
               $rancolor1 = array_rand($color, 1);
@@ -1351,8 +1337,8 @@ function randomGen($min, $max, $quantity)
       <div class="col-md-4 small" id="small_screen"></div>
       <?php
             /*COLOR PICKER*/
-            $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-            $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+            $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_mediumvioletred', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
+            $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'mediumvioletred', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
             $c1 = $c2 = 'white';
             do {
               $rancolor1 = array_rand($color, 1);
@@ -1531,7 +1517,7 @@ function randomGen($min, $max, $quantity)
               JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
               join product on product.product_id=product_description.product_id
               join product_details on product_description.product_description_id=product_details.product_description_id
-              where customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.views as UNSIGNED) DESC"
+              where customer_id=" . $_SESSION['hfe_id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.views as UNSIGNED) DESC"
             );
             $isready = $viewstmt->rowCount();
 
@@ -1617,7 +1603,7 @@ function randomGen($min, $max, $quantity)
               "SELECT views ,product_keys.product_description_id from product_keys
               JOIN product_description ON product_keys.product_description_id=product_description.product_description_id
               JOIN product ON product.product_id=product_description.product_id
-              WHERE customer_id=" . $_SESSION['id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC"
+              WHERE customer_id=" . $_SESSION['hfe_id'] . " GROUP BY product_description_id ORDER BY CAST(product_keys.date_of_preview as UNSIGNED) DESC"
             );
             $isready = $ran->rowCount();
             if ($isready != 0 && is_null($isready) == false) {
@@ -1685,9 +1671,21 @@ function randomGen($min, $max, $quantity)
                 ?>
                 <div class="clearfix"> </div>
                 </div>
+              <?php
+            }
+          } else {
+              ?>
+              <div class="row emp_cart">
+                <div class="product-content-right">
+                  <center><img style="justify-content: center;padding-bottom: 20px;margin-bottom: 0px" height="400" class="sidebar-title" src="../../images/logo/cart-empty.png">
+                    <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #56c57d">
+                      Your Cart is Empty
+                    </h2>
+                  </center>
+                </div>
+              </div><br><br>
             <?php
           }
-        }
             ?>
               </div>
           </div>
@@ -2001,8 +1999,7 @@ function randomGen($min, $max, $quantity)
                 total(store_id, product_description_id, mrp);
               }
             }
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
             function sub_product_all(store_id, product_description_id, tmrp) {
               var store_id = store_id;
               var product_description_id = product_description_id;
@@ -2043,8 +2040,7 @@ function randomGen($min, $max, $quantity)
               }
               total(store_id, product_description_id, mrp);
             }
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-            /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
             //PRICE AND CART SETTINGS
             $(document).ready(function() {});
 

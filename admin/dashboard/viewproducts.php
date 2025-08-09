@@ -57,7 +57,7 @@ include "header.php";
     } else {
       die("<div class='alert alert-danger'>You have not specified Category</div>");
     }
-    require "pdo.php";
+    require dirname(__DIR__, 2) . '/db/pdo.php';
     $results_per_page = 12;
     //find the total number of results stored in the database
     $query = "SELECT * FROM product JOIN product_description ON product.product_id=product_description.product_id where product.category_id=$ctid GROUP BY product_description.product_id";

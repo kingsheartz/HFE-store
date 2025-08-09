@@ -27,7 +27,7 @@
   <select id="category" name="cat">
     <option value=""></option>
     <?php
-    require "pdo.php";
+    require dirname(__DIR__, 2) . '/db/pdo.php';
     $sql = $pdo->query("select category from item group by category");
     while ($row = $sql->fetch(PDO::FETCH_ASSOC)) {
     ?>

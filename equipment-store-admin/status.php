@@ -128,8 +128,8 @@ require "head.php";
       }
     </style>
     <?php
-    $id = $_SESSION['id'];
-    require "pdo.php";
+    $id = $_SESSION['hfe_id'];
+    require dirname(__DIR__, 1) . '/db/pdo.php';
     if (isset($_POST['status']) || isset($_POST['hours'])) {
       $st = $_POST['status'];
       $hr = $_POST['hours'];

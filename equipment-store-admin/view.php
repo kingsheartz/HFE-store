@@ -408,8 +408,8 @@ require "head.php";
         }
       </script>
       <?php
-      $id = $_SESSION['id'];
-      require "pdo.php";
+      $id = $_SESSION['hfe_id'];
+      require dirname(__DIR__, 1) . '/db/pdo.php';
       $query = "SELECT * FROM product
         JOIN product_description ON product.product_id=product_description.product_id
         JOIN product_details ON product_details.product_description_id=product_description.product_description_id

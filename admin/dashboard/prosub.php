@@ -2,20 +2,20 @@
 require_once '../vendor/autoload.php';
 function redirectWithError($error)
 {
-  $_SESSION['_contact_form_error'] = $error;
+  $_SESSION['hfe_contact_form_error'] = $error;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   echo "Error: " . $error;
   die();
 }
 function redirectSuccess()
 {
-  $_SESSION['_contact_form_success'] = true;
+  $_SESSION['hfe_contact_form_success'] = true;
   header('Location: ' . $_SERVER['HTTP_REFERER']);
   echo "Product added  successfully!";
   die();
 }
 session_start();
-require "../../db.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
 if (isset($_POST['desc_id'])) {
   if (isset($_POST['upload_image'])) {
     $it = $_POST['desc_id'];

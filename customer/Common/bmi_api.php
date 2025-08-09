@@ -1,17 +1,19 @@
 <?php
 session_start();
-require_once __DIR__ . '/pdo.php';
+require_once dirname(__DIR__, 2) . '/db/pdo.php';
 require_once dirname(__DIR__, 2) . '/includes/logger.php';
 
 global $pdo;
 
-if (!isset($_SESSION['id'])) {
+$method = $_SERVER['REQUEST_METHOD'];
+
+if (!isset($_SESSION['hfe_id'])) {
   log_message('Unauthorized access attempt to BMI calculator.');
   echo json_encode(['status' => 'error', 'message' => 'Unauthorized access']);
   exit;
 }
 
-$customer_id = $_SESSION['id'] ?? null;
+$customer_id = $_SESSION['hfe_id'] ?? null;
 
 if (!$customer_id) {
   echo json_encode(['error' => 'User not logged in']);
@@ -43,7 +45,7 @@ if (isset($_POST['load_bmi_history'])) {
   $customer_id = $_POST['customer_id'];
   $date = $_POST['date'] ?? date('Y-m-d');
 
-  $sql = 'SELECT bmi, weight_kg, height_cm, date_logged FROM bmi_entries WHERE customer_id = ? ';
+  $sql = 'SELECT bmi_id, bmi, weight_kg, height_cm, date_logged FROM bmi_entries WHERE customer_id = ? ';
 
   if (isset($_POST['date']) && !empty($_POST['date'])) {
     $sql = $sql . 'AND date_logged = ?';
@@ -90,6 +92,17 @@ if (isset($_POST['load_bmi_chart']) && isset($_POST['customer_id'])) {
   echo json_encode([
     'labels' => $labels,
     'values' => $values
+  ]);
+  exit;
+}
+
+if ($method === 'DELETE' && isset($_GET['bmi_id'])) {
+  $stmt = $pdo->prepare("DELETE FROM bmi_entries WHERE bmi_id = ?");
+  $stmt->execute([$_GET['bmi_id']]);
+
+  echo json_encode([
+    "status" => "deleted",
+    "message" => "BMI has been successfully deleted."
   ]);
   exit;
 }

@@ -57,7 +57,7 @@ require "head.php";
     } else {
       die("<div class='alert alert-danger'>You have not specified Category</div>");
     }
-    require "pdo.php";
+    require dirname(__DIR__, 1) . '/db/pdo.php';
     $results_per_page = 12;
     //find the total number of results stored in the database
     $query = "SELECT * FROM product

@@ -1,5 +1,6 @@
 <?php
-require "../Common/pdo.php";
+require dirname(__DIR__, 2) . '/db/pdo.php';
+
 if (isset($_GET['sharelink'])) {
   $link = $_GET['sharelink'];
   $sqlchk = "SELECT privacy FROM wishlist WHERE share_link=:link";
@@ -320,8 +321,8 @@ require "../Main/header.php";
     <div class="row" style="margin: 0px;background-color: #151515;">
       <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%">
         <?php
-        if (isset($_SESSION['id'])) {
-          $id = $_SESSION['id'];
+        if (isset($_SESSION['hfe_id'])) {
+          $id = $_SESSION['hfe_id'];
         }
         $sqlc = "SELECT * FROM wishlist_items WHERE wishlist_id=:wid";
         $stmtc = $pdo->prepare($sqlc);
@@ -767,8 +768,8 @@ require "../Main/header.php";
     <?php
         } else {
           /*COLOR PICKER*/
-          $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_magenta', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
-          $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'magenta', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
+          $color = array('scroll_handle_orange', 'scroll_handle_blue', 'scroll_handle_red', 'scroll_handle_cyan', 'scroll_handle_mediumvioletred', 'scroll_handle_green', 'scroll_handle_green1', 'scroll_handle_peach', 'scroll_handle_munsell', 'scroll_handle_carmine', 'scroll_handle_lightbrown', 'scroll_handle_hanblue', 'scroll_handle_kellygreen');
+          $bgcolor = array('orange', '#139b3b', 'red', 'cyan', 'mediumvioletred', 'green', '#006622', '#FF6666', '#E6BF00', '#AB274F', '#C46210', '#485CBE', '#65BE00');
           $c1 = $c2 = 'white';
           do {
             $rancolor1 = array_rand($color, 1);
@@ -1093,8 +1094,8 @@ require "../Main/footer.php";
     }
   }
   selected = "<?= $row['quantity'] ?>"
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ---------------------------------------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------------------------
   function sub_item_all(store_id, product_description_id, tmrp) {
     var store_id = store_id;
     var product_description_id = product_description_id;
@@ -1136,8 +1137,8 @@ require "../Main/footer.php";
     }
     total(store_id, product_description_id, mrp);
   }
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-  /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+  // ---------------------------------------------------------------------------------------------------------------------
+  // ---------------------------------------------------------------------------------------------------------------------
   function total(store_id, product_description_id, tmrp) {
     var store_id = store_id;
     var product_description_id = product_description_id;

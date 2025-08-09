@@ -167,8 +167,8 @@ require "head.php";
     </div>
     <div id="printarea">
       <?php
-      require "pdo.php";
-      $id = $_SESSION['id'];
+      require dirname(__DIR__, 1) . '/db/pdo.php';
+      $id = $_SESSION['hfe_id'];
       $query = "SELECT *  FROM new_orders
                 JOIN order_delivery_details ON order_delivery_details.order_delivery_details_id=new_orders.order_delivery_details_id
                 JOIN customer_delivery_details ON customer_delivery_details.customer_delivery_details_id=order_delivery_details.customer_delivery_details_id
@@ -184,7 +184,7 @@ require "head.php";
       $statement->execute();
       $product = $statement->rowCount();
       if ($product == 0) {
-        echo '<center><img src="images/sad.png" height="400px" width="400px"><h3>No Orders Yet.....</h3></center><br><br>';
+        echo '<center><img src="images/no-order.png" height="400px" width="400px"><h3>No Orders Yet.....</h3></center><br><br>';
       } else {
         $uid = 0;
         $lk = 0;
