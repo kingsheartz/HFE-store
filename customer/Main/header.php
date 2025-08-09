@@ -863,7 +863,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     }
 
-    @media(max-width:767px) {
+    @media(max-width:768px) {
       div#lg_top_ph_mail {
         width: 80rem !important;
       }
@@ -916,8 +916,6 @@ if (session_status() === PHP_SESSION_NONE) {
 
     /*****************************************************************************************************************************/
     /*****************************************************************************************************************************/
-  </style>
-  <style>
     img[alt="www.000webhost.com"] {
       display: none;
     }
@@ -993,7 +991,7 @@ if (session_status() === PHP_SESSION_NONE) {
     <div class="headimg" style="padding: 0px;margin: 0px;left: 0px;right: 0px;"><!--#1-->
       <div class="container top"
         style="width:100%;padding-top: 12px;margin: 0px;left: 0px;right: 0px;padding-bottom: 5px;">
-        <div style="height: 100% ;width: 100%;display: block;margin: 0px;left: 0px;right: 0px">
+        <div style="height: 100%;width: 100%;display: block;margin: 0px;left: 0px;right: 0px">
           <div style="display: flex;">
             <div class="col-lg-2 col-md-2 col-sm-2 topli " style="float: left;"
               style="padding: 0px;margin: 0px;left: 0px;right: 0px">
@@ -1239,9 +1237,6 @@ if (session_status() === PHP_SESSION_NONE) {
                           <button class="location_marker popup2_open" type="submit" name="submit" value="">
                             <i class="fa  fa-map-marker dropdown" aria-hidden="true"></i>
                           </button>
-                          <span id="location">
-                            <?php if (isset($_SESSION['hfe_location'])) { ?>You<?php } ?>
-                          </span>
                         </form>
                       </li>
                     </ul>

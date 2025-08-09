@@ -493,7 +493,7 @@ function randomGen($min, $max, $quantity)
     }
   }
 
-  @media (max-width: 767px) {
+  @media (max-width: 768px) {
     .fixed-pos-left-container {
       min-height: max-content !important;
     }

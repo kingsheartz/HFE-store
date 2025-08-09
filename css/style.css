@@ -5487,6 +5487,10 @@ div.scrollmenu a {
     padding: 0px !important;
     margin-top: 15px !important;
   }
+
+  #location {
+    font-size: 18px !important;
+  }
 }
 
 .agile-login ul li {
