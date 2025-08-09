@@ -4914,9 +4914,9 @@ div.scrollmenu a {
   box-shadow: inset 0 0 6px aqua !important;
 }
 
-.scroll_handle_magenta::-webkit-scrollbar-thumb {
-  -webkit-box-shadow: inset 0 0 6px magenta !important;
-  box-shadow: inset 0 0 6px magenta !important;
+.scroll_handle_mediumvioletred::-webkit-scrollbar-thumb {
+  -webkit-box-shadow: inset 0 0 6px mediumvioletred !important;
+  box-shadow: inset 0 0 6px mediumvioletred !important;
 }
 
 .scroll_handle_green::-webkit-scrollbar-thumb {
