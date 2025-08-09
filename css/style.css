@@ -82,7 +82,8 @@ i.badge.badge-notify.my-cart-badge {
   top: 1em;
 }
 
-input[type="button"], button[type="button"].load_btn,
+input[type="button"],
+button[type="button"].load_btn,
 #PPMiniCart .minicart-submit,
 .w3ls_vegetables ul li a,
 input[type="reset"],
@@ -184,6 +185,7 @@ button.btn.btn-default.search:hover {
   width: 10%;
   float: left;
   position: relative !important;
+  font-size: 20px;
 }
 
 #small-div .agile-login ul li.cartdiv,
@@ -4785,6 +4787,13 @@ ul.topli {
   #lg_top_ph_mail {
     display: none;
   }
+
+  html,
+  body,
+  .agileits_header .container.head {
+    min-width: 340px !important;
+    overflow-x: scroll !important;
+  }
 }
 
 @media(min-width: 376px) {
@@ -5196,68 +5205,81 @@ div.scrollmenu a {
 /*SEARCH BOX*/
 /*
 .w3l_search input[type="search"] {
-    width: 100%;
-    background-color: #ffffff;
+  width: 100%;
+  background-color: #ffffff;
 }
+
 .w3l_search {
- margin-top: 6px;
- width: 100%;
+  margin-top: 6px;
+  width: 100%;
 }
-.srch_cat{
-    outline: none !important;
-    border: none !important;
-    padding: 10px 10px 9.5px !important;
-    margin-top: 0px !important;
-    right:0;
-    border-bottom-left-radius: 5px;
-    border-top-left-radius: 5px;
+
+.srch_cat {
+  outline: none !important;
+  border: none !important;
+  padding: 10px 10px 9.5px !important;
+  margin-top: 0px !important;
+  right: 0;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
 }
-.srch_cat2{
+
+.srch_cat2 {
+  display: none;
+}
+
+.srch_cat {
+  display: unset;
+}
+
+@media(max-width: 767px) {
+  .srch_cat {
     display: none;
-}
-.srch_cat{
+  }
+
+  .srch_cat2 {
     display: unset;
+    width: 5px !important;
+    padding: 10px;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+  }
 }
-@media(max-width: 767px ) {
-    .srch_cat{
-        display: none;
-    }
-    .srch_cat2{
-        display: unset;
-        width: 5px !important;
-        padding: 10px;
-        border-top-left-radius: 5px;
-        border-bottom-left-radius: 5px;
-    }
+
+@media (max-width: 640px) {
+  .w3l_search input[type="search"] {
+    width: 88% !important;
+  }
 }
-@media (max-width: 640px){
-    .w3l_search input[type="search"] {
-        width: 88% !important;
-    }
+
+@media (max-width: 510px) {
+  .w3l_search input[type="search"] {
+    width: 85% !important;
+  }
 }
-@media (max-width: 510px){
-    .w3l_search input[type="search"] {
-        width: 85% !important;
-    }
+
+@media (max-width: 425px) {
+  .w3l_search input[type="search"] {
+    width: 80% !important;
+  }
 }
-@media (max-width: 425px){
-    .w3l_search input[type="search"] {
-        width: 80% !important;
-    }
+
+.carticon {
+  display: none !important;
 }
-.carticon{
+
+.carticon2 {
+  display: unset !important;
+}
+
+@media(max-width: 700px) {
+  .carticon2 {
     display: none !important;
-}
-.carticon2{
+  }
+
+  .carticon {
     display: unset !important;
-}
-@media(max-width: 700px ) {
-.carticon2{
-    display: none !important;
-}
-.carticon{
-    display: unset !important;
-}
+  }
 }
 */
 .search_btn {
@@ -6454,13 +6476,77 @@ hr.make_divc {
   transition: .3s color
 }
 
-input:not([type]).validate+label, input[type=text]:not(.browser-default).validate+label, input[type=password]:not(.browser-default).validate+label, input[type=email]:not(.browser-default).validate+label, input[type=url]:not(.browser-default).validate+label, input[type=time]:not(.browser-default).validate+label, input[type=date]:not(.browser-default).validate+label, input[type=datetime]:not(.browser-default).validate+label, input[type=datetime-local]:not(.browser-default).validate+label, input[type=tel]:not(.browser-default).validate+label, input[type=number]:not(.browser-default).validate+label, input[type=search]:not(.browser-default).validate+label, input.valid:not([type]):focus, input.valid[type=text]:not(.browser-default), input.valid[type=text]:not(.browser-default):focus, input.valid[type=password]:not(.browser-default), input.valid[type=password]:not(.browser-default):focus, input.valid[type=email]:not(.browser-default), input.valid[type=email]:not(.browser-default):focus, input.valid[type=url]:not(.browser-default), input.valid[type=url]:not(.browser-default):focus, input.valid[type=time]:not(.browser-default), input.valid[type=time]:not(.browser-default):focus, input.valid[type=date]:not(.browser-default), input.valid[type=date]:not(.browser-default):focus, input.valid[type=datetime]:not(.browser-default), input.valid[type=datetime]:not(.browser-default):focus, input.valid[type=datetime-local]:not(.browser-default), input.valid[type=datetime-local]:not(.browser-default):focus, input.valid[type=tel]:not(.browser-default), input.valid[type=tel]:not(.browser-default):focus, input.valid[type=number]:not(.browser-default), input.valid[type=number]:not(.browser-default):focus, input.valid[type=search]:not(.browser-default), input.valid[type=search]:not(.browser-default):focus, .select-wrapper.valid>input.select-dropdown, textarea.valid:not(.browser-default), textarea.valid:not(.browser-default):focus {
+input:not([type]).validate+label,
+input[type=text]:not(.browser-default).validate+label,
+input[type=password]:not(.browser-default).validate+label,
+input[type=email]:not(.browser-default).validate+label,
+input[type=url]:not(.browser-default).validate+label,
+input[type=time]:not(.browser-default).validate+label,
+input[type=date]:not(.browser-default).validate+label,
+input[type=datetime]:not(.browser-default).validate+label,
+input[type=datetime-local]:not(.browser-default).validate+label,
+input[type=tel]:not(.browser-default).validate+label,
+input[type=number]:not(.browser-default).validate+label,
+input[type=search]:not(.browser-default).validate+label,
+input.valid:not([type]):focus,
+input.valid[type=text]:not(.browser-default),
+input.valid[type=text]:not(.browser-default):focus,
+input.valid[type=password]:not(.browser-default),
+input.valid[type=password]:not(.browser-default):focus,
+input.valid[type=email]:not(.browser-default),
+input.valid[type=email]:not(.browser-default):focus,
+input.valid[type=url]:not(.browser-default),
+input.valid[type=url]:not(.browser-default):focus,
+input.valid[type=time]:not(.browser-default),
+input.valid[type=time]:not(.browser-default):focus,
+input.valid[type=date]:not(.browser-default),
+input.valid[type=date]:not(.browser-default):focus,
+input.valid[type=datetime]:not(.browser-default),
+input.valid[type=datetime]:not(.browser-default):focus,
+input.valid[type=datetime-local]:not(.browser-default),
+input.valid[type=datetime-local]:not(.browser-default):focus,
+input.valid[type=tel]:not(.browser-default),
+input.valid[type=tel]:not(.browser-default):focus,
+input.valid[type=number]:not(.browser-default),
+input.valid[type=number]:not(.browser-default):focus,
+input.valid[type=search]:not(.browser-default),
+input.valid[type=search]:not(.browser-default):focus,
+.select-wrapper.valid>input.select-dropdown,
+textarea.valid:not(.browser-default),
+textarea.valid:not(.browser-default):focus {
   border-bottom: 1px solid #4CAF50;
   -webkit-box-shadow: 0 1px 0 0 #4CAF50;
   box-shadow: 0 1px 0 0 #4CAF50
 }
 
-input.invalid:not([type]), input.invalid:not([type]):focus, input.invalid[type=text]:not(.browser-default), input.invalid[type=text]:not(.browser-default):focus, input.invalid[type=password]:not(.browser-default), input.invalid[type=password]:not(.browser-default):focus, input.invalid[type=email]:not(.browser-default), input.invalid[type=email]:not(.browser-default):focus, input.invalid[type=url]:not(.browser-default), input.invalid[type=url]:not(.browser-default):focus, input.invalid[type=time]:not(.browser-default), input.invalid[type=time]:not(.browser-default):focus, input.invalid[type=date]:not(.browser-default), input.invalid[type=date]:not(.browser-default):focus, input.invalid[type=datetime]:not(.browser-default), input.invalid[type=datetime]:not(.browser-default):focus, input.invalid[type=datetime-local]:not(.browser-default), input.invalid[type=datetime-local]:not(.browser-default):focus, input.invalid[type=tel]:not(.browser-default), input.invalid[type=tel]:not(.browser-default):focus, input.invalid[type=number]:not(.browser-default), input.invalid[type=number]:not(.browser-default):focus, input.invalid[type=search]:not(.browser-default), input.invalid[type=search]:not(.browser-default):focus, .select-wrapper.invalid>input.select-dropdown, .select-wrapper.invalid>input.select-dropdown:focus, textarea.invalid:not(.browser-default), textarea.invalid:not(.browser-default):focus {
+input.invalid:not([type]),
+input.invalid:not([type]):focus,
+input.invalid[type=text]:not(.browser-default),
+input.invalid[type=text]:not(.browser-default):focus,
+input.invalid[type=password]:not(.browser-default),
+input.invalid[type=password]:not(.browser-default):focus,
+input.invalid[type=email]:not(.browser-default),
+input.invalid[type=email]:not(.browser-default):focus,
+input.invalid[type=url]:not(.browser-default),
+input.invalid[type=url]:not(.browser-default):focus,
+input.invalid[type=time]:not(.browser-default),
+input.invalid[type=time]:not(.browser-default):focus,
+input.invalid[type=date]:not(.browser-default),
+input.invalid[type=date]:not(.browser-default):focus,
+input.invalid[type=datetime]:not(.browser-default),
+input.invalid[type=datetime]:not(.browser-default):focus,
+input.invalid[type=datetime-local]:not(.browser-default),
+input.invalid[type=datetime-local]:not(.browser-default):focus,
+input.invalid[type=tel]:not(.browser-default),
+input.invalid[type=tel]:not(.browser-default):focus,
+input.invalid[type=number]:not(.browser-default),
+input.invalid[type=number]:not(.browser-default):focus,
+input.invalid[type=search]:not(.browser-default),
+input.invalid[type=search]:not(.browser-default):focus,
+.select-wrapper.invalid>input.select-dropdown,
+.select-wrapper.invalid>input.select-dropdown:focus,
+textarea.invalid:not(.browser-default),
+textarea.invalid:not(.browser-default):focus {
   border-bottom: 1px solid #F44336;
   -webkit-box-shadow: 0 1px 0 0 #F44336;
   box-shadow: 0 1px 0 0 #F44336
@@ -6491,7 +6577,8 @@ input.invalid:not([type]), input.invalid:not([type]):focus, input.invalid[type=t
   margin-left: 0px;
 }
 
-.tab_reg h5, .tab_reg h6 {
+.tab_reg h5,
+.tab_reg h6 {
   margin-bottom: 40px !important;
 }
 
@@ -6538,7 +6625,7 @@ input.invalid:not([type]), input.invalid:not([type]):focus, input.invalid[type=t
 
 @media (max-width: 368px) {
   .agile-login {
-    margin-top: -10px !important;
+    margin-top: 0px !important;
   }
 }
 
@@ -6554,18 +6641,46 @@ input.invalid:not([type]), input.invalid:not([type]):focus, input.invalid[type=t
   }
 }
 
-#category, #category2 {
+#category,
+#category2 {
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #000000), color-stop(1, #292929)) !important;
 }
 
-#category li a:hover, #category2 li a:hover, #category li a:focus, #category2 li a:focus {
+#category li a:hover,
+#category2 li a:hover,
+#category li a:focus,
+#category2 li a:focus {
   background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #161616), color-stop(1, #3e3e3e)) !important;
 }
 
-#category li a, #category2 li a {
+#category li a,
+#category2 li a {
   color: white !important;
 }
 
 .filter-tag:hover {
   text-decoration-line: line-through;
 }
+
+.wishdiv i,
+.cartdiv i,
+.locationdiv i,
+.logindiv i,
+.bmidiv i,
+.caloriediv i {
+  font-size: 20px !important;
+}
+
+/* Mobile view :: Header :: Start */
+.navbar-header .navbar-toggle.collapsed {
+  background: rgba(0, 0, 0, 0) !important;
+}
+
+.navbar-header .navbar-toggle.change {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #151515)) !important;
+}
+
+.navbar-header .navbar-toggle:hover {
+  background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #151515)) !important;
+}
+/* Mobile view :: Header :: End */

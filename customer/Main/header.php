@@ -277,6 +277,9 @@ if (session_status() === PHP_SESSION_NONE) {
     @media(max-width: 567px) {
       #popup2 {
         width: 100%;
+        align-items: center;
+        max-width: max-content;
+        margin: auto;
       }
     }
 
@@ -948,7 +951,7 @@ if (session_status() === PHP_SESSION_NONE) {
   </script>
 </head>
 
-<body id="strt" class="scroll_handle_orange hidescroll" style="overflow-x:hidden; width: 100%;padding: 0px;">
+<body id="strt" class="scroll_handle_orange hidescroll" style="width: 100%;padding: 0px;">
   <div id="fb-root"></div>
   <script async defer crossorigin="anonymous" src="https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v11.0" nonce="lJVMx4Fw"></script>
   <div id="show_online" style="padding: 3px;text-align: center;color: white;width: 100%;background-color: #489e07;display: none;font-weight: 400;font-size: 1.4rem ;font-family: Poppins, sans-serif">Online</div>
@@ -1255,11 +1258,11 @@ if (session_status() === PHP_SESSION_NONE) {
 	</div>
 	</div>-->
     <!-- navigation -->
-    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 0px;background-color: #050505; border: 0px !important;">
+    <div class="navbar navbar-inverse shadow_b" style="margin-bottom: 0px;border: 0px !important;">
       <div class="container-fluid">
         <div class="row">
           <div style="padding: 0px">
-            <div class="navbar-header" style="background-color: #333;">
+            <div class="navbar-header" style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, black), color-stop(1, #101010)) !important;">
               <button
                 class="navbar-toggle"
                 data-target="#mobile_menu"
@@ -1306,7 +1309,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
                 <?php
                 $hfe_user_component = isset($_SESSION['hfe_name'])
-                  ? '<span>' . strtoupper(substr($_SESSION['hfe_name'], 0, 1)) . '</span>'
+                  ? '<span style="font-size: 18px">' . strtoupper(substr($_SESSION['hfe_name'], 0, 1)) . '</span>'
                   : '<span><i class="fas fa-user"></i></span>';
                 ?>
                 <li class="profilediv">
