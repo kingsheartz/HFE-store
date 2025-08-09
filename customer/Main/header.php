@@ -1185,7 +1185,7 @@ if (session_status() === PHP_SESSION_NONE) {
                       ?>
                       <li class="caloriediv">
                         <form action="#" title="Calorie Tracker" method="post" class="last">
-                          <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_tracker.php';">
+                          <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_metrics.php';">
                             <i class="fas fa-heartbeat" aria-hidden="true"></i>
                           </button>
                         </form>
@@ -1392,7 +1392,7 @@ if (session_status() === PHP_SESSION_NONE) {
                 </li>
                 <li class="caloriediv">
                   <form action="#" title="Calorie Tracker" method="post" class="last">
-                    <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_tracker.php';">
+                    <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_metrics.php';">
                       <i class="fas fa-heartbeat" aria-hidden="true"></i>
                     </button>
                   </form>
