@@ -4,6 +4,7 @@ require dirname(__DIR__, 2) . '/db/pdo.php';
 
 if (isset($_GET['product'])) {
   $nm = strtolower($_GET['product']);
+  $condition = 'product.product_name LIKE \'%' . $nm . '%\'';
   $res = $pdo->query(
     "SELECT category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
     INNER JOIN product_description ON product_description.product_id=product.product_id
@@ -19,6 +20,7 @@ if (isset($_GET['product'])) {
   }
 } else if (isset($_GET['category_id'])) {
   $cat = $_GET['category_id'];
+  $condition = 'category_id=' . $cat;
   try {
     $res = $pdo->query(
       "SELECT category.category_name,product.product_id,product_description.product_description_id,product.product_name,product.description,product.category_id from product
@@ -74,7 +76,7 @@ if (isset($_GET['product'])) {
     height: 260px;
   }
 
-  .card.card-front, 
+  .card.card-front,
   .card.card-back {
     background-color: #101010;
     border: 1px solid #28a745;
@@ -390,6 +392,7 @@ if (isset($_GET['product'])) {
           if (data.status == 'success') {
             $("#table-data").html(data.content).show();
             $("#dynamic-paging").html(data.output).show();
+            $(".green-label").html(data.count).show();
             $('.background_loader').hide();
             $('.std_text2').hide();
             return;
@@ -500,6 +503,7 @@ if (isset($_GET['product'])) {
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
+                $(".green-label").html(data.count).show();
                 $('.background_loader').hide();
                 $('.std_text2').hide();
                 return;
@@ -546,6 +550,7 @@ if (isset($_GET['product'])) {
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
+                $(".green-label").html(data.count).show();
                 $('.background_loader').hide();
                 $('.std_text2').hide();
                 return;
@@ -642,6 +647,7 @@ if (isset($_GET['product'])) {
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
+              $(".green-label").html(data.count).show();
               $('.background_loader').hide();
               $('.std_text2').hide();
               return;
@@ -732,6 +738,7 @@ if (isset($_GET['product'])) {
           if (data.status == 'success') {
             $("#table-data").html(data.content).show();
             $("#dynamic-paging").html(data.output).show();
+            $(".green-label").html(data.count).show();
             $('.background_loader').hide();
             $('.std_text2').hide();
             return;
@@ -842,6 +849,7 @@ if (isset($_GET['product'])) {
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
+                $(".green-label").html(data.count).show();
                 $('.background_loader').hide();
                 $('.std_text2').hide();
                 return;
@@ -889,6 +897,7 @@ if (isset($_GET['product'])) {
               if (data.status == 'success') {
                 $("#table-data").html(data.content).show();
                 $("#dynamic-paging").html(data.output).show();
+                $(".green-label").html(data.count).show();
                 $('.background_loader').hide();
                 $('.std_text2').hide();
                 return;
@@ -984,6 +993,7 @@ if (isset($_GET['product'])) {
             if (data.status == 'success') {
               $("#table-data").html(data.content).show();
               $("#dynamic-paging").html(data.output).show();
+              $(".green-label").html(data.count).show();
               $('.background_loader').hide();
               $('.std_text2').hide();
               return;
@@ -1057,7 +1067,7 @@ if ($result_cnt == 0) {
     <?php
   }
     ?>
-      <div  class="bg-overlay">
+      <div class="bg-overlay">
         <div class="row  outside-wrapper">
           <div class="col-xs-12 col-md-12 col-sm-12">
             <?php
@@ -1089,6 +1099,7 @@ if ($result_cnt == 0) {
                   }
                   ?>
                   <div class="ml-auto d-flex align-items-center views ">
+                    <span class="green-label px-md-2 px-1"><?= $result_cnt ?></span> <span class="text-muted">Products</span>
                     <span class="btn-pdt_pg text-success grid_view_mul gridview">
                       <span class="fas fa-th px-md-2 px-1"></span><span>Grid view</span>
                     </span>
@@ -1109,7 +1120,6 @@ if ($result_cnt == 0) {
                     <?php
                     }
                     ?>
-                    <span class="green-label px-md-2 px-1"><?= $result_cnt ?></span> <span class="text-muted">Products</span>
                   </div>
                 </div>
               </div>
@@ -1203,21 +1213,21 @@ if ($result_cnt == 0) {
                           //   }
                           ?>
                           <!-- <li
-                              onclick="sortandfilter('getcat-<?= $getcat_row['sub_category_id'] ?>','category')"
-                              class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category cat-font  getcat-<?= $getcat_row['sub_category_id'] ?>"
-                              style="background-color: rgba(0, 0, 0, 0.25) !important;color:#ddd ">
-                              <label class="options" style="display:flex;justify-content:center;align-items:center;margin-top:3px;">
-                                <span class="val-getcat-<?= $getcat_row['sub_category_id'] ?>"><?= $getcat_row['sub_category_name'] ?></span>
-                                <input
-                                  value="<?= $getcat_row['sub_category_name'] ?>"
-                                  id="mobgetcat-<?= $getcat_row['sub_category_id'] ?>"
-                                  type="radio"
-                                  disabled
-                                  name="mob-radio-getcat-<?= $getcat_row['sub_category_id'] ?>">
-                                <span class="checkmark"></span>
-                              </label>
-                              <span class="badge badge-primary badge-pill"><?= $getsubcatqnty_row['qntycnt'] ?></span>
-                            </li> -->
+                                  onclick="sortandfilter('getcat-<?= $getcat_row['sub_category_id'] ?>','category')"
+                                  class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category cat-font  getcat-<?= $getcat_row['sub_category_id'] ?>"
+                                  style="background-color: rgba(0, 0, 0, 0.25) !important;color:#ddd ">
+                                  <label class="options" style="display:flex;justify-content:center;align-items:center;margin-top:3px;">
+                                    <span class="val-getcat-<?= $getcat_row['sub_category_id'] ?>"><?= $getcat_row['sub_category_name'] ?></span>
+                                    <input
+                                      value="<?= $getcat_row['sub_category_name'] ?>"
+                                      id="mobgetcat-<?= $getcat_row['sub_category_id'] ?>"
+                                      type="radio"
+                                      disabled
+                                      name="mob-radio-getcat-<?= $getcat_row['sub_category_id'] ?>">
+                                    <span class="checkmark"></span>
+                                  </label>
+                                  <span class="badge badge-primary badge-pill"><?= $getsubcatqnty_row['qntycnt'] ?></span>
+                                </li> -->
                           <?php
                           //}
                           ?>
@@ -1370,14 +1380,13 @@ if ($result_cnt == 0) {
                       </form>
                     </div>
                     <?php
-                    $pricesql = $pdo->query(
-                      "SELECT product_details.price FROM product_details
-                      join product_description ON product_description.product_description_id=product_details.product_description_id
-                      join product ON product_description.product_id=product.product_id
-                      WHERE category_id=$cat_id"
-                    );
+                    $pricesql = "SELECT product_details.price FROM product_details
+                                JOIN product_description ON product_description.product_description_id=product_details.product_description_id
+                                JOIN product ON product_description.product_id=product.product_id
+                                WHERE " . $condition;
+                    $pricestmt = $pdo->query($pricesql);
                     $pricecnt = 0;
-                    while ($pricerow = $pricesql->fetch(PDO::FETCH_ASSOC)) {
+                    while ($pricerow = $pricestmt->fetch(PDO::FETCH_ASSOC)) {
                       $pricearray[$pricecnt] = $pricerow['price'];
                       $pricecnt++;
                     }
@@ -1400,52 +1409,47 @@ if ($result_cnt == 0) {
                       </h5>
                       <form class=" pricing collapse range-field my-5" id="mob-pricing-filter" style="margin:5px !important">
                         <div class="div-wrapper">
+                          <?php
+                          // Ensure numbers are integers
+                          $minprice = (int) preg_replace('/[^\d]/', '', $minprice);
+                          $maxprice = (int) preg_replace('/[^\d]/', '', $maxprice);
+
+                          // Decide step dynamically (e.g., nearest power of 10 or fixed fraction of range)
+                          $range = $maxprice - $minprice;
+                          if ($range <= 100) {
+                            $step = 10;
+                          } elseif ($range <= 1000) {
+                            $step = 50;
+                          } elseif ($range <= 5000) {
+                            $step = 100;
+                          } else {
+                            $step = 500;
+                          }
+
+                          // Function to build options
+                          function buildPriceOptions($start, $end, $step)
+                          {
+                            $html = '';
+                            for ($price = $start; $price <= $end; $price += $step) {
+                              $html .= "<option value='{$price}'>" . number_format($price) . "</option>";
+                            }
+                            return $html;
+                          }
+                          ?>
                           <label>
                             <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
+                            <!-- Min Price -->
                             <select style="width: 100%;height:40px" class="min-price" id="mob-min-price" onchange="sortandfilter('getprice','price')">
-                              <option><?= $minprice ?></option>
-                              <?php
-                              $divident = 10;
-                              for ($j = 1; $j < $minpricelen; $j++) {
-                                $divident .= 0;
-                              }
-                              ?>
-                              <?php
-                              $divident = (int) $divident;
-                              $cnt = $maxprice / $divident;
-                              for ($i = 1; $i < $cnt; $i++) {
-                                if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                                  $pricelist = $divident * $i;
-                                }
-                              ?>
-                                <option><?= $pricelist ?></option>
-                              <?php
-                              }
-                              ?>
+                              <option value="<?= $minprice ?>"><?= number_format($minprice) ?></option>
+                              <?= buildPriceOptions($minprice, $maxprice - $step, $step); ?>
                             </select>
                           </label>
                           <label>
                             <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
+                            <!-- Max Price -->
                             <select style="width: 100%;height:40px" class="max-price" id="mob-max-price" onchange="sortandfilter('getprice','price')">
-                              <option><?= $maxprice ?></option>
-                              <?php
-                              $divident = 10;
-                              for ($j = 1; $j < $minpricelen; $j++) {
-                                $divident .= 0;
-                              }
-                              ?>
-                              <?php
-                              $divident = (int) $divident;
-                              $cnt = $maxprice / $divident;
-                              for ($i = 1; $i < $cnt; $i++) {
-                                if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                                  $pricelist = $divident * $i;
-                                }
-                              ?>
-                                <option><?= $pricelist ?></option>
-                              <?php
-                              }
-                              ?>
+                              <option value="<?= $maxprice ?>"><?= number_format($maxprice) ?></option>
+                              <?= buildPriceOptions($minprice + $step, $maxprice, $step); ?>
                             </select>
                           </label>
                         </div>
@@ -1509,21 +1513,21 @@ if ($result_cnt == 0) {
                             //   }
                             ?>
                             <!-- <li
-                                onclick="sortandfilter('getcat-<?= $getcat_row['sub_category_id'] ?>','category')"
-                                class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category cat-font  getcat-<?= $getcat_row['sub_category_id'] ?>"
-                                style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fff), color-stop(1, #fff)) !important;color:#000 ">
-                                <label style="display:flex;justify-content:center;align-items:center;margin-top:3px;" class="options">
-                                  <span class="val-getcat-<?= $getcat_row['sub_category_id'] ?>"><?= $getcat_row['sub_category_name'] ?></span>
-                                  <input
-                                    value="<?= $getcat_row['sub_category_name'] ?>"
-                                    id="getcat-<?= $getcat_row['sub_category_id'] ?>"
-                                    type="radio"
-                                    disabled
-                                    name="radio-getcat-<?= $getcat_row['sub_category_id'] ?>">
-                                  <span class="checkmark"></span>
-                                </label>
-                                <span class="badge badge-primary badge-pill"><?= $getsubcatqnty_row['qntycnt'] ?></span>
-                              </li> -->
+                                    onclick="sortandfilter('getcat-<?= $getcat_row['sub_category_id'] ?>','category')"
+                                    class="list-group-item list-group-item-action d-flex justify-content-between align-items-center category cat-font  getcat-<?= $getcat_row['sub_category_id'] ?>"
+                                    style="background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #fff), color-stop(1, #fff)) !important;color:#000 ">
+                                    <label style="display:flex;justify-content:center;align-items:center;margin-top:3px;" class="options">
+                                      <span class="val-getcat-<?= $getcat_row['sub_category_id'] ?>"><?= $getcat_row['sub_category_name'] ?></span>
+                                      <input
+                                        value="<?= $getcat_row['sub_category_name'] ?>"
+                                        id="getcat-<?= $getcat_row['sub_category_id'] ?>"
+                                        type="radio"
+                                        disabled
+                                        name="radio-getcat-<?= $getcat_row['sub_category_id'] ?>">
+                                      <span class="checkmark"></span>
+                                    </label>
+                                    <span class="badge badge-primary badge-pill"><?= $getsubcatqnty_row['qntycnt'] ?></span>
+                                  </li> -->
                             <?php
                             //}
                             ?>
@@ -1691,50 +1695,19 @@ if ($result_cnt == 0) {
                           <div class="div-wrapper">
                             <label style="margin:5px !important;">
                               <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Minimum</span></h2>
+                              <!-- Min Price -->
                               <select style="width: 100%;height: 35px;color: #151515;" class="min-price" id="min-price" onchange="sortandfilter('getprice','price')">
-                                <option><?= $minprice ?></option>
-                                <?php
-                                $divident = 10;
-                                for ($j = 1; $j < $minpricelen; $j++) {
-                                  $divident .= 0;
-                                }
-                                ?>
-                                <?php
-                                $divident = (int) $divident;
-                                $cnt = $maxprice / $divident;
-                                for ($i = 1; $i < $cnt; $i++) {
-                                  if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                                    $pricelist = $divident * $i;
-                                  }
-                                ?>
-                                  <option><?= $pricelist ?></option>
-                                <?php
-                                }
-                                ?>
+                                <option value="<?= $minprice ?>"><?= number_format($minprice) ?></option>
+                                <?= buildPriceOptions($minprice, $maxprice - $step, $step); ?>
+
                               </select>
                             </label>
                             <label style="margin:5px !important;">
                               <h2 style="margin:0px;"><span class="badge blue lighten-2 mb-4">Maximum</span></h2>
+                              <!-- Max Price -->
                               <select style="width: 100%;height: 35px;color: #151515;" class="max-price" id="max-price" onchange="sortandfilter('getprice','price')">
-                                <option><?= $maxprice ?></option>
-                                <?php
-                                $divident = 10;
-                                for ($j = 1; $j < $minpricelen; $j++) {
-                                  $divident .= 0;
-                                }
-                                ?>
-                                <?php
-                                $divident = (int) $divident;
-                                $cnt = $maxprice / $divident;
-                                for ($i = 1; $i < $cnt; $i++) {
-                                  if ($divident * $i > $minprice and $divident * $i < $maxprice) {
-                                    $pricelist = $divident * $i;
-                                  }
-                                ?>
-                                  <option><?= $pricelist ?></option>
-                                <?php
-                                }
-                                ?>
+                                <option value="<?= $maxprice ?>"><?= number_format($maxprice) ?></option>
+                                <?= buildPriceOptions($minprice + $step, $maxprice, $step); ?>
                               </select>
                             </label>
                           </div>

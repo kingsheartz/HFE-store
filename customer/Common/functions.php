@@ -6813,7 +6813,7 @@ if (isset($_POST['filter_cat_b'])) {
         $description2 = $row['description'] . "... ";
       }
       $discount = $row['mrp'] - $row['price'];
-      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin: 0px;padding: 8px;padding-bottom: 0px;padding-top: 0px;">';
+      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="background-color: #151515;min-height: 280px;margin: 0px;padding: 8px;padding-bottom: 0px;padding-top: 0px;">';
       $query = "SELECT size,weight,brand FROM product_details
                 JOIN product_description ON product_details.product_description_id=product_description.product_description_id
                 JOIN product ON product.product_id=product_description.product_id
@@ -6827,7 +6827,7 @@ if (isset($_POST['filter_cat_b'])) {
       $row_feature = $statement->fetch(PDO::FETCH_ASSOC);
       $dynamic_content .= '
         <div class="order-single" style="margin: 0;padding: 0;background-color: #151515;width: 100%;height: 100%;border-bottom: 1px solid #666;">
-          <div class="col-sm-3 col-xs-3" style="background-color: #151515" onclick=\'location.href="' . getBaseURL() . 'customer/Product/single.php?id=' . $row['product_description_id'] . '"\'>
+          <div class="col-sm-3 col-xs-3" onclick=\'location.href="' . getBaseURL() . 'customer/Product/single.php?id=' . $row['product_description_id'] . '"\'>
             <table>
               <tr style="padding-bottom: 30px;"></tr>
               <tr>
@@ -7655,7 +7655,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
         $description2 = $row['description'] . "... ";
       }
       $discount = $row['mrp'] - $row['price'];
-      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin: 0px;padding: 8px;padding-bottom: 0px;padding-top: 0px;">';
+      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="background-color: #151515;min-height: 280px;margin: 0px;padding: 8px;padding-bottom: 0px;padding-top: 0px;">';
       $query = "SELECT size,weight,brand FROM product_details
       JOIN product_description ON product_details.product_description_id=product_description.product_description_id
       JOIN product ON product.product_id=product_description.product_id
@@ -7669,7 +7669,7 @@ if (isset($_POST['filter_sub_cat_b'])) {
       $row_feature = $statement->fetch(PDO::FETCH_ASSOC);
       $dynamic_content .= '
         <div class="order-single" style="margin: 0;padding: 0;background-color: #151515;width: 100%;height: 100%;border-bottom: 1px solid #666;">
-          <div class="col-sm-3 col-xs-3" style="background-color: #151515" onclick=\'location.href="' . getBaseURL() . 'customer/Product/single.php?id=' . $row['product_description_id'] . '"\'>
+          <div class="col-sm-3 col-xs-3" onclick=\'location.href="' . getBaseURL() . 'customer/Product/single.php?id=' . $row['product_description_id'] . '"\'>
             <table>
               <tr style="padding-bottom: 30px;"></tr>
               <tr>
@@ -8037,7 +8037,7 @@ if (isset($_POST['filter_item_a'])) {
             INNER JOIN category ON category.category_id=product.category_id
             WHERE  product.product_name LIKE '%" . $_POST['product'] . "%' AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id ORDER BY " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   }
-  //echo $sql.PHP_EOL;
+  log_message('filter_item_a :: SQL :: ' . $sql);
   $res = $pdo->query($sql);
   while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
     if ($row) {
@@ -8276,6 +8276,7 @@ if (isset($_POST['filter_item_a'])) {
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
+  $response['count'] = $totalRecords;
   $response['status'] = "success";
   header('Content-type: application/json');
   echo json_encode($response);
@@ -8437,7 +8438,7 @@ if (isset($_POST['filter_item_b'])) {
             INNER JOIN category ON category.category_id=product.category_id
             WHERE  product.product_name LIKE '%" . $_POST['product'] . "%' AND product_details.price BETWEEN " . $minprice . " AND " . $maxprice . " GROUP BY product_description.product_description_id ORDER BY " . $sort . ' LIMIT ' . $offset . ',' . $limit;
   }
-  //echo $sql.PHP_EOL;
+  log_message('filter_item_b :: SQL :: ' . $sql);
   $res = $pdo->query($sql);
   while ($row = $res->fetch(PDO::FETCH_ASSOC)) {
     if ($row) {
@@ -8455,7 +8456,7 @@ if (isset($_POST['filter_item_b'])) {
         $description2 = $row['description'] . "... ";
       }
       $discount = $row['mrp'] - $row['price'];
-      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="height: 280px;margin: 0px;padding: 8px;padding-bottom: 0px;padding-top: 0px;">';
+      $dynamic_content .= '<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 offset-md-0 offset-sm-1" style="background-color: #151515;min-height: 280px;margin: 0px;padding: 8px;padding-bottom: 0px;padding-top: 0px;">';
       $query = "SELECT size,weight,brand FROM product_details
                 JOIN product_description ON product_details.product_description_id=product_description.product_description_id
                 JOIN product ON product.product_id=product_description.product_id
@@ -8467,50 +8468,58 @@ if (isset($_POST['filter_item_b'])) {
         ':idid' => $row['product_description_id']
       ));
       $row_feature = $statement->fetch(PDO::FETCH_ASSOC);
-      $dynamic_content .= '<div class="order-single" style="margin: 0;padding: 0;background-color: #151515;width: 100%;height: 100%;border-bottom: 1px solid #666;">
-<div class="col-sm-3 col-xs-3" style="background-color: #151515" onclick=\'location.href="' . getBaseURL() . 'customer/Product/single.php?id=' . $row['product_description_id'] . '"\'>
-  <table>
-    <tr style="padding-bottom: 30px;"></tr>
-    <tr>
-      <td>
-        <div style="height: 70px;width: 100%">
-          <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top: 30px " class="img-responsive" src="' . getImageURL() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
-        </div>
-      </td>
-    </tr>
-  </table>
-</div>
-<div class="col-sm-9 col-xs-9" style="padding: 0px;">
-  <table >
-    <tr><td><div style="width: 100%;text-align: left;color: darkgrey;font-weight: bold;font-size: 20px;padding-top: 30px">' . $row['product_name'] . '</div></td></tr>
-  </table>
-  <div class="col-sm-12 col-xs-12" style="padding: 0px;">
-  <div class="col-sm-7 col-xs-7" style="min-height: 200px;padding: 0;">
-    <table width="100%" style="padding: 0px;margin: 0px;">
-      <tr  style="padding-top: 10px;"><td colspan="2"><div style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size: 14px;padding-top: 30px;padding-bottom: 10px"></div></td> </tr>';
+      $dynamic_content .= '
+        <div class="order-single" style="margin: 0;padding: 0;background-color: #151515;width: 100%;height: 100%;border-bottom: 1px solid #666;">
+          <div class="col-sm-3 col-xs-3" onclick=\'location.href="' . getBaseURL() . 'customer/Product/single.php?id=' . $row['product_description_id'] . '"\'>
+            <table>
+              <tr style="padding-bottom: 30px;"></tr>
+              <tr>
+                <td>
+                  <div style="height: 70px;width: 100%">
+                    <img style="height:auto;max-width: 100%;width:auto;max-height: 250px;display: block;margin: auto;padding-top: 30px " class="img-responsive" src="' . getImageURL() . 'images/' . $row['category_id'] .  '/' . $row['product_description_id'] . '.jpg">
+                  </div>
+                </td>
+              </tr>
+            </table>
+          </div>
+          <div class="col-sm-9 col-xs-9" style="padding: 0px;">
+            <table >
+              <tr><td><div style="width: 100%;text-align: left;color: darkgrey;font-weight: bold;font-size: 20px;padding-top: 30px">' . $row['product_name'] . '</div></td></tr>
+            </table>
+            <div class="col-sm-12 col-xs-12" style="padding: 0px;">
+            <div class="col-sm-7 col-xs-7" style="min-height: 200px;padding: 0;">
+              <table width="100%" style="padding: 0px;margin: 0px;">
+                <tr  style="padding-top: 10px;">
+                  <td colspan="2">
+                    <div style="width: 100%;text-align: left;color: #333;font-weight:normal;font-size: 14px;padding-top: 30px;padding-bottom: 10px"></div>
+                  </td>
+                </tr>';
       if ($row_feature['size'] != 0) {
         $query1 = "SELECT * FROM size WHERE size_id=" . $row_feature['size'];
         $st1 = $pdo->query($query1);
         $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '<tr class=" dw">
-      <th class="cust_header2"><li>Size</li></th>
-      <td class="cust_details"> ' . $row1['size_name'] . '</td>
-    </tr>';
+        $dynamic_content .= '
+                <tr class=" dw">
+                  <th class="cust_header2"><li>Size</li></th>
+                  <td class="cust_details"> ' . $row1['size_name'] . '</td>
+                </tr>';
       }
       if ($row_feature['weight'] != 0) {
-        $dynamic_content .= '<tr class=" dw">
-      <th class="cust_header2"><li>Weight</li></th>
-      <td class="cust_details">' . $row_feature['weight'] . '</td>
-    </tr>';
+        $dynamic_content .= '
+                <tr class=" dw">
+                  <th class="cust_header2"><li>Weight</li></th>
+                  <td class="cust_details">' . $row_feature['weight'] . '</td>
+                </tr>';
       }
       if ($row_feature['brand'] != 0) {
         $query1 = "SELECT * FROM brand WHERE brand_id=" . $row_feature['brand'];
         $st1 = $pdo->query($query1);
         $row1 = $st1->fetch(PDO::FETCH_ASSOC);
-        $dynamic_content .= '<tr class=" dw">
-      <th class="cust_header2"><li>Brand</li></th>
-      <td class="cust_details">' . $row1['brand_name'] . '</td>
-    </tr>';
+        $dynamic_content .= '
+                <tr class=" dw">
+                  <th class="cust_header2"><li>Brand</li></th>
+                  <td class="cust_details">' . $row1['brand_name'] . '</td>
+                </tr>';
       }
       $product_det = $pdo->query(
         "SELECT category.category_name,store.store_id,store.store_name ,product.product_id,product.price AS 'mrp',product_details.price,product_description.product_description_id,product.product_name,product.description,product.category_id FROM product
@@ -8521,32 +8530,34 @@ if (isset($_POST['filter_item_b'])) {
         WHERE category.category_id=" . $row['category_id'] . " AND product_description.product_description_id=" . $row['product_description_id']
       );
       $product_det_row = $product_det->fetch(PDO::FETCH_ASSOC);
-      $dynamic_content .= '<tr class=" dw"><th class="cust_header2"><li>Category</th>
-      <td class="cust_details">' . $product_det_row['category_name'] . '</li></td>
-    </tr>
-    <tr class=" dw"><th class="cust_header2"><li>Seller</th>
-      <td class="cust_details">' . $product_det_row['store_name'] . '</li></td>
-    </tr>
-  </table>
-</div>
-<div class="col-sm-5 col-xs-5">
-  <table width="100%" style="padding: 0px;margin: 0px;">';
+      $dynamic_content .= '
+                <tr class=" dw"><th class="cust_header2"><li>Category</th>
+                  <td class="cust_details">' . $product_det_row['category_name'] . '</li></td>
+                </tr>
+                <tr class=" dw"><th class="cust_header2"><li>Seller</th>
+                  <td class="cust_details">' . $product_det_row['store_name'] . '</li></td>
+                </tr>
+              </table>
+            </div>
+            <div class="col-sm-5 col-xs-5">
+              <table width="100%" style="padding: 0px;margin: 0px;">';
       $save = ($row['mrp'] != 0) ? round(($row['mrp'] - (int) $row['price']) / $row['mrp'] * 100) : 0;
-      $dynamic_content .= '<tr>
-        <td align="right">
-            <img style="height:auto;max-width: 100%;width:auto;max-height: 65px;display: block;" class="img-responsive" src="../../images/logo/logofill-sm.png">
-            </td>
-    </tr>
-    <tr class="div-wrapper dw">
-      <td class="cust_details" style="font-size: 24px;font-weight: bold" align="right"><i class=\'fa fa-rupee-sign\'></i>' . $row['price'] . ' </td></tr>
-      <td class="cust_details" style="font-size: 14px;font-weight:normal" align="right"><del><i class=\'fa fa-rupee-sign\'></i> ' . $row['mrp'] . '</del> <span style="color: #119904;font-weight: bold">' . $save . '% off</span></td>
-    </tr>
-  </table>
-</div>
-</div>
-</div>
-</div>
-</div>';
+      $dynamic_content .= '
+                <tr>
+                  <td align="right">
+                    <img style="height:auto;max-width: 100%;width:auto;max-height: 65px;display: block;" class="img-responsive" src="../../images/logo/logofill-sm.png">
+                  </td>
+                </tr>
+                <tr class="div-wrapper dw">
+                  <td class="cust_details" style="font-size: 24px;font-weight: bold" align="right"><i class=\'fa fa-rupee-sign\'></i>' . $row['price'] . ' </td></tr>
+                  <td class="cust_details" style="font-size: 14px;font-weight:normal" align="right"><del><i class=\'fa fa-rupee-sign\'></i> ' . $row['mrp'] . '</del> <span style="color: #119904;font-weight: bold">' . $save . '% off</span></td>
+                </tr>
+              </table>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>';
     }
   }
   if ($sqlstar != "" && $sqlbrand != "" && $_POST['sort'] == 'view') {
@@ -8666,6 +8677,7 @@ if (isset($_POST['filter_item_b'])) {
   }
   $response['content'] = $dynamic_content;
   $response['output'] = $output;
+  $response['count'] = $totalRecords;
   $response['status'] = "success";
   header('Content-type: application/json');
   echo json_encode($response);
