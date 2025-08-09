@@ -8,8 +8,12 @@ if (isset($_SESSION['hfe_id'])) {
 require "../Main/header.php";
 ?>
 <style type="text/css">
-  a:hover {
+  .login p a {
     color: #139b3b !important;
+  }
+
+  a:hover {
+    color: #3399cc !important;
   }
 
   p:hover {
@@ -88,8 +92,14 @@ require "../Main/header.php";
     display: block;
     border-radius: 5px;
     width: 100%;
-    background: #3399cc;
+    background: #139b3b;
+    border: 1px solid #139b3b;
     margin: 1.5em 0 0;
+  }
+
+  .login-form-grids input[type="button"]:hover {
+    background-color: #012806;
+    border: 1px solid #4cae4c;
   }
 
   .login p a {
@@ -153,8 +163,8 @@ require "../Main/header.php";
                 onclick="view()"
                 onmouseover="$(this).css('background-color','#c0c0c0')"
                 onmouseleave="$(this).css('background-color','rgb(0 0 0')"
-                style="color: rgb(255 255 255);
-                      background-color: rgb(0 0 0);
+                style="color: white;
+                      background-color: black;
                       border: 0px;
                       padding-top: 10px;
                       height: 40px;
@@ -173,7 +183,7 @@ require "../Main/header.php";
                 onclick="view()"
                 onmouseover="$(this).css('background-color','#c0c0c0')"
                 onmouseleave="$(this).css('background-color','#f1f2f3')"
-                style="color: #000;background-color:#f1f2f3;padding-top:10px;padding-bottom: 10px;outline: none;"
+                style="color: #000;background-color: #f1f2f3;padding-top:10px;padding-bottom: 10px;outline: none;"
                 class="btn btn-default search_btn"
                 type="button">
                 <span class="fas fa-eye-slash"></span>

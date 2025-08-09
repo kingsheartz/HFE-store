@@ -1222,7 +1222,7 @@ function randomGen($min, $max, $quantity)
                                 <div style="padding: 10px;">
                                   <button
                                     type="button"
-                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;float: left;border: 1px solid #413f3f;background: #061d22;"
+                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;float: left;border: 1px solid #2e6da4;background: #061d22;"
                                     onclick="updatecart()"
                                     name="update_cart"
                                     class="update-cart-button btn-primary btn button">
@@ -1232,7 +1232,7 @@ function randomGen($min, $max, $quantity)
                                 <div style="padding: 10px;">
                                   <button
                                     type="button"
-                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;border: 1px solid #929292;float: right;background: #006904;"
+                                    style="width: 100%;padding-top: 8px;padding-bottom: 8px;border-radius: 5px;font-weight: bold;float: right;background-color: #012806;border: 1px solid #4cae4c;"
                                     onclick="go()"
                                     name="proceed"
                                     class="checkout-button btn-primary btn button alt wc-forward">
@@ -1672,9 +1672,21 @@ function randomGen($min, $max, $quantity)
                 ?>
                 <div class="clearfix"> </div>
                 </div>
+              <?php
+            }
+          } else {
+              ?>
+              <div class="row emp_cart">
+                <div class="product-content-right">
+                  <center><img style="justify-content: center;padding-bottom: 20px;margin-bottom: 0px" height="400" class="sidebar-title" src="../../images/logo/cart-empty.png">
+                    <h2 class="sidebar-title" style="text-align: center;display: inline-flex;font-weight: 600;color: #56c57d">
+                      Your Cart is Empty
+                    </h2>
+                  </center>
+                </div>
+              </div><br><br>
             <?php
           }
-        }
             ?>
               </div>
           </div>

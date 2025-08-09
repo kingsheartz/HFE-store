@@ -360,7 +360,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
     .dropdown-menu li:hover {
       background-color: #02171e !important;
-      border-left: 4px solid #337ab7;
+      border-left: 4px solid #139b3b;
       padding: 0;
       color: white !important;
       border-bottom-left-radius: 3px;
@@ -788,8 +788,8 @@ if (session_status() === PHP_SESSION_NONE) {
     }
 
     .usericon {
-      background-color: #0072d357 !important;
-      border: 0px;
+      background-color: #012806 !important;
+      border: 1px solid #4cae4c;
       color: white;
       border-radius: 50%;
       font-size: 12px;
@@ -1309,7 +1309,7 @@ if (session_status() === PHP_SESSION_NONE) {
 
                 <?php
                 $hfe_user_component = isset($_SESSION['hfe_name'])
-                  ? '<span style="font-size: 18px">' . strtoupper(substr($_SESSION['hfe_name'], 0, 1)) . '</span>'
+                  ? '<span style="font-size: 20px">' . strtoupper(substr($_SESSION['hfe_name'], 0, 1)) . '</span>'
                   : '<span><i class="fas fa-user"></i></span>';
                 ?>
                 <li class="profilediv">

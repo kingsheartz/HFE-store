@@ -2590,6 +2590,7 @@ if (isset($_POST['cartcnt'])) {
 }
 function cntcart($uid)
 {
+  global $pdo;
   $id = $uid;
   $sqlcart = "SELECT COUNT(cart_id) AS cartcnt FROM cart WHERE customer_id=$id";
   $stmtcart = $pdo->query($sqlcart);
@@ -4808,6 +4809,7 @@ if (isset($_POST['wishlist_remove_item'])) {
 //-----------------WISHLIST COUNT------------------------------------------------------------------------------------------
 function wishlist_item_count($wish_id)
 {
+  global $pdo;
   $wishlist_cnt = "SELECT count(wishlist_items.wishlist_id) AS product_count FROM wishlist_items JOIN wishlist ON wishlist_items.wishlist_id=wishlist.wishlist_id WHERE wishlist.customer_id=:id AND wishlist_items.wishlist_id=:wid ";
   $wishlist_cnt_stmt = $pdo->prepare($wishlist_cnt);
   $wishlist_cnt_stmt->execute(array(

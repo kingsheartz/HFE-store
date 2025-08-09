@@ -149,6 +149,10 @@ function randomGen($min, $max, $quantity)
     .d-inline-block {
       display: inline-block !important;
     }
+
+    .img-example-left {
+      margin-left: 0px;
+    }
   }
 
   .product_share {

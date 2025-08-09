@@ -161,7 +161,7 @@ require "../Common/cookie.php";
       <button
         type="button"
         class="btn btn btn-primary"
-        style="font-size:14px"
+        style="font-size:14px; background-color: #052642;"
         onclick="$('.cookiesetting').hide();setcookie(1);"
         data-dismiss="modal">Accept all cookies
       </button>
@@ -169,7 +169,7 @@ require "../Common/cookie.php";
         type="button"
         class="btn btn btn-success small-cookie-accept"
         onclick="$('#cookiemodal').modal('show');"
-        style="font-size:14px"
+        style="font-size:14px; background-color: #012806;"
         data-dismiss="modal">Customize settings
       </button>
     </div>

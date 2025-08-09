@@ -286,6 +286,10 @@ require "../Main/header.php";
   h2:after {
     background-color: transparent !important;
   }
+
+  .shipping_address p {
+    color: darkgrey;
+  }
 </style>
 <!-- breadcrumbs -->
 <div class="breadcrumbs">
@@ -454,9 +458,9 @@ require "../Main/header.php";
                       <span id="dis_pin" class="input-group-btn">
                         <button
                           onclick="dis_pin()"
-                          onmouseover="$(this).css('background-color','#0c66cc')"
-                          onmouseleave="$(this).css('background-color','#0c77cc')"
-                          style="color: white;background-color:#0c77cc;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px"
+                          onmouseover="$(this).css('background-color','#0c66cc');"
+                          onmouseleave="$(this).css('background-color','#052642');"
+                          style="color: white;background-color: #052642;border: 1px solid #2e6da4;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px"
                           class="btn btn-default search_btn" type="button">
                           <span class="fa fa-lg fa-map-marker"></span>
                         </button>
@@ -464,9 +468,9 @@ require "../Main/header.php";
                       <span id="hide_pin1" class="input-group-btn" style="display: none;">
                         <button
                           onclick="reglocate()"
-                          onmouseover="$(this).css('background-color','#ee8126');$(this).css('border-color','#ee8126')"
-                          onmouseleave="$(this).css('background-color','#139b3b');$(this).css('border-color','#139b3b')"
-                          style="color: white;background-color:#139b3b;padding-top:10px;padding-bottom: 10px;outline: none;border-color:#139b3b "
+                          onmouseover="$(this).css('background-color','#07C103');"
+                          onmouseleave="$(this).css('background-color','#012806');"
+                          style="color: white;background-color: #012806;border: 1px solid #4cae4c;padding-top:10px;padding-bottom: 10px;outline: none;"
                           class="btn btn-default search_btn" type="button">
                           <span class="fa fa-search"></span>
                         </button>
@@ -474,9 +478,9 @@ require "../Main/header.php";
                       <span id="hide_pin" class="input-group-btn" style="display: none;">
                         <button
                           onclick="reset_pin()"
-                          onmouseover="$(this).css('background-color','#bb0000')"
-                          onmouseleave="$(this).css('background-color','red')"
-                          style="color: white;background-color:red;padding-top:10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
+                          onmouseover="$(this).css('background-color','#bb0000');"
+                          onmouseleave="$(this).css('background-color','#451f1e');"
+                          style="color: white;background-color: #451f1e;border: 1px solid #d43f3a;padding-top: 10px;padding-bottom: 10px;outline: none;border-top-left-radius: 0px;border-bottom-left-radius: 0px;margin-left: -1px;padding-left: 28px;"
                           class="btn btn-default search_btn" type="button">
                           <span class="fa fa-close" style="margin-left: -18px;"></span>
                         </button>
@@ -841,22 +845,31 @@ require "../Main/header.php";
                   <button
                     type="button"
                     id="prevBtn"
-                    style="background-color: #999;color: #ffffff;border: none;padding: 6px 10px;font-size: 15px;font-family: Raleway;cursor: pointer;"
+                    style="background-color: #5e2a00ff;
+                          color: #ffffff;
+                          border: 1px solid #ee8126;
+                          padding: 6px 10px;
+                          font-size: 15px;
+                          font-family: Raleway;
+                          cursor: pointer;
+                          display: inline;
+                          border-radius: 5px;"
                     onclick="nextPrev(-1)">
                     Previous
                   </button>
                   <button
                     type="button"
                     id="nextBtn"
-                    style="background-color: rgb(12, 119, 204);
+                    style="background-color: #052642;
                           color: rgb(255, 255, 255);
-                          border: none;
-                          padding: 6px 50px;
-                          font-size: 14px;
+                          border: 1px solid #2e6da4;
+                          padding: 6px 30px;
+                          font-size: 15px;
                           font-family: Raleway;
                           cursor: pointer;
                           display: inline;
-                          border-radius: 5px;"
+                          border-radius: 5px;
+                          outline: none;"
                     onclick="nextPrev(1)">
                     Next
                   </button>
@@ -874,9 +887,9 @@ require "../Main/header.php";
           <div class="register-home">
             <a
               href="../Main/hfe.php"
-              onmouseover="$(this).css('background-color','#0c66cc')"
-              onmouseleave="$(this).css('background-color','#139b3b')"
-              style="color: white; background-color: rgb(56 56 56); border-radius: 5px; font-size: 12px;">
+              onmouseover="$(this).css('background-color','#012806');$(this).css('border-color','#4cae4c');"
+              onmouseleave="$(this).css('background-color','#139b3b');$(this).css('border-color','#139b3b');"
+              style="color: white;background-color: #139b3b;border: 1px solid #139b3b;border-radius: 5px; font-size: 12px;">
               Home
             </a>
           </div>
