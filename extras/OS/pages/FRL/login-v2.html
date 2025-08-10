@@ -178,17 +178,17 @@
       if (email == null || email == "") {
         Toast.fire({
           icon: 'error',
-          title: ' Please enter your email ID !!! '
+          title: ' Please enter your email ID ! '
         })
-        $('#emppass').html("Please enter your email ID !!!");
+        $('#emppass').html("Please enter your email ID !");
         $('#emppass').show();
         document.getElementById("email").focus();
         return;
       }
 
       if (ValidateSigninEmail(email) == false) {
-        toastr.error('Invalid email address!!!')
-        $('#emppass').html("Invalid email address !!!");
+        toastr.error('Invalid email address!')
+        $('#emppass').html("Invalid email address !");
         $('#emppass').show();
         document.getElementById("email").focus();
         return;
@@ -198,9 +198,9 @@
       if (password == null || password == "") {
         Toast.fire({
           icon: 'error',
-          title: ' Please enter the password !!!'
+          title: ' Please enter the password !'
         })
-        $('#emppass').html("Please enter the password !!!");
+        $('#emppass').html("Please enter the password !");
         $('#emppass').show();
         document.getElementById("pwd").value = "";
         document.getElementById("pwd").focus();
@@ -242,7 +242,7 @@
               return;
             } else if (data.status == 'success') {
               swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "Log in Success",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -262,7 +262,7 @@
               });
             } else if (data.status == 'admin') {
               swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "Admin privileges granted",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -278,7 +278,7 @@
               });
             } else if (data.status == 'error') {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "Error logging in",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -292,7 +292,7 @@
               });
             } else if (data.status == 'errornotfound') {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "You are not registered yet",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -306,7 +306,7 @@
               });
             } else if (data.status == 'error1') {
               swal({
-                title: "Check your mailbox!!!",
+                title: "Check your mailbox!",
                 text: "Pending email verification",
                 icon: "warning",
                 closeOnClickOutside: false,
@@ -323,7 +323,7 @@
           error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,

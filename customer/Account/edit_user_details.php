@@ -283,12 +283,12 @@ try {
           <div class="account-details pi account-details-active">
             <h5><i class="fa fa-info-circle fa-lg"></i>&nbsp;profile information
               <span id='succeeded' style="float: right;background-color: green;border-radius: 5px;color: white">&nbsp;
-                <i class="fa fa-check" style="color: orange;text-shadow: 1px 2px 3px grey"></i>
-                <i style="text-transform: capitalize;font-size: 12px;text-shadow: 1px 2px 3px grey">verified &nbsp;</i>
+                <i class="fa fa-check" style="color: orange;"></i>
+                <i style="text-transform: capitalize;font-size: 12px;">verified &nbsp;</i>
               </span>
-              <span id='pending' style="display: none;float: right;background-color: white;border: 1px solid black;border-radius: 5px;color: white">&nbsp;
-                <i class="fa fa-close" style="color: red;text-shadow: 1px 2px 3px grey"></i>
-                <i style="text-transform: capitalize;font-size: 12px;color: black;text-shadow: 1px 2px 3px grey">pending &nbsp;</i>
+              <span id='pending' style="display: none;float: right;background-color: black;border: 1px solid white;border-radius: 5px;color: white">&nbsp;
+                <i class="fa fa-close" style="color: red;"></i>
+                <i style="text-transform: capitalize;font-size: 12px;color: white;">pending &nbsp;</i>
               </span>
             </h5>
             <div id="error_dis" style="display: none;margin-bottom: 50px;overflow: hidden;">
@@ -1184,8 +1184,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     var regpin = document.getElementById("regpin").value;
     if (regpin == null || regpin == "") {
       swal({
-        title: "Oops!!!",
-        text: "Please enter the pincode !!! ",
+        title: "Oops!",
+        text: "Please enter the pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -1195,8 +1195,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       return;
     } else if (regpin.length != 6) {
       swal({
-        title: "Oops!!!",
-        text: "Please enter valid pincode !!! ",
+        title: "Oops!",
+        text: "Please enter valid pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -1215,8 +1215,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
           //console.log(locate[0].PostOffice.length);
           if (locate[0].Status == "Error") {
             swal({
-              title: "Oops!!!",
-              text: "Invalid pincode !!! ",
+              title: "Oops!",
+              text: "Invalid pincode ! ",
               icon: "error",
               closeOnClickOutside: false,
               dangerMode: true,
@@ -1502,7 +1502,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       $('#dis_sfn').show();
       $('#hide_sfn').hide();
     }
-    document.getElementById("shipping_first_name").value = oldshipping_first_name;
+    document.getElementById("shipping_first_name").value = oldshipping_first_name?.replace(/"/g, '');
     document.getElementById("shipping_first_name").readOnly = true;
     succeeded();
   }
@@ -1546,7 +1546,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       $('#dis_sln').show();
       $('#hide_sln').hide();
     }
-    document.getElementById("shipping_last_name").value = oldshipping_last_name;
+    document.getElementById("shipping_last_name").value = oldshipping_last_name?.replace(/"/g, '');
     document.getElementById("shipping_last_name").readOnly = true;
     succeeded();
   }
@@ -1722,7 +1722,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       $('#dis_sadd').show();
       $('#hide_sadd').hide();
     }
-    document.getElementById("shipping_address_1").value = oldshipping_address_1;
+    document.getElementById("shipping_address_1").value = oldshipping_address_1?.replace(/"/g, '');
     document.getElementById("shipping_address_1").readOnly = true;
     succeeded();
   }
@@ -1810,7 +1810,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       $('#dis_fn').show();
       $('#hide_fn').hide();
     }
-    document.getElementById("first_name").value = oldfirst_name;
+    document.getElementById("first_name").value = oldfirst_name?.replace(/"/g, '');
     document.getElementById("first_name").readOnly = true;
     succeeded();
   }
@@ -1854,7 +1854,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       $('#dis_ln').show();
       $('#hide_ln').hide();
     }
-    document.getElementById("last_name").value = oldlast_name;
+    document.getElementById("last_name").value = oldlast_name?.replace(/"/g, '');
     document.getElementById("last_name").readOnly = true;
     succeeded();
   }
@@ -1982,7 +1982,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       $('#dis_add').show();
       $('#hide_add').hide();
     }
-    document.getElementById("address").value = oldaddress;
+    document.getElementById("address").value = oldaddress?.replace(/"/g, '');
     document.getElementById("address").readOnly = true;
     succeeded();
   }
@@ -2022,7 +2022,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       $('#dis_mail').show();
       $('#hide_mail').hide();
     }
-    document.getElementById("email").value = oldemail;
+    document.getElementById("email").value = oldemail?.replace(/"/g, '');
     document.getElementById("email").readOnly = true;
     succeeded();
   }
@@ -2135,7 +2135,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -2176,7 +2176,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -2268,7 +2268,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     //validating last name isempty
     if (last_name == null || last_name == "") {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Please enter  your last name",
         icon: "error",
         closeOnClickOutside: false,
@@ -2283,7 +2283,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     //validating last name is not a number
     else if (!(isNaN(last_name))) {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Please use Albhabets",
         icon: "error",
         closeOnClickOutside: false,
@@ -2298,7 +2298,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     //Phone number check
     if (phone == null || phone == "") {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Please enter your phone number",
         icon: "error",
         closeOnClickOutside: false,
@@ -2313,7 +2313,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     //validating Phone is a number
     else if (isNaN(phone) || phone.length != 10) {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Invalid phone number",
         icon: "error",
         closeOnClickOutside: false,
@@ -2328,8 +2328,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     //PIN check
     else if (regpin == null || regpin == "") {
       swal({
-        title: "Oops!!!",
-        text: "Please enter the pincode !!! ",
+        title: "Oops!",
+        text: "Please enter the pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -2341,8 +2341,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       return;
     } else if (regpin.length != 6) {
       swal({
-        title: "Oops!!!",
-        text: "Please enter valid pincode !!! ",
+        title: "Oops!",
+        text: "Please enter valid pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -2358,8 +2358,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     //Location
     else if (loc == 0) {
       swal({
-        title: "Missing location!!!",
-        text: "Search your pincode !!! ",
+        title: "Missing location!",
+        text: "Search your pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -2374,7 +2374,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     //address check
     if (address == null || address == "") {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Please enter your Address",
         icon: "error",
         closeOnClickOutside: false,
@@ -2389,7 +2389,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     //validating address is not a number and its length above 4
     else if (!(isNaN(address)) || address.length < 5) {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Invalid Address",
         icon: "error",
         closeOnClickOutside: false,
@@ -2404,8 +2404,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     //email verification of null value
     if (email == null || email == "") {
       swal({
-        title: "Oops!!!",
-        text: "Please enter your email ID !!! ",
+        title: "Oops!",
+        text: "Please enter your email ID ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -2418,8 +2418,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     }
     if (ValidateEmail(email) == false) {
       swal({
-        title: "Oops!!!",
-        text: "Invalid email address!!! ",
+        title: "Oops!",
+        text: "Invalid email address! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -2434,7 +2434,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       //current passwords
       if (pass3 == null || pass3 == "") {
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "Please enter your current password",
           icon: "error",
           closeOnClickOutside: false,
@@ -2450,8 +2450,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       //password verification of null value
       if (pass1 == null || pass1 == "") {
         swal({
-          title: "Oops!!!",
-          text: "Please enter new password !!! ",
+          title: "Oops!",
+          text: "Please enter new password ! ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -2490,8 +2490,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       //weak password verification
       else if (pass1.length < 8) {
         swal({
-          title: "Oops!!!",
-          text: "Weak Password !!! Try again ",
+          title: "Oops!",
+          text: "Weak Password ! Try again ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -2506,8 +2506,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
       //confirming both passwords are same
       if (pass1 != pass2) {
         swal({
-          title: "Oops!!!",
-          text: "Passwords do not match !!! Try again ",
+          title: "Oops!",
+          text: "Passwords do not match ! Try again ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -2619,7 +2619,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     //PIN check
     //PIN check
     else if (shipping_postcode == null || shipping_postcode == "") {
-      toastr.error("Please enter the pincode !!!");
+      toastr.error("Please enter the pincode !");
       $('.da').click();
       document.getElementById("shipping_postcode").focus();
       document.getElementById("shipping_postcode").className += " invalid";
@@ -2634,7 +2634,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
     }
     if (document.getElementById("accept").checked == false) {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Please Accept the terms and conditions",
         icon: "error",
         closeOnClickOutside: false,
@@ -2652,14 +2652,14 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
           icon: "warning",
           showCancelButton: true,
           showConfirmButton: true,
-          confirmButtonColor: 'red',
+          confirmButtonColor: 'green',
           allowOutsideClick: false,
-          confirmButtonText: '<i class="fa fa-close"></i> Cancel',
-          cancelButtonColor: 'green',
-          cancelButtonText: '<i class="fa fa-check"></i> Update'
+          confirmButtonText: 'Update <i class="fa fa-check"></i>',
+          cancelButtonColor: 'red',
+          cancelButtonText: 'Cancel <i class="fa fa-close"></i>'
         })
         .then((willSubmit) => {
-          if (willSubmit.dismiss) {
+          if (willSubmit.isConfirmed) {
             $('.load_btn').show();
             $('.real_btn').hide();
 
@@ -2692,7 +2692,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
               success: function(data) { //if registration is success
                 if (data.status == 'success') {
                   swal({
-                      title: "Success!!!",
+                      title: "Success!",
                       text: "Updated successfully",
                       icon: "success",
                       closeOnClickOutside: false,
@@ -2714,7 +2714,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
                 }
                 if (data.status == 'success1') {
                   swal({
-                      title: "Success!!!",
+                      title: "Success!",
                       text: "Updation pending",
                       icon: "success",
                       closeOnClickOutside: false,
@@ -2749,7 +2749,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
                   $('.load_btn').hide();
                   $('.real_btn').show();
                   swal({
-                      title: "Oops!!!",
+                      title: "Oops!",
                       text: "First name is not valid",
                       icon: "error",
                       closeOnClickOutside: false,
@@ -2773,7 +2773,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
                   $('.load_btn').hide();
                   $('.real_btn').show();
                   swal({
-                      title: "Oops!!!",
+                      title: "Oops!",
                       text: "Email is not valid",
                       icon: "error",
                       closeOnClickOutside: false,
@@ -2797,7 +2797,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
                   $('.load_btn').hide();
                   $('.real_btn').show();
                   swal({
-                      title: "Oops!!!",
+                      title: "Oops!",
                       text: "Another account with same mobile number already exists",
                       icon: "error",
                       closeOnClickOutside: false,
@@ -2821,7 +2821,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
                   $('.load_btn').hide();
                   $('.real_btn').show();
                   swal({
-                      title: "Oops!!!",
+                      title: "Oops!",
                       text: "Another account with same email ID already exists",
                       icon: "error",
                       closeOnClickOutside: false,
@@ -2845,7 +2845,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
                   $('.load_btn').hide();
                   $('.real_btn').show();
                   swal({
-                      title: "Oops!!!",
+                      title: "Oops!",
                       text: "Current passwords do not match  ",
                       icon: "error",
                       closeOnClickOutside: false,
@@ -2872,7 +2872,7 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
                   $('.load_btn').hide();
                   $('.real_btn').show();
                   swal({
-                    title: "Oops!!!",
+                    title: "Oops!",
                     text: "server time out",
                     icon: "error",
                     closeOnClickOutside: false,
@@ -2885,8 +2885,8 @@ if ((isset($_GET['changed'])) && ($_GET['changed'] == "no")) {
                 }
               }
             }); //closing ajax
-          } //ELSE CLOSING (IN ACTUAL PRGM) ,NOW END WILL SUBMIT
-          else if (willSubmit.isConfirmed === Swal.DismissReason.cancel) {
+          } //ELSE CLOSING (IN ACTUAL PRGM), NOW END WILL SUBMIT
+          else if (willSubmit.dismiss) {
             return;
           }
         }); //NOW .(THIS) END WILL SUBMIT (NOT NEEDED)

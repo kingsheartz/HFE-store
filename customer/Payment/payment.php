@@ -155,15 +155,15 @@ log_message("Payment page data used: " . json_encode([
   function onPay() {
     Swal.fire({
         title: "Are you sure?",
-        text: "placing your orders !!!",
+        text: "placing your orders !",
         icon: "warning",
         showCancelButton: true,
         showConfirmButton: true,
         confirmButtonColor: 'green',
         allowOutsideClick: false,
-        confirmButtonText: '<i class="fa fa-shopping-bag"></i> Place',
+        confirmButtonText: 'Confirm',
         cancelButtonColor: 'red',
-        cancelButtonText: '<i class="fa fa-close"></i> Cancel'
+        cancelButtonText: 'Cancel'
       })
       .then((willSubmit) => {
         if (willSubmit.isConfirmed) {
@@ -182,7 +182,7 @@ log_message("Payment page data used: " . json_encode([
                 $('.background_loader').hide();
                 $('.std_text3').hide();
                 swal({
-                    title: "Success!!!",
+                    title: "Success!",
                     text: "Order Placed Successfully",
                     icon: "success",
                     closeOnClickOutside: false,
@@ -202,7 +202,7 @@ log_message("Payment page data used: " . json_encode([
                 $('.real_btn').show();
                 $('.std_text3').hide();
                 swal({
-                    title: "Sorry!!!",
+                    title: "Sorry!",
                     text: "Try again",
                     icon: "error",
                     closeOnClickOutside: false,
@@ -225,7 +225,7 @@ log_message("Payment page data used: " . json_encode([
                 $('.real_btn').show();
                 $('.std_text3').hide();
                 swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,

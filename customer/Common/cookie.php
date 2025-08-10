@@ -126,7 +126,7 @@
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,

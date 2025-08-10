@@ -243,18 +243,18 @@ require "../Main/header.php";
   function cancel() {
     Swal.fire({
         title: "Are you sure?",
-        text: "Cancel this orders !!!",
+        text: "Cancel this orders !",
         icon: "warning",
-        showCancelButton: true,
-        showConfirmButton: true,
-        confirmButtonColor: 'red',
         allowOutsideClick: false,
-        confirmButtonText: '<i class="fa fa-close"></i> Cancel',
-        cancelButtonColor: 'green',
-        cancelButtonText: '<i class="fa fa-check"></i> Yes'
+        showCancelButton: true,
+        cancelButtonColor: 'red',
+        cancelButtonText: 'Cancel <i class="fa fa-close"></i>',
+        showConfirmButton: true,
+        confirmButtonColor: 'green',
+        confirmButtonText: 'Yes <i class="fa fa-check"></i>'
       })
       .then((willSubmit) => {
-        if (willSubmit.dismiss) {
+        if (willSubmit.isConfirmed) {
           $('.background_loader').css('display', 'flex');
           $('.std_text').css('display', 'flex');
           $.ajax({
@@ -271,7 +271,7 @@ require "../Main/header.php";
                 $('.background_loader').hide();
                 $('.std_text').hide();
                 swal({
-                    title: "Order cancelled !!!",
+                    title: "Order cancelled !",
                     icon: "success",
                     closeOnClickOutside: false,
                     dangerMode: true,
@@ -294,7 +294,7 @@ require "../Main/header.php";
                 $('.background_loader').hide();
                 $('.std_text').hide();
                 swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -309,7 +309,7 @@ require "../Main/header.php";
               }
             }
           }); //closing ajax
-        } else if (willSubmit.isConfirmed === Swal.DismissReason.cancel) {
+        } else if (willSubmit.dismiss) {
           return;
         }
       }); //NOW .(THIS) END WILL SUBMIT (NOT NEEDED)

@@ -1070,18 +1070,18 @@ require "../Main/footer.php";
       }
     }
     Swal.fire({
-        text: "Updating your list  !!!",
+        text: "Updating your list  !",
         icon: "warning",
-        showCancelButton: true,
-        showConfirmButton: true,
-        confirmButtonColor: 'red',
         allowOutsideClick: false,
-        confirmButtonText: '<i class="fa fa-close"></i> Close',
-        cancelButtonColor: 'green',
-        cancelButtonText: '<i class="fa fa-check"></i> OK'
+        showCancelButton: true,
+        cancelButtonColor: 'red',
+        cancelButtonText: 'Close <i class="fa fa-close"></i>',
+        showConfirmButton: true,
+        confirmButtonColor: 'green',
+        confirmButtonText: 'OK <i class="fa fa-check"></i>'
       })
       .then((willSubmit) => {
-        if (willSubmit.dismiss) {
+        if (willSubmit.isConfirmed) {
           $.ajax({
             url: "../Common/functions.php", //passing page info
             data: {
@@ -1097,7 +1097,7 @@ require "../Main/footer.php";
             success: function(data) { //if registration is success
               if (data.status == 'success') {
                 swal({
-                  title: "Updated!!!",
+                  title: "Updated!",
                   dangerMode: true,
                   icon: "success",
                   timer: 6000,
@@ -1105,7 +1105,7 @@ require "../Main/footer.php";
                 return;
               } else {
                 swal({
-                  title: "Try again!!!",
+                  title: "Try again!",
                   icon: "error",
                   dangerMode: true,
                   timer: 6000,
@@ -1116,7 +1116,7 @@ require "../Main/footer.php";
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               if (textstatus === "timeout") {
                 swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -1129,7 +1129,7 @@ require "../Main/footer.php";
               }
             }
           }); //closing ajax
-        } else if (willSubmit.isConfirmed) {
+        } else if (willSubmit.dismiss) {
           return false;
         }
       });
@@ -1342,7 +1342,7 @@ require "../Main/footer.php";
       success: function(data) { //if registration is success
         if (data.status == 'success') {
           swal({
-              title: "Updated!!!",
+              title: "Updated!",
               text: "Cart is updated",
               icon: "success",
               closeOnClickOutside: false,
@@ -1366,7 +1366,7 @@ require "../Main/footer.php";
       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,
@@ -1433,7 +1433,7 @@ require "../Main/footer.php";
           success: function(data) { //if registration is success
             if (data.status == 'success') {
               swal({
-                  title: "Updated!!!",
+                  title: "Updated!",
                   text: "Cart is updated",
                   icon: "success",
                   closeOnClickOutside: false,
@@ -1457,7 +1457,7 @@ require "../Main/footer.php";
           error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1479,8 +1479,8 @@ require "../Main/footer.php";
   function remove_item(wishlist_items_id) {
     var wishlist_items_id = wishlist_items_id;
     swal({
-        title: "Remove !!!",
-        text: "Are you sure!!! ",
+        title: "Remove !",
+        text: "Are you sure! ",
         icon: "warning",
         buttons: true,
         dangerMode: true,
@@ -1504,7 +1504,7 @@ require "../Main/footer.php";
               if (data.status == 'success') {
                 if (data.cartcnt == 0) {
                   swal({
-                      title: "Empty!!!",
+                      title: "Empty!",
                       text: "Your list is empty",
                       icon: "warning",
                       closeOnClickOutside: false,
@@ -1533,7 +1533,7 @@ require "../Main/footer.php";
                 }
               } else {
                 swal({
-                  title: "Try again!!!",
+                  title: "Try again!",
                   icon: "error",
                   dangerMode: true,
                   timer: 6000,
@@ -1544,7 +1544,7 @@ require "../Main/footer.php";
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               if (textstatus === "timeout") {
                 swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -1710,8 +1710,8 @@ require "../Main/footer.php";
           document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
           document.getElementById('off_s' + store_id + 'i' + product_description_id).innerHTML = off;
           swal({
-              title: "Out of Stock!!!",
-              text: "Choose another store !!!",
+              title: "Out of Stock!",
+              text: "Choose another store !",
               icon: "warning",
               closeOnClickOutside: false,
               dangerMode: true,
@@ -1729,7 +1729,7 @@ require "../Main/footer.php";
       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,

@@ -4528,6 +4528,30 @@ ul.topli {
   background-color: transparent;
 }
 
+.swal-button--cancel {
+  background-color: #451f1e !important;
+  border: 1px solid #d43f3a !important;
+  transition: .5s;
+  color: white;
+  outline: none;
+}
+
+.swal-button--cancel:hover {
+  background-color: #d43f3a !important;
+}
+
+.swal-button--confirm {
+  background-color: #012806 !important;
+  border: 1px solid #4cae4c !important;
+  transition: .5s;
+  color: white;
+  outline: none;
+}
+
+.swal-button--confirm:hover {
+  background-color: #4cae4c !important;
+}
+
 /*SWAL*/
 /*SWAL2*/
 .swal2-modal {
@@ -4560,19 +4584,30 @@ ul.topli {
   margin: 15px !important;
 }
 
-.swal2-deny {
-  background-color: #451f1e !important;
-  border: 1px solid #d43f3a !important;
-}
-
+.swal2-deny,
 .swal2-cancel {
   background-color: #451f1e !important;
   border: 1px solid #d43f3a !important;
+  transition: .5s;
+  color: white;
+  outline: none;
+}
+
+.swal2-deny:hover,
+.swal2-cancel:hover {
+  background-color: #d43f3a !important;
 }
 
 .swal2-confirm {
   background-color: #012806 !important;
   border: 1px solid #4cae4c !important;
+  transition: .5s;
+  color: white;
+  outline: none;
+}
+
+.swal2-confirm:hover {
+  background-color: #4cae4c !important;
 }
 
 /*

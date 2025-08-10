@@ -228,7 +228,7 @@ $_COOKIE['animate'] = 0;
               } else {
                 if (status === "error1") {
                   swal({
-                    title: "Oops!!!",
+                    title: "Oops!",
                     text: "Verify your email",
                     icon: "error",
                     closeOnClickOutside: false,
@@ -243,7 +243,7 @@ $_COOKIE['animate'] = 0;
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               if (textstatus === "timeout") {
                 swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,

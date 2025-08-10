@@ -30,8 +30,8 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
 
         if ($('#in1').val() == "" || $('#in2').val() == "" || $('#in4').val() == "" || $('#in5').val() == "") {
           swal({
-            title: "Oops!!!",
-            text: "Opening hours can\'t be empty !!!",
+            title: "Oops!",
+            text: "Opening hours can\'t be empty !",
             icon: "error",
             closeOnClickOutside: false,
             dangerMode: true,

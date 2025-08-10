@@ -1169,7 +1169,7 @@ if (isset($_GET['verified'])) {
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -1210,7 +1210,7 @@ if (isset($_GET['verified'])) {
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -1261,7 +1261,7 @@ if (isset($_GET['verified'])) {
     if (!(isNaN(first_name))) {
       /*
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "Please use Albhabets",
           icon: "error",
           closeOnClickOutside: false,
@@ -1277,7 +1277,7 @@ if (isset($_GET['verified'])) {
     //validating white spaces
     else if (first_namespace.length > 1) {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "'SPACE' not allowed",
         icon: "error",
         closeOnClickOutside: false,
@@ -1293,8 +1293,8 @@ if (isset($_GET['verified'])) {
     else if (first_name.length > 20) {
       /*
         swal({
-          title: "Oops!!!",
-          text: "Entry is too long !!! ",
+          title: "Oops!",
+          text: "Entry is too long ! ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -1310,8 +1310,8 @@ if (isset($_GET['verified'])) {
     else if (first_name.length < 2) {
       /*
         swal({
-          title: "Oops!!!",
-          text: "Entry is too short !!! ",
+          title: "Oops!",
+          text: "Entry is too short ! ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -1327,7 +1327,7 @@ if (isset($_GET['verified'])) {
     if (last_name == null || last_name == "") {
       /*
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "Please enter  your last name",
           icon: "error",
           closeOnClickOutside: false,
@@ -1343,7 +1343,7 @@ if (isset($_GET['verified'])) {
     //validating first name is not a number
     else if (!(isNaN(last_name))) {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Please use Albhabets",
         icon: "error",
         closeOnClickOutside: false,
@@ -1359,7 +1359,7 @@ if (isset($_GET['verified'])) {
     if (phone == null || phone == "") {
       /*
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "Please enter your phone number",
           icon: "error",
           closeOnClickOutside: false,
@@ -1376,7 +1376,7 @@ if (isset($_GET['verified'])) {
     else if (isNaN(phone) || phone.length != 10) {
       /*
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "Invalid phone number",
           icon: "error",
           closeOnClickOutside: false,
@@ -1394,8 +1394,8 @@ if (isset($_GET['verified'])) {
     else if (regpin == null || regpin == "") {
       /*
         swal({
-          title: "Oops!!!",
-          text: "Please enter the pincode !!! ",
+          title: "Oops!",
+          text: "Please enter the pincode ! ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -1408,8 +1408,8 @@ if (isset($_GET['verified'])) {
       return false;
     } else if (regpin.length != 6) {
       swal({
-        title: "Oops!!!",
-        text: "Please enter valid pincode !!! ",
+        title: "Oops!",
+        text: "Please enter valid pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -1425,8 +1425,8 @@ if (isset($_GET['verified'])) {
     //Location
     else if (loc == 0) {
       swal({
-        title: "Missing location!!!",
-        text: "Please search your pin !!! ",
+        title: "Missing location!",
+        text: "Please search your pin ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -1447,7 +1447,7 @@ if (isset($_GET['verified'])) {
     //validating address if its length above 4
     if (address != null && address.length < 8) {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Invalid Address",
         icon: "error",
         closeOnClickOutside: false,
@@ -1529,8 +1529,8 @@ if (isset($_GET['verified'])) {
     if (email == null || email == "") {
       /*
         swal({
-          title: "Oops!!!",
-          text: "Please enter your email ID !!! ",
+          title: "Oops!",
+          text: "Please enter your email ID ! ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -1545,8 +1545,8 @@ if (isset($_GET['verified'])) {
     if (ValidateEmail(email) == false) {
       /*
         swal({
-          title: "Oops!!!",
-          text: "Invalid email address!!! ",
+          title: "Oops!",
+          text: "Invalid email address! ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -1562,8 +1562,8 @@ if (isset($_GET['verified'])) {
     if (pass1 == null || pass1 == "") {
       /*
         swal({
-          title: "Oops!!!",
-          text: "Please enter the password !!! ",
+          title: "Oops!",
+          text: "Please enter the password ! ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -1603,8 +1603,8 @@ if (isset($_GET['verified'])) {
     if (pass1.length < 8) {
       /*
         swal({
-          title: "Oops!!!",
-          text: "Weak Password !!! Try again ",
+          title: "Oops!",
+          text: "Weak Password ! Try again ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -1626,8 +1626,8 @@ if (isset($_GET['verified'])) {
     //confirming both passwords are same
     if (pass1 != pass2) {
       swal({
-        title: "Oops!!!",
-        text: "Passwords do not match !!! Try again ",
+        title: "Oops!",
+        text: "Passwords do not match ! Try again ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -1655,13 +1655,13 @@ if (isset($_GET['verified'])) {
     var checkBox_diff = document.getElementById("stda_check");
     var checkBox_user = document.getElementById("use-as-register-checkbox");
     if (checkBox_user.checked == false && checkBox_diff.checked == false) {
-      toastr.error('Require Delivery Address!!!');
+      toastr.error('Require Delivery Address!');
       return false;
     } else {
       if (checkBox_user.checked == true) {
         if (document.getElementById("accept").checked == false) {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "Please Accept the terms and conditions",
             icon: "error",
             closeOnClickOutside: false,
@@ -1674,18 +1674,18 @@ if (isset($_GET['verified'])) {
         $('.stage_reg_4').addClass('active');
         Swal.fire({
             title: "Are you sure?",
-            text: "You are about to register !!!",
+            text: "You are about to register !",
             icon: "warning",
-            showCancelButton: true,
-            showConfirmButton: true,
-            confirmButtonColor: 'red',
             allowOutsideClick: false,
-            confirmButtonText: '<i class="fa fa-close"></i> Cancel',
-            cancelButtonColor: 'green',
-            cancelButtonText: '<i class="fa fa-check"></i> Register'
+            showCancelButton: true,
+            cancelButtonColor: 'red',
+            cancelButtonText: 'Cancel <i class="fa fa-close"></i>',
+            showConfirmButton: true,
+            confirmButtonColor: 'green',
+            confirmButtonText: 'Register <i class="fa fa-check"></i>'
           })
           .then((willSubmit) => {
-            if (willSubmit.dismiss) {
+            if (willSubmit.isConfirmed) {
               $('.background_loader').css('display', 'flex');
               $('.load_btn').show();
               $('.real_btn').hide();
@@ -1724,7 +1724,7 @@ if (isset($_GET['verified'])) {
                     $('.std_loader').hide();
                     $('.std_text2').hide();
                     swal({
-                        title: "Success!!!",
+                        title: "Success!",
                         text: "Registered Successfully",
                         icon: "success",
                         closeOnClickOutside: false,
@@ -1758,7 +1758,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!!!",
+                        title: "Oops!",
                         text: "Account already exists",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -1782,7 +1782,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!!!",
+                        title: "Oops!",
                         text: "Email is not valid",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -1806,7 +1806,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!!!",
+                        title: "Oops!",
                         text: "First name is not valid",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -1832,7 +1832,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!!!",
+                        title: "Oops!",
                         text: "Phone number already exists",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -1861,7 +1861,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                      title: "Oops!!!",
+                      title: "Oops!",
                       text: "server time out",
                       icon: "error",
                       closeOnClickOutside: false,
@@ -1876,7 +1876,7 @@ if (isset($_GET['verified'])) {
               }); //closing ajax
               //END OF SWAL WILLSUBMITTED
             } //ELSE CLOSING (IN ACTUAL PRGM) ,NOW END WILL SUBMIT
-            else if (willSubmit.isConfirmed === Swal.DismissReason.cancel) {
+            else if (willSubmit.dismiss) {
               $('.round_reg_3').removeClass('active');
               $('.stage_reg_4').removeClass('active');
               return false;
@@ -1909,7 +1909,7 @@ if (isset($_GET['verified'])) {
         //validating white spaces
         else if (shipping_first_namespace.length > 1) {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "'SPACE' not allowed",
             icon: "error",
             closeOnClickOutside: false,
@@ -1945,7 +1945,7 @@ if (isset($_GET['verified'])) {
         //validating first name is not a number
         else if (!(isNaN(shipping_last_name))) {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "Please use Albhabets",
             icon: "error",
             closeOnClickOutside: false,
@@ -1968,7 +1968,7 @@ if (isset($_GET['verified'])) {
         else if (isNaN(shipping_ph_no) || shipping_ph_no.length != 10) {
           /*
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "Invalid phone number",
               icon: "error",
               closeOnClickOutside: false,
@@ -1985,7 +1985,7 @@ if (isset($_GET['verified'])) {
         if (shipping_ph_no2 != "" && shipping_ph_no2.length != 10) {
           /*
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "Invalid shipping_ph_no number",
               icon: "error",
               closeOnClickOutside: false,
@@ -2008,7 +2008,7 @@ if (isset($_GET['verified'])) {
         //validating address if its length above 4
         if (shipping_address_1 != null && shipping_address_1.length < 10) {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "Invalid shipping_address_1",
             icon: "error",
             closeOnClickOutside: false,
@@ -2025,8 +2025,8 @@ if (isset($_GET['verified'])) {
         else if (shipping_postcode == null || shipping_postcode == "") {
           /*
             swal({
-              title: "Oops!!!",
-              text: "Please enter the pincode !!! ",
+              title: "Oops!",
+              text: "Please enter the pincode ! ",
               icon: "error",
               closeOnClickOutside: false,
               dangerMode: true,
@@ -2039,8 +2039,8 @@ if (isset($_GET['verified'])) {
           return false;
         } else if (shipping_postcode.length != 6) {
           swal({
-            title: "Oops!!!",
-            text: "Please enter valid pincode !!! ",
+            title: "Oops!",
+            text: "Please enter valid pincode ! ",
             icon: "error",
             closeOnClickOutside: false,
             dangerMode: true,
@@ -2055,7 +2055,7 @@ if (isset($_GET['verified'])) {
         //PIN check
         if (document.getElementById("accept").checked == false) {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "Please Accept the terms and conditions",
             icon: "error",
             closeOnClickOutside: false,
@@ -2068,18 +2068,18 @@ if (isset($_GET['verified'])) {
         $('.stage_reg_4').addClass('active');
         Swal.fire({
             title: "Are you sure?",
-            text: "You are about to register !!!",
+            text: "You are about to register !",
             icon: "warning",
-            showCancelButton: true,
-            showConfirmButton: true,
-            confirmButtonColor: 'red',
             allowOutsideClick: false,
-            confirmButtonText: '<i class="fa fa-close"></i> Cancel',
-            cancelButtonColor: 'green',
-            cancelButtonText: '<i class="fa fa-check"></i> Register'
+            showCancelButton: true,
+            cancelButtonColor: 'red',
+            cancelButtonText: '<i class="fa fa-close"></i> Cancel',
+            showConfirmButton: true,
+            confirmButtonColor: 'green',
+            confirmButtonText: '<i class="fa fa-check"></i> Register'
           })
           .then((willSubmit) => {
-            if (willSubmit.dismiss) {
+            if (willSubmit.isConfirmed) {
               $('.background_loader').css('display', 'flex');
               $('.load_btn').show();
               $('.real_btn').hide();
@@ -2126,7 +2126,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Success!!!",
+                        title: "Success!",
                         text: "Registered Successfully",
                         icon: "success",
                         closeOnClickOutside: false,
@@ -2160,7 +2160,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!!!",
+                        title: "Oops!",
                         text: "Account already exists",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -2184,7 +2184,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!!!",
+                        title: "Oops!",
                         text: "Email is not valid",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -2206,7 +2206,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!!!",
+                        title: "Oops!",
                         text: "First name is not valid",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -2232,7 +2232,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!!!",
+                        title: "Oops!",
                         text: "Phone number already exists",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -2261,7 +2261,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                      title: "Oops!!!",
+                      title: "Oops!",
                       text: "server time out",
                       icon: "error",
                       closeOnClickOutside: false,
@@ -2276,7 +2276,7 @@ if (isset($_GET['verified'])) {
               }); //closing ajax
               //END OF SWAL WILLSUBMITTED
             } //ELSE CLOSING (IN ACTUAL PRGM) ,NOW END WILL SUBMIT
-            else if (willSubmit.isConfirmed === Swal.DismissReason.cancel) {
+            else if (willSubmit.dismiss) {
               $('.round_reg_3').removeClass('active');
               $('.stage_reg_4').removeClass('active');
               return false;

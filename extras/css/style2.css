@@ -78,6 +78,7 @@ h6 {
 /**********************************/
 .nav-bar {
   position: relative;
+  transition: 0.5s !important;
 }
 
 .nav-bar.nav-sticky {
