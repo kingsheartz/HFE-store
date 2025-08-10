@@ -163,7 +163,7 @@ session_start();
 
     function retry() {
 
-      $('.background_loader').show();
+      $('.background_loader').css('display', 'flex');
       $('.std_loader').show();
 
       var email = "<?= $_SESSION['hfe_forgot_pass_email'] ?>";
