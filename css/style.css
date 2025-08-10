@@ -4841,7 +4841,7 @@ ul.topli {
 }
 
 /*FROM HEADER LATEST*/
-@media(max-width: 375px) {
+@media(max-width: 376px) {
   #lg_top_ph_mail {
     display: none;
   }
@@ -4852,9 +4852,17 @@ ul.topli {
     min-width: 340px !important;
     overflow-x: scroll !important;
   }
+
+  .userdiv {
+    display: none !important;
+  }
+
+  .userdiv.small {
+    display: unset !important;
+  }
 }
 
-@media(min-width: 376px) {
+@media(min-width: 377px) {
   #sm_top_ph_mail {
     display: none;
   }

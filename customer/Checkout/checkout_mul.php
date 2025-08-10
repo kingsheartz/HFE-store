@@ -177,6 +177,10 @@ $pdt_cnt = $stmt->rowCount();
         right: 0 !important;
         bottom: 50px !important;
       }
+
+      button#place_order {
+        height: 50px !important;
+      }
     }
 
     .checkmark {
@@ -719,6 +723,7 @@ require "../Main/footer.php";
     $("#stda_div").css("display", "none");
     checkBox_diff.checked = false;
   });
+
   function placeorder() {
     var order_notes = document.getElementById('order_comments').value;
     if (order_notes == "" || order_notes == null) {

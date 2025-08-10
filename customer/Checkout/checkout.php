@@ -184,6 +184,10 @@ $pdt_cnt = $stmt->rowCount();
         right: 0 !important;
         bottom: 50px !important;
       }
+
+      button#place_order {
+        height: 50px !important;
+      }
     }
 
     .checkmark {

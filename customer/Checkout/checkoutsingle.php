@@ -199,6 +199,10 @@ $t_mrp = $mrprow['price'];
         right: 0 !important;
         bottom: 43px !important;
       }
+
+      button#place_order {
+        height: 50px !important;
+      }
     }
 
     .checkmark {

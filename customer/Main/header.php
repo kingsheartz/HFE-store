@@ -1170,19 +1170,104 @@ if (session_status() === PHP_SESSION_NONE) {
                           <span style="cursor:pointer" onclick="openNav()">&#9776;</span>
                         </a>
                       </li>
+
                       <?php
-                      if (isset($_SESSION['hfe_name'])) {
+                      $hfe_user_component = isset($_SESSION['hfe_name'])
+                        ? '<span style="font-size: 20px">' . strtoupper(substr($_SESSION['hfe_name'], 0, 1)) . '</span>'
+                        : '<span><i class="fas fa-user"></i></span>';
                       ?>
-                        <li class="userdiv" style="float: right;">
-                          <form action="../Account/registered.php" title="<?= $_SESSION['hfe_name'] ?>" method="post" class="last" onclick="openNav()">
-                            <button class="w3view-cart usericon " type="button" name="submit" value="">
-                              <span id="location"><?= strtoupper(substr($_SESSION['hfe_name'], 0, 1)); ?></span>
-                            </button>
-                          </form>
-                        </li>
-                      <?php
-                      }
-                      ?>
+                      <li class="userdiv" style="float: right;">
+                        <button class="dropdown-toggle usericon" data-toggle="dropdown" type="button" name="submit" value="">
+                          <?= $hfe_user_component ?>
+                        </button>
+                        <ul
+                          class="dropdown-menu"
+                          style="
+                            border: 1px solid rgb(55, 55, 55);
+                            padding: 0px;
+                            background-color: #000 !important;
+                            color:white !important;
+                            border-radius: 5px;
+                            left: unset;
+                            right: 0px;">
+                          <?php
+                          if (!isset($_SESSION['hfe_id'])) {
+                          ?>
+                            <a href="../Account/login.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fa fa-sign-in" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> Login </span>
+                              </li>
+                            </a>
+                            <hr style="margin:0;padding: 0">
+                            <a href="../Account/registered.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fa fa-user-plus" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> Sign Up </span>
+                              </li>
+                            </a>
+                          <?php
+                          } else if (isset($_SESSION['hfe_id'])) {
+                          ?>
+                            <a href="../Order/myorders.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fas fa-shopping-bag" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> My Orders</span>
+                              </li>
+                            </a>
+                            <hr style="margin:0;padding: 0">
+                            <a href="../Order/orderhistory.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fas fa-history" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> Order
+                                  history</span>
+                              </li>
+                            </a>
+                            <hr style="margin:0;padding: 0">
+                            <a href="../Account/edit_user_details.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fas fa-user-cog" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> Change
+                                  details</span>
+                              </li>
+                            </a>
+                            <hr style="margin:0;padding: 0">
+                            <a href="../Account/logout.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fas fa-power-off" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> Log out</span>
+                              </li>
+                            </a>
+                          <?php
+                          }
+                          ?>
+                        </ul>
+                      </li>
+                      <li class="userdiv small" style="float: right;display: none;">
+                        <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
+                          <button class="w3view-cart usericon " type="button" name="submit" value="">
+                            <?= $hfe_user_component ?>
+                          </button>
+                        </form>
+                      </li>
                       <li class="caloriediv">
                         <form action="#" title="Calorie Tracker" method="post" class="last">
                           <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_metrics.php';">
@@ -1318,7 +1403,9 @@ if (session_status() === PHP_SESSION_NONE) {
                       padding: 0px;
                       background-color: #000 !important;
                       color:white !important;
-                      margin-left: -106px;">
+                      border-radius: 5px;
+                      left: unset;
+                      right: -10px;">
                     <?php
                     if (!isset($_SESSION['hfe_id'])) {
                     ?>
