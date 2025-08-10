@@ -278,7 +278,7 @@
               });
             } else if (data.status == 'error') {
               swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "Error logging in",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -292,7 +292,7 @@
               });
             } else if (data.status == 'errornotfound') {
               swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "You are not registered yet",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -323,7 +323,7 @@
           error: function (xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,

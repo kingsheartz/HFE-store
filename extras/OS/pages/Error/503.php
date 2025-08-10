@@ -60,7 +60,7 @@ require dirname(__DIR__, 4) . '/utils/getBaseURL.php';
         </div><br>
         <h2 class="headline" style="margin-top: -20px;color:#F77A00">503</h2>
         <div class="error-content">
-          <h3><i class="fas fa-exclamation-triangle" style="color:#F77A00"></i> Oops! Something went wrong.</h3>
+          <h3><i class="fas fa-exclamation-triangle" style="color:#F77A00"></i> Alert! Something went wrong.</h3>
           <p>
             No service available for the page you are looking for.
             Meanwhile, you may <a href="../../../../hfe.php">return to Home Page</a> or exit your browser.

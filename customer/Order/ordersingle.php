@@ -294,7 +294,7 @@ require "../Main/header.php";
                 $('.background_loader').hide();
                 $('.std_text').hide();
                 swal({
-                  title: "Oops!",
+                  title: "Alert!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,

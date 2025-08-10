@@ -1404,7 +1404,7 @@ QUnit.equiv = (function() {
 	var innerEquiv,
 		// stack to decide between skip/abort functions
 		callers = [],
-		// stack to avoiding loops from circular referencing
+		// stack to avoiding lAlert from circular referencing
 		parents = [],
 
 		getProto = Object.getPrototypeOf || function ( obj ) {

@@ -65,7 +65,7 @@ include "header.php";
               error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                 if (textstatus === "timeout") {
                   swal({
-                    title: "Oops!",
+                    title: "Alert!",
                     text: "server time out",
                     icon: "error",
                     closeOnClickOutside: false,
@@ -92,7 +92,7 @@ include "header.php";
               error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                 if (textstatus === "timeout") {
                   swal({
-                    title: "Oops!",
+                    title: "Alert!",
                     text: "server time out",
                     icon: "error",
                     closeOnClickOutside: false,
@@ -119,7 +119,7 @@ include "header.php";
               error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                 if (textstatus === "timeout") {
                   swal({
-                    title: "Oops!",
+                    title: "Alert!",
                     text: "server time out",
                     icon: "error",
                     closeOnClickOutside: false,

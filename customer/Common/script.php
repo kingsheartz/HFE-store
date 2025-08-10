@@ -469,7 +469,7 @@
     var email = document.getElementById("mobile").value;
     if (email == null || email == "") {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please enter your email ID ! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -481,7 +481,7 @@
     }
     if (ValidateSigninEmail(email) == false) {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Invalid email address! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -494,7 +494,7 @@
     //password verification of null value
     if (password == null || password == "") {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please enter the password ! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -604,7 +604,7 @@
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "Error logging in",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -621,7 +621,7 @@
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "You are not registered yet",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -658,7 +658,7 @@
             $('.real_btn').show();
             $('.load_btn').side();
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -701,7 +701,7 @@
     var postcode = document.getElementById("pincode").value;
     if (postcode == null || postcode == "") {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please enter the pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -712,7 +712,7 @@
       return;
     } else if (postcode.length != 6) {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please enter valid pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -779,7 +779,7 @@
           //CODE TO REMOVE
         } else if (data.status == 'error') {
           swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "Couldn't locate your place",
               icon: "error",
               closeOnClickOutside: false,
@@ -797,7 +797,7 @@
       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
-            title: "Oops!",
+            title: "Alert!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,
@@ -836,7 +836,7 @@
     var regpin = document.getElementById("regpin").value;
     if (regpin == null || regpin == "") {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please enter the pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -847,7 +847,7 @@
       return;
     } else if (regpin.length != 6) {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please enter valid pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -867,7 +867,7 @@
           //console.log(locate[0].PostOffice.length);
           if (locate[0].Status == "Error") {
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "Invalid pincode ! ",
               icon: "error",
               closeOnClickOutside: false,
@@ -928,7 +928,7 @@
           //CODE TO REMOVE
         } else if (data.status == 'error') {
           swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "Couldn't locate your place",
               icon: "error",
               closeOnClickOutside: false,
@@ -946,7 +946,7 @@
       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
-            title: "Oops!",
+            title: "Alert!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,
@@ -1132,7 +1132,7 @@
           error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1196,7 +1196,7 @@
     var nle = document.getElementById("nlmail").value;
     if (nle == null || nle == "") {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please enter your email",
         icon: "error",
         closeOnClickOutside: false,
@@ -1207,7 +1207,7 @@
       return;
     } else if (NLValidateEmail(nle) == false) {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Invalid email address! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -1238,7 +1238,7 @@
             });
           } else if (data.status == 'error') {
             swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "Try agan later",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1275,7 +1275,7 @@
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,

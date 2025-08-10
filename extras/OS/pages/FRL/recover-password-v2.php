@@ -240,7 +240,7 @@ if ($row2) {
       else if (pass1 != pass2) {
 
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Passwords do not match ! Try again ",
           icon: "error",
           closeOnClickOutside: false,
@@ -324,7 +324,7 @@ if ($row2) {
               $('.real_btn').show();
 
               swal({
-                  title: "Oops!",
+                  title: "Alert!",
                   text: "Something went wrong",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -366,7 +366,7 @@ if ($row2) {
               $('.real_btn').show();
 
               swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,

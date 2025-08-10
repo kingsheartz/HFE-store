@@ -3,7 +3,7 @@ function check() {
   ele = ele.toLowerCase();
   if (ele == "") {
     swal({
-      title: "Oops!",
+      title: "Alert!",
       text: "Search field is empty",
       icon: "error",
       closeOnClickOutside: false,
@@ -20,7 +20,7 @@ function check2() {
   ele = ele.toLowerCase();
   if (ele == "") {
     swal({
-      title: "Oops!",
+      title: "Alert!",
       text: "Search field is empty",
       icon: "error",
       closeOnClickOutside: false,

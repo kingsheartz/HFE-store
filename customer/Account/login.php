@@ -239,7 +239,7 @@ require "../Main/footer.php";
     var email = document.getElementById("email").value;
     if (email == null || email == "") {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please enter your email ID ! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -251,7 +251,7 @@ require "../Main/footer.php";
     }
     if (ValidateEmail(email) == false) {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Invalid email address! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -264,7 +264,7 @@ require "../Main/footer.php";
     //password verification of null value
     if (password == null || password == "") {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please enter the password ! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -339,7 +339,7 @@ require "../Main/footer.php";
               });
           } else if (data.status == 'error') {
             swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "Error logging in",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -352,7 +352,7 @@ require "../Main/footer.php";
               });
           } else if (data.status == 'errornotfound') {
             swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "You are not registered yet",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -382,7 +382,7 @@ require "../Main/footer.php";
           console.log("Logging in....", message, xmlhttprequest, textstatus);
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
