@@ -77,12 +77,12 @@ require "../Main/header.php";
   }
 
   .lt_menu {
-    width: 700px;
+    max-width: 700px;
     margin: auto;
   }
 
   .register-main {
-    width: 700px;
+    max-width: 700px;
     margin: auto;
   }
 
