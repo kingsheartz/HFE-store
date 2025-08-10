@@ -671,7 +671,6 @@ if (session_status() === PHP_SESSION_NONE) {
       align-items: center;
       justify-content: center;
       top: 50%;
-      left: 50%;
       position: fixed;
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);

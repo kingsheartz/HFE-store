@@ -489,9 +489,9 @@ function randomGen($min, $max, $quantity)
       }
     }); //closing ajax
   }
-  //WISHLIST ENTRY productS
+  //WISHLIST ENTRY products
   function wishlist_check_list_select(wishlist_id) {
-    $(".background_loader").show();
+    $(".background_loader").css('display', 'flex');
     $(".std_loader").show();
     $.ajax({
       url: "../Common/functions.php", //passing page info

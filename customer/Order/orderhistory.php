@@ -284,7 +284,7 @@ require "../Main/header.php";
 <script>
   $(document).ready(function(f) {
     var pageId = 1;
-    $('#background_loader').show();
+    $('#background_loader').css('display', 'flex');
     $('#std_loader').show();
     var inputVal = $('#order_search').val();
     $.get("gethistorysearch.php", {
@@ -303,7 +303,7 @@ require "../Main/header.php";
   });
   //edited by KinG's HearTz
   function dispsrch() {
-    $('#background_loader').show();
+    $('#background_loader').css('display', 'flex');
     $('#std_loader').show();
     var inputVal = $('#order_search').val();
     $.get("gethistorysearch.php", {
@@ -322,7 +322,7 @@ require "../Main/header.php";
   $(document).on("click", ".pagination li a", function(e) {
     e.preventDefault();
     var pageId = $(this).attr("id");
-    $('#background_loader').show();
+    $('#background_loader').css('display', 'flex');
     $('#std_loader').show();
     var inputVal = $('#order_search').val();
     $.get("gethistorysearch.php", {

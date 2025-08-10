@@ -495,7 +495,7 @@ background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2
 
 background: -webkit-gradient(linear, left bottom, left top, color-stop(0, #0b3d2e), color-stop(1, #1a8065)) !important;
 
-$('#background_loader').show();
+$('#background_loader').css('display', 'flex');
 $('#std_loader').show();
 
 $('#background_loader').hide();

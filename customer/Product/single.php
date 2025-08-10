@@ -1476,7 +1476,7 @@ function randomGen($min, $max, $quantity)
                         if (!empty($img_cnt_row['img_count'])) {
                           if ($img_cnt_row['img_count'] > 3) {
                         ?>
-                            <div class=" col-md-1 col-sm-1 hidescroll left-small-img" style="justify-content: right;overflow-y:scroll;width:100%">
+                            <div class=" col-md-1 col-sm-1 hidescroll left-small-img" style="justify-content: right;overflow-y:scroll;width:100%;">
                             <?php
                           } else {
                             ?>
@@ -1806,11 +1806,11 @@ function randomGen($min, $max, $quantity)
                       -----------------------------------------------------------------------------------------------------------------------------------------------------------
                       -----------------------------------------------------------------------------------------------------------------------------------------------------------
                       ----------------------------------------------------------------------------------------------------------------------------------------------------------->
-                          <div class="container">
-                            <div class="agileinfo_single">
-                              <div class="col-md-12 agileinfo_single_right">
-                                <div class="snipcart-thumb agileinfo_single_right_snipcart"></div>
-                                <div class="div-wrapper large-btn" id="btn-pc" style="width: 80%;margin-left: -30px;display: flex;">
+                          <div class="container no-padding">
+                            <div class="agileinfo_single no-padding" >
+                              <div class="col-md-12 agileinfo_single_right no-padding" style="width: 100%;">
+                                <!-- <div class="snipcart-thumb agileinfo_single_right_snipcart"></div> -->
+                                <div class="div-wrapper large-btn" id="btn-pc" style="width: 100%;margin-top: 2em;margin-bottom: 20px;display: flex;">
                                   <div
                                     class="btn btn-primary btn-lg btn-flat btn-cart button"
                                     id="atc"
@@ -1818,7 +1818,7 @@ function randomGen($min, $max, $quantity)
                                     name="submit"
                                     data-toggle="modal"
                                     data-target="#avail_stores"
-                                    style="max-width: 200px;justify-content: flex-start;border-radius: 4px;">
+                                    style="max-width: 200px;width: 100%;justify-content: flex-start;border-radius: 4px;">
                                     <i class="fas fa-cart-plus mr-2" style="color: cyan"></i>
                                     Add to Cart
                                   </div>
@@ -1829,7 +1829,7 @@ function randomGen($min, $max, $quantity)
                                     name="submit"
                                     data-toggle="modal"
                                     data-target="#avail_stores_buy"
-                                    style="max-width: 200px;min-width: 150px;position: relative;float: left;justify-content: flex-start;border-radius: 4px;">
+                                    style="max-width: 200px;width: 100%;position: relative;float: left;justify-content: flex-start;border-radius: 4px;">
                                     <div
                                       class="btn btn-default btn-lg btn-flat"
                                       type="button"
@@ -1840,7 +1840,6 @@ function randomGen($min, $max, $quantity)
                                     Buy Now
                                   </div>
                                 </div>
-                                <div style="margin-top:20px;"></div>
                               </div>
                             </div>
                           </div>
@@ -2107,7 +2106,7 @@ function randomGen($min, $max, $quantity)
                     }
 
                     function editurresponse() {
-                      $('#background_loader').show();
+                      $('#background_loader').css('display', 'flex');
                       $('#std_loader').show();
                       $('#customer_reviewed_already').hide();
                       var product_description_id = <?= $_GET['id'] ?>;
@@ -2125,7 +2124,7 @@ function randomGen($min, $max, $quantity)
                         success: function(data) { //if registration is success
                           if (data.status == 'success') {
                             $('#edit_customer_reviewed').html(data.editreview);
-                            $('#background_loader').show();
+                            $('#background_loader').css('display', 'flex');
                             $('#std_loader').show();
                             return;
                           } else {
@@ -2142,7 +2141,7 @@ function randomGen($min, $max, $quantity)
                               dangerMode: true,
                               timer: 6000,
                             });
-                            $('#background_loader').show();
+                            $('#background_loader').css('display', 'flex');
                             $('#std_loader').show();
                             return;
                           } else {
