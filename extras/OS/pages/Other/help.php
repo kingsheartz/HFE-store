@@ -2,7 +2,7 @@
 
   Swal.fire({
       title: "invalid number",
-      text: "input is not a number !!!",
+      text: "input is not a number !",
       icon: "error",
       showCancelButton:false,
       showConfirmButton:true,
@@ -306,7 +306,7 @@ LOADER
 .std_loader {
   border: 6px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 6px solid #3498db;
+  border-top: 6px solid #139b3b;
   width: 20px;
   height: 20px;
   -webkit-animation: spin 2s linear infinite; /* Safari */
@@ -574,7 +574,7 @@ function addorremove(checkbox){
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if(textstatus==="timeout") {
               swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,

@@ -220,7 +220,7 @@ require "footer.php";
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -261,7 +261,7 @@ require "footer.php";
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -296,7 +296,7 @@ require "footer.php";
     var namespace = name.split(" ");
     if (name == null || name == "") {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Please enter  your Name",
         icon: "error",
         closeOnClickOutside: false,
@@ -309,7 +309,7 @@ require "footer.php";
     //validating Name is not a number
     if (!(isNaN(name))) {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Please use Albhabets",
         icon: "error",
         closeOnClickOutside: false,
@@ -320,7 +320,7 @@ require "footer.php";
       return false;
     } else if (namespace.length > 1) {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "'SPACE' not allowed",
         icon: "error",
         closeOnClickOutside: false,
@@ -333,8 +333,8 @@ require "footer.php";
     //limiting the name length
     else if (name.length > 20) {
       swal({
-        title: "Oops!!!",
-        text: "Entry is too long !!! ",
+        title: "Oops!",
+        text: "Entry is too long ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -346,8 +346,8 @@ require "footer.php";
     //minimal character check
     else if (name.length < 2) {
       swal({
-        title: "Oops!!!",
-        text: "Entry is too short !!! ",
+        title: "Oops!",
+        text: "Entry is too short ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -359,8 +359,8 @@ require "footer.php";
     //email verification of null value
     if (email == null || email == "") {
       swal({
-        title: "Oops!!!",
-        text: "Please enter your email !!! ",
+        title: "Oops!",
+        text: "Please enter your email ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -371,8 +371,8 @@ require "footer.php";
     }
     if (ValidateEmail(email) == false) {
       swal({
-        title: "Oops!!!",
-        text: "Invalid email address!!! ",
+        title: "Oops!",
+        text: "Invalid email address! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -384,7 +384,7 @@ require "footer.php";
     //message check
     if (message == null || message == "") {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Please enter your message",
         icon: "error",
         closeOnClickOutside: false,
@@ -397,7 +397,7 @@ require "footer.php";
     //validating message is not a number and its length above 4
     else if (!(isNaN(message)) || message.length < 5) {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Invalid message",
         icon: "error",
         closeOnClickOutside: false,
@@ -421,7 +421,7 @@ require "footer.php";
         success: function(data) { //if registration is success
           if (data.status == 'success') {
             swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "Response recorded",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -437,7 +437,7 @@ require "footer.php";
               });
           } else if (data.status == 'error') {
             swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "Try again later",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -452,7 +452,7 @@ require "footer.php";
               });
           } else if (data.status == 'error2') {
             swal({
-                title: "Sorry!!!",
+                title: "Sorry!",
                 text: "Please log in ",
                 icon: "warning",
                 closeOnClickOutside: false,
@@ -471,7 +471,7 @@ require "footer.php";
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,

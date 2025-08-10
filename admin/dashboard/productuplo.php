@@ -281,7 +281,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
             timeout: 600000,
             success: function(data) {
               swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "Images uploaded successfully",
                 icon: "success",
                 closeOnClickOutside: false,

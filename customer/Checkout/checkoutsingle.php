@@ -982,8 +982,8 @@ require "../Main/footer.php";
           var off = Math.round((save * 100) / t_amnt);
           document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
           swal({
-              title: "Out of Stock!!!",
-              text: "Choose another store !!!",
+              title: "Out of Stock!",
+              text: "Choose another store !",
               icon: "warning",
               closeOnClickOutside: false,
               dangerMode: true,
@@ -1001,7 +1001,7 @@ require "../Main/footer.php";
       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,
@@ -1073,7 +1073,7 @@ require "../Main/footer.php";
       order_notes = 0;
     }
     if (checkBox_user.checked == false && checkBox_diff.checked == false) {
-      toastr.error('Require billing details!!!')
+      toastr.error('Require billing details!')
       return;
     } else if (checkBox_user.checked == true) {
       var quantity = document.getElementById('btn_s<?= $store_id . "i" . $idid ?>').innerHTML;
@@ -1133,7 +1133,7 @@ require "../Main/footer.php";
       //validating white spaces
       else if (shipping_first_namespace.length > 1) {
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "'SPACE' not allowed",
           icon: "error",
           closeOnClickOutside: false,
@@ -1169,7 +1169,7 @@ require "../Main/footer.php";
       //validating first name is not a number
       else if (!(isNaN(shipping_last_name))) {
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "Please use Albhabets",
           icon: "error",
           closeOnClickOutside: false,
@@ -1212,7 +1212,7 @@ require "../Main/footer.php";
       //validating address if its length above 4
       if (shipping_address_1 != null && shipping_address_1.length < 10) {
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "Invalid address",
           icon: "error",
           closeOnClickOutside: false,
@@ -1233,8 +1233,8 @@ require "../Main/footer.php";
         return false;
       } else if (shipping_postcode.length != 6) {
         swal({
-          title: "Oops!!!",
-          text: "Please enter valid pincode !!! ",
+          title: "Oops!",
+          text: "Please enter valid pincode ! ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,

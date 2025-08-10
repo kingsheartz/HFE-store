@@ -52,10 +52,6 @@ button:hover {
   border-color: #139b3b !important;
 }
 
-
-
-
-
 .input-field {
   position: relative;
   margin-top: 1rem;
@@ -280,14 +276,14 @@ input.invalid:not([type]), input.invalid:not([type]):focus, input.invalid[type=t
 .std_loader {
   border: 6px solid #f3f3f3;
   border-radius: 50%;
-  border-top: 6px solid #3498db;
+  border-top: 6px solid #139b3b;
   width: 35px;
   height: 35px;
   -webkit-animation: spin 2s linear infinite;
   /* Safari */
   animation: spin 2s linear infinite;
-  top: 50%;
-  left: 50%;
+  top: 50% !important;
+  left: 50% !important;
   position: fixed;
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);

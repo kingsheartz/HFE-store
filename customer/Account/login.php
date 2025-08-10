@@ -239,8 +239,8 @@ require "../Main/footer.php";
     var email = document.getElementById("email").value;
     if (email == null || email == "") {
       swal({
-        title: "Oops!!!",
-        text: "Please enter your email ID !!! ",
+        title: "Oops!",
+        text: "Please enter your email ID ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -251,8 +251,8 @@ require "../Main/footer.php";
     }
     if (ValidateEmail(email) == false) {
       swal({
-        title: "Oops!!!",
-        text: "Invalid email address!!! ",
+        title: "Oops!",
+        text: "Invalid email address! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -264,8 +264,8 @@ require "../Main/footer.php";
     //password verification of null value
     if (password == null || password == "") {
       swal({
-        title: "Oops!!!",
-        text: "Please enter the password !!! ",
+        title: "Oops!",
+        text: "Please enter the password ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -294,10 +294,10 @@ require "../Main/footer.php";
                 showCancelButton: true,
                 showConfirmButton: true,
                 confirmButtonColor: 'red',
-                confirmButtonText: '<i class="fas fa-store"></i> Admin',
+                confirmButtonText: 'Admin <i class="fas fa-store"></i>',
                 cancelButtonColor: 'green',
                 allowOutsideClick: false,
-                cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
+                cancelButtonText: 'User <i class="fa fa-shopping-cart"></i>'
               })
               .then((willSubmit) => {
                 if (willSubmit.dismiss) {
@@ -309,7 +309,7 @@ require "../Main/footer.php";
             return;
           } else if (data.status == 'success') {
             swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "Log in Success",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -324,7 +324,7 @@ require "../Main/footer.php";
               });
           } else if (data.admin == 'true') {
             swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "Admin privileges granted",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -339,7 +339,7 @@ require "../Main/footer.php";
               });
           } else if (data.status == 'error') {
             swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "Error logging in",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -352,7 +352,7 @@ require "../Main/footer.php";
               });
           } else if (data.status == 'errornotfound') {
             swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "You are not registered yet",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -365,7 +365,7 @@ require "../Main/footer.php";
               });
           } else if (data.status == 'error1') {
             swal({
-                title: "Check your mailbox!!!",
+                title: "Check your mailbox!",
                 text: "Pending email verification",
                 icon: "warning",
                 closeOnClickOutside: false,
@@ -382,7 +382,7 @@ require "../Main/footer.php";
           console.log("Logging in....", message, xmlhttprequest, textstatus);
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,

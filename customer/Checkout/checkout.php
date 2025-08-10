@@ -745,7 +745,7 @@ require "../Main/footer.php";
       order_notes = 0;
     }
     if (delivery_option?.value == 0) {
-      toastr.error('Require billing details!!!')
+      toastr.error('Require billing details!')
       return;
     } else if (delivery_option?.value == 1) {
       var uid = "<?= $_SESSION['hfe_id'] ?>";
@@ -798,7 +798,7 @@ require "../Main/footer.php";
       //validating white spaces
       else if (shipping_first_namespace.length > 1) {
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "'SPACE' not allowed",
           icon: "error",
           closeOnClickOutside: false,
@@ -834,7 +834,7 @@ require "../Main/footer.php";
       //validating first name is not a number
       else if (!(isNaN(shipping_last_name))) {
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "Please use Albhabets",
           icon: "error",
           closeOnClickOutside: false,
@@ -877,7 +877,7 @@ require "../Main/footer.php";
       //validating address if its length above 4
       if (shipping_address_1 != null && shipping_address_1.length < 10) {
         swal({
-          title: "Oops!!!",
+          title: "Oops!",
           text: "Invalid address",
           icon: "error",
           closeOnClickOutside: false,
@@ -898,8 +898,8 @@ require "../Main/footer.php";
         return false;
       } else if (shipping_postcode.length != 6) {
         swal({
-          title: "Oops!!!",
-          text: "Please enter valid pincode !!! ",
+          title: "Oops!",
+          text: "Please enter valid pincode ! ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,

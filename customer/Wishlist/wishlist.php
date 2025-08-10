@@ -1014,7 +1014,7 @@ require "../Main/header.php";
               if (data.status == 'success') {
                 if (data.rem_list == 0) {
                   swal({
-                      title: "Empty!!!",
+                      title: "Empty!",
                       text: "Your wishlist is empty",
                       icon: "warning",
                       closeOnClickOutside: false,
@@ -1036,7 +1036,7 @@ require "../Main/header.php";
                 }
               } else {
                 swal({
-                  title: "Try again!!!",
+                  title: "Try again!",
                   icon: "error",
                   dangerMode: true,
                   timer: 6000,
@@ -1047,7 +1047,7 @@ require "../Main/header.php";
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               if (textstatus === "timeout") {
                 swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -1076,23 +1076,23 @@ require "../Main/header.php";
       }
     }
     if (privacy == null || privacy == "") {
-      $('.alert-danger').html(' Choose privacy!!!');
+      $('.alert-danger').html(' Choose privacy!');
       $('.alert-danger').show();
       return false;
     }
     Swal.fire({
-        text: "Creating new list  !!!",
+        text: "Creating new list  !",
         icon: "warning",
-        showCancelButton: true,
-        showConfirmButton: true,
-        confirmButtonColor: 'red',
         allowOutsideClick: false,
-        confirmButtonText: '<i class="fa fa-close"></i> Close',
-        cancelButtonColor: 'green',
-        cancelButtonText: '<i class="fa fa-check"></i> OK'
+        showCancelButton: true,
+        cancelButtonColor: 'red',
+        cancelButtonText: 'Close <i class="fa fa-close"></i>',
+        showConfirmButton: true,
+        confirmButtonColor: 'green',
+        confirmButtonText: 'OK <i class="fa fa-check"></i>'
       })
       .then((willSubmit) => {
-        if (willSubmit.dismiss) {
+        if (willSubmit.isConfirmed) {
           $.ajax({
             url: "../Common/functions.php", //passing page info
             data: {
@@ -1114,7 +1114,7 @@ require "../Main/header.php";
                 var tableBodySmall = $('#show_wishlist_small');
                 tableBodySmall.append(markupsmall);
                 swal({
-                  title: "Created!!!",
+                  title: "Created!",
                   icon: "success",
                   timer: 6000,
                 });
@@ -1124,7 +1124,7 @@ require "../Main/header.php";
                 return;
               } else {
                 swal({
-                  title: "Try again!!!",
+                  title: "Try again!",
                   icon: "error",
                   dangerMode: true,
                   timer: 6000,
@@ -1135,7 +1135,7 @@ require "../Main/header.php";
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               if (textstatus === "timeout") {
                 swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -1148,7 +1148,7 @@ require "../Main/header.php";
               }
             }
           }); //closing ajax
-        } else if (willSubmit.isConfirmed) {
+        } else if (willSubmit.dismiss) {
           return false;
         }
       });

@@ -117,7 +117,7 @@ try {
     if (isset($_SESSION['hfe_failed'])) {
       echo '<div id="cont"><div style="padding-top:100px;"><center><a href="../Main/hfe.php" ><img src="../../images/logo/logo-horizontal.png" style="max-width:250px"></a></center></div>';
       echo '<div id="error" style="font-family:monospace;">';
-      echo "<p style='text-align:center;font-size:30px;color:white;padding-top:5%;'><i style='color:yellow' class='fa fa-warning'></i> " . $_SESSION['hfe_failed'] . " <span style='color:red'>!!!</span></p><br>";
+      echo "<p style='text-align:center;font-size:30px;color:white;padding-top:5%;'><i style='color:yellow' class='fa fa-warning'></i> " . $_SESSION['hfe_failed'] . " <span style='color:red'>!</span></p><br>";
       echo "<center><a style='font-size:34px;color:white;font-weight:bold;text-decoration:none' href='../Account/login.php'><span class='fa fa-sign-in' style='color: white;'></span><i style='color:#FFB04A' class='fas fa-hand-point-right'></i> <span style='color:red'><u>Log In</u></span></a></center>";
       echo '</div></div>';
     }

@@ -174,7 +174,7 @@ if (isset($_GET['product'])) {
     }
     if (flag == 0) {
       swal({
-          title: "Sorry!!!",
+          title: "Sorry!",
           text: "Select a store",
           icon: "warning",
           closeOnClickOutside: false,
@@ -202,7 +202,7 @@ if (isset($_GET['product'])) {
         success: function(data) { //if registration is success
           if (data.status == 'success') {
             swal({
-                title: "Added!!!",
+                title: "Added!",
                 text: "Check your cart",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -226,7 +226,7 @@ if (isset($_GET['product'])) {
             }
           } else if (data.status == 'error') {
             swal({
-                title: "Required!!!",
+                title: "Required!",
                 text: "You need to create an Account",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -242,7 +242,7 @@ if (isset($_GET['product'])) {
               });
           } else if (data.status == 'error1') {
             swal({
-                title: "Not Available!!!",
+                title: "Not Available!",
                 text: "Choose another Store",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -261,7 +261,7 @@ if (isset($_GET['product'])) {
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -397,7 +397,7 @@ if (isset($_GET['product'])) {
           $('.std_text2').hide();
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -492,7 +492,7 @@ if (isset($_GET['product'])) {
             $('.std_text2').hide();
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -538,7 +538,7 @@ if (isset($_GET['product'])) {
             $('.std_text2').hide();
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -632,7 +632,7 @@ if (isset($_GET['product'])) {
             $('.std_text2').hide();
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -720,7 +720,7 @@ if (isset($_GET['product'])) {
           $('.std_text2').hide();
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -815,7 +815,7 @@ if (isset($_GET['product'])) {
             $('.std_text2').hide();
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -861,7 +861,7 @@ if (isset($_GET['product'])) {
             $('.std_text2').hide();
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -955,7 +955,7 @@ if (isset($_GET['product'])) {
             $('.std_text2').hide();
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1876,7 +1876,7 @@ if ($result_cnt == 0) {
           error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1920,7 +1920,7 @@ if ($result_cnt == 0) {
           error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1985,7 +1985,7 @@ if ($result_cnt == 0) {
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               if (textstatus === "timeout") {
                 swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -2052,7 +2052,7 @@ if ($result_cnt == 0) {
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               if (textstatus === "timeout") {
                 swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -2084,7 +2084,7 @@ if ($result_cnt == 0) {
         }
         if (flag == 0) {
           swal({
-              title: "Sorry!!!",
+              title: "Sorry!",
               text: "Select a store",
               icon: "warning",
               closeOnClickOutside: false,
@@ -2119,7 +2119,7 @@ if ($result_cnt == 0) {
             error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
               if (textstatus === "timeout") {
                 swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -2151,7 +2151,7 @@ if ($result_cnt == 0) {
           success: function(data) { //if registration is success
             if (data.status == 'success') {
               swal({
-                  title: "Added!!!",
+                  title: "Added!",
                   text: "Check your wishlist",
                   icon: "success",
                   closeOnClickOutside: false,
@@ -2166,7 +2166,7 @@ if ($result_cnt == 0) {
                 });
             } else if (data.status == 'error') {
               swal({
-                  title: "Required!!!",
+                  title: "Required!",
                   text: "You need to create an Account",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -2185,7 +2185,7 @@ if ($result_cnt == 0) {
           error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,

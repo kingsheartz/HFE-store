@@ -240,8 +240,8 @@ if ($row2) {
       else if (pass1 != pass2) {
 
         swal({
-          title: "Oops!!!",
-          text: "Passwords do not match !!! Try again ",
+          title: "Oops!",
+          text: "Passwords do not match ! Try again ",
           icon: "error",
           closeOnClickOutside: false,
           dangerMode: true,
@@ -280,7 +280,7 @@ if ($row2) {
               $('.real_btn').show();
 
               swal({
-                  title: "Success!!!",
+                  title: "Success!",
                   text: "Password changed",
                   icon: "success",
                   closeOnClickOutside: false,
@@ -304,7 +304,7 @@ if ($row2) {
               $('.real_btn').show();
 
               swal({
-                  title: "Success!!!",
+                  title: "Success!",
                   text: "Password changed",
                   icon: "success",
                   closeOnClickOutside: false,
@@ -324,7 +324,7 @@ if ($row2) {
               $('.real_btn').show();
 
               swal({
-                  title: "Oops!!!",
+                  title: "Oops!",
                   text: "Something went wrong",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -343,7 +343,7 @@ if ($row2) {
               $('.real_btn').show();
 
               swal({
-                  title: "Check your mailbox!!!",
+                  title: "Check your mailbox!",
                   text: "Pending email verification",
                   icon: "warning",
                   closeOnClickOutside: false,
@@ -366,7 +366,7 @@ if ($row2) {
               $('.real_btn').show();
 
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,

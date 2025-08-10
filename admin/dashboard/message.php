@@ -44,7 +44,7 @@ include "header.php";
       $st->execute($data);
 
       if (!$st) {
-        echo "ERROR: Message not sent!!!";
+        echo "ERROR: Message not sent!";
       }
       // Close connection
     }

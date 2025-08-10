@@ -47,7 +47,7 @@
     var link = $('#input_apk_link').val();
     if (link == "" || link == null) {
       swal({
-        title: "Sorry!!!",
+        title: "Sorry!",
         text: "No device selected !",
         icon: "error",
         closeOnClickOutside: false,
@@ -66,7 +66,7 @@
     var link = $('#input_apk_link').val();
     if (link == "" || link == null) {
       swal({
-        title: "Sorry!!!",
+        title: "Sorry!",
         text: "No device selected !",
         icon: "error",
         closeOnClickOutside: false,
@@ -469,8 +469,8 @@
     var email = document.getElementById("mobile").value;
     if (email == null || email == "") {
       swal({
-        title: "Oops!!!",
-        text: "Please enter your email ID !!! ",
+        title: "Oops!",
+        text: "Please enter your email ID ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -481,8 +481,8 @@
     }
     if (ValidateSigninEmail(email) == false) {
       swal({
-        title: "Oops!!!",
-        text: "Invalid email address!!! ",
+        title: "Oops!",
+        text: "Invalid email address! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -494,8 +494,8 @@
     //password verification of null value
     if (password == null || password == "") {
       swal({
-        title: "Oops!!!",
-        text: "Please enter the password !!! ",
+        title: "Oops!",
+        text: "Please enter the password ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -526,17 +526,17 @@
                 text: "User (or) Store owner",
                 icon: "success",
                 showCancelButton: true,
+                cancelButtonColor: 'red',
+                cancelButtonText: 'Admin <i class="fas fa-store"></i>',
                 showConfirmButton: true,
-                confirmButtonColor: 'red',
-                confirmButtonText: '<i class="fas fa-store"></i> Admin',
-                cancelButtonColor: 'green',
+                confirmButtonColor: 'green',
+                confirmButtonText: 'User <i class="fa fa-shopping-cart"></i>',
                 allowOutsideClick: false,
-                cancelButtonText: '<i class="fa fa-shopping-cart"></i> User'
               })
               .then((willSubmit) => {
-                if (willSubmit.dismiss) {
+                if (willSubmit.isConfirmed) {
                   location.href = "hfe.php";
-                } else if (willSubmit.isConfirmed) {
+                } else if (willSubmit.dismiss) {
                   location.href = "../../equipment-store-admin/index.php?id=" + data.id + "";
                 }
               });
@@ -545,7 +545,7 @@
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "Admin privileges granted",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -563,7 +563,7 @@
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "Log in Success",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -586,7 +586,7 @@
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "Admin privileges granted",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -604,7 +604,7 @@
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "Error logging in",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -621,7 +621,7 @@
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "You are not registered yet",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -638,7 +638,7 @@
             $('.real_btn').show();
             $('.load_btn').hide();
             swal({
-                title: "Check your mailbox!!!",
+                title: "Check your mailbox!",
                 text: "Pending email verification",
                 icon: "warning",
                 closeOnClickOutside: false,
@@ -658,7 +658,7 @@
             $('.real_btn').show();
             $('.load_btn').side();
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -701,8 +701,8 @@
     var postcode = document.getElementById("pincode").value;
     if (postcode == null || postcode == "") {
       swal({
-        title: "Oops!!!",
-        text: "Please enter the pincode !!! ",
+        title: "Oops!",
+        text: "Please enter the pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -712,8 +712,8 @@
       return;
     } else if (postcode.length != 6) {
       swal({
-        title: "Oops!!!",
-        text: "Please enter valid pincode !!! ",
+        title: "Oops!",
+        text: "Please enter valid pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -763,7 +763,7 @@
         if (data.status == 'success') {
           //CODE TO REMOVE
           swal({
-              title: "Success!!!",
+              title: "Success!",
               text: "Located Successfully",
               icon: "success",
               closeOnClickOutside: false,
@@ -779,7 +779,7 @@
           //CODE TO REMOVE
         } else if (data.status == 'error') {
           swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "Couldn't locate your place",
               icon: "error",
               closeOnClickOutside: false,
@@ -797,7 +797,7 @@
       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,
@@ -836,8 +836,8 @@
     var regpin = document.getElementById("regpin").value;
     if (regpin == null || regpin == "") {
       swal({
-        title: "Oops!!!",
-        text: "Please enter the pincode !!! ",
+        title: "Oops!",
+        text: "Please enter the pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -847,8 +847,8 @@
       return;
     } else if (regpin.length != 6) {
       swal({
-        title: "Oops!!!",
-        text: "Please enter valid pincode !!! ",
+        title: "Oops!",
+        text: "Please enter valid pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -867,8 +867,8 @@
           //console.log(locate[0].PostOffice.length);
           if (locate[0].Status == "Error") {
             swal({
-              title: "Oops!!!",
-              text: "Invalid pincode !!! ",
+              title: "Oops!",
+              text: "Invalid pincode ! ",
               icon: "error",
               closeOnClickOutside: false,
               dangerMode: true,
@@ -912,7 +912,7 @@
         if (data.status == 'success') {
           //CODE TO REMOVE
           swal({
-              title: "Success!!!",
+              title: "Success!",
               text: "Located Successfully",
               icon: "success",
               closeOnClickOutside: false,
@@ -928,7 +928,7 @@
           //CODE TO REMOVE
         } else if (data.status == 'error') {
           swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "Couldn't locate your place",
               icon: "error",
               closeOnClickOutside: false,
@@ -946,7 +946,7 @@
       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,
@@ -1132,7 +1132,7 @@
           error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
             if (textstatus === "timeout") {
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1196,7 +1196,7 @@
     var nle = document.getElementById("nlmail").value;
     if (nle == null || nle == "") {
       swal({
-        title: "Oops!!!",
+        title: "Oops!",
         text: "Please enter your email",
         icon: "error",
         closeOnClickOutside: false,
@@ -1207,8 +1207,8 @@
       return;
     } else if (NLValidateEmail(nle) == false) {
       swal({
-        title: "Oops!!!",
-        text: "Invalid email address!!! ",
+        title: "Oops!",
+        text: "Invalid email address! ",
         icon: "error",
         closeOnClickOutside: false,
         dangerMode: true,
@@ -1229,7 +1229,7 @@
         success: function(data) {
           if (data.status == 'success') {
             swal({
-              title: "Added!!!",
+              title: "Added!",
               text: "added to Newsletter",
               icon: "success",
               closeOnClickOutside: false,
@@ -1238,7 +1238,7 @@
             });
           } else if (data.status == 'error') {
             swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "Try agan later",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1255,7 +1255,7 @@
               });
           } else if (data.status == 'error2') {
             swal({
-                title: "Not found!!!",
+                title: "Not found!",
                 text: "Please log in",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1275,7 +1275,7 @@
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -1347,7 +1347,7 @@
   /*
     Toast.fire({
       icon: 'error',
-      title: ' Enter your OTP !!! '
+      title: ' Enter your OTP ! '
     })
   */
 </script>

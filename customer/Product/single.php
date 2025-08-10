@@ -1139,7 +1139,7 @@ function randomGen($min, $max, $quantity)
     console.log("id=" + id);
     if (flag == 0) {
       swal({
-          title: "Sorry!!!",
+          title: "Sorry!",
           text: "Select a store",
           icon: "warning",
           closeOnClickOutside: false,
@@ -1169,7 +1169,7 @@ function randomGen($min, $max, $quantity)
           console.log("data=" + data);
           if (data.status == 'success') {
             swal({
-                title: "Added!!!",
+                title: "Added!",
                 text: "Check your cart",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -1199,7 +1199,7 @@ function randomGen($min, $max, $quantity)
             }
           } else if (data.status == 'error') {
             swal({
-                title: "Required!!!",
+                title: "Required!",
                 text: "You need to create an Account",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1215,7 +1215,7 @@ function randomGen($min, $max, $quantity)
               });
           } else if (data.status == 'error1') {
             swal({
-                title: "Not Available!!!",
+                title: "Not Available!",
                 text: "Choose another Store",
                 icon: "error",
                 closeOnClickOutside: false,
@@ -1235,7 +1235,7 @@ function randomGen($min, $max, $quantity)
           console.log("error=" + message);
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -2135,7 +2135,7 @@ function randomGen($min, $max, $quantity)
                         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                           if (textstatus === "timeout") {
                             swal({
-                              title: "Oops!!!",
+                              title: "Oops!",
                               text: "server time out",
                               icon: "error",
                               closeOnClickOutside: false,
@@ -2158,7 +2158,7 @@ function randomGen($min, $max, $quantity)
                         'input[name="rate"]:checked');
                       if (getSelectedValue == null) {
                         swal({
-                          title: "Oops!!!",
+                          title: "Oops!",
                           text: "Please rate this product!!",
                           icon: "error",
                           closeOnClickOutside: false,
@@ -2190,7 +2190,7 @@ function randomGen($min, $max, $quantity)
                               $('#editoraddreview').hide();
                               $('#edit_customer_reviewed').html(data.addreview);
                               swal({
-                                  title: "Thanks!!!",
+                                  title: "Thanks!",
                                   text: "your response is added",
                                   icon: "success",
                                   closeOnClickOutside: false,
@@ -2210,7 +2210,7 @@ function randomGen($min, $max, $quantity)
                           error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                             if (textstatus === "timeout") {
                               swal({
-                                title: "Oops!!!",
+                                title: "Oops!",
                                 text: "server time out",
                                 icon: "error",
                                 closeOnClickOutside: false,
@@ -2253,7 +2253,7 @@ function randomGen($min, $max, $quantity)
                         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                           if (textstatus === "timeout") {
                             swal({
-                              title: "Oops!!!",
+                              title: "Oops!",
                               text: "server time out",
                               icon: "error",
                               closeOnClickOutside: false,
@@ -2989,7 +2989,7 @@ function randomGen($min, $max, $quantity)
                     error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                       if (textstatus === "timeout") {
                         swal({
-                          title: "Oops!!!",
+                          title: "Oops!",
                           text: "server time out",
                           icon: "error",
                           closeOnClickOutside: false,
@@ -3055,7 +3055,7 @@ function randomGen($min, $max, $quantity)
                     error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                       if (textstatus === "timeout") {
                         swal({
-                          title: "Oops!!!",
+                          title: "Oops!",
                           text: "server time out",
                           icon: "error",
                           closeOnClickOutside: false,
@@ -3088,7 +3088,7 @@ function randomGen($min, $max, $quantity)
                 }
                 if (flag == 0) {
                   swal({
-                      title: "Sorry!!!",
+                      title: "Sorry!",
                       text: "Select a store",
                       icon: "warning",
                       closeOnClickOutside: false,
@@ -3118,7 +3118,7 @@ function randomGen($min, $max, $quantity)
                         return;
                       } else if (data.status == 'error') {
                         swal({
-                            title: "Required!!!",
+                            title: "Required!",
                             text: "You need to create an Account",
                             icon: "error",
                             closeOnClickOutside: false,
@@ -3137,7 +3137,7 @@ function randomGen($min, $max, $quantity)
                     error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                       if (textstatus === "timeout") {
                         swal({
-                          title: "Oops!!!",
+                          title: "Oops!",
                           text: "server time out",
                           icon: "error",
                           closeOnClickOutside: false,
@@ -3168,7 +3168,7 @@ function randomGen($min, $max, $quantity)
                     if (data.status == 'success') {
                       $('#wish_cnt_' + wishlist_id + '').html(data.new_wish_cnt);
                       swal({
-                          title: "Added!!!",
+                          title: "Added!",
                           text: "Check your wishlist",
                           icon: "success",
                           closeOnClickOutside: false,
@@ -3185,7 +3185,7 @@ function randomGen($min, $max, $quantity)
                       $(".background_loader").hide();
                       $(".std_loader").hide();
                       swal({
-                          title: "product exists!!!",
+                          title: "product exists!",
                           text: "Check your wishlist",
                           icon: "warning",
                           closeOnClickOutside: false,
@@ -3200,7 +3200,7 @@ function randomGen($min, $max, $quantity)
                         });
                     } else if (data.status == 'error') {
                       swal({
-                          title: "Required!!!",
+                          title: "Required!",
                           text: "You need to create an Account",
                           icon: "error",
                           closeOnClickOutside: false,
@@ -3219,7 +3219,7 @@ function randomGen($min, $max, $quantity)
                   error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                     if (textstatus === "timeout") {
                       swal({
-                        title: "Oops!!!",
+                        title: "Oops!",
                         text: "server time out",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -3283,7 +3283,7 @@ function randomGen($min, $max, $quantity)
                     error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                       if (textstatus === "timeout") {
                         swal({
-                          title: "Oops!!!",
+                          title: "Oops!",
                           text: "server time out",
                           icon: "error",
                           closeOnClickOutside: false,
@@ -3317,7 +3317,7 @@ function randomGen($min, $max, $quantity)
                 }
                 if (flag == 0) {
                   swal({
-                      title: "Sorry!!!",
+                      title: "Sorry!",
                       text: "Select a store",
                       icon: "warning",
                       closeOnClickOutside: false,
@@ -3348,7 +3348,7 @@ function randomGen($min, $max, $quantity)
                         return;
                       } else if (data.status == 'error') {
                         swal({
-                            title: "Not Available!!!",
+                            title: "Not Available!",
                             text: "Choose another Store",
                             icon: "error",
                             closeOnClickOutside: false,
@@ -3364,7 +3364,7 @@ function randomGen($min, $max, $quantity)
                           });
                       } else if (data.status == 'error1' || data.status == 'error2') {
                         swal({
-                            title: "Required!!!",
+                            title: "Required!",
                             text: "You need to create an Account",
                             icon: "error",
                             closeOnClickOutside: false,
@@ -3383,7 +3383,7 @@ function randomGen($min, $max, $quantity)
                     error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                       if (textstatus === "timeout") {
                         swal({
-                          title: "Oops!!!",
+                          title: "Oops!",
                           text: "server time out",
                           icon: "error",
                           closeOnClickOutside: false,

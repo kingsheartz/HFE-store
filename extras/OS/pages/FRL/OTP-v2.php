@@ -186,7 +186,7 @@ session_start();
             $('.std_loader').hide();
 
             swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "OTP Send",
                 icon: "success",
                 closeOnClickOutside: false,
@@ -210,7 +210,7 @@ session_start();
             $('.std_loader').hide();
 
             swal({
-                title: "Success!!!",
+                title: "Success!",
                 text: "OTP Send",
                 closeOnClickOutside: false,
                 dangerMode: true,
@@ -232,7 +232,7 @@ session_start();
             $('.std_loader').hide();
 
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -286,9 +286,9 @@ session_start();
 
         Toast.fire({
           icon: 'error',
-          title: ' Enter your OTP !!! '
+          title: ' Enter your OTP ! '
         })
-        $('#emppass').html("Missing OTP !!!");
+        $('#emppass').html("Missing OTP !");
         $('#emppass').show();
         document.getElementById("otp").focus();
         return;
@@ -296,8 +296,8 @@ session_start();
 
       if (isNaN(otp)) {
 
-        toastr.error('Invalid OTP!!!')
-        $('#emppass').html("Invalid OTP !!!");
+        toastr.error('Invalid OTP!')
+        $('#emppass').html("Invalid OTP !");
         $('#emppass').show();
         document.getElementById("otp").focus();
         return;
@@ -324,7 +324,7 @@ session_start();
               $('.real_btn').show();
 
               swal({
-                  title: "Success!!!",
+                  title: "Success!",
                   text: "Verification success",
                   icon: "success",
                   closeOnClickOutside: false,
@@ -347,7 +347,7 @@ session_start();
               $('.real_btn').show();
 
               swal({
-                  title: "Success!!!",
+                  title: "Success!",
                   text: "Verification success",
                   closeOnClickOutside: false,
                   dangerMode: true,
@@ -366,15 +366,15 @@ session_start();
               $('.real_btn').show();
 
               swal({
-                  title: "Oops!!!",
-                  text: "Invalid OTP !!! ",
+                  title: "Oops!",
+                  text: "Invalid OTP ! ",
                   icon: "error",
                   closeOnClickOutside: false,
                   dangerMode: true,
                 })
                 .then((willSubmit) => {
                   if (willSubmit) {
-                    $('#emppass').html("Invalid OTP !!!");
+                    $('#emppass').html("Invalid OTP !");
                     $('#emppass').show();
                     //location.reload();
                   }
@@ -385,15 +385,15 @@ session_start();
               $('.real_btn').show();
 
               swal({
-                  title: "Oops!!!",
-                  text: " OTP expired!!!",
+                  title: "Oops!",
+                  text: " OTP expired!",
                   icon: "error",
                   closeOnClickOutside: false,
                   dangerMode: true,
                 })
                 .then((willSubmit) => {
                   if (willSubmit) {
-                    $('#emppass').html("OTP expired!!!.");
+                    $('#emppass').html("OTP expired!.");
                     $('#emppass').show();
                     //location.reload();
                   }
@@ -408,7 +408,7 @@ session_start();
               $('.real_btn').show();
 
               swal({
-                title: "Oops!!!",
+                title: "Oops!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,

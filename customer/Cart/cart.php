@@ -475,7 +475,7 @@ function randomGen($min, $max, $quantity)
       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,
@@ -508,7 +508,7 @@ function randomGen($min, $max, $quantity)
           $(".std_loader").hide();
           $('#wish_cnt_' + wishlist_id + '').html(data.new_wish_cnt);
           swal({
-              title: "Added!!!",
+              title: "Added!",
               text: "Check your wishlist",
               icon: "success",
               closeOnClickOutside: false,
@@ -525,7 +525,7 @@ function randomGen($min, $max, $quantity)
           $(".background_loader").hide();
           $(".std_loader").hide();
           swal({
-              title: "product exists!!!",
+              title: "product exists!",
               text: "Check your wishlist",
               icon: "warning",
               closeOnClickOutside: false,
@@ -542,7 +542,7 @@ function randomGen($min, $max, $quantity)
           $(".background_loader").hide();
           $(".std_loader").hide();
           swal({
-              title: "Required!!!",
+              title: "Required!",
               text: "You need to create an Account",
               icon: "error",
               closeOnClickOutside: false,
@@ -563,7 +563,7 @@ function randomGen($min, $max, $quantity)
           $(".background_loader").hide();
           $(".std_loader").hide();
           swal({
-            title: "Oops!!!",
+            title: "Oops!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,
@@ -687,7 +687,7 @@ function randomGen($min, $max, $quantity)
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!!!",
+              title: "Oops!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -1733,7 +1733,7 @@ function randomGen($min, $max, $quantity)
                 success: function(data) { //if registration is success
                   if (data.status == 'success') {
                     swal({
-                        title: "Updated!!!",
+                        title: "Updated!",
                         text: "product is updated",
                         icon: "success",
                         closeOnClickOutside: false,
@@ -1759,7 +1759,7 @@ function randomGen($min, $max, $quantity)
                 error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                   if (textstatus === "timeout") {
                     swal({
-                      title: "Oops!!!",
+                      title: "Oops!",
                       text: "server time out",
                       icon: "error",
                       closeOnClickOutside: false,
@@ -1838,7 +1838,7 @@ function randomGen($min, $max, $quantity)
                     success: function(data) { //if registration is success
                       if (data.status == 'success') {
                         swal({
-                            title: "Updated!!!",
+                            title: "Updated!",
                             text: "Cart is updated",
                             icon: "success",
                             closeOnClickOutside: false,
@@ -1864,7 +1864,7 @@ function randomGen($min, $max, $quantity)
                     error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                       if (textstatus === "timeout") {
                         swal({
-                          title: "Oops!!!",
+                          title: "Oops!",
                           text: "server time out",
                           icon: "error",
                           closeOnClickOutside: false,
@@ -1887,8 +1887,8 @@ function randomGen($min, $max, $quantity)
               var store_id = store_id;
               var product_description_id = product_description_id;
               swal({
-                  title: "Remove !!!",
-                  text: "Are you sure!!! ",
+                  title: "Remove !",
+                  text: "Are you sure! ",
                   icon: "warning",
                   buttons: true,
                   dangerMode: true,
@@ -1922,7 +1922,7 @@ function randomGen($min, $max, $quantity)
                           $('#total_rm_cnt').html(data.cartcnt);
                           if (data.cart == 0) {
                             swal({
-                                title: "Empty!!!",
+                                title: "Empty!",
                                 text: "Your cart is empty",
                                 icon: "warning",
                                 closeOnClickOutside: false,
@@ -1951,7 +1951,7 @@ function randomGen($min, $max, $quantity)
                           }
                         } else {
                           swal({
-                            title: "Try again!!!",
+                            title: "Try again!",
                             icon: "error",
                             dangerMode: true,
                             timer: 6000,
@@ -1962,7 +1962,7 @@ function randomGen($min, $max, $quantity)
                       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                         if (textstatus === "timeout") {
                           swal({
-                            title: "Oops!!!",
+                            title: "Oops!",
                             text: "server time out",
                             icon: "error",
                             closeOnClickOutside: false,
@@ -2121,8 +2121,8 @@ function randomGen($min, $max, $quantity)
                     document.getElementById('save_s' + store_id + 'i' + product_description_id).innerHTML = save;
                     document.getElementById('off_s' + store_id + 'i' + product_description_id).innerHTML = off;
                     swal({
-                        title: "Out of Stock!!!",
-                        text: "Choose another store !!!",
+                        title: "Out of Stock!",
+                        text: "Choose another store !",
                         icon: "warning",
                         closeOnClickOutside: false,
                         dangerMode: true,
@@ -2140,7 +2140,7 @@ function randomGen($min, $max, $quantity)
                 error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                   if (textstatus === "timeout") {
                     swal({
-                      title: "Oops!!!",
+                      title: "Oops!",
                       text: "server time out",
                       icon: "error",
                       closeOnClickOutside: false,

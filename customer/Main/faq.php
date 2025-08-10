@@ -96,7 +96,7 @@ require "header.php";
               <li style="list-style-type:disc !important">Step 3: You'll receive an 6 digit OTP to your email.</li>
               <li style="list-style-type:disc !important">Step 4: Click on the Verify OTP button to verify your OTP.</li>
               <li style="list-style-type:disc !important">Step 5: Enter your new password and confirm it to change your previous password to new.</li>
-              <li style="list-style-type:none !important">You are all set !!! Enjoy shopping with us :)
+              <li style="list-style-type:none !important">You are all set ! Enjoy shopping with us :)
               </li>
             </ol>
             </p>

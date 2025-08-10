@@ -43,7 +43,7 @@ require "head.php";
       $st->execute($data);
       if ($st) {
       } else {
-        echo "ERROR: Message not sent!!!";
+        echo "ERROR: Message not sent!";
       }
       // Close connection
     }

@@ -661,7 +661,7 @@ if (session_status() === PHP_SESSION_NONE) {
     .std_loader {
       border: 6px solid #f3f3f3;
       border-radius: 50%;
-      border-top: 6px solid #3498db;
+      border-top: 6px solid #139b3b;
       width: 35px;
       height: 35px;
       -webkit-animation: spin 2s linear infinite;
@@ -671,6 +671,7 @@ if (session_status() === PHP_SESSION_NONE) {
       align-items: center;
       justify-content: center;
       top: 50%;
+      left: 50%;
       position: fixed;
       -ms-transform: translate(-50%, -50%);
       transform: translate(-50%, -50%);
