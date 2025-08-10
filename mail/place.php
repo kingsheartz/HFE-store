@@ -134,7 +134,7 @@ $mail->Port = 587; // TLS only
 $mail->SMTPSecure = 'tls'; // ssl is deprecated
 $mail->SMTPAuth = true;
 $mail->Username = "healthandfitnessequipmentstore@gmail.com"; // email
-$mail->Password = "zoqvnbgcszvohhqe"; // password
+$mail->Password = "vkmtoesjfsjxqkbf"; // password
 $mail->setFrom('healthandfitnessequipmentstore@gmail.com', 'HFE-Store'); // From email and name
 $mail->addAddress('govind.das279@gmail.com', 'Govind'); // to email and name
 $mail->Subject = $subject;
