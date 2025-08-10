@@ -1292,7 +1292,7 @@ if (session_status() === PHP_SESSION_NONE) {
                       <li class="cartdiv">
                         <form action="#" title="Cart" method="post" class="last">
                           <div id="cart" class="btn-group btn-shopping-cart">
-                            <a href="..\Cart\cart.php">
+                            <a href="../Cart/cart.php">
                               <div class="shopcart">
                                 <div id="sm-cartcnt" class="crt-count">
                                   <?php
@@ -1447,8 +1447,7 @@ if (session_status() === PHP_SESSION_NONE) {
                           onmouseleave="$(this).css('background-color','black')"
                           style="padding-bottom: 8px;;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-history" style="color: white;"></span>
-                          <span style="font-family: arial;font-weight: 700; "> Order
-                            history</span>
+                          <span style="font-family: arial;font-weight: 700; "> Order history</span>
                         </li>
                       </a>
                       <hr style="margin:0;padding: 0">
@@ -1458,8 +1457,7 @@ if (session_status() === PHP_SESSION_NONE) {
                           onmouseleave="$(this).css('background-color','black')"
                           style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-user-cog" style="color: white;"></span>
-                          <span style="font-family: arial;font-weight: 700; "> Change
-                            details</span>
+                          <span style="font-family: arial;font-weight: 700; "> Change details</span>
                         </li>
                       </a>
                       <hr style="margin:0;padding: 0">
@@ -1611,9 +1609,53 @@ if (session_status() === PHP_SESSION_NONE) {
       </i>
     </a><br>
     <!-- ||||||||||||||||||||||||||||||||||||||||||||||||#1#|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
-    <a class="side_nav_content_header" href="#" style="color: #139b3b">
-      <i class="fa fa-sm fa-shopping-cart" style="color:white "></i> Shop By Category
-    </a>
+    <!-- Account -->
+    <a class="side_nav_content_header" href="#" style="color: #139b3b">👤 Account</a>
+    <?php
+    if (isset($_SESSION['hfe_id'])) {
+    ?>
+      <a
+        class="side_nav_content_head"
+        onclick="closeNav()"
+        href="#myModal"
+        data-toggle="modal"
+        data-dismiss="modal">
+        <i class="fa fa-sm fa-sign-in" style="color:white "></i> Sign In
+      </a>
+      <a class="side_nav_content_head" href="../Account/registered.php">
+        <i class="fa fa-sm fa-user-plus" style="color:white"></i> Register
+      </a>
+    <?php
+    } else {
+    ?>
+      <a class="side_nav_content_head" href="../Account/edit_user_details.php">
+        <i class="fas fa-user-cog" style="color:white"></i> My Account
+      </a>
+      <a class="side_nav_content_head" href="../Order/myorders.php">
+        <i class="fas fa-shopping-bag" style="color:white"></i> My orders
+      </a>
+      <a class="side_nav_content_head" href="../Order/orderhistory.php">
+        <i class="fas fa-history" style="color:white"></i> Order history
+      </a>
+      <!-- Wishlist ❤️ -->
+      <a class="side_nav_content_head" href="../Wishlist/wishlist.php">
+        <i class="fa fa-heart" style="color:white"></i> Wishlist
+      </a>
+      <!-- My Cart 🛒 -->
+      <a class="side_nav_content_head" href="../Cart/cart.php">
+        <i class="fa fa-cart-arrow-down" style="color:white"></i> My Cart
+      </a>
+      <a class="side_nav_content_head" href="../Account/logout.php">
+        <i class="fas fa-power-off" style="color:white"></i> Log out
+      </a>
+    <?php
+    }
+    ?>
+    <a class="side_nav_content_end" href="#"></a>
+    <!-- Account -->
+
+    <!-- Shop -->
+    <a class="side_nav_content_header" href="#" style="color: #139b3b">🛍️ Shop</a>
     <?php
     require dirname(__DIR__, 2) . '/db/pdo.php';
     $query11 = "SELECT * from  category";
@@ -1623,7 +1665,7 @@ if (session_status() === PHP_SESSION_NONE) {
       $category_name = $row11['category_name'];
     ?>
       <button class="dropdown-btn  category_side_head" id="list_enda" style="width: 100%;float: left;padding-left: 0px;">
-        <a href="../Product/products.php?category_id=<?= $category_id ?>" style="color: white;"> <?= $category_name ?></a>
+        <a href="../Product/products.php?category_id=<?= $category_id ?>" style="color: white;"><?= $category_name ?></a>
       </button>
     <?php
     }
@@ -1640,37 +1682,37 @@ if (session_status() === PHP_SESSION_NONE) {
     <div id="side_cat_list_endi" style="display: none;margin-top: 37px;"></div><!--n+4 breaks 37px difference-->
     <div id="side_cat_list_endj" style="display: none;margin-top: 0px;"></div><!--n+4 breaks 37px difference-->
     <a class="side_nav_content_end" id="side_nav_content_end_line" href="#"></a><br />
-    <a class="side_nav_content_header" href="#" style="color: #139b3b">
-      <i class="fa fa-sm fa-cog" style="color:white "></i> Help & Settings
-    </a>
+    <!-- Shop -->
+
+    <!-- Fitness Tools -->
     <?php
     if (isset($_SESSION['hfe_id'])) {
     ?>
-      <a class="side_nav_content_head" href="../Account/edit_user_details.php">My Account</a>
-      <a class="side_nav_content_head" href="../Order/myorders.php">My orders</a>
-    <?php
-    }
-    ?>
-    <a class="side_nav_content_head" href="../Main/about.php">About</a>
-    <a class="side_nav_content_head" href="../Main/contact.php">Contact</a>
-    <?php
-    if (!isset($_SESSION['hfe_id'])) {
-    ?>
-      <a
-        class="side_nav_content_head"
-        onclick="closeNav()"
-        href="#myModal"
-        data-toggle="modal"
-        data-dismiss="modal">Sign In
+      <a class="side_nav_content_header" href="#" style="color: #139b3b">📊 Fitness Tools</a>
+      <a class="side_nav_content_head" href="../Main/calorie_metrics.php">
+        <i class="fas fa-heartbeat" aria-hidden="true"></i> Calorie Tracker
       </a>
-    <?php
-    } else {
-    ?>
-      <a class="side_nav_content_head" href="../Account/logout.php">Log out</a>
+      <a class="side_nav_content_head" href="../Main/bmi_calculator.php">
+        <i class="fa fa-calculator" aria-hidden="true"></i> BMI Calculator
+      </a>
+      <a class="side_nav_content_end" href="#"></a>
     <?php
     }
     ?>
+    <!-- Fitness Tools -->
+
+    <!-- Help & Info -->
+    <a class="side_nav_content_header" href="#" style="color: #139b3b">
+      <i class="fa fa-sm fa-cog" style="color:white "></i> Help & Info
+    </a>
+    <a class="side_nav_content_head" href="../Main/about.php">
+      <i class="fa fa-lg fa-info-circle" style="color:white "></i> About Us
+    </a>
+    <a class="side_nav_content_head" href="../Main/contact.php">
+      <i class="fas fa-lg fa-address-card" style="color:white "></i> Contact Support
+    </a>
     <a class="side_nav_content_end" href="#"></a>
+    <!-- Help & Info -->
   </div>
   <!--SIDE-BAR-DIV #139b3b,#02171e,#337ab7-->
   <!--<div id="main_all" style="padding: 0px;margin: 0px;left: 0px;right: 0px">-->

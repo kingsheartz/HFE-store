@@ -12,7 +12,7 @@ require "../Main/header.php";
     color: #139b3b !important;
   }
 
-  a:hover {
+  .login p a:hover {
     color: #3399cc !important;
   }
 
