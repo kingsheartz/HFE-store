@@ -578,7 +578,7 @@ require dirname(__DIR__, 4) . '/utils/getBaseURL.php';
       <br><br>
       <div class="error-page">
         <div class="error-content">
-          <h3><i class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
+          <h3><i class="fas fa-exclamation-triangle text-warning"></i> Alert! Page not found.</h3>
           <br>
           <h4>
             We could not find the page you were looking for.

@@ -177,6 +177,10 @@ $pdt_cnt = $stmt->rowCount();
         right: 0 !important;
         bottom: 50px !important;
       }
+
+      button#place_order {
+        height: 50px !important;
+      }
     }
 
     .checkmark {
@@ -719,6 +723,7 @@ require "../Main/footer.php";
     $("#stda_div").css("display", "none");
     checkBox_diff.checked = false;
   });
+
   function placeorder() {
     var order_notes = document.getElementById('order_comments').value;
     if (order_notes == "" || order_notes == null) {
@@ -778,7 +783,7 @@ require "../Main/footer.php";
       //validating white spaces
       else if (shipping_first_namespace.length > 1) {
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "'SPACE' not allowed",
           icon: "error",
           closeOnClickOutside: false,
@@ -814,7 +819,7 @@ require "../Main/footer.php";
       //validating first name is not a number
       else if (!(isNaN(shipping_last_name))) {
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Please use Albhabets",
           icon: "error",
           closeOnClickOutside: false,
@@ -857,7 +862,7 @@ require "../Main/footer.php";
       //validating address if its length above 4
       if (shipping_address_1 != null && shipping_address_1.length < 10) {
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Invalid address",
           icon: "error",
           closeOnClickOutside: false,
@@ -878,7 +883,7 @@ require "../Main/footer.php";
         return false;
       } else if (shipping_postcode.length != 6) {
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Please enter valid pincode ! ",
           icon: "error",
           closeOnClickOutside: false,

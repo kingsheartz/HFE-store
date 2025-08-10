@@ -60,7 +60,7 @@ require dirname(__DIR__, 4) . '/utils/getBaseURL.php';
         </div><br>
         <h2 class="headline text-danger" style="margin-top: -20px;">401</h2>
         <div class="error-content">
-          <h3><i class="fas fa-exclamation-triangle text-danger"></i> Oops! Something went wrong.</h3>
+          <h3><i class="fas fa-exclamation-triangle text-danger"></i> Alert! Something went wrong.</h3>
           <p>
             The page you are looking for is unauthorized and you can't access this kind of pages.
             Meanwhile, you may <a href="../../../../hfe.php">return to Home Page</a> or exit your browser.

@@ -324,7 +324,7 @@ a:hover {
     <section class="content" style="margin-bottom: -20px">
       <div class="error-page">
         <div class="error-content">
-          <h3><i style="color: #FFCC00" class="fas fa-exclamation-triangle text-warning"></i> Oops! Page not found.</h3>
+          <h3><i style="color: #FFCC00" class="fas fa-exclamation-triangle text-warning"></i> Alert! Page not found.</h3>
 <!--
           <br>
           <h5 style="text-align: left;">

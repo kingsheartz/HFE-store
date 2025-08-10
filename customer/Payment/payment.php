@@ -225,7 +225,7 @@ log_message("Payment page data used: " . json_encode([
                 $('.real_btn').show();
                 $('.std_text3').hide();
                 swal({
-                  title: "Oops!",
+                  title: "Alert!",
                   text: "server time out",
                   icon: "error",
                   closeOnClickOutside: false,

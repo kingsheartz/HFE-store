@@ -1170,19 +1170,104 @@ if (session_status() === PHP_SESSION_NONE) {
                           <span style="cursor:pointer" onclick="openNav()">&#9776;</span>
                         </a>
                       </li>
+
                       <?php
-                      if (isset($_SESSION['hfe_name'])) {
+                      $hfe_user_component = isset($_SESSION['hfe_name'])
+                        ? '<span style="font-size: 20px">' . strtoupper(substr($_SESSION['hfe_name'], 0, 1)) . '</span>'
+                        : '<span><i class="fas fa-user"></i></span>';
                       ?>
-                        <li class="userdiv" style="float: right;">
-                          <form action="../Account/registered.php" title="<?= $_SESSION['hfe_name'] ?>" method="post" class="last" onclick="openNav()">
-                            <button class="w3view-cart usericon " type="button" name="submit" value="">
-                              <span id="location"><?= strtoupper(substr($_SESSION['hfe_name'], 0, 1)); ?></span>
-                            </button>
-                          </form>
-                        </li>
-                      <?php
-                      }
-                      ?>
+                      <li class="userdiv" style="float: right;">
+                        <button class="dropdown-toggle usericon" data-toggle="dropdown" type="button" name="submit" value="">
+                          <?= $hfe_user_component ?>
+                        </button>
+                        <ul
+                          class="dropdown-menu"
+                          style="
+                            border: 1px solid rgb(55, 55, 55);
+                            padding: 0px;
+                            background-color: #000 !important;
+                            color:white !important;
+                            border-radius: 5px;
+                            left: unset;
+                            right: 0px;">
+                          <?php
+                          if (!isset($_SESSION['hfe_id'])) {
+                          ?>
+                            <a href="../Account/login.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fa fa-sign-in" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> Login </span>
+                              </li>
+                            </a>
+                            <hr style="margin:0;padding: 0">
+                            <a href="../Account/registered.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fa fa-user-plus" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> Sign Up </span>
+                              </li>
+                            </a>
+                          <?php
+                          } else if (isset($_SESSION['hfe_id'])) {
+                          ?>
+                            <a href="../Order/myorders.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fas fa-shopping-bag" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> My Orders</span>
+                              </li>
+                            </a>
+                            <hr style="margin:0;padding: 0">
+                            <a href="../Order/orderhistory.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fas fa-history" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> Order
+                                  history</span>
+                              </li>
+                            </a>
+                            <hr style="margin:0;padding: 0">
+                            <a href="../Account/edit_user_details.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fas fa-user-cog" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> Change
+                                  details</span>
+                              </li>
+                            </a>
+                            <hr style="margin:0;padding: 0">
+                            <a href="../Account/logout.php" style="height: 50px;display: flex;">
+                              <li
+                                onmouseover="$(this).css('color','white')"
+                                onmouseleave="$(this).css('background-color','black')"
+                                style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start;align-items: center;gap: 10px;width: -webkit-fill-available;">&nbsp;
+                                <span class="fas fa-power-off" style="color: white;"></span>
+                                <span style="font-family: arial;font-weight: 700;color: white;"> Log out</span>
+                              </li>
+                            </a>
+                          <?php
+                          }
+                          ?>
+                        </ul>
+                      </li>
+                      <li class="userdiv small" style="float: right;display: none;">
+                        <form action="../Account/registered.php" method="post" class="last" onclick="openNav()">
+                          <button class="w3view-cart usericon " type="button" name="submit" value="">
+                            <?= $hfe_user_component ?>
+                          </button>
+                        </form>
+                      </li>
                       <li class="caloriediv">
                         <form action="#" title="Calorie Tracker" method="post" class="last">
                           <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_metrics.php';">
@@ -1207,7 +1292,7 @@ if (session_status() === PHP_SESSION_NONE) {
                       <li class="cartdiv">
                         <form action="#" title="Cart" method="post" class="last">
                           <div id="cart" class="btn-group btn-shopping-cart">
-                            <a href="..\Cart\cart.php">
+                            <a href="../Cart/cart.php">
                               <div class="shopcart">
                                 <div id="sm-cartcnt" class="crt-count">
                                   <?php
@@ -1318,7 +1403,9 @@ if (session_status() === PHP_SESSION_NONE) {
                       padding: 0px;
                       background-color: #000 !important;
                       color:white !important;
-                      margin-left: -106px;">
+                      border-radius: 5px;
+                      left: unset;
+                      right: -10px;">
                     <?php
                     if (!isset($_SESSION['hfe_id'])) {
                     ?>
@@ -1360,8 +1447,7 @@ if (session_status() === PHP_SESSION_NONE) {
                           onmouseleave="$(this).css('background-color','black')"
                           style="padding-bottom: 8px;;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-history" style="color: white;"></span>
-                          <span style="font-family: arial;font-weight: 700; "> Order
-                            history</span>
+                          <span style="font-family: arial;font-weight: 700; "> Order history</span>
                         </li>
                       </a>
                       <hr style="margin:0;padding: 0">
@@ -1371,8 +1457,7 @@ if (session_status() === PHP_SESSION_NONE) {
                           onmouseleave="$(this).css('background-color','black')"
                           style="padding-bottom: 8px;padding-top: 8px;display: flex;justify-content: flex-start; align-items: center; gap: 10px;">&nbsp;
                           <span class="fas fa-user-cog" style="color: white;"></span>
-                          <span style="font-family: arial;font-weight: 700; "> Change
-                            details</span>
+                          <span style="font-family: arial;font-weight: 700; "> Change details</span>
                         </li>
                       </a>
                       <hr style="margin:0;padding: 0">
@@ -1524,9 +1609,54 @@ if (session_status() === PHP_SESSION_NONE) {
       </i>
     </a><br>
     <!-- ||||||||||||||||||||||||||||||||||||||||||||||||#1#|||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||||-->
-    <a class="side_nav_content_header" href="#" style="color: #139b3b">
-      <i class="fa fa-sm fa-shopping-cart" style="color:white "></i> Shop By Category
-    </a>
+    <!-- Account -->
+    <a class="side_nav_content_header" href="#" style="color: #139b3b;">👤 Account</a>
+    <?php
+    if (!isset($_SESSION['hfe_id'])) {
+    ?>
+      <a
+        class="side_nav_content_head"
+        onclick="closeNav()"
+        href="#myModal"
+        data-toggle="modal"
+        data-dismiss="modal">
+        <i class="fa fa-sm fa-sign-in" style="color: #3399cc;"></i>&nbsp;&nbsp;Sign In
+      </a>
+      <a class="side_nav_content_head" href="../Account/registered.php">
+        <i class="fa fa-sm fa-user-plus" style="color: #139b3b;"></i>&nbsp;&nbsp;Register
+      </a>
+    <?php
+    } else {
+    ?>
+      <a class="side_nav_content_head" href="../Account/edit_user_details.php">
+        🪪 My Account
+      </a>
+      <a class="side_nav_content_head" href="../Order/myorders.php">
+        📦 My orders
+      </a>
+      <a class="side_nav_content_head" href="../Order/orderhistory.php">
+        <i class="fas fa-history" style="color: orange;"></i>&nbsp;&nbsp;Order history
+      </a>
+      <!-- Wishlist ❤️ -->
+      <a class="side_nav_content_head" href="../Wishlist/wishlist.php">
+        ❤️ Wishlist
+      </a>
+      <!-- My Cart 🛒 -->
+      <a class="side_nav_content_head" href="../Cart/cart.php">
+        🛒 My Cart
+      </a>
+      <a class="side_nav_content_head" href="../Account/logout.php">
+        <i class="fas fa-power-off" style="color: red;"></i>&nbsp;&nbsp;Log out
+      </a>
+    <?php
+    }
+    ?>
+    <a class="side_nav_content_end" href="#"></a>
+    <br />
+    <!-- Account -->
+
+    <!-- Shop -->
+    <a class="side_nav_content_header" href="#" style="color: #139b3b;">🛍️ Shop</a>
     <?php
     require dirname(__DIR__, 2) . '/db/pdo.php';
     $query11 = "SELECT * from  category";
@@ -1535,8 +1665,12 @@ if (session_status() === PHP_SESSION_NONE) {
       $category_id = $row11['category_id'];
       $category_name = $row11['category_name'];
     ?>
-      <button class="dropdown-btn  category_side_head" id="list_enda" style="width: 100%;float: left;padding-left: 0px;">
-        <a href="../Product/products.php?category_id=<?= $category_id ?>" style="color: white;"> <?= $category_name ?></a>
+      <button 
+        class="dropdown-btn category_side_head" 
+        id="list_enda" 
+        style="width: 100%;float: left;padding: 8px 8px 8px 32px !important;display: flex;align-items: flex-start;gap: 5px;">
+        <i class="fa fa-arrow-right" aria-hidden="true" style="color: #fe9126;margin: 0px;margin-top: 3px;"></i>
+        <a href="../Product/products.php?category_id=<?= $category_id ?>" style="color: white;padding: 0px;"> <?= $category_name ?></a>
       </button>
     <?php
     }
@@ -1552,38 +1686,40 @@ if (session_status() === PHP_SESSION_NONE) {
     <div id="side_cat_list_endh" style="display: none;margin-top: 74px;"></div><!--n+4 breaks 37px difference-->
     <div id="side_cat_list_endi" style="display: none;margin-top: 37px;"></div><!--n+4 breaks 37px difference-->
     <div id="side_cat_list_endj" style="display: none;margin-top: 0px;"></div><!--n+4 breaks 37px difference-->
-    <a class="side_nav_content_end" id="side_nav_content_end_line" href="#"></a><br />
-    <a class="side_nav_content_header" href="#" style="color: #139b3b">
-      <i class="fa fa-sm fa-cog" style="color:white "></i> Help & Settings
-    </a>
+    <a class="side_nav_content_end" id="side_nav_content_end_line" href="#"></a>
+    <br />
+    <!-- Shop -->
+
+    <!-- Fitness Tools -->
     <?php
     if (isset($_SESSION['hfe_id'])) {
     ?>
-      <a class="side_nav_content_head" href="../Account/edit_user_details.php">My Account</a>
-      <a class="side_nav_content_head" href="../Order/myorders.php">My orders</a>
-    <?php
-    }
-    ?>
-    <a class="side_nav_content_head" href="../Main/about.php">About</a>
-    <a class="side_nav_content_head" href="../Main/contact.php">Contact</a>
-    <?php
-    if (!isset($_SESSION['hfe_id'])) {
-    ?>
-      <a
-        class="side_nav_content_head"
-        onclick="closeNav()"
-        href="#myModal"
-        data-toggle="modal"
-        data-dismiss="modal">Sign In
+      <a class="side_nav_content_header" href="#" style="color: #139b3b;">📊 Fitness Tools</a>
+      <a class="side_nav_content_head" href="../Main/calorie_metrics.php">
+        <i class="fas fa-heartbeat" aria-hidden="true" style="color: #ff0db2;"></i>&nbsp;&nbsp;Calorie Tracker
       </a>
-    <?php
-    } else {
-    ?>
-      <a class="side_nav_content_head" href="../Account/logout.php">Log out</a>
+      <a class="side_nav_content_head" href="../Main/bmi_calculator.php">
+        <i class="fa fa-calculator" aria-hidden="true" style="color: #a1a1a1;"></i>&nbsp;&nbsp;BMI Calculator
+      </a>
+      <a class="side_nav_content_end" href="#"></a>
+      <br />
     <?php
     }
     ?>
+    <!-- Fitness Tools -->
+
+    <!-- Help & Info -->
+    <a class="side_nav_content_header" href="#" style="color: #139b3b;">
+      ⚙️ Help & Info
+    </a>
+    <a class="side_nav_content_head" href="../Main/about.php">
+      ℹ️ About Us
+    </a>
+    <a class="side_nav_content_head" href="../Main/contact.php">
+      👥 Contact Support
+    </a>
     <a class="side_nav_content_end" href="#"></a>
+    <!-- Help & Info -->
   </div>
   <!--SIDE-BAR-DIV #139b3b,#02171e,#337ab7-->
   <!--<div id="main_all" style="padding: 0px;margin: 0px;left: 0px;right: 0px">-->

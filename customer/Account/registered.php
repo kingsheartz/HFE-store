@@ -1169,7 +1169,7 @@ if (isset($_GET['verified'])) {
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -1210,7 +1210,7 @@ if (isset($_GET['verified'])) {
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -1261,7 +1261,7 @@ if (isset($_GET['verified'])) {
     if (!(isNaN(first_name))) {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Please use Albhabets",
           icon: "error",
           closeOnClickOutside: false,
@@ -1277,7 +1277,7 @@ if (isset($_GET['verified'])) {
     //validating white spaces
     else if (first_namespace.length > 1) {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "'SPACE' not allowed",
         icon: "error",
         closeOnClickOutside: false,
@@ -1293,7 +1293,7 @@ if (isset($_GET['verified'])) {
     else if (first_name.length > 20) {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Entry is too long ! ",
           icon: "error",
           closeOnClickOutside: false,
@@ -1310,7 +1310,7 @@ if (isset($_GET['verified'])) {
     else if (first_name.length < 2) {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Entry is too short ! ",
           icon: "error",
           closeOnClickOutside: false,
@@ -1327,7 +1327,7 @@ if (isset($_GET['verified'])) {
     if (last_name == null || last_name == "") {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Please enter  your last name",
           icon: "error",
           closeOnClickOutside: false,
@@ -1343,7 +1343,7 @@ if (isset($_GET['verified'])) {
     //validating first name is not a number
     else if (!(isNaN(last_name))) {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please use Albhabets",
         icon: "error",
         closeOnClickOutside: false,
@@ -1359,7 +1359,7 @@ if (isset($_GET['verified'])) {
     if (phone == null || phone == "") {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Please enter your phone number",
           icon: "error",
           closeOnClickOutside: false,
@@ -1376,7 +1376,7 @@ if (isset($_GET['verified'])) {
     else if (isNaN(phone) || phone.length != 10) {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Invalid phone number",
           icon: "error",
           closeOnClickOutside: false,
@@ -1394,7 +1394,7 @@ if (isset($_GET['verified'])) {
     else if (regpin == null || regpin == "") {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Please enter the pincode ! ",
           icon: "error",
           closeOnClickOutside: false,
@@ -1408,7 +1408,7 @@ if (isset($_GET['verified'])) {
       return false;
     } else if (regpin.length != 6) {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Please enter valid pincode ! ",
         icon: "error",
         closeOnClickOutside: false,
@@ -1447,7 +1447,7 @@ if (isset($_GET['verified'])) {
     //validating address if its length above 4
     if (address != null && address.length < 8) {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Invalid Address",
         icon: "error",
         closeOnClickOutside: false,
@@ -1529,7 +1529,7 @@ if (isset($_GET['verified'])) {
     if (email == null || email == "") {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Please enter your email ID ! ",
           icon: "error",
           closeOnClickOutside: false,
@@ -1545,7 +1545,7 @@ if (isset($_GET['verified'])) {
     if (ValidateEmail(email) == false) {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Invalid email address! ",
           icon: "error",
           closeOnClickOutside: false,
@@ -1562,7 +1562,7 @@ if (isset($_GET['verified'])) {
     if (pass1 == null || pass1 == "") {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Please enter the password ! ",
           icon: "error",
           closeOnClickOutside: false,
@@ -1603,7 +1603,7 @@ if (isset($_GET['verified'])) {
     if (pass1.length < 8) {
       /*
         swal({
-          title: "Oops!",
+          title: "Alert!",
           text: "Weak Password ! Try again ",
           icon: "error",
           closeOnClickOutside: false,
@@ -1626,7 +1626,7 @@ if (isset($_GET['verified'])) {
     //confirming both passwords are same
     if (pass1 != pass2) {
       swal({
-        title: "Oops!",
+        title: "Alert!",
         text: "Passwords do not match ! Try again ",
         icon: "error",
         closeOnClickOutside: false,
@@ -1661,7 +1661,7 @@ if (isset($_GET['verified'])) {
       if (checkBox_user.checked == true) {
         if (document.getElementById("accept").checked == false) {
           swal({
-            title: "Oops!",
+            title: "Alert!",
             text: "Please Accept the terms and conditions",
             icon: "error",
             closeOnClickOutside: false,
@@ -1758,7 +1758,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!",
+                        title: "Alert!",
                         text: "Account already exists",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -1782,7 +1782,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!",
+                        title: "Alert!",
                         text: "Email is not valid",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -1806,7 +1806,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!",
+                        title: "Alert!",
                         text: "First name is not valid",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -1832,7 +1832,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!",
+                        title: "Alert!",
                         text: "Phone number already exists",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -1861,7 +1861,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                      title: "Oops!",
+                      title: "Alert!",
                       text: "server time out",
                       icon: "error",
                       closeOnClickOutside: false,
@@ -1909,7 +1909,7 @@ if (isset($_GET['verified'])) {
         //validating white spaces
         else if (shipping_first_namespace.length > 1) {
           swal({
-            title: "Oops!",
+            title: "Alert!",
             text: "'SPACE' not allowed",
             icon: "error",
             closeOnClickOutside: false,
@@ -1945,7 +1945,7 @@ if (isset($_GET['verified'])) {
         //validating first name is not a number
         else if (!(isNaN(shipping_last_name))) {
           swal({
-            title: "Oops!",
+            title: "Alert!",
             text: "Please use Albhabets",
             icon: "error",
             closeOnClickOutside: false,
@@ -1968,7 +1968,7 @@ if (isset($_GET['verified'])) {
         else if (isNaN(shipping_ph_no) || shipping_ph_no.length != 10) {
           /*
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "Invalid phone number",
               icon: "error",
               closeOnClickOutside: false,
@@ -1985,7 +1985,7 @@ if (isset($_GET['verified'])) {
         if (shipping_ph_no2 != "" && shipping_ph_no2.length != 10) {
           /*
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "Invalid shipping_ph_no number",
               icon: "error",
               closeOnClickOutside: false,
@@ -2008,7 +2008,7 @@ if (isset($_GET['verified'])) {
         //validating address if its length above 4
         if (shipping_address_1 != null && shipping_address_1.length < 10) {
           swal({
-            title: "Oops!",
+            title: "Alert!",
             text: "Invalid shipping_address_1",
             icon: "error",
             closeOnClickOutside: false,
@@ -2025,7 +2025,7 @@ if (isset($_GET['verified'])) {
         else if (shipping_postcode == null || shipping_postcode == "") {
           /*
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "Please enter the pincode ! ",
               icon: "error",
               closeOnClickOutside: false,
@@ -2039,7 +2039,7 @@ if (isset($_GET['verified'])) {
           return false;
         } else if (shipping_postcode.length != 6) {
           swal({
-            title: "Oops!",
+            title: "Alert!",
             text: "Please enter valid pincode ! ",
             icon: "error",
             closeOnClickOutside: false,
@@ -2055,7 +2055,7 @@ if (isset($_GET['verified'])) {
         //PIN check
         if (document.getElementById("accept").checked == false) {
           swal({
-            title: "Oops!",
+            title: "Alert!",
             text: "Please Accept the terms and conditions",
             icon: "error",
             closeOnClickOutside: false,
@@ -2160,7 +2160,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!",
+                        title: "Alert!",
                         text: "Account already exists",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -2184,7 +2184,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!",
+                        title: "Alert!",
                         text: "Email is not valid",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -2206,7 +2206,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!",
+                        title: "Alert!",
                         text: "First name is not valid",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -2232,7 +2232,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                        title: "Oops!",
+                        title: "Alert!",
                         text: "Phone number already exists",
                         icon: "error",
                         closeOnClickOutside: false,
@@ -2261,7 +2261,7 @@ if (isset($_GET['verified'])) {
                     $('.real_btn').show();
                     $('.std_text2').hide();
                     swal({
-                      title: "Oops!",
+                      title: "Alert!",
                       text: "server time out",
                       icon: "error",
                       closeOnClickOutside: false,

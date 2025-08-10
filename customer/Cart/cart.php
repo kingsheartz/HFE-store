@@ -475,7 +475,7 @@ function randomGen($min, $max, $quantity)
       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
         if (textstatus === "timeout") {
           swal({
-            title: "Oops!",
+            title: "Alert!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,
@@ -563,7 +563,7 @@ function randomGen($min, $max, $quantity)
           $(".background_loader").hide();
           $(".std_loader").hide();
           swal({
-            title: "Oops!",
+            title: "Alert!",
             text: "server time out",
             icon: "error",
             closeOnClickOutside: false,
@@ -687,7 +687,7 @@ function randomGen($min, $max, $quantity)
         error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
           if (textstatus === "timeout") {
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -1759,7 +1759,7 @@ function randomGen($min, $max, $quantity)
                 error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                   if (textstatus === "timeout") {
                     swal({
-                      title: "Oops!",
+                      title: "Alert!",
                       text: "server time out",
                       icon: "error",
                       closeOnClickOutside: false,
@@ -1864,7 +1864,7 @@ function randomGen($min, $max, $quantity)
                     error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                       if (textstatus === "timeout") {
                         swal({
-                          title: "Oops!",
+                          title: "Alert!",
                           text: "server time out",
                           icon: "error",
                           closeOnClickOutside: false,
@@ -1962,7 +1962,7 @@ function randomGen($min, $max, $quantity)
                       error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                         if (textstatus === "timeout") {
                           swal({
-                            title: "Oops!",
+                            title: "Alert!",
                             text: "server time out",
                             icon: "error",
                             closeOnClickOutside: false,
@@ -2140,7 +2140,7 @@ function randomGen($min, $max, $quantity)
                 error: function(xmlhttprequest, textstatus, message) { //if it exceeds timeout period
                   if (textstatus === "timeout") {
                     swal({
-                      title: "Oops!",
+                      title: "Alert!",
                       text: "server time out",
                       icon: "error",
                       closeOnClickOutside: false,

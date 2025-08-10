@@ -232,7 +232,7 @@ session_start();
             $('.std_loader').hide();
 
             swal({
-              title: "Oops!",
+              title: "Alert!",
               text: "server time out",
               icon: "error",
               closeOnClickOutside: false,
@@ -366,7 +366,7 @@ session_start();
               $('.real_btn').show();
 
               swal({
-                  title: "Oops!",
+                  title: "Alert!",
                   text: "Invalid OTP ! ",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -385,7 +385,7 @@ session_start();
               $('.real_btn').show();
 
               swal({
-                  title: "Oops!",
+                  title: "Alert!",
                   text: " OTP expired!",
                   icon: "error",
                   closeOnClickOutside: false,
@@ -408,7 +408,7 @@ session_start();
               $('.real_btn').show();
 
               swal({
-                title: "Oops!",
+                title: "Alert!",
                 text: "server time out",
                 icon: "error",
                 closeOnClickOutside: false,
