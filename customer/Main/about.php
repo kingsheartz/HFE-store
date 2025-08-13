@@ -7,6 +7,11 @@ require "header.php";
     background-color: #151515;
   }
 
+  .row {
+    margin-right: 0;
+    margin-left: 0;
+  }
+
   h4 {
     color: darkgrey !important;
   }

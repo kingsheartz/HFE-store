@@ -1426,7 +1426,7 @@ function randomGen($min, $max, $quantity)
     class="btn btn-primary btn-lg button btn-cart btn-flat"
     data-toggle="modal"
     data-target="#avail_stores"
-    style="width: 100%;justify-content: flex-start;border-radius: 0px;border-color: #fff;">
+    style="width: 100%;justify-content: flex-start;border-radius: 0px !important;border-color: #fff;">
     <i class="fas fa-cart-plus mr-2" style="color: cyan"></i>
     Add to Cart
   </div>
@@ -1437,7 +1437,7 @@ function randomGen($min, $max, $quantity)
     name="submit"
     data-toggle="modal"
     data-target="#avail_stores_buy"
-    style="width: 100%;position: relative;float: left;justify-content: flex-start;border-radius: 0px;">
+    style="width: 100%;position: relative;float: left;justify-content: flex-start;border-radius: 0px !important;">
     <div
       class="btn btn-default btn-lg btn-flat"
       type="button"
@@ -1589,7 +1589,7 @@ function randomGen($min, $max, $quantity)
                                 name="submit"
                                 data-toggle="modal"
                                 data-target="#avail_stores"
-                                style="width: 100%;justify-content: flex-start;border-radius: 4px;">
+                                style="width: 100%;justify-content: flex-start;">
                                 <i class="fas fa-cart-plus mr-2" style="color: cyan"></i> Add to Cart
                               </div>
                               <div
@@ -1598,7 +1598,7 @@ function randomGen($min, $max, $quantity)
                                 name="submit"
                                 data-toggle="modal"
                                 data-target="#avail_stores_buy"
-                                style="width: 100%;position: relative;float: left;justify-content: flex-start;border-radius: 4px;">
+                                style="width: 100%;position: relative;float: left;justify-content: flex-start;">
                                 <div
                                   class="btn btn-default btn-lg btn-flat"
                                   type="button"
@@ -1807,7 +1807,7 @@ function randomGen($min, $max, $quantity)
                       -----------------------------------------------------------------------------------------------------------------------------------------------------------
                       ----------------------------------------------------------------------------------------------------------------------------------------------------------->
                           <div class="container no-padding">
-                            <div class="agileinfo_single no-padding" >
+                            <div class="agileinfo_single no-padding">
                               <div class="col-md-12 agileinfo_single_right no-padding" style="width: 100%;">
                                 <!-- <div class="snipcart-thumb agileinfo_single_right_snipcart"></div> -->
                                 <div class="div-wrapper large-btn" id="btn-pc" style="width: 100%;margin-top: 2em;margin-bottom: 20px;display: flex;">
@@ -2585,6 +2585,10 @@ function randomGen($min, $max, $quantity)
                       width: 100%;
                       padding-left: 15px !important;
                       padding-right: 20px !important;
+                    }
+
+                    #ratingsingle {
+                      padding-inline: 10px !important;
                     }
                   }
                 </style>

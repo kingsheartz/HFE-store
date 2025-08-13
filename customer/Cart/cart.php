@@ -267,7 +267,7 @@ function randomGen($min, $max, $quantity)
     border-bottom: #333;
     border-radius: 10px;
     color: #ffffff;
-    background: #111111;
+    background: #101010;
     text-transform: capitalize;
     padding-left: 10px;
     margin-left: 5px;
@@ -766,7 +766,7 @@ function randomGen($min, $max, $quantity)
   <h2 class="sidebar-title">
     Shopping Cart <i class="fa fa-shopping-cart"></i>
   </h2>
-  <div class="container nopadding-margin" style="margin-left: 0px;width: 100%;padding:0;background-color: #111111;">
+  <div class="container nopadding-margin" style="margin-left: 0px;width: 100%;padding:0;background-color: #101010;">
     <div class="row" style="margin: 0px;">
       <div class="col-md-12" style="margin:0px;padding: 0px;width: 100%;display: list-item;">
         <script>
@@ -788,7 +788,7 @@ function randomGen($min, $max, $quantity)
                 <hr class=" make_divc" style="margin-bottom: 0px;margin-top: -10px;">
                 <div class="woocommerce">
                   <form method="post" action="#" class="hidescroll" style="overflow-x: hidden;">
-                    <div class="shop_table cart" style="background-color: #111111;">
+                    <div class="shop_table cart" style="background-color: #101010;">
                       <?php
                       $id = $_SESSION['hfe_id'];
                       $sql1 = "select * from cart where customer_id=:id order by product_description_id";
@@ -832,7 +832,7 @@ function randomGen($min, $max, $quantity)
                           $off = round(($save * 100) / $total);
                       ?>
                           <div class="cross-sells">
-                            <div class="each-product tbl_s<?= $store_id . "i" . $product_description_id ?>" style="padding: 0px;padding-top: 10px;width: 100%;background-color: #111111">
+                            <div class="each-product tbl_s<?= $store_id . "i" . $product_description_id ?>" style="padding: 0px;padding-top: 10px;width: 100%;background-color: #101010">
                               <div class="col-lg-1 col-md-1 col-sm-0 col-xs-0" style="padding: 0px;">
                                 <input
                                   id="check_s<?= $store_id . "i" . $product_description_id ?>"

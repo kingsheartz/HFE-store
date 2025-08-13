@@ -1,8 +1,5 @@
 <?php
 session_start();
-if (!isset($_SESSION['hfe_id'])) {
-  header("location:hfe.php");
-}
 require "header.php";
 ?>
 <!-- breadcrumbs -->
@@ -102,11 +99,13 @@ require "header.php";
     font-weight: bold;
   }
 
+  #bmi-clear-btn,
   #bmi-calculate-btn,
+  #bmi-save-btn,
   #history-status button {
     background: #139b3b;
     color: white;
-    padding: 12px 20px;
+    padding: 6px 12px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -114,9 +113,15 @@ require "header.php";
     transition: 0.3s ease;
   }
 
+  #bmi-clear-btn:hover,
   #bmi-calculate-btn:hover,
+  #bmi-save-btn:hover,
   #history-status button:hover {
-    background: #219150;
+    background: #139b3b;
+  }
+
+  #bmi-save-btn {
+    margin-top: 15px;
   }
 
   .bmi-display,
@@ -238,6 +243,7 @@ require "header.php";
           <input id="bmi-weight" type="number" placeholder="Weight (kg)" required />
           <input id="bmi-height" type="number" placeholder="Height (cm)" required />
           <button id="bmi-calculate-btn" type="button" onclick="calculateBMI()">Calculate</button>
+          <button id="bmi-clear-btn" type="button" onclick="clearBMI()">Clear</button>
         </form>
         <div id="bmi-result" class="bmi-result" style="display: none;"></div>
 
@@ -246,32 +252,37 @@ require "header.php";
           <h2>Status: <span id="bmi-status">_</span></h2>
         </div>
       </fieldset>
+      <?php
+      if (isset($_SESSION['hfe_id'])) {
+      ?>
+        <hr>
+        <h3 id="bmi-history">BMI History</h3>
 
-      <hr>
-      <h3 id="bmi-history">BMI History</h3>
+        <div id="history-status" style="margin-top: 10px;">
+          <fieldset class="bmi-date-picker-container">
+            <legend>Select Date</legend>
+            <div class="date-picker-div">
+              <input type="date" id="bmi-date" class="btn" />
+              <button type="button" class="btn btn-secondary" onclick="loadBMIHistory()">Load</button>
+            </div>
+          </fieldset>
+        </div>
 
-      <div id="history-status" style="margin-top: 10px;">
-        <fieldset class="bmi-date-picker-container">
-          <legend>Select Date</legend>
-          <div class="date-picker-div">
-            <input type="date" id="bmi-date" class="btn" />
-            <button type="button" class="btn btn-secondary" onclick="loadBMIHistory()">Load</button>
-          </div>
-        </fieldset>
-      </div>
+        <div id="row" class="history-container" style="margin-top: 20px;">
+          <h2>History:</h2>
+          <ul id="bmi-history-list">
+            <li>No entries yet.</li>
+          </ul>
+        </div>
+        <hr>
 
-      <div id="row" class="history-container" style="margin-top: 20px;">
-        <h2>History:</h2>
-        <ul id="bmi-history-list">
-          <li>No entries yet.</li>
-        </ul>
-      </div>
-      <hr>
-
-      <div class="bmi-chart-container">
-        <h2>Weekly BMI Trend</h2>
-        <canvas id="bmi-chart" height="150"></canvas>
-      </div>
+        <div class="bmi-chart-container">
+          <h2>Weekly BMI Trend</h2>
+          <canvas id="bmi-chart" height="150"></canvas>
+        </div>
+      <?php
+      }
+      ?>
     </div>
     <?php require "../Main/footer.php"; ?>
 
@@ -279,9 +290,35 @@ require "header.php";
     <script>
       let bmiChartInstance = null;
 
-      function renderBMI() {
-        loadBMIHistory();
-        loadBMIChart();
+      function getBMIStatus(bmi) {
+        if (bmi < 18.5) return {
+          status: "Underweight",
+          color: "#8b8b00"
+        };
+        else if (bmi < 24.9) return {
+          status: "Normal",
+          color: "green"
+        };
+        else if (bmi < 29.9) return {
+          status: "Overweight",
+          color: "#a56b00"
+        };
+        else return {
+          status: "Obese",
+          color: "red"
+        };
+      }
+
+      function clearBMI() {
+        $('#bmi-weight').val('');
+        $('#bmi-height').val('');
+        $('#bmi-value').text('_');
+        $('#bmi-value').css('color', '#139b3b');
+        $('#bmi-status').text('_');
+        $('#bmi-status').text('_');
+        $('#bmi-status').css('background-color', 'transparent');
+        $('#bmi-status').css('color', '#139b3b');
+        $('#bmi-save-btn').remove();
       }
 
       function calculateBMI() {
@@ -296,24 +333,77 @@ require "header.php";
 
         const bmi = weight / (heightInMeter * heightInMeter);
         const bmiRounded = bmi.toFixed(1);
-        const status = getBMIStatus(bmi);
+        const result = getBMIStatus(bmi);
 
         $('#bmi-value').text(bmiRounded);
-        $('#bmi-status').text(status);
+        $('#bmi-value').css('color', result.color);
 
-        // Save to server
-        $.post('../Common/bmi_api.php', {
-          save_bmi: 1,
-          customer_id: "<?= $_SESSION['hfe_id'] ?>",
-          weight,
-          height,
-          bmi: bmiRounded
-        }, function(response) {
-          const res = JSON.parse(response);
-          Swal.fire(res.status, res.message, res.status);
-          loadBMIHistory();
-          loadBMIChart();
-        });
+        $('#bmi-status').text(result.status);
+        $('#bmi-status').css('padding-inline', '5px');
+        $('#bmi-status').css('padding-bottom', '2px');
+        $('#bmi-status').css('border-radius', '3px');
+        $('#bmi-status').css('background-color', result.color);
+        $('#bmi-status').css('color', 'white');
+        $('#bmi-status').css('font-size', '16px');
+
+        <?php
+        if (isset($_SESSION['hfe_id'])) {
+        ?>
+          $('#bmi-save-btn').remove();
+          $('.bmi-display').append(`<button id="bmi-save-btn" type="button" onclick="saveBMI(<?= $_SESSION['hfe_id'] ?>, ${weight}, ${height}, ${bmiRounded})"><i class="fas fa-save"></i> Save</button>`);
+        <?php
+        }
+        ?>
+      }
+
+      <?php
+      if (!isset($_SESSION['hfe_id'])) {
+        echo '</script>';
+        return;
+      }
+      ?>
+
+      function saveBMI(customer_id, weight, height, bmiRounded) {
+        Swal.fire({
+            title: "<span style='font-family-arial'></span>",
+            text: "Do you want to save",
+            icon: "warning",
+            showCancelButton: true,
+            showConfirmButton: true,
+            confirmButtonColor: 'green',
+            confirmButtonText: '<i class="fas fa-save"></i> Save',
+            cancelButtonColor: 'red',
+            allowOutsideClick: false,
+            cancelButtonText: '<i class="fa fa-close"></i> Cancel'
+          })
+          .then((willSubmit) => {
+            if (willSubmit.dismiss) {
+              return false;
+            } else if (willSubmit.isConfirmed) {
+              // Save to server
+              $.post('../Common/bmi_api.php', {
+                save_bmi: 1,
+                customer_id: "<?= $_SESSION['hfe_id'] ?>",
+                weight,
+                height,
+                bmi: bmiRounded
+              }, function(response) {
+                const res = JSON.parse(response);
+                Swal.fire(res.status, res.message, res.status);
+
+                if (res.status === 'success') {
+                  $('#bmi-save-btn').remove();
+                  loadBMIHistory();
+                  loadBMIChart();
+                }
+              });
+            }
+          });
+      }
+
+      function renderBMI() {
+        loadBMIHistory();
+        loadBMIChart();
       }
 
       function deleteBMI(bmi_id) {
@@ -332,13 +422,6 @@ require "header.php";
         });
       }
 
-      function getBMIStatus(bmi) {
-        if (bmi < 18.5) return "Underweight";
-        else if (bmi < 24.9) return "Normal";
-        else if (bmi < 29.9) return "Overweight";
-        else return "Obese";
-      }
-
       function loadBMIHistory() {
         const customer_id = "<?= $_SESSION['hfe_id'] ?>";
         const date = $('#bmi-date').val();
@@ -355,7 +438,8 @@ require "header.php";
             html = `<li>${data?.message}</li>`;
           } else {
             data?.forEach(entry => {
-              html += `<li>${entry.date_logged}: BMI ${entry.bmi} - ${getBMIStatus(entry.bmi)} <i class="fa fa-trash float-right del-bmi" onclick=deleteBMI(${entry.bmi_id})></i></li>`;
+              const result = getBMIStatus(entry.bmi);
+              html += `<li>${entry.date_logged}: BMI ${entry.bmi} - <span style="border-radius: 3px;padding-inline: 5px;padding-bottom: 2px;background-color: ${result.color};color: white;">${result.status}</span> <i class="fa fa-trash float-right del-bmi" onclick=deleteBMI(${entry.bmi_id})></i></li>`;
             });
           }
 
@@ -415,7 +499,7 @@ require "header.php";
       }
 
       $(document).ready(function() {
-        loadBMIHistory();
         loadBMIChart();
+        loadBMIHistory();
       });
     </script>

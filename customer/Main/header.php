@@ -1268,13 +1268,19 @@ if (session_status() === PHP_SESSION_NONE) {
                           </button>
                         </form>
                       </li>
-                      <li class="caloriediv">
-                        <form action="#" title="Calorie Tracker" method="post" class="last">
-                          <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_metrics.php';">
-                            <i class="fas fa-heartbeat" aria-hidden="true"></i>
-                          </button>
-                        </form>
-                      </li>
+                      <?php
+                      if (isset($_SESSION['hfe_id'])) {
+                      ?>
+                        <li class="caloriediv">
+                          <form action="#" title="Calorie Tracker" method="post" class="last">
+                            <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_metrics.php';">
+                              <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                            </button>
+                          </form>
+                        </li>
+                      <?php
+                      }
+                      ?>
                       <li class="bmidiv">
                         <form action="#" title="BMI Calculator" method="post" class="last">
                           <button class="bmiicon" type="button" name="submit" value="" onclick="location.href='../Main/bmi_calculator.php';">
@@ -1475,13 +1481,19 @@ if (session_status() === PHP_SESSION_NONE) {
                     ?>
                   </ul>
                 </li>
-                <li class="caloriediv">
-                  <form action="#" title="Calorie Tracker" method="post" class="last">
-                    <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_metrics.php';">
-                      <i class="fas fa-heartbeat" aria-hidden="true"></i>
-                    </button>
-                  </form>
-                </li>
+                <?php
+                if (isset($_SESSION['hfe_id'])) {
+                ?>
+                  <li class="caloriediv">
+                    <form action="#" title="Calorie Tracker" method="post" class="last">
+                      <button class="calorieicon" type="button" name="submit" value="" onclick="location.href='../Main/calorie_metrics.php';">
+                        <i class="fas fa-heartbeat" aria-hidden="true"></i>
+                      </button>
+                    </form>
+                  </li>
+                <?php
+                }
+                ?>
                 <li class="bmidiv">
                   <form action="#" title="BMI Calculator" method="post" class="last">
                     <button class="bmiicon" type="button" name="submit" value="" onclick="location.href='../Main/bmi_calculator.php';">
@@ -1665,9 +1677,9 @@ if (session_status() === PHP_SESSION_NONE) {
       $category_id = $row11['category_id'];
       $category_name = $row11['category_name'];
     ?>
-      <button 
-        class="dropdown-btn category_side_head" 
-        id="list_enda" 
+      <button
+        class="dropdown-btn category_side_head"
+        id="list_enda"
         style="width: 100%;float: left;padding: 8px 8px 8px 32px !important;display: flex;align-items: flex-start;gap: 5px;">
         <i class="fa fa-arrow-right" aria-hidden="true" style="color: #fe9126;margin: 0px;margin-top: 3px;"></i>
         <a href="../Product/products.php?category_id=<?= $category_id ?>" style="color: white;padding: 0px;"> <?= $category_name ?></a>

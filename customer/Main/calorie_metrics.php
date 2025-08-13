@@ -138,7 +138,7 @@ require "header.php";
   #history-status button {
     background: #139b3b;
     color: white;
-    padding: 12px 20px;
+    padding: 6px 12px;
     border: none;
     border-radius: 8px;
     cursor: pointer;
@@ -148,7 +148,7 @@ require "header.php";
 
   .tracker button:hover,
   #history-status button:hover {
-    background: #219150;
+    background: #139b3b;
   }
 
   #goal-status {
@@ -367,11 +367,10 @@ require "header.php";
                     html = "<li>No entries found.</li>";
                   } else {
                     res.forEach(entry => {
-                      html += `<li class="calorie-history">${entry.date_logged}: ${entry.food_item} - ${entry.calories} cal</li>`;
+                      html += `<li class="calorie-history">${entry.date_logged}: ${entry.food_item} - ${entry.calories} cal  <i class="fa fa-trash float-right del-calorie" onclick=deleteCalories(${entry.calories_id})></i></li>`;
                     });
-
-                    $('#history-list').html(html);
                   }
+                  $('#history-list').html(html);
                 } else {
                   if (res.length === 0) {
                     html = "<li>No entries for today yet.</li>";
@@ -380,10 +379,9 @@ require "header.php";
                     res.forEach(entry => {
                       html += `<li>${entry.food_item} - ${entry.calories} cal <i class="fa fa-trash float-right del-calorie" onclick=deleteCalories(${entry.calories_id})></i></li>`;
                     });
-
-                    $('#food-list').html(html);
                     $('#total').text(totalCalories);
                   }
+                  $('#food-list').html(html);
                 }
               }
             });
