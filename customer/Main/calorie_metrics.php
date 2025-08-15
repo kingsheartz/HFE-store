@@ -250,6 +250,9 @@ require "header.php";
     border-radius: 5px;
     color: darkgrey;
     transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    outline: none !important;
+    background-color: transparent;
   }
 
   .del-calorie:hover {
@@ -367,7 +370,12 @@ require "header.php";
                     html = "<li>No entries found.</li>";
                   } else {
                     res.forEach(entry => {
-                      html += `<li class="calorie-history">${entry.date_logged}: ${entry.food_item} - ${entry.calories} cal  <i class="fa fa-trash float-right del-calorie" onclick=deleteCalories(${entry.calories_id})></i></li>`;
+                      html += `<li class="calorie-history" style="display: flex; justify-content: space-between; align-items: center">
+                                <span style="display: flex; justify-content: space-between; align-items: center">
+                                  ${entry.date_logged}: ${entry.food_item} - ${entry.calories} cal &nbsp;
+                                </span>
+                                <button class="fa fa-trash float-right del-calorie" onclick=deleteCalories(${entry.calories_id})></button>
+                              </li>`;
                     });
                   }
                   $('#history-list').html(html);
@@ -377,7 +385,12 @@ require "header.php";
                   } else {
                     const totalCalories = res.reduce((sum, entry) => sum + entry.calories, 0);
                     res.forEach(entry => {
-                      html += `<li>${entry.food_item} - ${entry.calories} cal <i class="fa fa-trash float-right del-calorie" onclick=deleteCalories(${entry.calories_id})></i></li>`;
+                      html += `<li style="display: flex; justify-content: space-between; align-items: center">
+                                <span style="display: flex; justify-content: space-between; align-items: center">
+                                  ${entry.food_item} - ${entry.calories} cal &nbsp;
+                                </span>
+                                <button class="fa fa-trash float-right del-calorie" onclick=deleteCalories(${entry.calories_id})></button>
+                              </li>`;
                     });
                     $('#total').text(totalCalories);
                   }
@@ -420,8 +433,11 @@ require "header.php";
 
           function deleteCalories(calories_id) {
             $.ajax({
-              url: '../Common/calorie_manager.php?calories_id=' + calories_id,
-              method: 'DELETE',
+              url: '../Common/calorie_manager.php?calories_id=' + encodeURIComponent(calories_id),
+              method: 'POST',
+              data: {
+                del_calorie: 1,
+              },
               success: function(response) {
                 const res = JSON.parse(response);
                 if (res.status === 'deleted') {

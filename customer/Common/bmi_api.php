@@ -1,4 +1,12 @@
 <?php
+header("Access-Control-Allow-Origin: *");
+header("Access-Control-Allow-Methods: GET, POST, PUT, DELETE, OPTIONS");
+header("Access-Control-Allow-Headers: Content-Type, Authorization");
+if ($_SERVER['REQUEST_METHOD'] == 'OPTIONS') {
+  http_response_code(200);
+  exit;
+}
+
 session_start();
 require_once dirname(__DIR__, 2) . '/db/pdo.php';
 require_once dirname(__DIR__, 2) . '/includes/logger.php';
@@ -96,7 +104,7 @@ if (isset($_POST['load_bmi_chart']) && isset($_POST['customer_id'])) {
   exit;
 }
 
-if ($method === 'DELETE' && isset($_GET['bmi_id'])) {
+if (isset($_POST['del_bmi']) && isset($_GET['bmi_id'])) {
   $stmt = $pdo->prepare("DELETE FROM bmi_entries WHERE bmi_id = ?");
   $stmt->execute([$_GET['bmi_id']]);
 
@@ -106,3 +114,10 @@ if ($method === 'DELETE' && isset($_GET['bmi_id'])) {
   ]);
   exit;
 }
+
+// ==== Default: method not allowed ====
+http_response_code(405);
+echo json_encode([
+  "status" => "error",
+  "message" => "Method not allowed."
+]);

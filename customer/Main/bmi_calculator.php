@@ -221,6 +221,9 @@ require "header.php";
     border-radius: 5px;
     color: darkgrey;
     transition: background 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+    cursor: pointer;
+    outline: none !important;
+    background-color: transparent;
   }
 
   .del-bmi:hover {
@@ -408,8 +411,11 @@ require "header.php";
 
       function deleteBMI(bmi_id) {
         $.ajax({
-          url: '../Common/bmi_api.php?bmi_id=' + bmi_id,
-          method: 'DELETE',
+          url: '../Common/bmi_api.php?bmi_id=' + encodeURIComponent(bmi_id),
+          method: 'POST',
+          data: {
+            del_bmi: 1,
+          },
           success: function(response) {
             const res = JSON.parse(response);
             if (res.status === 'deleted') {
@@ -439,7 +445,12 @@ require "header.php";
           } else {
             data?.forEach(entry => {
               const result = getBMIStatus(entry.bmi);
-              html += `<li>${entry.date_logged}: BMI ${entry.bmi} - <span style="border-radius: 3px;padding-inline: 5px;padding-bottom: 2px;background-color: ${result.color};color: white;">${result.status}</span> <i class="fa fa-trash float-right del-bmi" onclick=deleteBMI(${entry.bmi_id})></i></li>`;
+              html += `<li style="display: flex; justify-content: space-between; align-items: center">
+                        <span style="display: flex; justify-content: space-between; align-items: center">
+                          ${entry.date_logged}: BMI ${entry.bmi} - &nbsp;<span style="border-radius: 3px;padding-inline: 5px;padding-bottom: 2px;background-color: ${result.color};color: white;">${result.status}</span>
+                        </span> 
+                        <button class="fa fa-trash float-right del-bmi" onclick=deleteBMI(${entry.bmi_id})></button>
+                      </li>`;
             });
           }
 
