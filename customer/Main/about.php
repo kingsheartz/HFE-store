@@ -211,43 +211,6 @@ require "header.php";
             <div class="clearfix"> </div>
           </div>
         </div>
-        <div class=" col-md-3 about-team-grids flip-box">
-          <div class='flip-box-inner'>
-            <div class='flip-box-front'>
-              <img src="../../images/team/t2.JPG" alt="" height="450px" />
-              <div class="team-w3lstext">
-                <h4><span>Anumol,</span> Data Manager</h4>
-                <p>Manages data resources and supports backend integration.</p>
-              </div>
-            </div>
-            <div class='flip-box-back'>
-              <img src="../../images/team/t5.jpg" alt="" height="450px" />
-              <div class="team-w3lstext">
-                <h4><span>Dhanalakshmi,</span> Research Analyst</h4>
-                <p>Focuses on market and product research.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="col-md-3 about-team-grids">
-          <img src="../../images/team/t4.JPG" alt="" height="450px" />
-          <div class="team-w3lstext">
-            <h4><span>Krishnendu,</span> Co-Leader</h4>
-            <p>Assists with technical development and supports project delivery.</p>
-          </div>
-          <div class="social-icons caption">
-            <div class="clearfix"> </div>
-          </div>
-        </div>
-        <div class="col-md-3 about-team-grids">
-          <img src="../../images/team/t3.JPG" alt="" height="450px" />
-          <div class="team-w3lstext">
-            <h4><span>Shahanas,</span> Supervisor</h4>
-            <p>Oversees workflow and team coordination.</p>
-          </div>
-          <div class="social-icons caption">
-          </div>
-        </div>
       </div>
     </div>
   </div>
