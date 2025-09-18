@@ -11,8 +11,6 @@ define('CONTACTFORM_FROM_ADDRESS', 'healthandfitnessequipmentstore@gmail.com');
 define('CONTACTFORM_FROM_NAME', 'HFE-Store');
 // The name and address to which the contact message should be sent.
 // These details should NOT be the same as the sender details.
-/*define('CONTACTFORM_TO_ADDRESS', 'krishnendugopi8592@gmail.com');
-define('CONTACTFORM_TO_NAME', 'KRISHNENDU R G');*/
 // The details of your SMTP service, e.g. Gmail.
 define('CONTACTFORM_SMTP_HOSTNAME', 'smtp.gmail.com');
 define('CONTACTFORM_SMTP_USERNAME', 'healthandfitnessequipmentstore@gmail.com');

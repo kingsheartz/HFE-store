@@ -274,19 +274,19 @@ CREATE TABLE `chats` (
 --
 
 INSERT INTO `chats` (`uname`, `msg`, `dt`, `rname`, `id`, `stat`) VALUES
-('KRISHNENDU RG', 'helo', '21-06-26 06:51pm', 'admin', 1, 1),
-('admin', 'hi', '21-06-26 06:51pm', 'KRISHNENDU RG', 2, 1),
-('KRISHNENDU RG', 'how are you\r\nAre you fine', '21-06-26 06:51pm', 'admin', 3, 1),
+('Akash K U', 'helo', '21-06-26 06:51pm', 'admin', 1, 1),
+('admin', 'hi', '21-06-26 06:51pm', 'Akash K U', 2, 1),
+('Akash K U', 'how are you\r\nAre you fine', '21-06-26 06:51pm', 'admin', 3, 1),
 ('Govind', 'hai', '21-06-28 04:25pm', 'admin', 4, 1),
-('KRISHNENDU RG', 'HELO', '21-07-01 11:40am', 'admin', 5, 1),
-('admin', 'HI', '21-07-01 11:40am', 'KRISHNENDU RG', 6, 1),
-('KRISH', 'hlo', '21-07-03 09:35am', 'admin', 7, 1),
-('admin', 'hi', '21-07-03 10:36am', 'KRISH', 8, 1),
-('admin', 'jkgj', '21-07-17 09:05pm', 'KRISHNENDU RG', 9, 1),
+('Akash K U', 'HELO', '21-07-01 11:40am', 'admin', 5, 1),
+('admin', 'HI', '21-07-01 11:40am', 'Akash K U', 6, 1),
+('Jobin', 'hlo', '21-07-03 09:35am', 'admin', 7, 1),
+('admin', 'hi', '21-07-03 10:36am', 'Jobin', 8, 1),
+('admin', 'jkgj', '21-07-17 09:05pm', 'Akash K U', 9, 1),
 ('admin', 'helo', '21-07-18 07:28pm', 'Govind', 10, 0),
 ('admin', 'ninakentha reply thanna', '21-07-18 07:28pm', 'Govind', 11, 0),
 ('admin', 'hlolooooo', '21-07-18 07:29pm', 'Govind', 12, 0),
-('admin', 'hi', '21-07-18 07:36pm', 'KRISH', 13, 0);
+('admin', 'hi', '21-07-18 07:36pm', 'Jobin', 13, 0);
 
 -- --------------------------------------------------------
 
@@ -671,11 +671,11 @@ CREATE TABLE `store` (
 --
 
 INSERT INTO `store` (`store_id`, `store_name`, `opening_hours`, `address`, `status`, `longitude`, `latitude`) VALUES
-(1, 'shop 1', '12:00AM to 11:59PM', 'asaas', 'open', '991.32', '991.32'),
-(2, 'shop 3', '12:00AM to 11:59PM', 'dsddsas', 'open', '991.32', '991.32'),
-(3, 'shop 1', '12:00AM to 11:59PM', 'Valanjupadam', 'open', '991.32', '991.32'),
-(4, 'shop 1', '12:00AM to 11:59PM', 'TRENSER TECHNOLOGY SOLUTIONS\r\nTECHNOPARK CAMPUS PH', 'open', '991.32', '991.32'),
-(5, 'shop 1', '', 'Valanjupadam', 'open', '991.32', '991.32');
+(1, 'Calory Gym Store', '12:00AM to 11:59PM', 'Alappuzha', 'open', '76.3388', '9.4981'),
+(2, 'Apex Wellness Supply', '12:00AM to 11:59PM', 'Kochi', 'open', '76.2673', '9.9312'),
+(3, 'TotalFit Essentials', '12:00AM to 11:59PM', 'Munnar', 'open', '77.0595', '10.0889'),
+(4, 'Forge & Fuel', '12:00AM to 11:59PM', 'Kozhikode', 'open', '75.7804', '11.2588'),
+(5, 'Elevate Health & Strength', '12:00AM to 11:59PM', 'Thiruvananthapuram', 'open', '76.9366', '8.5241');
 
 -- --------------------------------------------------------
 
@@ -700,7 +700,7 @@ CREATE TABLE `store_admin` (
 --
 
 INSERT INTO `store_admin` (`id`, `store_id`, `username`, `email`, `phone`, `password`, `activation_code`, `password_reset`, `attempt`) VALUES
-(8, 5, 'krish', 'asgovind686@gmail.com', 8113990368, '$2y$10$QZkhHxGTz48tUBzxbstteeJEhrathtDCYWrRMcoEdWZ6g6GOSXy6G', 'activated', NULL, 0);
+(8, 5, 'Vishnudas A', 'asgovind686@gmail.com', 8113990368, '$2y$10$QZkhHxGTz48tUBzxbstteeJEhrathtDCYWrRMcoEdWZ6g6GOSXy6G', 'activated', NULL, 0);
 
 -- --------------------------------------------------------
 
