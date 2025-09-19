@@ -662,7 +662,7 @@ require "head.php";
                 .fadeIn(1500, function() {
                   $("#message").append(
                     "<div class='alert alert-success'>Product Updated For Your Store\
-                      <button onclick='location.reload()' style='width: 200px;background: green;float: right;margin - top: 15px;margin - right: 12px;'>Refresh</button>\
+                      <button onclick='location.reload()' style='width: 100px;background: green;border: none;border-radius:5px;color: white;float: right;margin - top: 15px;margin - right: 12px;'>Refresh</button>\
                     </div>"
                   );
                 });

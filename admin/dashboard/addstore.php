@@ -310,7 +310,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
         border-radius: 0px;
         padding-right: 0px;
         border-radius: 5px;
-        background: #646464 !important;
+        background: #3c3c3c !important;
         color: white;
       }
 
@@ -321,7 +321,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
         border-radius: 0px;
         padding-right: 0px;
         border-radius: 5px;
-        background: #646464 !important;
+        background: #3c3c3c !important;
         color: white;
         max-width: 550px !important;
       }
@@ -378,7 +378,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
                     style="display: none;margin-top: 12px;padding-left: 5px;width: 100% "
                     focusout="this.hide();$('#opening_hours').show()">
                     <div class="hrdiv store-opening-hours" style="width: auto;">
-                      <i class="fa fa-clock-o" class="form-control1" style="position: relative;margin-top: 2px;"></i>&nbsp;
+                      <i class="fa fa-clock-o" class="form-control1" style="position: relative;margin-top: 2px;color: #959595"></i>&nbsp;
                       <input
                         type="number"
                         onblur="validtime()"
@@ -409,9 +409,9 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
                         <option value="PM">PM</option>
                       </select>
                     </div>
-                    <div class="dot" style="width: 5%;text-align: center;">to</div>
+                    <div class="dot" style="width: 5%;text-align: center;color: #959595">to</div>
                     <div class="hrdiv" style="width: auto;padding-bottom: 10px;">
-                      <i class="fa fa-clock-o" class="form-control1" style="position: relative;margin-top: 2px;"></i>&nbsp;
+                      <i class="fa fa-clock-o" class="form-control1" style="position: relative;margin-top: 2px;color: #959595"></i>&nbsp;
                       <input
                         type="number"
                         onblur="validtime()"
@@ -466,7 +466,7 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
                     id="address"
                     class="form-control"
                     placeholder="Address"
-                    style="border-color:#66afe9"
+                    style="border-color: transparent;"
                     required=""></textarea>
                   <i class="fa fa-address-card " style="color: #777"></i>
                 </div>
