@@ -41,7 +41,7 @@ CREATE TABLE `admin` (
 --
 
 INSERT INTO `admin` (`id`, `username`, `password`, `activation_code`, `password_reset`, `attempt`) VALUES
-(2, 'admin', '$2y$10$b/nCaYQ82u0Ttxx.WdRwf.rBhEkz96hdQptZNV5aaxF5L58HtCge6', '', NULL, 0);
+(2, 'admin', '$2y$10$f6uFlJtYBo7vU2cTkKyHIeR63b8eR6FBcfQZZJFR3Kcse.r/JmZse', '', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -700,7 +700,7 @@ CREATE TABLE `store_admin` (
 --
 
 INSERT INTO `store_admin` (`id`, `store_id`, `username`, `email`, `phone`, `password`, `activation_code`, `password_reset`, `attempt`) VALUES
-(8, 5, 'Vishnudas A', 'asgovind686@gmail.com', 8113990368, '$2y$10$QZkhHxGTz48tUBzxbstteeJEhrathtDCYWrRMcoEdWZ6g6GOSXy6G', 'activated', NULL, 0);
+(8, 5, 'Vishnudas A', 'asgovind686@gmail.com', 8113990368, '$2y$10$f6uFlJtYBo7vU2cTkKyHIeR63b8eR6FBcfQZZJFR3Kcse.r/JmZse', 'activated', NULL, 0);
 
 -- --------------------------------------------------------
 
