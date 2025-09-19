@@ -433,12 +433,11 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
                             <?php
                             $cat = $pdo->query("select * from size");
                             while ($row = $cat->fetch(PDO::FETCH_ASSOC)) {
-                            ?> <
-                option value = "<?= $row['size_id'] ?>" > <?= $row['size_name'] ?> < /option >\
-              <?php
+                            ?>\
+                            <option value = "<?= $row['size_id'] ?>"> <?= $row['size_name'] ?> </option>\
+                            <?php
                             }
-              ?> ' +
-              '</select>\
+                            ?>\'</select>\
                           </div>\
                         </label>\
                         <label class="checkbox"><input type="checkbox" class="form-control-check" onclick="$(\'#brand' + countpos + '\').toggle();$(\'#brand1' + countpos + '\').toggle()" name="check1' + countpos + '" value="brand">\
@@ -449,12 +448,11 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
                               <?php
                               $cat = $pdo->query("select * from brand");
                               while ($row = $cat->fetch(PDO::FETCH_ASSOC)) {
-                              ?> <
-              option value = "<?= $row['brand_id'] ?>" > <?= $row['brand_name'] ?> < /option>\
-              <?php
+                              ?>\
+                              <option value = "<?= $row['brand_id'] ?>" > <?= $row['brand_name'] ?> </option>\
+                              <?php
                               }
-              ?> ' +
-              '</select>\
+                              ?>\'</select>\
                           </div>\
                         </label>\
                         <label class="checkbox"><input type="checkbox" class="form-control-check" onclick="$(\'#w1' + countpos + '\').toggle();$(\'#w2' + countpos + '\').toggle();$(\'#weight1' + countpos + '\').toggle()" name="check1' + countpos + '" value="weight">\
@@ -471,11 +469,11 @@ if (!empty($_SESSION['hfe_contact_form_success'])) {
                           </div>\
                         </label>\
                       </div>\
-                      <label>File Input</label>\
+                      <label style="color: white;">File Input</label>\
                       <div class="image-upload">  \
                       <label for="file-input' + countpos + '" style="width: 100%; cursor: pointer;">\
                         <center>\
-                          <img id="previewImg' + countpos + '" src="images/upload.png" style="max-width: 150px;max-height: 150px;height: auto;width: auto;">\
+                          <img id="previewImg' + countpos + '" src="../images/upload.png" style="max-width: 150px;max-height: 150px;height: auto;width: auto;">\
                         </center>\
                       </label>\
                       <input id="file-input' + countpos + '" type="file" name="my_file' + countpos + '" onchange="previewFile(\'#file-input' + countpos + '\',' + countpos + ');" style="display: none; cursor: pointer;"/>\
