@@ -352,7 +352,7 @@ require "head.php";
               style="display: none;margin-top: 12px;padding-left: 5px;width: 100%"
               focusout="this.hide();$('#opening_hours').show()">
               <div class="hrdiv store-opening-hours" style="width: auto;">
-                <i class="fa fa-clock-o" class="form-control1" style="position: relative;margin-top: 2px;"></i>
+                <i class="fa fa-clock-o" class="form-control1" style="position: relative;margin-top: 2px;color: #959595"></i>
                 <input
                   type="number"
                   onblur="validtime()"
@@ -379,9 +379,9 @@ require "head.php";
                   <option value="PM">PM</option>
                 </select>
               </div>
-              <div class="dot" style="width: 5%;text-align: center;">to</div>
+              <div class="dot" style="width: 5%;text-align: center;color: #959595">to</div>
               <div class="hrdiv" style="width: auto;padding-bottom: 10px;">
-                <i class="fa fa-clock-o" class="form-control1" style="position: relative;margin-top: 2px;"></i>
+                <i class="fa fa-clock-o" class="form-control1" style="position: relative;margin-top: 2px;color: #959595"></i>
                 <input
                   type="number"
                   onblur="validtime()"
@@ -422,7 +422,7 @@ require "head.php";
               </button>
             </div>
             <!--//select boxes for hours-->
-            <i class="fa fa-hourglass-start" style="color: #777;margin-top: 1px;"></i>
+            <i class="fa fa-hourglass-start" style="color: #d5d5d5;margin-top: 1px;"></i>
           </div>
         </div>
         <script>
